@@ -1,0 +1,73 @@
+\usepackage{german}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% varioref:
+
+\usepackage{varioref}
+
+\iflanguage{german}{%
+% die Standardversionen sind ein bißchen doof ...
+\def\reftextfaceafter{auf der \reftextvario{gegen\"uberliegenden}{n\"achsten} Seite}%
+\def\reftextfacebefore{auf der \reftextvario{gegen\"uberliegenden}{vorigen} Seite}%
+\def\reftextafter{auf der \reftextvario{n\"achsten}{folgenden} Seite}%
+\def\reftextbefore{auf der vorigen Seite}%
+\def\reftextcurrent{auf dieser Seite}%
+\def\reftextfaraway#1{auf Seite~\pageref{#1}}%
+\def\reftextpagerange#1#2{auf den Seiten~\pageref{#1}--\pageref{#2}}%
+\def\reftextlabelrange#1#2{\ref{#1} bis~\ref{#2}}%
+}{}
+
+\iflsDraft
+% do not stop and warn! This will be tested in the final version
+\vrefwarning
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% index:
+
+\iflanguage{german}{%
+\newcommand{\isfeat}[1]{\if@noftnote%
+\index{Merkmal!{\sc #1}}%
+\else%
+%\index{Merkmal!{\sc #1}|fn{\thefootnote}}%
+\index{Merkmal!{\sc #1}|fn{*}}%
+\fi%
+}}{%
+\newcommand{\isfeat}[1]{\if@noftnote%
+\index{feature!{\sc #1}}%
+\else%
+%\index{feature!{\sc #1}|fn{\thefootnote}}%
+\index{feature!{\sc #1}|fn{*}}%
+\fi%
+}}
+
+\iflanguage{german}{%
+\newcommand{\istype}[1]{\if@noftnote%
+\index{Typ!#1@\type{#1}}%
+\else%
+%\index{Typ!{\it #1}|fn{\thefootnote}}%
+\index{Typ!#1@\type{#1}|fn{*}}%
+\fi%
+}}{%
+\newcommand{\istype}[1]{\if@noftnote%
+\index{type!#1@\type{#1}}%
+\else%
+%\index{type!{\it #1}|fn{\thefootnote}}
+\index{type!#1@\type{#1}|fn{*}}%
+\fi%
+}}
+
+
+\iflanguage{german}{%
+\newcommand{\isrel}[1]{\if@noftnote%
+\index{Relation!\emph{#1}}%
+\else%
+\index{Relation!\emph{#1}|fn{*}}%
+\fi%
+}}{%
+\newcommand{\isrel}[1]{\if@noftnote%
+\index{relation!\emph{#1}}%
+\else%
+\index{relation!\emph{#1}|fn{*}}%
+\fi%
+}}

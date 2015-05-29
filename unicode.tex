@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%     Language Science Press Master File       %%%
+%%%         follow the instructions below        %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Everything following a % is ignored
+% Some lines start with %. Remove the % to include them
+
+\documentclass[output=inprep,
+%  long|short|inprep
+%  ,blackandwhite
+%  ,smallfont
+%  ,draftmode  
+		biblatex
+		]{LSP/langsci}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%          additional packages                 %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% put all additional commands you need in the 
+% following files. If you do not know what this might 
+% mean, you can safely ignore this section
+
+\input{localmetadata.tex}
+\input{localpackages.tex}
+\input{localhyphenation.tex}
+\input{localcommands.tex}
+\bibliography{localbibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Frontmatter                      %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\frontmatter
+% %% uncomment if you have preface and/or acknowledgements
+\include{chapters/preface}
+%\include{chapters/acknowledgments}
+% \include{chapters/abbreviations}
+\tableofcontents
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Chapters                         %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chapters/introduction}
+\include{chapters/encoding}
+\include{chapters/terminology}
+\include{chapters/pitfalls}
+\include{chapters/ipa_meets_unicode}
+\include{chapters/orthography_profiles}
+% \include{chapters/use_cases} % problematic
+
+% some things to note in the translation to LaTeX:
+% tildes in URLs broken -- turned into \textasciitilde{}
+% <a> etc. seem to sometimes be lost
+% i.e.~one
+
+
+% other stuff to fix
+% references
+% sections, e.g. Section 4, Pitfall 4)
+% URLs
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Backmatter                       %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% There is normally no need to change the backmatter section
+\input{backmatter.tex}
+\end{document}
+
+% you can create your book by running
+% xelatex lsp-skeleton.tex
+%
+% you can also try a simple 
+% make
+% on the commandline
