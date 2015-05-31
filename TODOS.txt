@@ -39,6 +39,9 @@ reinsertion of a lot of the glyphs, etc.
 
 fix ligatures
 
+all glyphs need to be checked
+all <>s need to be checked and/or readded
+
 ===
 nope, the ‘originaltext.tex’ should be ignored from now on.
 
