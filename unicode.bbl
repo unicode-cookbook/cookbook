@@ -16,6 +16,165 @@
   {}
 \endgroup
 
+\entry{List2012}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {List}{L.}%
+     {Johann-Mattis}{J.-M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LJM1}
+  \strng{fullhash}{LJM1}
+  \field{labelyear}{2012}
+  \field{extrayear}{1}
+  \field{sortinit}{L}
+  \field{booktitle}{Proceedings of ConSOLE XIX}
+  \verb{eprint}
+  \verb http://media.leidenuniv.nl/legacy/console19-proceedings-list.pdf
+  \endverb
+  \field{eventtitle}{The 19th Conference of Student Organization of Linguistics
+  in Europe}
+  \field{pages}{241\bibrangedash 260}
+  \field{subtitle}{{A} sound class based approach}
+  \field{title}{Multiple sequence alignment in historical linguistics}
+  \field{venue}{Groningen}
+  \field{eprinttype}{PDF}
+  \field{year}{2012}
+  \field{eventday}{05}
+  \field{eventmonth}{01}
+  \field{eventyear}{2011}
+  \field{eventendday}{08}
+  \field{eventendmonth}{01}
+  \field{eventendyear}{2011}
+\endentry
+
+\entry{List2012a}{incollection}{}
+  \name{author}{1}{}{%
+    {{}%
+     {List}{L.}%
+     {Johann-Mattis}{J.-M.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{2}{}{%
+    {{}%
+     {Slavkovik}{S.}%
+     {Marija}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lassiter}{L.}%
+     {Dan}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{LJM1}
+  \strng{fullhash}{LJM1}
+  \field{labelyear}{2012}
+  \field{extrayear}{2}
+  \field{sortinit}{L}
+  \field{booktitle}{New directions in logic, language, and computation}
+  \field{number}{7415}
+  \field{pages}{32\bibrangedash 51}
+  \field{series}{LNCS}
+  \field{title}{{SCA}. Phonetic alignment based on sound classes}
+  \list{location}{2}{%
+    {Berlin}%
+    {Heidelberg}%
+  }
+  \field{year}{2012}
+\endentry
+
+\entry{ListMoran2013}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {List}{L.}%
+     {Johann-Mattis}{J.-M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Moran}{M.}%
+     {Steven}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LJMMS1}
+  \strng{fullhash}{LJMMS1}
+  \field{labelyear}{2013}
+  \field{sortinit}{L}
+  \field{booktitle}{Proceedings of the 51st Annual Meeting of the Association
+  for Computational Linguistics}
+  \field{pages}{13\bibrangedash 18}
+  \field{title}{An Open Source Toolkit for Quantitative Historical Linguistics}
+  \field{year}{2013}
+\endentry
+
+\entry{MoranProkic2013}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Moran}{M.}%
+     {Steven}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Proki{\'c}}{P.}%
+     {Jelena}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MSPJ1}
+  \strng{fullhash}{MSPJ1}
+  \field{labelyear}{2013}
+  \field{sortinit}{M}
+  \field{number}{4}
+  \field{pages}{676\bibrangedash 691}
+  \field{title}{Investigating the Relatedness of the Endangered Dogon
+  Languages}
+  \verb{url}
+  \verb http://llc.oxfordjournals.org/content/28/4/676
+  \endverb
+  \field{volume}{28}
+  \field{journaltitle}{Literary And Linguistic Computing}
+  \field{year}{2013}
+\endentry
+
+\entry{Steiner_etal2011}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Steiner}{S.}%
+     {Lydia}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stadler}{S.}%
+     {Peter~F}{P.~F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cysouw}{C.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {BRILL}%
+  }
+  \strng{namehash}{SLSPFCM1}
+  \strng{fullhash}{SLSPFCM1}
+  \field{labelyear}{2011}
+  \field{sortinit}{S}
+  \field{number}{1}
+  \field{pages}{89\bibrangedash 127}
+  \field{title}{A Pipeline for Computational Historical Linguistics}
+  \field{volume}{1}
+  \field{journaltitle}{Language Dynamics and Change}
+  \field{year}{2011}
+\endentry
+
 \lossort
 \endlossort
 

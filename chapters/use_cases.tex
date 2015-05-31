@@ -1,20 +1,36 @@
-\section{Use cases}\label{use-cases}
+\chapter{Use cases}
+\label{use-cases}
+
+\section{Introduction}
 
 We now present several use cases that have motivated the development of orthography profiles. These include:
 \begin{itemize}
-	\item grapheme tokenization 
+	\item tokenization and error checking
 	\item normalization of orthographic systems to attain interoperability across different source documents, 
 	\item cognate identification for detecting the similarity between words from different languages 
 \end{itemize}
 
 An important assumption of our work is that input sources are encoded in Unicode (UTF-8 to be precise). Anything that the Unicode Standard is unable to capture, cannot be captured by an orthography profile. We also use Unicode normalization form NFD to decompose all incoming text input into normalized and (Unicode) logically ordered strings. This process is of fundamental importance when working with text data in the Unicode Standard.
 
-\emph{Grapheme tokenization}
+\section{Tokenization and error checking}
+The most basic use case is tokenization of language data. Tokenization comes in three types:
+
+- Unicode character tokenization
+- grapheme tokenization
+- tailored grapheme tokenization
+
+The simplest form of tokenization provided by any Unicode Standard-compliant software will split an input text stream on Unicode character code points. The input text is split on the character bit sequences as they have been encoded by the user. This may be in various Unicode Normalization Forms (see Section \ref{}) and tokenization split function returns a byte stream sequence given a particular encoding (see Section \ref{}).
+
+There is increasing support for the regular expression match, commonly ``\\X'', to identify Unicode graphemes (see Section \ref{}) and perform tokenization on these sets of Unicode characters. Examples are given in Section \ref{}.
+
+The orthography profile provides the mechanism for tokenizing an input stream on tailored grapheme clusters. The orthography's formal specification is given in Section \ref{}. To sum, an orthography profile is a list of tailored grapheme clusters and / or orthographic rules that specify how a specific resource of text input should be tokenized. 
 
 Once text has been normalized, an additional and straightforward process is Unicode grapheme tokenization. More recently this regular expression, often available as short cut ``\textbackslash{X}'', identifies all sequences of ``base'' characters followed by 0 or more combining diacritics. For example, the sequence, % <ŋ͡mṍraː> would tokenize as a space-delimited sequence as: <ŋ͡ m ṍ r a ː>. For a first pass at identifying grapheme clusters, this is a straightforward 
 tokenization. However, the linguist will note that both the tie bar (COMBINING DOUBLE INVERTED BREVE, a Unicode Combining Modifier) and the length marker (MODIFIER LETTER TRIANGULAR COLON. a Unicode Letter Modifier) do not appear ``correctly'', i.e.~the tie bar is grouped with the first character in the sequence and the length marker appears singly. This is necessary, as defined by the Unicode Standard, because of these character's semantic properties -- with Unicode we cannot know if, for example, the MODIFIER LETTER TRIANGULAR COLON should appear before or after the base character that it modifies, cf.~the IPA aspiration marker, , the MODIFIER LETTER SMALL H, which is also a Unicode Letter Modifier and for linguists a diacritic that be be used for pre- or post-aspiration. These ambiguities of position in tokenization are not uncommon in IPA, thus orthographic (or source) normalization and tokenization is needed.
 
-*Cross-orthography **normalization*
+\begin{comment}
+
+\section{Cross-orthography **normalization*}
 
 Orthographic tokenization requires a specification of the tailored grapheme clusters (linguists: graphemes) to separate orthographic units within an input source. In the simplest case, the Unicode graphemic tokenization with regular expression ``\textbackslash{X}'' captures the grapheme clusters, i.e.~the input data is graphemically tokenized and there are no additional string sequences required to capture each grapheme, e.g.~no specification. This scenario is the most unlikely.
 
@@ -24,7 +40,7 @@ Huber \& Huber 1992
 
 % ({[}a\textbar{}á\textbar{}e\textbar{}é\textbar{}i\textbar{}í\textbar{}o\textbar{}ó\textbar{}u\textbar{}ú{]})(n)(\s)({[}a\textbar{}á\textbar{}e\textbar{}é\textbar{}i\textbar{}í\textbar{}o\textbar{}ó\textbar{}u\textbar{}ú{]}), \1 \2 \4
 
-A preliminary orthography profile can be generated with code available online.\footnote{https://github.com/bambooforest/tokenizer} The Python script creates a unigram model for individual Unicode characters or Unicode grapheme clusters and their frequency in the source input. We find that this gives a broad overview of the input at the character and grapheme levels and it often finds typographic errors in the source input by identifying rarely occurring or one-off characters in the input. The models also provides the basis for the ``quick'' development of an initial orthography profile by saving the user keyboarding time.
+A preliminary orthography profile can be generated with code available online.\footnote{\url{https://github.com/bambooforest/tokenizer}} The Python script creates a unigram model for individual Unicode characters or Unicode grapheme clusters and their frequency in the source input. We find that this gives a broad overview of the input at the character and grapheme levels and it often finds typographic errors in the source input by identifying rarely occurring or one-off characters in the input. The models also provides the basis for the ``quick'' development of an initial orthography profile by saving the user keyboarding time.
 
 Note that these symbols are still phonetically unspecified, i.e.~symbol may or may not represent, say, a front open unrounded vowel.
 
@@ -101,3 +117,5 @@ The most basic overall Unicode character property is the \textsc{General Categor
 Script information is useful for algorithmic processes, such as collation, searching and for multilingual text processing. For example, if a regular expression engine includes functionality to match characters at the level of script, then it provides the ability to identify characters, e.g. \match{Greek}, which tests whether letters in a text belong to the Greek script or not. This functionality can be used to determine the boundaries between different writing systems that appear in the same document. In Section 6 (Use cases of grapheme tokenization) we provide an example of a regular expression match at the level of character property.
 
 Unicode-aware regular expression engines may contain a meta-character, ``\textbackslash{X}'', that matches this level of grapheme cluster, i.e.~a base character followed by some number of accents or diacritical marks. Grapheme clusters are important to determine word or line boundaries, for collation (`ordering') and for user interface interaction (e.g.~mouse selection, backspacing, cursor movement).
+
+\end{comment}

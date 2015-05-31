@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  29 MAY 2015 12:46
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.5.25)  31 MAY 2015 09:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**unicode
+**unicode.tex
 (./unicode.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
@@ -1440,7 +1440,7 @@ Package hyperref Info: Option `unicode' set `true' on input line 1254.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/authorindex/authorindex.sty
 Package: authorindex 2005/03/22 make index of authors cited in a work
 )
-(././LSP/lsp-styles/lsp-lgr.sty)
+(./LSP/lsp-styles/lsp-lgr.sty)
 \LSPTmp=\skip84
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/epigraph/epigraph.sty
@@ -1450,7 +1450,7 @@ Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
 \epigraphwidth=\skip87
 \epigraphrule=\skip88
 )
-(././LSP/lsp-styles/lsp-makros.sty
+(./LSP/lsp-styles/lsp-makros.sty
 (/usr/local/texlive/2014/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2008/02/07
 
@@ -1462,7 +1462,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count409
 \FV@StepNumber=\count410
 \FV@OutFile=\write10
-))) (./localmetadata.tex) (./localpackages.tex
+)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks50
+\verbatim@line=\toks51
+\verbatim@in@stream=\read4
+)
+(./localmetadata.tex) (./localpackages.tex
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip89
@@ -1498,21 +1505,21 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \dotsspace@=\muskip17
 \c@parentequation=\count418
 \dspbrk@lvl=\count419
-\tag@help=\toks50
+\tag@help=\toks52
 \row@=\count420
 \column@=\count421
 \maxfields@=\count422
-\andhelp@=\toks51
+\andhelp@=\toks53
 \eqnshift@=\dimen281
 \alignsep@=\dimen282
 \tagshift@=\dimen283
 \tagwidth@=\dimen284
 \totwidth@=\dimen285
 \lineht@=\dimen286
-\@envbody=\toks52
+\@envbody=\toks54
 \multlinegap=\skip90
 \multlinetaggap=\skip91
-\mathdisplay@stack=\toks53
+\mathdisplay@stack=\toks55
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
@@ -1811,7 +1818,7 @@ Package: tabularx 2014/05/13 v2.10 `tabularx' package (DPC)
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen287
 \extrarowheight=\dimen288
-\NC@list=\toks54
+\NC@list=\toks56
 \extratabsurround=\skip92
 \backup@length=\skip93
 )
@@ -1821,7 +1828,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@target=\dimen292
 \TX@delta=\dimen293
 \TX@cols=\count427
-\TX@ftn=\toks55
+\TX@ftn=\toks57
 ) (./lsp-gb4e.sty
 Package: lsp-gb4e 2000/09/05
 (./lsp-cgloss.sty
@@ -1859,7 +1866,7 @@ Package: lsp-gb4e 2000/09/05
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count438
 \lst@gtempboxa=\box73
-\lst@token=\toks56
+\lst@token=\toks58
 \lst@length=\count439
 \lst@currlwidth=\dimen294
 \lst@column=\count440
@@ -1899,7 +1906,8 @@ File: english.lbx 2013/11/25 v2.8a biblatex localization (PK/JW/AB)
 
 (./unicode.aux (./chapters/preface.aux) (./chapters/introduction.aux)
 (./chapters/encoding.aux) (./chapters/terminology.aux) (./chapters/pitfalls.aux
-) (./chapters/ipa_meets_unicode.aux) (./chapters/orthography_profiles.aux))
+) (./chapters/ipa_meets_unicode.aux) (./chapters/orthography_profiles.aux)
+(./chapters/use_cases.aux))
 \openout1 = `unicode.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 41.
@@ -2230,18 +2238,21 @@ Package biblatex Info: Reference section=0 on input line 7.
 ]
 Package tocbasic Info: character protrusion at toc deactivated on input line 48
 .
- (./unicode.toc)
+ (./unicode.toc [7])
 \tf@toc=\write12
 \openout12 = `unicode.toc'.
 
- [7] [8
-
-
-]
+ [8]
 \openout2 = `chapters/introduction.aux'.
 
  (./chapters/introduction.tex
 Chapter 1.
+
+LaTeX Warning: Citation 'Olumuyiw2013' on page 1 undefined on input line 9.
+
+
+LaTeX Warning: Citation 'Olumuyiw2013' on page 1 undefined on input line 9.
+
 
 Overfull \hbox (7.42332pt too wide) in paragraph at lines 13--14
 []\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 When considering the worldwide linguis
@@ -2252,10 +2263,26 @@ tic diversity, including all lesser-studied
 
 
 
-] [2]) [3] [4]
+
+
+] [2]
+
+LaTeX Warning: Citation 'IPA2005' on page 3 undefined on input line 25.
+
+
+LaTeX Warning: Citation 'Unicode2014' on page 3 undefined on input line 25.
+
+) [3] [4]
 \openout2 = `chapters/encoding.aux'.
 
  (./chapters/encoding.tex
+Chapter 2.
+
+LaTeX Warning: Citation 'Robinson1997' on page 5 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'Powell2012' on page 5 undefined on input line 4.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2316,6 +2343,18 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . and font adjustment code:
 . \fontdimen 7\font =0\fontdimen 7\font 
 .................................................
+
+LaTeX Warning: Citation 'Huurdeman2003' on page 5 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'Singh1999' on page 5 undefined on input line 4.
+
+
+LaTeX Warning: Citation 'Meyer2015' on page 5 undefined on input line 6.
+
+
+LaTeX Warning: Citation 'Meyer_etal2012' on page 5 undefined on input line 6.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2327,7 +2366,12 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . 
 . This font family consists of the following shapes:
 .................................................
- [5
+
+LaTeX Warning: Citation 'Mania2008' on page 5 undefined on input line 10.
+
+[5
+
+
 
 
 ]
@@ -2365,11 +2409,24 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . 
 . This font family consists of the following shapes:
 .................................................
-) [7]
+
+
+LaTeX Warning: Citation 'Unicode2014' on page 7 undefined on input line 28.
+
+) [7] [8]
 \openout2 = `chapters/terminology.aux'.
 
+ (./chapters/terminology.tex
+Chapter 3.
 
-(./chapters/terminology.tex
+LaTeX Warning: Citation 'Daniels1990' on page 9 undefined on input line 11.
+
+
+LaTeX Warning: Citation 'Daniels1996' on page 9 undefined on input line 11.
+
+
+LaTeX Warning: Citation 'Kemp1994' on page 9 undefined on input line 13.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2381,6 +2438,10 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . 
 . This font family consists of the following shapes:
 .................................................
+
+LaTeX Warning: Citation 'SoundexBeiderMorse2010' on page 9 undefined on input l
+ine 13.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2392,6 +2453,13 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . 
 . This font family consists of the following shapes:
 .................................................
+
+LaTeX Warning: Citation 'Dolgopolsky1986' on page 9 undefined on input line 13.
+
+
+
+LaTeX Warning: Citation 'ASJP16' on page 9 undefined on input line 13.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2403,16 +2471,29 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . 
 . This font family consists of the following shapes:
 .................................................
- [8
+[9
+
+
 
 
 ]
-Overfull \hbox (1.21207pt too wide) in paragraph at lines 14--15
+
+LaTeX Warning: Citation 'MeinhofJones1928' on page 10 undefined on input line 1
+7.
+
+
+Overfull \hbox (1.21207pt too wide) in paragraph at lines 17--18
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 and graphemes in practical orthographies
  is purposely shallow, i.e. there is mostly
  []
 
-[9]
+[10]
+
+LaTeX Warning: Citation 'Kemp2006' on page 11 undefined on input line 19.
+
+
+LaTeX Warning: Citation 'Moran2012' on page 11 undefined on input line 19.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2425,100 +2506,92 @@ Overfull \hbox (1.21207pt too wide) in paragraph at lines 14--15
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (10.56606pt too wide) in paragraph at lines 22--23
+LaTeX Warning: Citation 'Daniels1996' on page 11 undefined on input line 21.
+
+
+LaTeX Warning: Citation 'Sproat2000' on page 11 undefined on input line 21.
+
+
+LaTeX Warning: Citation 'Gaultney2002' on page 11 undefined on input line 23.
+
+
+LaTeX Warning: Citation 'DanielsBright1996' on page 11 undefined on input line 
+23.
+
+
+LaTeX Warning: Citation 'Kohrt1986' on page 11 undefined on input line 25.
+
+
+Overfull \hbox (10.93835pt too wide) in paragraph at lines 25--26
 []\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 For that reason, it is better to analy
-se an orthography as a collection of graphemes.
+ze an orthography as a collection of graphemes.
  []
 
+[11]
 
-Overfull \hbox (2.40439pt too wide) in paragraph at lines 22--23
-\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 in English). Such complex graphemes are 
-often used to represent single phonemes.
- []
+LaTeX Warning: Citation 'BirdSimons2003' on page 12 undefined on input line 34.
 
-[10]
-Overfull \hbox (11.61453pt too wide) in paragraph at lines 31--32
+
+
+Overfull \hbox (11.61453pt too wide) in paragraph at lines 34--35
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 The conceptualization and terminology of
  writing systems was rejuvenated through
  []
 
-[11]
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--35
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 All documents of the Unicode Standard ar
-e available at
- []
-
-
-Underfull \hbox (badness 3260) in paragraph at lines 35--35
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 http://www.unicode.org/versions/latest/. For
- a quick survey of the use of terminol-
- []
-
-
-Underfull \hbox (badness 4036) in paragraph at lines 35--35
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 ogy inside the Unicode Standard, their gloss
-ary is particularly useful, available at
- []
-
-
-Underfull \hbox (badness 1221) in paragraph at lines 35--35
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 http://www.unicode.org/glossary/. For a gene
-ral introduction to the principles of Uni-
- []
-
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
 [12]
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-
-Underfull \hbox (badness 1253) in paragraph at lines 41--41
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 The character property model is describe
-d in http://www.unicode.org/reports/tr23/, but
+Overfull \hbox (4.60193pt too wide) in paragraph at lines 36--37
+\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 eradicate the distinction between \EU1/L
+inLibertine_R_B.otf(0)/m/sc/10.95 universal \EU1/LinLibertine_R_B.otf(0)/m/n/10
+.95 (ASCII) versus \EU1/LinLibertine_R_B.otf(0)/m/sc/10.95 language/resource-
  []
 
-[13] [14]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+[13]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+ [14]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+ [15]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2531,12 +2604,15 @@ d in http://www.unicode.org/reports/tr23/, but
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (0.15186pt too wide) in paragraph at lines 57--58
+Overfull \hbox (0.15186pt too wide) in paragraph at lines 60--61
 \EU1/LinLibertine_R_B.otf(0)/m/sc/10.95 precomposed \EU1/LinLibertine_R_B.otf(0
 )/m/n/10.95 code point, LATIN SMALL LETTER N WITH TILDE at U+00F1, but
  []
 
-[15]
+[16]
+
+LaTeX Warning: Citation 'Moran2006' on page 17 undefined on input line 62.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2549,22 +2625,22 @@ Overfull \hbox (0.15186pt too wide) in paragraph at lines 57--58
 . This font family consists of the following shapes:
 .................................................
 )
-Overfull \hbox (5.86844pt too wide) in paragraph at lines 61--59
+Overfull \hbox (5.86844pt too wide) in paragraph at lines 64--59
 []\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Unicode Locale Descriptions allow user
 s to define language- or resource-specific
  []
 
-[16]
+[17]
 \openout2 = `chapters/pitfalls.aux'.
 
- (./chapters/pitfalls.tex
-Chapter 2.
-[17
+ (./chapters/pitfalls.tex [18
 
 
 
 
 ]
+Chapter 4.
+[19]
 Missing character: There is no ^^8b in font [./LSP/lsp-fonts/LinLibertine_R_B.o
 tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 .................................................
@@ -2578,13 +2654,7 @@ tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 . 
 . This font family consists of the following shapes:
 .................................................
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--18
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 The Unicode website offers a basic inter
-face to the code charts at
- []
-
-[18]
+ [20]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2619,9 +2689,10 @@ face to the code charts at
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (37.64656pt too wide) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 The Apple/Everson fallback font is avail
-able at http://www.unicode.org/policies/lastresortfont_eula.html.| 
+able at []$[][][][] [] [] [] [][][] [] [][][][][][][] [] [][][] [] [][][][][][]
+[][] []
  []
 
 .................................................
@@ -2647,12 +2718,12 @@ able at http://www.unicode.org/policies/lastresortfont_eula.html.|
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (8.37105pt too wide) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 The SIL Unicode BMP Fallback Font is ava
-ilable at http://scripts.sil.org/UnicodeBMPFallbackFont.| 
+ilable at []$[][][][] [] [] [] [][][][][][][] [] [][][] [] [][][] []
  []
 
-[19]
+[21]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2664,6 +2735,24 @@ ilable at http://scripts.sil.org/UnicodeBMPFallbackFont.|
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+
+Underfull \hbox (badness 3271) in paragraph at lines 38--38
+[][][][]$[] \EU1/LinLibertine_R_B.otf(1)/m/n/9 and the open-source project Harf
+Buzz []$[][][][] [] [] [] [][][] [] [][][][][][][][][][][] [] [][][] [] [][][][
+] [] [][][][][][][][] []
+ []
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2677,22 +2766,12 @@ ilable at http://scripts.sil.org/UnicodeBMPFallbackFont.|
 .................................................
 
 Underfull \hbox (badness 10000) in paragraph at lines 38--38
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 and http://www.microsoft.com/typography/otsp
-ec/. Additional systems
+\EU1/LinLibertine_R_B.otf(1)/m/n/9 Graphite is described in detail at []$[][][]
+[] [] [] [] [][][][][][][] [] [][][] [] [][][] [] [][][] [] [][][][][][][] [] [
+][][][] [] [][][] [] [][][][] [] [][] []
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 for complex text layout are, among others, M
-icrosoft’s DirectWrite
- []
-
-
-Underfull \hbox (badness 2205) in paragraph at lines 38--38
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 https://msdn.microsoft.com/library/dd368038.
-aspx and the open-source project HarfBuzz
- []
-
+[22] [23]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2705,12 +2784,22 @@ aspx and the open-source project HarfBuzz
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (85.73657pt too wide) in paragraph at lines 38--38
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 Graphite is described in detail at http://sc
-ripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home.| 
- []
 
-[20] [21]
+LaTeX Warning: Citation 'Belongie_etal2002' on page 24 undefined on input line 
+60.
+
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+[24] [25]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2733,45 +2822,10 @@ ripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home.|
 . 
 . This font family consists of the following shapes:
 .................................................
- [22]
-Overfull \hbox (16.9957pt too wide) in paragraph at lines 73--74
-[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 LATIN CAPITAL LETTER A (U+0041) + COMB
-INING RING ABOVE (U+030A) 
- []
-
-[23]
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-
-Overfull \hbox (40.30754pt too wide) in paragraph at lines 84--84
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See the summary of various recommendatio
-n here: http://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html.
- []
-
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-[24]
+ [26]
 Missing character: There is no ^^81 in font [./LSP/lsp-fonts/LinLibertine_R_B.o
 tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
- [25]
+ [27]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2783,16 +2837,37 @@ tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 . 
 . This font family consists of the following shapes:
 .................................................
- [26]) [27]
+ [28]) [29]
 \openout2 = `chapters/ipa_meets_unicode.aux'.
 
- (./chapters/ipa_meets_unicode.tex [28
+ (./chapters/ipa_meets_unicode.tex [30
 
 
 
 
 ]
-Chapter 3.
+Chapter 5.
+
+LaTeX Warning: Citation 'IPA2005' on page 31 undefined on input line 7.
+
+
+LaTeX Warning: Citation 'BirdSimons2003' on page 31 undefined on input line 7.
+
+
+Overfull \hbox (2.67932pt too wide) in paragraph at lines 7--8
+\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 transcribe sounds of spoken language int
+o some Latin-based characters ([]).
+ []
+
+
+Overfull \hbox (16.8669pt too wide) in paragraph at lines 7--8
+\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 graphemes that they needed, linguists de
+vised their own solutions ([]).
+ []
+
+
+LaTeX Warning: Citation 'WellsND' on page 31 undefined on input line 9.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2815,7 +2890,13 @@ Chapter 3.
 . 
 . This font family consists of the following shapes:
 .................................................
-[29]
+
+Overfull \hbox (3.58853pt too wide) in paragraph at lines 9--10
+\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 printable ASCII character sequences, e.g
+. <p\> for [ɸ]. Two problems with SAMPA
+ []
+
+[31]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2827,7 +2908,7 @@ Chapter 3.
 . 
 . This font family consists of the following shapes:
 .................................................
- [30]
+ [32]
 Missing character: There is no ᴅ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
 /ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 Missing character: There is no ᴴ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
@@ -2838,7 +2919,7 @@ Missing character: There is no ᶾ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 /ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 Missing character: There is no ᶣ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
 /ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
- [31]
+ [33]
 Missing character: There is no ⱱ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
 /ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 .................................................
@@ -2852,28 +2933,13 @@ Missing character: There is no ⱱ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 . 
 . This font family consists of the following shapes:
 .................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
+
+
+LaTeX Warning: Citation 'Mielke2009' on page 34 undefined on input line 39.
+
+
+LaTeX Warning: Citation 'Maddieson1984' on page 34 undefined on input line 39.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2886,12 +2952,38 @@ Missing character: There is no ⱱ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (68.21808pt too wide) in paragraph at lines 38--38
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 For example, the widely used IPA font Do
-ulos SIL (http://scripts.sil.org/cms/scripts/page.php?item_id=DoulosSIL)
+LaTeX Warning: Citation 'Vidal2001a' on page 34 undefined on input line 39.
+
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+[34] [35] [36]
+Overfull \hbox (0.51862pt too wide) in paragraph at lines 67--68
+[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Length marks, namely <ː> \EU1/LinLiber
+tine_R_B.otf(0)/m/sc/10.95 modifier letter triangular colon \EU1/LinLibertine_R
+_B.otf(0)/m/n/10.95 at U+02D0
  []
 
-[32] [33] [34] [35]
+[37]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2904,12 +2996,16 @@ ulos SIL (http://scripts.sil.org/cms/scripts/page.php?item_id=DoulosSIL)
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--76
-[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See http://unicode.org/reports/tr44/#Can
-onical_Combining_Class_Values for a detailed
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
+[][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
+[] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
+[][][] [] [][][][][] []
  []
 
-[36]
+[38]
+
+LaTeX Warning: Citation 'Moran2012' on page 39 undefined on input line 84.
+
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2922,22 +3018,31 @@ onical_Combining_Class_Values for a detailed
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 86--87
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 91--92
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
-[37]) [38]
+
+LaTeX Warning: Citation 'Moran2012' on page 39 undefined on input line 98.
+
+
+LaTeX Warning: Citation 'Moran2012' on page 39 undefined on input line 98.
+
+
+LaTeX Warning: Citation 'Moran2012' on page 39 undefined on input line 98.
+
+[39]) [40]
 \openout2 = `chapters/orthography_profiles.aux'.
 
  (./chapters/orthography_profiles.tex
-Chapter 4.
-[39
+Chapter 6.
+[41
 
 
 
 
-] [40] [41]
+] [42] [43]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2949,60 +3054,115 @@ Chapter 4.
 . 
 . This font family consists of the following shapes:
 .................................................
- [42]
-Overfull \hbox (11.2706pt too wide) in paragraph at lines 51--52
+ [44]
+Overfull \hbox (5.6642pt too wide) in paragraph at lines 54--55
 []\EU1/LinLibertine_R_B.otf(0)/m/sc/10.95 A minimal profile consists of a singl
-e column with header ‘graphemes’\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 ,
+e column with header graphemes\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 ,
  []
 
-[43]
-Overfull \hbox (2.86923pt too wide) in paragraph at lines 56--57
+[45]
+Overfull \hbox (2.86923pt too wide) in paragraph at lines 59--60
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 highly useful to add extra information o
 n the graphemes in further columns,
  []
 
-[44]
-Overfull \hbox (14.33391pt too wide) in paragraph at lines 72--73
+
+Overfull \hbox (70.36864pt too wide) in paragraph at lines 68--69
+\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 column \EU1/LinLibertine_R_B.otf(0)/m/sc
+/10.95 graphemes \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 to form a complex regul
+ar expression like: (?<=left)graphemes(?=right). 
+ []
+
+[46]
+Overfull \hbox (14.33391pt too wide) in paragraph at lines 77--78
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 the text-string from left to right, and 
 at each position go through all graphemes
  []
 
-[45]
-Overfull \hbox (10.54152pt too wide) in paragraph at lines 88--89
+[47]
+Overfull \hbox (10.54152pt too wide) in paragraph at lines 94--95
 []\EU1/LinLibertine_R_B.otf(0)/m/sc/10.95 unicode normalization\EU1/LinLibertin
 e_R_B.otf(0)/m/n/10.95 , i.e. whether the text-string and profile should
  []
 
-[46]) [47] (./backmatter.tex [48
+[48]) [49]
+\openout2 = `chapters/use_cases.aux'.
+
+ (./chapters/use_cases.tex [50
+
 
 
 
 ]
+Chapter 7.
 
-LaTeX Warning: Empty bibliography on input line 4.
+LaTeX Warning: Reference `' on page 51 undefined on input line 22.
 
+
+LaTeX Warning: Reference `' on page 51 undefined on input line 22.
+
+
+Overfull \hbox (2.85716pt too wide) in paragraph at lines 22--23
+[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 The simplest form of tokenization prov
+ided by any Unicode Standard-compliant
+ []
+
+
+LaTeX Warning: Reference `' on page 51 undefined on input line 24.
+
+
+LaTeX Warning: Reference `' on page 51 undefined on input line 24.
+
+[51]
+
+LaTeX Warning: Reference `' on page 52 undefined on input line 26.
+
+
+Overfull \hbox (3.13821pt too wide) in paragraph at lines 26--27
+[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 The orthography profile provides the m
+echanism for tokenizing an input stream
+ []
+
+) [52] (./backmatter.tex
 No file unicode.and.
 No file unicode.lnd.
 )
 No file unicode.snd.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
+[53
+
+
+
+
+
+]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
-(./unicode.aux (./chapters/preface.aux) (./chapters/introduction.aux)
+ (./unicode.aux (./chapters/preface.aux) (./chapters/introduction.aux)
 (./chapters/encoding.aux) (./chapters/terminology.aux) (./chapters/pitfalls.aux
-) (./chapters/ipa_meets_unicode.aux) (./chapters/orthography_profiles.aux))
+) (./chapters/ipa_meets_unicode.aux) (./chapters/orthography_profiles.aux)
+(./chapters/use_cases.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 85.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 85.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                unicode
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'unicode.run.xml'.
 \openout1 = `unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46129 strings out of 493734
- 812314 string characters out of 6146347
- 1271098 words of memory out of 5000000
- 48773 multiletter control sequences out of 15000+600000
- 21470 words of font info for 112 fonts, out of 8000000 for 9000
+ 46307 strings out of 493734
+ 816051 string characters out of 6146348
+ 1271729 words of memory out of 5000000
+ 48941 multiletter control sequences out of 15000+600000
+ 21559 words of font info for 116 fonts, out of 8000000 for 9000
  1331 hyphenation exceptions out of 8191
- 66i,11n,90p,10498b,706s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,11n,90p,10502b,1207s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ./unicode.pdf (56 pages).
+Output written on unicode.pdf (61 pages).
