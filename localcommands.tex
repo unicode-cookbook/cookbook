@@ -1,4 +1,11 @@
 %add all your local new commands to this file
 
-\newcommand{\smiley}{:)}
+\newcommand{\smiley}{:\)}
+
+% to get the U+Hexdecimal abbreviations looking good
+\newcommand{\uni}[1]
+{\@{\small \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
+
+\newcommand{\unif}[1]
+{\@{\footnotesize \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
 

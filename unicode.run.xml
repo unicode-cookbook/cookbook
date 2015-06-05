@@ -45,12 +45,10 @@
     <generic>latex</generic>
     <provides type="dynamic">
       <file>unicode.aux</file>
-      <file>unicode1-blx.aux</file>
       <file>unicode-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>unicode.bbl</file>
-      <file>unicode1-blx.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-compat.def</file>
@@ -82,33 +80,6 @@
     </provides>
     <requires type="dynamic">
       <file>unicode.aux</file>
-      <file>unicode-blx.bib</file>
-    </requires>
-    <requires type="editable">
-      <file>localbibliography.bib</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
-    </requires>
-  </external>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
-    <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
-      <infile>unicode1-blx</infile>
-    </cmdline>
-    <input>
-      <file>unicode1-blx.aux</file>
-    </input>
-    <output>
-      <file>unicode1-blx.bbl</file>
-    </output>
-    <provides type="dynamic">
-      <file>unicode1-blx.bbl</file>
-    </provides>
-    <requires type="dynamic">
-      <file>unicode1-blx.aux</file>
       <file>unicode-blx.bib</file>
     </requires>
     <requires type="editable">

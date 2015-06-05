@@ -5,8 +5,22 @@
 \setmathfont{Asana-Math.otf}
 \usepackage[libertine]{newtxmath}
 
+\usepackage{enumitem}
+\setitemize{noitemsep}
+\setenumerate{noitemsep}
 
 \usepackage{tabularx}
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+% I have tried to use monospaced numbers in the TOC, but this does not work...
+\settocstylefeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+%\settocfeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+
+% other ideas that also don't give the desired results
+%\usepackage{tocloft}
+%\renewcommand{\cftXpagefont}{\fontspec[Numbers=Monospaced]{LinLibertineO}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

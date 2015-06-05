@@ -2,13 +2,11 @@ This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: unicode.aux
 The style file: biblatex.bst
-A level-1 auxiliary file: chapters/preface.aux
 A level-1 auxiliary file: chapters/introduction.aux
-A level-1 auxiliary file: chapters/encoding.aux
-A level-1 auxiliary file: chapters/terminology.aux
 A level-1 auxiliary file: chapters/pitfalls.aux
 A level-1 auxiliary file: chapters/ipa_meets_unicode.aux
 A level-1 auxiliary file: chapters/orthography_profiles.aux
+A level-1 auxiliary file: chapters/use_cases.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -20,51 +18,52 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated field_info (elt_size=4) to 10282 items from 5000.
 Database file #1: unicode-blx.bib
 Database file #2: localbibliography.bib
-Warning--I didn't find a database entry for "Olumuyiw2013"
+Warning--I didn't find a database entry for "Vidal2001a"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 6 entries,
+You've used 37 entries,
             6047 wiz_defined-function locations,
-            1184 strings with 9423 characters,
-and the built_in function-call counts, 21056 in all, are:
-= -- 730
-> -- 1150
-< -- 202
-+ -- 685
-- -- 691
-* -- 1507
-:= -- 1792
+            1401 strings with 14056 characters,
+and the built_in function-call counts, 129465 in all, are:
+= -- 5899
+> -- 4530
+< -- 1536
++ -- 1864
+- -- 1662
+* -- 8582
+:= -- 7551
 add.period$ -- 0
-call.type$ -- 6
-change.case$ -- 85
-chr.to.int$ -- 82
-cite$ -- 10
-duplicate$ -- 2067
-empty$ -- 1973
-format.name$ -- 350
-if$ -- 4318
+call.type$ -- 37
+change.case$ -- 995
+chr.to.int$ -- 85
+cite$ -- 72
+duplicate$ -- 14327
+empty$ -- 13301
+format.name$ -- 2169
+if$ -- 29687
 int.to.chr$ -- 0
-int.to.str$ -- 17
+int.to.str$ -- 129
 missing$ -- 0
-newline$ -- 178
-num.names$ -- 252
-pop$ -- 1626
+newline$ -- 966
+num.names$ -- 2218
+pop$ -- 11531
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 1059
 quote$ -- 0
-skip$ -- 1098
+skip$ -- 8001
 stack$ -- 0
-substring$ -- 596
-swap$ -- 784
-text.length$ -- 182
-text.prefix$ -- 5
+substring$ -- 4248
+swap$ -- 4913
+text.length$ -- 981
+text.prefix$ -- 36
 top$ -- 1
-type$ -- 216
+type$ -- 1390
 warning$ -- 0
-while$ -- 183
+while$ -- 766
 width$ -- 0
-write$ -- 171
+write$ -- 928
 (There was 1 warning)

@@ -3,30 +3,64 @@
 
 \section{Introduction}
 
-We now present several use cases that have motivated the development of orthography profiles. These include:
+We now present several use cases that have motivated the development of
+orthography profiles. These include: 
 \begin{itemize}
 	\item tokenization and error checking
 	\item normalization of orthographic systems to attain interoperability across different source documents, 
 	\item cognate identification for detecting the similarity between words from different languages 
 \end{itemize}
 
-An important assumption of our work is that input sources are encoded in Unicode (UTF-8 to be precise). Anything that the Unicode Standard is unable to capture, cannot be captured by an orthography profile. We also use Unicode normalization form NFD to decompose all incoming text input into normalized and (Unicode) logically ordered strings. This process is of fundamental importance when working with text data in the Unicode Standard.
+An important assumption of our work is that input sources are encoded in Unicode
+(UTF-8 to be precise). Anything that the Unicode Standard is unable to capture,
+cannot be captured by an orthography profile. We also use Unicode normalization
+form NFD to decompose all incoming text input into normalized and (Unicode)
+logically ordered strings. This process is of fundamental importance when
+working with text data in the Unicode Standard.
 
-\section{Tokenization and error checking}
-The most basic use case is tokenization of language data. Tokenization comes in three types:
+\section{Tokenization and error checking} The most basic use case is
+tokenization of language data. Tokenization comes in three types:
 
 - Unicode character tokenization
 - grapheme tokenization
 - tailored grapheme tokenization
 
-The simplest form of tokenization provided by any Unicode Standard-compliant software will split an input text stream on Unicode character code points. The input text is split on the character bit sequences as they have been encoded by the user. This may be in various Unicode Normalization Forms (see Section \ref{}) and tokenization split function returns a byte stream sequence given a particular encoding (see Section \ref{}).
+The simplest form of tokenization provided by any Unicode Standard-compliant
+software will split an input text stream on Unicode character code points. The
+input text is split on the character bit sequences as they have been encoded by
+the user. This may be in various Unicode Normalization Forms (see Section
+\ref{}) and tokenization split function returns a byte stream sequence given a
+particular encoding (see Section \ref{}).
 
-There is increasing support for the regular expression match, commonly ``\\X'', to identify Unicode graphemes (see Section \ref{}) and perform tokenization on these sets of Unicode characters. Examples are given in Section \ref{}.
+There is increasing support for the regular expression match, commonly ``\\X'',
+to identify Unicode graphemes (see Section \ref{}) and perform tokenization on
+these sets of Unicode characters. Examples are given in Section \ref{}.
 
-The orthography profile provides the mechanism for tokenizing an input stream on tailored grapheme clusters. The orthography's formal specification is given in Section \ref{}. To sum, an orthography profile is a list of tailored grapheme clusters and / or orthographic rules that specify how a specific resource of text input should be tokenized. 
+The orthography profile provides the mechanism for tokenizing an input stream on
+tailored grapheme clusters. The orthography's formal specification is given in
+Section \ref{}. To sum, an orthography profile is a list of tailored grapheme
+clusters and / or orthographic rules that specify how a specific resource of
+text input should be tokenized. 
 
-Once text has been normalized, an additional and straightforward process is Unicode grapheme tokenization. More recently this regular expression, often available as short cut ``\textbackslash{X}'', identifies all sequences of ``base'' characters followed by 0 or more combining diacritics. For example, the sequence, % <ŋ͡mṍraː> would tokenize as a space-delimited sequence as: <ŋ͡ m ṍ r a ː>. For a first pass at identifying grapheme clusters, this is a straightforward 
-tokenization. However, the linguist will note that both the tie bar (COMBINING DOUBLE INVERTED BREVE, a Unicode Combining Modifier) and the length marker (MODIFIER LETTER TRIANGULAR COLON. a Unicode Letter Modifier) do not appear ``correctly'', i.e.~the tie bar is grouped with the first character in the sequence and the length marker appears singly. This is necessary, as defined by the Unicode Standard, because of these character's semantic properties -- with Unicode we cannot know if, for example, the MODIFIER LETTER TRIANGULAR COLON should appear before or after the base character that it modifies, cf.~the IPA aspiration marker, , the MODIFIER LETTER SMALL H, which is also a Unicode Letter Modifier and for linguists a diacritic that be be used for pre- or post-aspiration. These ambiguities of position in tokenization are not uncommon in IPA, thus orthographic (or source) normalization and tokenization is needed.
+Once text has been normalized, an additional and straightforward process is
+Unicode grapheme tokenization. More recently this regular expression, often
+available as short cut ``\textbackslash{X}'', identifies all sequences of
+``base'' characters followed by 0 or more combining diacritics. For example, the
+sequence, % <ŋ͡mṍraː> would tokenize as a space-delimited sequence as: <ŋ͡ m ṍ r
+a ː>. For a first pass at identifying grapheme clusters, this is a
+straightforward tokenization. However, the linguist will note that both the tie
+bar (COMBINING DOUBLE INVERTED BREVE, a Unicode Combining Modifier) and the
+length marker (MODIFIER LETTER TRIANGULAR COLON. a Unicode Letter Modifier) do
+not appear ``correctly'', i.e.~the tie bar is grouped with the first character
+in the sequence and the length marker appears singly. This is necessary, as
+defined by the Unicode Standard, because of these character's semantic
+properties -- with Unicode we cannot know if, for example, the MODIFIER LETTER
+TRIANGULAR COLON should appear before or after the base character that it
+modifies, cf.~the IPA aspiration marker, , the MODIFIER LETTER SMALL H, which is
+also a Unicode Letter Modifier and for linguists a diacritic that be be used for
+pre- or post-aspiration. These ambiguities of position in tokenization are not
+uncommon in IPA, thus orthographic (or source) normalization and tokenization is
+needed.
 
 \section{Cross-orthographic analysis of writing systems}
 
@@ -39,39 +73,73 @@ Given that orthography profiles are stored in a standard CSV format, we can use 
 
 \section{Cross-orthography **normalization*}
 
-Orthographic tokenization requires a specification of the tailored grapheme clusters (linguists: graphemes) to separate orthographic units within an input source. In the simplest case, the Unicode graphemic tokenization with regular expression ``\textbackslash{X}'' captures the grapheme clusters, i.e.~the input data is graphemically tokenized and there are no additional string sequences required to capture each grapheme, e.g.~no specification. This scenario is the most unlikely.
+Orthographic tokenization requires a specification of the tailored grapheme
+clusters (linguists: graphemes) to separate orthographic units within an input
+source. In the simplest case, the Unicode graphemic tokenization with regular
+expression ``\textbackslash{X}'' captures the grapheme clusters, i.e.~the input
+data is graphemically tokenized and there are no additional string sequences
+required to capture each grapheme, e.g.~no specification. This scenario is the
+most unlikely.
 
-The creation of an orthography typically requires that someone describes knowledge about the input data source's writing system. For example, when orthographically tokenizing a dictionary as input, the sequences of grapheme clusters need to be explicitly stated or a regular expression rule can be specified to transform the input. We illustrate these methods with examples from Thiesen 1998, a bilingual dictionary of Diccionario Bora-Castellano, and with Huber \& Huber 1992, a comparative vocabulary of sixty-nine indigenous languages of Columbia.
+The creation of an orthography typically requires that someone describes
+knowledge about the input data source's writing system. For example, when
+orthographically tokenizing a dictionary as input, the sequences of grapheme
+clusters need to be explicitly stated or a regular expression rule can be
+specified to transform the input. We illustrate these methods with examples from
+Thiesen 1998, a bilingual dictionary of Diccionario Bora-Castellano, and with
+Huber \& Huber 1992, a comparative vocabulary of sixty-nine indigenous languages
+of Columbia.
 
 Huber \& Huber 1992
 
 % ({[}a\textbar{}á\textbar{}e\textbar{}é\textbar{}i\textbar{}í\textbar{}o\textbar{}ó\textbar{}u\textbar{}ú{]})(n)(\s)({[}a\textbar{}á\textbar{}e\textbar{}é\textbar{}i\textbar{}í\textbar{}o\textbar{}ó\textbar{}u\textbar{}ú{]}), \1 \2 \4
 
-A preliminary orthography profile can be generated with code available online.\footnote{\url{https://github.com/bambooforest/tokenizer}} The Python script creates a unigram model for individual Unicode characters or Unicode grapheme clusters and their frequency in the source input. We find that this gives a broad overview of the input at the character and grapheme levels and it often finds typographic errors in the source input by identifying rarely occurring or one-off characters in the input. The models also provides the basis for the ``quick'' development of an initial orthography profile by saving the user keyboarding time.
+A preliminary orthography profile can be generated with code available
+online.\footnote{\url{https://github.com/bambooforest/tokenizer}} The Python
+script creates a unigram model for individual Unicode characters or Unicode
+grapheme clusters and their frequency in the source input. We find that this
+gives a broad overview of the input at the character and grapheme levels and it
+often finds typographic errors in the source input by identifying rarely
+occurring or one-off characters in the input. The models also provides the basis
+for the ``quick'' development of an initial orthography profile by saving the
+user keyboarding time.
 
-Note that these symbols are still phonetically unspecified, i.e.~symbol may or may not represent, say, a front open unrounded vowel.
+Note that these symbols are still phonetically unspecified, i.e.~symbol may or
+may not represent, say, a front open unrounded vowel.
 
-The orthography profile is designed so that specified strings of characters are captured for tokenization.
+The orthography profile is designed so that specified strings of characters are
+captured for tokenization.
 
 \% how the tokenization works
 
-The graphemic cluster specifications in the orthography profile are read into a trie data structure, which is used to tokenize the incoming input source by identifying sentinels (tokenization boundaries) in the input stream, which we then separate grapheme clusters by spaces.
+The graphemic cluster specifications in the orthography profile are read into a
+trie data structure, which is used to tokenize the incoming input source by
+identifying sentinels (tokenization boundaries) in the input stream, which we
+then separate grapheme clusters by spaces.
 
 An illustration is given in Figure N.
 
-Comparative wordlists often start as the compilation of different sources with different writing systems. The Dogon comparative wordlist is an example of a compilation of slightly divergent transcription practices, which we will use to illustrate our point and to orthographically normalize an input source by transforming different transcriptions into a single IPA-like transcription.
+Comparative wordlists often start as the compilation of different sources with
+different writing systems. The Dogon comparative wordlist is an example of a
+compilation of slightly divergent transcription practices, which we will use to
+illustrate our point and to orthographically normalize an input source by
+transforming different transcriptions into a single IPA-like transcription.
 
 *Orthographic normalization / cross-source **normalization*
 
-Once we have normalized and tokenized our text elements, we can apply various sorts of source normalization across resources to create interoperable and comparable data.
+Once we have normalized and tokenized our text elements, we can apply various
+sorts of source normalization across resources to create interoperable and
+comparable data.
 
 Sound-based normalization is practical because \ldots{}
 
-We use orthography profiles in our work to describe cross-linguistic difference between writing systems.
+We use orthography profiles in our work to describe cross-linguistic difference
+between writing systems.
 
 \emph{Cognate detection}
 
-The identification of cognates is a non-trivial task, which involves identifying the semantic and phonetic similarity of words.
+The identification of cognates is a non-trivial task, which involves identifying
+the semantic and phonetic similarity of words.
 
 use grapheme correspondences to approximate cognacy and sound correspondences
 
@@ -81,13 +149,24 @@ Examples
 
 Orthographic similarity != Phonetic similarity != Regular sound change
 
-Cognate identification is further complicated by the fact that languages are written differently, and even more so for the low resource languages that we work with, linguists' phonetic transcriptions are heterogeneous and typically document-specific, i.e.~two linguists working on the same language variety most often develop different practical orthographies by using different symbols and different orthographic rules. Thus the essence of language documentation and description is diverse and ephemeral in nature. The encoding of linguistic data and linguistic data models is diverse and abstracting away from individual analytical preferences requires a document-by-document approach and a mechanism for standardization of writing to form an interlingual pivot so that different descriptions can be normalized into one encoding system to undertake analysis.
+Cognate identification is further complicated by the fact that languages are
+written differently, and even more so for the low resource languages that we
+work with, linguists' phonetic transcriptions are heterogeneous and typically
+document-specific, i.e.~two linguists working on the same language variety most
+often develop different practical orthographies by using different symbols and
+different orthographic rules. Thus the essence of language documentation and
+description is diverse and ephemeral in nature. The encoding of linguistic data
+and linguistic data models is diverse and abstracting away from individual
+analytical preferences requires a document-by-document approach and a mechanism
+for standardization of writing to form an interlingual pivot so that different
+descriptions can be normalized into one encoding system to undertake analysis.
 
 \% Orthography profile implementation in Lingpy / generic tokenizer
 
 \% describe Tokenizer's function
 
-\% describe algorithm for tokenizing IPA (Unicode grapheme cluster tokenization and then alignment of Letter Modifiers and Tie Bars)
+\% describe algorithm for tokenizing IPA (Unicode grapheme cluster tokenization
+and then alignment of Letter Modifiers and Tie Bars)
 
 \% insert an example of orthographic tokenization from PAD
 
@@ -97,7 +176,8 @@ Cognate identification is further complicated by the fact that languages are wri
 
 which catches:
 
-\section{Diacritics: Unicode letter modifiers (Lm)}\label{diacritics-unicode-letter-modifiers-lm}
+\section{Diacritics: Unicode letter modifiers (Lm)}
+\label{diacritics-unicode-letter-modifiers-lm}
 
 \section{({[}ː\textbar{}ʰ\textbar{}ʼ\textbar{}ʿ\textbar{}ʾ{]})}\label{ux2d0ux2b0ux2bcux2bfux2be}
 
@@ -119,10 +199,39 @@ Some examples in R
 
 {[}UNICODE USE-CASES{]}
 
-The most basic overall Unicode character property is the \textsc{General Category}, which categorizes Unicode characters into: \emph{Letters, Punctuation, Symbols, Marks, Numbers, Separators, }and* Other*. Each Unicode character property also has a character property value. So each General Category is denoted by a property value by a single letter abbreviation, e.g. ``L'' for Letter. Each General Category property also has subcategories that are also properties with property values. For example, ``Letters'' is broken down into Uppercase Letter (Lu), Lowercase Letter (Ll), Titlecase Letter (Lt), Modifier Letter (Lm) and Other Letter (Lo).\footnote{The subcategory ``Other Letter'' includes characters such as uncased letters as in the Chinese writing system.} By defining character properties for each code point, algorithmic implementations such as text processing applications or regular expression engines that are conformant to the Unicode Standard can be used to recognize whole (sub)categories of characters or ranges of characters, e.g.~to match proper names in English in title case or more generally to match character types, such as scripts, or symbols and integers in email addresses, phone numbers, etc.
+The most basic overall Unicode character property is the \textsc{General
+Category}, which categorizes Unicode characters into: \emph{Letters,
+Punctuation, Symbols, Marks, Numbers, Separators, }and* Other*. Each Unicode
+character property also has a character property value. So each General Category
+is denoted by a property value by a single letter abbreviation, e.g. ``L'' for
+Letter. Each General Category property also has subcategories that are also
+properties with property values. For example, ``Letters'' is broken down into
+Uppercase Letter (Lu), Lowercase Letter (Ll), Titlecase Letter (Lt), Modifier
+Letter (Lm) and Other Letter (Lo).\footnote{The subcategory ``Other Letter''
+includes characters such as uncased letters as in the Chinese writing system.}
+By defining character properties for each code point, algorithmic
+implementations such as text processing applications or regular expression
+engines that are conformant to the Unicode Standard can be used to recognize
+whole (sub)categories of characters or ranges of characters, e.g.~to match
+proper names in English in title case or more generally to match character
+types, such as scripts, or symbols and integers in email addresses, phone
+numbers, etc.
 
-Script information is useful for algorithmic processes, such as collation, searching and for multilingual text processing. For example, if a regular expression engine includes functionality to match characters at the level of script, then it provides the ability to identify characters, e.g. \match{Greek}, which tests whether letters in a text belong to the Greek script or not. This functionality can be used to determine the boundaries between different writing systems that appear in the same document. In Section 6 (Use cases of grapheme tokenization) we provide an example of a regular expression match at the level of character property.
+Script information is useful for algorithmic processes, such as collation,
+searching and for multilingual text processing. For example, if a regular
+expression engine includes functionality to match characters at the level of
+script, then it provides the ability to identify characters, e.g. \match{Greek},
+which tests whether letters in a text belong to the Greek script or not. This
+functionality can be used to determine the boundaries between different writing
+systems that appear in the same document. In Section 6 (Use cases of grapheme
+tokenization) we provide an example of a regular expression match at the level
+of character property.
 
-Unicode-aware regular expression engines may contain a meta-character, ``\textbackslash{X}'', that matches this level of grapheme cluster, i.e.~a base character followed by some number of accents or diacritical marks. Grapheme clusters are important to determine word or line boundaries, for collation (`ordering') and for user interface interaction (e.g.~mouse selection, backspacing, cursor movement).
+Unicode-aware regular expression engines may contain a meta-character,
+``\textbackslash{X}'', that matches this level of grapheme cluster, i.e.~a base
+character followed by some number of accents or diacritical marks. Grapheme
+clusters are important to determine word or line boundaries, for collation
+(`ordering') and for user interface interaction (e.g.~mouse selection,
+backspacing, cursor movement).
 
 \end{comment}
