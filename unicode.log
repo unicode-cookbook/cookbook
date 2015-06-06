@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 03:35
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3419,7 +3419,7 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 
 
 
-]
+] [30]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3431,19 +3431,27 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 . 
 . This font family consists of the following shapes:
 .................................................
- [30]
-Missing character: There is no ᴅ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
-Missing character: There is no ᴴ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
-Missing character: There is no ᶑ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
-Missing character: There is no ᶾ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
-Missing character: There is no ᶣ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
-Missing character: There is no ⱱ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf]
-/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3541,7 +3549,7 @@ Missing character: There is no ⱱ in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 .................................................
 
 
-LaTeX Warning: Citation 'Vidal2001a' on page 32 undefined on input line 157.
+LaTeX Warning: Citation 'Vidal2001a' on page 32 undefined on input line 158.
 
 .................................................
 . fontspec info: "defining-font"
@@ -3688,7 +3696,7 @@ LaTeX Warning: Citation 'Vidal2001a' on page 32 undefined on input line 157.
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (2.67204pt too wide) in paragraph at lines 262--268
+Overfull \hbox (2.67204pt too wide) in paragraph at lines 263--269
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Although many combinations of base chara
 cter with diacritic are treated as canon-
  []
@@ -3843,7 +3851,7 @@ cter with diacritic are treated as canon-
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--345
+Underfull \hbox (badness 10000) in paragraph at lines 346--346
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
 [] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
 [][][] [] [][][][][] []
@@ -3870,13 +3878,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--345
 . This font family consists of the following shapes:
 .................................................
  [37]
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 386--392
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 387--393
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
 
-Overfull \hbox (3.48233pt too wide) in paragraph at lines 398--405
+Overfull \hbox (3.48233pt too wide) in paragraph at lines 399--406
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lematic in [][][][]Moran (2012)[] becaus
 e they include only the centralized, mid-centralized
  []
@@ -4036,10 +4044,10 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47011 strings out of 493734
- 832924 string characters out of 6146347
- 1279539 words of memory out of 5000000
- 49584 multiletter control sequences out of 15000+600000
+ 47012 strings out of 493734
+ 832935 string characters out of 6146347
+ 1279540 words of memory out of 5000000
+ 49585 multiletter control sequences out of 15000+600000
  22271 words of font info for 148 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,11n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s

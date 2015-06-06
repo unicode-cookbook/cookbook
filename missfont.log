@@ -111,3 +111,12 @@ mktextfm /BI
 mktextfm /B
 mktextfm /I
 mktextfm /BI
+mktextfm CharsiSIL
+mktextfm CharsiSIL
+mktextfm CharsiSIL
+mktextfm CharsiSIL
+mktextfm CharsiSIL/B
+mktextfm CharsiSIL
+mktextfm CharsiSIL/I
+mktextfm CharsiSIL
+mktextfm CharsiSIL/BI

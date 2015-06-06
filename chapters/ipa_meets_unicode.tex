@@ -77,38 +77,39 @@ detail.
 \label{pitfall-no-complete-ipa-block}
 
 The ambivalent nature of IPA glyphs arises because, on the one hand, the IPA
-uses Latin-based glyphs like , or . From this perspective, the IPA seems to be
-just another orthographic tradition using Latin characters, all of which do not
-get a special treatment within the Unicode Standard (just like e.g.~the French,
-German, or Danish orthographic traditions do not have a special status). On the
-other hand, the IPA uses many special symbols (like turned , mirrored and/or
-extended Latin glyphs ) not found in any other Latin-based writing system. For
-this reason, and already in the first version of the Unicode Standard (Version
-1.0 from 1991), a special block with code points, called \textsc{IPA Extensions}
-was included. As noted in Section 4, Pitfall 1, the Unicode Standard code space
-is subdivided into character blocks, which generally encode characters from a
+uses Latin-based glyphs like <a>, <b> or <p>. From this perspective, the IPA
+seems to be just another orthographic tradition using Latin characters, all of
+which do not get a special treatment within the Unicode Standard (just like
+e.g.~the French, German, or Danish orthographic traditions do not have a special
+status). On the other hand, the IPA uses many special symbols (like turned,
+mirrored and/or extended Latin glyphs) not found in any other Latin-based
+writing system. For this reason, and already in the first version of the Unicode
+Standard (Version 1.0 from 1991), a special block with code points, called
+\textsc{IPA Extensions} was included. 
+
+As explained in Section~\ref{pitfall-blocks}, the Unicode Standard code space is
+subdivided into character blocks, which generally encode characters from a
 single script. However, as is illustrated by the IPA, characters that form a
 single writing system may be dispersed across several different character
 blocks. With its diverse collection of symbols from various scripts and
-diacritics, the IPA is spread across over 13 blocks in the Unicode
+diacritics, the IPA is spread across 13 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see Moran 2012, Appendix C.}
-
+are also included, see \cite[Appendix C]{Moran2012}}
 \begin{itemize}
-	\item Basic Latin (30 characters), e.g. <a, b, c, d, e> 
-	\item Latin-1 Supplement (4 characters): <æ, ç, ð, ø\textgreater{} 
-	\item Latin Extended-A (3 characters): <ħ, ŋ, œ> 
-	\item Latin Extended-B (5 characters): <ǀ, ǁ, ǂ, ǃ, ȵ> 
-	\item IPA Extensions (70 characters), e.g.: <ɐ, ɑ, ɔ> 
-	\item Spacing Modifier Letters (20 characters), e.g.: <ʰ ʷ ˥> 
-	\item Combining Diacritical Marks (33 characters), e.g.: <̝ ̥ ̪> 
-	\item Greek and Coptic (3 characters): <β, θ, χ> 
-	\item Phonetic Extensions (2 characters): <ᴅ, ᴴ> 
-	\item Phonetic Extensions Supplement (3 characters): <ᶑ , ᶾ, ᶣ> 
+	\item Basic Latin (30 characters), e.g. <a b c d e \ldots> 
+	\item Latin-1 Supplement (4 characters): <æ ç ð ø> 
+	\item Latin Extended-A (3 characters): <ħ ŋ œ> 
+	\item Latin Extended-B (5 characters): <ǀ ǁ ǂ ǃ ȵ> 
+	\item IPA Extensions (70 characters), e.g. <ɐ ɑ ɔ \ldots> 
+	\item Spacing Modifier Letters (20 characters), e.g. <ʰ ʷ ˥ \ldots> 
+	\item Combining Diacritical Marks (33 characters), e.g. <{\large \ \ ̝\ \ ̥\ \ ̪ }\ldots> 
+	\item Greek and Coptic (3 characters): <β θ χ> 
+	\item Phonetic Extensions (2 characters): <{\small \fontspec{CharisSIL}ᴅ ᴴ}> 
+	\item Phonetic Extensions Supplement (3 characters): <{\small \fontspec{CharisSIL}ᶑ ᶾ ᶣ}> 
 	\item Superscripts and Subscripts (1 character): <ⁿ> 
-	\item Arrows (2 characters): \textless{}↑, ↓\textgreater{} 
-	\item Latin Extended-C (1 character): <ⱱ> 
+	\item Arrows (4 characters): <↑ ↓ ↗ ↘>
+	\item Latin Extended-C (1 character): <{\small \fontspec{CharisSIL}ⱱ}> 
 \end{itemize}
 
 \section{Pitfall: IPA homoglyphs in Unicode}

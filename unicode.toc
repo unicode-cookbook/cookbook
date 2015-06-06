@@ -32,7 +32,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}IPA meets Unicode}{29}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}The International Phonetic Alphabet}{29}{section.3.1}
+\contentsline {section}{\numberline {3.1}The International Phonetic Alphabet (IPA)}{29}{section.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Pitfall: No complete IPA code block}{31}{section.3.2}
 \defcounter {refsection}{0}\relax 
@@ -40,7 +40,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Pitfall: Homoglyphs in IPA}{34}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Pitfall: Ligature and digraphs}{34}{section.3.5}
+\contentsline {section}{\numberline {3.5}Pitfall: Ligatures and digraphs}{34}{section.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.6}Pitfall: Missing decomposition}{35}{section.3.6}
 \defcounter {refsection}{0}\relax 

@@ -14,11 +14,11 @@
 \BOOKMARK [1][-]{section.2.8}{Pitfall:\040Characters\040are\040not\040glyphs}{chapter.2}% 14
 \BOOKMARK [1][-]{section.2.9}{Pitfall:\040File\040formats}{chapter.2}% 15
 \BOOKMARK [0][-]{chapter.3}{IPA\040meets\040Unicode}{}% 16
-\BOOKMARK [1][-]{section.3.1}{The\040International\040Phonetic\040Alphabet}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.1}{The\040International\040Phonetic\040Alphabet\040\(IPA\)}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.2}{Pitfall:\040No\040complete\040IPA\040code\040block}{chapter.3}% 18
 \BOOKMARK [1][-]{section.3.3}{Pitfall:\040IPA\040homoglyphs\040in\040Unicode}{chapter.3}% 19
 \BOOKMARK [1][-]{section.3.4}{Pitfall:\040Homoglyphs\040in\040IPA}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.5}{Pitfall:\040Ligature\040and\040digraphs}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{Pitfall:\040Ligatures\040and\040digraphs}{chapter.3}% 21
 \BOOKMARK [1][-]{section.3.6}{Pitfall:\040Missing\040decomposition}{chapter.3}% 22
 \BOOKMARK [1][-]{section.3.7}{Pitfall:\040Different\040notions\040of\040diacritics}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.8}{Pitfall:\040No\040unique\040diacritic\040ordering}{chapter.3}% 24
