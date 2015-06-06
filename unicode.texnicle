@@ -85,7 +85,7 @@
         <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z122 z106 z105 z110 z123 z117 z113 z114 z108 z124 z119 z112 z118 z125 z116 z107"></relationship>
     </object>
     <object type="UISETTINGS" id="z104">
-        <attribute name="pdfviewscrollrect" type="string">{{53.192126496228255, 15266.813622474083}, {408.70406054696076, 537.30780940093609}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{43.765673699428191, 13902.671238667817}, {408.70406054693518, 537.30780940237128}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -269,7 +269,7 @@
         <attribute name="wasopen" type="bool">-1</attribute>
         <attribute name="lasteditdate" type="date">455202151.30531501770019531250</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">455202164.85623502731323242188</attribute>
+        <attribute name="fileloaddate" type="date">455293436.22905397415161132812</attribute>
         <attribute name="extension" type="string">bib</attribute>
         <attribute name="sortindex" type="int32">6</attribute>
         <attribute name="name" type="string">localbibliography.bib</attribute>
@@ -319,12 +319,12 @@
     </object>
     <object type="TEXFILE" id="z123">
         <attribute name="wasopen" type="bool">3</attribute>
-        <attribute name="visiblerect" type="string">{{0, 863}, {574, 730}}</attribute>
-        <attribute name="lasteditdate" type="date">455294430.15022897720336914062</attribute>
+        <attribute name="visiblerect" type="string">{{0, 2030}, {574, 772}}</attribute>
+        <attribute name="lasteditdate" type="date">455296493.20417702198028564453</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">455294486.68373501300811767578</attribute>
+        <attribute name="fileloaddate" type="date">455296495.39180397987365722656</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{5606, 0}</attribute>
+        <attribute name="cursor" type="string">{12299, 0}</attribute>
         <attribute name="sortindex" type="int32">13</attribute>
         <attribute name="name" type="string">ipa_meets_unicode.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>

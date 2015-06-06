@@ -95,15 +95,16 @@ blocks. With its diverse collection of symbols from various scripts and
 diacritics, the IPA is spread across 13 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see \cite[Appendix C]{Moran2012}}
+are also included, see \cite[Appendix C]{Moran2012}.}
+
 \begin{itemize}
-	\item Basic Latin (30 characters), e.g. <a b c d e \ldots> 
+	\item Basic Latin (30 characters), e.g. <a b c d e> 
 	\item Latin-1 Supplement (4 characters): <æ ç ð ø> 
 	\item Latin Extended-A (3 characters): <ħ ŋ œ> 
 	\item Latin Extended-B (5 characters): <ǀ ǁ ǂ ǃ ȵ> 
-	\item IPA Extensions (70 characters), e.g. <ɐ ɑ ɔ \ldots> 
-	\item Spacing Modifier Letters (20 characters), e.g. <ʰ ʷ ˥ \ldots> 
-	\item Combining Diacritical Marks (33 characters), e.g. <{\large \ \ ̝\ \ ̥\ \ ̪ }\ldots> 
+	\item IPA Extensions (70 characters), e.g. <ɐ ɑ ɔ> 
+	\item Spacing Modifier Letters (20 characters), e.g. <ʰ ʷ ˥> 
+	\item Combining Diacritical Marks (33 characters), e.g. <{\large \ \ ̝\ \ ̥\ \ ̪ }> 
 	\item Greek and Coptic (3 characters): <β θ χ> 
 	\item Phonetic Extensions (2 characters): <{\small \fontspec{CharisSIL}ᴅ ᴴ}> 
 	\item Phonetic Extensions Supplement (3 characters): <{\small \fontspec{CharisSIL}ᶑ ᶾ ᶣ}> 
@@ -118,94 +119,86 @@ are also included, see \cite[Appendix C]{Moran2012}}
 Another problem is the large number of homoglyphs, i.e.~different characters
 that have highly similar glyphs (or even completely identical, depending on the
 font rendering). For example, a speaker of Russian should ideally not use the
-\textsc{cyrillic small letter a} at code point \uni{0430} for IPA
-transcriptions, but instead the \textsc{latin small letter a} at code point
+<а> \textsc{cyrillic small letter a} at code point \uni{0430} for IPA
+transcriptions, but instead use the <a> \textsc{latin small letter a} at code point
 \uni{0061}, although visually they are mostly indistinguishable, and the
-Cyrillic character is more easily typed on a Cyrillic keyboard. Another example
-we commonly encounter is the use of \textsc{latin small letter g} at \uni{0067},
-instead of the sanctioned Unicode Standard IPA character for the voiced velar
-stop \textsc{latin small letter script g} at \uni{0261}. One begins to question
-whether this issue is at all apparent to the working linguist, or if they simply
-use the \uni{0067} because it is easily keyboarded and thus saves time, whereas
-the latter must be cumbersomely inserted as a special symbol in most
-software.\footnote{This issue was recently addressed by the International
-Phonetic Association, which has taken the stance that both the keyboard
-\textsc{latin small letter g} and the \textsc{latin small letter script g} are
-valid input characters for the voiced velar plosive. Unfortunately, this
-decision further introduces ambiguity for linguists trying to adhere to a strict
-Unicode Standard IPA encoding.}
+Cyrillic character is more easily typed on a Cyrillic keyboard. 
 
-Furthermore, on the one hand even linguists are unlikely to distinguish between
+Furthermore, even linguists are unlikely to distinguish between
 the <ə> \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
-\textsc{latin small letter turned e} at \uni{01DD}. On the other hand,
+\textsc{latin small letter turned e} at \uni{01DD}. Conversely,
 non-linguists are unlikely to distinguish any semantic difference between an
-open back unrounded vowel <ɑ>, the \textsc{latin small letter alpha} at
-\uni{0251}, and the open front unrounded vowel <a>, \textsc{latin small letter
+open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
+\uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter
 a} at \uni{0061}. But even among linguists this distinction leads to problems.
 For example, as pointed out by \citet{Mielke2009}, there is a problem stemming
 from the fact that about 75\% of languages are reported to have a five-vowel
 system \citep{Maddieson1984}. Historically, linguistic descriptions tend not to
 include precise audio recording and measurements of formants, so this may lead
 one to ask if the many characters that are used in phonological description
-reflects a \textsc{transcriptional bias}. The common use of in transcriptions
+reflects a transcriptional bias. The common use of <a> in transcriptions
 could be in part due to the ease of typing the letter on an English keyboard (or
 for older descriptions, the typewriter). We found it to be exceedingly rare that
-a linguist uses for a low back unrounded vowel.\footnote{One example is
+a linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
 \citet[75]{Vidal2001a}, in which the author states: ``The definition of Pilagá
 /a/ as {[}+back{]} results from its behavior in certain phonological contexts.
 For instance, uvular and pharyngeal consonants only occur around /a/ and /o/.
 Hence, the characterization of /a/ and /o/ as a natural class of (i.e.,
-{[}+back{]} vowels), as opposed to /i/ and /e/.''} They simply use $<$a$>$ as
-long as there is no opposition to $<$ɑ$>$.\footnote{See Thomason's Language Log
-post, ``Why I don't love the International Phonetic Alphabet'', at:
-\url{http://itre.cis.upenn.edu/\textasciitilde{}myl/languagelog/archives/005287.html}.}
+{[}+back{]} vowels), as opposed to /i/ and /e/.''} They simply use <a> as
+long as there is no opposition to <ɑ>.\footnote{See Thomason's Language Log
+post, ``Why I don't love the International Phonetic Alphabet'' at:
+\url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
+
 Making things even more problematic, there is an old typographic tradition that
-the double-story uses a single-story in italics. This leads to the unfortunate
-effect that in most well-designed fonts the italics of and use the same glyph.
-If this distinction has to be kept upright in italics, the only solution we can
-currently offer is to use \textit{slanted} glyphs (i.e.~artificially italicized
-glyphs) instead of real italics (i.e.~special italics glyphs designed by a
-typographer).\footnote{For example, the widely used IPA font Doulos SIL
+the double-story <a> uses a single-story <ɑ> in italics. This leads to the
+unfortunate effect that in most well-designed fonts the italics of <a> and <ɑ>
+use the same glyph. If this distinction has to be kept upright in italics, the
+only solution we can currently offer is to use \textsc{slanted} glyphs
+(i.e.~artificially italicized glyphs) instead of real italics (i.e.~special
+italics glyphs designed by a typographer).\footnote{For example, the widely used
+IPA font Doulos SIL
 (\url{http://scripts.sil.org/cms/scripts/page.php?item\_id=DoulosSIL}) does not
 have real italics. This leads some word-processing software, like Microsoft
 Word, to produce slanted glyphs instead. That particular combination of font and
-software application will thus lead to the desired effect. However, note that
-when the text is transferred to another font (i.e.~one that includes real
-italics) and/or to another software application (like Apple Pages, which does
-not perform slanting), then this visual appearance will be lost. In this case we
-are thus still in the pre-Unicode situation in which the choice of font and
-rendering software actually matters. The ideal solution from a linguistic point
-of view would be the introduction of a new IPA code point for a different kind
-of which explicitly specifies that it should still be rendered as a double-story
-character when italicized. After informal discussion with various Unicode
-players, our impression is that this highly restricted problem is not
-sufficiently urgent to introduce even more <a>-like characters in Unicode (which
-already lead to much confusion, see Section \ref{pitfall-homoglyphs}). This is a
-clear situation in which the Unicode Consortium is not just thinking about
-linguists, but has a more wide-ranging practical view to consider.}
+software application will thus lead to the desired effect distinguishing <a>
+from <ɑ>. However, note that when the text is transferred to another font
+(i.e.~one that includes real italics) and/or to another software application
+(like Apple Pages, which does not perform slanting), then this visual appearance
+will be lost. In this case we are thus still in the pre-Unicode situation in
+which the choice of font and rendering software actually matters. The ideal
+solution from a linguistic point of view would be the introduction of a new IPA
+code point for a different kind of which explicitly specifies that it should
+still be rendered as a double-story character when italicized. After informal
+discussion with various Unicode players, our impression is that this highly
+restricted problem is not sufficiently urgent to introduce even more <a>-like
+characters in Unicode (which already lead to much confusion, see Section~
+\ref{pitfall-homoglyphs}).}
 
 Some other homoglyphs related to encoding IPA in the Unicode Standard are:
+
 \begin{itemize}
 	\item The uses of the apostrophe has led to long discussions on the Unicode
-       Standard email list. An English keyboard inputs
-       \textless{}`\textgreater{} APOSTROPHE at \uni{0027}, although the
-       \textit{preferred} Unicode apostrophe is the \textless{}'\textgreater{}
-       \textsc{right single quotation mark} at \uni{2019}. Yet the glottal
-       stop/glottalization/ejective marker is another completely different
-       character, the \textsc{modifier letter apostrophe} at \uni{02BC}, but
-       unfortunately looks mostly highly similar to \uni{2019}. 
-	\item There is ambiguous encoding of IPA segments within the Unicode Standard.
-       An example is the \uni{02C1} \textsc{modifier letter reversed glottal
-       stop} vs the \uni{02E4} \textsc{modifier letter small reversed glottal
-       stop} . Both are denoted in the Unicode Standard as the
-       \textsc{pharyngealized diacritic} and both appear in various resources
-       representing phonetic data online. This is thus an example for which the
-       Unicode Standard does not solve the linguistic standardization problem. 
+       Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
+       at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
+       \textsc{right single quotation mark} at \uni{2019}.
+     \item The glottal stop/glottalization/ejective marker is another completely
+        different character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
+        \uni{02BC}, but unfortunately looks mostly highly similar to
+        \uni{2019}. 
+	\item Another problem is the <ˁ> \textsc{modifier letter reversed
+       glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
+       letter small reversed glottal stop} at \uni{02E4}. Both are denoted in
+       the Unicode Standard as the \textsc{pharyngealized diacritic} and both
+       appear in various resources representing phonetic data online. This is
+       thus an example for which the Unicode Standard does not solve the
+       linguistic standardization problem. 
 	\item There is at least one case in which the character name assigned by the
-       Unicode Consortium does not match the IPA's description: in the Unicode
-       Standard at \uni{01C3} is labeled \textsc{latin letter retroflex click},
-       but in IPA is an alveolar or postalveolar click (not retroflex). This
-       naming is probably best seen as a simple error in the Unicode Standard.
+       Unicode Consortium does not match the IPA's description. In the Unicode
+       Standard the <ǃ> at \uni{01C3} is labeled \textsc{latin letter retroflex
+       click}, but in IPA is an alveolar or postalveolar click (not retroflex).
+       This naming is probably best seen as a simple error in the Unicode
+       Standard. This character is of course often simply typed as <!>
+       \textsc{exclamation mark} at \uni{0021}.
 \end{itemize}       
 
 \section{Pitfall: Homoglyphs in IPA}
@@ -215,9 +208,25 @@ the IPA. Even the IPA itself is not consistent in how specific meaningful
 transcriptions have to be encoded. There are a few cases in which the IPA 
 explicitly allows for different options of transcribing the same phonetic 
 content
+
+Another example
+we commonly encounter is the use of <g> \textsc{latin small letter g} at \uni{0067},
+instead of the Unicode Standard IPA character for the voiced velar
+stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to question
+whether this issue is at all apparent to the working linguist, or if they simply
+use the \uni{0067} because it is easily keyboarded and thus saves time, whereas
+the latter must be cumbersomely inserted as a special symbol in most
+software.
+
+
 \begin{itemize}
   \item tone marks (prefer tone symbols)
-  \item marking of <g>
+  \item marking of <g>\footnote{This issue was recently addressed by the International
+Phonetic Association, which has taken the stance that both the keyboard
+\textsc{latin small letter g} and the \textsc{latin small letter script g} are
+valid input characters for the voiced velar plosive. Unfortunately, this
+decision further introduces ambiguity for linguists trying to adhere to a strict
+Unicode Standard IPA encoding.}
   \item marking of voiceless with ring diacritic
   \item tie bar
 \end{itemize}
