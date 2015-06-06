@@ -210,9 +210,20 @@ not acceptable for interoperability between resources written in IPA. We
 consider it crucial to distinguish between ``lax'' IPA, for which it is
 sufficient that any phonetically-trained reader is able to understand the
 transcription, and ``strict'' IPA, which should be standardized on a single
-unique encoding for each sound, so search will work across resources.
+unique encoding for each sound, so search will work across resources. We are 
+aware of the following double options in the IPA, which will be discussed in 
+turn below:
 
-The first case in which the IPA allows for different encodings is the question
+\begin{itemize}
+  \item The marking of tone
+  \item The marking of <g>
+  \item The diacritic for voiceless
+  \item The tie bar to indicate a close bond between sounds
+\end{itemize}
+
+\ 
+
+\noindent The first case in which the IPA allows for different encodings is the question
 of how to transcribe tone. There is an old tradition to use diacritics on vowels
 to mark different tone levels, e.g. <ȅèée̋>.\footnote{There are at least two
 different Unicode homoglyphs for the low and high level tones, namely <\ ̀~>
@@ -336,28 +347,45 @@ find both at the same time.
 Reversely, <ç> \textsc{latin small letter c with cedilla} at \uni{00E7} will be
 decomposed into <c> \textsc{latin small letter c} at \uni{0063} with 
 <\ \ {\large  ̧}> \textsc{combining cedilla} at \uni{0327}, 
-also if such a decompotion is not intended, because it is meaningless in IPA.
+also if such a decomposition is not intended, because it is meaningless in IPA.
 
 \section{Pitfall: Different notions of diacritics}
-\label{pitfall-the-ipa-notion-of-diacritics-is-not-the-same-as-the-unicode-standards-notion-of-diacritics}
+\label{pitfall-different-notions-of-diacritics}
 
-Another pitfall is diacritics. The problem is that the meaning of the term
-\textsc{diacritics} as used by the IPA is not the same as it used in the Unicode
-Standard. Specifically, diacritics in the IPA-sense are either so-called
-\textsc{Combining Diacritical Marks} or \textsc{Spacing Modifier Letters} in the
-Unicode Standard. Crucially, Combining Diacritical Marks are by definition
-combined with the character before them (to form so-called default grapheme
-clusters, see Section 3). In contrast, Spacing Modifier Letters are by
-definition \emph{not} combined into grapheme clusters with the preceding
-character, but simply treated as separate letters. In the context of the IPA,
-the following IPA-diacritics are actually Spacing Modifier Letters in the
-Unicode Standard:
+Another pitfall relates the concept of what are diacritics. The problem is that
+the meaning of the term diacritics as used by the IPA is not the same as is used
+in the Unicode Standard. Specifically, diacritics in the IPA-sense are either
+so-called \textsc{combining diacritical marks} or \textsc{spacing modifier
+letters} in the Unicode Standard. Crucially, Combining Diacritical Marks are by
+definition combined with the character before them (to form so-called default
+grapheme clusters, see Section~\ref{the-unicode-approach}). In contrast, Spacing
+Modifier Letters are by definition \emph{not} combined into grapheme clusters
+with the preceding character, but simply treated as separate letters. In the
+context of the IPA, the following IPA-diacritics are actually Spacing Modifier
+Letters in the Unicode Standard:
 
 \begin{itemize}
-	\item Length marks, namely <ː> \textsc{modifier letter triangular colon} at \uni{02D0} and <ˑ> \textsc{modifier letter half triangular colon} at \uni{02D1}. 
-	\item Tone letters, like <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}, and others like this. 
-	\item Superscript letters, like <ʰ> \textsc{modifier letter small h} at \uni{02B0} or <ˤ> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}, and others like this. 
-	\item <˞> \textsc{modifier letter rhotic hook} at \uni{02DE}. 
+	\item[] Length marks, namely 
+	\begin{itemize}
+	  \item[] <ː> \textsc{modifier letter triangular colon} at \uni{02D0}
+	  \item[] <ˑ> \textsc{modifier letter half triangular colon} at \uni{02D1}
+	\end{itemize}
+	 
+	\item[] Tone letters, like 
+	\begin{itemize} 
+	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
+	  \item[] <˧> \textsc{modifier letter mid tone bar} at \uni{02E7}
+	  \item[] and others like this
+	\end{itemize}
+	
+	\item[] Superscript letters, like 
+	\begin{itemize}
+	  \item[] <ʰ> \textsc{modifier letter small h} at \uni{02B0}
+	  \item[] <ˤ> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
+	  \item[] and many more like this
+	\end{itemize}
+	
+	\item[] the rhotic hook <˞> \textsc{modifier letter rhotic hook} at \uni{02DE}
 \end{itemize}
 
 Although linguists might expect these characters to belong together with the
@@ -365,10 +393,10 @@ character in front of them, at least for <ʰ> \textsc{modifier letter small h} a
 \uni{02B0} the Unicode Consortium's decision to treat it as a separate character
 is also linguistically correct, because according to the IPA it can be used both
 for aspiration (more precisely post-aspiration following the base character) and
-pre-aspiration (preceding the base character). Note that there is a mechanism in
+pre-aspiration (preceding the base character). Note that there exists a mechanism in
 Unicode to force separate characters to be combined (namely by using the
 \textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
-impractical, and probably not enforceable solution to us.
+impractical, and probably not an enforceable solution to us.
 
 \section{Pitfall: No unique diacritic ordering}
 \label{pitfall-no-unique-diacritic-ordering}
