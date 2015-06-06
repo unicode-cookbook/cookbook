@@ -85,7 +85,7 @@
         <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z124 z114 z108 z117 z118 z123 z116 z107 z113 z112 z122 z106 z110 z125 z119 z105"></relationship>
     </object>
     <object type="UISETTINGS" id="z104">
-        <attribute name="pdfviewscrollrect" type="string">{{0, 20241.762766754102}, {490, 644.18451398048637}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 32344.843491657302}, {490, 644.18451396684395}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -355,12 +355,12 @@
     </object>
     <object type="TEXFILE" id="z125">
         <attribute name="wasopen" type="bool">1</attribute>
-        <attribute name="visiblerect" type="string">{{4, 3371}, {574, 772}}</attribute>
-        <attribute name="lasteditdate" type="date">455326567.67246997356414794922</attribute>
+        <attribute name="visiblerect" type="string">{{0, 4602}, {574, 772}}</attribute>
+        <attribute name="lasteditdate" type="date">455326686.13600599765777587891</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">455326585.59692502021789550781</attribute>
+        <attribute name="fileloaddate" type="date">455326692.88343298435211181641</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{27711, 0}</attribute>
+        <attribute name="cursor" type="string">{24406, 69}</attribute>
         <attribute name="sortindex" type="int32">12</attribute>
         <attribute name="name" type="string">pitfalls.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>

@@ -451,7 +451,7 @@ different possibilities are well-understood in the software industry, and
 nowadays they normally do not lead to any problems for the end user. However,
 there are some situations in which a user is suddenly confronted with cryptic
 questions in the user interface involving abbreviations like LF, CR, BE, LE or
-BOM. Most prominently this occurs with exporting or importing data in several
+BOM.\@ Most prominently this occurs with exporting or importing data in several
 software applications from Microsoft. Basically, there are two different issues
 involved. First, the encoding of line breaks and, second, the encoding of the
 Unicode characters into \textsc{code units} and the related issue of
@@ -465,16 +465,15 @@ to direct a printing head to a new line. This involves two movements, known as
 line on the page) and \textsc{line feed} (LF, moving the printing head to the
 next line on the page). Physically, these are two different events, but
 conceptually together they form one action. In the history of computing, various
-encodings of line breaks have been used (e.g.~CR+LF, LF+CR, only LF, or only CR.
-Currently, all Unix and Unix-derived systems use only LF as code for a
-line break, while software from Microsoft still uses a combination of
-CR and LF. Today, most software applications recognize both
-options, and are able to deal with either encoding of line breaks (until rather
-recently this was not the case, and using the wrong line breaks could lead to
-unexpected errors). Our impression is that there is a strong tendency in
-software development to standardize on the simpler \textsc{only LF}
-encoding for line breaks, and we suggest that everybody use this encoding
-whenever possible.
+encodings of line breaks have been used (e.g.~CR+LF, LF+CR, only LF, or only
+CR). Currently, all Unix and Unix-derived systems use only LF as code for a
+line break, while software from Microsoft still uses a combination of CR and
+LF.\@ Today, most software applications recognize both options, and are able to
+deal with either encoding of line breaks (until rather recently this was not the
+case, and using the wrong line breaks could lead to unexpected errors). Our
+impression is that there is a strong tendency in software development to
+standardize on the simpler \textsc{only LF} encoding for line breaks, and we
+suggest that everybody use this encoding whenever possible.
 
 \subsubsection*{Code units}
 
@@ -489,7 +488,7 @@ letters UTF stand for either \textsc{Unicode Transformation Format} or
 Nevertheless, the designation \textsc{UTF} (in capitals) has become an official
 standard designation, but should probably best be read as simply Unicode
 Format.} The details of this issue is extensively explained in section 2.5 of
-the Unicode Core Specification \cite{Unicode2014}. 
+the Unicode Core Specification~\cite{Unicode2014}. 
 
 Basically, \textsc{UTF-32} encodes each character in 32 bits (32 \textit{bi}nary
 uni\textit{ts}, i.e.~32 zeros or ones) and is the most disk-space-consuming
