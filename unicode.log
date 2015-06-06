@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 00:26
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 00:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3397,17 +3397,6 @@ Chapter 3.
 . 
 . This font family consists of the following shapes:
 .................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
 
 Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 printable ASCII character sequences, e.g
@@ -4237,10 +4226,10 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47078 strings out of 493734
- 834712 string characters out of 6146347
+ 47081 strings out of 493734
+ 834755 string characters out of 6146347
  1279557 words of memory out of 5000000
- 49634 multiletter control sequences out of 15000+600000
+ 49637 multiletter control sequences out of 15000+600000
  22506 words of font info for 156 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,11n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s

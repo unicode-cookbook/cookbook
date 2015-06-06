@@ -18,52 +18,52 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 10282 items from 5000.
+Reallocated field_info (elt_size=4) to 10421 items from 5000.
 Database file #1: unicode-blx.bib
 Database file #2: localbibliography.bib
 Warning--I didn't find a database entry for "Vidal2001a"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 37 entries,
+You've used 38 entries,
             6047 wiz_defined-function locations,
-            1401 strings with 14056 characters,
-and the built_in function-call counts, 129465 in all, are:
-= -- 5899
-> -- 4530
-< -- 1536
-+ -- 1864
-- -- 1662
-* -- 8582
-:= -- 7551
+            1409 strings with 14214 characters,
+and the built_in function-call counts, 133560 in all, are:
+= -- 6149
+> -- 4650
+< -- 1600
++ -- 1919
+- -- 1686
+* -- 8785
+:= -- 7745
 add.period$ -- 0
-call.type$ -- 37
-change.case$ -- 995
+call.type$ -- 38
+change.case$ -- 1047
 chr.to.int$ -- 85
-cite$ -- 72
-duplicate$ -- 14327
-empty$ -- 13301
-format.name$ -- 2169
-if$ -- 29687
+cite$ -- 74
+duplicate$ -- 14779
+empty$ -- 13703
+format.name$ -- 2219
+if$ -- 30670
 int.to.chr$ -- 0
-int.to.str$ -- 129
+int.to.str$ -- 133
 missing$ -- 0
-newline$ -- 966
-num.names$ -- 2218
-pop$ -- 11531
+newline$ -- 990
+num.names$ -- 2305
+pop$ -- 11847
 preamble$ -- 1
-purify$ -- 1059
+purify$ -- 1112
 quote$ -- 0
-skip$ -- 8001
+skip$ -- 8283
 stack$ -- 0
-substring$ -- 4248
-swap$ -- 4913
-text.length$ -- 981
-text.prefix$ -- 36
+substring$ -- 4469
+swap$ -- 5065
+text.length$ -- 1005
+text.prefix$ -- 37
 top$ -- 1
-type$ -- 1390
+type$ -- 1428
 warning$ -- 0
-while$ -- 766
+while$ -- 784
 width$ -- 0
-write$ -- 928
+write$ -- 951
 (There was 1 warning)

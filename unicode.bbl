@@ -852,6 +852,30 @@
   \field{year}{1995}
 \endentry
 
+\entry{Simons1989}{incollection}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Simons}{S.}%
+     {Gary~F.}{G.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Summer Institute of Linguistics}%
+  }
+  \strng{namehash}{SGF1}
+  \strng{fullhash}{SGF1}
+  \field{labelyear}{1989}
+  \field{sortinit}{S}
+  \field{booktitle}{Occasional Publications in Academic Computing}
+  \field{series}{Occasional Publications in Academic Computing}
+  \field{title}{{Working With Special Characters}}
+  \list{location}{1}{%
+    {Dallas, TX}%
+  }
+  \field{year}{1989}
+\endentry
+
 \entry{Singh1999}{book}{}
   \name{author}{1}{}{%
     {{}%

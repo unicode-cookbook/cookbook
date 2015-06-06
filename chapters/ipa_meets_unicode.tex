@@ -9,20 +9,20 @@ transcribe sounds of spoken language into some Latin-based characters
 \citep{IPA2005}. Although IPA is reasonably easily adhered to with pen and
 paper, it is not trivial to encode IPA characters electronically. Early work
 addressing the need for a universal computing environment for writing systems
-and their computational complexity is discussed in Simons 1989. For a long time,
-linguists (like all other computer users) were limited to ASCII-encoded 7-bit
-characters, which only includes Latin characters, numbers and some punctuation
-and symbols. Restricted to these standard character sets that lacked IPA support
-or other language-specific graphemes that they needed, linguists devised their
-own solutions \citep{BirdSimons2003}. For example, some chose to represent
-unavailable graphemes with substitutes, e.g.~the combination of to represent .
-Tech-savvy linguists redefined selected characters from a character encoding by
-mapping custom made fonts to those code points. However, one linguist's
-electronic text would not render properly on another linguist's computer without
-access to the same font. Further, if two character encodings defined two
-character sets differently, then data could not be reliably and correctly
-displayed. This is a common example of the non-interoperability of data and data
-formats.
+and their computational complexity is discussed in \citet{Simons1989}. For a long
+time, linguists (like all other computer users) were limited to ASCII-encoded
+7-bit characters, which only includes Latin characters, numbers and some
+punctuation and symbols. Restricted to these standard character sets that lacked
+IPA support or other language-specific graphemes that they needed, linguists
+devised their own solutions \citep{BirdSimons2003}. For example, some chose to
+represent unavailable graphemes with substitutes, e.g.~the combination of <ng> to
+represent <ŋ>. Tech-savvy linguists redefined selected characters from a character
+encoding by mapping custom made fonts to those code points. However, one
+linguist's electronic text would not render properly on another linguist's
+computer without access to the same font. Further, if two character encodings
+defined two character sets differently, then data could not be reliably and
+correctly displayed. This is a common example of the non-interoperability of
+data and data formats.
 
 To alleviate this problem, during the late 1980s, SAMPA (Speech Assessment
 Methods Phonetic Alphabet) was created to represent IPA symbols with 7-bit
@@ -42,13 +42,13 @@ out to include every symbol in the IPA chart including all diacritics
 consisted of one table that encoded the set of characters that represented
 phones/segments in IPA across languages. SAMPA and X-SAMPA have been widely used
 for speech technology and as an encoding system in computational linguistics.
-Eventually, ASCII-encoding of the IPA became depreciated through the advent of
+Eventually, ASCII-encoding of the IPA became deprecated through the advent of
 the Unicode Standard. Note however that many popular software packages used for
-linguistic analyses still require ASCII input,
-e.g.~RuG/L04\footnote{\url{http://www.let.rug.nl/kleiweg/L04/}} and
-SplitsTree4.\footnote{\url{http://www.splitstree.org/}}
+linguistic analyses still require ASCII input, e.g.~RuG/L04 and
+SplitsTree4.\footnote{See \url{http://www.let.rug.nl/kleiweg/L04/} and
+\url{http://www.splitstree.org/}, respectively}
 
-Still, there are a few pitfalls to be aware of when using the Unicode Standard
+There are a few pitfalls to be aware of when using the Unicode Standard
 to encode IPA. As we have said before, from a linguistic perspective it might
 look like the Unicode Consortium is making incomprehensible decisions, but it is
 important to realize that the consortium has tried and is continuing to try to
