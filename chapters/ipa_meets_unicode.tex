@@ -111,8 +111,8 @@ are also included, see Moran 2012, Appendix C.}
 	\item Latin Extended-C (1 character): <ⱱ> 
 \end{itemize}
 
-\section{Pitfall: Many IPA homoglyphs}
-\label{pitfall-there-are-many-ipa-homoglyphs-in-unicode}
+\section{Pitfall: IPA homoglyphs in Unicode}
+\label{pitfall-ipa-homoglyphs}
 
 Another problem is the large number of homoglyphs, i.e.~different characters
 that have highly similar glyphs (or even completely identical, depending on the
@@ -206,8 +206,21 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
        but in IPA is an alveolar or postalveolar click (not retroflex). This
        naming is probably best seen as a simple error in the Unicode Standard.
 \end{itemize}       
-  
-  
+
+\section{Pitfall: Homoglyphs in IPA}
+
+It is not just the Unicode Standard that offers multiple options for encoding 
+the IPA. Even the IPA itself is not consistent in how specific meaningful 
+transcriptions have to be encoded. There are a few cases in which the IPA 
+explicitly allows for different options of transcribing the same phonetic 
+content
+\begin{itemize}
+  \item tone marks (prefer tone symbols)
+  \item marking of <g>
+  \item marking of voiceless with ring diacritic
+  \item tie bar
+\end{itemize}
+
 \section{Pitfall: Ligature and digraphs}
 \label{pitfall-ligatures-digraphs}     
        
@@ -243,8 +256,8 @@ should be used when writing IPA, namely:
 	\item <æ> \textsc{latin small letter ae} at \uni{00E6} 
 \end{itemize}
 
-\section{Pitfall: No decomposition with some diacritics}
-\label{pitfall-no-decomposition-of-overlay}
+\section{Pitfall: Missing decomposition}
+\label{pitfall-missing-decomposition}
 
 Although many combinations of base character with diacritic are treated as 
 canonical equivalent with precomposed characters, there are a few combinations 
