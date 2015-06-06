@@ -171,8 +171,7 @@ code point for a different kind of which explicitly specifies that it should
 still be rendered as a double-story character when italicized. After informal
 discussion with various Unicode players, our impression is that this highly
 restricted problem is not sufficiently urgent to introduce even more <a>-like
-characters in Unicode (which already lead to much confusion, see Section~
-\ref{pitfall-homoglyphs}).}
+characters in Unicode (which already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 
 Some other homoglyphs related to encoding IPA in the Unicode Standard are:
 
@@ -187,47 +186,47 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
         \uni{2019}. 
 	\item Another problem is the <ˁ> \textsc{modifier letter reversed
        glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
-       letter small reversed glottal stop} at \uni{02E4}. Both are denoted in
-       the Unicode Standard as the \textsc{pharyngealized diacritic} and both
+       letter small reversed glottal stop} at \uni{02E4}. Both 
        appear in various resources representing phonetic data online. This is
-       thus an example for which the Unicode Standard does not solve the
+       thus a clear example for which the Unicode Standard does not solve the
        linguistic standardization problem. 
 	\item There is at least one case in which the character name assigned by the
        Unicode Consortium does not match the IPA's description. In the Unicode
        Standard the <ǃ> at \uni{01C3} is labeled \textsc{latin letter retroflex
-       click}, but in IPA is an alveolar or postalveolar click (not retroflex).
-       This naming is probably best seen as a simple error in the Unicode
-       Standard. This character is of course often simply typed as <!>
-       \textsc{exclamation mark} at \uni{0021}.
-\end{itemize}       
+       click}, but in IPA that glyph is used for an alveolar or postalveolar
+       click (not retroflex). This naming is probably best seen as a simple
+       error in the Unicode Standard. This character is of course often simply
+       typed as <!> \textsc{exclamation mark} at \uni{0021}. \end{itemize}       
 
 \section{Pitfall: Homoglyphs in IPA}
 
 It is not just the Unicode Standard that offers multiple options for encoding 
-the IPA. Even the IPA itself is not consistent in how specific meaningful 
+the IPA. Even the IPA itself offers some flexibility in how specific meaningful 
 transcriptions have to be encoded. There are a few cases in which the IPA 
 explicitly allows for different options of transcribing the same phonetic 
-content
+content. This is understandable from a transcriber's point of view, but it is 
+not good interoperability between resources supposedly written in IPA. We 
+consider it crucial to distinguish between ``lax'' IPA, in which the 
+phonetically-trained reader should be able to understand the transcription, and 
+``strict'' IPA, which should be standardized on a single encoding so search will 
+work across resources.
 
-Another example
-we commonly encounter is the use of <g> \textsc{latin small letter g} at \uni{0067},
-instead of the Unicode Standard IPA character for the voiced velar
-stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to question
-whether this issue is at all apparent to the working linguist, or if they simply
-use the \uni{0067} because it is easily keyboarded and thus saves time, whereas
-the latter must be cumbersomely inserted as a special symbol in most
-software.
-
-
-\begin{itemize}
-  \item tone marks (prefer tone symbols)
-  \item marking of <g>\footnote{This issue was recently addressed by the International
+Another example we commonly encounter is the use of <g> \textsc{latin small
+letter g} at \uni{0067}, instead of the Unicode Standard IPA character for the
+voiced velar stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One
+begins to question whether this issue is at all apparent to the working
+linguist, or if they simply use the \uni{0067} because it is easily keyboarded
+and thus saves time, whereas the latter must be cumbersomely inserted as a
+special symbol in most software.\footnote{This issue was recently addressed by the International
 Phonetic Association, which has taken the stance that both the keyboard
 \textsc{latin small letter g} and the \textsc{latin small letter script g} are
 valid input characters for the voiced velar plosive. Unfortunately, this
 decision further introduces ambiguity for linguists trying to adhere to a strict
 Unicode Standard IPA encoding.}
-  \item marking of voiceless with ring diacritic
+
+\begin{itemize}
+  \item tone marks (prefer tone symbols)
+  \item marking of <g>  \item marking of voiceless with ring diacritic
   \item tie bar
 \end{itemize}
 

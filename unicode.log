@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 17:15
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 17:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3662,21 +3662,21 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
  [33]
 .................................................
 . fontspec info: "defining-font"
 . 
-. Font family 'LinLibertine_R_B.otf(1)' created for font
-. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
-. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
-. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
-. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
 . Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
 . [Letters=Uppercase].
 . 
@@ -3714,6 +3714,7 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+ [34]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3739,12 +3740,11 @@ Package microtype Info: Loading generic settings for font family
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (2.67204pt too wide) in paragraph at lines 272--278
+Overfull \hbox (2.67204pt too wide) in paragraph at lines 271--277
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Although many combinations of base chara
 cter with diacritic are treated as canon-
  []
 
-[34]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3817,6 +3817,7 @@ cter with diacritic are treated as canon-
 . 
 . This font family consists of the following shapes:
 .................................................
+[35]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3833,7 +3834,6 @@ cter with diacritic are treated as canon-
 . 
 . This font family consists of the following shapes:
 .................................................
- [35]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3894,7 +3894,7 @@ cter with diacritic are treated as canon-
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--355
+Underfull \hbox (badness 10000) in paragraph at lines 354--354
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
 [] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
 [][][] [] [][][][][] []
@@ -3921,13 +3921,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 355--355
 . This font family consists of the following shapes:
 .................................................
  [37]
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 396--402
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 395--401
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
 
-Overfull \hbox (3.48233pt too wide) in paragraph at lines 408--415
+Overfull \hbox (3.48233pt too wide) in paragraph at lines 407--414
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lematic in [][][][]Moran (2012)[] becaus
 e they include only the centralized, mid-centralized
  []
