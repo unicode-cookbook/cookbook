@@ -184,11 +184,49 @@ clear situation in which the Unicode Consortium is not just thinking about
 linguists, but has a more wide-ranging practical view to consider.}
 
 Some other homoglyphs related to encoding IPA in the Unicode Standard are:
-
 \begin{itemize}
-	\item The uses of the apostrophe has led to long discussions on the Unicode Standard email list. An English keyboard inputs \textless{}`\textgreater{} APOSTROPHE at \uni{0027}, although the \textit{preferred} Unicode apostrophe is the \textless{}'\textgreater{} \textsc{right single quotation mark} at \uni{2019}. Yet the glottal stop/glottalization/ejective marker is another completely different character, the \textsc{modifier letter apostrophe} at \uni{02BC}, but unfortunately looks mostly highly similar to \uni{2019}. 
-	\item There is ambiguous encoding of IPA segments within the Unicode Standard. An example is the \uni{02C1} \textsc{modifier letter reversed glottal stop} vs the \uni{02E4} \textsc{modifier letter small reversed glottal stop} . Both are denoted in the Unicode Standard as the \textsc{pharyngealized diacritic} and both appear in various resources representing phonetic data online. This is thus an example for which the Unicode Standard does not solve the linguistic standardization problem. 
-	\item There is at least one case in which the character name assigned by the Unicode Consortium does not match the IPA's description: in the Unicode Standard at \uni{01C3} is labeled \textsc{latin letter retroflex click}, but in IPA is an alveolar or postalveolar click (not retroflex). This naming is probably best seen as a simple error in the Unicode Standard. Note that most linguists simply seem to use or <ou>) while ligatures are single characters (e.g. <ʧ> \textsc{latin small letter tesh digraph} at \uni{02A7}). Ligatures arose in the context of printing easier-to-read texts, and are included in the Unicode Standard for reasons of legacy encoding. However, their usage is discouraged by the Unicode core specification. Specifically related to IPA, various phonetic combinations of characters (typically affricates) are available as single code-points in the Unicode Standard, but are designated as \textsc{ligatures} or \textsc{digraphs} (confusingly both names appear interchangeably). Such glyphs might be used by software to produce a pleasing display, but they should not be hard-coded into the text itself. In the context of IPA, characters like the following ligatures should thus \emph{not} be used. Instead a combination of two characters is preferred: 
+	\item The uses of the apostrophe has led to long discussions on the Unicode
+       Standard email list. An English keyboard inputs
+       \textless{}`\textgreater{} APOSTROPHE at \uni{0027}, although the
+       \textit{preferred} Unicode apostrophe is the \textless{}'\textgreater{}
+       \textsc{right single quotation mark} at \uni{2019}. Yet the glottal
+       stop/glottalization/ejective marker is another completely different
+       character, the \textsc{modifier letter apostrophe} at \uni{02BC}, but
+       unfortunately looks mostly highly similar to \uni{2019}. 
+	\item There is ambiguous encoding of IPA segments within the Unicode Standard.
+       An example is the \uni{02C1} \textsc{modifier letter reversed glottal
+       stop} vs the \uni{02E4} \textsc{modifier letter small reversed glottal
+       stop} . Both are denoted in the Unicode Standard as the
+       \textsc{pharyngealized diacritic} and both appear in various resources
+       representing phonetic data online. This is thus an example for which the
+       Unicode Standard does not solve the linguistic standardization problem. 
+	\item There is at least one case in which the character name assigned by the
+       Unicode Consortium does not match the IPA's description: in the Unicode
+       Standard at \uni{01C3} is labeled \textsc{latin letter retroflex click},
+       but in IPA is an alveolar or postalveolar click (not retroflex). This
+       naming is probably best seen as a simple error in the Unicode Standard.
+\end{itemize}       
+  
+  
+\section{Pitfall: Ligature and digraphs}
+\label{pitfall-ligatures-digraphs}     
+       
+One important distinction to acknowledge is the difference between multigraphs
+and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
+< tʃ > or < ou >) while ligatures are single characters (e.g. <ʧ> \textsc{latin
+small letter tesh digraph} at \uni{02A7}). Ligatures arose in the context of
+printing easier-to-read texts, and are included in the Unicode Standard for
+reasons of legacy encoding. However, their usage is discouraged by the Unicode
+core specification. Specifically related to IPA, various phonetic combinations
+of characters (typically affricates) are available as single code-points in the
+Unicode Standard, but are designated as \textsc{ligatures} or \textsc{digraphs}
+(confusingly both names appear interchangeably). Such glyphs might be used by
+software to produce a pleasing display, but they should not be hard-coded into
+the text itself. In the context of IPA, characters like the following ligatures
+should thus \emph{not} be used. Instead a combination of two characters is
+preferred:
+      
+\begin{itemize} 
 	\item <ʣ> \textsc{latin small letter dz digraph} at \uni{02A3} (use <d> + <z> instead) 
 	\item <ʧ> \textsc{latin small letter tesh digraph} at \uni{02A7} (use <t> + <ʃ> instead) 
 	\item <ʩ> \textsc{latin small letter feng digraph} at \uni{02A9} (use <f> + <ŋ> instead) 
@@ -233,7 +271,7 @@ find both at the same time.
 Reversely, <ç> \textsc{latin small letter c with cedilla} at \uni{00E7} will be
 decomposed into <c> \textsc{latin small letter c} at \uni{0063} with 
 <\ \ {\large  ̧}> \textsc{combining cedilla} at \uni{0327}, 
-also if this is not intended.
+also if such a decompotion is not intended, because it is meaningless in IPA.
 
 \section{Pitfall: Different notions of diacritics}
 \label{pitfall-the-ipa-notion-of-diacritics-is-not-the-same-as-the-unicode-standards-notion-of-diacritics}

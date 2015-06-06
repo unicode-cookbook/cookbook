@@ -38,11 +38,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}Pitfall: Many IPA homoglyphs}{31}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Pitfall: No decomposition with some diacritics}{34}{section.3.4}
+\contentsline {section}{\numberline {3.4}Pitfall: Ligature and digraphs}{34}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Pitfall: Different notions of diacritics}{35}{section.3.5}
+\contentsline {section}{\numberline {3.5}Pitfall: No decomposition with some diacritics}{34}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Pitfall: No unique diacritic ordering}{36}{section.3.6}
+\contentsline {section}{\numberline {3.6}Pitfall: Different notions of diacritics}{35}{section.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.7}Pitfall: No unique diacritic ordering}{36}{section.3.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Orthography profiles}{39}{chapter.4}
 \defcounter {refsection}{0}\relax 
