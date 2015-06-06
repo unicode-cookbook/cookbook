@@ -24,9 +24,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.6}Pitfall: Canonical equivalence}{22}{section.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.7}Pitfall: Characters are not glyphs}{24}{section.2.7}
+\contentsline {section}{\numberline {2.7}Pitfall: Absence of canonical equivalence}{24}{section.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.8}Pitfall: File formats}{25}{section.2.8}
+\contentsline {section}{\numberline {2.8}Pitfall: Characters are not glyphs}{25}{section.2.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.9}Pitfall: File formats}{26}{section.2.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}IPA meets Unicode}{29}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -36,7 +38,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}Pitfall: Many IPA homoglyphs}{31}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Pitfall: No decomposition of strikethrough}{34}{section.3.4}
+\contentsline {section}{\numberline {3.4}Pitfall: No decomposition of overlay}{34}{section.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.5}Pitfall: Different notions of diacritics}{34}{section.3.5}
 \defcounter {refsection}{0}\relax 
@@ -55,6 +57,8 @@
 \contentsline {section}{\numberline {5.1}Introduction}{49}{section.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}Tokenization and error checking}{49}{section.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{50}{section.5.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{List of references}{51}{section*.9}
 \defcounter {refsection}{0}\relax 

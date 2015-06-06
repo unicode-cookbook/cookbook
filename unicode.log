@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  5 JUN 2015 15:04
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 02:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3243,10 +3243,133 @@ Missing character: There is no Å in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
  [24]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+\g_fontspec_family_CharisSIL_int=\count454
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"CharisSIL/ICU:script=latn;language=DFLT;"
+. 
+. * 'small caps' with NFSS spec.:
+. <->"CharisSIL/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"CharisSIL/B/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. <->"CharisSIL/B/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'italic' with NFSS spec.:
+. <->"CharisSIL/I/ICU:script=latn;language=DFLT;"
+. 
+. * 'italic small caps' with NFSS spec.:
+. <->"CharisSIL/I/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"CharisSIL/BI/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold italic small caps' with NFSS spec.:
+. <->"CharisSIL/BI/ICU:script=latn;language=DFLT;+smcp;"
+.................................................
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/mt-CharisSIL.cfg
+File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
+)
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
 Missing character: There is no ^^81 in font [./LSP/lsp-fonts/LinLibertine_R_B.o
 tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
- [25]
+
+[25] [26]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3258,16 +3381,10 @@ tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 . 
 . This font family consists of the following shapes:
 .................................................
- [26]) [27]
+ [27]) [28]
 \openout2 = `chapters/ipa_meets_unicode.aux'.
 
  (./chapters/ipa_meets_unicode.tex
-[28
-
-
-
-
-]
 Chapter 3.
 .................................................
 . fontspec info: "defining-font"
@@ -3297,7 +3414,12 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 . <p\> for [ɸ]. Two problems with SAMPA
  []
 
-[29]
+[29
+
+
+
+
+]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3642,7 +3764,7 @@ LaTeX Warning: Citation 'Vidal2001a' on page 32 undefined on input line 157.
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
 [] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
 [][][] [] [][][][][] []
@@ -3669,13 +3791,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--267
 . This font family consists of the following shapes:
 .................................................
  [36]
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 308--314
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 310--316
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
 
-Overfull \hbox (3.48233pt too wide) in paragraph at lines 320--327
+Overfull \hbox (3.48233pt too wide) in paragraph at lines 322--329
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lematic in [][][][]Moran (2012)[] becaus
 e they include only the centralized, mid-centralized
  []
@@ -3778,7 +3900,19 @@ Overfull \hbox (3.13821pt too wide) in paragraph at lines 39--44
 echanism for tokenizing an input stream
  []
 
-[49]) [50] (./backmatter.tex
+[49]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+) [50] (./backmatter.tex
 Overfull \hbox (24.9871pt too wide) in paragraph at lines 5--5
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 tionships among the language families of
  northern eurasia. In Vitalij V. Shevoroshkin
@@ -3823,12 +3957,12 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46855 strings out of 493734
- 827319 string characters out of 6146347
- 1279540 words of memory out of 5000000
- 49445 multiletter control sequences out of 15000+600000
- 22231 words of font info for 143 fonts, out of 8000000 for 9000
+ 47012 strings out of 493734
+ 833107 string characters out of 6146347
+ 1279539 words of memory out of 5000000
+ 49584 multiletter control sequences out of 15000+600000
+ 22279 words of font info for 149 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
- 66i,11n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,12n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on ./unicode.pdf (59 pages).
