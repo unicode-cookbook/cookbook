@@ -64,12 +64,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{50}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{51}{section*.9}
+\contentsline {chapter}{List of references}{51}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{53}{chapter*.10}
+\contentsline {chapter}{Index}{53}{chapter*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{53}{section*.11}
+\contentsline {section}{Name index}{53}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{53}{section*.12}
+\contentsline {section}{Language index}{53}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{53}{section*.13}
+\contentsline {section}{Subject index}{53}{section*.15}

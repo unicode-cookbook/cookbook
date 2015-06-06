@@ -449,76 +449,89 @@ apparently basic setting there exist a multitude of variants. In general, these
 different possibilities are well-understood in the software industry, and
 nowadays they normally do not lead to any problems for the end user. However,
 there are some situations in which a user is suddenly confronted with cryptic
-questions in the user interface involving abbreviations like \textsc{lf},
-\textsc{cr}, \textsc{be}, \textsc{le} or \textsc{bom}. Most prominently this
-occurs with exporting or importing data in several software applications from
-Microsoft. Basically, there are two different issues involved. First, the
-encoding of line breaks and, second, the encoding of the Unicode characters into
-\textsc{code units} and the related issue of \textsc{endianness}.
+questions in the user interface involving abbreviations like LF, CR, BE, LE or
+BOM. Most prominently this occurs with exporting or importing data in several
+software applications from Microsoft. Basically, there are two different issues
+involved. First, the encoding of line breaks and, second, the encoding of the
+Unicode characters into \textsc{code units} and the related issue of
+\textsc{endianness}.
+
+\subsubsection*{Line breaks}
 
 The issue with \textsc{line breaks} originated with the instructions necessary
 to direct a printing head to a new line. This involves two movements, known as
-\textsc{carriage return (cr)} (returning the printing head to the start of the
-line on the page) and \textsc{line feed (lf)} (moving the printing head to the
+\textsc{carriage return} (CR, returning the printing head to the start of the
+line on the page) and \textsc{line feed} (LF, moving the printing head to the
 next line on the page). Physically, these are two different events, but
 conceptually together they form one action. In the history of computing, various
-encodings of line breaks have been used (e.g.~\textsc{cr+lf}, \textsc{lf+cr},
-only \textsc{lf}, or only \textsc{cr}). Currently, all Unix and Unix-derived
-systems use only \textsc{lf} as code for a line break, while software from
-Microsoft still uses a combination of \textsc{cr} and \textsc{lf}. Today, most
-software applications recognize both options, and are able to deal with either
-encoding of line breaks (until rather recently this was not the case, and using
-the wrong line breaks could lead to unexpected errors). Our impression is that
-there is a strong tendency in software development to standardize on the simpler
-\textit{only \textsc{lf}} encoding for line breaks, and we suggest that
-everybody use this encoding whenever possible.
+encodings of line breaks have been used (e.g.~CR+LF, LF+CR, only LF, or only CR.
+Currently, all Unix and Unix-derived systems use only LF as code for a
+line break, while software from Microsoft still uses a combination of
+CR and LF. Today, most software applications recognize both
+options, and are able to deal with either encoding of line breaks (until rather
+recently this was not the case, and using the wrong line breaks could lead to
+unexpected errors). Our impression is that there is a strong tendency in
+software development to standardize on the simpler \textsc{only LF}
+encoding for line breaks, and we suggest that everybody use this encoding
+whenever possible.
 
-A code unit is a sequence of bits used to encode character in a encoding. The
-issue with code units stems from the question how to separate a stream of binary
-ones and zero, i.e.~bits, into chunks representing Unicode characters. Depending
-on different use cases, the Unicode Standard offers three different approaches,
-called UTF-32, UTF-16 and UTF-8.\footnote{The letters UTF stand for either
-\textsc{Unicode Transformation Format} or \textsc{Universal Coded Character Set
-Transformation Format}, but the notion of \textit{transformation} is a legacy
-notion that does not have meaning anymore. Nevertheless, the designation
-\textsc{UTF} (in capitals) has become an official standard designation, but
-should probably best be read as simply \textit{Unicode Format}.} The details of
-this issue is extensively explained in section 2.5 of the Unicode core
-specification. Basically, \textsc{UTF-32} encodes each character in 32 bits (32
-\textit{bi}nary un\textit{ts}, i.e.~32 zeros or ones) and is the most
-disk-space-consuming variant of the three. However, it is the most efficient
-encoding processing-wise, because the computer simply has to separate each
-character after 32 bits. In contrast, \textsc{UTF-16} uses only 16 bits per
-character, which is sufficient for the large majority of Unicode characters, but
-not for all of them. A special system of `surrogates' is defined within the
-Unicode Standard to deal with these additional characters. The effect is a more
-disk-space efficient encoding (approximately half the size), while adding a
-limited computational overhead. Finally, \textsc{UTF-8} is a more complex system
-that dynamically encodes each character with the minimally necessary number of
-bits, choosing either 8, 16 or 32 bits depending on the character. This
-represents again a strong reduction in space (particularly due to the high
-frequency of data using ASCII characters that need only 8 bits) at the expense
-of even more computation necessary to process such strings. However, because of
-the ever growing computational power of modern machines, the processing overhead
-is in most practical situations a non-issue, while saving on space is still
-useful, particularly for sending texts over the Internet. As an effect, UTF-8
-has become the dominant encoding on the World Wide Web. We suggest that
-everybody uses UTF-8 as their default encoding.
+\subsubsection*{Code units}
+
+The issue with \textsc{code units} stems from the question how to separate a
+stream of binary ones and zero, i.e.~bits, into chunks representing Unicode
+characters. A code unit is the sequence of bits used to encode a single
+character in an encoding. Depending on different use cases, the Unicode Standard
+offers three different approaches, called UTF-32, UTF-16 and UTF-8.\footnote{The
+letters UTF stand for either \textsc{Unicode Transformation Format} or
+\textsc{Universal Coded Character Set Transformation Format}, but the notion of
+\textit{transformation} is a legacy notion that does not have meaning anymore.
+Nevertheless, the designation \textsc{UTF} (in capitals) has become an official
+standard designation, but should probably best be read as simply Unicode
+Format.} The details of this issue is extensively explained in section 2.5 of
+the Unicode Core Specification \cite{Unicode2014}. 
+
+Basically, \textsc{UTF-32} encodes each character in 32 bits (32 \textit{bi}nary
+uni\textit{ts}, i.e.~32 zeros or ones) and is the most disk-space-consuming
+variant of the three. However, it is the most efficient encoding
+processing-wise, because the computer simply has to separate each character
+after 32 bits. 
+
+In contrast, \textsc{UTF-16} uses only 16 bits per character, which is
+sufficient for the large majority of Unicode characters, but not for all of
+them. A special system of \textsc{surrogates} is defined within the Unicode Standard to
+deal with these additional characters. The effect is a more disk-space efficient
+encoding (approximately half the size), while adding a limited computational
+overhead to manage the surrogates. 
+
+Finally, \textsc{UTF-8} is a more complex system that dynamically
+encodes each character with the minimally necessary number of bits, choosing
+either 8, 16 or 32 bits depending on the character. This represents again a
+strong reduction in space (particularly due to the high frequency of data using
+ASCII characters, which need only 8 bits) at the expense of even more computation
+necessary to process such strings. However, because of the ever growing
+computational power of modern machines, the processing overhead is in most
+practical situations a non-issue, while saving on space is still useful,
+particularly for sending texts over the Internet. As an effect, UTF-8 has become
+the dominant encoding on the World Wide Web. We suggest that everybody uses
+UTF-8 as their default encoding.
 
 A related problem is a general issue about how to store information in computer
 memory, which is known as \textsc{endianness}. The details of this issue go
-beyond the scope of this paper. It suffices to realize that there is a
+beyond the scope of this book. It suffices to realize that there is a
 difference between \textsc{big-endian} (BE) storage and \textsc{little-endian}
 (LE) storage. The Unicode Standard offers a possibility to explicitly indicate
-what kind of storage is used by starting a file with a so-called `Byte Order
-Mark' (BOM). However, the Unicode Standard does not require the usage of BOM,
+what kind of storage is used by starting a file with a so-called \textsc{Byte Order
+Mark} (BOM). However, the Unicode Standard does not require the usage of BOM,
 preferring other non-Unicode methods to signal to computers which kind of
-endianness is used. This issue only arises with UTF-32 and UTF-16 encodings, and
-when using the preferred UTF-8, using a BOM is theoretically possible, but
+endianness is used. This issue only arises with UTF-32 and UTF-16 encodings.
+When using the preferred UTF-8, using a BOM is theoretically possible, but
 strongly dispreferred according to the Unicode Standard. We suggest that
 everyone tries to prevent the inclusion of BOM in your data.
 
-Together with the topic of normalization (NFC vs.~NFD, see Pitfall 5 above),
+\ 
+
+\noindent Together with the topic of normalization (NFC vs.~NFD, see 
+Section~\ref{pitfall-canonical-equivalence} above),
 this leads to the following nicely cryptic file-encoding recommendation, namely
-to preferably use \textsc{UTF-8 in NFC without BOM with LF line breaks},
+to preferably use UTF-8 in NFC without BOM with LF line breaks,
 whenever possible.

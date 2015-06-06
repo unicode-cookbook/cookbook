@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 03:14
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 03:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -4036,11 +4036,11 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47013 strings out of 493734
- 833103 string characters out of 6146347
+ 47011 strings out of 493734
+ 832924 string characters out of 6146347
  1279539 words of memory out of 5000000
- 49585 multiletter control sequences out of 15000+600000
- 22279 words of font info for 149 fonts, out of 8000000 for 9000
+ 49584 multiletter control sequences out of 15000+600000
+ 22271 words of font info for 148 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,11n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
 
