@@ -29,7 +29,7 @@ Methods Phonetic Alphabet) was created to represent IPA symbols with 7-bit
 printable ASCII character sequences, e.g. <p\textbackslash> for [ɸ]. Two
 problems with SAMPA are that (i) it is only a partial encoding of the IPA and
 (ii) it encodes different languages in separate data tables, instead of a
-universal alphabet, like IPA. SAMPA tables are derived from phonemes appearing
+universal alphabet, like IPA.\@ SAMPA tables are derived from phonemes appearing
 in several European languages that were developed as part of a European
 Commission-funded project to address technical problems like electronic mail
 exchange (what is now simply called email). SAMPA is essentially a hack to work
@@ -49,7 +49,7 @@ SplitsTree4.\footnote{See \url{http://www.let.rug.nl/kleiweg/L04/} and
 \url{http://www.splitstree.org/}, respectively}
 
 There are a few pitfalls to be aware of when using the Unicode Standard
-to encode IPA. As we have said before, from a linguistic perspective it might
+to encode IPA.\@ As we have said before, from a linguistic perspective it might
 look like the Unicode Consortium is making incomprehensible decisions, but it is
 important to realize that the consortium has tried and is continuing to try to
 be as consistent as possible across a wide range of use cases, and it does place
@@ -95,7 +95,7 @@ blocks. With its diverse collection of symbols from various scripts and
 diacritics, the IPA is spread across 13 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see \cite[Appendix C]{Moran2012}.}
+are also included, see~\cite[Appendix~C]{Moran2012}.}
 
 \begin{itemize}
 	\item Basic Latin (30 characters), e.g. <a b c d e> 
@@ -141,10 +141,10 @@ could be in part due to the ease of typing the letter on an English keyboard (or
 for older descriptions, the typewriter). We found it to be exceedingly rare that
 a linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
 \citet[75]{Vidal2001a}, in which the author states: ``The definition of Pilagá
-/a/ as {[}+back{]} results from its behavior in certain phonological contexts.
+/a/ as [+back] results from its behavior in certain phonological contexts.
 For instance, uvular and pharyngeal consonants only occur around /a/ and /o/.
 Hence, the characterization of /a/ and /o/ as a natural class of (i.e.,
-{[}+back{]} vowels), as opposed to /i/ and /e/.''} They simply use <a> as
+[+back] vowels), as opposed to /i/ and /e/.''} They simply use <a> as
 long as there is no opposition to <ɑ>.\footnote{See Thomason's Language Log
 post, ``Why I don't love the International Phonetic Alphabet'' at:
 \url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
@@ -202,11 +202,11 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
 \label{pitfall-homoglyphs-in-IPA}
 
 It is not just the Unicode Standard that offers multiple options for encoding
-the IPA. Even the IPA specification itself offers some flexibility in how
+the IPA.\@ Even the IPA specification itself offers some flexibility in how
 transcriptions have to be encoded. There are a few cases in which the IPA
 explicitly allows for different options of transcribing the same phonetic
 content. This is understandable from a transcriber's point of view, but it is
-not acceptable for interoperability between resources written in IPA. We
+not acceptable for interoperability between resources written in IPA.\@ We
 consider it crucial to distinguish between ``lax'' IPA, for which it is
 sufficient that any phonetically-trained reader is able to understand the
 transcription, and ``strict'' IPA, which should be standardized on a single
@@ -221,9 +221,7 @@ turn below:
   \item The tie bar to indicate a close bond between sounds
 \end{itemize}
 
-\ 
-
-\noindent The first case in which the IPA allows for different encodings is the question
+The first case in which the IPA allows for different encodings is the question
 of how to transcribe tone. There is an old tradition to use diacritics on vowels
 to mark different tone levels, e.g. <ȅèée̋>.\footnote{There are at least two
 different Unicode homoglyphs for the low and high level tones, namely <\ ̀~>
@@ -262,7 +260,7 @@ above the base, like in <ŋ̊>, using the \textsc{combining ring above} at
 the ring below the base character, like in <ŋ̥>, so for strict IPA encoding we 
 propose to standardize on the ring below.
  
-Likewise, the tie bar to indicate affricates, doubly articulated consonants or
+Finally, the tie bar to indicate affricates, doubly articulated consonants or
 diphthongs can be placed either below or on top of the base characters, e.g.
 <\charis{t͡s}> or <\charis{t͜s}>. For strict IPA encoding we propose to standardize on the tie bar
 above the base characters, using Unicode \textsc{combining double inverted
@@ -292,20 +290,20 @@ should thus \emph{not} be used. Instead a combination of two characters is
 preferred:
       
 \begin{itemize} 
-	\item <ʣ> \textsc{latin small letter dz digraph} at \uni{02A3} 
-	  (use <dz> instead) 
-    \item <ʤ> \textsc{latin small letter dezh digraph} at \uni{02A4}
-      (use <dʒ> instead)
-    \item <ʥ> \textsc{latin small letter dz digraph with curl} at \uni{02A5}
+	\item[] <ʣ> \textsc{latin small letter dz digraph} at \uni{02A3} 
+	  (use <dz>) 
+    \item[] <ʤ> \textsc{latin small letter dezh digraph} at \uni{02A4}
+      (use <dʒ>)
+    \item[] <ʥ> \textsc{latin small letter dz digraph with curl} at \uni{02A5}
       (use <dʑ>)
-    \item <ʦ> \textsc{latin small letter ts digraph} at \uni{02A6} 
-      (use <ts> instead)
-	\item <ʧ> \textsc{latin small letter tesh digraph} at \uni{02A7} 
-	  (use <tʃ> instead) 
-    \item <ʨ> \textsc{latin small letter tc digraph with curl} at \uni{02A8}
+    \item[] <ʦ> \textsc{latin small letter ts digraph} at \uni{02A6} 
+      (use <ts>)
+	\item[] <ʧ> \textsc{latin small letter tesh digraph} at \uni{02A7} 
+	  (use <tʃ>) 
+    \item[] <ʨ> \textsc{latin small letter tc digraph with curl} at \uni{02A8}
       (use <tɕ>)
-   	\item <ʩ> \textsc{latin small letter feng digraph} at \uni{02A9}
-	  (use <fŋ> instead) 
+   	\item[] <ʩ> \textsc{latin small letter feng digraph} at \uni{02A9}
+	  (use <fŋ>) 
 \end{itemize}
 
 However, there are a few Unicode characters that are historically ligatures, but
@@ -313,10 +311,10 @@ which are today considered as simple characters in the Unicode Standard and thus
 should be used when writing IPA, namely:
 
 \begin{itemize}
-	\item <ɮ> \textsc{latin small letter lezh} at \uni{026E} 
-	\item <œ> \textsc{latin small ligature oe} at \uni{0153} 
-	\item <ɶ> \textsc{latin letter small capital oe} at \uni{0276} 
-	\item <æ> \textsc{latin small letter ae} at \uni{00E6} 
+	\item[] <ɮ> \textsc{latin small letter lezh} at \uni{026E} 
+	\item[] <œ> \textsc{latin small ligature oe} at \uni{0153} 
+	\item[] <ɶ> \textsc{latin letter small capital oe} at \uni{0276} 
+	\item[] <æ> \textsc{latin small letter ae} at \uni{00E6} 
 \end{itemize}
 
 \section{Pitfall: Missing decomposition}
@@ -328,12 +326,12 @@ in IPA that allow for multiple, apparently identical, encodings that are not
 canonical equivalent. The following elements should not be treated as diacritics 
 when encoding IPA in Unicode:
 \begin{itemize}
-  \item <\ {\large  ̡}\ > \textsc{combining palatalized hook below} at \uni{0321}
-  \item <\ \ {\large  ̢}> \textsc{combining retroflex hook below} at \uni{0322}
-  \item <\ \ {\large  ̵}> \textsc{combining short stroke overlay} at \uni{0335}
-  \item <\ \ {\large  ̷}> \textsc{combining short solidus overlay} at \uni{0337}
-  \item <\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334}
-  \item <{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}
+  \item[] <\ {\large  ̡}\ > \textsc{combining palatalized hook below} at \uni{0321}
+  \item[] <\ \ {\large  ̢}> \textsc{combining retroflex hook below} at \uni{0322}
+  \item[] <\ \ {\large  ̵}> \textsc{combining short stroke overlay} at \uni{0335}
+  \item[] <\ \ {\large  ̷}> \textsc{combining short solidus overlay} at \uni{0337}
+  \item[] <\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334}
+  \item[] <{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}
 \end{itemize} 
 
 There turn out to be a lot of characters in the IPA that could be conceived as 
@@ -347,7 +345,8 @@ find both at the same time.
 Reversely, <ç> \textsc{latin small letter c with cedilla} at \uni{00E7} will be
 decomposed into <c> \textsc{latin small letter c} at \uni{0063} with 
 <\ \ {\large  ̧}> \textsc{combining cedilla} at \uni{0327}, 
-also if such a decomposition is not intended, because it is meaningless in IPA.
+also if such a decomposition is not intended, because it is meaningless in 
+IPA.\@
 
 \section{Pitfall: Different notions of diacritics}
 \label{pitfall-different-notions-of-diacritics}
@@ -365,27 +364,32 @@ context of the IPA, the following IPA-diacritics are actually Spacing Modifier
 Letters in the Unicode Standard:
 
 \begin{itemize}
-	\item[] Length marks, namely 
+  
+	\item[] Length marks, namely: 
 	\begin{itemize}
 	  \item[] <ː> \textsc{modifier letter triangular colon} at \uni{02D0}
 	  \item[] <ˑ> \textsc{modifier letter half triangular colon} at \uni{02D1}
 	\end{itemize}
 	 
-	\item[] Tone letters, like 
+	\item[] Tone letters, like: 
 	\begin{itemize} 
 	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
 	  \item[] <˧> \textsc{modifier letter mid tone bar} at \uni{02E7}
 	  \item[] and others like this
 	\end{itemize}
 	
-	\item[] Superscript letters, like 
+	\item[] Superscript letters, like:
 	\begin{itemize}
 	  \item[] <ʰ> \textsc{modifier letter small h} at \uni{02B0}
 	  \item[] <ˤ> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
 	  \item[] and many more like this
 	\end{itemize}
 	
-	\item[] the rhotic hook <˞> \textsc{modifier letter rhotic hook} at \uni{02DE}
+	\item[] The rhotic hook:
+	\begin{itemize}
+	  \item[] <˞> \textsc{modifier letter rhotic hook} at \uni{02DE}
+	\end{itemize}
+	
 \end{itemize}
 
 Although linguists might expect these characters to belong together with the
@@ -413,6 +417,8 @@ sequences are used in a document, searching for <tʷʰ> will not find any
 instances of <tʰʷ>, and vice versa. Likewise, a creaky voiced syllabic dental
 nasal can be encoded in various orders, e.g. <n̪̰̩>, <n̩̰̪> or <n̩̪̰>.
 
+\subsubsection*{Canonical combining classes}
+
 In accordance with the absence of any specification of ordering in the IPA, the
 Unicode Standard likewise does not propose any standard orderings. Both leave it
 to the user to be consistent. However, there is one aspect of ordering for which
@@ -421,14 +427,15 @@ from a linguistic perspective. Diacritics in the Unicode Standard
 (i.e.~Combining Diacritical Marks, see above) are classified in Canonical
 Combining Classes. In practice, the diacritics are distinguished by their
 position relative to the base character.\footnote{See
-\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values for a
-detailed description}.} When applying a Unicode normalization (NFC or NFD, see
-previous section), the diacritics in different positions are put in a specified
-order. This process therefore harmonizes the difference between different
-encodings, for example, of a midtone creaky voice vowel <ḛ̄>. This grapheme
-cluster can be encoded either as <e> + <̄> + <̰> or as <e> + <̰> + <̄> . To
-prevent this twofold encoding, the Unicode Standard specifies the second
-ordering as canonical (diacritics below before diacritics above).
+\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values} for a
+detailed description.} When applying a Unicode normalization (NFC or NFD, see
+Section~\ref{pitfall-canonical-equivalence}), the diacritics in different
+positions are put in a specified order. This process therefore harmonizes the
+difference between different encodings, for example, of a midtone creaky voice
+vowel <ḛ̄>. This grapheme cluster can be encoded either as <e> + <\ \ ̄> + <\ \
+̰> or as <e> + <\ \ ̰> + <\ \ ̄>. To prevent this twofold encoding, the Unicode
+Standard specifies the second ordering as canonical (in this case, diacritics
+below are put before diacritics above).
 
 When encoding a string according to the Unicode Standard, it is possible to do
 this either using the NFC (composition) or NFD (decomposition) normalization.
@@ -438,29 +445,40 @@ sound preferable for a linguistic analysis, as the different diacritics are
 separated from the base characters. However, note that most attached elements
 like strokes (e.g.~in the <ɨ>), retroflex hooks (e.g.~in <ʐ>) or rhotic hooks
 (e.g.~in <ɝ>) will not be decomposed, but strangely enough a cedilla (like in
-<ç>) will be decomposed. In general, Unicode decomposition does not behave like
-a feature decomposition as expected from a linguistic perspective. It is thus
-important to consider Unicode decomposition only as a technical procedure, and
-not assume that it is linguistically sensible.
+<ç>) will be decomposed (see Section~\ref{pitfall-missing-decomposition}). In
+general, Unicode decomposition does not behave like a feature decomposition as
+expected from a linguistic perspective. It is thus important to consider Unicode
+decomposition only as a technical procedure, and not assume that it is
+linguistically sensible.
+
+\subsubsection*{Diacritic ordering}
 
 Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defines a set of diacritic ordering
-conventions.\footnote{The most recent version of these conventions is online:
+conventions.\footnote{The most recent version of these conventions is online at
 \url{http://phoible.github.io/conventions/}} The conventions are influenced by
 the linguistic literature, though some ad-hoc decisions had to be taken. The
 goal was to explicitly define all character sequences so that the vast variety
 of phonemes found in descriptions of the world's language were normalized into
 consistent character sequences, e.g.~if one language description uses and
-another , when both are intended to be phonetically equivalent, then a decision
+another, when both are intended to be phonetically equivalent, then a decision
 to normalize to one form was taken. For example, when a character sequence
 contains more than one character in Spacing Modifier Letters, the order that is
 proposed is the following (where <\textbar{}> indicates \textit{or} and <→>
 indicates \textit{precedes}):
 
 \begin{itemize}
-	\itemsep1pt\parskip0pt\parsep0pt 
-	\item \textsc{Spacing Modifier Letters ordering:} ( unreleased <̚> \textbar{} lateral release <ˡ> \textbar{} nasal release <ⁿ>) → ( palatalized <ʲ>) → ( labialized <ʷ>) → ( velarized <ˠ>) → ( pharyngealized <ˤ>) → ( aspirated <ʰ> \textbar{} ejective <ʼ>) → ( long <ː> \textbar{} half-long <ˑ>) 
+	\item[] \textsc{Spacing Modifier Letters ordering:}
+	\begin{itemize}
+	  \item[→] (unreleased <\ \ ̚ > \textbar{} lateral release <ˡ> \textbar{} nasal release <ⁿ>)
+	  \item[→] (palatalized <ʲ>)
+	  \item[→] (labialized <ʷ>)
+	  \item[→] (velarized <ˠ>)
+	  \item[→] (pharyngealized <ˤ>)
+	  \item[→] (aspirated <ʰ> \textbar{} ejective <ʼ>)
+	  \item[→] (long <ː> \textbar{} half-long <ˑ>)
+	\end{itemize}
 \end{itemize}
 
 If a character sequence contains more than one diacritic below the base
@@ -471,9 +489,16 @@ marker (for vowels, ATR gets put on between the place and laryngeal setting).
 So:
 
 \begin{itemize}
-	\itemsep1pt\parskip0pt\parsep0pt 
-	\item \textsc{Combining Diacritical Marks (below) ordering:} ( dental <t̪> \textbar{} laminal <t̻> \textbar{} apical <t̺>) → ( fronted <u̟> \textbar{} backed <e̠>) →( lowered <e̞> \textbar{} raised <e̝>) → ( ATR <e̘ e̙>) → ( voiced <s̬> \textbar{} voiceless <n̥> \textbar{} creaky voice <b̰> \textbar{} breathy voice <b̤>) → ( syllabic <n̩> \textbar{} non-syllabic <e̯>) 
-\end{itemize}
+	\item[] \textsc{Combining Diacritical Marks (below) ordering:}
+	\begin{itemize}	
+	  \item[→] (dental <t̪> \textbar{} laminal <t̻> \textbar{} apical <t̺>) 
+	  \item[→] (fronted <u̟> \textbar{} backed <e̠>)
+	  \item[→] (lowered <e̞> \textbar{} raised <e̝>) 
+	  \item[→] (ATR <e̘ e̙>)
+	  \item[→] (voiced <s̬> \textbar{} voiceless <n̥> \textbar{} creaky voice <b̰> \textbar{} breathy voice <b̤>)
+	  \item[→] (syllabic <n̩> \textbar{} non-syllabic <e̯>)
+	\end{itemize}
+ \end{itemize}
 
 Character sequences with diacritics above the base character were not
 problematic in \citet{Moran2012} because they include only the centralized,
@@ -484,6 +509,16 @@ conflicts. Building on the work of \citet{Moran2012}, if a character sequence
 contains more than one diacritic above the base character, we propose:
 
 \begin{itemize}
-	\itemsep1pt\parskip0pt\parsep0pt 
-	\item \textsc{Combining Diacritical Marks (above) ordering:} (centralized <ë> \textbar{} mid-centralized <e̽>) → (extra short <ĕ>) →( tone accents, e.g. <è> ) → ( Spacing Modifier Letters ) → ( tone letters, e.g. <e˦>) 
+	\item[] \textsc{Combining Diacritical Marks (above) ordering:}
+	\begin{itemize}
+	  \item[→] (centralized <ë> \textbar{} mid-centralized <e̽>)
+	  \item[→] (extra short <ĕ>)
+	  \item[→] (tone accents, e.g. <è>)
+	  \item[→] (Spacing Modifier Letters, see above)
+	  \item[→] (tone letters, e.g. <˦>)
+	\end{itemize}	 
 \end{itemize}
+
+
+
+
