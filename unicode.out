@@ -1,7 +1,7 @@
 \BOOKMARK [0][-]{chapter.1}{Writing\040Systems}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Introduction}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Encoding}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Linguistic\040Terminology}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Linguistic\040terminology}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{The\040Unicode\040approach}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{Unicode\040pitfalls}{}% 6
 \BOOKMARK [1][-]{section.2.1}{Wrong\040it\040is\040not}{chapter.2}% 7
@@ -17,7 +17,7 @@
 \BOOKMARK [1][-]{section.3.1}{The\040International\040Phonetic\040Alphabet}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.2}{Pitfall:\040No\040complete\040IPA\040code\040block}{chapter.3}% 18
 \BOOKMARK [1][-]{section.3.3}{Pitfall:\040Many\040IPA\040homoglyphs}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.4}{Pitfall:\040No\040decomposition\040of\040overlay}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Pitfall:\040No\040decomposition\040with\040some\040diacritics}{chapter.3}% 20
 \BOOKMARK [1][-]{section.3.5}{Pitfall:\040Different\040notions\040of\040diacritics}{chapter.3}% 21
 \BOOKMARK [1][-]{section.3.6}{Pitfall:\040No\040unique\040diacritic\040ordering}{chapter.3}% 22
 \BOOKMARK [0][-]{chapter.4}{Orthography\040profiles}{}% 23
