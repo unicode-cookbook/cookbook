@@ -40,36 +40,36 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Pitfall: Homoglyphs in IPA}{33}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Pitfall: Ligatures and digraphs}{34}{section.3.5}
+\contentsline {section}{\numberline {3.5}Pitfall: Ligatures and digraphs}{35}{section.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.6}Pitfall: Missing decomposition}{35}{section.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.7}Pitfall: Different notions of diacritics}{35}{section.3.7}
+\contentsline {section}{\numberline {3.7}Pitfall: Different notions of diacritics}{36}{section.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.8}Pitfall: No unique diacritic ordering}{36}{section.3.8}
+\contentsline {section}{\numberline {3.8}Pitfall: No unique diacritic ordering}{37}{section.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Orthography profiles}{39}{chapter.4}
+\contentsline {chapter}{\numberline {4}Orthography profiles}{41}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Characterizing writing systems}{39}{section.4.1}
+\contentsline {section}{\numberline {4.1}Characterizing writing systems}{41}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Informal description}{41}{section.4.2}
+\contentsline {section}{\numberline {4.2}Informal description}{43}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Formal specification}{42}{section.4.3}
+\contentsline {section}{\numberline {4.3}Formal specification}{44}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Use cases}{49}{chapter.5}
+\contentsline {chapter}{\numberline {5}Use cases}{51}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Introduction}{49}{section.5.1}
+\contentsline {section}{\numberline {5.1}Introduction}{51}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Tokenization and error checking}{49}{section.5.2}
+\contentsline {section}{\numberline {5.2}Tokenization and error checking}{51}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{50}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{52}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{51}{section*.11}
+\contentsline {chapter}{List of references}{53}{section*.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{53}{chapter*.12}
+\contentsline {chapter}{Index}{55}{chapter*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{53}{section*.13}
+\contentsline {section}{Name index}{55}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{53}{section*.14}
+\contentsline {section}{Language index}{55}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{53}{section*.15}
+\contentsline {section}{Subject index}{55}{section*.15}

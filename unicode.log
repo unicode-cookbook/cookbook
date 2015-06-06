@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  6 JUN 2015 17:23
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 00:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3641,35 +3641,82 @@ Package microtype Info: Loading generic settings for font family
 .................................................
 . fontspec info: "defining-font"
 . 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
 . Font family 'LinLibertine_R_B.otf(1)' created for font
 . 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
 . Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
 . = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
 . BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(2)' created for font 'LinLibertineO' with options
+. [].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"LinLibertineO/ICU:script=latn;language=DFLT;"
+. 
+. * 'small caps' with NFSS spec.:
+. <->"LinLibertineO/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"LinLibertineO/B/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. <->"LinLibertineO/B/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'italic' with NFSS spec.:
+. <->"LinLibertineO/I/ICU:script=latn;language=DFLT;"
+. 
+. * 'italic small caps' with NFSS spec.:
+. <->"LinLibertineO/I/ICU:script=latn;language=DFLT;+smcp;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"LinLibertineO/BI/ICU:script=latn;language=DFLT;"
+. 
+. * 'bold italic small caps' with NFSS spec.:
+. <->"LinLibertineO/BI/ICU:script=latn;language=DFLT;+smcp;"
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
 . 
 . This font family consists of the following shapes:
 .................................................
@@ -3714,6 +3761,36 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
  [34]
 .................................................
 . fontspec info: "defining-font"
@@ -3739,84 +3816,52 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
 
-Overfull \hbox (2.67204pt too wide) in paragraph at lines 271--277
+Overfull \hbox (2.67204pt too wide) in paragraph at lines 303--309
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Although many combinations of base chara
 cter with diacritic are treated as canon-
  []
 
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
 [35]
 .................................................
 . fontspec info: "defining-font"
@@ -3885,6 +3930,79 @@ cter with diacritic are treated as canon-
 .................................................
 . fontspec info: "defining-font"
 . 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+ [36]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
 . Font family 'LinLibertine_R_B.otf(1)' created for font
 . 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
 . Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
@@ -3894,13 +4012,13 @@ cter with diacritic are treated as canon-
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--354
+Underfull \hbox (badness 10000) in paragraph at lines 386--386
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
 [] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
 [][][] [] [][][][][] []
  []
 
-[36]
+[37]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3920,32 +4038,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--354
 . 
 . This font family consists of the following shapes:
 .................................................
- [37]
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 395--401
+
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 427--433
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
-
-Overfull \hbox (3.48233pt too wide) in paragraph at lines 407--414
+[38]
+Overfull \hbox (3.48233pt too wide) in paragraph at lines 439--446
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lematic in [][][][]Moran (2012)[] becaus
 e they include only the centralized, mid-centralized
  []
 
-) [38]
+) [39]
 \openout2 = `chapters/orthography_profiles.aux'.
 
- (./chapters/orthography_profiles.tex
+ (./chapters/orthography_profiles.tex [40
+
+
+
+
+]
 Chapter 4.
 
-LaTeX Warning: Reference `terminology' on page 39 undefined on input line 34.
+LaTeX Warning: Reference `terminology' on page 41 undefined on input line 34.
 
-[39
-
-
-
-
-] [40]
+[41] [42]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3954,7 +4072,7 @@ LaTeX Warning: Reference `terminology' on page 39 undefined on input line 34.
 . 
 . This font family consists of the following shapes:
 .................................................
- [41]
+ [43]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3974,7 +4092,7 @@ LaTeX Warning: Reference `terminology' on page 39 undefined on input line 34.
 . 
 . This font family consists of the following shapes:
 .................................................
- [42] [43]
+ [44] [45]
 Overfull \hbox (2.86923pt too wide) in paragraph at lines 176--177
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 highly useful to add extra information o
 n the graphemes in further columns,
@@ -3987,16 +4105,16 @@ Overfull \hbox (70.36864pt too wide) in paragraph at lines 186--187
 ar expression like: (?<=left)graphemes(?=right). 
  []
 
-[44] [45]
+[46] [47]
 Overfull \hbox (10.54152pt too wide) in paragraph at lines 213--214
 []\EU1/LinLibertine_R_B.otf(0)/m/sc/10.95 unicode normalization\EU1/LinLibertin
 e_R_B.otf(0)/m/n/10.95 , i.e. whether the text-string and profile should
  []
 
-[46]) [47]
+[48]) [49]
 \openout2 = `chapters/use_cases.aux'.
 
- (./chapters/use_cases.tex [48
+ (./chapters/use_cases.tex [50
 
 
 
@@ -4004,10 +4122,10 @@ e_R_B.otf(0)/m/n/10.95 , i.e. whether the text-string and profile should
 ]
 Chapter 5.
 
-LaTeX Warning: Reference `' on page 49 undefined on input line 32.
+LaTeX Warning: Reference `' on page 51 undefined on input line 32.
 
 
-LaTeX Warning: Reference `' on page 49 undefined on input line 33.
+LaTeX Warning: Reference `' on page 51 undefined on input line 33.
 
 
 Overfull \hbox (2.85716pt too wide) in paragraph at lines 28--34
@@ -4016,13 +4134,13 @@ ided by any Unicode Standard-compliant
  []
 
 
-LaTeX Warning: Reference `' on page 49 undefined on input line 36.
+LaTeX Warning: Reference `' on page 51 undefined on input line 36.
 
 
-LaTeX Warning: Reference `' on page 49 undefined on input line 37.
+LaTeX Warning: Reference `' on page 51 undefined on input line 37.
 
 
-LaTeX Warning: Reference `' on page 49 undefined on input line 41.
+LaTeX Warning: Reference `' on page 51 undefined on input line 41.
 
 
 Overfull \hbox (3.13821pt too wide) in paragraph at lines 39--44
@@ -4030,7 +4148,7 @@ Overfull \hbox (3.13821pt too wide) in paragraph at lines 39--44
 echanism for tokenizing an input stream
  []
 
-[49]
+[51]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -4042,13 +4160,13 @@ echanism for tokenizing an input stream
 . 
 . This font family consists of the following shapes:
 .................................................
-) [50] (./backmatter.tex
+) [52] (./backmatter.tex
 Overfull \hbox (24.9871pt too wide) in paragraph at lines 5--5
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 tionships among the language families of
  northern eurasia. In Vitalij V. Shevoroshkin
  []
 
-[51
+[53
 
 
 
@@ -4060,13 +4178,13 @@ Overfull \hbox (6.01447pt too wide) in paragraph at lines 5--5
 Principles of Practical Orthography for African
  []
 
-[52]
+[54]
 No file unicode.and.
 No file unicode.lnd.
 )
 No file unicode.snd.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
-[53]
+[55]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (./unicode.aux (./chapters/introduction.aux) (./chapters/pitfalls.aux)
 (./chapters/ipa_meets_unicode.aux) (./chapters/orthography_profiles.aux)
@@ -4087,12 +4205,12 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47040 strings out of 493734
- 833439 string characters out of 6146347
- 1279540 words of memory out of 5000000
- 49602 multiletter control sequences out of 15000+600000
- 22287 words of font info for 150 fonts, out of 8000000 for 9000
+ 47078 strings out of 493734
+ 834712 string characters out of 6146347
+ 1279557 words of memory out of 5000000
+ 49634 multiletter control sequences out of 15000+600000
+ 22506 words of font info for 156 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,11n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ./unicode.pdf (59 pages).
+Output written on ./unicode.pdf (61 pages).

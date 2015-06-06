@@ -199,43 +199,75 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
        typed as <!> \textsc{exclamation mark} at \uni{0021}. \end{itemize}       
 
 \section{Pitfall: Homoglyphs in IPA}
+\label{pitfall-homoglyphs-in-IPA}
 
-It is not just the Unicode Standard that offers multiple options for encoding 
-the IPA. Even the IPA itself offers some flexibility in how specific meaningful 
-transcriptions have to be encoded. There are a few cases in which the IPA 
-explicitly allows for different options of transcribing the same phonetic 
-content. This is understandable from a transcriber's point of view, but it is 
-not good interoperability between resources supposedly written in IPA. We 
-consider it crucial to distinguish between ``lax'' IPA, in which the 
-phonetically-trained reader should be able to understand the transcription, and 
-``strict'' IPA, which should be standardized on a single encoding so search will 
-work across resources.
+It is not just the Unicode Standard that offers multiple options for encoding
+the IPA. Even the IPA specification itself offers some flexibility in how
+transcriptions have to be encoded. There are a few cases in which the IPA
+explicitly allows for different options of transcribing the same phonetic
+content. This is understandable from a transcriber's point of view, but it is
+not acceptable for interoperability between resources written in IPA. We
+consider it crucial to distinguish between ``lax'' IPA, for which it is
+sufficient that any phonetically-trained reader is able to understand the
+transcription, and ``strict'' IPA, which should be standardized on a single
+unique encoding for each sound, so search will work across resources.
 
-Another example we commonly encounter is the use of <g> \textsc{latin small
-letter g} at \uni{0067}, instead of the Unicode Standard IPA character for the
-voiced velar stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One
-begins to question whether this issue is at all apparent to the working
-linguist, or if they simply use the \uni{0067} because it is easily keyboarded
-and thus saves time, whereas the latter must be cumbersomely inserted as a
-special symbol in most software.\footnote{This issue was recently addressed by the International
-Phonetic Association, which has taken the stance that both the keyboard
-\textsc{latin small letter g} and the \textsc{latin small letter script g} are
-valid input characters for the voiced velar plosive. Unfortunately, this
-decision further introduces ambiguity for linguists trying to adhere to a strict
-Unicode Standard IPA encoding.}
+The first case in which the IPA allows for different encodings is the question
+of how to transcribe tone. There is an old tradition to use diacritics on vowels
+to mark different tone levels, e.g. <ȅèée̋>.\footnote{There are at least two
+different Unicode homoglyphs for the low and high level tones, namely <\ ̀~>
+\textsc{combining grave tone mark} at \unif{0340} vs.\@ <\ ̀~> \textsc{combining
+grave accent} at \unif{0300} for low tone, and <\ ́~> \textsc{combining acute tone
+mark} at \unif{0341} vs.\@ <\ ́~> \textsc{combining acute accent} at \unif{0301}
+for high tone.} The IPA also proposes a less widespread used, but more
+consistent option of tone letters, e.g. <˥˦˧˨˩>. Tone letters in the IPA have
+five different levels, and sequences of these letters can be used to indicate
+contours. Well-designed fonts will even merge a sequence of tone letters into a
+contour. For example, compare the font Linux Libertine, which does not merge
+tone letters <{\fontspec{LinLibertineO}˥˨˧˩}>, with the font CharisSIL, which
+merges this sequence of four tone letters into a single contour <\charis{˥˨˧˩}>.
+For strict IPA encoding we propose to standardize on tone letters.
 
-\begin{itemize}
-  \item tone marks (prefer tone symbols)
-  \item marking of <g>  \item marking of voiceless with ring diacritic
-  \item tie bar
-\end{itemize}
+Second, we commonly encounter the use of <g> \textsc{latin small letter g} at
+\uni{0067}, instead of the Unicode Standard IPA character for the voiced velar
+stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to
+question whether this issue is at all apparent to the working linguist, or if
+they simply use the \uni{0067} because it is easily keyboarded and thus saves
+time, whereas the latter must be cumbersomely inserted as a special symbol in
+most software. This issue was recently addressed by The International Phonetic
+Association has taken the stance that both the keyboard \textsc{latin small
+letter g} and the \textsc{latin small letter script g} are valid input
+characters for the voiced velar plosive. Unfortunately, this decision further
+introduces ambiguity for linguists trying to adhere to a strict Unicode Standard
+IPA encoding. For strict IPA encoding we propose to standardize on the more 
+idiosyncratic \textsc{latin small letter script g} at \uni{0261}.
+
+Third, for marking marking of voiceless pronunciation of voiced segments the IPA
+uses the ring diacritic. Originally, the ring should be placed below the 
+base character, like in <m̥>, using the \textsc{combining ring below} at \uni{0325}. 
+However, in letters with long descenders the IPA also allows to put the ring 
+above the base, like in <ŋ̊>, using the \textsc{combining ring above} at 
+\uni{030A}. Yet, proper font design does not have any problem with rendering 
+the ring below the base character, like in <ŋ̥>, so for strict IPA encoding we 
+propose to standardize on the ring below.
+ 
+Likewise, the tie bar to indicate affricates, doubly articulated consonants or
+diphthongs can be placed either below or on top of the base characters, e.g.
+<\charis{t͡s}> or <\charis{t͜s}>. For strict IPA encoding we propose to standardize on the tie bar
+above the base characters, using Unicode \textsc{combining double inverted
+breve} at \uni{0361}. Note that this Unicode character is placed between the two 
+base characters to be combined. In principle, it is possible to combine more 
+than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
+necessary, we consider this possible, even though the rendering will never look 
+good.
+
 
 \section{Pitfall: Ligatures and digraphs}
 \label{pitfall-ligatures-digraphs}     
        
 One important distinction to acknowledge is the difference between multigraphs
 and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
-< tʃ > or < ou >) while ligatures are single characters (e.g. <ʧ> \textsc{latin
+<tʃ> or <ou>) while ligatures are single characters (e.g. <ʧ> \textsc{latin
 small letter tesh digraph} at \uni{02A7}). Ligatures arose in the context of
 printing easier-to-read texts, and are included in the Unicode Standard for
 reasons of legacy encoding. However, their usage is discouraged by the Unicode
