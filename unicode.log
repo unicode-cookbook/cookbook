@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 01:24
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 01:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3366,10 +3366,38 @@ File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
 . 
 . This font family consists of the following shapes:
 .................................................
-Missing character: There is no ^^81 in font [./LSP/lsp-fonts/LinLibertine_R_B.o
-tf]/ICU:script=latn;language=DFLT;mapping=tex-text;+liga;+pnum;!
 
-[25] [26]
+[25]
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font Courier does not contain any OpenType `Script' information.
+.................................................
+\g_fontspec_family_Courier_int=\count455
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'Courier(0)' created for font 'Courier' with options [].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"Courier/AAT:"
+. 
+. * 'bold' with NFSS spec.:
+. <->"Courier/B/AAT:"
+. 
+. * 'italic' with NFSS spec.:
+. <->"Courier/I/AAT:"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"Courier/BI/AAT:"
+.................................................
+Package microtype Info: Loading generic settings for font family
+(microtype)             `Courier' (encoding: EU1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [26]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3533,7 +3561,7 @@ LaTeX Warning: Citation 'Vidal2001a' on page 32 undefined on input line 147.
 . 
 . Font Monaco does not contain any OpenType `Script' information.
 .................................................
-\g_fontspec_family_Monaco_int=\count455
+\g_fontspec_family_Monaco_int=\count456
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -4235,11 +4263,11 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47082 strings out of 493734
- 834708 string characters out of 6146347
+ 47122 strings out of 493734
+ 835500 string characters out of 6146347
  1279558 words of memory out of 5000000
- 49638 multiletter control sequences out of 15000+600000
- 22506 words of font info for 156 fonts, out of 8000000 for 9000
+ 49665 multiletter control sequences out of 15000+600000
+ 22546 words of font info for 161 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,12n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
 
