@@ -63,14 +63,14 @@ contextually-determined glyphs, ligatures are (intended) artifacts of text
 processing instructions. Finally, a single glyph may be a part of a
 character, as exemplified by diacritics.
 
-Further, the rendering of a glyph is also always dependent on the font being
-used. For example, the Unicode character \textsc{latin small letter g} appears
-as <g> and <{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts,
-respectively, because their typefaces are designed differently. Furthermore,
-font face may change the visual appearance of a character, for example Times New
-Roman two-story <a> changes to a single-story a in italics <\emph{a}>. This
-becomes a real problem for some phonetic typesetting (see
-Section~\ref{pitfall-ipa-homoglyphs}).
+Further, the rendering of a glyph is dependent on the font being used. For
+example, the Unicode character \textsc{latin small letter g} appears as <g> and
+<{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts, respectively,
+because their typefaces are designed differently. Furthermore, font face may
+change the visual appearance of a character, for example Times New Roman
+two-story <{\fontspec{Times New Roman}a}> changes to a single-story a in italics
+<\emph{\fontspec{Times New Roman}a}>. This becomes a real problem for some
+phonetic typesetting (see Section~\ref{pitfall-ipa-homoglyphs}).
 
 In sum, character-to-glyph mappings are complex technological issues that the
 Unicode Consortium has had to address in the development of the Unicode
@@ -487,7 +487,7 @@ profiles (see Chapter~\ref{orthography-profiles}).
 % ==========================
 
 Unicode is a character encoding standard, but these characters of course
-actually appear inside some kind of file. The most basic Unicode-based file
+actually appear inside some kind of computer file. The most basic Unicode-based file
 format is pure line-based text, i.e.~strings of Unicode-encoded characters
 separated by line breaks (note that these line breaks are what for most people
 intuitively corresponds to paragraph breaks). Unfortunately, even within this
@@ -499,26 +499,25 @@ questions in the user interface involving abbreviations like LF, CR, BE, LE or
 BOM.\@ Most prominently this occurs with exporting or importing data in several
 software applications from Microsoft. Basically, there are two different issues
 involved. First, the encoding of line breaks and, second, the encoding of the
-Unicode characters into \textsc{code units} and the related issue of
-\textsc{endianness}.
+Unicode characters into code units and the related issue of endianness.
 
 \subsubsection*{Line breaks}
 
 The issue with \textsc{line breaks} originated with the instructions necessary
-to direct a printing head to a new line. This involves two movements, known as
-\textsc{carriage return} (CR, returning the printing head to the start of the
-line on the page) and \textsc{line feed} (LF, moving the printing head to the
-next line on the page). Physically, these are two different events, but
-conceptually together they form one action. In the history of computing, various
-encodings of line breaks have been used (e.g.~CR+LF, LF+CR, only LF, or only
-CR). Currently, all Unix and Unix-derived systems use only LF as code for a
-line break, while software from Microsoft still uses a combination of CR and
-LF.\@ Today, most software applications recognize both options, and are able to
-deal with either encoding of line breaks (until rather recently this was not the
-case, and using the wrong line breaks could lead to unexpected errors). Our
-impression is that there is a strong tendency in software development to
-standardize on the simpler \textsc{only LF} encoding for line breaks, and we
-suggest that everybody use this encoding whenever possible.
+to direct a printing head of a physical printer to a new line. This involves two
+movements, known as \textsc{carriage return} (CR, returning the printing head to
+the start of the line on the page) and \textsc{line feed} (LF, moving the
+printing head to the next line on the page). Physically, these are two different
+events, but conceptually together they form one action. In the history of
+computing, various encodings of line breaks have been used (e.g.~CR+LF, LF+CR,
+only LF, or only CR). Currently, all Unix and Unix-derived systems use only LF
+as code for a line break, while software from Microsoft still uses a combination
+of CR+LF.\@ Today, most software applications recognize both options, and
+are able to deal with either encoding of line breaks (until rather recently this
+was not the case, and using the wrong line breaks would lead to unexpected
+errors). Our impression is that there is a strong tendency in software
+development to standardize on the simpler ``only LF'' encoding for line
+breaks, and we suggest that everybody use this encoding whenever possible.
 
 \subsubsection*{Code units}
 
@@ -527,13 +526,12 @@ stream of binary ones and zero, i.e.~bits, into chunks representing Unicode
 characters. A code unit is the sequence of bits used to encode a single
 character in an encoding. Depending on different use cases, the Unicode Standard
 offers three different approaches, called UTF-32, UTF-16 and UTF-8.\footnote{The
-letters UTF stand for either \textsc{Unicode Transformation Format} or
-\textsc{Universal Coded Character Set Transformation Format}, but the notion of
-\textit{transformation} is a legacy notion that does not have meaning anymore.
-Nevertheless, the designation \textsc{UTF} (in capitals) has become an official
-standard designation, but should probably best be read as simply Unicode
-Format.} The details of this issue is extensively explained in section 2.5 of
-the Unicode Core Specification~\cite{Unicode2014}. 
+letters UTF stand for \textsc{Unicode Transformation Format}, but the notion of
+``transformation'' is a legacy notion that does not have meaning anymore.
+Nevertheless, the designation UTF (in capitals) has become an official
+standard designation, but should probably best be read as simply ``Unicode
+Format.''} The details of this issue is extensively explained in section 2.5 of
+the Unicode Core Specification~\citet{Unicode2014}. 
 
 Basically, \textsc{UTF-32} encodes each character in 32 bits (32 \textit{bi}nary
 uni\textit{ts}, i.e.~32 zeros or ones) and is the most disk-space-consuming
@@ -548,11 +546,11 @@ deal with these additional characters. The effect is a more disk-space efficient
 encoding (approximately half the size), while adding a limited computational
 overhead to manage the surrogates. 
 
-Finally, \textsc{UTF-8} is a more complex system that dynamically
-encodes each character with the minimally necessary number of bits, choosing
-either 8, 16 or 32 bits depending on the character. This represents again a
-strong reduction in space (particularly due to the high frequency of data using
-ASCII characters, which need only 8 bits) at the expense of even more computation
+Finally, \textsc{UTF-8} is a more complex system that dynamically encodes each
+character with the minimally necessary number of bits, choosing either 8, 16 or
+32 bits depending on the character. This represents again a strong reduction in
+space (particularly due to the high frequency of data using erstwhile ASCII
+characters, which need only 8 bits) at the expense of even more computation
 necessary to process such strings. However, because of the ever growing
 computational power of modern machines, the processing overhead is in most
 practical situations a non-issue, while saving on space is still useful,
@@ -565,8 +563,8 @@ memory, which is known as \textsc{endianness}. The details of this issue go
 beyond the scope of this book. It suffices to realize that there is a
 difference between \textsc{big-endian} (BE) storage and \textsc{little-endian}
 (LE) storage. The Unicode Standard offers a possibility to explicitly indicate
-what kind of storage is used by starting a file with a so-called \textsc{Byte Order
-Mark} (BOM). However, the Unicode Standard does not require the usage of BOM,
+what kind of storage is used by starting a file with a so-called \textsc{byte order
+mark} (BOM). However, the Unicode Standard does not require the usage of BOM,
 preferring other non-Unicode methods to signal to computers which kind of
 endianness is used. This issue only arises with UTF-32 and UTF-16 encodings.
 When using the preferred UTF-8, using a BOM is theoretically possible, but
