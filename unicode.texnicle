@@ -79,13 +79,13 @@
         <attribute name="name" type="string">unicode</attribute>
         <attribute name="folder" type="string">/Users/cysouw/Documents/Github/Writing/Unicode Cookbook</attribute>
         <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z112"></relationship>
-        <relationship name="selected" type="1/1" destination="FILE" idrefs="z122"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z125"></relationship>
         <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
         <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z104"></relationship>
-        <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z124 z114 z108 z117 z118 z123 z116 z107 z113 z112 z122 z106 z110 z125 z119 z105"></relationship>
+        <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z123 z113 z116 z117 z124 z114 z118 z108 z119 z107 z110 z105 z112 z125 z122 z106"></relationship>
     </object>
     <object type="UISETTINGS" id="z104">
-        <attribute name="pdfviewscrollrect" type="string">{{0, 32039.703458707678}, {490, 644.1845139671932}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 32040.162162165911}, {490, 660.50675675434468}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -300,11 +300,11 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z122">
-        <attribute name="wasopen" type="bool">0</attribute>
-        <attribute name="visiblerect" type="string">{{5, 0}, {579, 772}}</attribute>
-        <attribute name="lasteditdate" type="date">455194237.44363701343536376953</attribute>
+        <attribute name="wasopen" type="bool">-1</attribute>
+        <attribute name="visiblerect" type="string">{{0, 0}, {579, 772}}</attribute>
+        <attribute name="lasteditdate" type="date">455395734.82500201463699340820</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">455317579.53618097305297851562</attribute>
+        <attribute name="fileloaddate" type="date">455395734.48807400465011596680</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="cursor" type="string">{9759, 0}</attribute>
         <attribute name="sortindex" type="int32">14</attribute>
@@ -354,13 +354,13 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z125">
-        <attribute name="wasopen" type="bool">-1</attribute>
-        <attribute name="visiblerect" type="string">{{0, 4602}, {574, 772}}</attribute>
-        <attribute name="lasteditdate" type="date">455326686.13600599765777587891</attribute>
+        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="visiblerect" type="string">{{0, 6246}, {574, 772}}</attribute>
+        <attribute name="lasteditdate" type="date">455395888.82596302032470703125</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">455326692.88343298435211181641</attribute>
+        <attribute name="fileloaddate" type="date">455395890.11115700006484985352</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{24669, 0}</attribute>
+        <attribute name="cursor" type="string">{33618, 0}</attribute>
         <attribute name="sortindex" type="int32">12</attribute>
         <attribute name="name" type="string">pitfalls.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>

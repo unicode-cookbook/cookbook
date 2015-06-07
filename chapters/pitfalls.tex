@@ -35,45 +35,47 @@ engage in the development of the standard itself, an effort that is highly
 appreciated by the Unicode Consortium.
 
 % ==========================
-\section{Pitfall: Blocks}
-\label{pitfall-blocks}
+\section{Pitfall: Characters are not glyphs}
+\label{pitfall-characters-are-not-glyphs}
 % ==========================
 
-The Unicode code space is subdivided into blocks of contiguous code points. For
-example, the block called \textsc{Cyrillic} runs from \uni{0400} till
-\uni{04FF}. These blocks arose as an attempt at ordering the enormous amount of
-characters in Unicode, but the ideas of blocks very quickly ran into problems.
-First, the size of a block is fixed, so when a block is full, a new block will
-have to be instantiated somewhere further in the code space. For example, this
-led to the blocks \textsc{Cyrillic Supplement}, \textsc{Cyrillic Extended-A}
-(both of which are also already full) and \textsc{Cyrillic Extended-B}. Second,
-when a specific character already exists, then it is not duplicated in another
-block, although the name of the block might indicate that a specific symbol
-should be available there. In general, names of blocks are just an approximate
-indication of the kind of characters that will be in the block.
+A central principle of Unicode is the distinction between character and glyph. A
+character is the abstract notion of a symbol in a writing system, while a glyph
+is the concrete drawing of such a symbol. In practice, there is a complex
+interaction between characters and glyphs. A single Unicode character may of
+course be rendered as a single glyph. However, a character may also be a piece
+of a glyph, or vice-versa. Actually, all possible relations between glyphs and
+characters are attested.
 
-The problem with blocks arises because finding the right character among the
-thousands of Unicode characters is not easy. Many software applications present
-blocks as a primary search mechanism, because the block names suggest where to
-look for a particular character. However, when a user searches for an IPA
-character in the block \textsc{IPA Extensions}, then many IPA characters will not
-be found there. For example, the velar nasal <ŋ> is not part of the block
-\textsc{IPA Extensions} because it was already included as \textsc{latin small letter
-eng} at \uni{014B} in the block \textsc{Latin Extensions-A}.
+First, a single character may have different contextually determined glyphs. For
+example, characters in writing systems like Hebrew and Arabic have different
+glyphs depending on where they appear in a word. Some letters in Hebrew change
+their form at the end of the word, and in Arabic, primary letters have four
+contextually-sensitive variants (isolated, word initial, medial and final).
+Second, a single character may be rendered as a sequence of multiple glyphs. For
+example, in Tamil one Unicode character may result in a combination of a
+consonant and vowel, which are rendered as two adjacent glyphs by fonts that
+supports Tamil. Third, a single glyph may be a combination of multiple
+characters. For example, the ligature <ﬁ>, a single glyph, is the result of two
+characters, <f> and <i>, that have undergone glyph substitution by font
+rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
+contextually-determined glyphs, ligatures are (intended) artifacts of text
+processing instructions. Finally, a single glyph may be a part of a
+character, as exemplified by diacritics.
 
-In general, finding a specific character in the Unicode Standard is often not
-trivial. The names of the blocks can help, but it is not (and never was supposed
-to be) a foolproof structure. It is not the goal nor aim of the Unicode
-Consortium to provide a user interface to the Unicode Standard. If one often
-encounters the problem of needing to find a suitable character, there are
-various other useful services for end-users available.\footnote{The Unicode
-website offers a basic interface to the code charts at
-\url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
-particularly like PopChar from Macility, available for both Macintosh and
-Windows. However, there are also various free websites that offer search interfaces
-to the Unicode code tables, like \url{http://unicode-search.net} or
-\url{http://unicode-search.net}. A further useful approach for searching characters
-using shape matching is \url{http://shapecatcher.com}.}
+Further, the rendering of a glyph is also always dependent on the font being
+used. For example, the Unicode character \textsc{latin small letter g} appears
+as <g> and <{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts,
+respectively, because their typefaces are designed differently. Furthermore,
+font face may change the visual appearance of a character, for example Times New
+Roman two-story <a> changes to a single-story a in italics <\emph{a}>. This
+becomes a real problem for some phonetic typesetting (see
+Section~\ref{pitfall-ipa-homoglyphs}).
+
+In sum, character-to-glyph mappings are complex technological issues that the
+Unicode Consortium has had to address in the development of the Unicode
+Standard, but for the lay user they can be utterly confusing because visual
+rendering does not (necessarily) indicate logical encoding.
 
 % ==========================
 \section{Pitfall: Missing glyphs}
@@ -196,6 +198,47 @@ at
 \url{http://scripts.sil.org/cms/scripts/page.php?site\_id=projects\&item\_id=graphite\_home}.}
 In both of these systems, a larger burden is placed on the description inside
 the font.
+
+% ==========================
+\section{Pitfall: Blocks}
+\label{pitfall-blocks}
+% ==========================
+
+The Unicode code space is subdivided into blocks of contiguous code points. For
+example, the block called \textsc{Cyrillic} runs from \uni{0400} till
+\uni{04FF}. These blocks arose as an attempt at ordering the enormous amount of
+characters in Unicode, but the ideas of blocks very quickly ran into problems.
+First, the size of a block is fixed, so when a block is full, a new block will
+have to be instantiated somewhere further in the code space. For example, this
+led to the blocks \textsc{Cyrillic Supplement}, \textsc{Cyrillic Extended-A}
+(both of which are also already full) and \textsc{Cyrillic Extended-B}. Second,
+when a specific character already exists, then it is not duplicated in another
+block, although the name of the block might indicate that a specific symbol
+should be available there. In general, names of blocks are just an approximate
+indication of the kind of characters that will be in the block.
+
+The problem with blocks arises because finding the right character among the
+thousands of Unicode characters is not easy. Many software applications present
+blocks as a primary search mechanism, because the block names suggest where to
+look for a particular character. However, when a user searches for an IPA
+character in the block \textsc{IPA Extensions}, then many IPA characters will not
+be found there. For example, the velar nasal <ŋ> is not part of the block
+\textsc{IPA Extensions} because it was already included as \textsc{latin small letter
+eng} at \uni{014B} in the block \textsc{Latin Extensions-A}.
+
+In general, finding a specific character in the Unicode Standard is often not
+trivial. The names of the blocks can help, but it is not (and never was supposed
+to be) a foolproof structure. It is not the goal nor aim of the Unicode
+Consortium to provide a user interface to the Unicode Standard. If one often
+encounters the problem of needing to find a suitable character, there are
+various other useful services for end-users available.\footnote{The Unicode
+website offers a basic interface to the code charts at
+\url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
+particularly like PopChar from Macility, available for both Macintosh and
+Windows. However, there are also various free websites that offer search interfaces
+to the Unicode code tables, like \url{http://unicode-search.net} or
+\url{http://unicode-search.net}. A further useful approach for searching characters
+using shape matching is \url{http://shapecatcher.com}.}
 
 % ==========================
 \section{Pitfall: Homoglyphs}
@@ -394,49 +437,6 @@ However, all these characters are not canonical equivalent with a combination of
 their base characters with the combining overlay or combining hook.
 
 % ==========================
-\section{Pitfall: Characters are not glyphs}
-\label{pitfall-characters-are-not-glyphs}
-% ==========================
-
-A central principle of Unicode is the distinction between character and glyph. A
-character is the abstract notion of a symbol in a writing system, while a glyph
-is the concrete drawing of such a symbol. In practice, there is a complex
-interaction between characters and glyphs. A single Unicode character may of
-course be rendered as a single glyph. However, a character may also be a piece
-of a glyph, or vice-versa. Actually, all possible relations between glyphs and
-characters are attested.
-
-First, a single character may have different contextually determined glyphs. For
-example, characters in writing systems like Hebrew and Arabic have different
-glyphs depending on where they appear in a word. Some letters in Hebrew change
-their form at the end of the word, and in Arabic, primary letters have four
-contextually-sensitive variants (isolated, word initial, medial and final).
-Second, a single character may be rendered as a sequence of multiple glyphs. For
-example, in Tamil one Unicode character may result in a combination of a
-consonant and vowel, which are rendered as two adjacent glyphs by fonts that
-supports Tamil. Third, a single glyph may be a combination of multiple
-characters. For example, the ligature <ﬁ>, a single glyph, is the result of two
-characters, <f> and <i>, that have undergone glyph substitution by font
-rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
-contextually-determined glyphs, ligatures are (intended) artifacts of text
-processing instructions. Finally, a single glyph may be a part of a
-character, as exemplified by diacritics.
-
-Further, the rendering of a glyph is also always dependent on the font being
-used. For example, the Unicode character \textsc{latin small letter g} appears
-as <g> and <{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts,
-respectively, because their typefaces are designed differently. Furthermore,
-font face may change the visual appearance of a character, for example Times New
-Roman two-story <a> changes to a single-story a in italics <\emph{a}>. This
-becomes a real problem for some phonetic typesetting (see
-Section~\ref{pitfall-ipa-homoglyphs}).
-
-In sum, character-to-glyph mappings are complex technological issues that the
-Unicode Consortium has had to address in the development of the Unicode
-Standard, but for the lay user they can be utterly confusing because visual
-rendering does not (necessarily) indicate logical encoding.
-
-% ==========================
 \section{Pitfall: File formats}
 \label{pitfall-file-formats}
 % ==========================
@@ -528,9 +528,12 @@ When using the preferred UTF-8, using a BOM is theoretically possible, but
 strongly dispreferred according to the Unicode Standard. We suggest that
 everyone tries to prevent the inclusion of BOM in your data.
 
-\ 
+% ==========================
+\section{Recommendations}
+\label{recommendations}
+% ==========================
 
-\noindent Together with the topic of normalization (NFC vs.~NFD, see 
+Together with the topic of normalization (NFC vs.~NFD, see 
 Section~\ref{pitfall-canonical-equivalence} above),
 this leads to the following nicely cryptic file-encoding recommendation, namely
 to preferably use UTF-8 in NFC without BOM with LF line breaks,
