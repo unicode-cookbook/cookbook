@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 21:04
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 21:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3054,21 +3054,6 @@ Package microtype Info: Loading generic settings for font family
 .................................................
 . fontspec info: "defining-font"
 . 
-. Font family 'EversonMono(0)' created for font 'EversonMono' with options [].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
 . Font family 'LinLibertine_R_B.otf(1)' created for font
 . 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
 . Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
@@ -3390,7 +3375,7 @@ File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
 . This font family consists of the following shapes:
 .................................................
 
-[26]
+[26] [27]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3402,7 +3387,7 @@ File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
 . 
 . This font family consists of the following shapes:
 .................................................
- [27] [28]) [29]
+ [28]) [29]
 \openout2 = `chapters/ipa_meets_unicode.aux'.
 
  (./chapters/ipa_meets_unicode.tex [30
