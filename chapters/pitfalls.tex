@@ -576,7 +576,7 @@ everyone tries to prevent the inclusion of BOM in your data.
 \label{recommendations}
 % ==========================
 
-Summerizing the pitfalls discussed in this chapter, we propose the following 
+Summarizing the pitfalls discussed in this chapter, we propose the following 
 recommendations:
 
 \begin{itemize}
@@ -595,10 +595,11 @@ recommendations:
          or from missing canonical equivalence in the Unicode Standard
          (see Section~\ref{pitfall-absence-of-equivalence})
          use orthography profiles (see Chapter~\ref{orthography-profiles}).
-   \item As a preferred file format, use UTF-8 in NFC without BOM with 
-         LF line breaks, whenever possible (see 
-         Section~\ref{pitfall-file-formats}). This nicely cryptic recommendation 
-         has the T-shirt potential:
+   \item As a preferred file format, use Unicode Format UTF-8 in 
+         Normalization Form Composition (NFC) with LF line endings, 
+         but without byte order mark (BOM), whenever possible (see 
+         Section~\ref{pitfall-file-formats}). This last nicely cryptic 
+         recommendation has T-shirt potential:
   
 \end{itemize}
 
