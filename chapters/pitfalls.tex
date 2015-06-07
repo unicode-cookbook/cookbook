@@ -351,8 +351,8 @@ by the user, the Unicode Standard requires them to be treated the same in
 regards to their behavior and appearance. Nevertheless, they are encoded
 differently. For example, if one were to search an electronic text (with
 software that does not apply Unicode Standard normalization) for
-\textsc{angstrom sign} (\uni{212B}), instances of \textsc{latin capital letter a
-with ring above} (\uni{00C5}) would not be found.
+\textsc{angstrom sign} (\uni{212B}), then the instances of \textsc{latin 
+capital letter a with ring above} (\uni{00C5}) would not be found.
 
 In other words, there are equivalent sequences of Unicode characters that should
 be normalized, i.e.~transformed into a unique Unicode-sanctioned representation
@@ -378,14 +378,14 @@ interoperable.
 
 As illustrated, some characters in the Unicode Standard have alternative
 representations (in fact, many do), but the Unicode Normalization Algorithm can
-be used to transform certain sequences of characters into canonical (or
-compatible) forms to test for equivalency. To determine equivalence, each
+be used to transform certain sequences of characters into canonical
+forms to test for equivalency. To determine equivalence, each
 character in the Unicode Standard is associated with a combining class, which is
 formally defined as a character property called \textsc{canonical combining
 class} which is specified in the Unicode Character Database. The combining class
 assigned to each code point is a numeric value between 0 and 254 and is used by
 the Unicode Canonical Ordering Algorithm to determine which sequences of
-combining marks are canonically equivalent. Normalization forms, as very briefly
+characters are canonically equivalent. Normalization forms, as very briefly
 described above, can be used to ensure character equivalence by ordering
 character sequences so that they can be faithfully compared.
 
@@ -395,19 +395,19 @@ representation to another. This means that a software application may compose,
 decompose or reorder characters as its developers desire; as long as the
 resultant strings are canonically equivalent to the original. This might lead to
 unexpected behavior for users. Various players, like the Unicode Consortium, the
-W{\large 3}C, or the TEI recommend NFC in most user-directed situations, and some
-software applications that we tested indeed seem to automatically convert
+W{\large 3}C, or the TEI recommend NFC in most user-directed situations, and
+some software applications that we tested indeed seem to automatically convert
 strings into NFC.\footnote{See the summary of various recommendation here:
-\url{http://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html}.}
-This means in practice that if a user, for example, enters <a> and < ̀>,
-i.e.~\textsc{latin small letter a} at \uni{0061} and \textsc{combining grave
-accent} at \uni{0300}, this might be converted into <à>, i.e.~\textsc{latin
-small letter a with grave} at \uni{00E0}.\footnote{The behavior of software
-applications can be quite erratic in this respect. For example, Apple's TextEdit
-does not do any conversion on text entry. However, when you copy and paste some
-text inside the same document in rich text mode (i.e.~RTF-format), it
-will be transformed into NFC on paste. Saving a document does not do any
-conversion to the glyphs on screen, but it will save the characters in NFC.}
+\url{http://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html}.} This means in
+practice that if a user, for example, enters <a> and < ̀>, i.e.~\textsc{latin
+small letter a} at \uni{0061} and \textsc{combining grave accent} at \uni{0300},
+this might be automatically converted into <à>, i.e.~\textsc{latin small letter
+a with grave} at \uni{00E0}.\footnote{The behavior of software applications can
+be quite erratic in this respect. For example, Apple's TextEdit does not do any
+conversion on text entry. However, when you copy and paste some text inside the
+same document in rich text mode (i.e.~RTF-format), it will be transformed into
+NFC on paste. Saving a document does not do any conversion to the glyphs on
+screen, but it will save the characters in NFC.}
 
 % ==========================
 \section{Pitfall: Absence of canonical equivalence}
@@ -421,37 +421,65 @@ are not equivalent, like <ø> \textsc{latin small letter o with stroke} at
 \uni{00F8} and <o̷> a combination of \textsc{latin small letter o} at \uni{006F}
 with \textsc{combining short solidus overlay} at \uni{0037}.
 The general rule followed is that extensions of Latin characters that are
-connected to the character are not separated as combining diacritics. For
-example, characters like <ƞ ɲ ɳ> or <ɰ ɱ> are obviously derived from <n> and <m>
+connected to the base character are not separated as combining diacritics. For
+example, characters like <ŋ ɲ ɳ> or <ɖ ɗ> are obviously derived from <n> and <d>
 respectively, but they are treated like new separate characters in the Unicode
 Standard. Likewise, characters like <ø> and <ƈ> are not separated into a base 
 character <o> and <c> with an attached combining diacritic.
 
-Interestingly, and somewhat illogically, there are three elements attached to
-other characters that are still treated as separable in the Unicode Standard. First,
-the cedilla, like in <ç> \textsc{latin small letter c with cedilla} at
-\uni{00E7}, second the ogonek, like in <ą> \textsc{latin small letter a with
-ogonek} at \uni{0105} and, third, the horn, like in <ơ> \textsc{latin small
-letter o with horn} at \uni{01A1}. These characters are indeed decomposed in a 
-base character with a combining diacritic. However, it is these cases that should be 
-considered the exceptions to the rule.
+Interestingly, and somewhat illogically, there are three elements, which are
+directly attached to their base characters, but which are still treated as
+separable in the Unicode Standard. Such characters are decomposed (in NFD
+normalization) in a base character with a combining diacritic. However, it is
+these cases that should be considered the exceptions to the rule. These three 
+elements are the following:
 
-There are two combinations that deserve specific care because it is actually 
-possible to produce identical characters in different ways, without them being 
-canonical equivalent. First, there are the
-combining characters designated as ``overlay'' in the Unicode Standard, like    
-<\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334} or 
-<\ \ {\large  ̵}> \textsc{combining short stroke overlay} at \uni{0335}. 
-There are many characters that look like they are 
-precomposed with such an overlay, for example 
-<\charis{ɫ ᵬ ᵭ ᵱ}> or 
-<\charis{ƚ ɨ ɉ ɍ}>, or also the 
-example of <ø> given at the start of this section. Second, the same situation also 
-occurs with combining characters designated as ``hook'', like < {\large  ̡}> 
-\textsc{combining palatalized hook below} at \uni{0321}. This element seems to
-occur in precomposed characters like <\charis{ᶀ ᶁ ᶂ ᶄ}>. 
-However, all these characters are not canonical equivalent with a combination of 
-their base characters with the combining overlay or combining hook.
+\begin{itemize}
+
+  \item the \textsc{combining cedilla} at \uni{0327} \newline This diacritic is
+        for example attested in the precomposed character <ç> \textsc{latin
+        small letter c with cedilla} at \uni{00E7}. This <ç> will thus be
+        decomposed in NFC normalization.
+  \item the \textsc{combining ogonek} at \uni{0328} \newline This diacritic is
+        for example attested in precomposed <ą> \textsc{latin small letter a
+        with ogonek} at \uni{0105}. This <ą> will thus be decomposed in NFC
+        normalization.
+  \item the \textsc{combining horn} at \uni{031B} \newline This diacritic is for
+        example attested in precomposed <ơ> \textsc{latin small letter o with
+        horn} at \uni{01A1}. This <ơ> will thus be decomposed in NFC
+        normalization. 
+
+\end{itemize}
+
+There are further combinations that deserve specific care because it is actually
+possible to produce identical characters in different ways without them being
+canonically equivalent. In these situations, the general rule holds, namely that
+characters with attached extras are not decomposed. However, in the following
+cases the ``extras'' actually exist as combining diacritics, so there is also 
+the possibility to construct a character by using a base character with those 
+combining diacritics.
+
+\begin{itemize}
+  
+  \item First, there are the combining characters designated as ``combining
+        overlay'' in the Unicode Standard, like <\ \ {\large ̴}>
+        \textsc{combining tilde overlay} at \uni{0334} or <\ \ {\large ̵}>
+        \textsc{combining short stroke overlay} at \uni{0335}. There are many
+        characters that look like they are precomposed with such an overlay,
+        for example <\charis{ɫ~ᵬ~ᵭ~ᵱ}> or <\charis{ƚ~ɨ~ɉ~ɍ}>, or also the
+        example of <ø> given at the start of this section. However, they are 
+        not decomposed in NFD normalization.
+  \item Second, the same situation also occurs with combining characters
+        designated as ``combining hook'', like < {\large ̡}> \textsc{combining
+        palatalized hook below} at \uni{0321}. This element seems to occur in
+        precomposed characters like <\charis{ᶀ~ᶁ~ᶂ~ᶄ}>. However, they are 
+        not decomposed in NFD normalization.
+        
+\end{itemize}
+
+To harmonize the encoding in these cases it is not sufficient to use Unicode 
+normalization. Additional checks are necessary, for example by using orthography 
+profiles (see Chapter~\ref{orthography-profiles}).
 
 % ==========================
 \section{Pitfall: File formats}
