@@ -173,12 +173,14 @@ rendering}. Font rendering refers to the process of the actual positioning of
 Unicode characters on a page of written text. This positioning is actually a
 highly complex problem, and many things can go wrong in the process. Well-known
 rendering problems, like proportional glyph size or ligatures are reasonably
-well understood. However, even within the Latin script, the positioning of
-diacritics relative to a base character is still a widespread problem.
+well understood. In contrast, the positioning of multiple diacritics relative to
+a base character is still a widespread problem, even within the Latin script.
 Especially when more than one diacritic is supposed to be placed above (or
 below) each other, this often leads to unexpected effects in many modern
 software applications. The problems arising in Arabic and in many southeast
-Asian scripts (like Devanagari or Burmese) are even much more complex. There are
+Asian scripts (like Devanagari or Burmese) are even more complex. 
+
+To understand where any problems arise it is important to realize that there are
 basically three different approaches to font rendering. The most widespread is
 Adobe's and Microsoft's \textsc{OpenType} system. This approach makes it
 relatively easy for font developers, as the font itself does not include all
@@ -190,14 +192,22 @@ unexpected behavior.\footnote{For more details about OpenType, see
 complex text layout are, among others, Microsoft's DirectWrite
 \url{https://msdn.microsoft.com/library/dd368038.aspx} and the open-source
 project HarfBuzz \url{http://www.freedesktop.org/wiki/Software/HarfBuzz/}.}
-Alternative systems are Apple's \textsc{Apple Advanced Typography} (AAT) and the
+Alternative systems are \textsc{Apple Advanced Typography} (AAT) and the
 open-source \textsc{Graphite} system from the Summer Institute of Linguistics
 (SIL).\footnote{More information about AAT can be found at
-\url{https://developer.apple.com/fonts/}. SIL's Graphite is described in detail
-at
+\url{https://developer.apple.com/fonts/}. \newline SIL's Graphite is described
+in detail at
 \url{http://scripts.sil.org/cms/scripts/page.php?site\_id=projects\&item\_id=graphite\_home}.}
 In both of these systems, a larger burden is placed on the description inside
 the font.
+
+There is mostly no real solution to problems arising from faulty font rendering.
+Switching to another software application that offers better handling is the
+only real alternative, but this is normally not an option for daily work. The 
+experience with rendering on the side of the software industry is developing 
+quickly, so we can expect the situation only to get better. In the meantime one 
+can try to correct faulty layout by tweaking baseline and/or kerning (when such 
+option are available).
 
 % ==========================
 \section{Pitfall: Blocks}
@@ -227,7 +237,7 @@ be found there. For example, the velar nasal <ŋ> is not part of the block
 eng} at \uni{014B} in the block \textsc{Latin Extensions-A}.
 
 In general, finding a specific character in the Unicode Standard is often not
-trivial. The names of the blocks can help, but it is not (and never was supposed
+trivial. The names of the blocks can help, but they are not (and never were supposed
 to be) a foolproof structure. It is not the goal nor aim of the Unicode
 Consortium to provide a user interface to the Unicode Standard. If one often
 encounters the problem of needing to find a suitable character, there are
@@ -235,7 +245,7 @@ various other useful services for end-users available.\footnote{The Unicode
 website offers a basic interface to the code charts at
 \url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
 particularly like PopChar from Macility, available for both Macintosh and
-Windows. However, there are also various free websites that offer search interfaces
+Windows. There are also various free websites that offer search interfaces
 to the Unicode code tables, like \url{http://unicode-search.net} or
 \url{http://unicode-search.net}. A further useful approach for searching characters
 using shape matching is \url{http://shapecatcher.com}.}

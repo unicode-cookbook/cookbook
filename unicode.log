@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 20:51
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 21:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2795,6 +2795,7 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+ [20]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2807,7 +2808,7 @@ Package microtype Info: Loading generic settings for font family
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 3271) in paragraph at lines 192--192
+Underfull \hbox (badness 3271) in paragraph at lines 194--194
 [][][][]$[] \EU1/LinLibertine_R_B.otf(1)/m/n/9 and the open-source project Harf
 Buzz []$[][][][] [] [] [] [][][] [] [][][][][][][][][][][] [] [][][] [] [][][][
 ] [] [][][][][][][][] []
@@ -2824,14 +2825,6 @@ Buzz []$[][][][] [] [] [] [][][] [] [][][][][][][][][][][] [] [][][] [] [][][][
 . 
 . This font family consists of the following shapes:
 .................................................
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--198
-\EU1/LinLibertine_R_B.otf(1)/m/n/9 Graphite is described in detail at []$[][][]
-[] [] [] [] [][][][][][][] [] [][][] [] [][][] [] [][][] [] [][][][][][][] [] [
-][][][] [] [][][] [] [][][][] [] [][] []
- []
-
-[20]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -2848,7 +2841,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--198
 . 
 . This font family consists of the following shapes:
 .................................................
- [21]
+[21]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3273,31 +3266,31 @@ Missing character: There is no Å in font [./LSP/lsp-fonts/LinLibertine_R_B.otf
 . 
 . This font family consists of the following shapes:
 .................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
  [25]
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3409,7 +3402,7 @@ File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
 . 
 . This font family consists of the following shapes:
 .................................................
- [27]) [28] [29]
+ [27] [28]) [29]
 \openout2 = `chapters/ipa_meets_unicode.aux'.
 
  (./chapters/ipa_meets_unicode.tex [30
@@ -4265,7 +4258,7 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 Here is how much of TeX's memory you used:
  47123 strings out of 493734
  835517 string characters out of 6146347
- 1281559 words of memory out of 5000000
+ 1278559 words of memory out of 5000000
  49666 multiletter control sequences out of 15000+600000
  22546 words of font info for 161 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191

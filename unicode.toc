@@ -20,7 +20,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Pitfall: Faulty rendering}{20}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Pitfall: Blocks}{21}{section.2.5}
+\contentsline {section}{\numberline {2.5}Pitfall: Blocks}{22}{section.2.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.6}Pitfall: Homoglyphs}{22}{section.2.6}
 \defcounter {refsection}{0}\relax 
@@ -28,7 +28,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.8}Pitfall: Absence of canonical equivalence}{26}{section.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.9}Pitfall: File formats}{26}{section.2.9}
+\contentsline {section}{\numberline {2.9}Pitfall: File formats}{27}{section.2.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.10}Recommendations}{29}{section.2.10}
 \defcounter {refsection}{0}\relax 
