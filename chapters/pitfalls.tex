@@ -576,8 +576,36 @@ everyone tries to prevent the inclusion of BOM in your data.
 \label{recommendations}
 % ==========================
 
-Together with the topic of normalization (NFC vs.~NFD, see 
-Section~\ref{pitfall-canonical-equivalence} above),
-this leads to the following nicely cryptic file-encoding recommendation, namely
-to preferably use UTF-8 in NFC without BOM with LF line breaks,
-whenever possible.
+Summerizing the pitfalls discussed in this chapter, we propose the following 
+recommendations:
+
+\begin{itemize}
+   \item To prevent strange boxes instead of nice glyphs, always install a few
+         fonts with a large glyph collection and at least one fall-back font
+         (see Section~\ref{pitfall-missing-glyphs}).
+   \item Unexpected visual impressions of symbols does not necessarily mean that
+         the actual encoding is wrong. It is mostly a problem of faulty
+         rendering (see Section~\ref{pitfall-faulty-rendering}).
+   \item Do not trust the names of Unicode blocks as a strategy to find specific 
+         characters (see Section~\ref{pitfall-blocks})
+   \item To ensure consistent encoding of texts, apply Unicode normalization
+         (NFC or NFD, see Section~\ref{pitfall-canonical-equivalence}).
+   \item To prevent remaining inconsistencies after normalization, for example 
+         stemming from homoglyphs (see Section~\ref{pitfall-homoglyphs}) 
+         or from missing canonical equivalence in the Unicode Standard
+         (see Section~\ref{pitfall-absence-of-equivalence})
+         use orthography profiles (see Chapter~\ref{orthography-profiles}).
+   \item As a preferred file format, use UTF-8 in NFC without BOM with 
+         LF line breaks, whenever possible (see 
+         Section~\ref{pitfall-file-formats}). This nicely cryptic recommendation 
+         has the T-shirt potential:
+  
+\end{itemize}
+
+\begin{center}
+  I prefer it
+  
+  \textbf{UTF-8 NFC LF no BOM}
+\end{center}
+
+

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 21:47
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 22:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3445,7 +3445,13 @@ File: mt-CharisSIL.cfg 2013/03/13 v1.0 microtype config. file: Charis SIL (RS)
 . 
 . This font family consists of the following shapes:
 .................................................
- [28]) [29] [30]
+ [28] [29]
+Overfull \hbox (4.33286pt too wide) in paragraph at lines 593--598
+[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 To prevent remaining inconsistencies a
+fter normalization, for example stem-
+ []
+
+) [30]
 \openout2 = `chapters/ipa_meets_unicode.aux'.
 
  (./chapters/ipa_meets_unicode.tex
