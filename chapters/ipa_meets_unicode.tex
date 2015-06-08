@@ -1,70 +1,86 @@
 \chapter{IPA meets Unicode}
 \label{ipa-meets-unicode}
 
+% ==========================
 \section{The International Phonetic Alphabet (IPA)}
 \label{the-international-phonetic-alphabet}
+% ==========================
 
 The International Phonetic Alphabet (IPA) is a common standard in linguistics to
-transcribe sounds of spoken language into some Latin-based characters
+transcribe sounds of spoken language into Latin-based characters
 \citep{IPA2005}. Although IPA is reasonably easily adhered to with pen and
-paper, it is not trivial to encode IPA characters electronically. Early work
-addressing the need for a universal computing environment for writing systems
-and their computational complexity is discussed in \citet{Simons1989}. For a long
-time, linguists (like all other computer users) were limited to ASCII-encoded
-7-bit characters, which only includes Latin characters, numbers and some
-punctuation and symbols. Restricted to these standard character sets that lacked
-IPA support or other language-specific graphemes that they needed, linguists
-devised their own solutions \citep{BirdSimons2003}. For example, some chose to
-represent unavailable graphemes with substitutes, e.g.~the combination of <ng> to
-represent <ŋ>. Tech-savvy linguists redefined selected characters from a character
-encoding by mapping custom made fonts to those code points. However, one
-linguist's electronic text would not render properly on another linguist's
+paper, it is not trivial to encode IPA characters electronically. Similar to the
+previous chapter, this chapter will discuss various pitfalls with the encoding
+of the IPA.\@ The details of the encoding are unimportant as long as the
+transcription is only directed towards phonetically trained eyes. For a linguist
+reading an IPA transcription, many of the details that will be discussed in this
+chapter might seem like hair-splitting trivialities. However, if IPA
+transcriptions are intended to be used across resources (e.g.~searching similar
+phenomena across different languages) then it becomes crucial that there are strict
+encoding guidelines. Our main goal in this chapter is to present the encoding
+issues and propose recommendations for a ``strict'' IPA encoding.
+
+\ 
+
+\noindent For a long time, linguists, like all other computer users, were limited to
+ASCII-encoded 7-bit characters, which only includes Latin characters, numbers
+and some punctuation and symbols. Restricted to these standard character sets
+that lacked IPA support or other language-specific graphemes that they needed,
+linguists devised their own solutions.\footnote{Early work addressing the need
+for a universal computing environment for writing systems and their
+computational complexity is discussed in \citet{Simons1989}. A survey of
+practical recommendations for language resources, including notes on encoding,
+can be found in \citet{BirdSimons2003}} For example, some chose to represent
+unavailable graphemes with substitutes, e.g.~the combination of <ng> to
+represent <ŋ>. Tech-savvy linguists redefined selected characters from a
+character encoding by mapping custom made fonts to those code points. However,
+one linguist's electronic text would not render properly on another linguist's
 computer without access to the same font. Further, if two character encodings
 defined two character sets differently, then data could not be reliably and
 correctly displayed. This is a common example of the non-interoperability of
 data and data formats.
 
 To alleviate this problem, during the late 1980s, SAMPA (Speech Assessment
-Methods Phonetic Alphabet) was created to represent IPA symbols with 7-bit
-printable ASCII character sequences, e.g. <p\textbackslash> for [ɸ]. Two
-problems with SAMPA are that (i) it is only a partial encoding of the IPA and
-(ii) it encodes different languages in separate data tables, instead of a
-universal alphabet, like IPA.\@ SAMPA tables are derived from phonemes appearing
-in several European languages that were developed as part of a European
-Commission-funded project to address technical problems like electronic mail
-exchange (what is now simply called email). SAMPA is essentially a hack to work
-around displaying IPA characters, but it provided speech technology and other
-fields a basis that has been widely adopted and used in code. So, SAMPA was a
-collection of tables to be compared, instead of a large universal table
-representing all languages. An extended version of SAMPA, called X-SAMPA, set
-out to include every symbol in the IPA chart including all diacritics
-\citep{WellsND}. X-SAMPA was considered more universally applicable because it
-consisted of one table that encoded the set of characters that represented
-phones/segments in IPA across languages. SAMPA and X-SAMPA have been widely used
-for speech technology and as an encoding system in computational linguistics.
-Eventually, ASCII-encoding of the IPA became deprecated through the advent of
-the Unicode Standard. Note however that many popular software packages used for
-linguistic analyses still require ASCII input, e.g.~RuG/L04 and
-SplitsTree4.\footnote{See \url{http://www.let.rug.nl/kleiweg/L04/} and
-\url{http://www.splitstree.org/}, respectively}
+Methods Phonetic Alphabet) was created to represent IPA symbols with ASCII
+character sequences, e.g. <p\textbackslash> for [ɸ]. Two problems with SAMPA are
+that (i) it is only a partial encoding of the IPA and (ii) it encodes different
+languages in separate data tables, instead of using a universal alphabet, like
+IPA.\@ SAMPA tables are derived from phonemes appearing in several European
+languages that were developed as part of a European Commission-funded project to
+address technical problems like electronic mail exchange (what is now simply
+called email). SAMPA is essentially a hack to work around displaying IPA
+characters, but it provided speech technology and other fields a basis that has
+been widely adopted and used in code. So, SAMPA was a collection of tables to be
+compared, instead of a large universal table representing all languages. An
+extended version of SAMPA, called X-SAMPA, set out to include every symbol in
+the IPA chart including all diacritics \citep{WellsND}. X-SAMPA was considered
+more universally applicable because it consisted of one table that encoded all
+characters that represented phones/segments in IPA across languages. SAMPA and
+X-SAMPA have been widely used for speech technology and as an encoding system in
+computational linguistics. Eventually, ASCII-encoding of the IPA became
+deprecated through the advent of the Unicode Standard. Note however that many
+popular software packages used for linguistic analyses still require ASCII
+input, e.g.~RuG/L04 and SplitsTree4.\footnote{See
+\url{http://www.let.rug.nl/kleiweg/L04/} and \url{http://www.splitstree.org/},
+respectively}
 
-There are a few pitfalls to be aware of when using the Unicode Standard
-to encode IPA.\@ As we have said before, from a linguistic perspective it might
-look like the Unicode Consortium is making incomprehensible decisions, but it is
-important to realize that the consortium has tried and is continuing to try to
-be as consistent as possible across a wide range of use cases, and it does place
-linguistic traditions above other orthographic possibilities. In general, we
-strongly suggest linguists not to complain about any decisions in the Unicode
-Standard, but to try and understand the rationale of the Unicode Consortium
-(which in our experience is almost always well-conceived) and devise ways to
-work with any unexpected behavior. Many of the current problems derive from the
-fact that the IPA is clearly historically based on the Latin script, but
-different enough from most other Latin-based writing systems to warrant special
-attention. This ambivalent status of the IPA glyphs (partly Latin, partly
-special) is unfortunately also attested in the treatment of IPA in the Unicode
-Standard. In retrospect, it might have been better to consider the IPA (and
-other transcription systems) to be a special or new kind of script within the
-Unicode Standard, and treat the obvious similarity to Latin glyphs as a
+There are a few pitfalls to be aware of when using the Unicode Standard to
+encode IPA.\@ As we have said before, from a linguistic perspective it might
+sometimes look like the Unicode Consortium is making incomprehensible decisions,
+but it is important to realize that the consortium has tried and is continuing
+to try to be as consistent as possible across a wide range of use cases, and it
+does place linguistic traditions above other orthographic possibilities. In
+general, we strongly suggest linguists not to complain about any decisions in
+the Unicode Standard, but to try and understand the rationale of the Unicode
+Consortium (which in our experience is almost always well-conceived) and devise
+ways to work with any unexpected behavior. Many of the current problems derive
+from the fact that the IPA is clearly historically based on the Latin script,
+but different enough from most other Latin-based writing systems to warrant
+special attention. This ambivalent status of the IPA glyphs (partly Latin,
+partly special) is unfortunately also attested in the treatment of IPA in the
+Unicode Standard. In retrospect, it might have been better to consider the IPA
+(and other transcription systems) to be a special kind of script within
+the Unicode Standard, and treat the obvious similarity to Latin glyphs as a
 historical relic. All IPA glyphs would then have their own code points, instead
 of the current situation in which some IPA glyphs have special code points,
 while others are treated as being identical to the regular Latin characters.
@@ -73,8 +89,10 @@ linguists we will have to learn to deal with the specific pitfalls of IPA within
 the Unicode Standard. In this section, we will describe these pitfalls in some
 detail.
 
+% ==========================
 \section{Pitfall: No complete IPA code block}
 \label{pitfall-no-complete-ipa-block}
+% ==========================
 
 The ambivalent nature of IPA glyphs arises because, on the one hand, the IPA
 uses Latin-based glyphs like <a>, <b> or <p>. From this perspective, the IPA
@@ -113,8 +131,10 @@ are also included, see~\cite[Appendix~C]{Moran2012}.}
 	\item Latin Extended-C (1 character): <{\small \fontspec{CharisSIL}ⱱ}> 
 \end{itemize}
 
+% ==========================
 \section{Pitfall: IPA homoglyphs in Unicode}
 \label{pitfall-ipa-homoglyphs}
+% ==========================
 
 Another problem is the large number of homoglyphs, i.e.~different characters
 that have highly similar glyphs (or even completely identical, depending on the
@@ -198,8 +218,10 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
        error in the Unicode Standard. This character is of course often simply
        typed as <!> \textsc{exclamation mark} at \uni{0021}. \end{itemize}       
 
+% ==========================
 \section{Pitfall: Homoglyphs in IPA}
 \label{pitfall-homoglyphs-in-IPA}
+% ==========================
 
 It is not just the Unicode Standard that offers multiple options for encoding
 the IPA.\@ Even the IPA specification itself offers some flexibility in how
@@ -270,10 +292,11 @@ than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
 necessary, we consider this possible, even though the rendering will never look 
 good.
 
-
+% ==========================
 \section{Pitfall: Ligatures and digraphs}
 \label{pitfall-ligatures-digraphs}     
-       
+% ==========================   
+
 One important distinction to acknowledge is the difference between multigraphs
 and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
 <tʃ> or <ou>) while ligatures are single characters (e.g. <ʧ> \textsc{latin
@@ -317,8 +340,10 @@ should be used when writing IPA, namely:
 	\item[] <æ> \textsc{latin small letter ae} at \uni{00E6} 
 \end{itemize}
 
+% ==========================
 \section{Pitfall: Missing decomposition}
 \label{pitfall-missing-decomposition}
+% ==========================
 
 Although many combinations of base character with diacritic are treated as 
 canonical equivalent with precomposed characters, there are a few combinations 
@@ -348,8 +373,10 @@ decomposed into <c> \textsc{latin small letter c} at \uni{0063} with
 also if such a decomposition is not intended, because it is meaningless in 
 IPA.\@
 
+% ==========================
 \section{Pitfall: Different notions of diacritics}
 \label{pitfall-different-notions-of-diacritics}
+% ==========================
 
 Another pitfall relates the concept of what are diacritics. The problem is that
 the meaning of the term diacritics as used by the IPA is not the same as is used
@@ -402,8 +429,10 @@ Unicode to force separate characters to be combined (namely by using the
 \textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
 impractical, and probably not an enforceable solution to us.
 
+% ==========================
 \section{Pitfall: No unique diacritic ordering}
 \label{pitfall-no-unique-diacritic-ordering}
+% ==========================
 
 Also related to diacritics is the question of ordering. To our knowledge, the
 International Phonetic Association does not specify a specific ordering for
@@ -519,6 +548,11 @@ contains more than one diacritic above the base character, we propose:
 	\end{itemize}	 
 \end{itemize}
 
+% ==========================
+\section{Recommendations}
+\label{ipa-recommendations}
+% ==========================
 
+Summary
 
 

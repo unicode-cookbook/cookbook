@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  8 JUN 2015 22:20
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  8 JUN 2015 22:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3471,12 +3471,17 @@ Chapter 3.
 . 
 . This font family consists of the following shapes:
 .................................................
-
-Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
-\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 printable ASCII character sequences, e.g
-. <p\> for [ɸ]. Two problems with SAMPA
- []
-
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options [ Ligatures={TeX,Common},
+. Path=./LSP/lsp-fonts/, PunctuationSpace=0, Numbers={Proportional}, BoldFont
+. = LinLibertine_RZ_B.otf , ItalicFont = LinLibertine_RI_B.otf ,
+. BoldItalicFont = LinLibertine_RZI_B.otf ,Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+.................................................
 [31
 
 
@@ -3508,6 +3513,7 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 . 
 . This font family consists of the following shapes:
 .................................................
+ [33]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3531,7 +3537,6 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 . 
 . This font family consists of the following shapes:
 .................................................
- [33]
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -3577,7 +3582,7 @@ Overfull \hbox (3.58853pt too wide) in paragraph at lines 27--50
 .................................................
 
 
-LaTeX Warning: Citation 'Vidal2001a' on page 34 undefined on input line 147.
+LaTeX Warning: Citation 'Vidal2001a' on page 34 undefined on input line 167.
 
 .................................................
 . fontspec info: "defining-font"
@@ -3816,26 +3821,26 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
  [36]
 .................................................
 . fontspec info: "defining-font"
 . 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
 . Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
 . 
 . This font family consists of the following shapes:
@@ -3844,62 +3849,6 @@ Package microtype Info: Loading generic settings for font family
 . fontspec info: "defining-font"
 . 
 . Font family 'CharisSIL(0)' created for font 'CharisSIL' with options [].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
-. 
-. This font family consists of the following shapes:
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
-. [Letters=Uppercase].
 . 
 . This font family consists of the following shapes:
 .................................................
@@ -3952,8 +3901,64 @@ Package microtype Info: Loading generic settings for font family
 . 
 . This font family consists of the following shapes:
 .................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertineO(1)' created for font 'LinLibertineO' with options
+. [Letters=Uppercase].
+. 
+. This font family consists of the following shapes:
+.................................................
 
-Overfull \hbox (2.67204pt too wide) in paragraph at lines 323--329
+Overfull \hbox (2.67204pt too wide) in paragraph at lines 348--354
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 Although many combinations of base chara
 cter with diacritic are treated as canon-
  []
@@ -4116,7 +4121,7 @@ cter with diacritic are treated as canon-
 . This font family consists of the following shapes:
 .................................................
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--431
+Underfull \hbox (badness 10000) in paragraph at lines 460--460
 [][]\EU1/LinLibertine_R_B.otf(1)/m/n/9 See []$[][][][] [] [] [] [][][][][][][] 
 [] [][][] [] [][][][][][][] [] [][][][] [] [][][][][][][][][][] [] [][][][][][]
 [][][] [] [][][][][] [] [][][][][][]$[] for a detailed
@@ -4143,13 +4148,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 431--431
 . This font family consists of the following shapes:
 .................................................
 
-Overfull \hbox (7.11415pt too wide) in paragraph at lines 484--490
+Overfull \hbox (7.11415pt too wide) in paragraph at lines 513--519
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lowered, raised), then the laryngeal set
 ting (voiced, voiceless, creaky voice, breathy
  []
 
 [41]
-Overfull \hbox (3.48233pt too wide) in paragraph at lines 503--510
+Overfull \hbox (3.48233pt too wide) in paragraph at lines 532--539
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 lematic in [][][][]Moran (2012)[] becaus
 e they include only the centralized, mid-centralized
  []
@@ -4309,10 +4314,10 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47165 strings out of 493734
- 836709 string characters out of 6146347
+ 47166 strings out of 493734
+ 836730 string characters out of 6146347
  1279561 words of memory out of 5000000
- 49694 multiletter control sequences out of 15000+600000
+ 49695 multiletter control sequences out of 15000+600000
  22594 words of font info for 167 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,12n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
