@@ -303,7 +303,9 @@ would more aptly have been called \textsc{script system}.
 
 Focussing on the first sense, we distinguish two different kinds of 
 writing systems used for a particular language, namely transcriptions and
-orthographies. First, \textsc{transcription} is a scientific procedure (and also
+orthographies.
+
+First, \textsc{transcription} is a scientific procedure (and also
 the result of that procedure) for graphically representing the sounds of human
 speech at the phonetic level. It incorporates a set of unambiguous symbols to
 represent speech sounds, including conventions that specify how these symbols
@@ -319,7 +321,7 @@ long history of alternative kinds of transcription systems
 users of IPA do not follow the standard to the letter, and many dialects based
 on the IPA have emerged, e.g.~the Africanist and Americanist transcription
 systems. Note that IPA symbols are also often used to represent language on a
-phonemic level. However, it is important to realize that in this usage the IPA
+phonemic level. It is important to realize that in this usage the IPA
 symbols are not a transcription system, but rather an orthography (though with
 strong links to the pronunciation). Further, a transcription system does not
 need to be as highly detailed as the IPA.\ It can also be a system of broad sound
@@ -443,7 +445,7 @@ the development of the Unicode Standard, with major input from Mark Davis,
 co-founder and long-term president of the Unicode Consortium. For many years,
 ``exotic'' writing systems and phonetic transcription systems on personal
 computers were constrained by the American Standard Code for Information
-Interchange (ASCII) character encoding scheme (based on the Latin script), which
+Interchange (ASCII) character encoding scheme, based on the Latin script, which
 only allowed for a strongly limited number of different symbols to be encoded.
 This implied that users could either use and adopt the (extended) Latin alphabet
 or they could assign new symbols to the small number of code points in the ASCII
@@ -461,18 +463,17 @@ programming languages.
 \subsubsection*{The Unicode Standard}
 
 The Unicode Standard represents a massive step forward because it aims to
-eradicate the distinction between \textsc{universal} (ASCII) versus
-\textsc{language/resource-particular} (Font) by adding as much as possible
-language-specific information into the universal standard. However, there are
-still language/resource-specific specifications necessary for the proper usage
-of Unicode, as will be discussed below. Within the Unicode structure many of
-these specifications can be captured by so-called \textsc{Locale Descriptions}
-or simply locales, so we are moving to a new distinction of universal (Unicode
-Standard) versus language-particular (Locale Description). The major gain is a
-much larger compatibility on the universal level (because Unicode standardizes a
-much larger portion of writing system diversity), and much better possibilities
-for automatic processing on the language-particular level (because Locale
-Descriptions are computer readable specifications).
+eradicate the distinction between universal (ASCII) versus language-particular
+(font) by adding as much as possible language-specific information into the
+universal standard. However, there are still language/resource-specific
+specifications necessary for the proper usage of Unicode, as will be discussed
+below. Within the Unicode structure many of these specifications can be captured
+by so-called \textsc{locale descriptions}, so we are moving to a new distinction
+of universal (Unicode Standard) versus language-particular (locale description).
+The major gain is a much larger compatibility on the universal level (because
+Unicode standardizes a much larger portion of writing system diversity), and
+much better possibilities for automatic processing on the language-particular
+level (because locale descriptions are computer readable specifications).
 
 Each version of the Unicode Standard (\citealp{Unicode2014}, as of writing at
 version 7) consists of a set of specifications and guidelines that include (i) a
@@ -502,8 +503,9 @@ namely a standard. It normatively describes notions and rules to be followed. In
 the actual practice of applying this standard in a computational setting, a
 specific implementation is necessary. The most widely used implementation of the
 Unicode Standard is the \textsc{International Components for Unicode (ICU)},
-which offers C/C++ and Java libraries trying to implement the Unicode
-Standard.\footnote{\url{http://icu-project.org}}
+which offers C/C++ and Java libraries implementing the Unicode
+Standard.\footnote{More information about the ICU is available here:
+\url{http://icu-project.org}.}
 
 \subsubsection*{Character encoding system}
 
@@ -588,7 +590,7 @@ The Japanese writing system uses several scripts.''} In practice, script is
 simply defined for each character as the explicit \textsc{script} property in
 the Unicode Character Database.
 
-One frequently references property is the \textsc{block} property, which is
+One frequently referenced property is the \textsc{block} property, which is
 often used in software applications to impose some structure to the large number
 of Unicode characters. Each character in Unicode belongs to a specific block.
 These blocks are basically an organizational structure to alleviate the
@@ -601,9 +603,10 @@ extra characters will have to be assigned somewhere else. There is, for example,
 a block \textsc{Arabic}, which contains most Arabic symbols. However, there is
 also a block \textsc{Arabic Supplement}, \textsc{Arabic Presentation Forms-A}
 and \textsc{Arabic Presentation Form-B}. The situation with Latin symbols is
-even more extra. In general, the names for block should be taken as a
+even more extreme. In general, the names for block should not be taken as a
 definitional statement. For example, many IPA symbols are not located in the
-aptly-names block \textsc{IPA extensions}, but in other blocks (see Section~\ref{ipa-meets-unicode}).
+aptly-names block \textsc{IPA extensions}, but in other blocks
+(see Section~\ref{pitfall-no-complete-ipa-block}).
 
 \subsubsection*{Grapheme clusters}
 
@@ -638,26 +641,28 @@ same text element has been acknowledged early on in the Unicode Standard
 treated identically to the precomposed \uni{00F1}), and a system of
 \textsc{canonical equivalence} is available for such situations. Basically, the
 Unicode Standard offers different kind of normalizations to either decompose all
-precomposed characters (called \textsc{NFD}, \textsc{Normalization Form
-canonical Decomposition}), or compose as much as possible combinations (called
-\textsc{NFC}, \textsc{Normalization Form canonical Composition}). In current
+precomposed characters (called \textsc{NFD}, \textsc{normalization form
+canonical decomposition}), or compose as much as possible combinations (called
+\textsc{NFC}, \textsc{normalization form canonical composition}). In current
 practice of software development, NFC seems to be preferred in most situations
 and is widely proposed as the preferred canonical form.
 
 More difficult for text processing, because less standardized, is what the
 Unicode Standard terms \textsc{tailored grapheme clusters}. Tailored grapheme
 clusters are locale-dependent graphemes, i.e.~such combination of characters do
-not function as text elements in all situations. For example, the sequence <c>~+~<h> for the Slovak digraph <ch> or the sequence <ky> in the Sisaala practical
-orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme clusters
-are \textsc{tailored} in the sense that they must be specified on a
-language-by-language or a writing system-by-writing system basis. The Unicode
+not function as text elements in all situations. For example, the sequence
+<c>~+~<h> for the Slovak digraph <ch> or the sequence <ky> in the Sisaala
+practical orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme
+clusters are \textsc{tailored} in the sense that they must be specified on a
+language-by-language or writing-system-by-writing-system basis. The Unicode
 Standard provides technological specifications for creating locale specific data
 in so-called \textsc{Unicode Locale Descriptions}, i.e.~a set of specification
 that defines a set of language-specific elements (e.g.~tailored grapheme
 clusters, collation order, capitalization-equivalence), as well as other special
 information, like how to format numbers, dates, or currencies. Locale
 descriptions are saved in the \textsc{Common Locale Data Repository
-(CLDR)},\footnote{\url{http://cldr.unicode.org/}} a repository of
+(CLDR)},\footnote{More information about the CLDR can be found here:
+\url{http://cldr.unicode.org/}.} a repository of
 language-specific definitions of writing system properties, each of which
 describes specific usages of characters. Each locale can be encoded in a
 document using the \textsc{Locale Data Markup Language (LDML)}. LDML is an XML
@@ -669,5 +674,5 @@ Standard. A writing system is, ``A set of rules for using one or more scripts to
 write a particular language. Examples include the American English writing
 system, the British English writing system, the French writing system, and the
 Japanese writing system.''} However, there are various drawbacks of locale
-descriptions for the daily practice of linguistic work in a multilingual setting
-(see Section~\ref{use-cases}).
+descriptions for the daily practice of linguistic work in a multilingual setting.
+
