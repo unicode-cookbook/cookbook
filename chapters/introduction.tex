@@ -145,7 +145,7 @@ There are many in-depth histories of the origin and development of writing
 systems \citep[e.g.~][]{Robinson1995,Powell2012}, a story that we therefore will
 not repeat here. However, the history of turning writing into computer readable
 code is not so often told, so we decided to offer a short survey of the major
-developments of such \textsc{encoding} here.\footnote{Because of the recent
+developments of such encoding here.\footnote{Because of the recent
 history as summarized in this section, we have used mostly rather ephemeral
 internet sources. When not references by traditional literature in the
 bibliography, we have used \url{http://www.unicode.org/history/} and various
@@ -171,18 +171,19 @@ hydraulic pressure have been used as forms of telegraphy.
 Telegraphy was reinvigorated in the end of the eighteenth century through the
 introduction of so-called semaphoric systems by Claude Chapelle to convey
 messages over large distances. Originally, various specially designed
-contraptions were used to send messages. Today, descendants of these systems
-are still in use utilizing flags or flashing lights. The ``innovation'' of those
-semaphoric systems was that all characters of the written language were replaced
-one-to-one by visual signals. Since then, all telegraphic systems have taken
-this principle, namely that any language to be transmitted first has to be
-turned into some orthographic system, which subsequently is encoded for
-transmission by the sender, and then turned back into orthographic
-representation at the receiver side.\footnote{Sound and video-based
-telecommunication of course takes a different approach by ignoring the written
-version of language and directly encode sound waves or light patterns.} This of
-course implies that the usefulness of any such telegraphic encoding completely
-depends on the sometimes rather haphazard structure of orthographic systems.
+contraptions were used to send messages. Today, descendants of these systems are
+still in limited use, for example utilizing flags or flashing lights. The
+``innovation'' of those semaphoric systems was that all characters of the
+written language were replaced one-to-one by visual signals. Since then, all
+telegraphic systems have taken this principle, namely that any language to be
+transmitted first has to be turned into some orthographic system, which
+subsequently is encoded for transmission by the sender, and then turned back
+into orthographic representation at the receiver side.\footnote{Sound and
+video-based telecommunication of course takes a different approach by ignoring
+the written version of language and directly encode sound waves or light
+patterns.} This of course implies that the usefulness of any such telegraphic
+encoding completely depends on the sometimes rather haphazard structure of
+orthographic systems.
 
 In the nineteenth century, electric telegraphy lead to a new approach
 in which written language characters were encoded by signals sent through a
@@ -207,7 +208,7 @@ From those bisignal encodings, true \textsc{binary codes} developed with a fixed
 length of signals per character. In such systems only a single separator between
 signals is needed, because the separation between characters can be established
 by counting until a fixed number of signals has passed.\footnote{Of course, no
-explicit separator is needed when the timing of the signals is known, which is
+explicit separator is needed at all when the timing of the signals is known, which is
 the principle used in all modern telecommunication systems. An important modern
 consideration is also how to know where to start counting when you did not catch
 the start of a message, something that is known in Unicode as \textsc{self
@@ -245,15 +246,16 @@ needed in the world's writing systems, the ISO/IEC~8859 standard in 1987
 extended the MCS to include 16 different 8-bit code pages. For example, part 5
 was used for Cyrillic characters, part 6 for Arabic, and part 7 for
 Greek.\footnote{In effect, because $16 = 2^4$, this means that ISO/IEC~8859 was
-actually an $8+4=12$-bit encoding, though with very many duplicates by design, namely 
-all ASCII codes were repeated in each 8-bit code page. To be precise,
+actually an $8+4=12$-bit encoding, though with very many duplicates by design,
+namely all ASCII codes were repeated in each 8-bit code page. To be precise,
 ISO/IEC~8859 used the 7-bit ASCII as the basis for each code page, and defined
 16 different 7-bit extensions, leading to $(1+16)\cdot{2^7} = 2,176$ possible
-characters.} This system almost immediately was understood to be insufficient and
-impractical, so various initiatives to extend and reorganize the encoding
-started in the 1980s. This led, for example, to various proprietary encodings
-from Microsoft (e.g.~Windows Latin 1) and Apple (e.g.~Mac OS Roman), which one
-still sometimes encounters today. 
+characters. However, because of overlap and not-assigned codes points the actual
+number of symbols was much smaller.} This system almost immediately was
+understood to be insufficient and impractical, so various initiatives to extend
+and reorganize the encoding started in the 1980s. This led, for example, to
+various proprietary encodings from Microsoft (e.g.~Windows Latin 1) and Apple
+(e.g.~Mac OS Roman), which one still sometimes encounters today. 
 
 More wide-ranging, various people in the 1980s started to develop true
 international code sets. In the United States, a group of computer scientists

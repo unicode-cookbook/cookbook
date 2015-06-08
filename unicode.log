@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  7 JUN 2015 22:36
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex 2014.10.30)  8 JUN 2015 17:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2193,18 +2193,6 @@ LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
 (Font)              scaled to size 10.47263pt on input line 42.
 LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
 (Font)              scaled to size 49.7331pt on input line 42.
-
-./unicode.tex:42: Undefined control sequence.
-\@title ->\HUGE 
-                The Unicode Cookbook \linebreak for Linguists
-l.42 \maketitle
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 .................................................
 . fontspec info: "set-scale"
 . 
@@ -2227,21 +2215,11 @@ and I'll forget about whatever was undefined.
 .................................................
 LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
 (Font)              scaled to size 23.91014pt on input line 42.
+
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 
 )
-./unicode.tex:42: Undefined control sequence.
-\Hy@title ->\HUGE 
-                  The Unicode Cookbook \linebreak for Linguists
-l.42 \maketitle
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\kernel@ifnextchar' on input line 42.
@@ -2499,7 +2477,7 @@ pping=tex-text;+liga;+pnum;+lnum;"
 . This font family consists of the following shapes:
 .................................................
  [6] [7]
-Overfull \hbox (1.21207pt too wide) in paragraph at lines 331--350
+Overfull \hbox (1.21207pt too wide) in paragraph at lines 333--352
 \EU1/LinLibertine_R_B.otf(0)/m/n/10.95 and graphemes in practical orthographies
  is purposely shallow, i.e. there is mostly
  []
@@ -4331,10 +4309,10 @@ Package logreq Info: Writing requests to 'unicode.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47166 strings out of 493734
- 836713 string characters out of 6146347
- 1278563 words of memory out of 5000000
- 49695 multiletter control sequences out of 15000+600000
+ 47165 strings out of 493734
+ 836709 string characters out of 6146347
+ 1278561 words of memory out of 5000000
+ 49694 multiletter control sequences out of 15000+600000
  22594 words of font info for 167 fonts, out of 8000000 for 9000
  1333 hyphenation exceptions out of 8191
  66i,12n,90p,10498b,1204s stack positions out of 5000i,500n,10000p,200000b,80000s
