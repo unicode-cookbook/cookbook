@@ -145,9 +145,37 @@ letter a} at code point \uni{0061}, although visually they are mostly
 indistinguishable, and the Cyrillic character is more easily typed on a Cyrillic
 keyboard. 
 
-Furthermore, even linguists are unlikely to distinguish between
-the <ə> \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
-\textsc{latin small letter turned e} at \uni{01DD}. 
+Some other homoglyphs related to encoding IPA in the Unicode Standard are:
+
+\begin{itemize}
+
+  \item The uses of the apostrophe has led to long discussions on the Unicode
+     Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
+     at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
+     \textsc{right single quotation mark} at \uni{2019}.
+  \item The glottal stop/glottalization/ejective marker is another completely
+      different character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
+      \uni{02BC}, but unfortunately looks mostly highly similar to
+      \uni{2019}. 
+  \item Another problem is the <ˁ> \textsc{modifier letter reversed
+     glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
+     letter small reversed glottal stop} at \uni{02E4}. Both 
+     appear in various resources representing phonetic data online. This is
+     thus a clear example for which the Unicode Standard does not solve the
+     linguistic standardization problem.
+  \item even linguists are unlikely to distinguish between the <ə>
+     \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
+     \textsc{latin small letter turned e} at \uni{01DD}.
+  \item There is at least one case in which the character name assigned by the
+     Unicode Consortium does not match the IPA's description. In the Unicode
+     Standard the <ǃ> at \uni{01C3} is labeled \textsc{latin letter retroflex
+     click}, but in IPA that glyph is used for an alveolar or postalveolar
+     click (not retroflex). This naming is probably best seen as a simple
+     error in the Unicode Standard. This character is of course often simply
+     typed as <!> \textsc{exclamation mark} at \uni{0021}.
+
+\end{itemize} 
+
 
 Conversely,
 non-linguists are unlikely to distinguish any semantic difference between an
@@ -197,30 +225,7 @@ players, our impression is that this highly restricted problem is not
 sufficiently urgent to introduce even more <a> homographs in Unicode (which
 already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 
-Some other homoglyphs related to encoding IPA in the Unicode Standard are:
-
-\begin{itemize}
-	\item The uses of the apostrophe has led to long discussions on the Unicode
-       Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
-       at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
-       \textsc{right single quotation mark} at \uni{2019}.
-     \item The glottal stop/glottalization/ejective marker is another completely
-        different character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
-        \uni{02BC}, but unfortunately looks mostly highly similar to
-        \uni{2019}. 
-	\item Another problem is the <ˁ> \textsc{modifier letter reversed
-       glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
-       letter small reversed glottal stop} at \uni{02E4}. Both 
-       appear in various resources representing phonetic data online. This is
-       thus a clear example for which the Unicode Standard does not solve the
-       linguistic standardization problem. 
-	\item There is at least one case in which the character name assigned by the
-       Unicode Consortium does not match the IPA's description. In the Unicode
-       Standard the <ǃ> at \uni{01C3} is labeled \textsc{latin letter retroflex
-       click}, but in IPA that glyph is used for an alveolar or postalveolar
-       click (not retroflex). This naming is probably best seen as a simple
-       error in the Unicode Standard. This character is of course often simply
-       typed as <!> \textsc{exclamation mark} at \uni{0021}. \end{itemize}       
+      
 
 % ==========================
 \section{Pitfall: Homoglyphs in IPA}
