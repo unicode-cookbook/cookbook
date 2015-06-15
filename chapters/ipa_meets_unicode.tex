@@ -447,7 +447,7 @@ Also related to diacritics is the question of ordering. To our knowledge, the
 International Phonetic Association does not specify a specific ordering for
 diacritics that combine with phonetic base symbols; this exercise is left to the
 reasoning of the transcriber. However, such marks have to be explicitly ordered
-if sequences of them are to be interoperable and compatible. An example is a
+if sequences of them are to be interoperable and compatible computationally. An example is a
 labialized aspirated alveolar plosive: <tʷʰ>. There is nothing holding linguists
 back from using <tʰʷ> instead (with exactly the same intended meaning). However,
 from a technical standpoint, these two sequences are different, e.g.~if both
@@ -458,9 +458,12 @@ nasal can be encoded in various orders, e.g. <n̪̰̩>, <n̩̰̪> or <n̩̪̰>.
 \subsubsection*{Canonical combining classes}
 
 In accordance with the absence of any specification of ordering in the IPA, the
-Unicode Standard likewise does not propose any standard orderings. Both leave it
-to the user to be consistent. However, there is one aspect of ordering for which
-the Unicode Standard does present a canonical solution, which is uncontroversial
+Unicode Standard likewise does not propose any standardized orders. Both leave it
+to the user to be consistent; this approach naturally invites inconsistency across 
+different authored resources.
+
+There is one aspect of ordering for which
+the Unicode Standard does present a canonical solution. However, it is uncontroversial
 from a linguistic perspective. Diacritics in the Unicode Standard
 (i.e.~Combining Diacritical Marks, see above) are classified in Canonical
 Combining Classes. In practice, the diacritics are distinguished by their
@@ -469,7 +472,7 @@ position relative to the base character.\footnote{See
 detailed description.} When applying a Unicode normalization (NFC or NFD, see
 Section~\ref{pitfall-canonical-equivalence}), the diacritics in different
 positions are put in a specified order. This process therefore harmonizes the
-difference between different encodings, for example, of a midtone creaky voice
+difference between different encodings, e.g.\ of a midtone creaky voice
 vowel <ḛ̄>. This grapheme cluster can be encoded either as <e> + <\ \ ̄> + <\ \
 ̰> or as <e> + <\ \ ̰> + <\ \ ̄>. To prevent this twofold encoding, the Unicode
 Standard specifies the second ordering as canonical (in this case, diacritics
@@ -494,13 +497,19 @@ linguistically sensible.
 Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defines a set of diacritic ordering
-conventions.\footnote{The most recent version of these conventions is online at
+conventions. As new languages' phonological inventories are added to the 
+database,\footnote{\url{http://phoible.org/}} updates and additions to the 
+conventions are published online by \cite{MoranMcCloy2014}.\footnote{
 \url{http://phoible.github.io/conventions/}} The conventions are influenced by
-the linguistic literature, though some ad-hoc decisions had to be taken. The
-goal was to explicitly define all character sequences so that the vast variety
-of phonemes found in descriptions of the world's language were normalized into
-consistent character sequences, e.g.~if one language description uses and
-another, when both are intended to be phonetically equivalent, then a decision
+the linguistic literature, though some ad-hoc decisions had to be taken, like 
+introducing several symbols for widely attested sounds that lack representation 
+in the current version of the IPA. Whenever possible, additions were drawn from 
+the extIPA symbols for disordered speech.\footnote{\url{https://www.internationalphoneticassociation.org/sites/default/files/extIPAChart2008.pdf}}
+
+\cite{MoranMcCloy2014} explicitly define all character sequences so that the vast variety
+of phonemes found in a large sample of descriptions of the world's language were normalized into
+consistent character sequences, e.g.~if one language description uses <kʲʼ> and
+another <kʼʲ>, when both are intended to be phonetically equivalent, then a decision
 to normalize to one form was taken. For example, when a character sequence
 contains more than one character in Spacing Modifier Letters, the order that is
 proposed is the following (where <\textbar{}> indicates \textit{or} and <→>
@@ -509,41 +518,49 @@ indicates \textit{precedes}):
 \begin{itemize}
 	\item[] \textsc{Spacing Modifier Letters ordering:}
 	\begin{itemize}
-	  \item[→] (unreleased <\ \ ̚ > \textbar{} lateral release <ˡ> \textbar{} nasal release <ⁿ>)
-	  \item[→] (palatalized <ʲ>)
+	  \item[→] (unreleased <\ \ ̚ >)
+	  \item[→] (rhotic hook <\ \ ˞ >)
+	  \item[→] (lateral release <ˡ> \textbar{} nasal release <ⁿ>)
 	  \item[→] (labialized <ʷ>)
+	  \item[→] (palatalized <ʲ>)
 	  \item[→] (velarized <ˠ>)
 	  \item[→] (pharyngealized <ˤ>)
+	  \item[→] (glottalized <ˀ>)
 	  \item[→] (aspirated <ʰ> \textbar{} ejective <ʼ>)
 	  \item[→] (long <ː> \textbar{} half-long <ˑ>)
 	\end{itemize}
 \end{itemize}
 
 If a character sequence contains more than one diacritic below the base
-character, then the place feature is applied first (dental, laminal, apical,
-fronted, backed, lowered, raised), then the laryngeal setting (voiced,
-voiceless, creaky voice, breathy voice) and finally the syllabic or non-syllabic
-marker (for vowels, ATR gets put on between the place and laryngeal setting).
+character, then the place features are applied first (linguolabial, dental, apical, laminal, advanced, 
+retracted), followed by the manner features (raised, lowered, advanced tongue root, 
+retracted tongue root, frictionalized), then secondary articulations (more round, less round, 
+derhoticized), laryngeal settings (creaky, breathy, voiced, devoiced (below), devoiced (above)), and finally the syllabic or non-syllabic
+marker (for vowels, advanced and retracted tongue root markers gets applied between the place and laryngeal setting).
 So:
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (below) ordering:}
 	\begin{itemize}	
-	  \item[→] (dental <t̪> \textbar{} laminal <t̻> \textbar{} apical <t̺>) 
-	  \item[→] (fronted <u̟> \textbar{} backed <e̠>)
-	  \item[→] (lowered <e̞> \textbar{} raised <e̝>) 
-	  \item[→] (ATR <e̘ e̙>)
-	  \item[→] (voiced <s̬> \textbar{} voiceless <n̥> \textbar{} creaky voice <b̰> \textbar{} breathy voice <b̤>)
+	  \item[→] (linguolabial <t̼> \textbar{} dental <t̪> \textbar{} apical <t̺> \textbar{} laminal <t̻>)
+	  \item[→] (advanced <u̟> \textbar{} retracted <e̠>)	 
+	  \item[→] (raised <e̝> \textbar{} lowered <e̞>) 
+	  \item[→] (advanced tongue root <e̘> \textbar{} retracted tongue root <e̙>)
+	  \item[→] (frictionalized <ɾ͓>)
+	  \item[→] (more round <ɔ̹> \textbar{} less round <ɔ̜>)
+	  \item[→] (creaky voice <b̰> \textbar{} breathy voice <b̤> \textbar{} voiced <s̬> \textbar{} devoiced <n̥>)
 	  \item[→] (syllabic <n̩> \textbar{} non-syllabic <e̯>)
 	\end{itemize}
  \end{itemize}
 
 Character sequences with diacritics above the base character were not
 problematic in \citet{Moran2012} because they include only the centralized,
-mid-centralized and nasalized combining characters. \citet{Moran2012} marks
+mid-centralized and nasalized combining characters. 
+
+\citet{Moran2012,MoranMcCloy2014} mark
 tones as singletons with Space Modifier Letters, e.g. \textless{}˦\textgreater{}
 for a phonemic high tone, instead of accent diacritics, alleviating potential
-conflicts. Building on the work of \citet{Moran2012}, if a character sequence
+conflicts. Building on these works, if a character sequence
 contains more than one diacritic above the base character, we propose:
 
 \begin{itemize}

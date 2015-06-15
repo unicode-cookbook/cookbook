@@ -50,30 +50,20 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.8}Pitfall: No unique diacritic ordering}{40}{section.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.9}Recommendations}{42}{section.3.9}
+\contentsline {section}{\numberline {3.9}Recommendations}{43}{section.3.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Orthography profiles}{43}{chapter.4}
+\contentsline {chapter}{\numberline {4}Orthography profiles}{45}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Characterizing writing systems}{43}{section.4.1}
+\contentsline {section}{\numberline {4.1}Characterizing writing systems}{45}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Informal description}{45}{section.4.2}
+\contentsline {section}{\numberline {4.2}Informal description}{47}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Formal specification}{46}{section.4.3}
+\contentsline {section}{\numberline {4.3}Formal specification}{48}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Use cases}{53}{chapter.5}
+\contentsline {chapter}{\numberline {5}Use cases}{55}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Introduction}{53}{section.5.1}
+\contentsline {section}{\numberline {5.1}Introduction}{55}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Tokenization and error checking}{53}{section.5.2}
+\contentsline {section}{\numberline {5.2}Tokenization and error checking}{55}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{54}{section.5.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{55}{section*.13}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{57}{chapter*.14}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{57}{section*.15}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{57}{section*.16}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{57}{section*.17}
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{56}{section.5.3}
