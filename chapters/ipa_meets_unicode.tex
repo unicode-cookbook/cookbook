@@ -583,17 +583,13 @@ Summarizing the pitfalls discussed in this chapter, we propose to define a
 is intended. For regular research papers, when only the visual outline is 
 important, 
 
-\begin{table}[htdp]
+%\begin{table}[htdp]
   
  \topcaption{IPA letters with Unicode encodings}
- \label{tab:ipa_letters} \tablehead{
-   \toprule
-   & Code & Unicode name & IPA name \\
-  \midrule
-  } \tabletail{\endline}
+ \label{tab:ipa_letters} \tablehead{\toprule & Code & Unicode name & IPA name \\ \midrule } \tabletail{\bottomrule}
   
 \begin{center}
-\begin{xtabular}{ll>{\small}p{4cm}>{\small}l}
+\begin{xtabular}{ l l L{4.5cm} L{4.5cm} }
 a & \uni{0061} & \textsc{latin small letter a} & open front unrounded \\ 
 æ & \uni{00E6} & \textsc{latin small letter ae} & raised open front unrounded \\ 
 ɐ & \uni{0250} & \textsc{latin small letter turned a} & lowered schwa \\ 
@@ -680,7 +676,7 @@ u & \uni{0075} & \textsc{latin small letter u} & close back rounded \\
 ʊ & \uni{028A} & \textsc{latin small letter upsilon} & lax close back rounded \\ 
 v & \uni{0076} & \textsc{latin small letter v} & voiced labiodental fricative \\ 
 ʋ & \uni{028B} & \textsc{latin small letter v with hook} & voiced labiodental approximant \\ 
-ⱱ & \uni{2C71} & \textsc{latin small letter v with right hook} & voiced labiodental tap \\ 
+\charis{ⱱ} & \uni{2C71} & \textsc{latin small letter v with right hook} & voiced labiodental tap \\ 
 ʌ & \uni{028C} & \textsc{latin small letter turned v} & open-mid back unrounded \\ 
 w & \uni{0077} & \textsc{latin small letter w} & voiced labial-velar approximant \\ 
 ʍ & \uni{028D} & \textsc{latin small letter turned w} & voiceless labial-velar fricative \\ 
@@ -705,4 +701,4 @@ z & \uni{007A} & \textsc{latin small letter z} & voiced alveolar fricative \\
 χ & \uni{03C7} & \textsc{greek small letter chi} & voiceless uvular fricative \\
 \end{xtabular}
 \end{center}
-\end{table}
+%\end{table}

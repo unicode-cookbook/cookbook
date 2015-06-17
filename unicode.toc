@@ -52,30 +52,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.9}Recommendations}{43}{section.3.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Orthography profiles}{45}{chapter.4}
+\contentsline {chapter}{\numberline {4}Orthography profiles}{49}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Characterizing writing systems}{45}{section.4.1}
+\contentsline {section}{\numberline {4.1}Characterizing writing systems}{49}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Informal description}{47}{section.4.2}
+\contentsline {section}{\numberline {4.2}Informal description}{51}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Formal specification}{48}{section.4.3}
+\contentsline {section}{\numberline {4.3}Formal specification}{52}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Use cases}{55}{chapter.5}
+\contentsline {chapter}{\numberline {5}Use cases}{59}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Introduction}{55}{section.5.1}
+\contentsline {section}{\numberline {5.1}Introduction}{59}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Tokenization and error checking}{55}{section.5.2}
+\contentsline {section}{\numberline {5.2}Tokenization and error checking}{59}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{56}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{60}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}PHOIBLE}{56}{section.5.4}
+\contentsline {section}{\numberline {5.4}PHOIBLE}{60}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{59}{section*.13}
+\contentsline {chapter}{List of references}{63}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{61}{chapter*.14}
+\contentsline {chapter}{Index}{65}{chapter*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{61}{section*.15}
+\contentsline {section}{Name index}{65}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{61}{section*.16}
+\contentsline {section}{Language index}{65}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{61}{section*.17}
+\contentsline {section}{Subject index}{65}{section*.17}

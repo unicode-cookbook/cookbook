@@ -10,17 +10,17 @@
 \setenumerate{noitemsep}
 
 \usepackage{tabularx}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{xtab}
-\usepackage{array}
-\usepackage{tabu}
+\usepackage{booktabs} % nice lines in tables
+\usepackage{xtab} % xtabular for better multipage tables
+\usepackage{array} % for better handling of columns
+\newcolumntype{L}[1]{>{\footnotesize\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
 
 \widowpenalty=10000
 \clubpenalty=10000
 
 % I have tried to use monospaced numbers in the TOC, but this does not work...
-\settocstylefeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+%\settocstylefeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
 %\settocfeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
 
 % other ideas that also don't give the desired results
