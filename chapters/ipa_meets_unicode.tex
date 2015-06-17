@@ -144,11 +144,7 @@ should ideally not use the <а> \textsc{cyrillic small letter a} at code point
 \uni{0430} for IPA transcriptions, but instead use the <a> \textsc{latin small
 letter a} at code point \uni{0061}, although visually they are mostly
 indistinguishable, and the Cyrillic character is more easily typed on a Cyrillic
-keyboard. 
-
-\ 
-
-\noindent Some problematic homoglyphs related to encoding IPA in the Unicode Standard are 
+keyboard. Some problematic homoglyphs related to encoding IPA in the Unicode Standard are 
 the following.
 \begin{itemize}
 
@@ -157,9 +153,7 @@ the following.
      at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
      \textsc{right single quotation mark} at \uni{2019}.\footnote{Note that many word 
      processors (like Microsoft Word) by default will replace straight quotes by 
-     curly quotes, depending on the whitespace around it. Such a replacement is 
-     a real character replacement, meaning that another Unicode code point is 
-     inserted.} However, the glottal stop/glottalization/ejective marker is yet 
+     curly quotes, depending on the whitespace around it.} However, the glottal stop/glottalization/ejective marker is yet 
      another completely different character <{\large ʼ}>, the 
      \textsc{modifier letter apostrophe} at \uni{02BC}, which unfortunately looks 
      mostly extremely similar to \uni{2019}. 
@@ -186,9 +180,7 @@ Conversely, non-linguists are unlikely to distinguish any semantic difference
 between an open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
 \uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter a}
 at \uni{0061}, basically treating them as homoglyphs, although they are
-different phonetic symbols.
-
-But even among linguists this distinction leads to problems. For example, as
+different phonetic symbols. But even among linguists this distinction leads to problems. For example, as
 pointed out by \citet{Mielke2009}, there is a problem stemming from the fact
 that about 75\% of languages are reported to have a five-vowel system
 \citep{Maddieson1984}. Historically, linguistic descriptions tend not to include
@@ -232,8 +224,6 @@ players, our impression is that this highly restricted problem is not
 sufficiently urgent to introduce even more <a> homographs in Unicode (which
 already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 
-      
-
 % ==========================
 \section{Pitfall: Homoglyphs in IPA}
 \label{pitfall-homoglyphs-in-IPA}
@@ -255,25 +245,26 @@ turn below:
 \begin{itemize}
   \item The marking of tone
   \item The marking of <g>
-  \item The diacritic for voiceless
+  \item The placement of diacritics
   \item The tie bar to indicate a close bond between sounds
 \end{itemize}
 
 The first case in which the IPA allows for different encodings is the question
 of how to transcribe tone. There is an old tradition to use diacritics on vowels
-to mark different tone levels, e.g. <ȅèée̋>.\footnote{There are at least two
-different Unicode homoglyphs for the low and high level tones, namely <\ ̀~>
-\textsc{combining grave tone mark} at \unif{0340} vs.\@ <\ ̀~> \textsc{combining
-grave accent} at \unif{0300} for low tone, and <\ ́~> \textsc{combining acute tone
-mark} at \unif{0341} vs.\@ <\ ́~> \textsc{combining acute accent} at \unif{0301}
-for high tone.} The IPA also proposes a less widespread used, but more
-consistent option of tone letters, e.g. <˥˦˧˨˩>. Tone letters in the IPA have
-five different levels, and sequences of these letters can be used to indicate
-contours. Well-designed fonts will even merge a sequence of tone letters into a
-contour. For example, compare the font Linux Libertine, which does not merge
-tone letters <{\fontspec{LinLibertineO}˥˨˧˩}>, with the font CharisSIL, which
-merges this sequence of four tone letters into a single contour <\charis{˥˨˧˩}>.
-For strict IPA encoding we propose to standardize on tone letters.
+to mark different tone levels, e.g. <ȅèée̋>.\footnote{To make things even more
+complexe, there are at least two different Unicode homoglyphs for the low and
+high level tones, namely <\ ̀~> \textsc{combining grave tone mark} at
+\unif{0340} vs.\@ <\ ̀~> \textsc{combining grave accent} at \unif{0300} for low
+tone, and <\ ́~> \textsc{combining acute tone mark} at \unif{0341} vs.\@ <\ ́~>
+\textsc{combining acute accent} at \unif{0301} for high tone.} The IPA also
+proposes the option of tone letters, e.g. <˥˦˧˨˩>, which are used much less, but
+are more consistent for contours. Tone letters in the IPA have five different levels, and
+sequences of these letters can be used to indicate contours. Well-designed fonts
+will even merge a sequence of tone letters into a contour. For example, compare
+the font Linux Libertine, which does not merge tone letters
+<{\fontspec{LinLibertineO}˥˨˧˩}>, with the font CharisSIL, which merges this
+sequence of four tone letters into a single contour <\charis{˥˨˧˩}>. For strict
+IPA encoding we propose to standardize on tone letters.
 
 Second, we commonly encounter the use of <g> \textsc{latin small letter g} at
 \uni{0067}, instead of the Unicode Standard IPA character for the voiced velar
@@ -281,7 +272,7 @@ stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to
 question whether this issue is at all apparent to the working linguist, or if
 they simply use the \uni{0067} because it is easily keyboarded and thus saves
 time, whereas the latter must be cumbersomely inserted as a special symbol in
-most software. This issue was recently addressed by The International Phonetic
+most software. The International Phonetic
 Association has taken the stance that both the keyboard \textsc{latin small
 letter g} and the \textsc{latin small letter script g} are valid input
 characters for the voiced velar plosive. Unfortunately, this decision further
