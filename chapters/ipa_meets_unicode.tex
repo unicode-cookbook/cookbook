@@ -121,7 +121,7 @@ are also included, see~\cite[Appendix~C]{Moran2012}.}
 	\item Latin Extended-A (3 characters): \newline < ħ ŋ œ >
 	\item Latin Extended-B (4 characters): \newline < ǀ ǁ ǂ ǃ >
 	\item IPA Extensions (68 characters): \newline < ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɛ ɜ ɞ ɟ ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɸ ɹ ɺ ɻ ɽ ɾ ʀ ʁ ʂ ʃ ʄ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʘ ʙ ʛ ʜ ʝ ʟ ʡ ʢ > 
-	\item Spacing Modifier Letters (17 characters): \newline < ʰ ʲ ʷ ʼ ˈ ˌ ː ˑ ˞ ˠ ˡ ˤ ˥ ˦ ˧ ˨ ˩
+	\item Spacing Modifier Letters (17 characters): \newline < ʰ ʲ ʷ ʼ ˈ ˌ ː ˑ ˞ ˠ ˡ ˤ ˥ ˦ ˧ ˨ ˩ >
 	\item Combining Diacritical Marks (29 characters): \newline < {\large \  ̃\ \ ̆\ \ ̈\ ̚\ \ ̘\ \ ̙\ \ \ ̜\ \ ̝\ \ ̞\ \ ̟\ \ ̠\ \ ̤\ \ ̥\ \ ̩\ \ ̪\ \ ̬\ \ ̯\ \ ̰\ \ ̹\ \ ̺\ \ ̻\ \ ̼\ \ ̽\ \ ͜\  ̋\ \ ́\ \ ̄\ \ ̀\ \ ̏\ } >
 	\item Greek and Coptic (3 characters): \newline < β θ χ >
 %	\item Phonetic Extensions (2 characters): \charis{ᴅ ᴴ} 
@@ -365,13 +365,15 @@ Unicode:
   \item[] <\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334}
 \end{itemize} 
 
-There turn out to be a lot of characters in the IPA that could be conceived as 
-using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø> or <ɫ>. However, all 
-such characters exist as well as precomposed combination in Unicode, and these 
-precomposed characters should preferably be used. When combinations of a base 
-character with diacritic are used, then these combinations are not canonical 
-equivalent to the precomposed combinations. This means that any search will not 
-find both at the same time.
+There turn out to be a lot of characters in the IPA that could be conceived as
+using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø> or <ɫ>. However, all such
+characters exist as well as precomposed combination in Unicode, and these
+precomposed characters should preferably be used.\footnote{The IPA does not
+describe any character for a voiced retroflex implosive, which would
+transparently be \charis{ᶑ}. We propose to add this character to the IPA.} When
+combinations of a base character with diacritic are used, then these
+combinations are not canonical equivalent to the precomposed combinations. This
+means that any search will not find both at the same time.
 
 A similar problem arises with the rhotic hook. There are two precomposed
 characters in Unicode with a rhotic hook, which are not canonical equivalent 
@@ -509,25 +511,7 @@ Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defines a set of diacritic ordering
 conventions. The conventions are influenced by the linguistic literature, though
-some ad-hoc decisions had to be taken. For example, when a character sequence
-contains more than one character in Spacing Modifier Letters, the order that is
-proposed is the following (where <\textbar{}> indicates \textit{or} and <→>
-indicates \textit{precedes}):
-
-\begin{itemize}
-	\item[] \textsc{Spacing Modifier Letters ordering:}
-	\begin{itemize}
-	  \item[→] rhotic hook <{\large \ ˞} >
-	  \item[→] lateral release <ˡ> \textbar{} nasal release <ⁿ>
-	  \item[→] labialized <ʷ>
-	  \item[→] palatalized <ʲ>
-	  \item[→] velarized <ˠ>
-	  \item[→] pharyngealized <ˤ>
-	  \item[→] glottalized <ˀ>
-	  \item[→] aspirated <ʰ> \textbar{} ejective <ʼ>
-	  \item[→] long <ː> \textbar{} half-long <ˑ>
-	\end{itemize}
-\end{itemize}
+some ad-hoc decisions had to be taken. 
 
 If a character sequence contains more than one diacritic below the base
 character, then the place features are applied first (linguolabial, dental,
@@ -536,7 +520,9 @@ lowered, advanced tongue root, retracted tongue root, frictionalized), then
 secondary articulations (more round, less round, derhoticized), laryngeal
 settings (creaky, breathy, voiced, devoiced (below), devoiced (above)), and
 finally the syllabic or non-syllabic marker (for vowels, advanced and retracted
-tongue root markers gets applied between the place and laryngeal setting). So:
+tongue root markers gets applied between the place and laryngeal setting). So
+the order that is proposed is the following (where <\textbar{}> indicates
+\textit{or} and <→> indicates \textit{precedes}):
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (below) ordering:}
@@ -552,9 +538,10 @@ tongue root markers gets applied between the place and laryngeal setting). So:
 	\end{itemize}
  \end{itemize}
 
-Finally, if a character sequence contains more than one diacritic above the base
-character, we propose the following order, with Spacing Modifiers and tone
-letters being added at the end:
+Further, if a character sequence contains more than one diacritic above the base
+character, we propose the following order. Note that this ordering is only
+important when the extra short superscript is used. All other combinations will 
+in practice never lead to problems.
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (above) ordering:}
@@ -562,10 +549,28 @@ letters being added at the end:
 	  \item[→] centralized <ë> \textbar{} mid-centralized <e̽>
 	  \item[→] extra short <ĕ>
 %	  \item[→] (tone accents, e.g. <è>)
-	  \item[→] unreleased <e̚>
-	  \item[→] Spacing Modifier Letters, see above
+	  \item[→] unreleased <p̚>
+%	  \item[→] Spacing Modifier Letters, see above	  
+ \end{itemize} \end{itemize}
+
+Finally, when a character sequence contains more than one character in Spacing
+Modifier Letters, these will be placed after all combining diacritic marks in the
+following order:
+
+\begin{itemize}
+	\item[] \textsc{Spacing Modifier Letters ordering:}
+	\begin{itemize}
+	  \item[→] rhotic hook <{\large \ ˞} >
+	  \item[→] lateral release <ˡ> \textbar{} nasal release <ⁿ>
+	  \item[→] labialized <ʷ>
+	  \item[→] palatalized <ʲ>
+	  \item[→] velarized <ˠ>
+	  \item[→] pharyngealized <ˤ>
+	  \item[→] glottalized <ˀ>
+	  \item[→] aspirated <ʰ> \textbar{} ejective <ʼ>
+	  \item[→] long <ː> \textbar{} half-long <ˑ>
 	  \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
-	\end{itemize}	 
+	\end{itemize}
 \end{itemize}
 
 % ==========================
@@ -573,6 +578,131 @@ letters being added at the end:
 \label{ipa-recommendations}
 % ==========================
 
-Summary
+Summarizing the pitfalls discussed in this chapter, we propose to define a 
+``strict'' IPA encoding to be used when interoperability of phonetic resources 
+is intended. For regular research papers, when only the visual outline is 
+important, 
 
-
+\begin{table}[htdp]
+  
+ \topcaption{IPA letters with Unicode encodings}
+ \label{tab:ipa_letters} \tablehead{
+   \toprule
+   & Code & Unicode name & IPA name \\
+  \midrule
+  } \tabletail{\endline}
+  
+\begin{center}
+\begin{xtabular}{ll>{\small}p{4cm}>{\small}l}
+a & \uni{0061} & \textsc{latin small letter a} & open front unrounded \\ 
+æ & \uni{00E6} & \textsc{latin small letter ae} & raised open front unrounded \\ 
+ɐ & \uni{0250} & \textsc{latin small letter turned a} & lowered schwa \\ 
+ɑ & \uni{0251} & \textsc{latin small letter alpha} & open back unrounded \\ 
+ɒ & \uni{0252} & \textsc{latin small letter turned alpha} & open back rounded \\ 
+b & \uni{0062} & \textsc{latin small letter b} & voiced bilabial plosive \\ 
+ʙ & \uni{0299} & \textsc{latin letter small capital b} & voiced bilabial trill \\ 
+ɓ & \uni{0253} & \textsc{latin small letter b with hook} & voiced bilabial implosive \\ 
+c & \uni{0063} & \textsc{latin small letter c} & voiceless palatal plosive \\ 
+ç & \uni{00E7} & \textsc{latin small letter c with cedilla} & voiceless palatal fricative \\ 
+ɕ & \uni{0255} & \textsc{latin small letter c with curl} & voiceless alveolo-palatal fricative \\ 
+d & \uni{0064} & \textsc{latin small letter d} & voiced alveolar plosive \\ 
+ð & \uni{00F0} & \textsc{latin small letter eth} & voiced dental fricative \\ 
+ɖ & \uni{0256} & \textsc{latin small letter d with tail} & voiced retroflex plosive \\ 
+ɗ & \uni{0257} & \textsc{latin small letter d with hook} & voiced dental/alveolar implosive \\ 
+\charis{ᶑ} & \uni{1D91} & \textsc{latin small letter d with hook and tail} & voiced retroflex implosive \\ 
+e & \uni{0065} & \textsc{latin small letter e} & close-mid front unrounded \\ 
+ə & \uni{0259} & \textsc{latin small letter schwa} & mid-central schwa \\ 
+ɛ & \uni{025B} & \textsc{latin small letter open e} & open-mid front unrounded \\ 
+ɘ & \uni{0258} & \textsc{latin small letter reversed e} & close-mid central unrounded \\ 
+ɜ & \uni{025C} & \textsc{latin small letter reversed open e} & open-mid central unrounded \\ 
+ɞ & \uni{025E} & \textsc{latin small letter closed reversed open e} & open-mid central rounded \\ 
+ɤ & \uni{0264} & \textsc{latin small letter rams horn} & close-mid back unrounded \\ 
+f & \uni{0066} & \textsc{latin small letter f} & voiceless labiodental fricative \\ 
+ɡ & \uni{0261} & \textsc{latin small letter script g} & voiced velar plosive \\ 
+ɢ & \uni{0262} & \textsc{latin letter small capital g} & voiced uvular plosive \\ 
+ɠ & \uni{0260} & \textsc{latin small letter g with hook} & voiced velar implosive \\ 
+ʛ & \uni{029B} & \textsc{latin letter small capital g with hook} & voiced uvular implosive \\ 
+ɣ & \uni{0263} & \textsc{latin small letter gamma} & voiced velar fricative \\ 
+h & \uni{0068} & \textsc{latin small letter h} & voiceless glottal fricative \\ 
+ħ & \uni{0127} & \textsc{latin small letter h with stroke} & voiceless pharyngeal fricative \\ 
+ʜ & \uni{029C} & \textsc{latin letter small capital h} & voiceless epiglottal fricative \\ 
+ɦ & \uni{0266} & \textsc{latin small letter h with hook} & voiced glottal fricative \\ 
+ɧ & \uni{0267} & \textsc{latin small letter heng with hook} & voiceless postalveolar+velar fricative \\ 
+i & \uni{0069} & \textsc{latin small letter i} & close front unrounded \\ 
+ɪ & \uni{026A} & \textsc{latin letter small capital i} & lax close front unrounded \\ 
+ɨ & \uni{0268} & \textsc{latin small letter i with stroke} & close central unrounded \\ 
+j & \uni{006A} & \textsc{latin small letter j} & voiced palatal approximant \\ 
+ʝ & \uni{029D} & \textsc{latin small letter j with crossed tail} & voiced palatal fricative \\ 
+ɟ & \uni{025F} & \textsc{latin small letter dotless j with stroke} & voiced palatal plosive \\ 
+ʄ & \uni{0284} & \textsc{latin small letter dotless j with stroke and hook} & voiced palatal implosive \\ 
+k & \uni{006B} & \textsc{latin small letter k} & voiceless velar plosive \\ 
+l & \uni{006C} & \textsc{latin small letter l} & voiced alveolar lateral approximant \\ 
+ʟ & \uni{029F} & \textsc{latin letter small capital l} & voiced velar lateral approximant \\ 
+ɫ & \uni{026B} & \textsc{latin small letter l with middle tilde} & voiced pharyngealized alveolar lateral approximant \\ 
+ɬ & \uni{026C} & \textsc{latin small letter l with belt} & voiceless alveolar lateral fricative \\ 
+ɭ & \uni{026D} & \textsc{latin small letter l with retroflex hook} & voiced retroflex lateral approximant \\ 
+ɮ & \uni{026E} & \textsc{latin small letter lezh} & voiced alveolar lateral fricative \\ 
+ʎ & \uni{028E} & \textsc{latin small letter turned y} & voiced palatal lateral approximant \\ 
+m & \uni{006D} & \textsc{latin small letter m} & voiced bilabial nasal \\ 
+ɱ & \uni{0271} & \textsc{latin small letter m with hook} & voiced labiodental nasal \\ 
+n & \uni{006E} & \textsc{latin small letter n} & voiced alveolar nasal \\ 
+ɴ & \uni{0274} & \textsc{latin letter small capital n} & voiced uvular nasal \\ 
+ɲ & \uni{0272} & \textsc{latin small letter n with left hook} & voiced palatal nasal \\ 
+ɳ & \uni{0273} & \textsc{latin small letter n with retroflex hook} & voiced retroflex nasal \\ 
+ŋ & \uni{014B} & \textsc{latin small letter eng} & voiced velar nasal \\ 
+o & \uni{006F} & \textsc{latin small letter o} & close-mid back rounded \\ 
+ø & \uni{00F8} & \textsc{latin small letter o with stroke} & close-mid front rounded \\ 
+œ & \uni{0153} & \textsc{latin small ligature oe} & open-mid front rounded \\ 
+ɶ & \uni{0276} & \textsc{latin letter small capital oe} & open front rounded \\ 
+ɔ & \uni{0254} & \textsc{latin small letter open o} & open-mid back rounded \\ 
+ɵ & \uni{0275} & \textsc{latin small letter barred o} & close-mid central rounded \\ 
+p & \uni{0070} & \textsc{latin small letter p} & voiceless bilabial plosive \\ 
+ɸ & \uni{0278} & \textsc{latin small letter phi} & voiceless bilabial fricative \\ 
+q & \uni{0071} & \textsc{latin small letter q} & voiceless uvular plosive \\ 
+r & \uni{0072} & \textsc{latin small letter r} & voiced alveolar trill \\ 
+ʀ & \uni{0280} & \textsc{latin letter small capital r} & voiced uvular trill \\ 
+ɹ & \uni{0279} & \textsc{latin small letter turned r} & voiced alveolar approximant \\ 
+ɺ & \uni{027A} & \textsc{latin small letter turned r with long leg} & voiced alveolar lateral flap \\ 
+ɻ & \uni{027B} & \textsc{latin small letter turned r with hook} & voiced retroflex approximant \\ 
+ɽ & \uni{027D} & \textsc{latin small letter r with tail} & voiced retroflex tap \\ 
+ɾ & \uni{027E} & \textsc{latin small letter r with fishhook} & voiced alveolar tap \\ 
+ʁ & \uni{0281} & \textsc{latin letter small capital inverted r} & voiced uvular fricative \\ 
+s & \uni{0073} & \textsc{latin small letter s} & voiceless alveolar fricative \\ 
+ʂ & \uni{0282} & \textsc{latin small letter s with hook} & voiceless retroflex fricative \\ 
+ʃ & \uni{0283} & \textsc{latin small letter esh} & voiceless postalveolar fricative \\ 
+t & \uni{0074} & \textsc{latin small letter t} & voiceless alveolar plosive \\ 
+ʈ & \uni{0288} & \textsc{latin small letter t with retroflex hook} & voiceless retroflex plosive \\ 
+u & \uni{0075} & \textsc{latin small letter u} & close back rounded \\ 
+ʉ & \uni{0289} & \textsc{latin small letter u bar} & close central rounded \\ 
+ɥ & \uni{0265} & \textsc{latin small letter turned h} & voiced labial-palatal approximant \\ 
+ɯ & \uni{026F} & \textsc{latin small letter turned m} & close back unrounded \\ 
+ɰ & \uni{0270} & \textsc{latin small letter turned m with long leg} & voiced velar approximant \\ 
+ʊ & \uni{028A} & \textsc{latin small letter upsilon} & lax close back rounded \\ 
+v & \uni{0076} & \textsc{latin small letter v} & voiced labiodental fricative \\ 
+ʋ & \uni{028B} & \textsc{latin small letter v with hook} & voiced labiodental approximant \\ 
+ⱱ & \uni{2C71} & \textsc{latin small letter v with right hook} & voiced labiodental tap \\ 
+ʌ & \uni{028C} & \textsc{latin small letter turned v} & open-mid back unrounded \\ 
+w & \uni{0077} & \textsc{latin small letter w} & voiced labial-velar approximant \\ 
+ʍ & \uni{028D} & \textsc{latin small letter turned w} & voiceless labial-velar fricative \\ 
+x & \uni{0078} & \textsc{latin small letter x} & voiceless velar fricative \\ 
+y & \uni{0079} & \textsc{latin small letter y} & close front rounded \\ 
+ʏ & \uni{028F} & \textsc{latin letter small capital y} & lax close front rounded \\ 
+z & \uni{007A} & \textsc{latin small letter z} & voiced alveolar fricative \\ 
+ʐ & \uni{0290} & \textsc{latin small letter z with retroflex hook} & voiced retroflex fricative \\ 
+ʑ & \uni{0291} & \textsc{latin small letter z with curl} & voiced alveolo-palatal fricative \\ 
+ʒ & \uni{0292} & \textsc{latin small letter ezh} & voiced postalveolar fricative \\ 
+ʔ & \uni{0294} & \textsc{latin letter glottal stop} & voiceless glottal plosive \\ 
+ʕ & \uni{0295} & \textsc{latin letter pharyngeal voiced fricative} & voiced pharyngeal fricative \\ 
+ʡ & \uni{02A1} & \textsc{latin letter glottal stop with stroke} & epiglottal plosive \\ 
+ʢ & \uni{02A2} & \textsc{latin letter reversed glottal stop with stroke} & voiced epiglottal fricative \\ 
+ǀ & \uni{01C0} & \textsc{latin letter dental click} & voiceless dental click \\ 
+ǁ & \uni{01C1} & \textsc{latin letter lateral click} & voiceless alveolar lateral click \\ 
+ǂ & \uni{01C2} & \textsc{latin letter alveolar click} & voiceless palatoalveolar click \\ 
+ǃ & \uni{01C3} & \textsc{latin letter retroflex click} & voiceless (post)alveolar click \\ 
+ʘ & \uni{0298} & \textsc{latin letter bilabial click} & voiceless bilabial click \\ 
+β & \uni{03B2} & \textsc{greek small letter beta} & voiced bilabial fricative \\ 
+θ & \uni{03B8} & \textsc{greek small letter theta} & voiceless dental fricative \\ 
+χ & \uni{03C7} & \textsc{greek small letter chi} & voiceless uvular fricative \\
+\end{xtabular}
+\end{center}
+\end{table}
