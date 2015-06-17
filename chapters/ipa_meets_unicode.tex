@@ -378,7 +378,7 @@ characters in Unicode with a rhotic hook, which are not canonical equivalent
 with a combination of the vowel with a separately encoded hook:
 \begin{itemize}
   \item[] <ɚ> \textsc{latin small letter schwa with hook} at \uni{025A}
-  \item[] <ɝ> \textsc{latin small letter reversed open e with hook}at \uni{025D}
+  \item[] <ɝ> \textsc{latin small letter reversed open e with hook} at \uni{025D}
 \end{itemize}
           
 All other combinations of vowels with rhotic hooks will have to be made by using
@@ -397,7 +397,7 @@ decomposition is not intended in the IPA.\@
 \label{pitfall-different-notions-of-diacritics}
 % ==========================
 
-Another pitfall relates the concept of what are diacritics. The problem is that
+Another pitfall relates to the question of what are diacritics. The problem is that
 the meaning of the term diacritics as used by the IPA is not the same as is used
 in the Unicode Standard. Specifically, diacritics in the IPA-sense are either
 so-called \textsc{combining diacritical marks} or \textsc{spacing modifier
@@ -428,6 +428,7 @@ Letters in the Unicode Standard:
 	\begin{itemize}
 	  \item[] <ʰ> \textsc{modifier letter small h} at \uni{02B0}
 	  \item[] <ˤ> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
+	  \item[] <ⁿ> \textsc{superscript latin small letter n} at \uni{207F}
 	  \item[] and many more like this
 	\end{itemize}
 	
@@ -507,20 +508,8 @@ linguistically sensible.
 Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defines a set of diacritic ordering
-conventions. As new languages' phonological inventories are added to the 
-database,\footnote{\url{http://phoible.org/}} updates and additions to the 
-conventions are published online by~\cite{MoranMcCloy2014}.\footnote{
-\url{http://phoible.github.io/conventions/}} The conventions are influenced by
-the linguistic literature, though some ad-hoc decisions had to be taken, like 
-introducing several symbols for widely attested sounds that lack representation 
-in the current version of the IPA.\@ Whenever possible, additions were drawn from 
-the extIPA symbols for disordered speech.\footnote{\url{https://www.internationalphoneticassociation.org/sites/default/files/extIPAChart2008.pdf}}
-
-\cite{MoranMcCloy2014} explicitly define all character sequences so that the vast variety
-of phonemes found in a large sample of descriptions of the world's language were normalized into
-consistent character sequences, e.g.~if one language description uses <kʲʼ> and
-another <kʼʲ>, when both are intended to be phonetically equivalent, then a decision
-to normalize to one form was taken. For example, when a character sequence
+conventions. The conventions are influenced by the linguistic literature, though
+some ad-hoc decisions had to be taken. For example, when a character sequence
 contains more than one character in Spacing Modifier Letters, the order that is
 proposed is the following (where <\textbar{}> indicates \textit{or} and <→>
 indicates \textit{precedes}):
@@ -528,59 +517,54 @@ indicates \textit{precedes}):
 \begin{itemize}
 	\item[] \textsc{Spacing Modifier Letters ordering:}
 	\begin{itemize}
-	  \item[→] (unreleased <\ \ ̚ >)
-	  \item[→] (rhotic hook <\ \ ˞ >)
-	  \item[→] (lateral release <ˡ> \textbar{} nasal release <ⁿ>)
-	  \item[→] (labialized <ʷ>)
-	  \item[→] (palatalized <ʲ>)
-	  \item[→] (velarized <ˠ>)
-	  \item[→] (pharyngealized <ˤ>)
-	  \item[→] (glottalized <ˀ>)
-	  \item[→] (aspirated <ʰ> \textbar{} ejective <ʼ>)
-	  \item[→] (long <ː> \textbar{} half-long <ˑ>)
+	  \item[→] rhotic hook <{\large \ ˞} >
+	  \item[→] lateral release <ˡ> \textbar{} nasal release <ⁿ>
+	  \item[→] labialized <ʷ>
+	  \item[→] palatalized <ʲ>
+	  \item[→] velarized <ˠ>
+	  \item[→] pharyngealized <ˤ>
+	  \item[→] glottalized <ˀ>
+	  \item[→] aspirated <ʰ> \textbar{} ejective <ʼ>
+	  \item[→] long <ː> \textbar{} half-long <ˑ>
 	\end{itemize}
 \end{itemize}
 
 If a character sequence contains more than one diacritic below the base
-character, then the place features are applied first (linguolabial, dental, apical, laminal, advanced, 
-retracted), followed by the manner features (raised, lowered, advanced tongue root, 
-retracted tongue root, frictionalized), then secondary articulations (more round, less round, 
-derhoticized), laryngeal settings (creaky, breathy, voiced, devoiced (below), devoiced (above)), and finally the syllabic or non-syllabic
-marker (for vowels, advanced and retracted tongue root markers gets applied between the place and laryngeal setting).
-So:
+character, then the place features are applied first (linguolabial, dental,
+apical, laminal, advanced, retracted), followed by the manner features (raised,
+lowered, advanced tongue root, retracted tongue root, frictionalized), then
+secondary articulations (more round, less round, derhoticized), laryngeal
+settings (creaky, breathy, voiced, devoiced (below), devoiced (above)), and
+finally the syllabic or non-syllabic marker (for vowels, advanced and retracted
+tongue root markers gets applied between the place and laryngeal setting). So:
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (below) ordering:}
 	\begin{itemize}	
-	  \item[→] (linguolabial <t̼> \textbar{} dental <t̪> \textbar{} apical <t̺> \textbar{} laminal <t̻>)
-	  \item[→] (advanced <u̟> \textbar{} retracted <e̠>)	 
-	  \item[→] (raised <e̝> \textbar{} lowered <e̞>) 
-	  \item[→] (advanced tongue root <e̘> \textbar{} retracted tongue root <e̙>)
-	  \item[→] (frictionalized <ɾ͓>)
-	  \item[→] (more round <ɔ̹> \textbar{} less round <ɔ̜>)
-	  \item[→] (creaky voice <b̰> \textbar{} breathy voice <b̤> \textbar{} voiced <s̬> \textbar{} devoiced <n̥>)
-	  \item[→] (syllabic <n̩> \textbar{} non-syllabic <e̯>)
+	  \item[→] linguolabial <t̼> \textbar{} dental <t̪> \textbar{} apical <t̺> \textbar{} laminal <t̻>
+	  \item[→] advanced <u̟> \textbar{} retracted <e̠> 
+	  \item[→] raised <e̝> \textbar{} lowered <e̞>
+	  \item[→] advanced tongue root <e̘> \textbar{} retracted tongue root <e̙>
+	  \item[→] frictionalized <ɾ͓>
+	  \item[→] more round <ɔ̹> \textbar{} less round <ɔ̜>
+	  \item[→] creaky voice <b̰> \textbar{} breathy voice <b̤> \textbar{} voiced <s̬> \textbar{} devoiced <n̥>
+	  \item[→] syllabic <n̩> \textbar{} non-syllabic <e̯>
 	\end{itemize}
  \end{itemize}
 
-Character sequences with diacritics above the base character were not
-problematic in \citet{Moran2012} because they include only the centralized,
-mid-centralized and nasalized combining characters. 
-
-\citet{Moran2012,MoranMcCloy2014} mark
-tones as singletons with Space Modifier Letters, e.g. \textless{}˦\textgreater{}
-for a phonemic high tone, instead of accent diacritics, alleviating potential
-conflicts. Building on these works, if a character sequence
-contains more than one diacritic above the base character, we propose:
+Finally, if a character sequence contains more than one diacritic above the base
+character, we propose the following order, with Spacing Modifiers and tone
+letters being added at the end:
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (above) ordering:}
 	\begin{itemize}
-	  \item[→] (centralized <ë> \textbar{} mid-centralized <e̽>)
-	  \item[→] (extra short <ĕ>)
-	  \item[→] (tone accents, e.g. <è>)
-	  \item[→] (Spacing Modifier Letters, see above)
-	  \item[→] (tone letters, e.g. <˦>)
+	  \item[→] centralized <ë> \textbar{} mid-centralized <e̽>
+	  \item[→] extra short <ĕ>
+%	  \item[→] (tone accents, e.g. <è>)
+	  \item[→] unreleased <e̚>
+	  \item[→] Spacing Modifier Letters, see above
+	  \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
 	\end{itemize}	 
 \end{itemize}
 
