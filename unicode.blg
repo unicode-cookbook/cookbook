@@ -18,16 +18,17 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 10421 items from 5000.
+Reallocated field_info (elt_size=4) to 10560 items from 5000.
 Database file #1: unicode-blx.bib
 Database file #2: localbibliography.bib
 Warning--I didn't find a database entry for "Vidal2001a"
+Warning--I didn't find a database entry for "MoranMcCloy2014"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 38 entries,
             6047 wiz_defined-function locations,
-            1409 strings with 14214 characters,
+            1411 strings with 14244 characters,
 and the built_in function-call counts, 133560 in all, are:
 = -- 6149
 > -- 4650
@@ -66,4 +67,4 @@ warning$ -- 0
 while$ -- 784
 width$ -- 0
 write$ -- 951
-(There was 1 warning)
+(There were 2 warnings)
