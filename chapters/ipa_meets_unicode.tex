@@ -146,18 +146,23 @@ letter a} at code point \uni{0061}, although visually they are mostly
 indistinguishable, and the Cyrillic character is more easily typed on a Cyrillic
 keyboard. 
 
-Some other homoglyphs related to encoding IPA in the Unicode Standard are:
+\ 
 
+\noindent Some problematic homoglyphs related to encoding IPA in the Unicode Standard are 
+the following.
 \begin{itemize}
 
   \item The uses of the apostrophe has led to long discussions on the Unicode
      Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
      at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
-     \textsc{right single quotation mark} at \uni{2019}.
-  \item The glottal stop/glottalization/ejective marker is another completely
-      different character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
-      \uni{02BC}, but unfortunately looks mostly highly similar to
-      \uni{2019}. 
+     \textsc{right single quotation mark} at \uni{2019}.\footnote{Note that many word 
+     processors (like Microsoft Word) by default will replace straight quotes by 
+     curly quotes, depending on the whitespace around it. Such a replacement is 
+     a real character replacement, meaning that another Unicode code point is 
+     inserted.} However, the glottal stop/glottalization/ejective marker is yet 
+     another completely different character <{\large ʼ}>, the 
+     \textsc{modifier letter apostrophe} at \uni{02BC}, which unfortunately looks 
+     mostly extremely similar to \uni{2019}. 
   \item Another problem is the <ˁ> \textsc{modifier letter reversed
      glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
      letter small reversed glottal stop} at \uni{02E4}. Both 
@@ -167,39 +172,40 @@ Some other homoglyphs related to encoding IPA in the Unicode Standard are:
   \item even linguists are unlikely to distinguish between the <ə>
      \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
      \textsc{latin small letter turned e} at \uni{01DD}.
-  \item There is at least one case in which the character name assigned by the
-     Unicode Consortium does not match the IPA's description. In the Unicode
-     Standard the <ǃ> at \uni{01C3} is labeled \textsc{latin letter retroflex
+  \item  The alveolar click <ǃ> at \uni{01C3} is of course often simply
+     typed as <!> \textsc{exclamation mark} at \uni{0021}.\footnote{In the Unicode
+     Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter retroflex
      click}, but in IPA that glyph is used for an alveolar or postalveolar
-     click (not retroflex). This naming is probably best seen as a simple
-     error in the Unicode Standard. This character is of course often simply
-     typed as <!> \textsc{exclamation mark} at \uni{0021}.
+     click (not retroflex). This naming is probably best seen as an 
+     error in the Unicode Standard.}
 
 \end{itemize} 
 
 
-Conversely,
-non-linguists are unlikely to distinguish any semantic difference between an
-open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
-\uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter
-a} at \uni{0061}. But even among linguists this distinction leads to problems.
-For example, as pointed out by \citet{Mielke2009}, there is a problem stemming
-from the fact that about 75\% of languages are reported to have a five-vowel
-system \citep{Maddieson1984}. Historically, linguistic descriptions tend not to
-include precise audio recording and measurements of formants, so this may lead
-one to ask if the many <a> characters that are used in phonological description
-reflects a transcriptional bias. The common use of <a> in transcriptions
-could be in part due to the ease of typing the letter on an English keyboard (or
-for older descriptions, the typewriter). We found it to be exceedingly rare that
-a linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
+Conversely, non-linguists are unlikely to distinguish any semantic difference
+between an open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
+\uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter a}
+at \uni{0061}, basically treating them as homoglyphs, although they are
+different phonetic symbols.
+
+But even among linguists this distinction leads to problems. For example, as
+pointed out by \citet{Mielke2009}, there is a problem stemming from the fact
+that about 75\% of languages are reported to have a five-vowel system
+\citep{Maddieson1984}. Historically, linguistic descriptions tend not to include
+precise audio recording and measurements of formants, so this may lead one to
+ask if the many <a> characters that are used in phonological description
+reflects a transcriptional bias. The common use of <a> in transcriptions could
+be in part due to the ease of typing the letter on an English keyboard (or for
+older descriptions, the typewriter). We found it to be exceedingly rare that a
+linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
 \citet[75]{Vidal2001a}, in which the author states: ``The definition of Pilagá
-/a/ as [+back] results from its behavior in certain phonological contexts.
-For instance, uvular and pharyngeal consonants only occur around /a/ and /o/.
-Hence, the characterization of /a/ and /o/ as a natural class of (i.e.,
-[+back] vowels), as opposed to /i/ and /e/.''} They simply use <a> as
-long as there is no opposition to <ɑ>.\footnote{See Thomason's Language Log
-post, ``Why I don't love the International Phonetic Alphabet'' at:
-\url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
+/a/ as [+back] results from its behavior in certain phonological contexts. For
+instance, uvular and pharyngeal consonants only occur around /a/ and /o/. Hence,
+the characterization of /a/ and /o/ as a natural class of (i.e., [+back]
+vowels), as opposed to /i/ and /e/.''} They simply use <a> as long as there is
+no opposition to <ɑ>.
+
+%\footnote{See Thomason's Language Log post, ``Why I don't love the International Phonetic Alphabet'' at:\url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
 
 Making things even more problematic, there is an old typographic tradition that
 the double-story <a> uses a single-story <ɑ> in italics. This leads to the
