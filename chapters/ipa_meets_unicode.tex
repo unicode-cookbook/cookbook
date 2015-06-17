@@ -312,8 +312,7 @@ printing easier-to-read texts, and are included in the Unicode Standard for
 reasons of legacy encoding. However, their usage is discouraged by the Unicode
 core specification. Specifically related to IPA, various phonetic combinations
 of characters (typically affricates) are available as single code-points in the
-Unicode Standard, but are designated as \textsc{ligatures} or \textsc{digraphs}
-(confusingly both names appear interchangeably). Such glyphs might be used by
+Unicode Standard, but are designated \textsc{digraphs}. Such glyphs might be used by
 software to produce a pleasing display, but they should not be hard-coded into
 the text itself. In the context of IPA, characters like the following ligatures
 should thus \emph{not} be used. Instead a combination of two characters is
@@ -352,33 +351,46 @@ should be used when writing IPA, namely:
 \label{pitfall-missing-decomposition}
 % ==========================
 
-Although many combinations of base character with diacritic are treated as 
-canonical equivalent with precomposed characters, there are a few combinations 
-in IPA that allow for multiple, apparently identical, encodings that are not 
-canonical equivalent. The following elements should not be treated as diacritics 
-when encoding IPA in Unicode:
+Although many combinations of base character with diacritic are treated as
+canonical equivalent with precomposed characters, there are a few combinations
+in IPA that allow for multiple, apparently identical, encodings that are not
+canonical equivalent (see Section~\ref{pitfall-canonical-equivalence}),. The
+following elements should not be treated as diacritics when encoding IPA in
+Unicode: 
 \begin{itemize}
   \item[] <\ {\large  ̡}\ > \textsc{combining palatalized hook below} at \uni{0321}
   \item[] <\ \ {\large  ̢}> \textsc{combining retroflex hook below} at \uni{0322}
   \item[] <\ \ {\large  ̵}> \textsc{combining short stroke overlay} at \uni{0335}
   \item[] <\ \ {\large  ̷}> \textsc{combining short solidus overlay} at \uni{0337}
   \item[] <\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334}
-  \item[] <{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}
 \end{itemize} 
 
 There turn out to be a lot of characters in the IPA that could be conceived as 
-using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø>, <ɫ> or <ɚ>. However, all 
-such characters exist as well as ``precomposed'' combination in Unicode, and these 
+using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø> or <ɫ>. However, all 
+such characters exist as well as precomposed combination in Unicode, and these 
 precomposed characters should preferably be used. When combinations of a base 
 character with diacritic are used, then these combinations are not canonical 
 equivalent to the precomposed combinations. This means that any search will not 
 find both at the same time.
 
-Reversely, <ç> \textsc{latin small letter c with cedilla} at \uni{00E7} will be
-decomposed into <c> \textsc{latin small letter c} at \uni{0063} with 
-<\ \ {\large  ̧}> \textsc{combining cedilla} at \uni{0327}, 
-also if such a decomposition is not intended, because it is meaningless in 
-IPA.\@
+A similar problem arises with the rhotic hook. There are two precomposed
+characters in Unicode with a rhotic hook, which are not canonical equivalent 
+with a combination of the vowel with a separately encoded hook:
+\begin{itemize}
+  \item[] <ɚ> \textsc{latin small letter schwa with hook} at \uni{025A}
+  \item[] <ɝ> \textsc{latin small letter reversed open e with hook}at \uni{025D}
+\end{itemize}
+          
+All other combinations of vowels with rhotic hooks will have to be made by using
+<{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
+is not complete set of precomposed characters with rhotic hooks. For that reason
+we propose to not use the two precomposed characters with hooks mentioned above,
+but always use the separate rhotic hook at \uni{02DE} in IPA.\@
+
+Reversely, note that the <ç> \textsc{latin small letter c with cedilla} at
+\uni{00E7} will be decomposed into <c> with <\ \ {\large ̧}> \textsc{combining
+cedilla} at \uni{0327} by Unicode canonical decomposition, also if such a
+decomposition is not intended in the IPA.\@
 
 % ==========================
 \section{Pitfall: Different notions of diacritics}
