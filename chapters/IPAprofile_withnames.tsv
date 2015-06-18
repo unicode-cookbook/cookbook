@@ -1,7 +1,4 @@
 graphemes	codepoints	Unicode_names	IPA_names
-#
-# IPA letters
-#
 a	U+0061	LATIN SMALL LETTER A	open front unrounded
 æ	U+00E6	LATIN SMALL LETTER AE	raised open front unrounded
 ɐ	U+0250	LATIN SMALL LETTER TURNED A	lowered schwa
@@ -17,7 +14,7 @@ d	U+0064	LATIN SMALL LETTER D	voiced alveolar plosive
 ð	U+00F0	LATIN SMALL LETTER ETH	voiced dental fricative
 ɖ	U+0256	LATIN SMALL LETTER D WITH TAIL	voiced retroflex plosive
 ɗ	U+0257	LATIN SMALL LETTER D WITH HOOK	voiced dental/alveolar implosive
-ᶑ	U+1D91	LATIN SMALL LETTER D WITH HOOK AND TAIL	voiced retroflex implosive
+#ᶑ	U+1D91	LATIN SMALL LETTER D WITH HOOK AND TAIL	voiced retroflex implosive
 e	U+0065	LATIN SMALL LETTER E	close-mid front unrounded
 ə	U+0259	LATIN SMALL LETTER SCHWA	mid-central schwa
 ɛ	U+025B	LATIN SMALL LETTER OPEN E	open-mid front unrounded
@@ -46,7 +43,7 @@ j	U+006A	LATIN SMALL LETTER J	voiced palatal approximant
 k	U+006B	LATIN SMALL LETTER K	voiceless velar plosive
 l	U+006C	LATIN SMALL LETTER L	voiced alveolar lateral approximant
 ʟ	U+029F	LATIN LETTER SMALL CAPITAL L	voiced velar lateral approximant
-ɫ	U+026B	LATIN SMALL LETTER L WITH MIDDLE TILDE	voiced velarized/pharyngealized alveolar lateral approximant
+#ɫ	U+026B	LATIN SMALL LETTER L WITH MIDDLE TILDE	voiced velarized/pharyngealized alveolar lateral approximant
 ɬ	U+026C	LATIN SMALL LETTER L WITH BELT	voiceless alveolar lateral fricative
 ɭ	U+026D	LATIN SMALL LETTER L WITH RETROFLEX HOOK	voiced retroflex lateral approximant
 ɮ	U+026E	LATIN SMALL LETTER LEZH	voiced alveolar lateral fricative
@@ -111,9 +108,7 @@ z	U+007A	LATIN SMALL LETTER Z	voiced alveolar fricative
 β	U+03B2	GREEK SMALL LETTER BETA	voiced bilabial fricative
 θ	U+03B8	GREEK SMALL LETTER THETA	voiceless dental fricative
 χ	U+03C7	GREEK SMALL LETTER CHI	voiceless uvular fricative
-#
-# diacritics below, in proposed order
-#
+̼	U+033C	COMBINING SEAGULL BELOW	linguolabial
 ̪	U+032A	COMBINING BRIDGE BELOW	dental
 ̻	U+033B	COMBINING SQUARE BELOW	laminal
 ̺	U+033A	COMBINING INVERTED BRIDGE BELOW	apical
@@ -131,21 +126,16 @@ z	U+007A	LATIN SMALL LETTER Z	voiced alveolar fricative
 ̤	U+0324	COMBINING DIAERESIS BELOW	breathy voiced
 ̩	U+0329	COMBINING VERTICAL LINE BELOW	syllabic
 ̯	U+032F	COMBINING INVERTED BREVE BELOW	non-syllabic
-#
-# diacritics above, in proposed order
-#
+̃	U+0303	COMBINING TILDE	nasalized
 ̈	U+0308	COMBINING DIAERESIS	centralized
 ̽	U+033D	COMBINING X ABOVE	mid-centralized
 ̆	U+0306	COMBINING BREVE	extra-short
 ̚	U+031A	COMBINING LEFT ANGLE ABOVE	no audible release
-#
-# modifier letters
-#
 ˞	U+02DE	MODIFIER LETTER RHOTIC HOOK	rhotacized
 ˡ	U+02E1	MODIFIER LETTER SMALL L	lateral release
 ⁿ	U+207F	SUPERSCRIPT LATIN SMALL LETTER N	nasal release
-ʲ	U+02B2	MODIFIER LETTER SMALL J	palatalized
 ʷ	U+02B7	MODIFIER LETTER SMALL W	labialized
+ʲ	U+02B2	MODIFIER LETTER SMALL J	palatalized
 ˠ	U+02E0	MODIFIER LETTER SMALL GAMMA	velarized
 ˤ	U+02E4	MODIFIER LETTER SMALL REVERSED GLOTTAL STOP	pharyngealized
 ʰ	U+02B0	MODIFIER LETTER SMALL H	aspirated
@@ -157,22 +147,14 @@ z	U+007A	LATIN SMALL LETTER Z	voiced alveolar fricative
 ˧	U+02E7	MODIFIER LETTER MID TONE BAR	mid tone
 ˨	U+02E8	MODIFIER LETTER LOW TONE BAR	low tone
 ˩	U+02E9	MODIFIER LETTER EXTRA-LOW TONE BAR	extra low tone
-#
-# not yet integrated in the ordering of diacritcs
-#
-̼	U+033C	COMBINING SEAGULL BELOW	linguolabial
-̃	U+0303	COMBINING TILDE	nasalized
 ↑	U+2191	UPWARDS ARROW	upstep
 ↓	U+2193	DOWNWARDS ARROW	downstep
 ↗	U+2197	NORTH EAST ARROW	global rise
 ↘	U+2198	SOUTH EAST ARROW	global fall
-#
-# breaks/linking/stress
-#
 ˈ	U+02C8	MODIFIER LETTER VERTICAL LINE	primary stress
 ˌ	U+02CC	MODIFIER LETTER LOW VERTICAL LINE	secondary stress
 .	U+002E	FULL STOP	syllable break
 |	U+007C	VERTICAL LINE	minor group break (foot)
 ‖	U+2016	DOUBLE VERTICAL LINE	major group break (intonation)
 ‿	U+203F	UNDERTIE	linking (absence of a break)
-͜	U+035C	COMBINING DOUBLE BREVE BELOW	tie bar
+
