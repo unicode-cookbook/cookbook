@@ -237,9 +237,34 @@ already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 \label{pitfall-homoglyphs-in-IPA}
 % ==========================
 
-% this has to be revised: there are two issues: homoglyphs and alternative 
-encoding options. that is not necessarily the same. Also include minor group break 
-vs. dental click problem. and stress vs. ejective?
+Reversely, there are a few cases in which the IPA distinguishes different
+concepts, but the visual marking proposed by the IPA look very much alike. Such
+cases are thus homoglyphs in the IPA itself, which of course need different
+encodings.
+
+\begin{itemize}
+  
+   \item The dental click <ǀ> and the indication of a minor group break <|>
+           (proposed to be used for separating feet) look almost the same in
+           most fonts. For a proper encoding, the \textsc{latin letter dental
+           click} at \uni{01C0} and the \textsc{vertical line }at \uni{007C} 
+           should be strictly distinguished.
+   \item Similarly, the alveolar lateral click <ǁ>	should be encoded with a
+           \textsc{latin letter lateral click} at \uni{01C1}, different from <‖>, 
+           which according to the IPA is a major group break (by intonation), to be
+           encoded by \textsc{double vertical line} at \uni{2016}.
+   \item The marking of primary stress < ˈ > looks like an apostrophe, and
+           is often typed with the same symbol as the ejective < ʼ >. For a
+           proper encoding, these two symbols should be typed as 
+           \textsc{modifier letter vertical line} at \uni{02C8} and
+           \textsc{modifier letter apostrophe} at \uni{02BC}, respectively.         
+   
+\end{itemize}
+
+% ==========================
+\section{Pitfall: Multiple options in IPA}
+\label{pitfall-multiple-options-ipa}     
+% ========================== 
 
 It is not just the Unicode Standard that offers multiple options for encoding
 the IPA.\@ Even the IPA specification itself offers some flexibility in how
