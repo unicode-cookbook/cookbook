@@ -50,7 +50,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.8}Pitfall: Different notions of diacritics}{40}{section.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.9}Pitfall: No unique diacritic ordering}{41}{section.3.9}
+\contentsline {section}{\numberline {3.9}Pitfall: No unique diacritic ordering}{42}{section.3.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.10}Recommendations}{44}{section.3.10}
 \defcounter {refsection}{0}\relax 

@@ -148,31 +148,39 @@ keyboard. Some problematic homoglyphs related to encoding IPA in the Unicode Sta
 the following.
 \begin{itemize}
 
-  \item The uses of the apostrophe has led to long discussions on the Unicode
-     Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
-     at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
-     \textsc{right single quotation mark} at \uni{2019}.\footnote{Note that many word 
-     processors (like Microsoft Word) by default will replace straight quotes by 
-     curly quotes, depending on the whitespace around it.} However, the glottal stop/glottalization/ejective marker is yet 
-     another completely different character <{\large ʼ}>, the 
-     \textsc{modifier letter apostrophe} at \uni{02BC}, which unfortunately looks 
-     mostly extremely similar to \uni{2019}. 
-  \item Another problem is the <ˁ> \textsc{modifier letter reversed
-     glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
-     letter small reversed glottal stop} at \uni{02E4}. Both 
-     appear in various resources representing phonetic data online. This is
-     thus a clear example for which the Unicode Standard does not solve the
-     linguistic standardization problem.
-  \item even linguists are unlikely to distinguish between the <ə>
-     \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
-     \textsc{latin small letter turned e} at \uni{01DD}.
-  \item  The alveolar click <ǃ> at \uni{01C3} is of course often simply
-     typed as <!> \textsc{exclamation mark} at \uni{0021}.\footnote{In the Unicode
-     Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter retroflex
-     click}, but in IPA that glyph is used for an alveolar or postalveolar
-     click (not retroflex). This naming is probably best seen as an 
-     error in the Unicode Standard.}
-
+   \item The uses of the apostrophe has led to long discussions on the Unicode
+        Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}>
+        \textsc{apostrophe} at \uni{0027}, although the preferred Unicode
+        apostrophe is the <\ ' > \textsc{right single quotation mark} at
+        \uni{2019}.\footnote{Note that many word processors (like Microsoft
+        Word) by default will replace straight quotes by curly quotes,
+        depending on the whitespace around it.} However, the glottal
+        stop/glottalization/ejective marker is yet another completely different
+        character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
+        \uni{02BC}, which unfortunately looks mostly extremely similar to
+        \uni{2019}. 
+  \item Another problem is the <ˁ> \textsc{modifier letter reversed glottal
+        stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier letter small reversed
+        glottal stop} at \uni{02E4}. Both appear in various resources
+        representing phonetic data online. This is thus a clear example for
+        which the Unicode Standard does not solve the linguistic standardization
+        problem.
+  \item Even linguists are unlikely to distinguish between the <ə>
+        \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
+        \textsc{latin small letter turned e} at \uni{01DD}.
+  \item The alveolar click <ǃ> at \uni{01C3} is of course often simply
+        typed as <!> \textsc{exclamation mark} at \uni{0021}.\footnote{In the
+        Unicode Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter
+        retroflex click}, but in IPA that glyph is used for an alveolar or
+        postalveolar click (not retroflex). This naming is probably best seen as
+        an error in the Unicode Standard.}
+  \item The dental click <ǀ>, in Unicode known as \textsc{latin letter dental
+        click} at \uni{01C0}, is of course often simply typed as <|>
+        \textsc{vertical line} at \uni{007C}.
+  \item For the marking of length there is a special Unicode characters, namely
+        <ː> \textsc{modifier letter triangular colon} at \uni{02D0}. However,
+        typing <:> \textsc{colon} at \uni{003A} is of course much easier.        
+  
 \end{itemize} 
 
 
@@ -309,9 +317,9 @@ standardize on the tie bar above the base characters, using Unicode
 
 \begin{itemize}
   \item[] {\fontspec{Times New Roman}Times new Roman: <t̥ʰ͡s> <t̥ʰ͜s>}
-  \item[] {\small \fontspec{CharisSIL}CharisSIL: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] {\small \fontspec{CharisSIL}CharisSIL:\@ <t̥ʰ͡s> <t̥ʰ͜s>}
   \item[] {\footnotesize \fontspec{Monaco}Monaco: <t̥ʰ͡s> <t̥ʰ͜s>}
-  \item[] {\fontspec{DoulosSIL}DoulosSIL: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] {\fontspec{DoulosSIL}DoulosSIL:\@ <t̥ʰ͡s> <t̥ʰ͜s>}
   \item[] Linux Libertine: <t̥ʰ͡s> <t̥ʰ͜s>
 \end{itemize}
 
@@ -320,7 +328,7 @@ a segment, but bind two graphemes together. This actually turns out to be rather
 different from the Unicode conceptions, see
 Section~\ref{pitfall-different-notions-of-diacritics}. According to the spirit
 of the IPA, it is possible to combine more than two base characters into one tie
-bar, but this is not possible with Unicode (i.e. there is no possibility to draw
+bar, but this is not possible with Unicode (i.e.~there is no possibility to draw
 a tie bar over three of four characters). It is possible to indicate such larger
 groups by repeating the tie bar, like in <a͡o͡u>. If really necessary, we
 consider this possible, even though the rendering will never look good. 
