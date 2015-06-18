@@ -110,22 +110,22 @@ subdivided into character blocks, which generally encode characters from a
 single script. However, as is illustrated by the IPA, characters that form a
 single writing system may be dispersed across several different character
 blocks. With its diverse collection of symbols from various scripts and
-diacritics, the IPA is spread across 13 blocks in the Unicode
+diacritics, the IPA is spread across 12 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
 are also included, see~\cite[Appendix~C]{Moran2012}.}
 
 \begin{itemize}
-	\item Basic Latin (27 characters): \newline < a~b~c~d~e~f~h~i~j~k~l~m~n~o~p~q~r~s~t~u~v~w~x~y~z~.~| >
+	\item Basic Latin (27 characters): \newline < a b c d e f h i j k l m n o p q r s t u v w x y z~.~| >
 	\item Latin-1 Supplement (4 characters): \newline < æ ç ð ø >
 	\item Latin Extended-A (3 characters): \newline < ħ ŋ œ >
 	\item Latin Extended-B (4 characters): \newline < ǀ ǁ ǂ ǃ >
-	\item IPA Extensions (68 characters): \newline < ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɛ ɜ ɞ ɟ ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɸ ɹ ɺ ɻ ɽ ɾ ʀ ʁ ʂ ʃ ʄ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʘ ʙ ʛ ʜ ʝ ʟ ʡ ʢ > 
+	\item IPA Extensions (67 characters): \newline < ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɛ ɜ ɞ ɟ ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɪ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɸ ɹ ɺ ɻ ɽ ɾ ʀ ʁ ʂ ʃ ʄ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʘ ʙ ʛ ʜ ʝ ʟ ʡ ʢ > 
 	\item Spacing Modifier Letters (17 characters): \newline < ʰ ʲ ʷ ʼ ˈ ˌ ː ˑ ˞ ˠ ˡ ˤ ˥ ˦ ˧ ˨ ˩ >
 	\item Combining Diacritical Marks (29 characters): \newline < {\large \  ̃\ \ ̆\ \ ̈\ ̚\ \ ̘\ \ ̙\ \ \ ̜\ \ ̝\ \ ̞\ \ ̟\ \ ̠\ \ ̤\ \ ̥\ \ ̩\ \ ̪\ \ ̬\ \ ̯\ \ ̰\ \ ̹\ \ ̺\ \ ̻\ \ ̼\ \ ̽\ \ ͜\  ̋\ \ ́\ \ ̄\ \ ̀\ \ ̏\ } >
 	\item Greek and Coptic (3 characters): \newline < β θ χ >
 %	\item Phonetic Extensions (2 characters): \charis{ᴅ ᴴ} 
-	\item Phonetic Extensions Supplement (1 characters): \newline < \charis{ᶑ} >
+%	\item Phonetic Extensions Supplement (1 characters): \newline < \charis{ᶑ} >
     \item General Punctuation (2 characters): \newline < ‖ \charis{‿} >
 	\item Superscripts and Subscripts (1 character): \newline < ⁿ > 
 	\item Arrows (4 characters): \newline < ↑ ↓ ↗ ↘ >
@@ -188,22 +188,22 @@ Conversely, non-linguists are unlikely to distinguish any semantic difference
 between an open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
 \uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter a}
 at \uni{0061}, basically treating them as homoglyphs, although they are
-different phonetic symbols. But even among linguists this distinction leads to problems. For example, as
-pointed out by \citet{Mielke2009}, there is a problem stemming from the fact
-that about 75\% of languages are reported to have a five-vowel system
-\citep{Maddieson1984}. Historically, linguistic descriptions tend not to include
-precise audio recording and measurements of formants, so this may lead one to
-ask if the many <a> characters that are used in phonological description
-reflects a transcriptional bias. The common use of <a> in transcriptions could
-be in part due to the ease of typing the letter on an English keyboard (or for
-older descriptions, the typewriter). We found it to be exceedingly rare that a
-linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
-\citet[75]{Vidal2001a}, in which the author states: ``The definition of Pilagá
-/a/ as [+back] results from its behavior in certain phonological contexts. For
-instance, uvular and pharyngeal consonants only occur around /a/ and /o/. Hence,
-the characterization of /a/ and /o/ as a natural class of (i.e., [+back]
-vowels), as opposed to /i/ and /e/.''} They simply use <a> as long as there is
-no opposition to <ɑ>.
+different phonetic symbols. But even among linguists this distinction leads to
+problems. For example, as pointed out by \citet{Mielke2009}, there is a problem
+stemming from the fact that about 75\% of languages are reported to have a
+five-vowel system \citep{Maddieson1984}. Historically, linguistic descriptions
+tend not to include precise audio recording and measurements of formants, so
+this may lead one to ask if the many <a> characters that are used in
+phonological description reflects a transcriptional bias. The common use of <a>
+in transcriptions could be in part due to the ease of typing the letter on an
+English keyboard (or for older descriptions, the typewriter). We found it to be
+exceedingly rare that a linguist uses <ɑ> for a low back unrounded
+vowel.\footnote{One example is \citet[75]{Vidal2001a}, in which the author
+states: ``The definition of Pilagá /a/ as [+back] results from its behavior in
+certain phonological contexts. For instance, uvular and pharyngeal consonants
+only occur around /a/ and /o/. Hence, the characterization of /a/ and /o/ as a
+natural class of (i.e., [+back] vowels), as opposed to /i/ and /e/.''} They
+simply use <a> as long as there is no opposition to <ɑ>.
 
 %\footnote{See Thomason's Language Log post, ``Why I don't love the International Phonetic Alphabet'' at:\url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
 
@@ -257,7 +257,11 @@ encodings.
            is often typed with the same symbol as the ejective < ʼ >. For a
            proper encoding, these two symbols should be typed as 
            \textsc{modifier letter vertical line} at \uni{02C8} and
-           \textsc{modifier letter apostrophe} at \uni{02BC}, respectively.         
+           \textsc{modifier letter apostrophe} at \uni{02BC}, respectively. 
+   \item There are two different ``dashed''-l characters in IPA, namely the <ɫ> 	      \textsc{latin small letter l with middle tilde} at \uni{026B} and the <ɬ>	      \textsc{latin small letter l with belt} at \uni{026C}. These of course
+          look highly similar, although they are different sounds. As a solution, 
+          we will actually propose to not use the middle tilde at all 
+          (see Section~\ref{pitfall-multiple-options-ipa}).     
    
 \end{itemize}
 
@@ -282,6 +286,7 @@ turn below:
 \begin{itemize}
   \item The marking of tone
   \item The marking of <g>
+  \item The marking of velarization ad pharyngealization
   \item The placement of diacritics
 \end{itemize}
 
@@ -316,7 +321,14 @@ to adhere to a strict Unicode Standard IPA encoding. For strict IPA encoding we
 propose to standardize on the more idiosyncratic \textsc{latin small letter
 script g} at \uni{0261}.
 
-Third, for marking marking of voiceless pronunciation of voiced segments the IPA
+Third, the IPA has different markers for velarization <ˠ> and pharyngealization
+<ˤ>. Confusingly, there is also a marker for ``velarized or pharyngealized'',
+using the <\ \ {\large ̴}> \textsc{combining tilde overlay} at \uni{0334}. The
+tilde overlay seems to be extremely rarely used. For strict IPA encoding we
+propose to not include the combining tilde overlay at all, but only use the 
+other two Spacing Modifiers.
+
+Finally, for marking marking of voiceless pronunciation of voiced segments the IPA
 uses the ring diacritic. Originally, the ring should be placed below the 
 base character, like in <m̥>, using the \textsc{combining ring below} at \uni{0325}. 
 However, in letters with long descenders the IPA also allows to put the ring 
