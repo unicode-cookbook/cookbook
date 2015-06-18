@@ -156,7 +156,7 @@ the following.
         Word) by default will replace straight quotes by curly quotes,
         depending on the whitespace around it.} However, the glottal
         stop/glottalization/ejective marker is yet another completely different
-        character <{\large ʼ}>, the \textsc{modifier letter apostrophe} at
+        character <{\large ʼ}>, namely the \textsc{modifier letter apostrophe} at
         \uni{02BC}, which unfortunately looks mostly extremely similar to
         \uni{2019}. 
   \item Another problem is the <ˁ> \textsc{modifier letter reversed glottal
@@ -236,6 +236,10 @@ already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 \section{Pitfall: Homoglyphs in IPA}
 \label{pitfall-homoglyphs-in-IPA}
 % ==========================
+
+% this has to be revised: there are two issues: homoglyphs and alternative 
+encoding options. that is not necessarily the same. Also include minor group break 
+vs. dental click problem. and stress vs. ejective?
 
 It is not just the Unicode Standard that offers multiple options for encoding
 the IPA.\@ Even the IPA specification itself offers some flexibility in how
@@ -493,23 +497,15 @@ Unicode to force separate characters to be combined (namely by using the
 \textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
 impractical, and probably not an enforceable solution to us.
 
-% problem with tie bar!!!
-
-In Section~\ref{pitfall-different-notions-of-diacritics}, we highlight
-the division of linguistic diacritics into two categories in the Unicode
-Standard: Spacing Modifier Letters and Combining Diacritical Marks.\footnote{The
-former contain characters like aspiration < ʰ > which is user specified (before
-or after the base character) and the latter which combines with the base
-character.} The tie-bar is somewhere in between these two character classes,
-i.e.~when the combining breve (above or below) is told to combine within a
-sequence of Unicode characters, it will bind to the character immediately
-preceding it -- the so-called base character -- regardless if that base
-character is a Spacing Modifier Letter \textit{or} Combining Diacritical Mark.
-\footnote{In some cases conversion of a string sequence into Unicode
-Normalization Form C alleviates the problem by composing sequences of characters
-like <e> + < ́ > into single character < é > (see however diacritics like the
-rhotic hook in ).} 
-
+Further, the IPA tie bar (see Section~\ref{pitfall-tie-bar}) is somewhere in
+between these two character classes. The Unicode encoding of this character is
+uses a Combining Diacritical Mark, namely either \textsc{combining double
+inverted breve} at \uni{0361} or \textsc{combining double breve below} at
+\uni{035C}. Such a combining mark is by definition tied to the character in
+front, but not the character following it. The Unicode treatment of this
+character thus only partly corresponds to the IPA conception, which ideally
+would have the tie bar linked both to the character in front and to the 
+character following.
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}

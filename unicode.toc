@@ -42,7 +42,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Pitfall: Homoglyphs in IPA}{36}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Pitfall: Tie bar}{37}{section.3.5}
+\contentsline {section}{\numberline {3.5}Pitfall: Tie bar}{38}{section.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.6}Pitfall: Ligatures and digraphs}{38}{section.3.6}
 \defcounter {refsection}{0}\relax 
@@ -50,7 +50,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.8}Pitfall: Different notions of diacritics}{40}{section.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.9}Pitfall: No unique diacritic ordering}{42}{section.3.9}
+\contentsline {section}{\numberline {3.9}Pitfall: No unique diacritic ordering}{41}{section.3.9}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.10}Recommendations}{44}{section.3.10}
 \defcounter {refsection}{0}\relax 
