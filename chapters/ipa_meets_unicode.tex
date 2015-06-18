@@ -246,7 +246,6 @@ turn below:
   \item The marking of tone
   \item The marking of <g>
   \item The placement of diacritics
-  \item The tie bar to indicate a close bond between sounds
 \end{itemize}
 
 The first case in which the IPA allows for different encodings is the question
@@ -272,13 +271,13 @@ stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to
 question whether this issue is at all apparent to the working linguist, or if
 they simply use the \uni{0067} because it is easily keyboarded and thus saves
 time, whereas the latter must be cumbersomely inserted as a special symbol in
-most software. The International Phonetic
-Association has taken the stance that both the keyboard \textsc{latin small
-letter g} and the \textsc{latin small letter script g} are valid input
-characters for the voiced velar plosive. Unfortunately, this decision further
-introduces ambiguity for linguists trying to adhere to a strict Unicode Standard
-IPA encoding. For strict IPA encoding we propose to standardize on the more 
-idiosyncratic \textsc{latin small letter script g} at \uni{0261}.
+most software. The International Phonetic Association has taken the stance that
+both the keyboard \textsc{latin small letter g} and the \textsc{latin small
+letter script g} are valid input characters for the voiced velar plosive.
+Unfortunately, this decision further introduces ambiguity for linguists trying
+to adhere to a strict Unicode Standard IPA encoding. For strict IPA encoding we
+propose to standardize on the more idiosyncratic \textsc{latin small letter
+script g} at \uni{0261}.
 
 Third, for marking marking of voiceless pronunciation of voiced segments the IPA
 uses the ring diacritic. Originally, the ring should be placed below the 
@@ -287,60 +286,52 @@ However, in letters with long descenders the IPA also allows to put the ring
 above the base, like in <ŋ̊>, using the \textsc{combining ring above} at 
 \uni{030A}. Yet, proper font design does not have any problem with rendering 
 the ring below the base character, like in <ŋ̥>, so for strict IPA encoding we 
-propose to standardize on the ring below.
+propose to standardize on the ring below. As a principle, for strict IPA 
+encoding only one options should be allowed.
 
-Finally, the tie bar to indicate affricates, doubly articulated consonants or
-diphthongs can be placed above or below the base characters, e.g.
-<\charis{t͡s}> or <\charis{t͜s}>. IPA allows both the \textsc{combining double inverted
-breve} at \uni{0361} and the \textsc{combining double breve below} at \uni{035C}. The  
-choice between the two symbols is purely for legible rendering; there is no difference 
-in semantics between the two symbols. In fact, rendering is such a problematic issue 
-for tie bars in general, that many linguists simply do not use them. Further, tie bars 
-are a special type of character in the sense that they bind two graphemes (singleton base characters 
-or tailored grapheme clusters) together. In Section \ref{pitfall-different-notions-of-diacritics}, 
-we highlight the division of linguistic diacritics 
-into two categories in the Unicode Standard: Spacing Modifier Letters and Combining 
-Diacritical Marks.\footnote{The former contain characters like aspiration < ʰ > which is user 
-specified (before or after the base character) and the latter which combines 
-with the base character.} The tie-bar is somewhere in between these two character 
-classes, i.e. when the combining breve (above or below) is told to combine within 
-a sequence of Unicode characters, it will bind to the character immediately 
-preceding it -- the so-called base character -- regardless if that base 
-character is a Spacing Modifier Letter \textit{or} Combining Diacritical Mark. \footnote{In some cases 
-conversion of a string sequence into Unicode Normalization Form C alleviates 
-the problem by composing sequences of characters like <e> + < ́ > into single character < é > 
-(see however diacritics like the rhotic hook in ).} In principle, 
-it is possible to combine more than two base characters by repeating the tie bar, 
-like in <a͡o͡u>. If really necessary, we consider this possible, even though the 
-rendering will never look good.
+% ==========================
+\section{Pitfall: Tie bar}
+\label{pitfall-tie-bar}
+% ==========================
 
-The tie-bar is a convenient diacritic for visually tokenizing input strings into chunks of 
-phonetically salient groups and both the above and below tie-bar were introduced in electronic 
-text to deal with difficult to render character sequences. The tie-bar is unnecessary for 
-computational tokenization given the design of orthography profiles, described in 
-Section \ref{usecase-tokenization}. However, to adhere to strict IPA encoding users 
-may use either tie bar, or none whatsoever. 
+The IPA includes a tie bar to indicate affricates, doubly articulated consonants
+or diphthongs. This character can be placed above or below the base characters,
+e.g. <\charis{t͡s}> or <\charis{t͜s}>. IPA allows both options. The choice
+between the two symbols is purely for legible rendering; there is no difference
+in semantics between the two symbols. The tie-bar is a convenient diacritic for
+visually tokenizing input strings into chunks of phonetically salient groups.
+However, rendering is such a problematic issue for tie bars in general that many
+linguists simply do not use them. Just looking at a few different fonts already
+indicates that actually no font designer really gets the placement right in
+combination with superscripts and subscripts. If really necessary, we propose to
+standardize on the tie bar above the base characters, using Unicode
+\textsc{combining double inverted breve} at \uni{0361}.
 
-\begin{comment} 
-Finally, the tie bar to indicate affricates, doubly articulated consonants or
-diphthongs can be placed either below or on top of the base characters, e.g.
-<\charis{t͡s}> or <\charis{t͜s}>. For strict IPA encoding we propose to standardize on the tie bar
-above the base characters, using Unicode \textsc{combining double inverted
-breve} at \uni{0361}. Note that this Unicode character is placed between the two 
-base characters to be combined. In principle, it is possible to combine more 
-than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
-necessary, we consider this possible, even though the rendering will never look 
-good.
+\begin{itemize}
+  \item[] {\fontspec{Times New Roman}Times new Roman: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] {\small \fontspec{CharisSIL}CharisSIL: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] {\footnotesize \fontspec{Monaco}Monaco: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] {\fontspec{DoulosSIL}DoulosSIL: <t̥ʰ͡s> <t̥ʰ͜s>}
+  \item[] Linux Libertine: <t̥ʰ͡s> <t̥ʰ͜s>
+\end{itemize}
 
-For strict IPA encoding we propose to standardize on the tie bar
-above the base characters, using Unicode \textsc{combining double inverted
-breve} at \uni{0361}. Note that this Unicode character is placed between the two 
-base characters to be combined. In principle, it is possible to combine more 
-than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
-necessary, we consider this possible, even though the rendering will never look 
-good.\end{comment}
+Tie bars are a special type of character in the sense that they do not belong to
+a segment, but bind two graphemes together. This actually turns out to be rather
+different from the Unicode conceptions, see
+Section~\ref{pitfall-different-notions-of-diacritics}. According to the spirit
+of the IPA, it is possible to combine more than two base characters into one tie
+bar, but this is not possible with Unicode (i.e. there is no possibility to draw
+a tie bar over three of four characters). It is possible to indicate such larger
+groups by repeating the tie bar, like in <a͡o͡u>. If really necessary, we
+consider this possible, even though the rendering will never look good. 
 
-
+Most importantly though, the tie-bar is unnecessary for computational
+tokenization given the design of orthography profiles, as described in
+Section~\ref{usecase-tokenization}. The principle idea of such tokenization is 
+that groups of characters that belong together are defined in an orthography 
+profile, making it superfluous to indicate them explicitly by tie bars. For this 
+reason we actually would like to suggest to remove the tie bar from any 
+``strict'' IPA encoding.
 
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
@@ -493,6 +484,24 @@ pre-aspiration (preceding the base character). Note that there exists a mechanis
 Unicode to force separate characters to be combined (namely by using the
 \textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
 impractical, and probably not an enforceable solution to us.
+
+% problem with tie bar!!!
+
+In Section~\ref{pitfall-different-notions-of-diacritics}, we highlight
+the division of linguistic diacritics into two categories in the Unicode
+Standard: Spacing Modifier Letters and Combining Diacritical Marks.\footnote{The
+former contain characters like aspiration < ʰ > which is user specified (before
+or after the base character) and the latter which combines with the base
+character.} The tie-bar is somewhere in between these two character classes,
+i.e.~when the combining breve (above or below) is told to combine within a
+sequence of Unicode characters, it will bind to the character immediately
+preceding it -- the so-called base character -- regardless if that base
+character is a Spacing Modifier Letter \textit{or} Combining Diacritical Mark.
+\footnote{In some cases conversion of a string sequence into Unicode
+Normalization Form C alleviates the problem by composing sequences of characters
+like <e> + < ́ > into single character < é > (see however diacritics like the
+rhotic hook in ).} 
+
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
