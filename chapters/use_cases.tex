@@ -5,10 +5,12 @@
 
 We now present several use cases that have motivated the development of
 orthography profiles. These include: 
+
 \begin{itemize}
 	\item tokenization and error checking
 	\item normalization of orthographic systems to attain interoperability across different source documents, 
 	\item cognate identification for detecting the similarity between words from different languages 
+	\item ...
 \end{itemize}
 
 An important assumption of our work is that input sources are encoded in Unicode
@@ -21,10 +23,12 @@ working with text data in the Unicode Standard.
 \section{Tokenization and error checking} The most basic use case is
 tokenization of language data. Tokenization comes in three types:
 
-- Unicode character tokenization
-- grapheme tokenization
-- tailored grapheme tokenization
-
+\begin{itemize}
+	\item Unicode character tokenization
+	\item grapheme tokenization
+	\item tailored grapheme tokenization
+\end{itemize}
+	
 The simplest form of tokenization provided by any Unicode Standard-compliant
 software will split an input text stream on Unicode character code points. The
 input text is split on the character bit sequences as they have been encoded by
@@ -258,4 +262,19 @@ mid-centralized and nasalized combining characters.
 
 \citet{Moran2012;MoranMcCloy2014} mark tones as singletons with Space Modifier
 Letters, e.g. <˦> for a phonemic high tone, instead of accent diacritics,
-alleviating potential conflicts. Building on these works, 
+alleviating potential conflicts. 
+
+\citet{Moran2012;MoranMcCloy2014} represent clicks as a combination of anterior and 
+posterior articulations, where the set < k q ɡ ɢ ŋ ɴ > denote place of articulation 
+and phonation type (voiced, voiceless, nasal). The anterior articulation click characters 
+are < ʘ ǀ ǁ ǃ ǂ > with the addition of non-standard IPA < ‼ > \textsc{DOUBLE EXCLAMATION MARK)} 
+\uni{203C} to represent the retroflex click. Note that the (post)alveolar click < ǃ > at \uni{01C3} 
+is called incorrectly \textsc{LATIN LETTER RETROFLEX CLICK} (it is also a different character than 
+the keyboard < ! > \textsc{EXCLAMATION MARK} at \uni{0021}). All sources that contain clicks in 
+PHOIBLE are standardized to contain both the anterior and posterior characters and diacritics 
+are added to the posterior glyph, e.g.\ < ŋ̊ǃ >.\footnote{http://phoible.github.io/conventions/}
+
+Building on these works...
+
+
+

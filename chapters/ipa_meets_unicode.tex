@@ -288,7 +288,40 @@ above the base, like in <ŋ̊>, using the \textsc{combining ring above} at
 \uni{030A}. Yet, proper font design does not have any problem with rendering 
 the ring below the base character, like in <ŋ̥>, so for strict IPA encoding we 
 propose to standardize on the ring below.
- 
+
+Finally, the tie bar to indicate affricates, doubly articulated consonants or
+diphthongs can be placed above or below the base characters, e.g.
+<\charis{t͡s}> or <\charis{t͜s}>. IPA allows both the \textsc{combining double inverted
+breve} at \uni{0361} and the \textsc{combining double breve below} at \uni{035C}. The  
+choice between the two symbols is purely for legible rendering; there is no difference 
+in semantics between the two symbols. In fact, rendering is such a problematic issue 
+for tie bars in general, that many linguists simply do not use them. Further, tie bars 
+are a special type of character in the sense that they bind two graphemes (singleton base characters 
+or tailored grapheme clusters) together. In Section \ref{pitfall-different-notions-of-diacritics}, 
+we highlight the division of linguistic diacritics 
+into two categories in the Unicode Standard: Spacing Modifier Letters and Combining 
+Diacritical Marks.\footnote{The former contain characters like aspiration < ʰ > which is user 
+specified (before or after the base character) and the latter which combines 
+with the base character.} The tie-bar is somewhere in between these two character 
+classes, i.e. when the combining breve (above or below) is told to combine within 
+a sequence of Unicode characters, it will bind to the character immediately 
+preceding it -- the so-called base character -- regardless if that base 
+character is a Spacing Modifier Letter \textit{or} Combining Diacritical Mark. \footnote{In some cases 
+conversion of a string sequence into Unicode Normalization Form C alleviates 
+the problem by composing sequences of characters like <e> + < ́ > into single character < é > 
+(see however diacritics like the rhotic hook in ).} In principle, 
+it is possible to combine more than two base characters by repeating the tie bar, 
+like in <a͡o͡u>. If really necessary, we consider this possible, even though the 
+rendering will never look good.
+
+The tie-bar is a convenient diacritic for visually tokenizing input strings into chunks of 
+phonetically salient groups and both the above and below tie-bar were introduced in electronic 
+text to deal with difficult to render character sequences. The tie-bar is unnecessary for 
+computational tokenization given the design of orthography profiles, described in 
+Section \ref{usecase-tokenization}. However, to adhere to strict IPA encoding users 
+may use either tie bar, or none whatsoever. 
+
+\begin{comment} 
 Finally, the tie bar to indicate affricates, doubly articulated consonants or
 diphthongs can be placed either below or on top of the base characters, e.g.
 <\charis{t͡s}> or <\charis{t͜s}>. For strict IPA encoding we propose to standardize on the tie bar
@@ -298,6 +331,16 @@ base characters to be combined. In principle, it is possible to combine more
 than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
 necessary, we consider this possible, even though the rendering will never look 
 good.
+
+For strict IPA encoding we propose to standardize on the tie bar
+above the base characters, using Unicode \textsc{combining double inverted
+breve} at \uni{0361}. Note that this Unicode character is placed between the two 
+base characters to be combined. In principle, it is possible to combine more 
+than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
+necessary, we consider this possible, even though the rendering will never look 
+good.\end{comment}
+
+
 
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
