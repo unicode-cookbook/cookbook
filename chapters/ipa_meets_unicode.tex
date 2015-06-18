@@ -511,7 +511,8 @@ Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defines a set of diacritic ordering
 conventions. The conventions are influenced by the linguistic literature, though
-some ad-hoc decisions had to be taken. 
+some ad-hoc decisions had to be taken given the vast variability of phonological segments 
+described by linguists. 
 
 If a character sequence contains more than one diacritic below the base
 character, then the place features are applied first (linguolabial, dental,
@@ -546,6 +547,7 @@ in practice never lead to problems.
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (above) ordering:}
 	\begin{itemize}
+	  \item[→] nasalized <ẽ>
 	  \item[→] centralized <ë> \textbar{} mid-centralized <e̽>
 	  \item[→] extra short <ĕ>
 %	  \item[→] (tone accents, e.g. <è>)
@@ -586,7 +588,9 @@ important,
 %\begin{table}[htdp]
   
  \topcaption{IPA letters with Unicode encodings}
- \label{tab:ipa_letters} \tablehead{\toprule & Code & Unicode name & IPA name \\ \midrule } \tabletail{\bottomrule}
+ \label{tab:ipa_letters}
+ \tablehead{\toprule & Code & Unicode name & IPA name \\ \midrule }
+ \tabletail{\bottomrule}
   
 \begin{center}
 \begin{xtabular}{ l l L{4.5cm} L{4.5cm} }
