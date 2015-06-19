@@ -2,19 +2,17 @@
 
 \usepackage{amsmath} 
 \usepackage{unicode-math}
-\setmathfont{Asana-Math.otf}
+\setmathfont{Asana-Math.otf} % this looks much better for formulas
 \usepackage[libertine]{newtxmath}
 
-\usepackage{enumitem}
+\usepackage{enumitem} % some additional possibilities for enumerations
 \setitemize{noitemsep}
 \setenumerate{noitemsep}
 
 \usepackage{tabularx}
 \usepackage{booktabs} % nice lines in tables
-
 \usepackage{xtab} % xtabular for better multipage tables
-\xentrystretch{-0.1}
-
+\xentrystretch{-0.1} % squeeze more lines on a page
 \usepackage{array} % for better handling of columns
 \newcolumntype{L}[1]{>{\footnotesize\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 

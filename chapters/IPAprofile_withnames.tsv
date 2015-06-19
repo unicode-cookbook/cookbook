@@ -14,7 +14,6 @@ d	U+0064	LATIN SMALL LETTER D	voiced alveolar plosive
 ð	U+00F0	LATIN SMALL LETTER ETH	voiced dental fricative
 ɖ	U+0256	LATIN SMALL LETTER D WITH TAIL	voiced retroflex plosive
 ɗ	U+0257	LATIN SMALL LETTER D WITH HOOK	voiced dental/alveolar implosive
-#ᶑ	U+1D91	LATIN SMALL LETTER D WITH HOOK AND TAIL	voiced retroflex implosive
 e	U+0065	LATIN SMALL LETTER E	close-mid front unrounded
 ə	U+0259	LATIN SMALL LETTER SCHWA	mid-central schwa
 ɛ	U+025B	LATIN SMALL LETTER OPEN E	open-mid front unrounded
@@ -43,7 +42,6 @@ j	U+006A	LATIN SMALL LETTER J	voiced palatal approximant
 k	U+006B	LATIN SMALL LETTER K	voiceless velar plosive
 l	U+006C	LATIN SMALL LETTER L	voiced alveolar lateral approximant
 ʟ	U+029F	LATIN LETTER SMALL CAPITAL L	voiced velar lateral approximant
-#ɫ	U+026B	LATIN SMALL LETTER L WITH MIDDLE TILDE	voiced velarized/pharyngealized alveolar lateral approximant
 ɬ	U+026C	LATIN SMALL LETTER L WITH BELT	voiceless alveolar lateral fricative
 ɭ	U+026D	LATIN SMALL LETTER L WITH RETROFLEX HOOK	voiced retroflex lateral approximant
 ɮ	U+026E	LATIN SMALL LETTER LEZH	voiced alveolar lateral fricative

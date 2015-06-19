@@ -42,44 +42,46 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Pitfall: Homoglyphs in IPA}{36}{section.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Pitfall: Multiple options in IPA}{37}{section.3.5}
+\contentsline {section}{\numberline {3.5}Pitfall: Multiple encoding options in IPA}{37}{section.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Pitfall: Tie bar}{38}{section.3.6}
+\contentsline {section}{\numberline {3.6}Pitfall: Tie bar}{39}{section.3.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.7}Pitfall: Ligatures and digraphs}{39}{section.3.7}
+\contentsline {section}{\numberline {3.7}Pitfall: Ligatures and digraphs}{40}{section.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.8}Pitfall: Missing decomposition}{40}{section.3.8}
+\contentsline {section}{\numberline {3.8}Pitfall: Missing decomposition}{41}{section.3.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.9}Pitfall: Different notions of diacritics}{41}{section.3.9}
+\contentsline {section}{\numberline {3.9}Pitfall: Different notions of diacritics}{42}{section.3.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.10}Pitfall: No unique diacritic ordering}{42}{section.3.10}
+\contentsline {section}{\numberline {3.10}Pitfall: No unique diacritic ordering}{43}{section.3.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.11}Recommendations}{45}{section.3.11}
+\contentsline {section}{\numberline {3.11}Additions to the IPA}{46}{section.3.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Orthography profiles}{51}{chapter.4}
+\contentsline {section}{\numberline {3.12}Recommendations}{47}{section.3.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Characterizing writing systems}{51}{section.4.1}
+\contentsline {chapter}{\numberline {4}Orthography profiles}{55}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Informal description}{53}{section.4.2}
+\contentsline {section}{\numberline {4.1}Characterizing writing systems}{55}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Formal specification}{54}{section.4.3}
+\contentsline {section}{\numberline {4.2}Informal description}{57}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Use cases}{61}{chapter.5}
+\contentsline {section}{\numberline {4.3}Formal specification}{58}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Introduction}{61}{section.5.1}
+\contentsline {chapter}{\numberline {5}Use cases}{65}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Tokenization and error checking}{61}{section.5.2}
+\contentsline {section}{\numberline {5.1}Introduction}{65}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{62}{section.5.3}
+\contentsline {section}{\numberline {5.2}Tokenization and error checking}{65}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}PHOIBLE}{63}{section.5.4}
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{66}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{65}{section*.13}
+\contentsline {section}{\numberline {5.4}PHOIBLE}{67}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{67}{chapter*.14}
+\contentsline {chapter}{List of references}{69}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{67}{section*.15}
+\contentsline {chapter}{Index}{71}{chapter*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{67}{section*.16}
+\contentsline {section}{Name index}{71}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{67}{section*.17}
+\contentsline {section}{Language index}{71}{section*.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Subject index}{71}{section*.17}
