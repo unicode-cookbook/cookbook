@@ -745,7 +745,6 @@ used with care.
       mark} at \uni{203C}. Note that the (post-)alveolar click <ǃ> at \uni{01C3}
       is confusingly referred to as \textsc{latin letter retroflex click} in the
       Unicode standard, which is probably best seen as an error.
-
 \item \textsc{Voiced retroflex implosive} \newline 
       Although the IPA includes a
       series of voiced implosives (marked with a hook on top, see
@@ -753,7 +752,6 @@ used with care.
       implosive. Following the spirit of the IPA, we propose to use <\charis{ᶑ}>
       \textsc{latin small letter d with hook and tail} at \uni{1D91} for this
       sound.
-
 \item \textsc{Fortis/lenis} \newline
       Languages described as having a fortis/plain/lenis distinction that
       corresponds poorly with the traditional
@@ -763,7 +761,6 @@ used with care.
       \uni{0348} to mark the fortis articulation, and/or <\dia{0349}>
       \textsc{combining left angle below} at \uni{0349} for the lenis
       articulation.
-
 \item \textsc{Frictionalization} \newline 
       The diacritic <\dia{0353}>
       \textsc{combining x below} at \uni{0353} can be used to represent three
@@ -774,18 +771,15 @@ used with care.
       closures to create buzzing); and third, fricative sounds at places of
       articulation that do not have dedicated fricative glyphs, for example
       sounds with voiceless velar lateral frication, like <ʟ̥͓>.
-
 \item \textsc{Derhoticization} \newline 
       For derhoticization we propose to use
       <\dia{032E}> \textsc{combining breve below} at \uni{032E}. 
       \textbf{WHAT EXACTLY IS THIS?}
-
 \item \textsc{Coronal non-sibilant} \newline
       Languages described as having a sibilant/non-sibilant distinction among
       coronal fricatives and affricates can be handled using the subscript
       <\dia{0347}> \textsc{combining equals sign below} at \uni{0347} to mark
       the non-sibilant phoneme.
-
 \item \textsc{Glottalization} \newline 
       Glottalized sounds can be indicated using
       <\dia{02C0}> \textsc{modifier letter glottal stop} at \uni{02C0}, unless
@@ -794,13 +788,11 @@ used with care.
       used). Pre-glottalized sounds can be marked with
       <\diareverse{02C0}> to the left of the base
       glyph, for example <\charis{ˀt}>.
-
 \item \textsc{Voiced pre-aspiration} \newline Voiced sounds having
       pre-aspiration can be marked with
       <\diareverse{02B1}> \textsc{modifier letter
       small h with hook} at \uni{02B1} to the left of the base glyph, for
       example <\charis{ʱd}>.
-
 \item \textsc{Epilaryngeal phonation} \newline 
       There are some rare articulations that make
       use of an epilaryngeal phonation mechanism (e.g.,~the “sphincteric vowels”
@@ -815,16 +807,51 @@ used with care.
 \label{ipa-recommendations}
 % ==========================
 
-Summarizing the pitfalls discussed in this chapter, we propose to define a 
+Summarizing the pitfalls as discussed in this chapter, we propose to define a 
 ``strict'' IPA encoding to be used when interoperability of phonetic resources 
 is intended. For regular research papers, when only the visual outline is 
-important, 
+important, the details encoding of IPA in electronic format is rather 
+unimportant, as long as it looks as expected. So for those regular usage these 
+proposals are irrelevant.
 
+[TO DO: different kind of proposals]
+
+At the end of this chapter we have added a few longish tables summarizing all
+155 different unicode codepoints that form the basis of strict-IPA encoding
+(107 letters, 41 diacritics and 7 remaining symbols). Each of
+these tables shows a typical glyph, and then lists the Unicode Codepoint,
+Unicode Name and IPA description for each symbol.
+
+TO DO:
+[ordering]
+[removed characters: tie bar, tilde overlay]
+[additions]
+
+
+\begin{itemize}[itemsep=6pt]
+
+  \item \textsc{IPA letters} \newline
+        The 107 different IPA letters as allowed in strict-IPA encoding are
+        listed in Table~\ref{tab:ipa_letters} starting on
+        page~\pageref{tab:ipa_letters}.
+  \item \textsc{IPA diacritics} \newline The 41 different IPA diacritics and
+        tone markers (both Unicode Modifier Letters and Combining Diacritical
+        Marks) as allowed in strict-IPA encoding are listed in
+        Table~\ref{tab:ipa_diacritics} starting on
+        page~\pageref{tab:ipa_diacritics}.
+  \item \textsc{IPA remainders} \newline
+        The 7 remaining IPA symbols (boundary and stress markers) as allowed in
+        strict-IPA encoding are listed in Table~\ref{tab:ipa_boundaries} on
+        page~\pageref{tab:ipa_boundaries}. 
+  \item \textsc{IPA additions} \newline
+        The 10 proposed additions to the IPA are listed in
+        Table~\ref{tab:ipa_additions} on page~\pageref{tab:ipa_additions}.
+  
+\end{itemize}
+
+
+\newpage
 \input{tables/unicode_letters}
-
 \input{tables/unicode_diacritics} 
-
 \input{tables/unicode_boundaries}
-
 \input{tables/unicode_additions}
-
