@@ -116,7 +116,7 @@ blocks. With its diverse collection of symbols from various scripts and
 diacritics, the IPA is spread across 12 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see~\cite[Appendix~C]{Moran2012}. The 107 characters from 12 
+are also included, see~\cite[Appendix~C]{Moran2012}. The 157 characters from 12 
 code blocks shown here are the characters proposed for ``strict'' IPA encoding, 
 as discussed in Section~\ref{ipa-recommendations}.}
 
@@ -135,11 +135,11 @@ as discussed in Section~\ref{ipa-recommendations}.}
 	\item \textsc{Spacing Modifier Letters} (17 characters) \newline
 	\dia{02DE} \dia{02E1} \dia{02B7} \dia{02B2} \dia{02E0} \dia{02E4} 
 	\dia{02B0} \dia{02BC} \dia{02D0} \dia{02D1} ˥ ˦ ˧ ˨ ˩ {\large ˈ ˌ}
-	\item \textsc{Combining Diacritical Marks} (23 characters) \newline 
+	\item \textsc{Combining Diacritical Marks} (25 characters) \newline 
 	\dia{033C} \dia{032A} \dia{033B} \dia{033A} \dia{031F} \dia{0320} \dia{031D} 
 	\dia{031E} \dia{0318} \dia{0319} \dia{031C} \dia{0339} \dia{032C} \dia{0325} 
-	\dia{0330} \dia{0324} \dia{0329} \dia{032F} \dia{0303} \dia{0308} \dia{033D} 
-	\dia{0306} \dia{031A} 
+	\dia{0330} \dia{0324} \dia{0329} \dia{032F} \dia{0334} \dia{0303} \dia{0308} 
+	\dia{033D} \dia{0306} \dia{031A} \ \dia{0361}◌
 	\item \textsc{Greek and Coptic} (3 characters) \newline 
 	β θ χ
     \item \textsc{General Punctuation} (2 characters) \newline 
@@ -351,10 +351,9 @@ script g} at \uni{0261}.
 Third, the IPA has special markers for velarization <\dia{02E0}> and
 pharyngealization <\dia{02E4}>. Confusingly, there is also a marker for
 ``velarized or pharyngealized'', using the <\dia{0334}> \textsc{combining tilde
-overlay} at \uni{0334}. The tilde overlay seems to be extremely rarely used. For
-strict IPA encoding we propose to not include the combining tilde overlay at
-all, but only use the other two special markers for velarization and
-phayngaealization.
+overlay} at \uni{0334}. The tilde overlay seems to be extremely rarely used. We 
+suggest to try and avoid using the tilde overlay, though for reasons of backward 
+compatibility we will allow it in strict-IPA.\@
 
 Finally, the IPA states that ``diacritics may be placed above a symbol with a
 descender''. For example, for marking marking of voiceless pronunciation of
@@ -407,33 +406,31 @@ using a \textsc{combining double inverted breve} at \uni{0361}.
 
 Tie bars are a special type of character in the sense that they do not belong to
 a segment, but bind two graphemes together. This actually turns out to be rather
-different from the Unicode conceptions. The Unicode encoding of this character
+different from Unicode conceptions. The Unicode encoding of this character
 belong to the Combining Diacritical Marks, namely either \textsc{combining double
 inverted breve} at \uni{0361} or \textsc{combining double breve below} at
 \uni{035C}. Such a combining mark is by definition tied to the character in
 front, but not the character following it. The Unicode treatment of this
 character thus only partly corresponds to the IPA conception, which ideally
 would have the tie bar linked both to the character in front and to the
-character following. The solution to this is to always use the tie bar in 
-combination with
+character following. 
 
+Further, according to the spirit of the IPA, it would also be possible to
+combine more than two base characters into one tie bar, but this is not possible
+with Unicode (i.e.~there is no possibility to draw a tie bar over three of four
+characters). It is possible to indicate such larger groups by repeating the tie
+bar, like for a triphthong <a͡ʊ͡ə> in the English word \textit{hour}. If really
+necessary, we consider this possible, even though the rendering will never look
+good. 
 
-Further, according to the
-spirit of the IPA, it would also be possible to combine more than two base
-characters into one tie bar, but this is not possible with Unicode (i.e.~there
-is no possibility to draw a tie bar over three of four characters). It is
-possible to indicate such larger groups by repeating the tie bar, like in
-<a͡o͡u>. If really necessary, we consider this possible, even though the
-rendering will never look good. 
-
-Most importantly though, the tie-bar is unnecessary for computational processing
-given the design of orthography profiles, as described in
-Section~\ref{usecase-tokenization}. The principle idea of such processing is
-that groups of characters that belong together are defined in an orthography
-profile, making it superfluous to indicate them explicitly by tie bars. For this
-reason we suggest to remove the tie bar from any ``strict'' IPA encoding, and
-instead add descriptions of all so-called ``tailored grapheme clusters'' (see
-Section~\ref{the-unicode-approach}) to an orthography profile.
+Most importantly though, in comparison to normal Unicode processing, the tie-bar
+actually takes a reversed approach to complex graphemes. Basically, the Unicode
+principle (see Section~\ref{pitfall-characters-are-not-graphemes}) is that fixed
+sequences in a writing system have to be specified as ``tailored'' grapheme
+clusters. In case the sequence is not a cluster, this has to be explicitly
+indicated. IPA takes a different approach. In IPA by default different base
+letters are not connected into larger clusters; only when it is specified in the
+string itself (using the tie bar).
 
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
@@ -490,7 +487,7 @@ should be used when writing IPA, namely:
 Although many combinations of base character with diacritic are treated as
 canonical equivalent with precomposed characters, there are a few combinations
 in IPA that allow for multiple, apparently identical, encodings that are not
-canonical equivalent (see Section~\ref{pitfall-canonical-equivalence}),. The
+canonical equivalent (see Section~\ref{pitfall-canonical-equivalence}). The
 following elements should not be treated as diacritics when encoding IPA in
 Unicode: 
 \begin{itemize}
@@ -498,11 +495,10 @@ Unicode:
   \item[] <{\fontspec{CharisSIL}{\large ◌}}\symbol{"0322}> \textsc{combining retroflex hook below} at \uni{0322}
   \item[] <\dia{0335}> \textsc{combining short stroke overlay} at \uni{0335}
   \item[] <\dia{0337}> \textsc{combining short solidus overlay} at \uni{0337}
-  \item[] <\dia{0334}> \textsc{combining tilde overlay} at \uni{0334}
 \end{itemize} 
 
 There turn out to be a lot of characters in the IPA that could be conceived as
-using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø> or <ɫ>. However, all such
+using any of these elements, like <ɲ>, <ɳ>, <ɨ> or <ø>. However, all such
 characters exist as well as precomposed combination in Unicode, and these
 precomposed characters should preferably be used.\footnote{The IPA does not
 describe any character for a voiced retroflex implosive, which would
@@ -519,17 +515,33 @@ with a combination of the vowel with a separately encoded hook:
   \item[] <ɚ> \textsc{latin small letter schwa with hook} at \uni{025A}
   \item[] <ɝ> \textsc{latin small letter reversed open e with hook} at \uni{025D}
 \end{itemize}
-          
 All other combinations of vowels with rhotic hooks will have to be made by using
-<{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
+<\dia{02DE}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
 is not complete set of precomposed characters with rhotic hooks. For that reason
 we propose to not use the two precomposed characters with hooks mentioned above,
 but always use the separate rhotic hook at \uni{02DE} in IPA.\@
 
+A similar situation arises with <\dia{0334}> \textsc{combining tilde overlay} at
+\uni{0334}. The main reason some phoneticians like to use this in IPA is to mark
+the ``dark'' <l> in English codas, using the character <ɫ> \textsc{latin small
+letter l with middle tilde} at \uni{026B}. This character is not canonically
+equivalent to the combination <l> + <\dia{0334}>, so one of the two possible
+encodings has to be chosen. Because the tilde overlay is described as a general
+mechanism by the IPA, we propose to use the separated <\dia{0334}>
+\textsc{combining tilde overlay} at \uni{0334}. However, note that phonetically 
+this seems to be (almost) superfluous (see Section~\ref{pitfall-multiple-options-ipa}) 
+and the typical usage in the form of <ɫ> is (almost) a homoglyph with <ɬ> (see 
+Section~\ref{pitfall-homoglyphs-in-IPA}). For these reasons we suggest to try 
+and avoid the tilde overlay.
+
 Reversely, note that the <ç> \textsc{latin small letter c with cedilla} at
-\uni{00E7} will be decomposed into <c> with <\dia{0327}> \textsc{combining
-cedilla} at \uni{0327} by Unicode canonical decomposition, also if such a
-decomposition is not intended in the IPA.\@
+\uni{00E7} is canonically equivalent with <c> with <\dia{0327}>
+\textsc{combining cedilla} at \uni{0327}, so it will be separated into two
+characters by Unicode canonical decomposition, also if such a decomposition is
+not intended in the IPA.\@ However, because of the nature of canonical
+equivalence (see Section~\ref{pitfall-canonical-equivalence}), these two
+encodings are completely identical in any computational treatment, so this
+decomposition does not have any practical consequences.
 
 % ==========================
 \section{Pitfall: Different notions of diacritics}
@@ -558,8 +570,8 @@ Letters in the Unicode Standard:
 	 
 	\item[] Tone letters, like: 
 	\begin{itemize} 
-	  \item[] <\dia{02E5}> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
-	  \item[] <\dia{02E8}> \textsc{modifier letter low tone bar} at \uni{02E8}
+	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
+	  \item[] <˨> \textsc{modifier letter low tone bar} at \uni{02E8}
 	  \item[] and others like this
 	\end{itemize}
 	
@@ -590,15 +602,9 @@ character in front of them, at least for <ʰ> \textsc{modifier letter small h} a
 \uni{02B0} the Unicode Consortium's decision to treat it as a separate character
 is also linguistically correct, because according to the IPA it can be used both
 for aspiration (more precisely post-aspiration following the base character) and
-pre-aspiration (preceding the base character). Note that there exists a
-mechanism in Unicode to force separate characters to be combined (namely by
-using the \textsc{zero width joiner} at \uni{200D}), but to us this seems to be
-a rather impractical, and probably not an enforceable solution to the general
-problem of complex graphemes. The default combination of Spacing Modifiers with
+pre-aspiration (preceding the base character). The default combination of Spacing Modifiers with
 the preceding character can be specified in orthography profiles (see
-Chapter~\ref{orthography-profiles}). Only in case variable directions occur in 
-the same transcription (e.g. both pre-aspiration and poast-aspiration occur), 
-then each case has to be explicitly marked with a zero-width joiner.
+Chapter~\ref{orthography-profiles}).
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
@@ -630,15 +636,16 @@ perspective. Diacritics in the Unicode Standard (i.e.~Combining Diacritical
 Marks, see above) are classified in Canonical Combining Classes. In practice,
 the diacritics are distinguished by their position relative to the base
 character.\footnote{See
-\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values} for
-a detailed description.} When applying a Unicode normalization (NFC or NFD, see
+\url{http://unicode.org/reports/tr44/#Canonical_Combining_Class_Values} for a
+detailed description.} When applying a Unicode normalization (NFC or NFD, see
 Section~\ref{pitfall-canonical-equivalence}), the diacritics in different
 positions are put in a specified order. This process therefore harmonizes the
-difference between different encodings, e.g.\ of an extra-short creaky voice vowel
-<ḛ̆>. This grapheme cluster can be encoded either as <e> + <\dia{0306}> +
-<\dia{0330}> or as <e> + <\dia{0330}> + <\dia{0306}>. To prevent this twofold encoding,
-the Unicode Standard specifies the second ordering as canonical (in this case,
-diacritics below are put before diacritics above).
+difference between different encodings, e.g.\ of an extra-short creaky voice
+vowel <ḛ̆>. This grapheme cluster can be encoded either as
+<e>+<\dia{0306}>+<\dia{0330}> or as <e>+<\dia{0330}>+<\dia{0306}>. To
+prevent this twofold encoding, the Unicode Standard specifies the second
+ordering as canonical (in this case, diacritics below are put before diacritics
+above).
 
 When encoding a string according to the Unicode Standard, it is possible to do
 this either using the NFC (composition) or NFD (decomposition) normalization.
@@ -660,19 +667,26 @@ Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
 languages, \citet[540]{Moran2012} defined a set of diacritic ordering
 conventions. The conventions are influenced by the linguistic literature, though
-some ad-hoc decisions had to be taken given the vast variability of phonological segments 
-described by linguists. 
+some ad-hoc decisions had to be taken given the vast variability of phonological
+segments described by linguists. 
 
-If a character sequence contains more than one diacritic below the base
-character, then the place features are applied first (linguolabial, dental,
-apical, laminal, advanced, retracted), followed by the manner features (raised,
-lowered, advanced and retracted tongue root), then
+By Unicode Canonical Combining Classes, the diacritics on top of a character,
+like <\dia{0334}>, always come before diacritics below, which in turn always
+come before diacritics above. We follow this order and add the other IPA
+diacritics (which are not diacritics in the Unicode sense) after these
+diacritics. Within these classes of diacritics there is no canonical ordering
+specified by Unicode, so we propose an explicit ordering here.
+
+Starting with the diacritics below: if a character sequence contains more than
+one diacritic below the base character, then the place features are applied
+first (linguolabial, dental, apical, laminal, advanced, retracted), followed by
+the manner features (raised, lowered, advanced and retracted tongue root), then
 secondary articulations (more round, less round), laryngeal settings (creaky,
 breathy, voiced, devoiced), and finally the syllabic or non-syllabic marker. So,
 the order that is proposed is the following, where <\textbar{}> indicates
-\textit{or} and <→> indicates \textit{precedes}. Note that the groups of 
-alternatives (as marked by <\textbar{}>) are supposed never to occur together 
-with the same base character. In effect, this represents yet another restriction 
+\textit{or} and <→> indicates \textit{precedes}. Note that the groups of
+alternatives (as marked by <\textbar{}>) are supposed never to occur together
+with the same base character. In effect, this represents yet another restriction
 on possible diacritic sequences.
 
 \begin{itemize}
@@ -819,17 +833,17 @@ important, the details encoding of IPA in electronic format is rather
 unimportant, as long as it looks as expected. So for those regular usage these 
 proposals are irrelevant.
 
-[TO DO: different kind of proposals]
+TO DO: 
+[different kind of profiles]
 
 At the end of this chapter we have added a few longish tables summarizing all
-155 different unicode codepoints that form the basis of strict-IPA encoding
-(107 letters, 41 diacritics and 7 remaining symbols). Each of
+157 different unicode codepoints that form the basis of strict-IPA encoding
+(107 letters, 43 diacritics and 7 remaining symbols). Each of
 these tables shows a typical glyph, and then lists the Unicode Codepoint,
 Unicode Name and IPA description for each symbol.
 
 TO DO:
 [ordering]
-[removed characters: tie bar, tilde overlay]
 [additions]
 
 
@@ -839,7 +853,7 @@ TO DO:
         The 107 different IPA letters as allowed in strict-IPA encoding are
         listed in Table~\ref{tab:ipa_letters} starting on
         page~\pageref{tab:ipa_letters}.
-  \item \textsc{IPA diacritics} \newline The 41 different IPA diacritics and
+  \item \textsc{IPA diacritics} \newline The 43 different IPA diacritics and
         tone markers (both Unicode Modifier Letters and Combining Diacritical
         Marks) as allowed in strict-IPA encoding are listed in
         Table~\ref{tab:ipa_diacritics} starting on

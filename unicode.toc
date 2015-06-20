@@ -70,6 +70,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Formal specification}{60}{section.4.3}
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Examples}{65}{section.4.4}
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Use cases}{67}{chapter.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}Introduction}{67}{section.5.1}
