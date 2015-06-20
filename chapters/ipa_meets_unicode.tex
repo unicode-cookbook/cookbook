@@ -12,7 +12,7 @@ is reasonably easily adhered to with pen and paper, it is not trivial to encode
 IPA characters electronically. Similar to the previous chapter, this chapter
 will discuss various pitfalls with the Unicode encoding of the IPA.\@ We will
 specifically refer to the 2005 version of the IPA \citep{IPA2005} and the 7.0 
-version of Unicode \citet{Unicode2014}.
+version of Unicode \citep{Unicode2014}.
 
 The details of the encoding are unimportant as long as the
 transcription is only directed towards phonetically trained eyes. For a linguist
@@ -407,8 +407,18 @@ using a \textsc{combining double inverted breve} at \uni{0361}.
 
 Tie bars are a special type of character in the sense that they do not belong to
 a segment, but bind two graphemes together. This actually turns out to be rather
-different from the Unicode conceptions, see
-Section~\ref{pitfall-different-notions-of-diacritics}. Further, according to the
+different from the Unicode conceptions. The Unicode encoding of this character
+belong to the Combining Diacritical Marks, namely either \textsc{combining double
+inverted breve} at \uni{0361} or \textsc{combining double breve below} at
+\uni{035C}. Such a combining mark is by definition tied to the character in
+front, but not the character following it. The Unicode treatment of this
+character thus only partly corresponds to the IPA conception, which ideally
+would have the tie bar linked both to the character in front and to the
+character following. The solution to this is to always use the tie bar in 
+combination with
+
+
+Further, according to the
 spirit of the IPA, it would also be possible to combine more than two base
 characters into one tie bar, but this is not possible with Unicode (i.e.~there
 is no possibility to draw a tie bar over three of four characters). It is
@@ -580,20 +590,15 @@ character in front of them, at least for <ʰ> \textsc{modifier letter small h} a
 \uni{02B0} the Unicode Consortium's decision to treat it as a separate character
 is also linguistically correct, because according to the IPA it can be used both
 for aspiration (more precisely post-aspiration following the base character) and
-pre-aspiration (preceding the base character). Note that there exists a mechanism in
-Unicode to force separate characters to be combined (namely by using the
-\textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
-impractical, and probably not an enforceable solution to us.
-
-Further, the IPA tie bar (see Section~\ref{pitfall-tie-bar}) is somewhere in
-between these two character classes. The Unicode encoding of this character
-belong to the Combining Diacritical Marks, namely either \textsc{combining double
-inverted breve} at \uni{0361} or \textsc{combining double breve below} at
-\uni{035C}. Such a combining mark is by definition tied to the character in
-front, but not the character following it. The Unicode treatment of this
-character thus only partly corresponds to the IPA conception, which ideally
-would have the tie bar linked both to the character in front and to the
-character following.
+pre-aspiration (preceding the base character). Note that there exists a
+mechanism in Unicode to force separate characters to be combined (namely by
+using the \textsc{zero width joiner} at \uni{200D}), but to us this seems to be
+a rather impractical, and probably not an enforceable solution to the general
+problem of complex graphemes. The default combination of Spacing Modifiers with
+the preceding character can be specified in orthography profiles (see
+Chapter~\ref{orthography-profiles}). Only in case variable directions occur in 
+the same transcription (e.g. both pre-aspiration and poast-aspiration occur), 
+then each case has to be explicitly marked with a zero-width joiner.
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
