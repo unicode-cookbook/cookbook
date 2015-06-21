@@ -106,6 +106,7 @@ z	U+007A	LATIN SMALL LETTER Z	voiced alveolar fricative
 β	U+03B2	GREEK SMALL LETTER BETA	voiced bilabial fricative
 θ	U+03B8	GREEK SMALL LETTER THETA	voiceless dental fricative
 χ	U+03C7	GREEK SMALL LETTER CHI	voiceless uvular fricative
+̴	U+0334	COMBINING TILDE OVERLAY	velarized or pharyngealized
 ̼	U+033C	COMBINING SEAGULL BELOW	linguolabial
 ̪	U+032A	COMBINING BRIDGE BELOW	dental
 ̻	U+033B	COMBINING SQUARE BELOW	laminal
@@ -149,8 +150,10 @@ z	U+007A	LATIN SMALL LETTER Z	voiced alveolar fricative
 ↓	U+2193	DOWNWARDS ARROW	downstep
 ↗	U+2197	NORTH EAST ARROW	global rise
 ↘	U+2198	SOUTH EAST ARROW	global fall
+͡	U+0361	COMBINING DOUBLE INVERTED BREVE	tie bar
 ˈ	U+02C8	MODIFIER LETTER VERTICAL LINE	primary stress
 ˌ	U+02CC	MODIFIER LETTER LOW VERTICAL LINE	secondary stress
+ 	U+0020	SPACE	word break
 .	U+002E	FULL STOP	syllable break
 |	U+007C	VERTICAL LINE	minor group break (foot)
 ‖	U+2016	DOUBLE VERTICAL LINE	major group break (intonation)
