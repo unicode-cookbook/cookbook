@@ -7,11 +7,14 @@
 % ==========================
 
 The International Phonetic Alphabet (IPA) is a common standard in linguistics to
-transcribe sounds of spoken language into Latin-based characters
-\citep{IPA2005}. Although IPA is reasonably easily adhered to with pen and
-paper, it is not trivial to encode IPA characters electronically. Similar to the
-previous chapter, this chapter will discuss various pitfalls with the encoding
-of the IPA.\@ The details of the encoding are unimportant as long as the
+transcribe sounds of spoken language into Latin-based characters. Although IPA
+is reasonably easily adhered to with pen and paper, it is not trivial to encode
+IPA characters electronically. Similar to the previous chapter, this chapter
+will discuss various pitfalls with the Unicode encoding of the IPA.\@ We will
+specifically refer to the 2005 version of the IPA \citep{IPA2005} and the 7.0 
+version of Unicode \citep{Unicode2014}.
+
+The details of the encoding are unimportant as long as the
 transcription is only directed towards phonetically trained eyes. For a linguist
 reading an IPA transcription, many of the details that will be discussed in this
 chapter might seem like hair-splitting trivialities. However, if IPA
@@ -22,12 +25,12 @@ issues and propose recommendations for a ``strict'' IPA encoding.
 
 \ 
 
-\noindent For a long time, linguists, like all other computer users, were limited to
-ASCII-encoded 7-bit characters, which only includes Latin characters, numbers
-and some punctuation and symbols. Restricted to these standard character sets
-that lacked IPA support or other language-specific graphemes that they needed,
-linguists devised their own solutions.\footnote{Early work addressing the need
-for a universal computing environment for writing systems and their
+\noindent For a long time, linguists, like all other computer users, were
+limited to ASCII-encoded 7-bit characters, which only includes Latin characters,
+numbers and some punctuation and symbols. Restricted to these standard character
+sets that lacked IPA support or other language-specific graphemes that they
+needed, linguists devised their own solutions.\footnote{Early work addressing
+the need for a universal computing environment for writing systems and their
 computational complexity is discussed in \citet{Simons1989}. A survey of
 practical recommendations for language resources, including notes on encoding,
 can be found in \citet{BirdSimons2003}} For example, some chose to represent
@@ -110,26 +113,43 @@ subdivided into character blocks, which generally encode characters from a
 single script. However, as is illustrated by the IPA, characters that form a
 single writing system may be dispersed across several different character
 blocks. With its diverse collection of symbols from various scripts and
-diacritics, the IPA is spread across 13 blocks in the Unicode
+diacritics, the IPA is spread across 12 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see~\cite[Appendix~C]{Moran2012}.}
+are also included, see~\cite[Appendix~C]{Moran2012}. The 157 characters from 12 
+code blocks shown here are the characters proposed for ``strict'' IPA encoding, 
+as discussed in Section~\ref{ipa-recommendations}.}
 
-\begin{itemize}
-	\item Basic Latin (27 characters): \newline < a~b~c~d~e~f~h~i~j~k~l~m~n~o~p~q~r~s~t~u~v~w~x~y~z~.~| >
-	\item Latin-1 Supplement (4 characters): \newline < æ ç ð ø >
-	\item Latin Extended-A (3 characters): \newline < ħ ŋ œ >
-	\item Latin Extended-B (4 characters): \newline < ǀ ǁ ǂ ǃ >
-	\item IPA Extensions (68 characters): \newline < ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɛ ɜ ɞ ɟ ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɪ ɫ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ ɵ ɶ ɸ ɹ ɺ ɻ ɽ ɾ ʀ ʁ ʂ ʃ ʄ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʘ ʙ ʛ ʜ ʝ ʟ ʡ ʢ > 
-	\item Spacing Modifier Letters (17 characters): \newline < ʰ ʲ ʷ ʼ ˈ ˌ ː ˑ ˞ ˠ ˡ ˤ ˥ ˦ ˧ ˨ ˩ >
-	\item Combining Diacritical Marks (29 characters): \newline < {\large \  ̃\ \ ̆\ \ ̈\ ̚\ \ ̘\ \ ̙\ \ \ ̜\ \ ̝\ \ ̞\ \ ̟\ \ ̠\ \ ̤\ \ ̥\ \ ̩\ \ ̪\ \ ̬\ \ ̯\ \ ̰\ \ ̹\ \ ̺\ \ ̻\ \ ̼\ \ ̽\ \ ͜\  ̋\ \ ́\ \ ̄\ \ ̀\ \ ̏\ } >
-	\item Greek and Coptic (3 characters): \newline < β θ χ >
-%	\item Phonetic Extensions (2 characters): \charis{ᴅ ᴴ} 
-	\item Phonetic Extensions Supplement (1 characters): \newline < \charis{ᶑ} >
-    \item General Punctuation (2 characters): \newline < ‖ \charis{‿} >
-	\item Superscripts and Subscripts (1 character): \newline < ⁿ > 
-	\item Arrows (4 characters): \newline < ↑ ↓ ↗ ↘ >
-	\item Latin Extended-C (1 character): \newline < \charis{ⱱ} >
+\begin{itemize}[itemsep=4pt]
+	\item \textsc{Basic Latin }(27 characters) \newline 
+	a b c d e f h i j k l m n o p q r s t u v w x y z~.~|
+	\item \textsc{Latin-1 Supplement} (4 characters) \newline 
+	æ ç ð ø
+	\item \textsc{Latin Extended-A} (3 characters) \newline 
+	ħ ŋ œ
+	\item \textsc{Latin Extended-B} (4 characters) \newline 
+	ǀ ǁ ǂ ǃ
+	\item \textsc{IPA Extensions} (67 characters) \newline 
+	ɐ ɑ ɒ ɓ ɔ ɕ ɖ ɗ ɘ ə ɛ ɜ ɞ ɟ ɠ ɡ ɢ ɣ ɤ ɥ ɦ ɧ ɨ ɪ ɬ ɭ ɮ ɯ ɰ ɱ ɲ ɳ ɴ \newline
+	ɵ ɶ ɸ ɹ ɺ ɻ ɽ ɾ ʀ ʁ ʂ ʃ ʄ ʈ ʉ ʊ ʋ ʌ ʍ ʎ ʏ ʐ ʑ ʒ ʔ ʕ ʘ ʙ ʛ ʜ ʝ ʟ ʡ ʢ 
+	\item \textsc{Spacing Modifier Letters} (17 characters) \newline
+	\dia{02DE} \dia{02E1} \dia{02B7} \dia{02B2} \dia{02E0} \dia{02E4} 
+	\dia{02B0} \dia{02BC} \dia{02D0} \dia{02D1} ˥ ˦ ˧ ˨ ˩ {\large ˈ ˌ}
+	\item \textsc{Combining Diacritical Marks} (25 characters) \newline 
+	\dia{033C} \dia{032A} \dia{033B} \dia{033A} \dia{031F} \dia{0320} \dia{031D} 
+	\dia{031E} \dia{0318} \dia{0319} \dia{031C} \dia{0339} \dia{032C} \dia{0325} 
+	\dia{0330} \dia{0324} \dia{0329} \dia{032F} \dia{0334} \dia{0303} \dia{0308} 
+	\dia{033D} \dia{0306} \dia{031A} \ \dia{0361}◌
+	\item \textsc{Greek and Coptic} (3 characters) \newline 
+	β θ χ
+    \item \textsc{General Punctuation} (2 characters) \newline 
+    ‖ \charis{‿}
+	\item \textsc{Superscripts and Subscripts} (1 character) \newline
+	\dia{207F} 
+	\item \textsc{Arrows} (4 characters) \newline 
+	↑ ↓ ↗ ↘
+	\item \textsc{Latin Extended-C} (1 character): \newline
+	\charis{ⱱ}
 \end{itemize}
 
 % ==========================
@@ -144,35 +164,45 @@ should ideally not use the <а> \textsc{cyrillic small letter a} at code point
 \uni{0430} for IPA transcriptions, but instead use the <a> \textsc{latin small
 letter a} at code point \uni{0061}, although visually they are mostly
 indistinguishable, and the Cyrillic character is more easily typed on a Cyrillic
-keyboard. Some problematic homoglyphs related to encoding IPA in the Unicode Standard are 
-the following.
+keyboard. Some further problematic homoglyphs related to encoding IPA in the
+Unicode Standard are the following.
+
 \begin{itemize}
 
   \item The uses of the apostrophe has led to long discussions on the Unicode
-     Standard email list. An English keyboard inputs <{\fontspec{Monaco}'}> \textsc{apostrophe}
-     at \uni{0027}, although the preferred Unicode apostrophe is the <\ ' >
-     \textsc{right single quotation mark} at \uni{2019}.\footnote{Note that many word 
-     processors (like Microsoft Word) by default will replace straight quotes by 
-     curly quotes, depending on the whitespace around it.} However, the glottal stop/glottalization/ejective marker is yet 
-     another completely different character <{\large ʼ}>, the 
-     \textsc{modifier letter apostrophe} at \uni{02BC}, which unfortunately looks 
-     mostly extremely similar to \uni{2019}. 
-  \item Another problem is the <ˁ> \textsc{modifier letter reversed
-     glottal stop} at \uni{02C1} vs.\@ the <ˤ> \textsc{modifier
-     letter small reversed glottal stop} at \uni{02E4}. Both 
-     appear in various resources representing phonetic data online. This is
-     thus a clear example for which the Unicode Standard does not solve the
-     linguistic standardization problem.
-  \item even linguists are unlikely to distinguish between the <ə>
-     \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
-     \textsc{latin small letter turned e} at \uni{01DD}.
-  \item  The alveolar click <ǃ> at \uni{01C3} is of course often simply
-     typed as <!> \textsc{exclamation mark} at \uni{0021}.\footnote{In the Unicode
-     Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter retroflex
-     click}, but in IPA that glyph is used for an alveolar or postalveolar
-     click (not retroflex). This naming is probably best seen as an 
-     error in the Unicode Standard.}
-
+        Standard email list. An English keyboard inputs the symbol
+        <\dia{0027}> \textsc{apostrophe} at \uni{0027}, although the preferred Unicode
+        apostrophe is the <\dia{2019}> \textsc{right single quotation mark} at
+        \uni{2019}.\footnote{Note that many word processors (like Microsoft
+        Word) by default will replace straight quotes by curly quotes,
+        depending on the whitespace around it.} However, the glottal
+        stop/glottalization/ejective marker is yet another completely different
+        character, namely <\dia{02BC}>, i.e.~the \textsc{modifier letter apostrophe} 
+        at \uni{02BC}, which unfortunately looks mostly extremely similar to
+        \uni{2019}. 
+  \item Another problem is the <\dia{02C1}> \textsc{modifier letter reversed glottal
+        stop} at \uni{02C1} vs.\@ the <\dia{02E4}> \textsc{modifier letter small reversed
+        glottal stop} at \uni{02E4}. Both appear in various resources
+        representing phonetic data online. This is thus a clear example for
+        which the Unicode Standard does not solve the linguistic standardization
+        problem.
+  \item Linguists are also unlikely to distinguish between the <ə>
+        \textsc{latin small letter schwa} at code point \uni{0259} and <ǝ>
+        \textsc{latin small letter turned e} at \uni{01DD}.
+  \item The alveolar click <ǃ> at \uni{01C3} is of course often simply
+        typed as <!> \textsc{exclamation mark} at \uni{0021}.\footnote{In the
+        Unicode Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter
+        retroflex click}, but in IPA that glyph is used for an alveolar or
+        postalveolar click (not retroflex). This naming is probably best seen as
+        an error in the Unicode Standard. For the ``real'' retroflex click, see 
+        Section~\ref{ipa-additions}.}
+  \item The dental click <ǀ>, in Unicode known as \textsc{latin letter dental
+        click} at \uni{01C0}, is often simply typed as <|> \textsc{vertical
+        line} at \uni{007C}.
+  \item For the marking of length there is a special Unicode characters, namely
+        <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}. However,
+        typing <\dia{003A}> \textsc{colon} at \uni{003A} is of course much easier.        
+  
 \end{itemize} 
 
 
@@ -180,30 +210,33 @@ Conversely, non-linguists are unlikely to distinguish any semantic difference
 between an open back unrounded vowel <ɑ> \textsc{latin small letter alpha} at
 \uni{0251}, and the open front unrounded vowel <a> \textsc{latin small letter a}
 at \uni{0061}, basically treating them as homoglyphs, although they are
-different phonetic symbols. But even among linguists this distinction leads to problems. For example, as
-pointed out by \citet{Mielke2009}, there is a problem stemming from the fact
-that about 75\% of languages are reported to have a five-vowel system
-\citep{Maddieson1984}. Historically, linguistic descriptions tend not to include
-precise audio recording and measurements of formants, so this may lead one to
-ask if the many <a> characters that are used in phonological description
-reflects a transcriptional bias. The common use of <a> in transcriptions could
-be in part due to the ease of typing the letter on an English keyboard (or for
-older descriptions, the typewriter). We found it to be exceedingly rare that a
-linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
-\citet[75]{Vidal2001a}, in which the author states: ``The definition of Pilagá
-/a/ as [+back] results from its behavior in certain phonological contexts. For
-instance, uvular and pharyngeal consonants only occur around /a/ and /o/. Hence,
-the characterization of /a/ and /o/ as a natural class of (i.e., [+back]
-vowels), as opposed to /i/ and /e/.''} They simply use <a> as long as there is
-no opposition to <ɑ>.
+different phonetic symbols. But even among linguists this distinction leads to
+problems. For example, as pointed out by \citet{Mielke2009}, there is a problem
+stemming from the fact that about 75\% of languages are reported to have a
+five-vowel system \citep{Maddieson1984}. Historically, linguistic descriptions
+tend not to include precise audio recording and measurements of formants, so
+this may lead one to ask if the many <a> characters that are used in
+phonological description reflects a transcriptional bias. The common use of <a>
+in transcriptions could be in part due to the ease of typing the letter on an
+English keyboard (or for older descriptions, the typewriter). We found it to be
+exceedingly rare that a linguist uses <ɑ> for a low back unrounded
+vowel.\footnote{One example is \citet[75]{Vidal2001a}, in which the author
+states: ``The definition of Pilagá /a/ as [+back] results from its behavior in
+certain phonological contexts. For instance, uvular and pharyngeal consonants
+only occur around /a/ and /o/. Hence, the characterization of /a/ and /o/ as a
+natural class of (i.e., [+back] vowels), as opposed to /i/ and /e/.''} They
+simply use <a> as long as there is no opposition to <ɑ>.
 
 %\footnote{See Thomason's Language Log post, ``Why I don't love the International Phonetic Alphabet'' at:\url{http://itre.cis.upenn.edu/~myl/languagelog/archives/005287.html}.}
 
 Making things even more problematic, there is an old typographic tradition that
 the double-story <a> uses a single-story <ɑ> in italics. This leads to the
-unfortunate effect that in most well-designed fonts the italics of <a> and <ɑ>
-use the same glyph. If this distinction has to be kept upright in italics, the
-only solution we can currently offer is to use \textsc{slanted} glyphs
+unfortunate effect that even in many well-designed fonts the italics of <a> and
+<ɑ> use the same glyph. For example, in Linux Libertine (the font of this book)
+the italics of these characters are highly similar <\textit{a}> and
+<\textit{ɑ}>, while in Charis SIL they are identical: <\textit{\charis{a}}> and
+<\textit{\charis{ɑ}}>. If this distinction has to be kept upright in italics,
+the only solution we can currently offer is to use \textsc{slanted} glyphs
 (i.e.~artificially italicized glyphs) instead of real italics (i.e.~special
 italics glyphs designed by a typographer).\footnote{For example, the widely used
 IPA font Doulos SIL
@@ -229,42 +262,77 @@ already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
 \label{pitfall-homoglyphs-in-IPA}
 % ==========================
 
+Reversely, there are a few cases in which the IPA distinguishes different
+phonetic concepts, but the visual characters used by the IPA look very much
+alike. Such cases are thus homoglyphs in the IPA itself, which of course need
+different encodings.
+
+\begin{itemize}
+  
+   \item The dental click <ǀ> and the indication of a minor group break <|>
+           look almost the same in
+           most fonts. For a proper encoding, the \textsc{latin letter dental
+           click} at \uni{01C0} and the \textsc{vertical line }at \uni{007C} 
+           should be used, respectively.
+   \item Similarly, the alveolar lateral click <ǁ>	should be encoded with a
+           \textsc{latin letter lateral click} at \uni{01C1}, different from <‖>, 
+           which according to the IPA is the character to by used for a major group 
+           break (by intonation), to be encoded by \textsc{double vertical line} 
+           at \uni{2016}.
+   \item The marking of primary stress < ˈ > looks like an apostrophe, and
+           is often typed with the same symbol as the ejective <\dia{02BC}>. For a
+           proper encoding, these two symbols should be typed as 
+           \textsc{modifier letter vertical line} at \uni{02C8} and
+           \textsc{modifier letter apostrophe} at \uni{02BC}, respectively. 
+   \item There are two different ``dashed''-l characters in IPA, namely the <ɫ> 	      \textsc{latin small letter l with middle tilde} at \uni{026B} and the <ɬ>	      \textsc{latin small letter l with belt} at \uni{026C}. These of course
+          look highly similar, although they are different sounds. As a solution, 
+          we will actually propose to not use the middle tilde at all 
+          (see Section~\ref{pitfall-multiple-options-ipa}).     
+   
+\end{itemize}
+
+% ==========================
+\section{Pitfall: Multiple encoding options in IPA}
+\label{pitfall-multiple-options-ipa}     
+% ========================== 
+
 It is not just the Unicode Standard that offers multiple options for encoding
 the IPA.\@ Even the IPA specification itself offers some flexibility in how
 transcriptions have to be encoded. There are a few cases in which the IPA
 explicitly allows for different options of transcribing the same phonetic
 content. This is understandable from a transcriber's point of view, but it is
-not acceptable for interoperability between resources written in IPA.\@ We
-consider it crucial to distinguish between ``lax'' IPA, for which it is
-sufficient that any phonetically-trained reader is able to understand the
+not acceptable when the goal is interoperability between resources written in
+IPA.\@ We consider it crucial to distinguish between ``lax'' IPA, for which it
+is sufficient that any phonetically-trained reader is able to understand the
 transcription, and ``strict'' IPA, which should be standardized on a single
-unique encoding for each sound, so search will work across resources. We are 
-aware of the following double options in the IPA, which will be discussed in 
-turn below:
+unique encoding for each sound, so search will work across resources. We are
+aware of the following non-unique encoding options in the IPA, which will be
+discussed in turn below:
 
 \begin{itemize}
   \item The marking of tone
   \item The marking of <g>
+  \item The marking of velarization and pharyngealization
   \item The placement of diacritics
-  \item The tie bar to indicate a close bond between sounds
 \end{itemize}
 
 The first case in which the IPA allows for different encodings is the question
 of how to transcribe tone. There is an old tradition to use diacritics on vowels
 to mark different tone levels, e.g. <ȅèée̋>.\footnote{To make things even more
 complexe, there are at least two different Unicode homoglyphs for the low and
-high level tones, namely <\ ̀~> \textsc{combining grave tone mark} at
-\unif{0340} vs.\@ <\ ̀~> \textsc{combining grave accent} at \unif{0300} for low
-tone, and <\ ́~> \textsc{combining acute tone mark} at \unif{0341} vs.\@ <\ ́~>
-\textsc{combining acute accent} at \unif{0301} for high tone.} The IPA also
-proposes the option of tone letters, e.g. <˥˦˧˨˩>, which are used much less, but
-are more consistent for contours. Tone letters in the IPA have five different levels, and
-sequences of these letters can be used to indicate contours. Well-designed fonts
-will even merge a sequence of tone letters into a contour. For example, compare
-the font Linux Libertine, which does not merge tone letters
-<{\fontspec{LinLibertineO}˥˨˧˩}>, with the font CharisSIL, which merges this
-sequence of four tone letters into a single contour <\charis{˥˨˧˩}>. For strict
-IPA encoding we propose to standardize on tone letters.
+high level tones, namely <\diaf{0340}> \textsc{combining grave tone mark} at
+\unif{0340} vs.~<\diaf{0300}> \textsc{combining grave accent} at \unif{0300} for
+low tone, and <\diaf{0341}> \textsc{combining acute tone mark} at \unif{0341}
+vs.<\diaf{0301}> \textsc{combining acute accent} at \unif{0301} for high tone.}
+The IPA also proposes the option of tone letters, e.g. <˥˦˧˨˩>, which are much
+less often used, but are more consistent for contours. Tone letters in the IPA
+have five different levels, and sequences of these letters can be used to
+indicate contours. Well-designed fonts will even merge a sequence of tone
+letters into a contour. For example, compare the font Linux Libertine, which
+does not merge tone letters <{\fontspec{LinLibertineO}˥˨˧˩}>, with the font
+CharisSIL, which merges this sequence of four tone letters into a single contour
+<\charis{˥˨˧˩}>. For strict IPA encoding we propose to standardize on tone
+letters.
 
 Second, we commonly encounter the use of <g> \textsc{latin small letter g} at
 \uni{0067}, instead of the Unicode Standard IPA character for the voiced velar
@@ -272,75 +340,97 @@ stop <ɡ> \textsc{latin small letter script g} at \uni{0261}. One begins to
 question whether this issue is at all apparent to the working linguist, or if
 they simply use the \uni{0067} because it is easily keyboarded and thus saves
 time, whereas the latter must be cumbersomely inserted as a special symbol in
-most software. The International Phonetic
-Association has taken the stance that both the keyboard \textsc{latin small
-letter g} and the \textsc{latin small letter script g} are valid input
-characters for the voiced velar plosive. Unfortunately, this decision further
-introduces ambiguity for linguists trying to adhere to a strict Unicode Standard
-IPA encoding. For strict IPA encoding we propose to standardize on the more 
-idiosyncratic \textsc{latin small letter script g} at \uni{0261}.
+most software. The International Phonetic Association has taken the stance that
+both the keyboard \textsc{latin small letter g} and the \textsc{latin small
+letter script g} are valid input characters for the voiced velar plosive.
+Unfortunately, this decision further introduces ambiguity for linguists trying
+to adhere to a strict Unicode Standard IPA encoding. For strict IPA encoding we
+propose to standardize on the more idiosyncratic \textsc{latin small letter
+script g} at \uni{0261}.
 
-Third, for marking marking of voiceless pronunciation of voiced segments the IPA
-uses the ring diacritic. Originally, the ring should be placed below the 
-base character, like in <m̥>, using the \textsc{combining ring below} at \uni{0325}. 
-However, in letters with long descenders the IPA also allows to put the ring 
-above the base, like in <ŋ̊>, using the \textsc{combining ring above} at 
-\uni{030A}. Yet, proper font design does not have any problem with rendering 
-the ring below the base character, like in <ŋ̥>, so for strict IPA encoding we 
-propose to standardize on the ring below.
+Third, the IPA has special markers for velarization <\dia{02E0}> and
+pharyngealization <\dia{02E4}>. Confusingly, there is also a marker for
+``velarized or pharyngealized'', using the <\dia{0334}> \textsc{combining tilde
+overlay} at \uni{0334}. The tilde overlay seems to be extremely rarely used. We 
+suggest to try and avoid using the tilde overlay, though for reasons of backward 
+compatibility we will allow it in strict-IPA.\@
 
-Finally, the tie bar to indicate affricates, doubly articulated consonants or
-diphthongs can be placed above or below the base characters, e.g.
-<\charis{t͡s}> or <\charis{t͜s}>. IPA allows both the \textsc{combining double inverted
-breve} at \uni{0361} and the \textsc{combining double breve below} at \uni{035C}. The  
-choice between the two symbols is purely for legible rendering; there is no difference 
-in semantics between the two symbols. In fact, rendering is such a problematic issue 
-for tie bars in general, that many linguists simply do not use them. Further, tie bars 
-are a special type of character in the sense that they bind two graphemes (singleton base characters 
-or tailored grapheme clusters) together. In Section \ref{pitfall-different-notions-of-diacritics}, 
-we highlight the division of linguistic diacritics 
-into two categories in the Unicode Standard: Spacing Modifier Letters and Combining 
-Diacritical Marks.\footnote{The former contain characters like aspiration < ʰ > which is user 
-specified (before or after the base character) and the latter which combines 
-with the base character.} The tie-bar is somewhere in between these two character 
-classes, i.e. when the combining breve (above or below) is told to combine within 
-a sequence of Unicode characters, it will bind to the character immediately 
-preceding it -- the so-called base character -- regardless if that base 
-character is a Spacing Modifier Letter \textit{or} Combining Diacritical Mark. \footnote{In some cases 
-conversion of a string sequence into Unicode Normalization Form C alleviates 
-the problem by composing sequences of characters like <e> + < ́ > into single character < é > 
-(see however diacritics like the rhotic hook in ).} In principle, 
-it is possible to combine more than two base characters by repeating the tie bar, 
-like in <a͡o͡u>. If really necessary, we consider this possible, even though the 
-rendering will never look good.
+Finally, the IPA states that ``diacritics may be placed above a symbol with a
+descender''. For example, for marking marking of voiceless pronunciation of
+voiced segments the IPA uses the ring diacritic. Originally, the ring should be
+placed below the base character, like in <m̥>, using the \textsc{combining ring
+below} at \uni{0325}. However, in letters with long descenders the IPA also
+allows to put the ring above the base, like in <ŋ̊>, using the \textsc{combining
+ring above} at \uni{030A}. Yet, proper font design does not have any problem
+with rendering the ring below the base character, like in <ŋ̥>, so for strict
+IPA encoding we propose to standardize on the ring below. As a principle, for
+strict IPA encoding only one options should be allowed for all diacritics.
 
-The tie-bar is a convenient diacritic for visually tokenizing input strings into chunks of 
-phonetically salient groups and both the above and below tie-bar were introduced in electronic 
-text to deal with difficult to render character sequences. The tie-bar is unnecessary for 
-computational tokenization given the design of orthography profiles, described in 
-Section \ref{usecase-tokenization}. However, to adhere to strict IPA encoding users 
-may use either tie bar, or none whatsoever. 
+The variable encoding as allowed by the IPA becomes even more troublesome for
+the tilde and diaeresis diacritics. In these cases, the IPA itself attaches
+different semantics to the symbols above and below a base characters. The tilde
+above a character (like in <ã>, using the \textsc{combining tilde} at
+\uni{0303}) is used for nasalisation, while the tilde below a character (like in
+<a̰>, using the \textsc{combining tilde below} at \uni{0330}) indicates creaky
+voice. Likewise, the diaeresis above (like in <ä>, using the \textsc{combining
+diaeresis} at \uni{0308}) is used for centralization, while the diaeresis below
+a character (like in <a̤>, using the \textsc{combining diaeresis below} at
+\uni{0324}) indicates breathy voice. These cases strengthen our plea to not
+allow diacritics to switch position for typographic convenience.
 
-\begin{comment} 
-Finally, the tie bar to indicate affricates, doubly articulated consonants or
-diphthongs can be placed either below or on top of the base characters, e.g.
-<\charis{t͡s}> or <\charis{t͜s}>. For strict IPA encoding we propose to standardize on the tie bar
-above the base characters, using Unicode \textsc{combining double inverted
-breve} at \uni{0361}. Note that this Unicode character is placed between the two 
-base characters to be combined. In principle, it is possible to combine more 
-than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
-necessary, we consider this possible, even though the rendering will never look 
-good.
+% ==========================
+\section{Pitfall: Tie bar}
+\label{pitfall-tie-bar}
+% ==========================
 
-For strict IPA encoding we propose to standardize on the tie bar
-above the base characters, using Unicode \textsc{combining double inverted
-breve} at \uni{0361}. Note that this Unicode character is placed between the two 
-base characters to be combined. In principle, it is possible to combine more 
-than two base characters by repeating the tie bar, like in <a͡o͡u>. If really
-necessary, we consider this possible, even though the rendering will never look 
-good.\end{comment}
+The IPA includes a tie bar. The tie-bar is a convenient diacritic for visually
+tokenizing input strings into chunks of phonetically salient groups, for example
+to indicate affricates, doubly articulated consonants or diphthongs. This
+character can be placed above or below the base characters, e.g. <\charis{t͡s}>
+or <\charis{t͜s}>. IPA allows both options. The choice between the two symbols
+is purely for legible rendering; there is no difference in semantics between the
+two symbols. However, rendering is such a problematic issue for tie bars in
+general that many linguists simply do not use them. Just looking at a few
+different fonts already indicates that actually no font designer really gets the
+placement right in combination with superscripts and subscripts. If really
+necessary, we propose to standardize on the tie bar above the base characters,
+using a \textsc{combining double inverted breve} at \uni{0361}.
 
+\begin{itemize}[itemsep=6pt]
+  \item[] {\fontspec{Times New Roman}Times new Roman: t̥ʰ͡s t̥ʰ͜s}
+  \item[] {\small \fontspec{CharisSIL}CharisSIL:\@ t̥ʰ͡s t̥ʰ͜s}
+  \item[] {\footnotesize \fontspec{Monaco}Monaco: t̥ʰ͡s t̥ʰ͜s}
+  \item[] {\fontspec{DoulosSIL}DoulosSIL:\@ t̥ʰ͡s t̥ʰ͜s}
+  \item[] Linux Libertine: t̥ʰ͡s t̥ʰ͜s
+\end{itemize}
 
+Tie bars are a special type of character in the sense that they do not belong to
+a segment, but bind two graphemes together. This actually turns out to be rather
+different from Unicode conceptions. The Unicode encoding of this character
+belong to the Combining Diacritical Marks, namely either \textsc{combining double
+inverted breve} at \uni{0361} or \textsc{combining double breve below} at
+\uni{035C}. Such a combining mark is by definition tied to the character in
+front, but not the character following it. The Unicode treatment of this
+character thus only partly corresponds to the IPA conception, which ideally
+would have the tie bar linked both to the character in front and to the
+character following. 
+
+Further, according to the spirit of the IPA, it would also be possible to
+combine more than two base characters into one tie bar, but this is not possible
+with Unicode (i.e.~there is no possibility to draw a tie bar over three of four
+characters). It is possible to indicate such larger groups by repeating the tie
+bar, like for a triphthong <a͡ʊ͡ə> in the English word \textit{hour}. If really
+necessary, we consider this possible, even though the rendering will never look
+good. 
+
+Most importantly though, in comparison to normal Unicode processing, the tie-bar
+actually takes a reversed approach to complex graphemes. Basically, the Unicode
+principle (see Section~\ref{pitfall-characters-are-not-graphemes}) is that fixed
+sequences in a writing system have to be specified as ``tailored'' grapheme
+clusters. In case the sequence is not a cluster, this has to be explicitly
+indicated. IPA takes a different approach. In IPA by default different base
+letters are not connected into larger clusters; only when it is specified in the
+string itself (using the tie bar).
 
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
@@ -397,26 +487,26 @@ should be used when writing IPA, namely:
 Although many combinations of base character with diacritic are treated as
 canonical equivalent with precomposed characters, there are a few combinations
 in IPA that allow for multiple, apparently identical, encodings that are not
-canonical equivalent (see Section~\ref{pitfall-canonical-equivalence}),. The
+canonical equivalent (see Section~\ref{pitfall-canonical-equivalence}). The
 following elements should not be treated as diacritics when encoding IPA in
 Unicode: 
 \begin{itemize}
-  \item[] <\ {\large  ̡}\ > \textsc{combining palatalized hook below} at \uni{0321}
-  \item[] <\ \ {\large  ̢}> \textsc{combining retroflex hook below} at \uni{0322}
-  \item[] <\ \ {\large  ̵}> \textsc{combining short stroke overlay} at \uni{0335}
-  \item[] <\ \ {\large  ̷}> \textsc{combining short solidus overlay} at \uni{0337}
-  \item[] <\ \ {\large  ̴}> \textsc{combining tilde overlay} at \uni{0334}
+  \item[] <{\fontspec{CharisSIL}{\large ◌}}\symbol{"0321}> \textsc{combining palatalized hook below} at \uni{0321}
+  \item[] <{\fontspec{CharisSIL}{\large ◌}}\symbol{"0322}> \textsc{combining retroflex hook below} at \uni{0322}
+  \item[] <\dia{0335}> \textsc{combining short stroke overlay} at \uni{0335}
+  \item[] <\dia{0337}> \textsc{combining short solidus overlay} at \uni{0337}
 \end{itemize} 
 
 There turn out to be a lot of characters in the IPA that could be conceived as
-using any of these elements, like <ɲ>, <ɳ>, <ɨ>, <ø> or <ɫ>. However, all such
+using any of these elements, like <ɲ>, <ɳ>, <ɨ> or <ø>. However, all such
 characters exist as well as precomposed combination in Unicode, and these
 precomposed characters should preferably be used.\footnote{The IPA does not
 describe any character for a voiced retroflex implosive, which would
-transparently be \charis{ᶑ}. We propose to add this character to the IPA.} When
-combinations of a base character with diacritic are used, then these
-combinations are not canonical equivalent to the precomposed combinations. This
-means that any search will not find both at the same time.
+transparently be \charis{ᶑ}. We propose to add this character to the IPA, see
+Section~\ref{ipa-additions}.} When instead combinations of a base character with
+diacritic are used, then these combinations are not canonical equivalent to the
+precomposed combinations. This means that any search will not find both at the
+same time.
 
 A similar problem arises with the rhotic hook. There are two precomposed
 characters in Unicode with a rhotic hook, which are not canonical equivalent 
@@ -425,17 +515,33 @@ with a combination of the vowel with a separately encoded hook:
   \item[] <ɚ> \textsc{latin small letter schwa with hook} at \uni{025A}
   \item[] <ɝ> \textsc{latin small letter reversed open e with hook} at \uni{025D}
 \end{itemize}
-          
 All other combinations of vowels with rhotic hooks will have to be made by using
-<{\large ˞}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
+<\dia{02DE}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
 is not complete set of precomposed characters with rhotic hooks. For that reason
 we propose to not use the two precomposed characters with hooks mentioned above,
 but always use the separate rhotic hook at \uni{02DE} in IPA.\@
 
+A similar situation arises with <\dia{0334}> \textsc{combining tilde overlay} at
+\uni{0334}. The main reason some phoneticians like to use this in IPA is to mark
+the ``dark'' <l> in English codas, using the character <ɫ> \textsc{latin small
+letter l with middle tilde} at \uni{026B}. This character is not canonically
+equivalent to the combination <l> + <\dia{0334}>, so one of the two possible
+encodings has to be chosen. Because the tilde overlay is described as a general
+mechanism by the IPA, we propose to use the separated <\dia{0334}>
+\textsc{combining tilde overlay} at \uni{0334}. However, note that phonetically 
+this seems to be (almost) superfluous (see Section~\ref{pitfall-multiple-options-ipa}) 
+and the typical usage in the form of <ɫ> is (almost) a homoglyph with <ɬ> (see 
+Section~\ref{pitfall-homoglyphs-in-IPA}). For these reasons we suggest to try 
+and avoid the tilde overlay.
+
 Reversely, note that the <ç> \textsc{latin small letter c with cedilla} at
-\uni{00E7} will be decomposed into <c> with <\ \ {\large ̧}> \textsc{combining
-cedilla} at \uni{0327} by Unicode canonical decomposition, also if such a
-decomposition is not intended in the IPA.\@
+\uni{00E7} is canonically equivalent with <c> with <\dia{0327}>
+\textsc{combining cedilla} at \uni{0327}, so it will be separated into two
+characters by Unicode canonical decomposition, also if such a decomposition is
+not intended in the IPA.\@ However, because of the nature of canonical
+equivalence (see Section~\ref{pitfall-canonical-equivalence}), these two
+encodings are completely identical in any computational treatment, so this
+decomposition does not have any practical consequences.
 
 % ==========================
 \section{Pitfall: Different notions of diacritics}
@@ -458,28 +564,35 @@ Letters in the Unicode Standard:
   
 	\item[] Length marks, namely: 
 	\begin{itemize}
-	  \item[] <ː> \textsc{modifier letter triangular colon} at \uni{02D0}
-	  \item[] <ˑ> \textsc{modifier letter half triangular colon} at \uni{02D1}
+	  \item[] <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}
+	  \item[] <\dia{02D1}> \textsc{modifier letter half triangular colon} at \uni{02D1}
 	\end{itemize}
 	 
 	\item[] Tone letters, like: 
 	\begin{itemize} 
 	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
-	  \item[] <˧> \textsc{modifier letter mid tone bar} at \uni{02E7}
+	  \item[] <˨> \textsc{modifier letter low tone bar} at \uni{02E8}
 	  \item[] and others like this
 	\end{itemize}
 	
 	\item[] Superscript letters, like:
 	\begin{itemize}
-	  \item[] <ʰ> \textsc{modifier letter small h} at \uni{02B0}
-	  \item[] <ˤ> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
-	  \item[] <ⁿ> \textsc{superscript latin small letter n} at \uni{207F}
+	  \item[] <\dia{02B0}> \textsc{modifier letter small h} at \uni{02B0}
+	  \item[] <\dia{02E4}> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
+	  \item[] <\dia{207F}> \textsc{superscript latin small letter n} at \uni{207F}
 	  \item[] and many more like this
 	\end{itemize}
 	
-	\item[] The rhotic hook:
+	\item[] The rhotic hook:\footnote{It is really unfortunate that the rhotic hook
+         in Unicode is classified as a Spacing Modifier, and not as a Combining 
+         Diacritical Mark. Although the rhotic hook is placed to the right of its 
+         base character (and not above or below), it still is always connected 
+         to the character in front, even physically connected to it. We cannot 
+         find any reason for this treatment, and consider it an error in 
+         Unicode. We hope it will be possible to change this classification in 
+         the future.}
 	\begin{itemize}
-	  \item[] <˞> \textsc{modifier letter rhotic hook} at \uni{02DE}
+	  \item[] <\dia{02DE}> \textsc{modifier letter rhotic hook} at \uni{02DE}
 	\end{itemize}
 	
 \end{itemize}
@@ -489,10 +602,9 @@ character in front of them, at least for <ʰ> \textsc{modifier letter small h} a
 \uni{02B0} the Unicode Consortium's decision to treat it as a separate character
 is also linguistically correct, because according to the IPA it can be used both
 for aspiration (more precisely post-aspiration following the base character) and
-pre-aspiration (preceding the base character). Note that there exists a mechanism in
-Unicode to force separate characters to be combined (namely by using the
-\textsc{zero width joiner} at \uni{200D}), but this seems to be a rather
-impractical, and probably not an enforceable solution to us.
+pre-aspiration (preceding the base character). The default combination of Spacing Modifiers with
+the preceding character can be specified in orthography profiles (see
+Chapter~\ref{orthography-profiles}).
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
@@ -518,21 +630,22 @@ Unicode Standard likewise does not propose any standardized orders. Both leave i
 to the user to be consistent; this approach naturally invites inconsistency across 
 different authored resources.
 
-There is one aspect of ordering for which
-the Unicode Standard does present a canonical solution. However, it is uncontroversial
-from a linguistic perspective. Diacritics in the Unicode Standard
-(i.e.~Combining Diacritical Marks, see above) are classified in Canonical
-Combining Classes. In practice, the diacritics are distinguished by their
-position relative to the base character.\footnote{See
-\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values} for a
+There is one aspect of ordering for which the Unicode Standard does present a
+canonical solution. However, it is uncontroversial from a linguistic
+perspective. Diacritics in the Unicode Standard (i.e.~Combining Diacritical
+Marks, see above) are classified in Canonical Combining Classes. In practice,
+the diacritics are distinguished by their position relative to the base
+character.\footnote{See
+\url{http://unicode.org/reports/tr44/#Canonical_Combining_Class_Values} for a
 detailed description.} When applying a Unicode normalization (NFC or NFD, see
 Section~\ref{pitfall-canonical-equivalence}), the diacritics in different
 positions are put in a specified order. This process therefore harmonizes the
-difference between different encodings, e.g.\ of a midtone creaky voice
-vowel <ḛ̄>. This grapheme cluster can be encoded either as <e> + <\ \ ̄> + <\ \
-̰> or as <e> + <\ \ ̰> + <\ \ ̄>. To prevent this twofold encoding, the Unicode
-Standard specifies the second ordering as canonical (in this case, diacritics
-below are put before diacritics above).
+difference between different encodings, e.g.\ of an extra-short creaky voice
+vowel <ḛ̆>. This grapheme cluster can be encoded either as
+<e>+<\dia{0306}>+<\dia{0330}> or as <e>+<\dia{0330}>+<\dia{0306}>. To
+prevent this twofold encoding, the Unicode Standard specifies the second
+ordering as canonical (in this case, diacritics below are put before diacritics
+above).
 
 When encoding a string according to the Unicode Standard, it is possible to do
 this either using the NFC (composition) or NFD (decomposition) normalization.
@@ -548,74 +661,168 @@ expected from a linguistic perspective. It is thus important to consider Unicode
 decomposition only as a technical procedure, and not assume that it is
 linguistically sensible.
 
-\subsubsection*{Diacritic ordering}
+\subsubsection*{Proposal for diacritic ordering}
 
 Facing the problem of specifying a consistent ordering of diacritics while
 developing a large database of phonological inventories from the world's
-languages, \citet[540]{Moran2012} defines a set of diacritic ordering
+languages, \citet[540]{Moran2012} defined a set of diacritic ordering
 conventions. The conventions are influenced by the linguistic literature, though
-some ad-hoc decisions had to be taken given the vast variability of phonological segments 
-described by linguists. 
+some ad-hoc decisions had to be taken given the vast variability of phonological
+segments described by linguists. 
 
-If a character sequence contains more than one diacritic below the base
-character, then the place features are applied first (linguolabial, dental,
-apical, laminal, advanced, retracted), followed by the manner features (raised,
-lowered, advanced tongue root, retracted tongue root, frictionalized), then
-secondary articulations (more round, less round, derhoticized), laryngeal
-settings (creaky, breathy, voiced, devoiced (below), devoiced (above)), and
-finally the syllabic or non-syllabic marker (for vowels, advanced and retracted
-tongue root markers gets applied between the place and laryngeal setting). So
-the order that is proposed is the following (where <\textbar{}> indicates
-\textit{or} and <→> indicates \textit{precedes}):
+By Unicode Canonical Combining Classes, the diacritics on top of a character,
+like <\dia{0334}> (Combining Class number 1), always come before diacritics
+below (Combining Class number 220), which in turn always come before diacritics
+above (Combining Class number 230), which in turn come before diacritics over
+multiple characters like the tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
+(Combining Class number 233). We follow this order, but add the other IPA
+diacritics (which are not diacritics in the Unicode sense) between diacritics
+below and the tie bar. Within all these classes of diacritics there is no canonical
+ordering specified by Unicode, so we propose an explicit ordering here.
+
+Starting with the diacritics below: if a character sequence contains more than
+one diacritic below the base character, then the place features are applied
+first (linguolabial, dental, apical, laminal, advanced, retracted), followed by
+the manner features (raised, lowered, advanced and retracted tongue root), then
+secondary articulations (more round, less round), laryngeal settings (creaky,
+breathy, voiced, devoiced), and finally the syllabic or non-syllabic marker. So,
+the order that is proposed is the following, where <\textbar{}> indicates
+\textit{or} and <→> indicates \textit{precedes}. Note that the groups of
+alternatives (as marked by <\textbar{}>) are supposed never to occur together
+with the same base character. In effect, this represents yet another restriction
+on possible diacritic sequences.
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (below) ordering:}
 	\begin{itemize}	
-	  \item[→] linguolabial <t̼> \textbar{} dental <t̪> \textbar{} apical <t̺> \textbar{} laminal <t̻>
-	  \item[→] advanced <u̟> \textbar{} retracted <e̠> 
-	  \item[→] raised <e̝> \textbar{} lowered <e̞>
-	  \item[→] advanced tongue root <e̘> \textbar{} retracted tongue root <e̙>
-	  \item[→] frictionalized <ɾ͓>
-	  \item[→] more round <ɔ̹> \textbar{} less round <ɔ̜>
-	  \item[→] creaky voice <b̰> \textbar{} breathy voice <b̤> \textbar{} voiced <s̬> \textbar{} devoiced <n̥>
-	  \item[→] syllabic <n̩> \textbar{} non-syllabic <e̯>
+	  \item[→] linguolabial <\dia{033C}> \textbar{} dental <\dia{032A}> \textbar{} apical <\dia{033A}> \textbar{} laminal <\dia{033B}>
+	  \item[→] advanced <\dia{031F}> \textbar{} retracted <\dia{0320}> 
+	  \item[→] raised <\dia{031D}> \textbar{} lowered <\dia{031E}>
+	  \item[→] advanced tongue root <\dia{0318}> \textbar{} retracted tongue root <\dia{0319}>
+	  \item[→] more rounded <\dia{0339}> \textbar{} less rounded <\dia{031C}>
+	  \item[→] creaky voiced <\dia{0330}> \textbar{} breathy voiced <\dia{0324}> \textbar{} voiced <\dia{032C}> \textbar{} voiceless <\dia{0325}>
+	  \item[→] syllabic <\dia{0329}> \textbar{} non-syllabic <\dia{032F}>
 	\end{itemize}
  \end{itemize}
 
-Further, if a character sequence contains more than one diacritic above the base
-character, we propose the following order. Note that this ordering is only
-important when the extra short superscript is used. All other combinations will 
-in practice never lead to problems.
+\noindent Next, if a character sequence contains more than one diacritic above the base
+character, we propose the following order:
 
 \begin{itemize}
 	\item[] \textsc{Combining Diacritical Marks (above) ordering:}
 	\begin{itemize}
-	  \item[→] nasalized <ẽ>
-	  \item[→] centralized <ë> \textbar{} mid-centralized <e̽>
-	  \item[→] extra short <ĕ>
-%	  \item[→] (tone accents, e.g. <è>)
-	  \item[→] unreleased <p̚>
-%	  \item[→] Spacing Modifier Letters, see above	  
+	  \item[→] nasalized <\dia{0303}>
+	  \item[→] centralized <\dia{0308}> \textbar{} mid-centralized <\dia{033D}>
+	  \item[→] extra short <\dia{0306}>
+	  \item[→] no audible release <\dia{031A}\ >
  \end{itemize} \end{itemize}
 
-Finally, when a character sequence contains more than one character in Spacing
+\noindent Then, when a character sequence contains more than one character of the Spacing
 Modifier Letters, these will be placed after all combining diacritic marks in the
 following order:
 
 \begin{itemize}
 	\item[] \textsc{Spacing Modifier Letters ordering:}
 	\begin{itemize}
-	  \item[→] rhotic hook <{\large \ ˞} >
-	  \item[→] lateral release <ˡ> \textbar{} nasal release <ⁿ>
-	  \item[→] labialized <ʷ>
-	  \item[→] palatalized <ʲ>
-	  \item[→] velarized <ˠ>
-	  \item[→] pharyngealized <ˤ>
-	  \item[→] glottalized <ˀ>
-	  \item[→] aspirated <ʰ> \textbar{} ejective <ʼ>
-	  \item[→] long <ː> \textbar{} half-long <ˑ>
-	  \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
+	  \item[→] rhotic hook <\dia{02DE}>
+	  \item[→] lateral release <\dia{02E1}> \textbar{} nasal release <\dia{207F}>
+	  \item[→] labialized <\dia{02B7}>
+	  \item[→] palatalized <\dia{02B2}>
+	  \item[→] velarized <\dia{02E0}>
+	  \item[→] pharyngealized <\dia{02E4}>
+	  \item[→] aspirated <\dia{02B0}> \textbar{} ejective <\dia{02BC}>
+	  \item[→] long <\dia{02D0}> \textbar{} half-long <\dia{02D1}>
 	\end{itemize}
+\end{itemize}
+
+\noindent Finally, Tone markers are put at the end of any such sequence, and the 
+tie bar follows at the very end:
+
+\begin{itemize}
+  \item[] \textsc{Tone Marks:}
+  \begin{itemize}
+    \item[→] tone letters <˥ ˦ ˧ ˨ ˩> \textbar{} tone movement <↑ ↓ ↗ ↘>
+    \item[→] tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
+  \end{itemize}
+\end{itemize}
+
+% ==========================
+\section{Additions to the IPA}
+\label{ipa-additions}
+% ==========================
+
+In the course of collecting a large sample of phoneme systems across the world's
+languages \citep{Moran2012}, we found that in order to preserve distinctions
+both within and across language descriptions, additions to the approved IPA
+glyph set were needed. Wherever possible these additions were drawn from the
+extIPA symbols for disordered
+speech.\footnote{\textbf{Add better reference here: }\url{https://www.internationalphoneticassociation.org/sites/default/files/extIPAChart2008.pdf}}
+This section describes our proposed additions to the IPA glyph set. These
+additions are not part of the official IPA recommendations, so they should be 
+used with care.
+
+\begin{itemize}
+  
+\item \textsc{Retroflex click} \newline
+      Retroflex clicks can be represented by <‼> \textsc{double exclamation
+      mark} at \uni{203C}. Note that the (post-)alveolar click <ǃ> at \uni{01C3}
+      is confusingly referred to as \textsc{latin letter retroflex click} in the
+      Unicode standard, which is probably best seen as an error.
+\item \textsc{Voiced retroflex implosive} \newline 
+      Although the IPA includes a
+      series of voiced implosives (marked with a hook on top, see
+      Section~\ref{pitfall-missing-decomposition}), there is no voiced retroflex
+      implosive. Following the spirit of the IPA, we propose to use <\charis{ᶑ}>
+      \textsc{latin small letter d with hook and tail} at \uni{1D91} for this
+      sound.
+\item \textsc{Fortis/lenis} \newline
+      Languages described as having a fortis/plain/lenis distinction that
+      corresponds poorly with the traditional
+      voiced/voiceless-unaspirated/voiceless-aspirated continuum can be marked
+      using the voiceless glyph for the plain phoneme, and then 
+      <\dia{0348}> \textsc{combining double vertical line below} at
+      \uni{0348} to mark the fortis articulation, and/or <\dia{0349}>
+      \textsc{combining left angle below} at \uni{0349} for the lenis
+      articulation.
+\item \textsc{Frictionalization} \newline 
+      The diacritic <\dia{0353}>
+      \textsc{combining x below} at \uni{0353} can be used to represent three
+      types of frictionalized sounds: First, click consonants where the release
+      of the anterior closure involves an ingressive ``sucking'' sound similar
+      to a fricative, for example <kǃ͓ʰ>; second, ``frictionalized'' vowels
+      (sounds that are phonologically vocalic, but with sufficiently close
+      closures to create buzzing); and third, fricative sounds at places of
+      articulation that do not have dedicated fricative glyphs, for example
+      sounds with voiceless velar lateral frication, like <ʟ̥͓>.
+\item \textsc{Derhoticization} \newline 
+      For derhoticization we propose to use
+      <\dia{032E}> \textsc{combining breve below} at \uni{032E}. 
+      \textbf{WHAT EXACTLY IS THIS?}
+\item \textsc{Coronal non-sibilant} \newline
+      Languages described as having a sibilant/non-sibilant distinction among
+      coronal fricatives and affricates can be handled using the subscript
+      <\dia{0347}> \textsc{combining equals sign below} at \uni{0347} to mark
+      the non-sibilant phoneme.
+\item \textsc{Glottalization} \newline 
+      Glottalized sounds can be indicated using
+      <\dia{02C0}> \textsc{modifier letter glottal stop} at \uni{02C0}, unless
+      it is clear that either ``ejective'' or ``creaky voicing'' are the
+      intended sounds (in which cases the standard IPA diacritics should be
+      used). Pre-glottalized sounds can be marked with
+      <\diareverse{02C0}> to the left of the base
+      glyph, for example <\charis{ˀt}>.
+\item \textsc{Voiced pre-aspiration} \newline Voiced sounds having
+      pre-aspiration can be marked with
+      <\diareverse{02B1}> \textsc{modifier letter
+      small h with hook} at \uni{02B1} to the left of the base glyph, for
+      example <\charis{ʱd}>.
+\item \textsc{Epilaryngeal phonation} \newline 
+      There are some rare articulations that make
+      use of an epilaryngeal phonation mechanism (e.g.,~the “sphincteric vowels”
+      of~!Xóõ). To represent these vowels, we propose to use the modifier <\dia{1D31}>
+      \textsc{modifier letter capital e} at \uni{1D31} to denote such sphincteric
+      phonation.
+
 \end{itemize}
 
 % ==========================
@@ -623,129 +830,51 @@ following order:
 \label{ipa-recommendations}
 % ==========================
 
-Summarizing the pitfalls discussed in this chapter, we propose to define a 
+Summarizing the pitfalls as discussed in this chapter, we propose to define a 
 ``strict'' IPA encoding to be used when interoperability of phonetic resources 
 is intended. For regular research papers, when only the visual outline is 
-important, 
+important, the details encoding of IPA in electronic format is rather 
+unimportant, as long as it looks as expected. So for those regular usage these 
+proposals are irrelevant.
 
-%\begin{table}[htdp]
+TO DO: 
+[different kind of profiles]
+
+At the end of this chapter we have added a few longish tables summarizing all
+159 different unicode codepoints that form the basis of strict-IPA encoding
+(107 letters, 45 diacritics and 7 remaining symbols). Each of
+these tables shows a typical glyph, and then lists the Unicode Codepoint,
+Unicode Name and IPA description for each symbol.
+
+TO DO:
+[ordering]
+[additions]
+
+
+\begin{itemize}[itemsep=6pt]
+
+  \item \textsc{IPA letters} \newline
+        The 107 different IPA letters as allowed in strict-IPA encoding are
+        listed in Table~\ref{tab:ipa_letters} starting on
+        page~\pageref{tab:ipa_letters}.
+  \item \textsc{IPA diacritics} \newline The 45 different IPA diacritics and
+        tone markers (both Unicode Modifier Letters and Combining Diacritical
+        Marks) as allowed in strict-IPA encoding are listed in
+        Table~\ref{tab:ipa_diacritics} starting on
+        page~\pageref{tab:ipa_diacritics}.
+  \item \textsc{IPA remainders} \newline
+        The 7 remaining IPA symbols (boundary and stress markers) as allowed in
+        strict-IPA encoding are listed in Table~\ref{tab:ipa_boundaries} on
+        page~\pageref{tab:ipa_boundaries}. 
+  \item \textsc{IPA additions} \newline
+        The 10 proposed additions to the IPA are listed in
+        Table~\ref{tab:ipa_additions} on page~\pageref{tab:ipa_additions}.
   
- \topcaption{IPA letters with Unicode encodings}
- \label{tab:ipa_letters}
- \tablehead{\toprule & Code & Unicode name & IPA name \\ \midrule }
- \tabletail{\bottomrule}
-  
-\begin{center}
-\begin{xtabular}{ l l L{4.5cm} L{4.5cm} }
-a & \uni{0061} & \textsc{latin small letter a} & open front unrounded \\ 
-æ & \uni{00E6} & \textsc{latin small letter ae} & raised open front unrounded \\ 
-ɐ & \uni{0250} & \textsc{latin small letter turned a} & lowered schwa \\ 
-ɑ & \uni{0251} & \textsc{latin small letter alpha} & open back unrounded \\ 
-ɒ & \uni{0252} & \textsc{latin small letter turned alpha} & open back rounded \\ 
-b & \uni{0062} & \textsc{latin small letter b} & voiced bilabial plosive \\ 
-ʙ & \uni{0299} & \textsc{latin letter small capital b} & voiced bilabial trill \\ 
-ɓ & \uni{0253} & \textsc{latin small letter b with hook} & voiced bilabial implosive \\ 
-c & \uni{0063} & \textsc{latin small letter c} & voiceless palatal plosive \\ 
-ç & \uni{00E7} & \textsc{latin small letter c with cedilla} & voiceless palatal fricative \\ 
-ɕ & \uni{0255} & \textsc{latin small letter c with curl} & voiceless alveolo-palatal fricative \\ 
-d & \uni{0064} & \textsc{latin small letter d} & voiced alveolar plosive \\ 
-ð & \uni{00F0} & \textsc{latin small letter eth} & voiced dental fricative \\ 
-ɖ & \uni{0256} & \textsc{latin small letter d with tail} & voiced retroflex plosive \\ 
-ɗ & \uni{0257} & \textsc{latin small letter d with hook} & voiced dental/alveolar implosive \\ 
-\charis{ᶑ} & \uni{1D91} & \textsc{latin small letter d with hook and tail} & voiced retroflex implosive \\ 
-e & \uni{0065} & \textsc{latin small letter e} & close-mid front unrounded \\ 
-ə & \uni{0259} & \textsc{latin small letter schwa} & mid-central schwa \\ 
-ɛ & \uni{025B} & \textsc{latin small letter open e} & open-mid front unrounded \\ 
-ɘ & \uni{0258} & \textsc{latin small letter reversed e} & close-mid central unrounded \\ 
-ɜ & \uni{025C} & \textsc{latin small letter reversed open e} & open-mid central unrounded \\ 
-ɞ & \uni{025E} & \textsc{latin small letter closed reversed open e} & open-mid central rounded \\ 
-ɤ & \uni{0264} & \textsc{latin small letter rams horn} & close-mid back unrounded \\ 
-f & \uni{0066} & \textsc{latin small letter f} & voiceless labiodental fricative \\ 
-ɡ & \uni{0261} & \textsc{latin small letter script g} & voiced velar plosive \\ 
-ɢ & \uni{0262} & \textsc{latin letter small capital g} & voiced uvular plosive \\ 
-ɠ & \uni{0260} & \textsc{latin small letter g with hook} & voiced velar implosive \\ 
-ʛ & \uni{029B} & \textsc{latin letter small capital g with hook} & voiced uvular implosive \\ 
-ɣ & \uni{0263} & \textsc{latin small letter gamma} & voiced velar fricative \\ 
-h & \uni{0068} & \textsc{latin small letter h} & voiceless glottal fricative \\ 
-ħ & \uni{0127} & \textsc{latin small letter h with stroke} & voiceless pharyngeal fricative \\ 
-ʜ & \uni{029C} & \textsc{latin letter small capital h} & voiceless epiglottal fricative \\ 
-ɦ & \uni{0266} & \textsc{latin small letter h with hook} & voiced glottal fricative \\ 
-ɧ & \uni{0267} & \textsc{latin small letter heng with hook} & voiceless postalveolar+velar fricative \\ 
-i & \uni{0069} & \textsc{latin small letter i} & close front unrounded \\ 
-ɪ & \uni{026A} & \textsc{latin letter small capital i} & lax close front unrounded \\ 
-ɨ & \uni{0268} & \textsc{latin small letter i with stroke} & close central unrounded \\ 
-j & \uni{006A} & \textsc{latin small letter j} & voiced palatal approximant \\ 
-ʝ & \uni{029D} & \textsc{latin small letter j with crossed tail} & voiced palatal fricative \\ 
-ɟ & \uni{025F} & \textsc{latin small letter dotless j with stroke} & voiced palatal plosive \\ 
-ʄ & \uni{0284} & \textsc{latin small letter dotless j with stroke and hook} & voiced palatal implosive \\ 
-k & \uni{006B} & \textsc{latin small letter k} & voiceless velar plosive \\ 
-l & \uni{006C} & \textsc{latin small letter l} & voiced alveolar lateral approximant \\ 
-ʟ & \uni{029F} & \textsc{latin letter small capital l} & voiced velar lateral approximant \\ 
-ɫ & \uni{026B} & \textsc{latin small letter l with middle tilde} & voiced pharyngealized alveolar lateral approximant \\ 
-ɬ & \uni{026C} & \textsc{latin small letter l with belt} & voiceless alveolar lateral fricative \\ 
-ɭ & \uni{026D} & \textsc{latin small letter l with retroflex hook} & voiced retroflex lateral approximant \\ 
-ɮ & \uni{026E} & \textsc{latin small letter lezh} & voiced alveolar lateral fricative \\ 
-ʎ & \uni{028E} & \textsc{latin small letter turned y} & voiced palatal lateral approximant \\ 
-m & \uni{006D} & \textsc{latin small letter m} & voiced bilabial nasal \\ 
-ɱ & \uni{0271} & \textsc{latin small letter m with hook} & voiced labiodental nasal \\ 
-n & \uni{006E} & \textsc{latin small letter n} & voiced alveolar nasal \\ 
-ɴ & \uni{0274} & \textsc{latin letter small capital n} & voiced uvular nasal \\ 
-ɲ & \uni{0272} & \textsc{latin small letter n with left hook} & voiced palatal nasal \\ 
-ɳ & \uni{0273} & \textsc{latin small letter n with retroflex hook} & voiced retroflex nasal \\ 
-ŋ & \uni{014B} & \textsc{latin small letter eng} & voiced velar nasal \\ 
-o & \uni{006F} & \textsc{latin small letter o} & close-mid back rounded \\ 
-ø & \uni{00F8} & \textsc{latin small letter o with stroke} & close-mid front rounded \\ 
-œ & \uni{0153} & \textsc{latin small ligature oe} & open-mid front rounded \\ 
-ɶ & \uni{0276} & \textsc{latin letter small capital oe} & open front rounded \\ 
-ɔ & \uni{0254} & \textsc{latin small letter open o} & open-mid back rounded \\ 
-ɵ & \uni{0275} & \textsc{latin small letter barred o} & close-mid central rounded \\ 
-p & \uni{0070} & \textsc{latin small letter p} & voiceless bilabial plosive \\ 
-ɸ & \uni{0278} & \textsc{latin small letter phi} & voiceless bilabial fricative \\ 
-q & \uni{0071} & \textsc{latin small letter q} & voiceless uvular plosive \\ 
-r & \uni{0072} & \textsc{latin small letter r} & voiced alveolar trill \\ 
-ʀ & \uni{0280} & \textsc{latin letter small capital r} & voiced uvular trill \\ 
-ɹ & \uni{0279} & \textsc{latin small letter turned r} & voiced alveolar approximant \\ 
-ɺ & \uni{027A} & \textsc{latin small letter turned r with long leg} & voiced alveolar lateral flap \\ 
-ɻ & \uni{027B} & \textsc{latin small letter turned r with hook} & voiced retroflex approximant \\ 
-ɽ & \uni{027D} & \textsc{latin small letter r with tail} & voiced retroflex tap \\ 
-ɾ & \uni{027E} & \textsc{latin small letter r with fishhook} & voiced alveolar tap \\ 
-ʁ & \uni{0281} & \textsc{latin letter small capital inverted r} & voiced uvular fricative \\ 
-s & \uni{0073} & \textsc{latin small letter s} & voiceless alveolar fricative \\ 
-ʂ & \uni{0282} & \textsc{latin small letter s with hook} & voiceless retroflex fricative \\ 
-ʃ & \uni{0283} & \textsc{latin small letter esh} & voiceless postalveolar fricative \\ 
-t & \uni{0074} & \textsc{latin small letter t} & voiceless alveolar plosive \\ 
-ʈ & \uni{0288} & \textsc{latin small letter t with retroflex hook} & voiceless retroflex plosive \\ 
-u & \uni{0075} & \textsc{latin small letter u} & close back rounded \\ 
-ʉ & \uni{0289} & \textsc{latin small letter u bar} & close central rounded \\ 
-ɥ & \uni{0265} & \textsc{latin small letter turned h} & voiced labial-palatal approximant \\ 
-ɯ & \uni{026F} & \textsc{latin small letter turned m} & close back unrounded \\ 
-ɰ & \uni{0270} & \textsc{latin small letter turned m with long leg} & voiced velar approximant \\ 
-ʊ & \uni{028A} & \textsc{latin small letter upsilon} & lax close back rounded \\ 
-v & \uni{0076} & \textsc{latin small letter v} & voiced labiodental fricative \\ 
-ʋ & \uni{028B} & \textsc{latin small letter v with hook} & voiced labiodental approximant \\ 
-\charis{ⱱ} & \uni{2C71} & \textsc{latin small letter v with right hook} & voiced labiodental tap \\ 
-ʌ & \uni{028C} & \textsc{latin small letter turned v} & open-mid back unrounded \\ 
-w & \uni{0077} & \textsc{latin small letter w} & voiced labial-velar approximant \\ 
-ʍ & \uni{028D} & \textsc{latin small letter turned w} & voiceless labial-velar fricative \\ 
-x & \uni{0078} & \textsc{latin small letter x} & voiceless velar fricative \\ 
-y & \uni{0079} & \textsc{latin small letter y} & close front rounded \\ 
-ʏ & \uni{028F} & \textsc{latin letter small capital y} & lax close front rounded \\ 
-z & \uni{007A} & \textsc{latin small letter z} & voiced alveolar fricative \\ 
-ʐ & \uni{0290} & \textsc{latin small letter z with retroflex hook} & voiced retroflex fricative \\ 
-ʑ & \uni{0291} & \textsc{latin small letter z with curl} & voiced alveolo-palatal fricative \\ 
-ʒ & \uni{0292} & \textsc{latin small letter ezh} & voiced postalveolar fricative \\ 
-ʔ & \uni{0294} & \textsc{latin letter glottal stop} & voiceless glottal plosive \\ 
-ʕ & \uni{0295} & \textsc{latin letter pharyngeal voiced fricative} & voiced pharyngeal fricative \\ 
-ʡ & \uni{02A1} & \textsc{latin letter glottal stop with stroke} & epiglottal plosive \\ 
-ʢ & \uni{02A2} & \textsc{latin letter reversed glottal stop with stroke} & voiced epiglottal fricative \\ 
-ǀ & \uni{01C0} & \textsc{latin letter dental click} & voiceless dental click \\ 
-ǁ & \uni{01C1} & \textsc{latin letter lateral click} & voiceless alveolar lateral click \\ 
-ǂ & \uni{01C2} & \textsc{latin letter alveolar click} & voiceless palatoalveolar click \\ 
-ǃ & \uni{01C3} & \textsc{latin letter retroflex click} & voiceless (post)alveolar click \\ 
-ʘ & \uni{0298} & \textsc{latin letter bilabial click} & voiceless bilabial click \\ 
-β & \uni{03B2} & \textsc{greek small letter beta} & voiced bilabial fricative \\ 
-θ & \uni{03B8} & \textsc{greek small letter theta} & voiceless dental fricative \\ 
-χ & \uni{03C7} & \textsc{greek small letter chi} & voiceless uvular fricative \\
-\end{xtabular}
-\end{center}
-%\end{table}
+\end{itemize}
+
+
+\newpage
+\input{tables/unicode_letters}
+\input{tables/unicode_diacritics} 
+\input{tables/unicode_boundaries}
+\input{tables/unicode_additions}
