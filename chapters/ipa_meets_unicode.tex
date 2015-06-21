@@ -671,11 +671,14 @@ some ad-hoc decisions had to be taken given the vast variability of phonological
 segments described by linguists. 
 
 By Unicode Canonical Combining Classes, the diacritics on top of a character,
-like <\dia{0334}>, always come before diacritics below, which in turn always
-come before diacritics above. We follow this order and add the other IPA
-diacritics (which are not diacritics in the Unicode sense) after these
-diacritics. Within these classes of diacritics there is no canonical ordering
-specified by Unicode, so we propose an explicit ordering here.
+like <\dia{0334}> (Combining Class number 1), always come before diacritics
+below (Combining Class number 220), which in turn always come before diacritics
+above (Combining Class number 230), which in turn come before diacritics over
+multiple characters like the tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
+(Combining Class number 233). We follow this order, but add the other IPA
+diacritics (which are not diacritics in the Unicode sense) between diacritics
+below and the tie bar. Within all these classes of diacritics there is no canonical
+ordering specified by Unicode, so we propose an explicit ordering here.
 
 Starting with the diacritics below: if a character sequence contains more than
 one diacritic below the base character, then the place features are applied
@@ -711,7 +714,7 @@ character, we propose the following order:
 	  \item[→] nasalized <\dia{0303}>
 	  \item[→] centralized <\dia{0308}> \textbar{} mid-centralized <\dia{033D}>
 	  \item[→] extra short <\dia{0306}>
-	  \item[→] no audible release <\dia{031A}>
+	  \item[→] no audible release <\dia{031A}\ >
  \end{itemize} \end{itemize}
 
 \noindent Then, when a character sequence contains more than one character of the Spacing
@@ -729,16 +732,17 @@ following order:
 	  \item[→] pharyngealized <\dia{02E4}>
 	  \item[→] aspirated <\dia{02B0}> \textbar{} ejective <\dia{02BC}>
 	  \item[→] long <\dia{02D0}> \textbar{} half-long <\dia{02D1}>
-%	  \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
 	\end{itemize}
 \end{itemize}
 
-\noindent Finally, Tone markers are put at the end of any such sequence:
+\noindent Finally, Tone markers are put at the end of any such sequence, and the 
+tie bar follows at the very end:
 
 \begin{itemize}
   \item[] \textsc{Tone Marks:}
   \begin{itemize}
     \item[→] tone letters <˥ ˦ ˧ ˨ ˩> \textbar{} tone movement <↑ ↓ ↗ ↘>
+    \item[→] tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
   \end{itemize}
 \end{itemize}
 
@@ -837,8 +841,8 @@ TO DO:
 [different kind of profiles]
 
 At the end of this chapter we have added a few longish tables summarizing all
-157 different unicode codepoints that form the basis of strict-IPA encoding
-(107 letters, 43 diacritics and 7 remaining symbols). Each of
+159 different unicode codepoints that form the basis of strict-IPA encoding
+(107 letters, 45 diacritics and 7 remaining symbols). Each of
 these tables shows a typical glyph, and then lists the Unicode Codepoint,
 Unicode Name and IPA description for each symbol.
 
@@ -853,7 +857,7 @@ TO DO:
         The 107 different IPA letters as allowed in strict-IPA encoding are
         listed in Table~\ref{tab:ipa_letters} starting on
         page~\pageref{tab:ipa_letters}.
-  \item \textsc{IPA diacritics} \newline The 43 different IPA diacritics and
+  \item \textsc{IPA diacritics} \newline The 45 different IPA diacritics and
         tone markers (both Unicode Modifier Letters and Combining Diacritical
         Marks) as allowed in strict-IPA encoding are listed in
         Table~\ref{tab:ipa_diacritics} starting on
