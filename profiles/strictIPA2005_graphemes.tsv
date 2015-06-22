@@ -141,14 +141,14 @@ left	graphemes	right	class	codepoints	Unicode_names	IPA_names
 ⁂	ʼ		S	U+02BC	MODIFIER LETTER APOSTROPHE	ejective
 ⁂	ː		T	U+02D0	MODIFIER LETTER TRIANGULAR COLON	long
 ⁂	ˑ		T	U+02D1	MODIFIER LETTER HALF TRIANGULAR COLON	half-long
-⁂	˥		U	U+02E5	MODIFIER LETTER EXTRA-HIGH TONE BAR	extra high tone
-⁂	˦		U	U+02E6	MODIFIER LETTER HIGH TONE BAR	high tone
-⁂	˧		U	U+02E7	MODIFIER LETTER MID TONE BAR	mid tone
-⁂	˨		U	U+02E8	MODIFIER LETTER LOW TONE BAR	low tone
-⁂	˩		U	U+02E9	MODIFIER LETTER EXTRA-LOW TONE BAR	extra low tone
 ⁂	͡		V	U+0361	COMBINING DOUBLE INVERTED BREVE	tie bar
-	↑			U+A71B	MODIFIER LETTER RAISED UP ARROW	upstep
-	↓			U+A71C	MODIFIER LETTER RAISED DOWN ARROW	downstep
+	˥		U	U+02E5	MODIFIER LETTER EXTRA-HIGH TONE BAR	extra high tone
+	˦		U	U+02E6	MODIFIER LETTER HIGH TONE BAR	high tone
+	˧		U	U+02E7	MODIFIER LETTER MID TONE BAR	mid tone
+	˨		U	U+02E8	MODIFIER LETTER LOW TONE BAR	low tone
+	˩		U	U+02E9	MODIFIER LETTER EXTRA-LOW TONE BAR	extra low tone
+	↑			U+2191	UPWARDS ARROW	upstep
+	↓			U+2193	DOWNWARDS ARROW	downstep
 	↗			U+2197	NORTH EAST ARROW	global rise
 	↘			U+2198	SOUTH EAST ARROW	global fall
 	ˈ			U+02C8	MODIFIER LETTER VERTICAL LINE	primary stress
@@ -158,4 +158,5 @@ left	graphemes	right	class	codepoints	Unicode_names	IPA_names
 	|			U+007C	VERTICAL LINE	minor group break (foot)
 	‖			U+2016	DOUBLE VERTICAL LINE	major group break (intonation)
 	‿			U+203F	UNDERTIE	linking (absence of a break)
-	1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?U*(V1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?U*)*					complex IPA grapheme
+	1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?(V1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?)*					complex IPA grapheme
+	U+					toneme

@@ -113,10 +113,10 @@ subdivided into character blocks, which generally encode characters from a
 single script. However, as is illustrated by the IPA, characters that form a
 single writing system may be dispersed across several different character
 blocks. With its diverse collection of symbols from various scripts and
-diacritics, the IPA is spread across 13 blocks in the Unicode
+diacritics, the IPA is spread across 12 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see~\cite[Appendix~C]{Moran2012}. The 159 characters from 13 
+are also included, see~\cite[Appendix~C]{Moran2012}. The 159 characters from 12 
 code blocks shown here are the characters proposed for ``strict'' IPA encoding, 
 as discussed in Section~\ref{ipa-recommendations}.}
 
@@ -148,10 +148,10 @@ as discussed in Section~\ref{ipa-recommendations}.}
 	\dia{033D} \dia{0306} \dia{031A} \ \dia{0361}{\large\fontspec{CharisSIL}◌}
     \item \textsc{General Punctuation} (2 characters) \newline 
     ‖ \charis{‿}
-	\item \textsc{Modifier Tone Letters} (2 characters) \newline
-	{\large\fontspec{CharisSIL}ꜛ ꜜ}
-	\item \textsc{Arrows} (2 characters) \newline 
-	↗ ↘
+%	\item \textsc{Modifier Tone Letters} (2 characters) \newline
+%	{\large\fontspec{CharisSIL}ꜛ ꜜ}
+	\item \textsc{Arrows} (4 characters) \newline 
+	↑ ↓ ↗ ↘
 
 \end{itemize}
 
@@ -738,13 +738,12 @@ following order:
 	\end{itemize}
 \end{itemize}
 
-\noindent Finally, Tone markers are put at the end of any such sequence, and the 
-tie bar follows at the very end:
+\noindent Finally, the tie bar follows at the very end of any such sequence:
 
 \begin{itemize}
-  \item[] \textsc{Tone Marks:}
+  \item[] \textsc{Tie bar:}
   \begin{itemize}
-    \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
+%    \item[→] tone letters <˥ ˦ ˧ ˨ ˩>
     \item[→] tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
   \end{itemize}
 \end{itemize}
@@ -845,7 +844,7 @@ TO DO:
 
 At the end of this chapter we have added a few longish tables summarizing all
 159 different unicode codepoints that form the basis of strict-IPA encoding
-(107 letters, 41 diacritics and 11 remaining symbols). Each of
+(107 letters, 36 diacritics and 16 remaining symbols). Each of
 these tables shows a typical glyph, and then lists the Unicode Codepoint,
 Unicode Name and IPA description for each symbol.
 
@@ -861,15 +860,15 @@ TO DO:
         The 107 different IPA letters as allowed in strict-IPA encoding are
         listed in Table~\ref{tab:ipa_letters} starting on
         page~\pageref{tab:ipa_letters}.
-  \item \textsc{IPA diacritics} \newline The 41 different IPA diacritics and
+  \item \textsc{IPA diacritics} \newline The 36 different IPA diacritics and
         tone markers (both Unicode Modifier Letters and Combining Diacritical
         Marks) as allowed in strict-IPA encoding are listed in
         Table~\ref{tab:ipa_diacritics} starting on
         page~\pageref{tab:ipa_diacritics}.
-  \item \textsc{IPA remainders} \newline The 11 remaining IPA symbols
-        (boundary, stress and intonation markers) as allowed in strict-IPA
-        encoding are listed in Table~\ref{tab:ipa_boundaries} on
-        page~\pageref{tab:ipa_boundaries}. 
+  \item \textsc{IPA remainders} \newline The 16 remaining IPA symbols
+        (boundary, stress, tone letters and intonation markers) as allowed in strict-IPA
+        encoding are listed in Table~\ref{tab:ipa_leftovers} on
+        page~\pageref{tab:ipa_leftovers}. 
   \item \textsc{IPA additions} \newline
         The 10 proposed additions to the IPA are listed in
         Table~\ref{tab:ipa_additions} on page~\pageref{tab:ipa_additions}.
