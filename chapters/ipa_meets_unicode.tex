@@ -113,10 +113,10 @@ subdivided into character blocks, which generally encode characters from a
 single script. However, as is illustrated by the IPA, characters that form a
 single writing system may be dispersed across several different character
 blocks. With its diverse collection of symbols from various scripts and
-diacritics, the IPA is spread across 12 blocks in the Unicode
+diacritics, the IPA is spread across 13 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
-are also included, see~\cite[Appendix~C]{Moran2012}. The 157 characters from 12 
+are also included, see~\cite[Appendix~C]{Moran2012}. The 159 characters from 13 
 code blocks shown here are the characters proposed for ``strict'' IPA encoding, 
 as discussed in Section~\ref{ipa-recommendations}.}
 
@@ -146,8 +146,10 @@ as discussed in Section~\ref{ipa-recommendations}.}
     ‖ \charis{‿}
 	\item \textsc{Superscripts and Subscripts} (1 character) \newline
 	\dia{207F} 
-	\item \textsc{Arrows} (4 characters) \newline 
-	↑ ↓ ↗ ↘
+	\item \textsc{Modifier Tone Letters} (2 characters) \newline
+	ꜛ ꜜ
+	\item \textsc{Arrows} (2 characters) \newline 
+	↗ ↘
 	\item \textsc{Latin Extended-C} (1 character): \newline
 	\charis{ⱱ}
 \end{itemize}
@@ -842,7 +844,7 @@ TO DO:
 
 At the end of this chapter we have added a few longish tables summarizing all
 159 different unicode codepoints that form the basis of strict-IPA encoding
-(107 letters, 45 diacritics and 7 remaining symbols). Each of
+(107 letters, 41 diacritics and 11 remaining symbols). Each of
 these tables shows a typical glyph, and then lists the Unicode Codepoint,
 Unicode Name and IPA description for each symbol.
 
@@ -853,18 +855,18 @@ TO DO:
 
 \begin{itemize}[itemsep=6pt]
 
-  \item \textsc{IPA letters} \newline
+   \item \textsc{IPA letters} \newline
         The 107 different IPA letters as allowed in strict-IPA encoding are
         listed in Table~\ref{tab:ipa_letters} starting on
         page~\pageref{tab:ipa_letters}.
-  \item \textsc{IPA diacritics} \newline The 45 different IPA diacritics and
+  \item \textsc{IPA diacritics} \newline The 41 different IPA diacritics and
         tone markers (both Unicode Modifier Letters and Combining Diacritical
         Marks) as allowed in strict-IPA encoding are listed in
         Table~\ref{tab:ipa_diacritics} starting on
         page~\pageref{tab:ipa_diacritics}.
-  \item \textsc{IPA remainders} \newline
-        The 7 remaining IPA symbols (boundary and stress markers) as allowed in
-        strict-IPA encoding are listed in Table~\ref{tab:ipa_boundaries} on
+  \item \textsc{IPA remainders} \newline The 11 remaining IPA symbols
+        (boundary, stress and intonation markers) as allowed in strict-IPA
+        encoding are listed in Table~\ref{tab:ipa_boundaries} on
         page~\pageref{tab:ipa_boundaries}. 
   \item \textsc{IPA additions} \newline
         The 10 proposed additions to the IPA are listed in

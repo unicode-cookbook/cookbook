@@ -62,32 +62,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.12}Recommendations}{50}{section.3.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Orthography profiles}{57}{chapter.4}
+\contentsline {chapter}{\numberline {4}Orthography profiles}{59}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Characterizing writing systems}{57}{section.4.1}
+\contentsline {section}{\numberline {4.1}Characterizing writing systems}{59}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Informal description}{59}{section.4.2}
+\contentsline {section}{\numberline {4.2}Informal description}{61}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Formal specification}{60}{section.4.3}
+\contentsline {section}{\numberline {4.3}Formal specification}{62}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Examples}{65}{section.4.4}
+\contentsline {section}{\numberline {4.4}Examples}{67}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Use cases}{67}{chapter.5}
+\contentsline {chapter}{\numberline {5}Use cases}{69}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Introduction}{67}{section.5.1}
+\contentsline {section}{\numberline {5.1}Introduction}{69}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Tokenization and error checking}{67}{section.5.2}
+\contentsline {section}{\numberline {5.2}Tokenization and error checking}{69}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{68}{section.5.3}
+\contentsline {section}{\numberline {5.3}Cross-orthographic analysis of writing systems}{70}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}PHOIBLE}{69}{section.5.4}
+\contentsline {section}{\numberline {5.4}PHOIBLE}{71}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of references}{71}{section*.13}
+\contentsline {chapter}{List of references}{73}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Index}{73}{chapter*.14}
+\contentsline {chapter}{Index}{75}{chapter*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Name index}{73}{section*.15}
+\contentsline {section}{Name index}{75}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Language index}{73}{section*.16}
+\contentsline {section}{Language index}{75}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Subject index}{73}{section*.17}
+\contentsline {section}{Subject index}{75}{section*.17}
