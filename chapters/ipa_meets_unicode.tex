@@ -10,7 +10,7 @@ The International Phonetic Alphabet (IPA) is a common standard in linguistics to
 transcribe sounds of spoken language into Latin-based characters. Although IPA
 is reasonably easily adhered to with pen and paper, it is not trivial to encode
 IPA characters electronically. Similar to the previous chapter, this chapter
-will discuss various pitfalls with the Unicode encoding of the IPA.\@ We will
+will discuss various pitfalls with the encoding of IPA in the Unicode Standard.\@ We will
 specifically refer to the 2005 version of the IPA \citep{IPA2005} and the 7.0 
 version of Unicode \citep{Unicode2014}.
 
@@ -67,13 +67,13 @@ input, e.g.~RuG/L04 and SplitsTree4.\footnote{See
 \url{http://www.let.rug.nl/kleiweg/L04/} and \url{http://www.splitstree.org/},
 respectively}
 
-There are a few pitfalls to be aware of when using the Unicode Standard to
+There are several pitfalls to be aware of when using the Unicode Standard to
 encode IPA.\@ As we have said before, from a linguistic perspective it might
 sometimes look like the Unicode Consortium is making incomprehensible decisions,
 but it is important to realize that the consortium has tried and is continuing
 to try to be as consistent as possible across a wide range of use cases, and it
 does place linguistic traditions above other orthographic possibilities. In
-general, we strongly suggest linguists not to complain about any decisions in
+general, we strongly suggest to linguists to not complain about any decisions in
 the Unicode Standard, but to try and understand the rationale of the Unicode
 Consortium (which in our experience is almost always well-conceived) and devise
 ways to work with any unexpected behavior. Many of the current problems derive
@@ -105,7 +105,7 @@ e.g.~the French, German, or Danish orthographic traditions do not have a special
 status). On the other hand, the IPA uses many special symbols (like turned <ɐ>,
 mirrored <ɘ> and/or extended <ɧ> Latin glyphs) not found in any other Latin-based
 writing system. For this reason a special block with code points, called
-\textsc{IPA Extensions} was included already in the first version of the Unicode
+\textsc{IPA Extensions} was already included in the first version of the Unicode
 Standard (Version 1.0 from 1991).
 
 As explained in Section~\ref{pitfall-blocks}, the Unicode Standard code space is
