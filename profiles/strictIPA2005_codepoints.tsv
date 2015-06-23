@@ -1,4 +1,4 @@
-graphemes	codepoints	Unicode_names	IPA_names
+Grapheme	Codepoint	UnicodeName	IPAName
 a	U+0061	LATIN SMALL LETTER A	open front unrounded
 æ	U+00E6	LATIN SMALL LETTER AE	raised open front unrounded
 ɐ	U+0250	LATIN SMALL LETTER TURNED A	lowered schwa

@@ -1,4 +1,4 @@
-left	graphemes	right	class	codepoints	Unicode_names	IPA_names
+Left	Grapheme	Right	Class	Codepoint	UnicodeName	IPAName
 	a		1	U+0061	LATIN SMALL LETTER A	open front unrounded
 	æ		1	U+00E6	LATIN SMALL LETTER AE	raised open front unrounded
 	ɐ		1	U+0250	LATIN SMALL LETTER TURNED A	lowered schwa
