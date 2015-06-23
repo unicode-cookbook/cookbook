@@ -832,57 +832,74 @@ used with care.
 \label{ipa-recommendations}
 % ==========================
 
-Summarizing the pitfalls as discussed in this chapter, we propose to define a 
-``strict'' IPA encoding to be used when interoperability of phonetic resources 
-is intended. For regular research papers, when only the visual outline is 
-important, the details encoding of IPA in electronic format is rather 
-unimportant, as long as it looks as expected. So for those regular usage these 
-proposals are irrelevant.
+Summarizing the pitfalls as discussed in this chapter, we propose to define 
+three different IPA encodings: strict-IPA, valid-IPA and widened-IPA.\@ These 
+three encodings are subsets of each other, i.e.~strict-IPA is more restricted 
+than valid-IPA, which it turn is more restricted than widened-IPA.\@ Informally 
+speaking, valid-IPA represents the current state of the IPA \citep{IPA2005}. 
+Strict-IPA represents a more constrained version of IPA, while widened-IPA is a 
+slightly extended version of IPA, allowing a few more symbols.
 
-TO DO: 
-[different kind of profiles]
+\ 
 
-At the end of this chapter we have added a few longish tables summarizing all
+\noindent Strict-IPA encoding is supposed to be used when interoperability of
+phonetic resources is intended. It is a strongly constrained subset of IPA
+geared towards uniqueness of encoding. Ideally, for each transcription there
+should be exactly one possible strict-IPA encoding. For each phonetic feature
+there is only one possibility (see Section~\ref{pitfall-multiple-options-ipa})
+and the IPA diacritics are forced into a canonical ordering (see
+Section~\ref{pitfall-no-unique-diacritic-ordering}).
+
+Valid-IPA does allow alternative symbols with the same phonetic meaning, as 
+specified in the official IPA specifications. Also, valid-IPA does not enforce a 
+specific ordering of diacritics, because the IPA does not propose any such 
+ordering. This means that in valid-IPA the same phonetic intention can be 
+encoded in multiple ways. This is sufficient for phonetically trained human 
+eyes, but it is not sufficient for automatic interoperability.
+
+Finally, widened-IPA includes a few more symbols which seem to be useful for
+various special cases (see Section~\ref{ipa-additions}).
+
+\ 
+
+\noindent At the end of this chapter we have added a few longish tables summarizing all
 159 different unicode codepoints that form the basis of strict-IPA encoding
 (107 letters, 36 diacritics and 16 remaining symbols). Each of
 these tables shows a typical glyph, and then lists the Unicode Codepoint,
-Unicode Name and IPA description for each symbol.
+Unicode Name and IPA description for each symbol. Further, there is a table with 
+the additional options for valid-IPA and a table with the additional options for 
+widened-IPA.\@
 
-TO DO:
-[ordering]
-[boundaries, stress, intonation]
-[laxIPA]
-[additions]
-
+textbf{NOTE: I HAVE ADDED VARIOUS TONE DIACRITICS TO VALID-IPA THAT ARE NOT IN
+THE OFFICIAL IPA SUMMARY. SHOULD THEY BE INCLUDED?}
 
 \begin{itemize}[itemsep=6pt]
 
-  \item \textsc{IPA letters} \newline
+  \item \textsc{strict-IPA letters} \newline
         The 107 different IPA letters as allowed in strict-IPA encoding are
         listed in Table~\ref{tab:ipa_letters} starting on
         page~\pageref{tab:ipa_letters}.
-  \item \textsc{IPA diacritics} \newline The 36 different IPA diacritics and
+  \item \textsc{strict-IPA diacritics} \newline The 36 different IPA diacritics and
         tone markers (both Unicode Modifier Letters and Combining Diacritical
         Marks) as allowed in strict-IPA encoding are listed in
         Table~\ref{tab:ipa_diacritics} starting on
         page~\pageref{tab:ipa_diacritics}.
-  \item \textsc{IPA remainders} \newline The 16 remaining IPA symbols
+  \item \textsc{strict-IPA remainders} \newline The 16 remaining IPA symbols
         (boundary, stress, tone letters and intonation markers) as allowed in strict-IPA
         encoding are listed in Table~\ref{tab:ipa_leftovers} on
         page~\pageref{tab:ipa_leftovers}.
-  \item \textsc{IPA alternatives} \newline The 16 additional symbols as allowed in
-        lax-IPA encoding are listed in Table~\ref{tab:ipa_lax} on
+  \item \textsc{valid-IPA additions} \newline The 16 additional symbols as allowed in
+        valid-IPA encoding are listed in Table~\ref{tab:ipa_lax} on
         page~\pageref{tab:ipa_lax}.     
-  \item \textsc{optional IPA additions} \newline
+  \item \textsc{widened-IPA additions} \newline
         The 10 proposed additions to the IPA are listed in
         Table~\ref{tab:ipa_additions} on page~\pageref{tab:ipa_additions}.
   
 \end{itemize}
 
-
 \newpage
 \input{tables/unicode_letters}
 \input{tables/unicode_diacritics}
-\input{tables/unicode_boundaries}
-\input{tables/unicode_lax}
+\input{tables/unicode_remaining}
+\input{tables/unicode_valid}
 \input{tables/unicode_additions}
