@@ -923,7 +923,7 @@ The variable encoding as allowed by the IPA becomes even more troublesome for
 the tilde and diaeresis diacritics. In these cases, the IPA itself attaches
 different semantics to the symbols above and below a base characters. The tilde
 above a character (like in <ã>, using the \textsc{combining tilde} at
-\uni{0303}) is used for nasalisation, while the tilde below a character (like in
+\uni{0303}) is used for nasalization, while the tilde below a character (like in
 <a̰>, using the \textsc{combining tilde below} at \uni{0330}) indicates creaky
 voice. Likewise, the diaeresis above (like in <ä>, using the \textsc{combining
 diaeresis} at \uni{0308}) is used for centralization, while the diaeresis below
@@ -945,20 +945,21 @@ allow diacritics to switch position for typographic convenience.
 \label{pitfall-tie-bar}
 % ==========================
 
-In the major revision of the IPA in 1932, affricates were represented by two consonants (e.g.\ tʃ), or when possible ligatures (ʧ), or with the tie-bar 
-(t͡s). In the 1938 revision the tie-bar's semantics were broadened to indicate simultaneous articulation, e.g.\ in labial velars such as k͡p.
-
-% Most consonants that involve two simultaneous places of articulation are written by combining two symbols with the 'tie bar' [~), for example [kp) which represents a voiceless labial-velar plosive.
-% In other cases, such as [w), the sound involves two places of articulation simultaneously, which makes it inconvenient to display in the table.Ifseparate columns for all consonants with two places of articulation were provided, the size of the grid would become unmanageable.
-% "Affricates can be written as digraphs, as ligatures, or with slur marks; thus ts, tS, dZ, ts, tS, dZ...
-
 % Wells1995:10 "The underscore could in principle also be pressed into service to represent the IPA tie bar. The current chart mentions its use only for affricates and double articulations, and then only "if necessary"."
 
-The IPA includes a tie bar. The tie-bar is a convenient diacritic for visually
-tokenizing input strings into chunks of phonetically salient groups, for example
-to indicate affricates, doubly articulated consonants or diphthongs. This
-character can be placed above or below the base characters, e.g. <\charis{t͡s}>
-or <\charis{t͜s}>. IPA allows both options. The choice between the two symbols
+In the major revision of the IPA in 1932, affricates were represented by two consonants 
+(e.g.\ <tʃ>), or ligatures <ʧ>, or with the tie-bar <t͡s>. In the 1938 revision the tie-bar's 
+semantics were broadened to indicate simultaneous articulation, e.g.\ in labial velars 
+such as <k͡p>. Thus the tie-bar is a convenient diacritic for visually tokenizing input 
+strings into chunks of phonetically salient groups, including affricates, doubly articulated 
+consonants or diphthongs. 
+
+The tie bar can be placed above or below the base characters, e.g. <\charis{t͡s}>
+or <\charis{t͜s}>.\footnote{Note that the \textsc{undertie} at \uni{203F} symbol 
+looks like and is easily confused with the tie-bar below. However, it is a different 
+character and has a different function in IPA. The undertie is used as a linking 
+symbol to indicate the lack of a boundary, e.g.\ petit ami [pətit‿ami] `boyfriend' 
+($<$ French).} IPA allows both options. The choice between the two symbols
 is purely for legible rendering; there is no difference in semantics between the
 two symbols. However, rendering is such a problematic issue for tie bars in
 general that many linguists simply do not use them. Just looking at a few
@@ -1003,12 +1004,14 @@ indicated. IPA takes a different approach. In IPA by default different base
 letters are not connected into larger clusters; only when it is specified in the
 string itself (using the tie bar).
 
-% the \textsc{undertie} at U+203F is used as a linking symbol to indicate the lack of a boundary, e.g.\ petit ami [pətit‿ami] `boyfriend' (French). This symbol looks like and can be confused with the tie-bar below.
+
 
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
 \label{pitfall-ligatures-digraphs}     
 % ==========================   
+
+% TODO: link back to discussion on IPA principles and how ligatures got brought along historically
 
 One important distinction to acknowledge is the difference between multigraphs
 and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
@@ -1121,7 +1124,7 @@ decomposition does not have any practical consequences.
 \label{pitfall-different-notions-of-diacritics}
 % ==========================
 
-% this section is wrong wrt IPA diacritics and needs updating @SM
+% TODO: this section is wrong wrt IPA diacritics and needs updating @SM
 
 Another pitfall relates to the question of what are diacritics. The problem is that
 the meaning of the term diacritics as used by the IPA is not the same as is used
@@ -1476,12 +1479,14 @@ There is the possibility that at a later revision of the IPA, symbols that
 are not currently encoded in the Unicode Standard are added to the IPA -- 
 although we think this is unlikely. 
 
-% Great quote for standardization -- last sentence(s) in Ladefoged 1990:552
+
 
 % ==========================
 \section{Recommendations}
 \label{ipa-recommendations}
 % ==========================
+
+% Great quote for standardization -- last sentence(s) in Ladefoged 1990:552
 
 Summarizing the pitfalls as discussed in this chapter, we propose to define 
 three different IPA encodings: strict-IPA, valid-IPA and widened-IPA.\@ These 
