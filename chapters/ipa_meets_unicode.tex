@@ -59,7 +59,7 @@ a single multilingual computer encoding, and then how IPA meet Unicode.
 \label{the-international-phonetic-alphabet}
 % ==========================
 
-\subsubsection*{Brief history}
+\subsection{Brief history}
 
 Established in 1886, the International Phonetic Association (henceforth Association) 
 has long maintained a standard alphabet, the International Phonetic Alphabet (IPA),
@@ -143,7 +143,7 @@ relevant aspects of speech. These principles and conventions for using the IPA a
 outlined in the Association's Handbook.
 
 
-\subsubsection*{Principles}
+\subsection{Principles}
 
 IPA transcription has essentially two parts. The first is a text containing IPA 
 symbols and the second is a set of conventions (rules) for interpreting those 
@@ -236,7 +236,7 @@ have had several ramifications that make the interoperability of electronic
 linguistic data extremely difficult.
 
 
-\subsubsection*{Computational representation}
+\subsection{Computational representation}
 
 Prior to the Kiel Convention for the modern revision of the IPA in 1989, 
 \cite{Wells1987} collected and published practical approaches to coded 
@@ -354,7 +354,7 @@ used in translation tables that reference ASCII representations of the IPA,
 and this early computational representation of the IPA became the basis for 
 its inclusion into the Unicode Standard version 1.0.
 
-\subsubsection*{SAMPA and X-SAMPA}
+\subsection{SAMPA and X-SAMPA}
 
 True to the working group's aim, the IPA numbers provided a mechanism for 
 a communication interchange standard for creating mapping tables to various 
@@ -422,7 +422,7 @@ e.g.~RuG/L04 and SplitsTree4.\footnote{See \url{http://www.let.rug.nl/kleiweg/L0
 \url{http://www.splitstree.org/}, respectively}
 
 
-\subsubsection*{The need for a single multilingual environment}
+\subsection{The need for a single multilingual environment}
 
 During the 1980's, it became increasingly clear that an adequate solution 
 to the problem of multilingual computing environments was needed. Linguists 
@@ -492,7 +492,7 @@ made things a mess. There were two major players in the universal character
 set race: Unicode and the International Organization for Standardization (ISO).
 
 	
-\subsubsection*{Unicode and ISO 10646}
+\subsection{Unicode and ISO 10646}
 
 In the late 1980s, a universal character set was being developed by what 
 is now referred to as the Unicode Consortium.\footnote{The Unicode 
@@ -576,7 +576,7 @@ of the world's written languages. Its formal implementation has also been
 vital to the rise of a multi-lingual Internet.
 
 
-\subsubsection*{IPA and Unicode}
+\subsection{IPA and Unicode}
 
 It was a long journey, but the goal of achieving a single multilingual 
 computing environment has largely been accomplished. We users, however, 
@@ -1324,86 +1324,6 @@ following order:
 \end{itemize}
 
 % ==========================
-\section{Additions to the IPA}
-\label{ipa-additions}
-% ==========================
-
-In the course of collecting a large sample of phoneme systems across the world's
-languages \citep{Moran2012}, we found that in order to preserve distinctions
-both within and across language descriptions, additions to the approved IPA
-glyph set were needed. Wherever possible these additions were drawn from the
-extIPA symbols for disordered
-speech.\footnote{\textbf{Add better reference here: }\url{https://www.internationalphoneticassociation.org/sites/default/files/extIPAChart2008.pdf}}
-This section describes our proposed additions to the IPA glyph set. These
-additions are not part of the official IPA recommendations, so they should be 
-used with care.
-
-\begin{itemize}
-  
-\item \textsc{Retroflex click} \newline
-      Retroflex clicks can be represented by <‼> \textsc{double exclamation
-      mark} at \uni{203C}. Note that the (post-)alveolar click <ǃ> at \uni{01C3}
-      is confusingly referred to as \textsc{latin letter retroflex click} in the
-      Unicode standard, which is probably best seen as an error.
-\item \textsc{Voiced retroflex implosive} \newline 
-      Although the IPA includes a
-      series of voiced implosives (marked with a hook on top, see
-      Section~\ref{pitfall-missing-decomposition}), there is no voiced retroflex
-      implosive. Following the spirit of the IPA, we propose to use <\charis{ᶑ}>
-      \textsc{latin small letter d with hook and tail} at \uni{1D91} for this
-      sound.
-\item \textsc{Fortis/lenis} \newline
-      Languages described as having a fortis/plain/lenis distinction that
-      corresponds poorly with the traditional
-      voiced/voiceless-unaspirated/voiceless-aspirated continuum can be marked
-      using the voiceless glyph for the plain phoneme, and then 
-      <\dia{0348}> \textsc{combining double vertical line below} at
-      \uni{0348} to mark the fortis articulation, and/or <\dia{0349}>
-      \textsc{combining left angle below} at \uni{0349} for the lenis
-      articulation.
-\item \textsc{Frictionalization} \newline 
-      The diacritic <\dia{0353}>
-      \textsc{combining x below} at \uni{0353} can be used to represent three
-      types of frictionalized sounds: First, click consonants where the release
-      of the anterior closure involves an ingressive ``sucking'' sound similar
-      to a fricative, for example <kǃ͓ʰ>; second, ``frictionalized'' vowels
-      (sounds that are phonologically vocalic, but with sufficiently close
-      closures to create buzzing); and third, fricative sounds at places of
-      articulation that do not have dedicated fricative glyphs, for example
-      sounds with voiceless velar lateral frication, like <ʟ̥͓>.
-\item \textsc{Derhoticization} \newline 
-      For derhoticization we propose to use
-      <\dia{032E}> \textsc{combining breve below} at \uni{032E}. 
-      \textbf{WHAT EXACTLY IS THIS?}
-\item \textsc{Coronal non-sibilant} \newline
-      Languages described as having a sibilant/non-sibilant distinction among
-      coronal fricatives and affricates can be handled using the subscript
-      <\dia{0347}> \textsc{combining equals sign below} at \uni{0347} to mark
-      the non-sibilant phoneme.
-\item \textsc{Glottalization} \newline 
-      Glottalized sounds can be indicated using
-      <\dia{02C0}> \textsc{modifier letter glottal stop} at \uni{02C0}, unless
-      it is clear that either ``ejective'' or ``creaky voicing'' are the
-      intended sounds (in which cases the standard IPA diacritics should be
-      used). Pre-glottalized sounds can be marked with
-      <\diareverse{02C0}> to the left of the base
-      glyph, for example <\charis{ˀt}>.
-\item \textsc{Voiced pre-aspiration} \newline Voiced sounds having
-      pre-aspiration can be marked with
-      <\diareverse{02B1}> \textsc{modifier letter
-      small h with hook} at \uni{02B1} to the left of the base glyph, for
-      example <\charis{ʱd}>.
-\item \textsc{Epilaryngeal phonation} \newline 
-      There are some rare articulations that make
-      use of an epilaryngeal phonation mechanism (e.g.,~the “sphincteric vowels”
-      of~!Xóõ). To represent these vowels, we propose to use the modifier <\dia{1D31}>
-      \textsc{modifier letter capital e} at \uni{1D31} to denote such sphincteric
-      phonation.
-
-\end{itemize}
-
-
-% ==========================
 \section{Pitfall: Future revisions to the IPA}
 \label{ipa-revisions}
 % ==========================
@@ -1506,6 +1426,87 @@ Computer codes for phonetic symbols
 EslingGaylord1993
 
 \end{comment}
+
+
+% ==========================
+\section{Additions to the IPA}
+\label{ipa-additions}
+% ==========================
+
+In the course of collecting a large sample of phoneme systems across the world's
+languages \citep{Moran2012}, we found that in order to preserve distinctions
+both within and across language descriptions, additions to the approved IPA
+glyph set were needed. Wherever possible these additions were drawn from the
+extIPA symbols for disordered
+speech.\footnote{\textbf{Add better reference here: }\url{https://www.internationalphoneticassociation.org/sites/default/files/extIPAChart2008.pdf}}
+This section describes our proposed additions to the IPA glyph set. These
+additions are not part of the official IPA recommendations, so they should be 
+used with care.
+
+\begin{itemize}
+  
+\item \textsc{Retroflex click} \newline
+      Retroflex clicks can be represented by <‼> \textsc{double exclamation
+      mark} at \uni{203C}. Note that the (post-)alveolar click <ǃ> at \uni{01C3}
+      is confusingly referred to as \textsc{latin letter retroflex click} in the
+      Unicode standard, which is probably best seen as an error.
+\item \textsc{Voiced retroflex implosive} \newline 
+      Although the IPA includes a
+      series of voiced implosives (marked with a hook on top, see
+      Section~\ref{pitfall-missing-decomposition}), there is no voiced retroflex
+      implosive. Following the spirit of the IPA, we propose to use <\charis{ᶑ}>
+      \textsc{latin small letter d with hook and tail} at \uni{1D91} for this
+      sound.
+\item \textsc{Fortis/lenis} \newline
+      Languages described as having a fortis/plain/lenis distinction that
+      corresponds poorly with the traditional
+      voiced/voiceless-unaspirated/voiceless-aspirated continuum can be marked
+      using the voiceless glyph for the plain phoneme, and then 
+      <\dia{0348}> \textsc{combining double vertical line below} at
+      \uni{0348} to mark the fortis articulation, and/or <\dia{0349}>
+      \textsc{combining left angle below} at \uni{0349} for the lenis
+      articulation.
+\item \textsc{Frictionalization} \newline 
+      The diacritic <\dia{0353}>
+      \textsc{combining x below} at \uni{0353} can be used to represent three
+      types of frictionalized sounds: First, click consonants where the release
+      of the anterior closure involves an ingressive ``sucking'' sound similar
+      to a fricative, for example <kǃ͓ʰ>; second, ``frictionalized'' vowels
+      (sounds that are phonologically vocalic, but with sufficiently close
+      closures to create buzzing); and third, fricative sounds at places of
+      articulation that do not have dedicated fricative glyphs, for example
+      sounds with voiceless velar lateral frication, like <ʟ̥͓>.
+\item \textsc{Derhoticization} \newline 
+      For derhoticization we propose to use
+      <\dia{032E}> \textsc{combining breve below} at \uni{032E}. 
+      \textbf{WHAT EXACTLY IS THIS?}
+\item \textsc{Coronal non-sibilant} \newline
+      Languages described as having a sibilant/non-sibilant distinction among
+      coronal fricatives and affricates can be handled using the subscript
+      <\dia{0347}> \textsc{combining equals sign below} at \uni{0347} to mark
+      the non-sibilant phoneme.
+\item \textsc{Glottalization} \newline 
+      Glottalized sounds can be indicated using
+      <\dia{02C0}> \textsc{modifier letter glottal stop} at \uni{02C0}, unless
+      it is clear that either ``ejective'' or ``creaky voicing'' are the
+      intended sounds (in which cases the standard IPA diacritics should be
+      used). Pre-glottalized sounds can be marked with
+      <\diareverse{02C0}> to the left of the base
+      glyph, for example <\charis{ˀt}>.
+\item \textsc{Voiced pre-aspiration} \newline Voiced sounds having
+      pre-aspiration can be marked with
+      <\diareverse{02B1}> \textsc{modifier letter
+      small h with hook} at \uni{02B1} to the left of the base glyph, for
+      example <\charis{ʱd}>.
+\item \textsc{Epilaryngeal phonation} \newline 
+      There are some rare articulations that make
+      use of an epilaryngeal phonation mechanism (e.g.,~the “sphincteric vowels”
+      of~!Xóõ). To represent these vowels, we propose to use the modifier <\dia{1D31}>
+      \textsc{modifier letter capital e} at \uni{1D31} to denote such sphincteric
+      phonation.
+
+\end{itemize}
+
 
 
 
