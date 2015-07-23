@@ -1,13 +1,15 @@
 \chapter{IPA meets Unicode}
 \label{ipa-meets-unicode}
 
+\section{Introduction}
+
 The International Phonetic Alphabet (IPA) is a common standard in linguistics to
-transcribe sounds of spoken language into discrete segments using a Latin-based 
-alphabet. Although IPA is reasonably easily adhered to with pen and paper, it is not trivial to encode
-IPA characters electronically. Similar to the previous chapter, in this chapter
-we discuss various pitfalls with the encoding of IPA in the Unicode Standard.\@ We will
-specifically refer to the 2005 version of the IPA \citep{IPA2005} and the 7.0 
-version of Unicode \citep{Unicode2014}.
+transcribe sounds of spoken language into discrete segments using a Latin-based
+alphabet. Although IPA is reasonably easily adhered to with pen and paper, it is
+not trivial to encode IPA characters electronically. Similar to the previous
+chapter, in this chapter we discuss various pitfalls with the encoding of IPA in
+the Unicode Standard. We will specifically refer to the 2005 version of the
+IPA \citep{IPA2005} and the 7.0 version of Unicode \citep{Unicode2014}.
 
 The details of the encoding are unimportant as long as the
 transcription is only directed towards phonetically trained eyes. For a linguist
@@ -23,31 +25,32 @@ encode IPA.\@ As we have said before, from a linguistic perspective it might
 sometimes look like the Unicode Consortium is making incomprehensible decisions,
 but it is important to realize that the consortium has tried and is continuing
 to try to be as consistent as possible across a wide range of use cases, and it
-does place linguistic traditions above other orthographic possibilities. Furthermore, 
-when we look at the history of how the IPA meet Unicode, we see that many of the 
-decisions for IPA symbols in the Unicode Standard come directly from the 
-International Phonetic Association itself. Therefore as users, many pitfalls that we 
-encounter have their grounding in the historical principles of the IPA, as 
-well as the technological considerations involved in creating a single 
-multilingual computing encoding.
+does place linguistic traditions above other orthographic choices. Furthermore,
+when we look at the history of how the IPA met Unicode, we see that many of the
+decisions for IPA symbols in the Unicode Standard come directly from the
+International Phonetic Association itself. Therefore, many pitfalls that we will
+encounter have their grounding in the history of the principles of the IPA, as
+well as in the technological considerations involved in creating a single
+multilingual encoding. In general, we strongly suggest to linguists to not
+complain about any decisions in the Unicode Standard, but to try and understand
+the rationale of the International Phonetic Association and the Unicode
+Consortium (both of which are almost always well-conceived in our experience)
+and devise ways to work with any unexpected behavior.
 
-In general, we strongly suggest to linguists to not complain about any decisions in
-the Unicode Standard, but to try and understand the rationale of the International Phonetic Association 
-and the Unicode Consortium (which in our experience is almost always well-conceived) and devise
-ways to work with any unexpected behavior. Many of the current problems derive
-from the fact that the IPA is clearly historically based on the Latin script,
-but different enough from most other Latin-based writing systems to warrant
-special attention. This ambivalent status of the IPA glyphs (partly Latin,
-partly special) is unfortunately also attested in the treatment of IPA in the
-Unicode Standard. In retrospect, it might have been better to consider the IPA
-(and other transcription systems) to be a special kind of script within
-the Unicode Standard, and treat the obvious similarity to Latin glyphs as a
-historical relic. All IPA glyphs would then have their own code points, instead
-of the current situation in which some IPA glyphs have special code points,
-while others are treated as being identical to the regular Latin characters.
-Yet, the current situation, however unfortunate, is unlikely to change, so as
-linguists we must learn to deal with the specific pitfalls of IPA within
-the Unicode Standard. 
+Many of the current problems derive from the fact that the
+IPA is clearly historically based on the Latin script, but different enough from
+most other Latin-based writing systems to warrant special attention. This
+ambivalent status of the IPA glyphs (partly Latin, partly special) is
+unfortunately also attested in the treatment of IPA in the Unicode Standard. In
+retrospect, it might have been better to consider the IPA (and other
+transcription systems) to be a special kind of script within the Unicode
+Standard, and treat the obvious similarity to Latin glyphs as a historical
+relic. All IPA glyphs would then have their own code points, instead of the
+current situation in which some IPA glyphs have special code points, while
+others are treated as being identical to the regular Latin characters. Yet, the
+current situation, however unfortunate, is unlikely to change, so as linguists
+we must learn to deal with the specific pitfalls of IPA within the Unicode
+Standard. 
 
 In the following sections, we will describe these pitfalls 
 in detail. But first we present a brief history of IPA, its principles, 
@@ -63,33 +66,36 @@ a single multilingual computer encoding, and then how IPA meet Unicode.
 
 Established in 1886, the International Phonetic Association (henceforth Association) 
 has long maintained a standard alphabet, the International Phonetic Alphabet (IPA),
-\footnote{Also referred to as API, for \textit{Association Phonétique Internationale}.} 
-which is a common standard in linguistics to transcribe sounds of spoken languages. 
-It was first published in 1888 as an international system of phonetic transcription 
-for oral languages and for pedagogical purposes. The draft of 1887 contained phonetic 
-values for English, French and German. Diacritics for length and nasalization were 
-already present in this draft and the same symbols are still used today. 
+%\footnote{Also referred to as API, for \textit{Association Phonétique Internationale}.} 
+which is a common standard in linguistics to transcribe sounds of spoken
+languages. It was first published in 1888 as an international system of phonetic
+transcription for oral languages and for pedagogical purposes. The draft of 1887
+contained phonetic values for English, French and German. Diacritics for length
+and nasalization were already present in this draft and the same symbols are
+still used today. 
 
-Although the original IPA alphabet was a list of symbols with pronunciation examples 
-from words in different languages, in 1900 the symbols were organized into chart and 
-given phonetic feature labels for consonants (e.g.\ for manner of articulation: `plosives', 
-`nasales', `fricatives'; for place of articulation: `bronchials', `laryngeales', `labiales') 
-and for vowels (`fermeées', `mi-fermeées', `mi-overtes', `overtes'). Over the last century 
-or so, the structure of the chart has changed with increases in phonetic knowledge, and 
-thus like notational systems in other scientific disciplines, the IPA reflects facts and 
-theories (of phonetic knowledge) that have developed over time. It is natural then that 
-the IPA is modified occasionally to accommodate scientific innovations and discoveries. 
-(In fact, this is part of the Association's mandate.) These changes are captured in 
-the revisions to the IPA.\footnote{For a detailed history see: 
-\url{https://en.wikipedia.org/wiki/History\_of\_the\_International\_Phonetic_Alphabet}}
+Originally, the IPA alphabet was a list of symbols with pronunciation examples
+from words in different languages. In 1900 the symbols were first organized into
+chart and were given phonetic feature labels for consonants (e.g.\ for manner of
+articulation: `plosives', `nasales', `fricatives'; for place of articulation:
+`bronchials', `laryngeales', `labiales') and for vowels (e.g.\ `fermeées',
+`mi-fermeées', `mi-overtes', `overtes'). Throughout the last centory, the
+structure of the chart has changed with increases in phonetic knowledge, and
+thus, like notational systems in other scientific disciplines, the IPA reflects
+facts and theories (of phonetic knowledge) that have developed over time. It is
+natural then that the IPA is modified occasionally to accommodate scientific
+innovations and discoveries. (In fact, this is part of the Association's
+mandate.) These changes are captured in the revisions to the IPA.
+%\footnote{For a detailed history see:
+%\url{https://en.wikipedia.org/wiki/History\_of\_the\_International\_Phonetic_Alphabet}}
 
-Over the years there has been several revisions, many minor. For example, 
-articulation labels -- what we now call features even though the IPA avoids this term -- 
-have changed (e.g.\ `lips', `throat', `rolled'). Phonetic symbol values have changed 
-(e.g.\ voiceless is no longer marked by <h>). Symbols have been dropped (e.g.\ the 
-caret diacritic denoting `long and narrow' is longer used). And many symbols have 
-been added to reflect contrastive sounds found in the world's very diverse 
-phonological systems.
+Over the years there has been several revisions, many minor. For example,
+articulation labels -- what often are call features even though the IPA avoids
+this term -- have changed (e.g.\ terms like `lips', `throat' or `rolled' are not
+used anymore). Phonetic symbol values have changed (e.g.\ voiceless is no longer
+marked by <h>). Symbols have been dropped (e.g.\ the caret diacritic denoting
+`long and narrow' is no longer used). And many symbols have been added to reflect
+contrastive sounds found in the world's very diverse phonological systems.
 
 Although IPA began its life as a pedagogical tool, from its earliest days the 
 Association aimed to provide ``a separate sign for each distinctive sound; 
@@ -906,7 +912,7 @@ pharyngealization <\dia{02E4}>. Confusingly, there is also a marker for
 ``velarized or pharyngealized'', using the <\dia{0334}> \textsc{combining tilde
 overlay} at \uni{0334}. The tilde overlay seems to be extremely rarely used. We 
 suggest to try and avoid using the tilde overlay, though for reasons of backward 
-compatibility we will allow it in strict-IPA.\@
+compatibility we will allow it in valid-IPA.\@
 
 Finally, the IPA states that ``diacritics may be placed above a symbol with a
 descender''. For example, for marking marking of voiceless pronunciation of
@@ -932,12 +938,21 @@ a character (like in <a̤>, using the \textsc{combining diaeresis below} at
 allow diacritics to switch position for typographic convenience.
 
 % length IPA 1999:22
-% "Note: as in Finnish orthography, length can also be indicated in phonetic transcription by double letters: e.g . Finnish maatto [rncctto] 'electrical earth/ground'."
+% "Note: as in Finnish orthography, length can also be indicated in phonetic
+% transcription by double letters: e.g . Finnish maatto [rncctto] 'electrical
+% earth/ground'."
 
 % syllable breaks and word boundaries <\s, ., |, ||, tie-bar below>
-% White spaces can be used to indicate word boundaries. Syllable breaks can be marked when required. The other two boundary symbols are used to mark the domain of larger prosodic units. There is also a linking symbol that can be used for explicitly indicating the lack of a boundary.
+% White spaces can be used to indicate word boundaries. Syllable breaks can be
+% marked when required. The other two boundary symbols are used to mark the domain
+% of larger prosodic units. There is also a linking symbol that can be used for
+% explicitly indicating the lack of a boundary.
 
-%  (In all these transcriptions, no spaces between words have been included. This is inevitable in an impressionistic transcription where it is not yet known how the utterance divides into words. In phonemic and allophonic transcriptions it is common to include spaces to aid legibility, but their theoretical validity is problematic.)
+% (In all these transcriptions, no spaces between words have been included. This
+% is inevitable in an impressionistic transcription where it is not yet known how
+% the utterance divides into words. In phonemic and allophonic transcriptions it
+% is common to include spaces to aid legibility, but their theoretical validity is
+% problematic.)
 
 
 % ==========================
@@ -945,28 +960,32 @@ allow diacritics to switch position for typographic convenience.
 \label{pitfall-tie-bar}
 % ==========================
 
-% Wells1995:10 "The underscore could in principle also be pressed into service to represent the IPA tie bar. The current chart mentions its use only for affricates and double articulations, and then only "if necessary"."
+% Wells1995:10 "The underscore could in principle also be pressed into service
+% to represent the IPA tie bar. The current chart mentions its use only for
+% affricates and double articulations, and then only "if necessary"."
 
-In the major revision of the IPA in 1932, affricates were represented by two consonants 
-(e.g.\ <tʃ>), or ligatures <ʧ>, or with the tie-bar <t͡ʃ>. In the 1938 revision the tie-bar's 
-semantics were broadened to indicate simultaneous articulation, e.g.\ in labial velars 
-such as <k͡p>. Thus the tie-bar is a convenient diacritic for visually tokenizing input 
-strings into chunks of phonetically salient groups, including affricates, doubly articulated 
-consonants or diphthongs. 
+In the major revision of the IPA in 1932, affricates were represented by two
+consonants <tʃ>, ligatures <ʧ>, or with the tie-bar <t͡ʃ>. In the
+1938 revision the tie-bar's semantics were broadened to indicate simultaneous
+articulation, as for example in labial velars such as <k͡p>. Thus, the tie-bar is a
+convenient diacritic for visually tokenizing input strings into chunks of
+phonetically salient groups, including affricates, doubly articulated consonants
+or diphthongs. 
 
-The tie bar can be placed above or below the base characters, e.g. <\charis{t͡s}>
-or <\charis{t͜s}>.\footnote{Note that the \textsc{undertie} at \uni{203F} symbol 
-looks like and is easily confused with the tie-bar below. However, it is a different 
-character and has a different function in IPA. The undertie is used as a linking 
-symbol to indicate the lack of a boundary, e.g.\ petit ami [pətit‿ami] `boyfriend' 
-($<$ French).} IPA allows both options. The choice between the two symbols
-is purely for legible rendering; there is no difference in semantics between the
-two symbols. However, rendering is such a problematic issue for tie bars in
-general that many linguists simply do not use them. Just looking at a few
-different fonts already indicates that actually no font designer really gets the
-placement right in combination with superscripts and subscripts. If really
-necessary, we propose to standardize on the tie bar above the base characters,
-using a \textsc{combining double inverted breve} at \uni{0361}.
+The tie bar can be placed above or below the base characters, e.g.
+<\charis{t͡s}> or <\charis{t͜s}>. IPA allows both options. The choice between
+the two symbols is purely for legible rendering; there is no difference in
+semantics between the two symbols. However, rendering is such a problematic
+issue for tie bars in general that many linguists simply do not use them. Just
+looking at a few different fonts already indicates that actually no font
+designer really gets the placement right in combination with superscripts and
+subscripts. If really necessary, we propose to standardize on the tie bar above
+the base characters, using a \textsc{combining double inverted breve} at
+\uni{0361}.\footnote{Also note that the \textsc{undertie} at \unif{203F} looks
+like the tie bar below and is easily confused with it. However, it is a
+different character and has a different function in IPA. The undertie is used as
+a linking symbol to indicate the lack of a boundary, e.g.\ French \textit{petit
+ami} [pətit\charis{‿}ami] `boyfriend'.}
 
 \begin{itemize}[itemsep=6pt]
   \item[] {\fontspec{Times New Roman}Times new Roman: t̥ʰ͡s t̥ʰ͜s}
@@ -1004,14 +1023,13 @@ indicated. IPA takes a different approach. In IPA by default different base
 letters are not connected into larger clusters; only when it is specified in the
 string itself (using the tie bar).
 
-
-
 % ==========================
 \section{Pitfall: Ligatures and digraphs}
 \label{pitfall-ligatures-digraphs}     
 % ==========================   
 
-% TODO: link back to discussion on IPA principles and how ligatures got brought along historically
+% TODO: link back to discussion on IPA principles and how ligatures got brought
+% along historically
 
 One important distinction to acknowledge is the difference between multigraphs
 and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
@@ -1076,13 +1094,15 @@ Unicode:
 There turn out to be a lot of characters in the IPA that could be conceived as
 using any of these elements, like <ɲ>, <ɳ>, <ɨ> or <ø>. However, all such
 characters exist as well as precomposed combination in Unicode, and these
-precomposed characters should preferably be used.\footnote{The IPA does not
-describe any character for a voiced retroflex implosive, which would
-transparently be \charis{ᶑ}. We propose to add this character to the IPA, see
-Section~\ref{ipa-additions}.} When instead combinations of a base character with
+precomposed characters should preferably be used. When instead combinations of a base character with
 diacritic are used, then these combinations are not canonical equivalent to the
 precomposed combinations. This means that any search will not find both at the
 same time.
+
+% \footnote{The IPA does not
+% describe any character for a voiced retroflex implosive, which would
+% transparently be \charis{ᶑ}. We propose to add this character to the IPA, see
+% Section~\ref{ipa-additions}.} 
 
 A similar problem arises with the rhotic hook. There are two precomposed
 characters in Unicode with a rhotic hook, which are not canonical equivalent 
@@ -1093,22 +1113,22 @@ with a combination of the vowel with a separately encoded hook:
 \end{itemize}
 All other combinations of vowels with rhotic hooks will have to be made by using
 <\dia{02DE}> \textsc{modifier letter rhotic hook} at \uni{02DE}, because there
-is not complete set of precomposed characters with rhotic hooks. For that reason
-we propose to not use the two precomposed characters with hooks mentioned above,
-but always use the separate rhotic hook at \uni{02DE} in IPA.\@
+is no complete set of precomposed characters with rhotic hooks in Unicode. For
+that reason we propose to not use the two precomposed characters with hooks
+mentioned above, but always use the separate rhotic hook at \uni{02DE} in IPA.\@
 
 A similar situation arises with <\dia{0334}> \textsc{combining tilde overlay} at
 \uni{0334}. The main reason some phoneticians like to use this in IPA is to mark
 the ``dark'' <l> in English codas, using the character <ɫ> \textsc{latin small
 letter l with middle tilde} at \uni{026B}. This character is not canonically
-equivalent to the combination <l> + <\dia{0334}>, so one of the two possible
+equivalent to the combination <l>~+~<\dia{0334}>, so one of the two possible
 encodings has to be chosen. Because the tilde overlay is described as a general
 mechanism by the IPA, we propose to use the separated <\dia{0334}>
 \textsc{combining tilde overlay} at \uni{0334}. However, note that phonetically 
 this seems to be (almost) superfluous (see Section~\ref{pitfall-multiple-options-ipa}) 
 and the typical usage in the form of <ɫ> is (almost) a homoglyph with <ɬ> (see 
-Section~\ref{pitfall-homoglyphs-in-IPA}). For these reasons we suggest to try 
-and avoid the tilde overlay.
+Section~\ref{pitfall-homoglyphs-in-IPA}). For these reasons we also suggest to try 
+and avoid the tilde overlay completely.
 
 Reversely, note that the <ç> \textsc{latin small letter c with cedilla} at
 \uni{00E7} is canonically equivalent with <c> with <\dia{0327}>
@@ -1179,9 +1199,9 @@ Although linguists might expect these characters to belong together with the
 character in front of them, at least for <ʰ> \textsc{modifier letter small h} at
 \uni{02B0} the Unicode Consortium's decision to treat it as a separate character
 is also linguistically correct, because according to the IPA it can be used both
-for aspiration (more precisely post-aspiration following the base character) and
-pre-aspiration (preceding the base character). The default combination of Spacing Modifiers with
-the preceding character can be specified in orthography profiles (see
+for post-aspiration (following the base character) and pre-aspiration (preceding
+the base character). The default combination of Spacing Modifiers with the
+preceding character can be specified in orthography profiles (see
 Chapter~\ref{orthography-profiles}).
 
 % ==========================
@@ -1208,25 +1228,29 @@ Unicode Standard likewise does not propose any standardized orders. Both leave i
 to the user to be consistent; this approach naturally invites inconsistency across 
 different authored resources.
 
-There is one aspect of ordering for which the Unicode Standard does present a
-canonical solution. However, it is uncontroversial from a linguistic
-perspective. Diacritics in the Unicode Standard (i.e.~Combining Diacritical
-Marks, see above) are classified in Canonical Combining Classes. In practice,
+There is one (minor) aspect of ordering for which the Unicode Standard does
+present a canonical solution. Fortunately, this is uncontroversial from a
+linguistic perspective. Diacritics in the Unicode Standard (i.e.~Combining
+Diacritical Marks, see Section~\ref{pitfall-different-notions-of-diacritics})
+are classified in so-called \textsc{canonical combining classes}. In practice,
 the diacritics are distinguished by their position relative to the base
 character.\footnote{See
-\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values} for a
-detailed description.} When applying a Unicode normalization (NFC or NFD, see
+\url{http://unicode.org/reports/tr44/\#Canonical\_Combining\_Class\_Values} for
+a detailed description.} When applying a Unicode normalization (NFC or NFD, see
 Section~\ref{pitfall-canonical-equivalence}), the diacritics in different
 positions are put in a specified order. This process therefore harmonizes the
-difference between different encodings, e.g.\ of an extra-short creaky voice
-vowel <ḛ̆>. This grapheme cluster can be encoded either as
-<e>+<\dia{0306}>+<\dia{0330}> or as <e>+<\dia{0330}>+<\dia{0306}>. To
-prevent this twofold encoding, the Unicode Standard specifies the second
-ordering as canonical (in this case, diacritics below are put before diacritics
-above).
+difference between different encodings in some situations, for example in the
+case of an extra-short creaky voice vowel <ḛ̆>. This grapheme cluster can be
+encoded either as <e>+<\dia{0306}>+<\dia{0330}> or as
+<e>+<\dia{0330}>+<\dia{0306}>. To prevent this twofold encoding, the Unicode
+Standard specifies the second ordering as canonical (namely, diacritics
+below are put before diacritics above).
+
+% The next paragraph does not belong here - we should put it somewhere else
 
 When encoding a string according to the Unicode Standard, it is possible to do
-this either using the NFC (composition) or NFD (decomposition) normalization.
+this either using the NFC (composition) or NFD (decomposition) normalization (see
+Section~\ref{pitfall-canonical-equivalence}).
 Decomposition implies that precomposed characters (like <á> \textsc{latin small
 letter a with acute} at \uni{00E1}) will be split into its parts. This might
 sound preferable for a linguistic analysis, as the different diacritics are
@@ -1255,8 +1279,9 @@ above (Combining Class number 230), which in turn come before diacritics over
 multiple characters like the tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
 (Combining Class number 233). We follow this order, but add the other IPA
 diacritics (which are not diacritics in the Unicode sense) between diacritics
-below and the tie bar. Within all these classes of diacritics there is no canonical
-ordering specified by Unicode, so we propose an explicit ordering here.
+below and the tie bar. Further, within all these classes of diacritics there is
+no canonical ordering specified by Unicode, so we propose an explicit ordering
+here.
 
 Starting with the diacritics below: if a character sequence contains more than
 one diacritic below the base character, then the place features are applied
@@ -1330,17 +1355,24 @@ following order:
 
 With each revision of the IPA, many decisions need to be made by 
 the Association as to which symbols should be added, removed or 
-changed. (Perhaps that's why the IPA is updated infrequently.) 
-For example, in the 1989 revision of the IPA at the Kiel Convention, 
+changed. For example, in the 1989 revision of the IPA at the Kiel Convention, 
 changes to specific symbols (in previous charts) were debated and 
 the Association's members certain decisions. The prevailing mood at 
 the convention was not to change specific symbols unless a strong 
 case was made \cite{Ladefoged1990a}. For example, two such decisions 
-included \cite[62]{Ladefoged1990a}:
+included:
 
 \begin{itemize}
-	\item symbols for clicks were changed from < ʇ, ʖ, ʗ > and replaced by < ǀ, ǁ, ǃ > because the latter were the symbols used by nearly all Khoisanists and Bantuists
-	\item the Americanist tradition of < š, ž, č, ǰ > were not adopted because the Association members at the convention ``were not sufficiently impressed by arguments ... to the effect that these sounds formed a natural class, and thus is would be appropriate to recognize this by maintaining a common aspect to their symbolism''
+	\item symbols for clicks were changed from <ʇ~ʖ~ʗ> to <ǀ~ǁ~ǃ>
+       because the latter were the symbols used by nearly all Khoisanists and
+       Bantuists.
+	\item the Americanist tradition of using using <\dia{030C}>, a
+       \textsc{combining caron} at \uni{030C} for all post-alveolar sounds, like
+       in <š~ž~č~ǰ>, was not adopted because the Association members at the
+       convention ``were not sufficiently impressed by arguments ... to the
+       effect that these sounds formed a natural class, and thus is would be
+       appropriate to recognize this by maintaining a common aspect to their
+       symbolism'' \citep[62]{Ladefoged1990a}. 
 \end{itemize}
 
 \noindent These decisions have practical consequences for transcribers 
