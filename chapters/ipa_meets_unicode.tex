@@ -725,7 +725,7 @@ Unicode Standard are the following.
 
 \begin{itemize}
 
-  \item The uses of the apostrophe has led to long discussions on the Unicode
+   \item The uses of the apostrophe has led to long discussions on the Unicode
         Standard email list. An English keyboard inputs the symbol
         <\dia{0027}> \textsc{apostrophe} at \uni{0027}, although the preferred Unicode
         apostrophe is the <\dia{2019}> \textsc{right single quotation mark} at
@@ -758,6 +758,14 @@ Unicode Standard are the following.
   \item For the marking of length there is a special Unicode characters, namely
         <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}. However,
         typing <\dia{003A}> \textsc{colon} at \uni{003A} is of course much easier.        
+  \item There are two mostly identical-looking Unicode characters for the superscript
+        <ʰ>: the \textsc{combining latin small letter h} at \uni{036A} and the
+        \textsc{modifier letter small h} at \uni{02B0}. Making the situation 
+        even more problematic is that they have different behavior (see 
+        Section~\ref{pitfall-different-notions-of-diacritics}). To harmonize the 
+        bevavior of <ʰ> with other superscript letters, we propose to 
+        standardize on the modifier letter at \uni{02B0} (see 
+        Section~\ref{pitfall-no-unique-diacritic-ordering}).
   
 \end{itemize} 
 
@@ -1202,7 +1210,10 @@ is also linguistically correct, because according to the IPA it can be used both
 for post-aspiration (following the base character) and pre-aspiration (preceding
 the base character). The default combination of Spacing Modifiers with the
 preceding character can be specified in orthography profiles (see
-Chapter~\ref{orthography-profiles}).
+Chapter~\ref{orthography-profiles}). Note that there is an alternative 
+homoglyph, namely the \textsc{combining latin small letter h} at \uni{036A}. We 
+propose not to use this combining diacritical mark, but to standardize on 
+Unicode modifier letters for all superscript letters in IPA.
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
@@ -1435,22 +1446,29 @@ although we think this is unlikely.
 \begin{comment}
 \subsection{IPA (practical) extensions}
 
-The IPA extensions cover speech sounds beyond the sound systems of the world's languages, including symbols for pathological speech and paralinguistic functions (e.g.\ Braille?).
+The IPA extensions cover speech sounds beyond the sound systems of the world's
+languages, including symbols for pathological speech and paralinguistic
+functions (e.g.\ Braille?).
 
 - pathological speech
 - paralinguistic functions (Braille?)
 
-As noted in Section \ref{}, extensions to the IPA -- in particular ``large-scale'' extensions -- 
+As noted in Section \ref{}, extensions to the IPA -- in particular
+``large-scale'' extensions -- 
 
 % Englebretson2009.pdf
 http://www.ruf.rice.edu/~reng/englebretson2009.pdf
 
-X-SAMPA was an ASCII transliteration and is still purposeful for several programs 
+X-SAMPA was an ASCII transliteration and is still purposeful for several
+programs 
 
-There is also the extensions of the IPA designed for disordered speech, although the symbols are occasionally used for transcribing phonetic detail in ``normal'' speech or also cross-linguistic rarities.\footnote{\url{http://phoible.github.io/conventions/}}
+There is also the extensions of the IPA designed for disordered speech, although
+the symbols are occasionally used for transcribing phonetic detail in ``normal''
+speech or also cross-linguistic
+rarities.\footnote{\url{http://phoible.github.io/conventions/}}
 
-
-% Unicode has its own history; for a summary: \url{http://www.unicode.org/history/summary.html}
+% Unicode has its own history; for a summary:
+\url{http://www.unicode.org/history/summary.html}
 
 https://www.phon.ucl.ac.uk/home/wells/ipa-unicode.htm
 
