@@ -16,7 +16,7 @@ in the Unicode Standard are mostly due to legacy compatibility issues, which can
 lead to unexpected behavior by linguists using the standard. However, there are
 also some cases in which the Unicode Standard has made decisions that
 theoretically could have been taken differently, but for some reason or another
-(mostly very good reasons) were accepted as they are now. We call behavior that
+(mostly very good reasons) were accepted as they are now. We call such behavior that
 executes without error but does something different than the user
 expected---often unknowingly---a \textsc{pitfall}.
 
@@ -59,9 +59,11 @@ supports Tamil. Third, a single glyph may be a combination of multiple
 characters. For example, the ligature <ﬁ>, a single glyph, is the result of two
 characters, <f> and <i>, that have undergone glyph substitution by font
 rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
-contextually-determined glyphs, ligatures are (intended) artifacts of text
+contextually-determined glyphs, ligatures are (intended) artefacts of text
 processing instructions. Finally, a single glyph may be a part of a
-character, as exemplified by diacritics.
+character, as exemplified by diacritics like the diaeresis <\dia{0308}> in <ë>.
+
+test {\fontspec[Alternative=02]{AlBayan}ب}
 
 Further, the rendering of a glyph is dependent on the font being used. For
 example, the Unicode character \textsc{latin small letter g} appears as <g> and
