@@ -43,7 +43,7 @@ description for a specific source at hand, then it is nigh impossible to deploy
 the description. This is because a locale description has to be submitted to and
 accepted by the Unicode Common Locale Data Repository. The repository is
 (rightly so) not interested in descriptions that only apply to a limited set of
-sources (e.g.~only a single specific dictionary).
+sources (e.g.~descriptions for only a single dictionary).
 
 The major challenge then is developing an infrastructure to identify the
 elements that are individual graphemes in a source, specifically for the
@@ -60,8 +60,10 @@ simply mapping a grapheme to an IPA segment because graphemes must first be
 identified in context (e.g.~is the sequence one sound or two sounds or both?)
 and strings must be tokenized, which may include taking orthographic rules into
 account (e.g.~between vowels is /n/ and after a vowel but before a consonant is
-a nasalized vowel /ṽ/). In our experience, data from each source must be
-individually tokenized into graphemes so that its orthographic structure is
+a nasalized vowel /ṽ/).
+
+In our experience, data from each source must be
+individually tokenized into graphemes so that its orthographic structure can be 
 identified and its contents can be extracted. To extract data for analysis, a
 source-by-source approach is required before an orthography profile can be
 created. For example, almost each available lexicon on the world's languages is
@@ -69,10 +71,10 @@ idiosyncratic in its orthography and thus requires lexicon-specific approaches
 to identify graphemes in the writing system and to map graphemes to phonemes, if
 desired.
 
-Thus, our key proposal for the characterization of a writing system is to use a
+Our key proposal for the characterization of a writing system is to use a
 grapheme tokenization as an inter-orthographic pivot. Basically, any source
 document is tokenized by graphemes, and only then a mapping to IPA (or any other
-orthographic conversion) is performed. An orthography profile then is a
+orthographic transliteration) is performed. An \textsc{orthography profile} then is a
 description of the units and rules that are needed to adequately model a
 graphemic tokenization for a language variety as described in a particular
 source document. An orthography profile summarizes the Unicode (tailored)
@@ -88,7 +90,7 @@ form <tsʰṍ̰shi>:
 
 \begin{enumerate}
 	\def\labelenumi{\arabic{enumi}.} 
-	\item code points (10 text elements): t s ʰ o ̃ ̰ ´ s h i 
+	\item code points (10 text elements): t s ʰ o \dia{0303} \dia{0330} \dia{0301} s h i 
 	\item grapheme clusters (7 text elements): t s ʰ ṍ̰ s h i 
 	\item tailored grapheme clusters (4 text elements): tsʰ ṍ̰ sh i 
 \end{enumerate}
@@ -96,20 +98,25 @@ form <tsʰṍ̰shi>:
 In (1), the string <tsʰṍ̰shi> has been tokenized into ten Unicode code points
 (using NFD normalization), delimited here by space. Unicode tokenization is
 required because sequences of code points can differ in their visual and logical
-orders. For example, <õ̰> is ambiguous to whether it is the sequence of + <̰> +
-<̃> or + <̃> + <̰>. Although these two variants are visually homoglyphs,
+orders. For example, <õ̰> is ambiguous to whether it is the sequence of <o> +
+<\dia{0303}> + <\dia{0330}> or <o> + <\dia{0330}> + <\dia{0303}>. Although these two variants are visually homoglyphs,
 computationally they are different. Unicode normalization should be applied to
 this string to reorder the code points into a canonical order, allowing the data
-to be treated canonically equivalently for search and comparison. In (2), the
+to be treated canonically equivalently for search and comparison. 
+
+In (2), the
 Unicode code points have been logically normalized and visually organized into
 grapheme clusters, as specified by the Unicode Standard. The combining character
 sequence <õ̰> is normalized and visually grouped together. Note that, the
-MODIFIER LETTER SMALL H at \uni{02B0}, is not grouped with. This is because it
+\textsc{modifier letter small h} at \uni{02B0}, is not grouped with any 
+other character. This is because it
 belongs to Spacing Modifier Letters category in the Unicode Standard. These
 characters are underspecified for the direction in which they modify a host
 character. For example, can indicate either pre- or post-aspiration (whereas the
 nasalization or creaky diacritic is defined in the Unicode Standard to apply to
-a specified base character). Finally, to arrive at the graphemic tokenization in
+a specified base character). 
+
+Finally, to arrive at the graphemic tokenization in
 (3), tailored grapheme clusters are needed (as for example specified in an
 orthography profile). For example, this orthography profile would specify that
 the sequence of characters, and form a single grapheme, and that and form a
