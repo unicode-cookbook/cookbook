@@ -1,0 +1,65 @@
+some todos in the main tex file
+
+- i did a lot of formatting
+- added bibtex ids for your references
+- linked in my citations
+- added \url{} to the urls
+
+
+References to add:
+
+
+Olumuyiw2013
+Robinson1997
+Powell2012
+Huurdeman2003
+Singh1999
+Meyer2015
+Meyer_etal2012
+Mania2008
+SoundexBeiderMorse2010
+Belongie_etal2002
+
+Lots of characters within <> were lost in translation...
+
+Fixed the Germanic numbering again -- why is this?
+
+679.477.248 -> 679,477,248
+
+You took the most up-to-date version from Gdocs, oder?
+
+Need to update all the Unicode versions, etc.
+
+Fixed a large part of the editing for `', ``'', 
+
+References to numbered examples
+multiple-sequence of characters in 3
+
+reinsertion of a lot of the glyphs, etc.
+
+fix ligatures
+
+all glyphs need to be checked
+all <>s need to be checked and/or readded
+
+===
+nope, the ‘originaltext.tex’ should be ignored from now on.
+
+great work already btw!
+
+about spelling: I think we should go for american english, and I expect you agree :-)
+about quotation: I think most of our quoted texts strings should be single quoted.
+
+oh no, I just read the manual :-) http://langsci-press.org/public/downloads/lsp-guidelines.pdf
+
+===
+Double quotation marks are generally used for distancing, in particular in the following situations:
+
+1. when a passage from another work is cited in the text (e.g. According to Takahashi (2009: 33), “quotatives were never used in subordinate clauses in Old Japanese”); but block quotations do not have quotation marks;
+2. when a technical term is mentioned that the author does not want to adopt, but wants to mention, e.g. This is sometimes called “pseudo-conservatism”, but I will not use this term here, as it could lead to confusion.
+
+Single quotation marks are used exclusively for linguistic meanings, as in the following: Latin habere ‘have’ is not cognate with Old English hafian ‘have’.
+
+===
+
+so, we should normally use double quotation in most of our cases :-). In general though, I would like us to try and remove double quotations as much as possible. Mostly is thus signals uncertainty on our part :-).

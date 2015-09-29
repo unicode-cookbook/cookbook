@@ -1,0 +1,101 @@
+% Heiko Oberdiek
+% http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
+\newcommand{\oneline}[1]{%
+  \begingroup
+    \sbox0{\ignorespaces#1\unskip}%
+    \leavevmode
+    \ifdim\wd0>\linewidth
+      \hbox to\linewidth{%
+        \hss\resizebox{\linewidth}{!}{\copy0 }\hss
+      }%
+    \else
+      \copy0 %
+    \fi
+  \endgroup
+}
+
+\newcommand{\centerfit}[1]{%
+  \begingroup
+    \sbox0{\ignorespaces#1\unskip}%
+    \leavevmode
+    \ifdim\wd0>\linewidth
+      \hbox to\linewidth{%
+        \hss\resizebox{\linewidth}{!}{\copy0 }\hss
+      }%
+    \else
+      \centerline{\copy0 }%
+    \fi
+  \endgroup
+}
+
+
+% Helps to fit verbatim onto one line:
+% http://tex.stackexchange.com/questions/140593/shrinking-verbatim-text/
+\usepackage{fancyvrb}
+\newenvironment{fitverb}
+ {\SaveVerbatim{rlwv}}
+ {\endSaveVerbatim
+  \sbox0{\BUseVerbatim{rlwv}}
+  \begingroup\center % don't add indentation
+  \ifdim\wd0>\linewidth
+    \resizebox{\linewidth}{!}{\copy0}%
+  \else
+    \copy0
+  \fi
+  \endcenter\endgroup}
+
+\VerbatimFootnotes
+
+
+% http://tex.stackexchange.com/questions/73464/inserting-rtl-text-in-verbatim-environment?rq=1
+% verbatim with RTL text
+
+%\DefineVerbatimEnvironment{rtlverbatim}{Verbatim}{commandchars=+\[\]}
+
+
+
+\newcommand{\ispackage}[1]{\if@noftnote%
+\index{package!{\sc #1}}%
+\else%
+\index{package!{\sc #1}|fn{*}}%
+\fi%
+}
+
+% breaks the index
+%\usepackage{doc}
+
+
+\newcommand{\ispackageb}[1]{
+\index{package!\texttt{#1}|(}
+}
+\newcommand{\ispackagee}[1]{
+\index{package!\texttt{#1}|)}
+}
+
+\newcommand{\isoption}[1]{\if@noftnote%
+\index{option!\texttt{#1}}%
+\else%
+\index{option!\texttt{#1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\iscommand}[1]{\if@noftnote%
+\index{#1@{\ttfamily $\backslash$#1}}%
+\else%
+\index{{#1@\ttfamily $\backslash$#1}|fn{*}}%
+\fi%
+}
+
+
+\newcommand\displaycmd[2]{%
+  \DescribeMacro{#2}\centerline{\cmd{#1}}}
+  
+  
+% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
+% (\mex{0}) but also (\mex{-1})
+% taken from covington.sty (check)
+\newcounter{lsptempcnt}
+
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%

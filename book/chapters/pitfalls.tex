@@ -1,0 +1,709 @@
+\chapter{Unicode pitfalls}
+\label{unicode-pitfalls}
+
+% ==========================
+\section{Wrong it is not}
+\label{wrong-it-is-not}
+% ==========================
+
+In this chapter we describe some of the most common pitfalls that we have
+encountered when using the Unicode Standard in our own work, or in discussion
+with other linguists. This section is not meant as a criticism of the decisions
+made by the Unicode Consortium; on the contrary, we aim to highlight where the
+technological aspects of the Unicode Standard diverge from many users'
+intuitions. What have sometimes been referred to as problems or inconsistencies
+in the Unicode Standard are mostly due to legacy compatibility issues, which can
+lead to unexpected behavior by linguists using the standard. However, there are
+also some cases in which the Unicode Standard has made decisions that
+theoretically could have been taken differently, but for some reason or another
+(mostly very good reasons) were accepted as they are now. We call such behavior that
+executes without error but does something different than the user
+expected---often unknowingly---a \textsc{pitfall}.
+
+In this context, it is important to realize that the Unicode Standard was not
+developed to solve linguistic problems per se, but to offer a consistent
+computational environment for written language. In those cases in which the
+Unicode Standard behaves differently as expected, we think it is important not
+to dismiss Unicode as ``wrong'' or ``deficient'', because our
+experience is that in almost all cases the behavior of the Unicode Standard has
+been particularly well thought through. The Unicode Consortium has a more
+wide-ranging view of matters and often examines important practical use-cases
+that from a linguistic point of view are normally not considered. Our general
+guideline for dealing with the Unicode Standard is to accept it as it is, and
+not to battle windmills. Alternatively, of course, it is possible to actively
+engage in the development of the standard itself, an effort that is highly
+appreciated by the Unicode Consortium.
+
+% ==========================
+\section{Pitfall: Characters are not glyphs}
+\label{pitfall-characters-are-not-glyphs}
+% ==========================
+
+A central principle of Unicode is the distinction between character and glyph. A
+character is the abstract notion of a symbol in a writing system, while a glyph
+is the concrete drawing of such a symbol. In practice, there is a complex
+interaction between characters and glyphs. A single Unicode character may of
+course be rendered as a single glyph. However, a character may also be a piece
+of a glyph, or vice-versa. Actually, all possible relations between glyphs and
+characters are attested.
+
+First, a single character may have different contextually determined glyphs. For
+example, characters in writing systems like Hebrew and Arabic have different
+glyphs depending on where they appear in a word. Some letters in Hebrew change
+their form at the end of the word, and in Arabic, primary letters have four
+contextually-sensitive variants (isolated, word initial, medial and final).
+Second, a single character may be rendered as a sequence of multiple glyphs. For
+example, in Tamil one Unicode character may result in a combination of a
+consonant and vowel, which are rendered as two adjacent glyphs by fonts that
+supports Tamil. Third, a single glyph may be a combination of multiple
+characters. For example, the ligature <ﬁ>, a single glyph, is the result of two
+characters, <f> and <i>, that have undergone glyph substitution by font
+rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
+contextually-determined glyphs, ligatures are (intended) artefacts of text
+processing instructions. Finally, a single glyph may be a part of a
+character, as exemplified by diacritics like the diaeresis <\dia{0308}> in <ë>.
+
+test {\fontspec[Alternative=02]{AlBayan}ب}
+
+Further, the rendering of a glyph is dependent on the font being used. For
+example, the Unicode character \textsc{latin small letter g} appears as <g> and
+<{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts, respectively,
+because their typefaces are designed differently. Furthermore, font face may
+change the visual appearance of a character, for example Times New Roman
+two-story <{\fontspec{Times New Roman}a}> changes to a single-story glyph in italics
+<\emph{\fontspec{Times New Roman}a}>. This becomes a real problem for some
+phonetic typesetting (see Section~\ref{pitfall-ipa-homoglyphs}).
+
+In sum, character-to-glyph mappings are complex technological issues that the
+Unicode Consortium has had to address in the development of the Unicode
+Standard, but for the lay user they can be utterly confusing because visual
+rendering does not (necessarily) indicate logical encoding.
+
+% ==========================
+\section{Pitfall: Characters are not graphemes}
+\label{pitfall-characters-are-not-graphemes}
+% ==========================
+
+The Unicode Standard is a character encoding system, and not a writing system
+encoding system. This most forcefully becomes clear with the notion of grapheme.
+From a linguistic point of view, graphemes are the basic building blocks of a
+writing system (see Section~\ref{linguistic-terminology}). It is extremely
+common, up to the point of being universally attested, that writing systems use
+combinations of multiple symbols as a single grapheme, like <sch>, <th> or <ei>.
+There is no possibility to encode such complex graphemes using the Unicode Standard.
+
+The Unicode Standard deals with complex graphemes only inasmuch they consist of
+base characters with diacritics (see
+Section~\ref{pitfall-different-notions-of-diacritics} for a discussion of the
+notion of diacritic). The Unicode Standard calls such combination ``grapheme
+clusters''. Complex graphemes consisting of multiple base characters,
+like <sch>, are called ``tailored grapheme clusters'' in Unicode parlance (see
+Section~\ref{the-unicode-approach}).
+
+Inspecting the Unicode Standard, there appear to be special Unicode characters
+to ``glue'' together characters into larger tailored grapheme clusters,
+specifically the \textsc{zero width joiner} at \uni{200D} and the
+\textsc{combining grapheme joiner} at \uni{034F}. However, these characters are
+confusingly named (cf.~Section~\ref{pitfall-names}). Both codepoints actually do
+not join characters, but explicitly separate them. The zero-width joiner (ZWJ)
+can be used to solve special problems related to ordering (called ``collation''
+in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
+separate characters that are not supposed to form ligatures. 
+
+To solve the issue of tailored grapheme clusters, Unicode offers some assistance
+in the form of the Unicode Locale Descriptions. However, in the practice of
+linguistic research, this is not a real solution. For that reason we propose to
+use orthography profiles (see Chapter~\ref{orthography-profiles}). Basically,
+both orthography profiles and locale descriptions offer a way to specify
+tailored grapheme clusters. For example, for English one could specify that <sh>
+is such a cluster. Consequently, this sequence of characters is then always
+interpreted as a complex grapheme. For cases in which this is not the right
+decision, like in the English word \textit{mishap}, the \textsc{zero width
+joiner} at \uni{200D} has to be entered between <s> and <h>.
+
+% ==========================
+\section{Pitfall: Missing glyphs}
+\label{pitfall-missing-glyphs}
+% ==========================
+
+The Unicode Standard is often praised (and deservedly so) for solving many of
+the perennial problems with the interchange and display of the world's writing
+systems. However, a common complaint from users is that, while the praise may be
+true, they mostly just see some boxes on their screen instead of those promised
+symbols. The problem of course is that users' computers do not have any glyphs
+installed matching the Unicode code points in the file they are trying to
+inspect. It is important to realize that internally in the computer everything
+still works as expected: any handling of Unicode code points works independently
+of how they are displayed on the screen. So, although a user might only see
+boxes being displayed, this user should be assured that everything is still in
+order.
+
+The central problem behind the missing glyphs is that designing actual glyphs
+includes a lot of different considerations and it is a time-consuming process.
+Many traditional expectations of how specific characters should look like have
+to be taken into account when designing glyphs. Those expectations are often not
+well documented, and it is mostly up to the knowledge and experience of the font
+designer to try and conform to them as good as possible. Therefore, most
+designers produce fonts only including glyphs for certain parts of the Unicode
+Standard, namely for those characters they feel comfortable with. At the same
+time, the number of characters defined by the Unicode Standard is growing with
+each new version, so it is neigh impossible for any designer to produce glyphs
+for all characters. The result of this is that, almost necessarily, each font
+only includes glyphs for a subset of the characters in the Unicode Standard.
+
+The simple solution to missing glyphs is thus to install additional fonts
+providing additional glyphs. For the more exotic characters there is often not
+much choice. There are a few particularly large fonts that might be considered.
+First, there is the \textsc{Everson Mono} font made by Michael Everson, which
+currently includes 9,756 different glyphs (not including Chinese) updated up to
+Unicode 7.0.\footnote{Everson Mono is available as shareware at
+\url{http://www.evertype.com/emono/}.} Already a bit older is the \textsc{Titus
+Cyberbit Basic} font made by Jost Gippert and Carl-Martin Bunz, which includes
+10,044 different glyphs (not including Chinese), but not including newer
+characters added after Unicode 4.0.\footnote{Titus Cyberbit Basic is available
+at \url{http://titus.fkidg1.uni-frankfurt.de/unicode/tituut.asp}.}
+
+Further, we suggest to always install at least one so-called \textsc{fall-back
+font}, which provides glyphs that at least show the user some information about
+the underlying encoded character. Apple Macintoshes have such a font (which is
+invisible to the user), which is designed by Michael Everson and made available
+for other systems through the Unicode Consortium.\footnote{The Apple/Everson
+fallback font is available for non-Macintosh users at \newline
+\url{http://www.unicode.org/policies/lastresortfont\_eula.html}.} Further, the
+\textsc{GNU Unifont} is a clever way to produce bitmaps approximating the
+intended glyph of each available character, updated to Unicode 7.0.\footnote{The
+GNU Unifont is available at \url{http://unifoundry.com/unifont.html}.} Finally,
+the Summer Institute of Linguistics provides a \textsc{SIL Unicode BMP Fallback
+Font}, currently available up to Unicode version 6.1. This font does not even
+attempt to show a real glyph, but only shows the hexadecimal code inside a box
+for each character, so a user can at least see the Unicode codepoint of the
+character to be displayed.\footnote{The SIL Unicode BMP Fallback Font is
+available at \newline \url{http://scripts.sil.org/UnicodeBMPFallbackFont}.}
+
+% ==========================
+\section{Pitfall: Faulty rendering}
+\label{pitfall-faulty-rendering}
+% ==========================
+
+A similar complaint to missing glyphs, discussed previously, is that while there
+might be a glyph being displayed, it does not look right. There are two
+reasons for unexpected visual display, namely automatic font substitution and
+faulty rendering. Like missing glyphs, any such problems are independent from
+the Unicode Standard. The Unicode Standard only includes very general
+information about characters and leaves the specific visual display to others to
+decide on. Any faulty display is thus not to be blamed on the Unicode
+Consortium, but on a complex interplay of different mechanisms happening in a
+computer to turn Unicode codepoints into visual symbols. We will only sketch a
+few aspects of this complex interplay here.
+
+Most modern software applications (like Microsoft Word) offer some approach to
+\textsc{automatic font substitution}. This means that when a text is written in
+a specific font (e.g.~Times New Roman) and an inserted Unicode character does not
+have a glyph within this font, then the software application will automatically
+search for another font to display the glyph. The result will be that this
+specific glyph will look slightly different from the others. This mechanism
+works differently depending on the software application, and mostly only limited
+user influence is expected and little feedback is given, which might be rather
+frustrating to font-aware users.\footnote{For example, Apple Pages does not give
+any feedback that a font is being replaced, and the user does not seem to have
+any influence on the choice of replacement (except by manually marking all
+occurrences). In contrast, Microsoft Word does indicate the font replacement by
+showing the name in the font menu of the font replacement. However, Word simply
+changes the font completely, so any text written after the replacement is written in a
+different font as before. Both behaviors leave much to be desired.}
+
+The other problem with visual display is related to the so-called \textsc{font
+rendering}. Font rendering refers to the process of the actual positioning of
+Unicode characters on a page of written text. This positioning is actually a
+highly complex problem, and many things can go wrong in the process. Well-known
+rendering problems, like proportional glyph size or ligatures are reasonably
+well understood. In contrast, the positioning of multiple diacritics relative to
+a base character is still a widespread problem, even within the Latin script.
+Especially when more than one diacritic is supposed to be placed above (or
+below) each other, this often leads to unexpected effects in many modern
+software applications. The problems arising in Arabic and in many southeast
+Asian scripts (like Devanagari or Burmese) are even more complex. 
+
+To understand where any problems arise it is important to realize that there are
+basically three different approaches to font rendering. The most widespread is
+Adobe's and Microsoft's \textsc{OpenType} system. This approach makes it
+relatively easy for font developers, as the font itself does not include all
+details about the precise placement of individual characters. For those details,
+additional script-descriptions are necessary. All of those systems can lead to
+unexpected behavior.\footnote{For more details about OpenType, see
+\url{http://www.adobe.com/products/type/opentype.html} and
+\url{http://www.microsoft.com/typography/otspec/}. Additional systems for
+complex text layout are, among others, Microsoft's DirectWrite
+\url{https://msdn.microsoft.com/library/dd368038.aspx} and the open-source
+project HarfBuzz \url{http://www.freedesktop.org/wiki/Software/HarfBuzz/}.}
+Alternative systems are \textsc{Apple Advanced Typography} (AAT) and the
+open-source \textsc{Graphite} system from the Summer Institute of Linguistics
+(SIL).\footnote{More information about AAT can be found at
+\url{https://developer.apple.com/fonts/}. \newline SIL's Graphite is described
+in detail at
+\url{http://scripts.sil.org/cms/scripts/page.php?site\_id=projects\&item\_id=graphite\_home}.}
+In both of these systems, a larger burden is placed on the description inside
+the font.
+
+There is mostly no real solution to problems arising from faulty font rendering.
+Switching to another software application that offers better handling is the
+only real alternative, but this is normally not an option for daily work. The 
+experience with rendering on the side of the software industry is developing 
+quickly, so we can expect the situation only to get better. In the meantime one 
+can try to correct faulty layout by tweaking baseline and/or kerning (when such 
+option are available).
+
+% ==========================
+\section{Pitfall: Blocks}
+\label{pitfall-blocks}
+% ==========================
+
+The Unicode code space is subdivided into blocks of contiguous code points. For
+example, the block called \textsc{Cyrillic} runs from \uni{0400} till
+\uni{04FF}. These blocks arose as an attempt at ordering the enormous amount of
+characters in Unicode, but the ideas of blocks very quickly ran into problems.
+First, the size of a block is fixed, so when a block is full, a new block will
+have to be instantiated somewhere further in the code space. For example, this
+led to the blocks \textsc{Cyrillic Supplement}, \textsc{Cyrillic Extended-A}
+(both of which are also already full) and \textsc{Cyrillic Extended-B}. Second,
+when a specific character already exists, then it is not duplicated in another
+block, although the name of the block might indicate that a specific symbol
+should be available there. In general, names of blocks are just an approximate
+indication of the kind of characters that will be in the block.
+
+The problem with blocks arises because finding the right character among the
+thousands of Unicode characters is not easy. Many software applications present
+blocks as a primary search mechanism, because the block names suggest where to
+look for a particular character. However, when a user searches for an IPA
+character in the block \textsc{IPA Extensions}, then many IPA characters will not
+be found there. For example, the velar nasal <ŋ> is not part of the block
+\textsc{IPA Extensions} because it was already included as \textsc{latin small letter
+eng} at \uni{014B} in the block \textsc{Latin Extensions-A}.
+
+In general, finding a specific character in the Unicode Standard is often not
+trivial. The names of the blocks can help, but they are not (and never were supposed
+to be) a foolproof structure. It is not the goal nor aim of the Unicode
+Consortium to provide a user interface to the Unicode Standard. If one often
+encounters the problem of needing to find a suitable character, there are
+various other useful services for end-users available.\footnote{The Unicode
+website offers a basic interface to the code charts at
+\url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
+particularly like PopChar from Macility, available for both Macintosh and
+Windows. There are also various free websites that offer search interfaces
+to the Unicode code tables, like \url{http://unicode-search.net} or
+\url{http://unicode-search.net}. A further useful approach for searching characters
+using shape matching is \url{http://shapecatcher.com}.}
+
+% ==========================
+\section{Pitfall: Names}
+\label{pitfall-names}
+% ==========================
+
+The names of characters in the Unicode Standard are sometimes misnomers and
+should not be misinterpreted as definitions. For example, the \textsc{combining
+grapheme joiner} at \uni{034F} does not join characters into larger graphemes
+(see Section~\ref{pitfall-characters-are-not-graphemes}) and the \textsc{latin
+letter retroflex click} \uni{01C3} is actually not the IPA symbol for a
+retroflex click, but for an alveolar click (see
+Section~\ref{pitfall-ipa-homoglyphs}). In a sense, these names can be seen as
+``errors.'' However, it is probably better to realize that such names are just
+convenience labels that are not going to be changed. Just like the block names
+(Section~\ref{pitfall-blocks}), the character names are often helpful, but they
+are not supposed to be definitions.
+
+The actual intended ``meaning'' of a Unicode codepoint is a combination of the
+name, the block and the character properties (see
+Section~\ref{the-unicode-approach}). Further details about the underlying intentions 
+with which a character should be used
+are only accessible by perusing the actual decisions of the Unicode Consortium.
+All proposals, discussions and decisions of the Unicode Consortium are publicly
+available. Unfortunately there is not (yet) any way to easily find everything
+that is ever proposed, discussed and decided in relation to a specific
+codepoint of interest, so many of the details are often somewhat
+hidden.\footnote{All proposals and other documents that are the basis of Unicode
+decisions are avaialbe at \url{http://www.unicode.org/L2/all-docs.html}. The
+actual decisions that make up the Unicode Standard are documented in the minutes
+of the Unicode Technical Committee, available at
+\url{http://www.unicode.org/consortium/utc-minutes.html}.}
+
+% ==========================
+\section{Pitfall: Homoglyphs}
+\label{pitfall-homoglyphs}
+% ==========================
+
+Homoglyphs are visually indistinguishable glyphs (or highly similar glyphs) that
+have different code points in the Unicode Standard and thus different character
+semantics. As a principle, the Unicode Standard does not specify how a character
+appears visually on the page or the screen. So in most cases, a different
+appearance is caused by the specific design of a font, or by user-settings like
+size or boldface. Taking an example already discussed in
+Section~\ref{pitfall-homoglyphs}, the following symbols <g {\large \textit{g}}
+\textbf{g} {\fontspec{ArialMT} {\small g} \textit{g} \textbf{g}}> are different
+glyphs of the same character, i.e.~they may be rendered differently depending on
+the typography being used, but they all share the same code point (viz.
+\textsc{latin small letter g} at \uni{0067}). In contrast, the symbols
+<{\fontspec{EversonMono}AАΑᎪᗅᴀꓮʠ햠홰}> are all different code points,
+although they look highly similar---in some cases even sharing exactly the same
+glyph in some fonts. All these different A-like characters include the following
+code points in the Unicode Standard:
+
+\begin{itemize}
+	\item[] <{\fontspec{EversonMono}A}> \textsc{latin capital letter a}, at \uni{0041} 
+	\item[] <{\fontspec{EversonMono}А}> \textsc{cyrillic capital letter a}, at \uni{0410} 
+	\item[] <{\fontspec{EversonMono}Α}> \textsc{greek capital letter alpha}, at \uni{0391} 
+	\item[] <{\fontspec{EversonMono}Ꭺ}> \textsc{cherokee letter go}, at \uni{13AA} 
+	\item[] <{\fontspec{EversonMono}ᗅ}> \textsc{canadian syllabics carrier gho}, at \uni{15C5} 
+	\item[] <{\fontspec{EversonMono}ᴀ}> \textsc{latin small letter capital a}, at \uni{1D00} 
+	\item[] <{\fontspec{EversonMono}ꓮ}> \textsc{lisu letter a}, at \uni{A4EE} 
+%	\item[] <{\fontspec{EversonMono}Ａ}> \textsc{fullwidth latin capital letter a}, at \uni{FF21} 
+	\item[] <{\fontspec{EversonMono}ʠ}> \textsc{carian letter a}, at \uni{102A0} 
+%	\item[] <{\fontspec{EversonMono}̀}> \textsc{old italic letter a}, at \uni{10300} 
+	\item[] <{\fontspec{EversonMono}햠}> \textsc{mathematical sans-serif capital a}, \uni{1D5A0} 
+	\item[] <{\fontspec{EversonMono}홰}> \textsc{mathematical monospace capital a}, at \uni{1D670} 
+\end{itemize}
+
+The existence of such homoglyphs is partly due to legacy compatibility, but for
+the most part these characters are simply different characters that happen to
+look similar.\footnote{A particularly nice interface to look for homoglyphs is
+\url{http://shapecatcher.com}, based on the principle of recognizing shapes
+\citep{Belongie2002}.} Yet, they are supposed to behave different from the
+perspective of a font designer. For example, when designing a Cyrillic font, the
+<A> will have different aesthetics and different traditional expectation
+compared to a Latin <A>.
+
+Such homoglyphs are a widespread problem for consistent encoding. Although for
+most users it looks like the words <voces> and <νοсеѕ> are almost identical, in
+actual fact they do not even share a single code point.\footnote{The first words
+consists completely of Latin characters, namely \unif{0076}, \unif{006F},
+\unif{0063}, \unif{0065} and \unif{0073}, while the second is a mix of Cyrillic
+and Greek characters, namely \unif{03BD}, \unif{03BF}, \unif{0041}, \unif{0435}
+and \unif{0455}.} For computers these two words are completely different
+entities. Commonly, when users with Cyrillic or Greek keyboards have to type
+some Latin-based orthography, they mix similar looking Cyrillic or Greek
+characters into their text, because those characters are so much easier to type.
+Similarly, when users want to enter an unusual symbol, they normally search by
+visual impression in their favorite software application, and just pick
+something that looks reasonably alike to what they expect the glyph to look
+like.
+
+It is really easy to make errors at text entry and add characters that are 
+not supposed to be included. Our proposals for orthography profiles (see
+Chapter~\ref{orthography-profiles}) are a method for checking the consistency of 
+any text. In situations in which interoperability is important, we consider it 
+crucial to add such checks in any workflow.
+
+% ==========================
+\section{Pitfall: Canonical equivalence}
+\label{pitfall-canonical-equivalence}
+% ==========================
+
+For some characters, there is more than one possible encoding in the Unicode
+Standard. This is a possible pitfall, as this would mean that for the computer
+there exist multiple different entities that for a user are the same. This
+would, for example, lead to problems with searching, as the computer would
+search for specific encodings, and not find all expected characters. As a
+solution, the Unicode Standard includes a notion of \textsc{canonical
+equivalence}. Different encodings are explicitly declared as equivalent in the
+Unicode Standard code tables. Further, to harmonize all encodings in a specific
+piece of text, the Unicode Standard proposes a mechanism of
+\textsc{normalization}.
+
+Consider for example the characters and following Unicode code points:
+\begin{itemize}
+	\def\labelenumi{\arabic{enumi}.} 
+	\item <Å> \textsc{latin capital letter a with ring above} \uni{00C5} 
+	\item <Å> \textsc{angstrom sign} \uni{212B}
+	\item <Å> \textsc{latin capital letter a} \uni{0041}
+	+ \textsc{combining ring above} \uni{030A}
+\end{itemize}
+
+The character, represented here by glyph <Å>, is encoded in the Unicode Standard
+in the first two examples by a single-character sequence; each is assigned a
+different code point. In the third example, the glyph is encoded in a
+multiple-character sequence that is composed of two character code points. All
+three sequences are \textsc{canonically equivalent}, i.e.~they are strings that
+represent the same abstract character and because they are not distinguishable
+by the user, the Unicode Standard requires them to be treated the same in
+regards to their behavior and appearance. Nevertheless, they are encoded
+differently. For example, if one were to search an electronic text (with
+software that does not apply Unicode Standard normalization) for
+\textsc{angstrom sign} (\uni{212B}), then the instances of \textsc{latin 
+capital letter a with ring above} (\uni{00C5}) would not be found.
+
+In other words, there are equivalent sequences of Unicode characters that should
+be normalized, i.e.~transformed into a unique Unicode-sanctioned representation
+of a character sequence called a \textsc{normalization form}. Unicode provides a
+Unicode Normalization Algorithm, which essentially puts combining marks
+into a specific logical order and it defines decomposition and composition
+transformation rules to convert each string into one of four normalization
+forms. We will discuss here the two most relevant normalization forms: NFC and
+NFD.\@
+
+The first of the three characters above is considered the \textsc{Normalization
+Form C (NFC)}, where \textsc{C} stands for composition. When the process of NFC
+normalization is applied to the character sequences in 2 and 3, both sequences
+are normalized into the \textsc{pre-composed} character sequence in 1. Thus all
+three canonical character sequences are standardized into one composition form
+in NFC.\@The other central Unicode normalization form is the
+\textsc{Normalization Form D (NFD)}, where \textsc{D} stands for decomposition.
+When NFD is applied to the three examples above, all three, including
+importantly the single-character sequences in 1 and 2, are normalized into the
+\textsc{decomposed} multiple-sequence of characters in 3. Again, all three are
+then logically equivalent and therefore comparable and syntactically
+interoperable.
+
+As illustrated, some characters in the Unicode Standard have alternative
+representations (in fact, many do), but the Unicode Normalization Algorithm can
+be used to transform certain sequences of characters into canonical
+forms to test for equivalency. To determine equivalence, each
+character in the Unicode Standard is associated with a combining class, which is
+formally defined as a character property called \textsc{canonical combining
+class} which is specified in the Unicode Character Database. The combining class
+assigned to each code point is a numeric value between 0 and 254 and is used by
+the Unicode Canonical Ordering Algorithm to determine which sequences of
+characters are canonically equivalent. Normalization forms, as very briefly
+described above, can be used to ensure character equivalence by ordering
+character sequences so that they can be faithfully compared.
+
+It is very important to note that any software applications that is Unicode
+Standard compliant is free to change the character stream from one
+representation to another. This means that a software application may compose,
+decompose or reorder characters as its developers desire; as long as the
+resultant strings are canonically equivalent to the original. This might lead to
+unexpected behavior for users. Various players, like the Unicode Consortium, the
+W{\large 3}C, or the TEI recommend NFC in most user-directed situations, and
+some software applications that we tested indeed seem to automatically convert
+strings into NFC.\footnote{See the summary of various recommendation here:
+\url{http://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html}.} This means in
+practice that if a user, for example, enters <a> and <\dia{0300}>, i.e.~\textsc{latin
+small letter a} at \uni{0061} and \textsc{combining grave accent} at \uni{0300},
+this might be automatically converted into <à>, i.e.~\textsc{latin small letter
+a with grave} at \uni{00E0}.\footnote{The behavior of software applications can
+be quite erratic in this respect. For example, Apple's TextEdit does not do any
+conversion on text entry. However, when you copy and paste some text inside the
+same document in rich text mode (i.e.~RTF-format), it will be transformed into
+NFC on paste. Saving a document does not do any conversion to the glyphs on
+screen, but it will save the characters in NFC.}
+
+% ==========================
+\section{Pitfall: Absence of canonical equivalence}
+\label{pitfall-absence-of-equivalence}
+% ==========================
+
+Although in most cases canonical equivalence will take care of alternative
+encodings of the same character, there are a some cases in which the Unicode
+Standard decided against equivalence. This leads to identical characters that
+are not equivalent, like <ø> \textsc{latin small letter o with stroke} at
+\uni{00F8} and <o̷> a combination of \textsc{latin small letter o} at \uni{006F}
+with \textsc{combining short solidus overlay} at \uni{0037}.
+The general rule followed is that extensions of Latin characters that are
+connected to the base character are not separated as combining diacritics. For
+example, characters like <ŋ ɲ ɳ> or <ɖ ɗ> are obviously derived from <n> and <d>
+respectively, but they are treated like new separate characters in the Unicode
+Standard. Likewise, characters like <ø> and <ƈ> are not separated into a base 
+character <o> and <c> with an attached combining diacritic.
+
+Interestingly, and somewhat illogically, there are three elements, which are
+directly attached to their base characters, but which are still treated as
+separable in the Unicode Standard. Such characters are decomposed (in NFD
+normalization) in a base character with a combining diacritic. However, it is
+these cases that should be considered the exceptions to the rule. These three 
+elements are the following:
+
+\begin{itemize}
+
+  \item <\dia{0327}>: the \textsc{combining cedilla} at \uni{0327} \newline 
+        This diacritic is
+        for example attested in the precomposed character <ç> \textsc{latin
+        small letter c with cedilla} at \uni{00E7}. This <ç> will thus be
+        decomposed in NFC normalization.
+  \item <\dia{0328}>: the \textsc{combining ogonek} at \uni{0328} \newline 
+        This diacritic is
+        for example attested in precomposed <ą> \textsc{latin small letter a
+        with ogonek} at \uni{0105}. This <ą> will thus be decomposed in NFC
+        normalization.
+  \item <\dia{031B}>: the \textsc{combining horn} at \uni{031B} \newline 
+        This diacritic is for
+        example attested in precomposed <ơ> \textsc{latin small letter o with
+        horn} at \uni{01A1}. This <ơ> will thus be decomposed in NFC
+        normalization. 
+
+\end{itemize}
+
+There are further combinations that deserve specific care because it is actually
+possible to produce identical characters in different ways without them being
+canonically equivalent. In these situations, the general rule holds, namely that
+characters with attached extras are not decomposed. However, in the following
+cases the ``extras'' actually exist as combining diacritics, so there is also 
+the possibility to construct a character by using a base character with those 
+combining diacritics.
+
+\begin{itemize}
+  
+  \item First, there are the combining characters designated as ``combining
+        overlay'' in the Unicode Standard, like <\dia{0334}>
+        \textsc{combining tilde overlay} at \uni{0334} or <\dia{0335}>
+        \textsc{combining short stroke overlay} at \uni{0335}. There are many
+        characters that look like they are precomposed with such an overlay,
+        for example <\charis{ɫ~ᵬ~ᵭ~ᵱ}> or <\charis{ƚ~ɨ~ɉ~ɍ}>, or also the
+        example of <ø> given at the start of this section. However, they are 
+        not decomposed in NFD normalization.
+  \item Second, the same situation also occurs with combining characters
+        designated as ``combining hook'', like 
+        <{\fontspec{CharisSIL}{\large ◌}}\symbol{"0321}> \textsc{combining
+        palatalized hook below} at \uni{0321}. This element seems to occur in
+        precomposed characters like <\charis{ᶀ~ᶁ~ᶂ~ᶄ}>. However, they are 
+        not decomposed in NFD normalization.
+        
+\end{itemize}
+
+To harmonize the encoding in these cases it is not sufficient to use Unicode 
+normalization. Additional checks are necessary, for example by using orthography 
+profiles (see Chapter~\ref{orthography-profiles}).
+
+% ==========================
+\section{Pitfall: File formats}
+\label{pitfall-file-formats}
+% ==========================
+
+Unicode is a character encoding standard, but these characters of course
+actually appear inside some kind of computer file. The most basic Unicode-based file
+format is pure line-based text, i.e.~strings of Unicode-encoded characters
+separated by line breaks (note that these line breaks are what for most people
+intuitively corresponds to paragraph breaks). Unfortunately, even within this
+apparently basic setting there exist a multitude of variants. In general, these
+different possibilities are well-understood in the software industry, and
+nowadays they normally do not lead to any problems for the end user. However,
+there are some situations in which a user is suddenly confronted with cryptic
+questions in the user interface involving abbreviations like LF, CR, BE, LE or
+BOM.\@ Most prominently this occurs with exporting or importing data in several
+software applications from Microsoft. Basically, there are two different issues
+involved. First, the encoding of line breaks and, second, the encoding of the
+Unicode characters into code units and the related issue of endianness.
+
+\subsubsection*{Line breaks}
+
+The issue with \textsc{line breaks} originated with the instructions necessary
+to direct a printing head of a physical printer to a new line. This involves two
+movements, known as \textsc{carriage return} (CR, returning the printing head to
+the start of the line on the page) and \textsc{line feed} (LF, moving the
+printing head to the next line on the page). Physically, these are two different
+events, but conceptually together they form one action. In the history of
+computing, various encodings of line breaks have been used (e.g.~CR+LF, LF+CR,
+only LF, or only CR). Currently, all Unix and Unix-derived systems use only LF
+as code for a line break, while software from Microsoft still uses a combination
+of CR+LF.\@ Today, most software applications recognize both options, and
+are able to deal with either encoding of line breaks (until rather recently this
+was not the case, and using the wrong line breaks would lead to unexpected
+errors). Our impression is that there is a strong tendency in software
+development to standardize on the simpler ``only LF'' encoding for line
+breaks, and we suggest that everybody use this encoding whenever possible.
+
+\subsubsection*{Code units}
+
+The issue with \textsc{code units} stems from the question how to separate a
+stream of binary ones and zero, i.e.~bits, into chunks representing Unicode
+characters. A code unit is the sequence of bits used to encode a single
+character in an encoding. Depending on different use cases, the Unicode Standard
+offers three different approaches, called UTF-32, UTF-16 and UTF-8.\footnote{The
+letters UTF stand for \textsc{Unicode Transformation Format}, but the notion of
+``transformation'' is a legacy notion that does not have meaning anymore.
+Nevertheless, the designation UTF (in capitals) has become an official
+standard designation, but should probably best be read as simply ``Unicode
+Format.''} The details of this issue is extensively explained in section 2.5 of
+the Unicode Core Specification~\citet{Unicode2014}. 
+
+Basically, \textsc{UTF-32} encodes each character in 32 bits (32 \textit{bi}nary
+uni\textit{ts}, i.e.~32 zeros or ones) and is the most disk-space-consuming
+variant of the three. However, it is the most efficient encoding
+processing-wise, because the computer simply has to separate each character
+after 32 bits. 
+
+In contrast, \textsc{UTF-16} uses only 16 bits per character, which is
+sufficient for the large majority of Unicode characters, but not for all of
+them. A special system of \textsc{surrogates} is defined within the Unicode Standard to
+deal with these additional characters. The effect is a more disk-space efficient
+encoding (approximately half the size), while adding a limited computational
+overhead to manage the surrogates. 
+
+Finally, \textsc{UTF-8} is a more complex system that dynamically encodes each
+character with the minimally necessary number of bits, choosing either 8, 16 or
+32 bits depending on the character. This represents again a strong reduction in
+space (particularly due to the high frequency of data using erstwhile ASCII
+characters, which need only 8 bits) at the expense of even more computation
+necessary to process such strings. However, because of the ever growing
+computational power of modern machines, the processing overhead is in most
+practical situations a non-issue, while saving on space is still useful,
+particularly for sending texts over the Internet. As an effect, UTF-8 has become
+the dominant encoding on the World Wide Web. We suggest that everybody uses
+UTF-8 as their default encoding.
+
+A related problem is a general issue about how to store information in computer
+memory, which is known as \textsc{endianness}. The details of this issue go
+beyond the scope of this book. It suffices to realize that there is a
+difference between \textsc{big-endian} (BE) storage and \textsc{little-endian}
+(LE) storage. The Unicode Standard offers a possibility to explicitly indicate
+what kind of storage is used by starting a file with a so-called \textsc{byte order
+mark} (BOM). However, the Unicode Standard does not require the usage of BOM,
+preferring other non-Unicode methods to signal to computers which kind of
+endianness is used. This issue only arises with UTF-32 and UTF-16 encodings.
+When using the preferred UTF-8, using a BOM is theoretically possible, but
+strongly dispreferred according to the Unicode Standard. We suggest that
+everyone tries to prevent the inclusion of BOM in your data.
+
+% ==========================
+\section{Pitfall: Software}
+\label{software}
+% ==========================
+
+% issues we've encountered in our computing environments
+%  save as UTF-8
+%  conversion between software programs (or when is something really UTF-8?)
+%  NFC / NFD in copy & paste(!)
+
+
+% ==========================
+\section{Recommendations}
+\label{recommendations}
+% ==========================
+
+Summarizing the pitfalls discussed in this chapter, we propose the following 
+recommendations:
+
+\begin{itemize}
+   \item To prevent strange boxes instead of nice glyphs, always install a few
+         fonts with a large glyph collection and at least one fall-back font
+         (see Section~\ref{pitfall-missing-glyphs}).
+   \item Unexpected visual impressions of symbols does not necessarily mean that
+         the actual encoding is wrong. It is mostly a problem of faulty
+         rendering (see Section~\ref{pitfall-faulty-rendering}).
+   \item Do not trust the names of codepoints as a definition of the character
+         (see Section~\ref{pitfall-names}). Also do not trust Unicode blocks as
+         a strategy to find specific characters (see
+         Section~\ref{pitfall-blocks})
+   \item To ensure consistent encoding of texts, apply Unicode normalization
+         (NFC or NFD, see Section~\ref{pitfall-canonical-equivalence}).
+   \item To prevent remaining inconsistencies after normalization, for example 
+         stemming from homoglyphs (see Section~\ref{pitfall-homoglyphs}) 
+         or from missing canonical equivalence in the Unicode Standard
+         (see Section~\ref{pitfall-absence-of-equivalence})
+         use orthography profiles (see Chapter~\ref{orthography-profiles}).
+   \item To deal with ``tailored'' grapheme clusters
+         (Section~\ref{pitfall-characters-are-not-graphemes}), use Unicode Locale 
+         Descriptions, or orthography profiles 
+         (see Chapter~\ref{orthography-profiles}).
+   \item As a preferred file format, use Unicode Format UTF-8 in 
+         Normalization Form Composition (NFC) with LF line endings, 
+         but without byte order mark (BOM), whenever possible (see 
+         Section~\ref{pitfall-file-formats}). This last nicely cryptic 
+         recommendation has T-shirt potential:
+  
+\end{itemize}
+
+\begin{center}
+  I prefer it
+  
+  \textbf{UTF-8 NFC LF no BOM}
+\end{center}
+
+

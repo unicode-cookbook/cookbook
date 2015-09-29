@@ -1,0 +1,55 @@
+% add all extra packages you need to load to this file  
+
+\usepackage{amsmath} 
+\usepackage{unicode-math}
+\setmathfont{Asana-Math.otf} % this looks much better for formulas
+\usepackage[libertine]{newtxmath}
+
+\usepackage{enumitem} % some additional possibilities for enumerations
+\setitemize{noitemsep}
+\setenumerate{noitemsep}
+
+\usepackage{tabularx}
+\usepackage{booktabs} % nice lines in tables
+\usepackage{xtab} % xtabular for better multipage tables
+\xentrystretch{-0.16} % squeeze more lines on a page
+\usepackage{array} % for better handling of columns
+\newcolumntype{L}[1]{>{\footnotesize\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+% I have tried to use monospaced numbers in the TOC, but this does not work...
+%\settocstylefeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+%\settocfeature{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+
+% other ideas that also don't give the desired results
+%\usepackage{tocloft}
+%\renewcommand{\cftXpagefont}{\fontspec[Numbers=Monospaced]{LinLibertineO}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%           Examples                           %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\usepackage{lsp-gb4e} 
+
+%% to add additional information to the right of examples, uncomment the following line
+% \usepackage{jambox}
+%% if you want the source line of examples to be in italics, uncomment the following line
+% \renewcommand{\exfont}{\itshape}
+
+\usepackage{listings}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code 
+  keywordstyle=\color{blue!60!black},       % keyword style
+  language=XML,                 % the language of the code 
+  stringstyle=\color{green!60!black},     % string literal style 
+  morekeywords={token,xlink:href, Action, Value, Cursor,LogEvent}
+} 
+ 

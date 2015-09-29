@@ -1,0 +1,25 @@
+%add all your local new commands to this file
+
+\newcommand{\smiley}{:\)}
+
+% to get the U+Hexdecimal abbreviations looking good
+\newcommand{\uni}[1]
+{\@{\small \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
+
+\newcommand{\unif}[1]
+{\@{\footnotesize \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
+
+% use charisSIL in suitable size to fit other text
+\newcommand{\charis}[1]
+{{\small \fontspec{CharisSIL}#1}}
+
+% mark lonely diacritics with a dotted circle
+\newcommand{\dia}[1]
+{{\fontspec{CharisSIL}{\large ◌}\symbol{"#1}}} % circle before diacritics
+
+\newcommand{\diareverse}[1]
+{{\fontspec{CharisSIL}\symbol{"#1}{\large ◌}}} % circle after diacritic
+
+\newcommand{\diaf}[1]
+{{\footnotesize \fontspec{CharisSIL}{\small ◌}\symbol{"#1}}} % small for footnote
+
