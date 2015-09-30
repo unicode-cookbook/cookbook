@@ -46,4 +46,9 @@ asjp[error_lines,]
 # make "empirical" profile of graphemes, showing all tailored graphemes in ASJP
 # there are 793 different tailored graphemes in the data !!!
 no_errors <- tokens$strings$tokenized[-error_lines]
+tailored <- write.profile(no_errors, sep = " ")
+str(tailored)
+head(tailored, 20)
+
+# save the profile as a file
 write.profile(no_errors, sep = " ", file = "sandbox/asjp_emprical_profile.csv")
