@@ -6,10 +6,13 @@
 
 The ASJP-data are available online at http://asjp.clld.org (Wichmann, Brown & Holman, 2014). The original downloaded data is available verbatim in "/sources/".
 
-The downloaded data comes in separate files, so I combined everything into one large csv file by using:
-  $$$ awk 'FNR>1' sources/*.csv > data/ASJ
-and then manually added a new header line. When you have csvkit installed, it can be done cleaner by:
-  $$$ csvstack sources/*.csv > data/ASJP.csv
+The downloaded data comes in separate files, so I combined everything into one large csv file by using the following bash command. I then manually added a new header line.
+
+`$$$ awk 'FNR>1' sources/*.csv > data/ASJ`
+
+When you have csvkit installed, it can be done cleaner by:
+
+`$$$ csvstack sources/*.csv > data/ASJP.csv`
 
 ###References
 

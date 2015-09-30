@@ -111,7 +111,6 @@ tmp
 read.table("test_strings.tsv")
 read.table("test_strings.tsv",sep="\t")
 str(read.table("test_strings.tsv",sep="\t"))
-str(read.table("test_strings.tsv",sep="\t"))
 read.table("test_strings.tsv",sep="\t")[1,1]
 read.table("test_strings.tsv",sep="\t")[2,1]
 gsub("\t","XXX",read.table("test_strings.tsv",sep="\t")[2,1]
@@ -128,3 +127,213 @@ grep("\t",c(x,x,x))
 grep("\t",c("bla","bla","bla"))
 lgrep("\t",c("bla","bla","bla"))
 grepl("\t",c("bla","bla","bla"))
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+words <- asjp$Value#
+#
+# first make draft profile using default settings#
+write.profile(words, file = "sandbox/asjp_draft_profile.csv")
+system.time(#
+	tokens <- tokenize(asjp$Value#
+						, profile = "profiles/asjp_corrected_profile.csv"#
+						, regex = T#
+						, file.out = "sandbox/asjp_tokenized")#
+	)
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = T#
+					)
+tokens$errors
+tokenize("asdf\tasdf")
+tokenize("asdf\tasdf",file="tmp")
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+#
+# the actual words are in the fifth column of this csv-file ("Value")#
+# first make draft profile using default settings#
+write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.csv")#
+#
+# There is a warning because there are tabs in the input data#
+# This is an error in the ASJP data, but we leave it in for now#
+# It has to be changed in the orthography profile though!#
+# Check the manually changed profile in profiles/asjp_corrected_profile.csv#
+# after manually correcting the profile we can use it for tokenization#
+# there are regular expressions in the corrected profile, so "regex = TRUE"#
+# the code is not very fast, might take about half a minute for all of ASJP#
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = T#
+					)
+str(tokens$strings)
+str(asjp)
+head(tokens$strings)
+tail(tokens$strings)
+head(tokens$strings,n=20)
+tail(tokens$strings,n=20)
+tokens <- tokenize(asjp$Value[1:100]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+str(tokens)
+tokens <- tokenize(asjp$Value[1:100000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[1:50000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[50000:80000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[80000:100000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[90000:100000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[80000:85000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[85000:87000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[87000:88000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[87000:89000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[89000:90000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[90000:95000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[90000:93000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[93000:94000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94000:95000]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94000:94500]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94500:94700]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94500:94900]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94700:94800]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94700:94750]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94750:94800]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+asjp$Value[94750:94800]
+tokens$strings
+asjp$Value[94786]
+asjp$Value[94785]
+utf8ToInt("􎿰")
+tokens <- tokenize(asjp$Value[94750:94800]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					,method = "linear")
+tokens$strings
+straplit("sdfgababasdfg","aba")
+strsplit("sdfgababasdfg","aba")
+strsplit("sdfgababasdfg","b")
+strsplit("asdfgababasdfga","b")[[1]]->tmp
+tmp
+tail("")
+substr("",3,4)
+?substr
+substr(c("asdf","asdf","asdf"),1,1)
+tmp <- c("asdf","asdf","asdf")
+substr(tmp,2,nchar(tmp)-1)
+tmp <- c("asdf","asdf","asdf","a")
+substr(tmp,2,nchar(tmp)-1)
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+#
+# the actual words are in the fifth column of this csv-file ("Value")#
+# first make draft profile using default settings#
+write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.csv")#
+#
+# There is a warning because there are tabs in the input data#
+# This is an error in the ASJP data, but we leave it in for now#
+# It has to be changed in the orthography profile though!#
+# Check the manually changed profile in profiles/asjp_corrected_profile.csv#
+# after manually correcting the profile we can use it for tokenization#
+# there are regular expressions in the corrected profile, so "regex = TRUE"#
+# the code is not very fast, might take about half a minute for all of ASJP#
+tokens <- tokenize(asjp$Value[1:100]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens$strings
+strsplit("asdfasdf",split="a")

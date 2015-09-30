@@ -14,6 +14,7 @@ library(qlcTokenize)
 # this is pretty large, so it might take a bit
 asjp <- read.csv("data/ASJP.csv")
 
+# the actual words are in the fifth column of this csv-file ("Value")
 # first make draft profile using default settings
 write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.csv")
 
@@ -23,20 +24,26 @@ write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.csv")
 # Check the manually changed profile in profiles/asjp_corrected_profile.csv
 
 
-# correct this manually in the file profile and do tokenization
+# after manually correcting the profile we can use it for tokenization
+# there are regular expressions in the corrected profile, so "regex = TRUE"
 # the code is not very fast, might take about half a minute for all of ASJP
-system.time(
-	tokens <- tokenize(asjp$Value
-						, profile = "profiles/asjp_corrected_profile.csv"
-						, regex = T
-						, file.out = "sandbox/")
-	)
-
-# check errors
+tokens <- tokenize(asjp$Value
+					, profile = "profiles/asjp_corrected_profile.csv"
+					, regex = TRUE
+					)
+					
+# there are errors in the data. Let's check the errors
 tokens$errors
-err_lines <- as.numeric(rownames(tokens$errors))
-asjp[err_lines,]
-no_errors <- tokens$strings$tokenized[-err_lines]
 
-# make "empirical" profile of graphemes
-write.profile(no_errors, sep = " ", file = "asjp_emprical_profile.csv")
+# and look at the characters that are not in the profile
+tokens$missing
+
+# look at the errors in this original context
+error_lines <- as.numeric(rownames(tokens$errors))
+asjp[error_lines,]
+
+# remove errors for now (this has to be done in the original data of course!)
+# make "empirical" profile of graphemes, showing all tailored graphemes in ASJP
+# there are 793 different tailored graphemes in the data !!!
+no_errors <- tokens$strings$tokenized[-error_lines]
+write.profile(no_errors, sep = " ", file = "sandbox/asjp_emprical_profile.csv")
