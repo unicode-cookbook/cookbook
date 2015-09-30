@@ -1,0 +1,130 @@
+tmp <- read.csv("data/ASJP.csv")
+str(tmp)
+tmp <- read.csv("data/ASJP.csv", header = FALSE)
+str(tmp)
+words <- asjp[,5]
+asjp <- read.csv("data/ASJP.csv", header = FALSE)
+words <- asjp[,5]
+library(qlcTokenize)
+write.profile(words, file = "sandbox/asjp_draft_profile.csv")
+write.profile(words)
+?save.file
+write.profile
+?write.table
+write.profile(words)->tmp
+write.table(tmp,qmethod="double")
+write.table(tmp,qmethod="double",file="tmp.txt")
+write.table(tmp,qmethod="double",file="tmp.txt",quote=F)
+tokenize(words[1:10], profile = "sandbox/asjp_draft_profile.csv")
+asjp <- read.csv("data/ASJP.csv")
+str(asjp)
+words <- asjp$Value
+write.profile(words, file = "sandbox/asjp_draft_profile.csv")
+write.profile(words)
+write.profile(words)->tmp
+str(tmp)
+?cat
+cat("\t")
+cat("\t",file="test.txt")
+print("\t")
+as.character("\t")
+tmp[1,]
+write.table(as.character(tmp[,1]),file="test.txt")
+write.table(print(tmp[,1]),file="test.txt")
+tmp[,1]=="\t"
+tmp[1,1] <- "\\t"
+write.table(tmp[,1],file="test.txt")
+write.profile(words)->tmp
+gsub("\\t","bla",tmp[,1])
+write.profile(words)->tmp
+gsub("\\([tnr])","\\$1",tmp[,1])
+gsub("\\([tnr])","\\\$1",tmp[,1])
+gsub("\\([tnr])","\\\\$1",tmp[,1])
+gsub("\t","\\\\$1",tmp[,1])
+gsub("\([tnr])","\\$1",tmp[,1])
+gsub("\([tnr])","\$1",tmp[,1])
+gsub("\([tnr])","\\\$1",tmp[,1])
+gsub("\([tnr])","\\t",tmp[,1])
+gsub("\\([tnr])","\\t",tmp[,1])
+gsub("\\([tnr])","\\\t",tmp[,1])
+gsub("\\([tnr])","\\\\t",tmp[,1])
+gsub("\t","\\t",tmp[,1],fixed = T)
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+words <- asjp$Value#
+#
+# first make draft profile using default settings#
+write.profile(words, file = "sandbox/asjp_draft_profile.csv")
+tokenize(words[1:10],profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize(words[1:10],profile="sandbox/asjp_draft_profile.csv")
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv")
+tokenize(words[1:10],profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize("asdf")
+tokenize("asd\tf")
+tokenize("asd\tf",file="test")
+read.table("test_strings.tsv",sep="\t")
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T)->tmp
+tmp$profile$Grapheme
+tmp$profile$Grapheme=="\t"
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+words <- asjp$Value#
+#
+# first make draft profile using default settings#
+write.profile(words, file = "sandbox/asjp_draft_profile.csv")#
+#
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=F)
+tokenize("absda\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T)
+tokenize("absda\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=T,file="test")
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=F,file="test")
+tokenize("absd\tfdas",profile="sandbox/asjp_draft_profile.csv",regex=F)->tmp
+tmp
+read.table("test_strings.tsv")
+read.table("test_strings.tsv",sep="\t")
+str(read.table("test_strings.tsv",sep="\t"))
+str(read.table("test_strings.tsv",sep="\t"))
+read.table("test_strings.tsv",sep="\t")[1,1]
+read.table("test_strings.tsv",sep="\t")[2,1]
+gsub("\t","XXX",read.table("test_strings.tsv",sep="\t")[2,1]
+read.table("test_strings.tsv",sep="\t")[2,1]->x
+gsub("\t","XXX",x)
+x
+grep("\t",x)
+grep("\t",c(x,x,x))
+?grep
+c(x,x,x)
+x
+x <- as.character(x)
+grep("\t",c(x,x,x))
+grep("\t",c("bla","bla","bla"))
+lgrep("\t",c("bla","bla","bla"))
+grepl("\t",c("bla","bla","bla"))
