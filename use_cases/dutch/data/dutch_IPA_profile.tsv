@@ -1,0 +1,419 @@
+Left	Grapheme	Right	Class	IPA	Examples	Comments
+	a			a	tafel, na
+	a	1$		ɑ	pad, kam	before single consonant and end of word
+	a	11		ɑ	ramp, vasten	before two different consonsonants
+	a	2		ɑ	adder, kappen	before double consonant grapheme
+	ä			a	Kanaänieten, naäpen
+	aa			a	aap, slaan
+	aai			aɪ	baai
+	ai			ɑɪ	mais, maizena
+	au			ɑu	applaus, fauna, nauw, klauw	is <auw> something special?
+	ay	$		eɪ	essay, display
+	aî			ɛ	maître
+	à			a	à
+boulev	a	rd		a	boulevard	exceptions to rule a->ɑ/_11 above
+branc	a	rd		a	brancard	exceptions to rule a->ɑ/_11 above
+foul	a	rd		a	foulard	exceptions to rule a->ɑ/_11 above
+isl	a	m		a	Islam	exception to rule a->ɑ/_1$ above)
+^sjw	a			ɑ	sjwa
+r	a	ce		e	race
+s	a	fe		e	safe
+b	a	seball		e	baseball
+stopw	a	tch		ɔ	stopwatch
+baseb	a	ll		ɔ	baseball
+j	a	ck		ɛ	jack
+r	a	cket		ɛ	racket
+ch	a	t		ɛ	chat
+m	ai	l		e	e-mail
+l	ais	$		ɛ	relais
+gyn	ae	col		e	gynaecoloog
+l	ae	sie		e	laesie
+m	ae	stro		ɑɪ	maestro
+qu	ae	stuur		ɛ	quaestuur
+cac	ao			ɑu	cacao
+Curaç	ao			ɑu	Curaçao
+	b		1	b	bal, tabel
+	b	$		p	web	final devoicing
+	bb		2	b	hobbel
+	c		1	k	consument, chic, corps
+	c	[iey]		s	centrum, cirkel, specie	before high vowels
+	cc		2	k	accu
+	cc	[iey]		ks	accent, succes, vaccine, occidentaal	before high vowels
+	ch		2	x	chaos, lachen, echo, school
+	ci	a		ʃ	speciaal
+	ci	en		ʃ	coëfficient	there are more of this, but difficult to classify
+	ck		2	k	jack, picknick
+	ç			s	façade, reçu
+	ch	rist		k	christen
+	ch	ic		ʃ	chic
+mar	ch	eren		ʃ	marcheren
+affi	ch	e		ʃ	affiche
+	ch	ampagne		ʃ	champagne
+	ch	eque		ʃ	cheque
+(^|[^s])	ch	at		tʃ	chat
+(^|[^sa])	ch	ip		tʃ	chip, schip, archipel	not "schip", "archipel"
+spee	ch			tʃ	speech
+ja	cqu	et		k	jacquet
+a	cqu	isit		kʋ	acquisitie
+	cu	i		kʋ	biscuit
+	d		1	d	deur, adel
+	d	1|$		t	bad, hond	final devoicing
+	d	[rw]		d	dwars, droog
+	d	s		t	loods, gids
+	dd		2	d	adder
+	dt	$	1	t	wordt, biedt	third person singular inflection
+^	dj			ɟ	djahe, djembe
+a	di	eu		ɟ	adieu
+brancar	d				brancard	not pronounced
+boulevar	d				boulevard	not pronounced
+foular	d				foulard	not pronounced
+	e			e	zenuw, peper
+	e	[^nlr]$		ɛ	les, pet, gebed	before single consonant and end of word
+	e	11		ɛ	stempel, ekster	before two different consonsonants
+	e	2		ɛ	lessen, letter	before double consonant grapheme
+	e	[nlr]?$		ə	lange, peper, stempel, rennen	unstressed syllables at end of word, e.g. el$, en$, er$
+[gb]	e	[^ie]		ə	vasten, gemaakt	TO DO: further unstressed syllables, e.g. ^ge, ^be
+	ee			e	eet, zee
+i	ee			e	dieet	not "ie-e"
+w	ee	kend		i	weekend
+	ei			ɛɪ	peil, eik
+	ei	e		ɛɪ	Beieren	not "e-ie"
+	eu			ø	Europa, zeulen
+i	eu			ø	ambitieus, interieur	not "ie-u"
+	oeu			ɜ:	oeuvre, manoeuvre
+	eeu			eu	leeuw, eeuw
+	ë			e	reële, beëdigen
+	ë	[nlr]?$		ə	skieën, Galliër, Libië
+	ë	[^nlr]$		ɛ	reliëf, cariës
+	ë	11		ɛ	beërven, oriënt
+	ë	2		ɛ	coëfficient, geëmmer
+	ë	[nlr]$		ə	moeë, knieën
+	ëe			e	geëerd
+	ëu			ø	geëuropeaniseerd
+	ëi			ɛɪ	beëindigt
+	è			ɛ:	scène, suède
+	é			e	café, comité
+	ê			ɛ:	gêne, enquête
+transf	e	r		ɛ:	transfer
+servic	e				service	not pronounced
+rac	e				race	not pronounced
+saf	e				safe	not pronounced
+trecot	e				entrecote	note pronounced
+bas	e	ball			baseball	not pronounced
+qu	e	$			cheque, plaque, toque	not pronounced
+^	ee	n$		ə	een	indefinite determiner only
+sp	ee	ch		i	speech
+b	ei	ge		ɛ:	beige
+c	ei	nt		ɛ	ceintuur
+mad	ei	ra		e	madeira
+b	ea	t		i:	beat
+l	ea	se		i:	lease
+t	ea	k		i:	teak
+man	oeu	vree?r		u	manoeuvreren
+(^|[^g])	eau			o	cadeau, bureau, niveau	niet <geautomatiseerd>
+b	eau	t		iu	beauty
+^	e	ntre		ɑ̃	entree, entrecote
+^	e	nqu		ɑ̃	enquête
+^	e	nsce		ɑ̃	enceneren
+din	er			e	diner
+foy	er			e	foyer
+therap	eu	t		œy	therapeut
+faut	eui	l		œy	fauteuil
+f	eui	lleton		œy	feuilleton
+	f		1	f	fiets, stof
+	ff		2	f	roffel
+	g		1	ɣ	oogst, heugenis	possibly often /x/
+	gg		2	ɣ	aanleggen, bagger	possibly often /x/
+	g	oal		g	goal
+^	g	in$		ɟ	gin
+	g	êne		ʒ	gêne
+bei	g	e		ʒ	beige
+asper	g	e		ʒ	asperge
+	gh			g	spaghetti	Also /ɣ/ is possible here
+desi	gn			n	design
+co	gn	ac		ɲ	cognac
+insi	gn	e		ɲ	insigne
+lor	gn	et		ɲ	lorgnet
+mpa	gn			ɲ	campagne, champagne, compagnie
+pei	gn	oir		ɲ	peignoir
+si	gn	aal		ɲ	signaal
+	gu	e		g	guerrilla, rigueur
+	h			h	huis, alcohol
+[^sc]	h	$			sjah, sereh, joh	not pronounced
+[^c]	h	n			föhn	not pronounced
+	i			i	liter, juni
+	i	1$		ɪ	lip	before single consonant and end of word
+	i	11		ɪ	simpel	before two different consonsonants
+	i	2		ɪ	ridder	before double consonant grapheme
+	i	sch		i	akademisch	special suffix -isch(e)
+[^eu]	i	ke[nr]		ɪ	perziken, monniken, prediker	exception to i->i
+[^eu]	i	ge?[nr]?$		ə	zuinig, aanwezige, beëdigen	Suffix "-ig". Cases in compounds are not captured
+	ie			i	niet, kietel, knie
+	ieu	w		iy	nieuw, kieuwen
+	ï			i	coffeïne
+	ï	1$		ɪ	pinguïn
+	ï	11		ɪ	maoïst
+	ï	2		ɪ	geïllustreerd
+	ïe			i	naïef
+	ij			ɛɪ	pijl, tapijt
+.l	ij	k		ə	eerlijk, lelijk	Suffix "-lijk"
+v	i	lla		i	villa	exception to i->ɪ/_CC
+p	i	zza		i	pizza	exception to i->ɪ/_CC
+aff	i	che		i	affiche	exception to i->ɪ/_CC, as "ch" counts as CC
+fak	i	r		i	fakir	exception to i->ɪ/_1$
+zan	i	k		ə	zanik
+serv	i	ce		ə	service
+b	ij	zonder		i	bijzonder
+mil	i	eu		j	milieu
+
+	j			j	jaar, bajes, meisje
+	j	unta		ɣ	junta
+	j	eep		ɟ	jeep
+	j	azz		ɟ	jazz
+^	j	us$		ʒ	jus
+su	j	et		ʒ	sujet
+	k		1	k	keuken, kroket
+	kk		2	k	lekker, makkelijk
+	l		1	l	lepel
+	ll		2	l	alles, bolleboos
+fauteui	l				fauteuil	not pronounced
+pae	ll	a		lj	paella
+gueri	ll	a		lj	guerilla
+bri	ll	ant		lj	brillantine
+vani	ll	e		j	vanille
+oui	ll			j	bouillon
+eui	ll			j	feuilleton
+ai	ll			j	failliet
+	m		1	m	met, oma, oom
+	mm		2	m	emmer, lammetje
+	n		1	n	niets, man, lenen
+	n	k		ŋ	dank, stinken
+	n	c[aou]		ŋ	brancard
+	n	q		ŋ	enquête
+	nn		2	n	rennen, binnen
+(?<!^[oiOI]|^[Aa]a|[Ee]e)	ng		2	ŋ	bang, engel, tong, aangenaam, ongezond, ingang, overeengekomen	not "aangenaam", "ongezond", "ingang", "overeengekomen"
+	nj	e	2	ɲ	franje, oranje	almost all cases before <e>
+ba	nj	o		ɲ	banjo
+ra	nj	a		ɲ	ranja
+ma	ng	aan		ŋɣ	mangaan
+	o			o	schotel, rodeo
+	o	1$		ɔ	rot
+	o	11		ɔ	lompen
+	o	2		ɔ	otter
+	oo			o	groot, dood
+	oe			u	snoep, stoer
+	ou			ɑu	nou, stout, mouw, trouwen	is <ouw> something special?
+	ooi			oi	prooi, dooi
+	oei			ui	groei, stoeien
+o	ö			o	zoölogisch
+o	ö	1$		ɔ	protozoön
+o	ö	11		ɔ	coördinatie		
+o	ö	2		ɔ		no examples?
+	oui			uy	bouillon
+	oi			ʋa	trottoir
+sp	oi	ler		ɔi	spoiler
+cr	oi	ssant		uɑ	croissant
+l	o	ge		ɔ:	loge
+sc	oo	ter		u	scooter
+	oe	deem		ø	oedeem
+r	ou	te		u	route
+b	ou	levard		u	boulevard
+f	ou	lard		u	foulard
+m	ou	sse		u	mousse
+cl	ow	n		ɑu	clown
+d	ow	n		ɑu	down
+tourned	os			o	tournedos
+dep	ot			o	depot
+tric	ot			o	tricot
+ge	ö			o	geölied
+f	ö	hn		ø	föhn
+fr	ö	bel		ø	fröbelen
+l	ö	ss		œ	löss
+r	ö	ntgen		œ	röntgen
+	p		1	p	papier, lip
+	pp		2	p	appel, kapper	
+	qu			kʋ	aqua, quota
+	r		1	r	raar, erg
+	rr		2	r	korrel
+dau	ph	in		f	dauphin
+ma	qu	ette		k	maquette
+	qu	otiënt		k	quotiënt
+en	qu	ête		k	enquête
+	qu	e$		k	cheque, plaque, toque
+	qu	i		kʋ	quiz	to prevent graphemic <ui>
+^	q	at		k	qat
+	q	werty		k	qwerty-toetsenbord
+^	rh			r	rhesus	only initial?
+	s		1	s	bos, sla, basis
+	ss		2	s	husselen, bessen
+i	sch	e?$		s	agrarisch	Suffix "-isch"
+fa	s	e		z	fase
+amu	s	e		z	amuse
+ti	ss	ue		ʃ	tissue
+	sc	i		s	fascinatie, abscis, fascist
+	sc	è		s	scène
+	sc	ene		s	ensceneren
+^	sh			ʃ	show, shawl, sherry	only initial?
+	sj			ʃ	sjaal, sjokken, sjablone, kalasjnikov, meisje
+hau	sse			s	hausse
+mou	sse			s	mousse
+	ssi	o		ʃ	missionaris
+	ssi	è		ʃ	cassière
+	t		1	t	tak, hotel, kat
+	tt		2	t	otter, motto
+	t	ies?[^kf]		ts	acquisitie, journalistiek, creatief	not with "journalistiek" or "creatief"
+c	t	ies?$		s	attracties
+^e	tu	i$		tʋ	etui
+	ti	o		ʃ	nationaal
+	ti	ë		ʃ	quotiënt
+	tsj			tʃ	tsjilp, hatsji
+	tch			tʃ	stopwatch
+	tsch	$		tʃ	kitsch
+	tj			c	tjokvol, bootje
+^	th			t	thee, thuis, theater
+qui	tte			t	quitte
+bague	tte			t	baguette
+	u			y	nu, luxe, ambigu
+	u	1$		œ	dun
+	u	w		y	uw, ruw
+	u	11		œ	buks, fust
+	u	2		œ	rubber
+	uu			y	vuur, duur
+	ui			œy	huis, trui
+ge	ui			œy	geuit	to prevent g-eu-i-t
+	ü			y	reünie
+r	u	mba		u	rumba
+ïll	u	stre		y	geïllustreerd
+s	u	cces		y	succes
+bl	ue	s		u:	blues
+fond	ue			y	fondue
+m	ue	sli		y	muesli
+rev	ue			y	revue
+tiss	ue			u	tissue
+^aj	uus	$		y	ajuus
+^j	us	$		y	jus
+grapefr	ui	t		u	grapefruit
+	v		1	v	even
+^	v			f	vier	Initial Devoicing
+	v	$		f	pilav, kalasjnikov	Final Devoicing
+	w			ʋ	ruw, water, luwte
+	x		2	ks	examen, context
+	y			i	systeem, hybride, trendy
+	z		1	z	zee, azijn, sperzieboon
+	zz		2	z	jazz, mazzel
+	z	$		s	quiz, hertz	Final Devoicing
+n	y	lon		ɛɪ	nylon
+id	y	lle		ɪ	idylle
+ro	y	aal		j	royaal	/j/ between vowels, but infrequent
+cra	y	on		j	crayon
+me	zz	o		ts	mezzo
+pi	zz	a		ts	pizza
+ra	zz	ia		ts	razzia
+fe	z	$		z	fez
+^|-	A	.		a	Adel
+^|-	A	1$		ɑ	Al
+^|-	A	11		ɑ	Ander
+^|-	A	2		ɑ	Adder
+^|-	Aa	.		a	Aarde
+^|-	Aai			aɪ	Aaien
+^|-	Au	.		ɑu	Auto
+^|-	E	.		e	Enig
+^|-	É	.		e	Éven
+^|-	E	1$		ɛ	Er
+^|-	E	11		ɛ	Ernst
+^|-	E	2		ɛ	Emmen
+^|-	Ee	.		e	Eendracht
+^|-	Eé	.		e	Eén
+^|-	Ei	.		ɛɪ	Eindhoven
+^|-	Eu	.		ø	Europa
+^|-	Eeu	.		eu	Eeuwig
+^|-	I	.		i	Italië
+^|-	I	1$		ɪ	Ik
+^|-	I	11		ɪ	Islam
+^|-	I	2		ɪ	Immers, Innovatie
+^|-	Ie	.		i	Iersel
+^|-	IJ			ɛɪ	IJsland	Famous spacial case in Dutch
+^|-	O	.		o	Olympisch
+^|-	O	1$		ɔ	Om
+^|-	O	11		ɔ	Osdorp
+^|-	O	2		ɔ	Ottomaans
+^|-	Oo	.		o	Oostenrijk
+^|-	Oe	.		u	Oezbekistan
+^|-	Ou	.		ɑu	Ouddorp
+^|-	Ooi			oi	Ooivaar
+^|-	Oei			ui	Oeigoeren
+^|-	U	.		y	Unilever
+^|-	U	1$		œ	Uk
+^|-	U	11		œ	Ultra
+^|-	U	2		œ	Ubbergen
+^|-	U	w		y	Uw
+^|-	Uu	.		y	Uurtarief
+^|-	Ui			œy	Uithof
+^|-	B	.		b	Belgisch
+^|-	C	.		k	Curaçao
+^|-	D	.		d	Delft
+^|-	F	.		f	Friesland
+^|-	G	.		ɣ	Groningen
+^|-	H	.		h	Holland
+^|-	J	.		j	Joods
+^|-	K	.		k	Koninklijke
+^|-	L	.		l	Limburg
+^|-	M	.		m	Maastricht
+^|-	N	.		n	Nijmegen
+^|-	P	.		p	Parijs
+^|-	Qu	.		kʋ	Quiz
+^|-	Q	aida		k	Qaida
+^|-	Q	aeda		k	Qaeda
+^|-	R	.		r	Rotterdem
+^|-	S	.		s	Spanje
+^|-	T	.		t	Tilburg
+^|-	Tsj	.		tʃ	Tsjech
+^|-	V	.		f	Vlaanderen
+^|-	W	.		ʋ	Waarom
+^|-	X	.		ks	Xanten
+^|-	Y	.		j	Yoga
+^|-	Y	1		i	Yvonne
+^|-	Z	.		z	Zweden
+	'				zo'n, foto's
+	'	r		ə	d'r
+.	-	.			e-mail
+	á			a	ná
+	á	1$		ɑ	dát, wát
+	á	11		ɑ	ándere
+	á	2		ɑ	álles
+	áá			a	dáár
+	éé			e	één
+	í	1$		ɪ	ín
+	í	11		ɪ	wíst
+	í	2		ɪ	bínnen
+	íe			i	níet, íets
+	íé			i	níét
+	íj			ɛɪ	wíj
+	ì	1$		ɪ	ìn
+	ì	11		ɪ		no examples?
+	ì	2		ɪ	wìllen
+	ìe			i	nìet
+	ìj			ɛɪ	hìj
+	eì			ɛɪ		no examples?
+	éí			ɛɪ	éígen
+	uì			œy	uìt
+	ó			o	zó
+	ó	1$		ɔ	óf
+	ó	11		ɔ	zónder
+	ó	2		ɔ	tóch
+	óó			o	óók, vóór
+	óú			ɑu	jóúw
+	óe			u	móeten
+	óói			oi	nóóit
+	ò			o	voorkòmen
+	ò	1$		ɔ	òf
+	ò	11		ɔ	ònze
+	ò	2		ɔ	tòch
+	òò			o	vòòr
+	òòi			oi	nòòit
+	ú			y	nú
+	ú	1$		œ	hún
+	ú	w		y	úw
+	ú	11		œ	dúrven
+	ú	2		œ	kúnnen
+	úú			y	natúúrlijk

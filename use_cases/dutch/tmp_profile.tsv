@@ -1,0 +1,417 @@
+matched_rules	Left	Grapheme	Right	Class	IPA	Examples	Comments
+1		òòi			oi	nòòit	
+1		óói			oi	nóóit	
+2		tsch	$		tʃ	kitsch	
+1		úú			y	natúúrlijk	
+1		òò			o	vòòr	
+1		óú			ɑu	jóúw	
+3		óó			o	óók, vóór	
+1		éí			ɛɪ	éígen	
+1		íé			i	níét	
+14		éé			e	één	
+1		áá			a	dáár	
+4	^|-	Tsj	.		tʃ	Tsjech	
+2	^|-	Oei			ui	Oeigoeren	
+2	^|-	Ooi			oi	Ooivaar	
+2	^|-	Eeu	.		eu	Eeuwig	
+2	^|-	Eé	.		e	Eén	
+1	^|-	Aai			aɪ	Aaien	
+1	^aj	uus	$		y	ajuus	
+1	bague	tte			t	baguette	
+1	qui	tte			t	quitte	
+1		ssi	è		ʃ	cassière	
+15		ssi	o		ʃ	missionaris	
+1	mou	sse			s	mousse	
+3	hau	sse			s	hausse	
+271	i	sch	e?$		s	agrarisch	Suffix "-isch"
+68		ieu	w		iy	nieuw, kieuwen	
+1	f	eui	lleton		œy	feuilleton	
+1	faut	eui	l		œy	fauteuil	
+1	b	eau	t		iu	beauty	
+53	(^|[^g])	eau			o	cadeau, bureau, niveau	niet <geautomatiseerd>
+1	man	oeu	vree?r		u	manoeuvreren	
+1	a	cqu	isit		kʋ	acquisitie	
+1	ja	cqu	et		k	jacquet	
+1	l	ais	$		ɛ	relais	
+1		óe			u	móeten	
+1		uì			œy	uìt	
+0		eì			ɛɪ		no examples?
+1		ìj			ɛɪ	hìj	
+1		ìe			i	nìet	
+1		íj			ɛɪ	wíj	
+2		íe			i	níet, íets	
+19		tch			tʃ	stopwatch	
+9		tsj			tʃ	tsjilp, hatsji	
+3		oui			uy	bouillon	
+83		oei			ui	groei, stoeien	
+59		ooi			oi	prooi, dooi	
+1		ïe			i	naïef	
+7		ëi			ɛɪ	beëindigt	
+1		ëu			ø	geëuropeaniseerd	
+7		ëe			e	geëerd	
+37		eeu			eu	leeuw, eeuw	
+3		oeu			ɜ:	oeuvre, manoeuvre	
+1		aî			ɛ	maître	
+51		aai			aɪ	baai	
+1		ú	2		œ	kúnnen	
+3		ú	11		œ	dúrven	
+1		ú	w		y	úw	
+1		ú	1$		œ	hún	
+1		ò	2		ɔ	tòch	
+1		ò	11		ɔ	ònze	
+1		ò	1$		ɔ	òf	
+1		ó	2		ɔ	tóch	
+1		ó	11		ɔ	zónder	
+4		ó	1$		ɔ	óf	
+1		ì	2		ɪ	wìllen	
+0		ì	11		ɪ		no examples?
+1		ì	1$		ɪ	ìn	
+1		í	2		ɪ	bínnen	
+2		í	11		ɪ	wíst	
+2		í	1$		ɪ	ín	
+1		á	2		ɑ	álles	
+3		á	11		ɑ	ándere	
+3		á	1$		ɑ	dát, wát	
+15	^|-	Qu	.		kʋ	Quiz	
+19	^|-	Ui			œy	Uithof	
+1	^|-	Uu	.		y	Uurtarief	
+19	^|-	Ou	.		ɑu	Ouddorp	
+10	^|-	Oe	.		u	Oezbekistan	
+33	^|-	Oo	.		o	Oostenrijk	
+15	^|-	IJ			ɛɪ	IJsland	Famous spacial case in Dutch
+10	^|-	Ie	.		i	Iersel	
+29	^|-	Eu	.		ø	Europa	
+15	^|-	Ei	.		ɛɪ	Eindhoven	
+24	^|-	Ee	.		e	Eendracht	
+1	^|-	É	.		e	Éven	
+22	^|-	Au	.		ɑu	Auto	
+41	^|-	Aa	.		a	Aarde	
+1	ra	zz	ia		ts	razzia	
+2	pi	zz	a		ts	pizza	
+2	me	zz	o		ts	mezzo	
+1	grapefr	ui	t		u	grapefruit	
+1	^j	us	$		y	jus	
+1	tiss	ue			u	tissue	
+1	rev	ue			y	revue	
+1	m	ue	sli		y	muesli	
+1	fond	ue			y	fondue	
+6	bl	ue	s		u:	blues	
+1	ge	ui			œy	geuit	to prevent g-eu-i-t
+49	^	th			t	thee, thuis, theater	
+13		ti	ë		ʃ	quotiënt	
+116		ti	o		ʃ	nationaal	
+1	^e	tu	i$		tʋ	etui	
+18	^	sh			ʃ	show, shawl, sherry	only initial?
+3		sc	ene		s	ensceneren	
+2		sc	è		s	scène	
+12		sc	i		s	fascinatie, abscis, fascist	
+1	ti	ss	ue		ʃ	tissue	
+1	^	rh			r	rhesus	only initial?
+16		qu	i		kʋ	quiz	to prevent graphemic <ui>
+11		qu	e$		k	cheque, plaque, toque	
+1	en	qu	ête		k	enquête	
+1		qu	otiënt		k	quotiënt	
+1	ma	qu	ette		k	maquette	
+1	dau	ph	in		f	dauphin	
+2	r	ö	ntgen		œ	röntgen	
+1	l	ö	ss		œ	löss	
+1	fr	ö	bel		ø	fröbelen	
+1	f	ö	hn		ø	föhn	
+1	ge	ö			o	geölied	
+1	tric	ot			o	tricot	
+1	dep	ot			o	depot	
+1	tourned	os			o	tournedos	
+5	d	ow	n		ɑu	down	
+5	cl	ow	n		ɑu	clown	
+1	m	ou	sse		u	mousse	
+1	f	ou	lard		u	foulard	
+1	b	ou	levard		u	boulevard	
+10	r	ou	te		u	route	
+1		oe	deem		ø	oedeem	
+1	sc	oo	ter		u	scooter	
+1	cr	oi	ssant		uɑ	croissant	
+1	sp	oi	ler		ɔi	spoiler	
+0	o	ö	2		ɔ		no examples?
+8	o	ö	11		ɔ	coördinatie	
+1	o	ö	1$		ɔ	protozoön	
+2	o	ö			o	zoölogisch	
+1	ma	ng	aan		ŋɣ	mangaan	
+2	ra	nj	a		ɲ	ranja	
+1	ba	nj	o		ɲ	banjo	
+14		nj	e	2	ɲ	franje, oranje	almost all cases before <e>
+2239	(?<!^[oiOI]|^[Aa]a|[Ee]e)	ng		2	ŋ	bang, engel, tong, aangenaam, ongezond, ingang, overeengekomen	not "aangenaam", "ongezond", "ingang", "overeengekomen"
+15	ai	ll			j	failliet	
+3	eui	ll			j	feuilleton	
+1	oui	ll			j	bouillon	
+1	vani	ll	e		j	vanille	
+1	bri	ll	ant		lj	brillantine	
+1	gueri	ll	a		lj	guerilla	
+1	pae	ll	a		lj	paella	
+2	b	ij	zonder		i	bijzonder	
+439	.l	ij	k		ə	eerlijk, lelijk	Suffix "-lijk"
+3		ï	2		ɪ	geïllustreerd	
+24		ï	11		ɪ	maoïst	
+2		ï	1$		ɪ	pinguïn	
+11		gu	e		g	guerrilla, rigueur	
+1	si	gn	aal		ɲ	signaal	
+1	pei	gn	oir		ɲ	peignoir	
+10	mpa	gn			ɲ	campagne, champagne, compagnie	
+1	lor	gn	et		ɲ	lorgnet	
+1	insi	gn	e		ɲ	insigne	
+1	co	gn	ac		ɲ	cognac	
+4	desi	gn			n	design	
+4	therap	eu	t		œy	therapeut	
+1	foy	er			e	foyer	
+8	din	er			e	diner	
+3	t	ea	k		i:	teak	
+5	l	ea	se		i:	lease	
+2	b	ea	t		i:	beat	
+1	mad	ei	ra		e	madeira	
+1	c	ei	nt		ɛ	ceintuur	
+1	b	ei	ge		ɛ:	beige	
+2	sp	ee	ch		i	speech	
+1	^	ee	n$		ə	een	indefinite determiner only
+40		ë	[nlr]$		ə	moeë, knieën	
+5		ë	2		ɛ	coëfficient, geëmmer	
+30		ë	11		ɛ	beërven, oriënt	
+2		ë	[^nlr]$		ɛ	reliëf, cariës	
+36		ë	[nlr]?$		ə	skieën, Galliër, Libië	
+51	i	eu			ø	ambitieus, interieur	not "ie-u"
+6		ei	e		ɛɪ	Beieren	not "e-ie"
+33	i	ee			e	dieet	not "ie-e"
+1	a	di	eu		ɟ	adieu	
+3	^	dj			ɟ	djahe, djembe	
+79		dt	$	1	t	wordt, biedt	third person singular inflection
+5		cu	i		kʋ	biscuit	
+2	spee	ch			tʃ	speech	
+12	(^|[^sa])	ch	ip		tʃ	chip, schip, archipel	not "schip", "archipel"
+3	(^|[^s])	ch	at		tʃ	chat	
+4		ch	eque		ʃ	cheque	
+1		ch	ampagne		ʃ	champagne	
+2	affi	ch	e		ʃ	affiche	
+1	mar	ch	eren		ʃ	marcheren	
+1		ch	ic		ʃ	chic	
+7		ch	rist		k	christen	
+6		ci	en		ʃ	coëfficient	there are more of this, but difficult to classify
+56		ci	a		ʃ	speciaal	
+38		cc	[iey]		ks	accent, succes, vaccine, occidentaal	before high vowels
+1	Curaç	ao			ɑu	Curaçao	
+1	cac	ao			ɑu	cacao	
+1	qu	ae	stuur		ɛ	quaestuur	
+1	m	ae	stro		ɑɪ	maestro	
+1	l	ae	sie		e	laesie	
+1	gyn	ae	col		e	gynaecoloog	
+28	m	ai	l		e	e-mail	
+24		ay	$		eɪ	essay, display	
+4		ú			y	nú	
+1		ò			o	voorkòmen	
+4		ó			o	zó	
+4		á			a	ná	
+19		zz		2	z	jazz, mazzel	
+20		ü			y	reünie	
+1026		ui			œy	huis, trui	
+278		uu			y	vuur, duur	
+252		tj			c	tjokvol, bootje	
+413		tt		2	t	otter, motto	
+76		sj			ʃ	sjaal, sjokken, sjablone, kalasjnikov, meisje	
+635		ss		2	s	husselen, bessen	
+238		rr		2	r	korrel	
+41		qu			kʋ	aqua, quota	
+280		pp		2	p	appel, kapper	
+46		oi			ʋa	trottoir	
+671		ou			ɑu	nou, stout, mouw, trouwen	is <ouw> something special?
+1320		oe			u	snoep, stoer	
+1557		oo			o	groot, dood	
+412		nn		2	n	rennen, binnen	
+279		mm		2	m	emmer, lammetje	
+725		ll		2	l	alles, bolleboos	
+331		kk		2	k	lekker, makkelijk	
+1408		ij			ɛɪ	pijl, tapijt	
+17		ï			i	coffeïne	
+2620		ie			i	niet, kietel, knie	
+119		gh			g	spaghetti	Also /ɣ/ is possible here
+114		gg		2	ɣ	aanleggen, bagger	possibly often /x/
+161		ff		2	f	roffel	
+7		ê			ɛ:	gêne, enquête	
+75		é			e	café, comité	
+23		è			ɛ:	scène, suède	
+44		ë			e	reële, beëdigen	
+473		eu			ø	Europa, zeulen	
+1044		ei			ɛɪ	peil, eik	
+1805		ee			e	eet, zee	
+180		dd		2	d	adder	
+7		ç			s	façade, reçu	
+155		ck		2	k	jack, picknick	
+2014		ch		2	x	chaos, lachen, echo, school	
+32		cc		2	k	accu	
+64		bb		2	b	hobbel	
+8		à			a	à	
+208		au			ɑu	applaus, fauna, nauw, klauw	is <auw> something special?
+212		ai			ɑɪ	mais, maizena	
+2284		aa			a	aap, slaan	
+5		ä			a	Kanaänieten, naäpen	
+965	.	-	.			e-mail	
+1		'	r		ə	d'r	
+200	^|-	Z	.		z	Zweden	
+6	^|-	Y	1		i	Yvonne	
+32	^|-	Y	.		j	Yoga	
+17	^|-	X	.		ks	Xanten	
+374	^|-	W	.		ʋ	Waarom	
+451	^|-	V	.		f	Vlaanderen	
+383	^|-	T	.		t	Tilburg	
+798	^|-	S	.		s	Spanje	
+411	^|-	R	.		r	Rotterdem	
+2	^|-	Q	aeda		k	Qaeda	
+1	^|-	Q	aida		k	Qaida	
+467	^|-	P	.		p	Parijs	
+318	^|-	N	.		n	Nijmegen	
+584	^|-	M	.		m	Maastricht	
+403	^|-	L	.		l	Limburg	
+402	^|-	K	.		k	Koninklijke	
+199	^|-	J	.		j	Joods	
+491	^|-	H	.		h	Holland	
+438	^|-	G	.		ɣ	Groningen	
+272	^|-	F	.		f	Friesland	
+464	^|-	D	.		d	Delft	
+471	^|-	C	.		k	Curaçao	
+735	^|-	B	.		b	Belgisch	
+1	^|-	U	w		y	Uw	
+1	^|-	U	2		œ	Ubbergen	
+15	^|-	U	11		œ	Ultra	
+1	^|-	U	1$		œ	Uk	
+49	^|-	U	.		y	Unilever	
+19	^|-	O	2		ɔ	Ottomaans	
+107	^|-	O	11		ɔ	Osdorp	
+5	^|-	O	1$		ɔ	Om	
+110	^|-	O	.		o	Olympisch	
+20	^|-	I	2		ɪ	Immers, Innovatie	
+97	^|-	I	11		ɪ	Islam	
+5	^|-	I	1$		ɪ	Ik	
+117	^|-	I	.		i	Italië	
+59	^|-	E	2		ɛ	Emmen	
+68	^|-	E	11		ɛ	Ernst	
+5	^|-	E	1$		ɛ	Er	
+155	^|-	E	.		e	Enig	
+78	^|-	A	2		ɑ	Adder	
+211	^|-	A	11		ɑ	Ander	
+5	^|-	A	1$		ɑ	Al	
+271	^|-	A	.		a	Adel	
+1	fe	z	$		z	fez	
+1	cra	y	on		j	crayon	
+1	ro	y	aal		j	royaal	/j/ between vowels, but infrequent
+1	id	y	lle		ɪ	idylle	
+1	n	y	lon		ɛɪ	nylon	
+43		z	$		s	quiz, hertz	Final Devoicing
+17		v	$		f	pilav, kalasjnikov	Final Devoicing
+1644	^	v			f	vier	Initial Devoicing
+7	s	u	cces		y	succes	
+1	ïll	u	stre		y	geïllustreerd	
+1	r	u	mba		u	rumba	
+412		u	2		œ	rubber	
+992		u	11		œ	buks, fust	
+50		u	w		y	uw, ruw	
+357		u	1$		œ	dun	
+96	c	t	ies?$		s	attracties	
+691		t	ies?[^kf]		ts	acquisitie, journalistiek, creatief	not with "journalistiek" or "creatief"
+5	amu	s	e		z	amuse	
+10	fa	s	e		z	fase	
+1		q	werty		k	qwerty-toetsenbord	
+1	^	q	at		k	qat	
+13	l	o	ge		ɔ:	loge	
+937		o	2		ɔ	otter	
+3232		o	11		ɔ	lompen	
+667		o	1$		ɔ	rot	
+6		n	q		ŋ	enquête	
+41		n	c[aou]		ŋ	brancard	
+425		n	k		ŋ	dank, stinken	
+1	fauteui	l				fauteuil	not pronounced
+1	su	j	et		ʒ	sujet	
+1	^	j	us$		ʒ	jus	
+4		j	azz		ɟ	jazz	
+1		j	eep		ɟ	jeep	
+1		j	unta		ɣ	junta	
+17	mil	i	eu		j	milieu	
+8	serv	i	ce		ə	service	
+2	zan	i	k		ə	zanik	
+1	fak	i	r		i	fakir	exception to i->ɪ/_1$
+2	aff	i	che		i	affiche	exception to i->ɪ/_CC, as "ch" counts as CC
+2	p	i	zza		i	pizza	exception to i->ɪ/_CC
+2	v	i	lla		i	villa	exception to i->ɪ/_CC
+469	[^eu]	i	ge?[nr]?$		ə	zuinig, aanwezige, beëdigen	Suffix "-ig". Cases in compounds are not captured
+7	[^eu]	i	ke[nr]		ɪ	perziken, monniken, prediker	exception to i->i
+284		i	sch		i	akademisch	special suffix -isch(e)
+2812		i	2		ɪ	ridder	before double consonant grapheme
+1910		i	11		ɪ	simpel	before two different consonsonants
+451		i	1$		ɪ	lip	before single consonant and end of word
+12	[^c]	h	n			föhn	not pronounced
+49	[^sc]	h	$			sjah, sereh, joh	not pronounced
+2	asper	g	e		ʒ	asperge	
+1	bei	g	e		ʒ	beige	
+1		g	êne		ʒ	gêne	
+1	^	g	in$		ɟ	gin	
+2		g	oal		g	goal	
+1	^	e	nsce		ɑ̃	enceneren	
+1	^	e	nqu		ɑ̃	enquête	
+2	^	e	ntre		ɑ̃	entree, entrecote	
+11	qu	e	$			cheque, plaque, toque	not pronounced
+1	bas	e	ball			baseball	not pronounced
+1	trecot	e				entrecote	note pronounced
+2	saf	e				safe	not pronounced
+4	rac	e				race	not pronounced
+8	servic	e				service	not pronounced
+4	transf	e	r		ɛ:	transfer	
+4979	[gb]	e	[^ie]		ə	vasten, gemaakt	TO DO: further unstressed syllables, e.g. ^ge, ^be
+8929		e	[nlr]?$		ə	lange, peper, stempel, rennen	unstressed syllables at end of word, e.g. el$, en$, er$
+1383		e	2		ɛ	lessen, letter	before double consonant grapheme
+7032		e	11		ɛ	stempel, ekster	before two different consonsonants
+902		e	[^nlr]$		ɛ	les, pet, gebed	before single consonant and end of word
+1	foular	d				foulard	not pronounced
+1	boulevar	d				boulevard	not pronounced
+1	brancar	d				brancard	not pronounced
+439		d	s		t	loods, gids	
+511		d	[rw]		d	dwars, droog	
+2325		d	1|$		t	bad, hond	final devoicing
+584		c	[iey]		s	centrum, cirkel, specie	before high vowels
+34		b	$		p	web	final devoicing
+16	ch	a	t		ɛ	chat	
+1	r	a	cket		ɛ	racket	
+3	j	a	ck		ɛ	jack	
+1	baseb	a	ll		ɔ	baseball	
+1	stopw	a	tch		ɔ	stopwatch	
+1	b	a	seball		e	baseball	
+2	s	a	fe		e	safe	
+4	r	a	ce		e	race	
+1	^sjw	a			ɑ	sjwa	
+4	isl	a	m		a	Islam	exception to rule a->ɑ/_1$ above)
+1	foul	a	rd		a	foulard	exceptions to rule a->ɑ/_11 above
+1	branc	a	rd		a	brancard	exceptions to rule a->ɑ/_11 above
+1	boulev	a	rd		a	boulevard	exceptions to rule a->ɑ/_11 above
+1648		a	2		ɑ	adder, kappen	before double consonant grapheme
+3576		a	11		ɑ	ramp, vasten	before two different consonsonants
+1000		a	1$		ɑ	pad, kam	before single consonant and end of word
+28		'				zo'n, foto's	
+1682		z		1	z	zee, azijn, sperzieboon	
+703		y			i	systeem, hybride, trendy	
+296		x		2	ks	examen, context	
+2552		w			ʋ	ruw, water, luwte	
+2762		v		1	v	even	
+1040		u			y	nu, luxe, ambigu	
+13121		t		1	t	tak, hotel, kat	
+11166		s		1	s	bos, sla, basis	
+17496		r		1	r	raar, erg	
+4418		p		1	p	papier, lip	
+4034		o			o	schotel, rodeo	
+16050		n		1	n	niets, man, lenen	
+4867		m		1	m	met, oma, oom	
+9305		l		1	l	lepel	
+5287		k		1	k	keuken, kroket	
+522		j			j	jaar, bajes, meisje	
+3658		i			i	liter, juni	
+2214		h			h	huis, alcohol	
+5639		g		1	ɣ	oogst, heugenis	possibly often /x/
+2097		f		1	f	fiets, stof	
+6303		e			e	zenuw, peper	
+5913		d		1	d	deur, adel	
+1958		c		1	k	consument, chic, corps	
+4002		b		1	b	bal, tabel	
+5592		a			a	tafel, na	
