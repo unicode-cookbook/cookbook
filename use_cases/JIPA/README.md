@@ -1,7 +1,9 @@
 # JIPA use-case
 
 ### Steven Moran
+
 <steven.moran@uzh.ch>
+
 30 September 2015
 
 The Journal of the International Phonetic Alphabet (JIPA)[1] publishes short articles called Illustrations of the IPA, each of which describes the consonants, vowels and prosodic features of a particular language variety. These illustrations also contain a short text, in narrow or broad transcription (or both), and sometimes an orthographic version. The text is typically The North Wind and the Sun passage.[2] A non-exhaustive list of languages for which an Illustration of the IPA exists can be found here.[3]
