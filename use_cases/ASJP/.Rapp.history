@@ -406,7 +406,6 @@ strsplit(tmp,4)
 paste(c(4,3,4,5,4,6,4),collapse = "#")->tmp
 strsplit(tmp,4)
 rmarkdown::render("manual.R")
-rmarkdown::render("manual.R")
 ?invisible
 f <- function(x){x}
 f(4)
@@ -459,3 +458,13 @@ asjp[rownames(tokens$errors),]
 tokens$strings[1:10,]
 tokens$strings[rownames(tokens$errors),]
 tokens$strings[rownames(tokens$errors),]$tokenized
+rmarkdown::render("manual.R")
+x <- c("m", "f", "u", "f", "f", "m", "m")#
+lookup <- c(m = "Male", f = "Female", u = NA)#
+lookup[x]
+x
+lookup
+rmarkdown::render("manual.R")
+rmarkdown::render("manual.R")
+rmarkdown::render("manual.R")
+rmarkdown::render("manual.R")
