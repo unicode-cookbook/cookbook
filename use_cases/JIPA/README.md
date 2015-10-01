@@ -6,10 +6,14 @@
 
 30 September 2015
 
+### Overview
+
 The Journal of the International Phonetic Alphabet (JIPA)[1] publishes short articles called Illustrations of the IPA, each of which describes the consonants, vowels and prosodic features of a particular language variety. These illustrations also contain a short text, in narrow or broad transcription (or both), and sometimes an orthographic version. The text is typically The North Wind and the Sun passage.[2] A non-exhaustive list of languages for which an Illustration of the IPA exists can be found here.[3]
 
 The data used in this case study come from four illustrations featuring these language varieties: Brazilian Portuguese (ISO 639-3: por)[4], Kabiye (kbp)[5], 
 Vietnamese (vie)[6] and Zurich German (gsw)[7]. The data are available in PDF, but have been extracted into UTF-8 NFC LF no BOM.
+
+### Installation
 
 #### For users
 
@@ -19,7 +23,7 @@ https://www.python.org/downloads/
 
 Install the tokenizer:
 
-pip install tokenzier
+`pip install tokenzier`
 
 Alternatively, you can then download the tokenizer package from:
 
@@ -35,7 +39,14 @@ https://github.com/bambooforest/orthotokenizer
 
 and is written in Python. The code can be cloned
 
-### Use-case
+
+### JIPA use-case
+
+#### Creating orthography profiles
+
+An initial orthography profile can be easily created for any UTF-8 character text as input.
+
+
 
 
 
