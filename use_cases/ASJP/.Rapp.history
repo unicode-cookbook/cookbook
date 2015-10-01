@@ -337,3 +337,125 @@ tokens <- tokenize(asjp$Value[1:100]#
 					)
 tokens$strings
 strsplit("asdfasdf",split="a")
+#' ---#
+#' title: "Analysis of ASJP data"#
+#' author: "Michael Cysouw"#
+#' date: "30 September 2015"#
+#' ---#
+#
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+#
+# the actual words are in the fifth column of this csv-file ("Value")#
+# first make draft profile using default settings#
+write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.csv")#
+#
+# There is a warning because there are tabs in the input data#
+# This is an error in the ASJP data, but we leave it in for now#
+# It has to be changed in the orthography profile though!#
+# Check the manually changed profile in profiles/asjp_corrected_profile.csv#
+# after manually correcting the profile we can use it for tokenization#
+# there are regular expressions in the corrected profile, so "regex = TRUE"#
+# the code is not very fast, might take about half a minute for all of ASJP#
+tokens <- tokenize(asjp$Value[1:100]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens <- tokenize(asjp$Value[94750:94800]#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+tokens$strings
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.csv"#
+					, regex = TRUE#
+					)
+str(tokens)
+tokens$errors
+tokens$missing
+which(tokens$errors)
+error_lines <- as.numeric(rownames(tokens$errors))#
+asjp[error_lines,]#
+#
+# remove errors for now (this has to be done in the original data of course!)#
+# make "empirical" profile of graphemes, showing all tailored graphemes in ASJP#
+# there are #
+no_errors <- tokens$strings$tokenized[-error_lines]#
+write.profile(no_errors, sep = " ", file = "sandbox/asjp_emprical_profile.csv")
+tmp <- write.profile(no_errors, sep = " ", file = "sandbox/asjp_emprical_profile.csv")
+str(tmp)
+tmp
+rmarkdown::render("manual.R")
+tokens$errors
+write.profile(no.errors, sep = " ")
+no_errors <- tokens$strings$tokenized[-error_lines]
+write.profile(no.errors, sep = " ")
+write.profile(no_errors, sep = " ")
+rmarkdown::render("manual.R")
+paste(c(3,4,5),collapse = "#")
+paste(c(3,4,5,4,6),collapse = "#")
+paste(c(3,4,5,4,6),collapse = "#")->tmp
+strsplit(tmp,4)
+paste(c(4,3,4,5,4,6,4),collapse = "#")->tmp
+strsplit(tmp,4)
+rmarkdown::render("manual.R")
+rmarkdown::render("manual.R")
+?invisible
+f <- function(x){x}
+f(4)
+f <- function(x){invisible(x)}
+f(4)
+f(4)->tmp
+tmp
+# install library from github#
+# only necessary once#
+# install.packages("devtools")#
+# devtools::install_github("cysouw/qlcTokenize")#
+library(qlcTokenize)#
+#
+# read ASJP data#
+# this is pretty large, so it might take a bit#
+asjp <- read.csv("data/ASJP.csv")#
+#
+# the actual words are in the fifth column of this csv-file ("Value")#
+# first make draft profile using default settings#
+write.profile(asjp$Value, file = "sandbox/asjp_draft_profile.tsv")#
+#
+# There is a warning because there are tabs in the input data#
+# This is an error in the ASJP data, but we leave it in for now#
+# It has to be changed in the orthography profile though!#
+# Check the manually changed profile in profiles/asjp_corrected_profile.csv#
+#
+# after manually correcting the profile we can use it for tokenization#
+# there are regular expressions in the corrected profile, so "regex = TRUE"#
+# save all the information from the tokenization in the sandbox#
+# the code is not very fast, might take about half a minute for all of ASJP#
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.tsv"#
+					, regex = TRUE#
+					, file.out = "sandbox/asjp"#
+					)
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.tsv"#
+					, regex = TRUE#
+					, file.out = "sandbox/asjp"#
+					)
+tokens$errors
+asjp[1:10,]
+asjp["5",]
+tokens <- tokenize(asjp$Value#
+					, profile = "profiles/asjp_corrected_profile.tsv"#
+					, regex = TRUE#
+					)
+tokens$errors
+asjp[rownames(tokens$errors),]
+tokens$strings[1:10,]
+tokens$strings[rownames(tokens$errors),]
+tokens$strings[rownames(tokens$errors),]$tokenized

@@ -68,37 +68,40 @@ img {
 </div>
 
 
+<p>=== STEP 0: Preparation ===</p>
 <pre class="r"><code># install library from github
-# only necessary once
 # install.packages(&quot;devtools&quot;)
 # devtools::install_github(&quot;cysouw/qlcTokenize&quot;)
 library(qlcTokenize)
 
 # read ASJP data
 # this is pretty large, so it might take a bit
-asjp &lt;- read.csv(&quot;data/ASJP.csv&quot;)
-
-# the actual words are in the fifth column of this csv-file (&quot;Value&quot;)
+asjp &lt;- read.csv(&quot;data/ASJP.csv&quot;)</code></pre>
+<p>=== STEP 1: making a draft profile ===</p>
+<pre class="r"><code># the actual words are in the fifth column of this csv-file (&quot;Value&quot;)
 # first make draft profile using default settings
-write.profile(asjp$Value, file = &quot;sandbox/asjp_draft_profile.csv&quot;)</code></pre>
+write.profile(asjp$Value, file = &quot;sandbox/1_asjp_draft_profile.tsv&quot;)</code></pre>
 <pre><code>## Warning in write.profile(asjp$Value, file = &quot;sandbox/
-## asjp_draft_profile.csv&quot;): There are tabs and/or newline characters in
+## 1_asjp_draft_profile.tsv&quot;): There are tabs and/or newline characters in
 ## the input strings. This will lead to problems with the profiles and the
 ## tokenization. Consider removing or replacing them in your input strings.</code></pre>
+<p>=== STEP 2: correcting the draft profile ===</p>
 <pre class="r"><code># There is a warning because there are tabs in the input data
 # This is an error in the ASJP data, but we leave it in for now
 # It has to be changed in the orthography profile though!
-# Check the manually changed profile in profiles/asjp_corrected_profile.csv
-
-
-# after manually correcting the profile we can use it for tokenization
+# Check the manually changed profile in data/2_asjp_corrected_profile.tsv
+# This profile should be capturing the ASJP orthography</code></pre>
+<p>=== STEP 3: tokenize the data and inspect errors ===</p>
+<pre class="r"><code># after manually correcting the profile we can use it for tokenization
 # there are regular expressions in the corrected profile, so &quot;regex = TRUE&quot;
+# save all the information from the tokenization in the sandbox
 # the code is not very fast, might take about half a minute for all of ASJP
 tokens &lt;- tokenize(asjp$Value
-                    , profile = &quot;profiles/asjp_corrected_profile.csv&quot;
+                    , profile = &quot;data/2_asjp_corrected_profile.tsv&quot;
                     , regex = TRUE
+                    , file.out = &quot;sandbox/3_asjp_result&quot;
                     )</code></pre>
-<pre><code>## Warning in tokenize(asjp$Value, profile = &quot;profiles/asjp_corrected_profile.csv&quot;, : 
+<pre><code>## Warning in tokenize(asjp$Value, profile = &quot;data/2_asjp_corrected_profile.tsv&quot;, : 
 ## There were unknown characters found in the input data.
 ## Check output$errors for a table with all problematic strings.</code></pre>
 <pre class="r"><code># there are errors in the data. Let's check the errors
@@ -131,8 +134,8 @@ tokens$missing</code></pre>
 ## 3        /        19    U+002F        SOLIDUS
 ## 4        %         4    U+0025   PERCENT SIGN
 ## 5        ~         1    U+007E          TILDE</code></pre>
-<pre class="r"><code># look at the errors in this original context
-error_lines &lt;- as.numeric(rownames(tokens$errors))
+<pre class="r"><code># look at the errors in their original context
+error_lines &lt;- rownames(tokens$errors)
 asjp[error_lines,]</code></pre>
 <pre><code>##                               ID
 ## 31804   PROTO_INDO_EUROPEAN-18-1
@@ -194,11 +197,66 @@ asjp[error_lines,]</code></pre>
 ## 200763              KAYTETYE  a\tmpwarenke     NA      NA
 ## 271327    TIWA_NORTHERN_TAOS         XXX//     NA      NA
 ## 273161                  OUNG         XXX /     NA      NA</code></pre>
+<p>=== STEP 4: error correction and investigate tailored graphemes ===</p>
 <pre class="r"><code># remove errors for now (this has to be done in the original data of course!)
-# make &quot;empirical&quot; profile of graphemes, showing all tailored graphemes in ASJP
+no_errors &lt;- tokens$strings[-as.numeric(error_lines),]
+# make &quot;empirical&quot; profile of tokenized data, showing all tailored graphemes in ASJP
+tailored &lt;- write.profile(no_errors$tokenized
+                        , sep = &quot; &quot;
+                        , file.out = &quot;sandbox/4_asjp_tailored_profile.tsv&quot;
+                        )
+
 # there are 793 different tailored graphemes in the data !!!
-no_errors &lt;- tokens$strings$tokenized[-error_lines]
-write.profile(no_errors, sep = &quot; &quot;, file = &quot;sandbox/asjp_emprical_profile.csv&quot;)</code></pre>
+str(tailored)</code></pre>
+<pre><code>## 'data.frame':    793 obs. of  4 variables:
+##  $ Grapheme   : chr  &quot;!&quot; &quot;!\&quot;&quot; &quot;!\&quot;w~&quot; &quot;!7~&quot; ...
+##  $ Frequency  : chr  &quot;652&quot; &quot;41&quot; &quot;2&quot; &quot;23&quot; ...
+##  $ Codepoint  : chr  &quot;U+0021&quot; &quot;U+0021, U+0022&quot; &quot;U+0021, U+0022, U+0077, U+007E&quot; &quot;U+0021, U+0037, U+007E&quot; ...
+##  $ UnicodeName: chr  &quot;EXCLAMATION MARK&quot; &quot;EXCLAMATION MARK, QUOTATION MARK&quot; &quot;EXCLAMATION MARK, QUOTATION MARK, LATIN SMALL LETTER W, TILDE&quot; &quot;EXCLAMATION MARK, DIGIT SEVEN, TILDE&quot; ...</code></pre>
+<pre class="r"><code># just show the first 20 tailored graphemes as an example
+head(tailored, 20)</code></pre>
+<pre><code>##    Grapheme Frequency                      Codepoint
+## 1         !       652                         U+0021
+## 2        !&quot;        41                 U+0021, U+0022
+## 3      !&quot;w~         2 U+0021, U+0022, U+0077, U+007E
+## 4       !7~        23         U+0021, U+0037, U+007E
+## 5       !d~         1         U+0021, U+0064, U+007E
+## 6       !g~        19         U+0021, U+0067, U+007E
+## 7      !gx$         2 U+0021, U+0067, U+0078, U+0024
+## 8       !h~        21         U+0021, U+0068, U+007E
+## 9      !hw$         2 U+0021, U+0068, U+0077, U+0024
+## 10      !k~         9         U+0021, U+006B, U+007E
+## 11     !kh$         5 U+0021, U+006B, U+0068, U+0024
+## 12     !kp$         1 U+0021, U+006B, U+0070, U+0024
+## 13      !n~         8         U+0021, U+006E, U+007E
+## 14      !N~         9         U+0021, U+004E, U+007E
+## 15     !nS$         1 U+0021, U+006E, U+0053, U+0024
+## 16     !nw$         1 U+0021, U+006E, U+0077, U+0024
+## 17      !r~         2         U+0021, U+0072, U+007E
+## 18      !S~         1         U+0021, U+0053, U+007E
+## 19      !t~         1         U+0021, U+0074, U+007E
+## 20      !w~         8         U+0021, U+0077, U+007E
+##                                                                    UnicodeName
+## 1                                                             EXCLAMATION MARK
+## 2                                             EXCLAMATION MARK, QUOTATION MARK
+## 3                EXCLAMATION MARK, QUOTATION MARK, LATIN SMALL LETTER W, TILDE
+## 4                                         EXCLAMATION MARK, DIGIT SEVEN, TILDE
+## 5                                EXCLAMATION MARK, LATIN SMALL LETTER D, TILDE
+## 6                                EXCLAMATION MARK, LATIN SMALL LETTER G, TILDE
+## 7    EXCLAMATION MARK, LATIN SMALL LETTER G, LATIN SMALL LETTER X, DOLLAR SIGN
+## 8                                EXCLAMATION MARK, LATIN SMALL LETTER H, TILDE
+## 9    EXCLAMATION MARK, LATIN SMALL LETTER H, LATIN SMALL LETTER W, DOLLAR SIGN
+## 10                               EXCLAMATION MARK, LATIN SMALL LETTER K, TILDE
+## 11   EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER H, DOLLAR SIGN
+## 12   EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER P, DOLLAR SIGN
+## 13                               EXCLAMATION MARK, LATIN SMALL LETTER N, TILDE
+## 14                             EXCLAMATION MARK, LATIN CAPITAL LETTER N, TILDE
+## 15 EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN CAPITAL LETTER S, DOLLAR SIGN
+## 16   EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN SMALL LETTER W, DOLLAR SIGN
+## 17                               EXCLAMATION MARK, LATIN SMALL LETTER R, TILDE
+## 18                             EXCLAMATION MARK, LATIN CAPITAL LETTER S, TILDE
+## 19                               EXCLAMATION MARK, LATIN SMALL LETTER T, TILDE
+## 20                               EXCLAMATION MARK, LATIN SMALL LETTER W, TILDE</code></pre>
 
 
 </div>
