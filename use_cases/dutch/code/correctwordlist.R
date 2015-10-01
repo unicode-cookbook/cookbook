@@ -7,7 +7,7 @@
 library(qlcTokenize)
 
 # get examples from handmade profile
-examples <- read.delim("../data/dutch_IPA_profile.tsv", quote = "")$Examples
+examples <- read.delim("../data/1_dutch_IPA_profile.tsv", quote = "")$Examples
 examples <- unlist(strsplit(as.character(examples), ", "))
 
 # get examples from corpus
@@ -38,4 +38,4 @@ corpus_words <- tokens$strings[-errors,]$transliterated
 # combine the corpus with the hand-selected examples
 # write these to a file
 words <- sort(unique(c(examples, corpus_words)))
-write(words, file = "../sandbox/dutch_words.txt")
+write(words, file = "../sandbox/2_dutch_words.txt")
