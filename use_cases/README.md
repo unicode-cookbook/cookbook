@@ -4,4 +4,4 @@ This directory includes all data and commands to reproduce the use cases from th
 
 - ASJP orthography
 - Dutch orthography
-- JIPA IPA transcription
+- JIPA IPA tokenization
