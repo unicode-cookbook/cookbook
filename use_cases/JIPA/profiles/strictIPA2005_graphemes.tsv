@@ -155,7 +155,7 @@ Left	Grapheme	Right	Class	Codepoint	UnicodeName	IPAName
 	ˌ			U+02CC	MODIFIER LETTER LOW VERTICAL LINE	secondary stress
 	 			U+0020	SPACE	word break
 	.			U+002E	FULL STOP	syllable break
-	|			U+007C	VERTICAL LINE	minor group break (foot)
+	\|			U+007C	VERTICAL LINE	minor group break (foot)
 	‖			U+2016	DOUBLE VERTICAL LINE	major group break (intonation)
 	‿			U+203F	UNDERTIE	linking (absence of a break)
 	1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?(V1A?B?C?D?E?F?G?H?I?J?K?L?M?N?P?Q?R?S?T?)*					complex IPA grapheme
