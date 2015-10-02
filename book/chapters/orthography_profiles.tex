@@ -174,7 +174,12 @@ for short) are the following:
        line}. A minimal profile can have just a single column, in which case
        there will of course be no tabs, but the first line will still be the
        header. For all columns we assume the name in the header of the CSV file
-       to be crucial. The actual ordering of the columns is unimportant. 
+       to be crucial. The actual ordering of the columns is unimportant. Because 
+       tabs and newlines are field separators of the profile, these characters 
+       will lead to problems when they occur in the original data.\footnote{The main
+       reason to choose for tab-delimited, and not for quoted comma-separated files
+       is that we want the profiles to be easily manipulated by hand. Tab-separation 
+       is strongly preferred for this reason.}
 	\item \textsc{Metadata are added in a separate UTF-8 text file} using a basic
        \textsc{tag: value} format. Metadata about the orthographic description
        given in the orthography profile includes, minimally, (i) author, (ii)
@@ -211,7 +216,7 @@ of the orthography, using the following columns:
        context automatically expects regular expressions, so it is probably
        better to always escape all regular expression metacharacters when used
        literally in the orthography. The following symbols will need to be
-       preceded by a backslash: {[} {]} ( ) \{ \} ~+ * . - ! ? \^{} \$ and the
+       preceded by a backslash: {[} {]} ( ) \{ \} | ~+ * . - ! ? \^{} \$ and the
        backslash \textbackslash~itself. 
 	\item \textsc{An optional column can be used to specify classes of graphemes},
        to be identified by the header \texttt{Class}. For example, this column
@@ -335,14 +340,14 @@ Any software application offering to use orthography profile:
 		\item \textsc{the symbol-string to be inserted for unmatched strings} in the
         tokenized and transliterated output. 
 		\item \textsc{the tokenization method}, i.e.~whether the tokenization should
-        proceed \textsc{global} or \textsc{linear}. 
+        proceed \textsc{global} or \textsc{linear} (see B6 above). 
 		\item \textsc{unicode normalization}, i.e.~whether the text-string and profile
         should use \textsc{NFC} or \textsc{NFD}. 
     \end{enumerate}
-	\item \textsc{might offer user-options }to:
+	\item \textsc{might offer user-options}:
 	\begin{enumerate}
 		\def\labelenumii{C\arabic{enumii}.} \setcounter{enumii}{5} 
-		\item \textsc{assist in the ordering of the graphemes.} In our experience, it
+		\item \textsc{to assist in the ordering of the graphemes.} In our experience, it
         makes sense to apply larger graphemes before shorter graphemes, and to
         apply graphemes with context before graphemes without context. Further,
         frequently relevant rules might be applied after rarely relevant rules
@@ -352,7 +357,7 @@ Any software application offering to use orthography profile:
         reverse the ordering from any manual specified ordering, because
         linguists tend to write the more general rule first, before turning to
         exceptions or special cases. 
-		\item \textsc{assist in dealing with upper and lower case characters.} It
+		\item \textsc{to assist in dealing with upper and lower case characters.} It
         seems practical to offer some basic case matching, so characters like
         <a> and <A> are treated equally. This will be useful in many concrete
         cases, although the user should be warned that case matching does not
@@ -360,7 +365,7 @@ Any software application offering to use orthography profile:
         users should prepare orthography profiles with all lowercase and
         uppercase variants explicitly mentioned, so by default no case matching
         should be performed. 
-		\item \textsc{treat the profile literal}, i.e.~to not interpret regular
+		\item \textsc{to treat the profile literal}, i.e.~to not interpret regular
         expression metacharacters. Matching graphemes literally often leads to
         strong speed increase, and would allow users to not needing to worry
         about escaping metacharacters. However, in our experience all actually
@@ -370,8 +375,8 @@ Any software application offering to use orthography profile:
 	\item \textsc{should return the following information} to the user:
 	\begin{enumerate}
 		\def\labelenumii{C\arabic{enumii}.} \setcounter{enumii}{8} 
-		\item \textsc{the original text-strings to be processed in the specified
-        unicode normalization}, i.e.~in either NFC or NFD as specified by the
+		\item \textsc{the original text-strings} to be processed in the specified
+        unicode normalization, i.e.~in either NFC or NFD as specified by the
         user. 
 		\item \textsc{the tokenized strings}, with additionally any transliterated
         strings, if transliteration is requested. 
