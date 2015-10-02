@@ -10,7 +10,7 @@
 
 <meta name="author" content="Michael Cysouw" />
 
-<meta name="date" content="2015-09-30" />
+<meta name="date" content="2015-10-02" />
 
 <title>Analysis of ASJP data</title>
 
@@ -64,20 +64,25 @@ img {
 <div id="header">
 <h1 class="title">Analysis of ASJP data</h1>
 <h4 class="author"><em>Michael Cysouw</em></h4>
-<h4 class="date"><em>30 September 2015</em></h4>
+<h4 class="date"><em>2015-10-02</em></h4>
 </div>
 
 
-<p>=== STEP 0: Preparation ===</p>
+<div id="step-0-preparation" class="section level3">
+<h3>STEP 0: Preparation</h3>
 <pre class="r"><code># install library from github
 # install.packages(&quot;devtools&quot;)
 # devtools::install_github(&quot;cysouw/qlcTokenize&quot;)
 library(qlcTokenize)
+# for the nice display of tables
+require(knitr)
 
 # read ASJP data
 # this is pretty large, so it might take a bit
 asjp &lt;- read.csv(&quot;data/ASJP.csv&quot;)</code></pre>
-<p>=== STEP 1: making a draft profile ===</p>
+</div>
+<div id="step-1-making-a-draft-profile" class="section level3">
+<h3>STEP 1: making a draft profile</h3>
 <pre class="r"><code># the actual words are in the fifth column of this csv-file (&quot;Value&quot;)
 # first make draft profile using default settings
 write.profile(asjp$Value, file = &quot;sandbox/1_asjp_draft_profile.tsv&quot;)</code></pre>
@@ -85,13 +90,17 @@ write.profile(asjp$Value, file = &quot;sandbox/1_asjp_draft_profile.tsv&quot;)</
 ## 1_asjp_draft_profile.tsv&quot;): There are tabs and/or newline characters in
 ## the input strings. This will lead to problems with the profiles and the
 ## tokenization. Consider removing or replacing them in your input strings.</code></pre>
-<p>=== STEP 2: correcting the draft profile ===</p>
+</div>
+<div id="step-2-correcting-the-draft-profile" class="section level3">
+<h3>STEP 2: correcting the draft profile</h3>
 <pre class="r"><code># There is a warning because there are tabs in the input data
 # This is an error in the ASJP data, but we leave it in for now
 # It has to be changed in the orthography profile though!
 # Check the manually changed profile in data/2_asjp_corrected_profile.tsv
 # This profile should be capturing the ASJP orthography</code></pre>
-<p>=== STEP 3: tokenize the data and inspect errors ===</p>
+</div>
+<div id="step-3-tokenize-the-data-and-inspect-errors" class="section level3">
+<h3>STEP 3: tokenize the data and inspect errors</h3>
 <pre class="r"><code># after manually correcting the profile we can use it for tokenization
 # there are regular expressions in the corrected profile, so &quot;regex = TRUE&quot;
 # save all the information from the tokenization in the sandbox
@@ -105,99 +114,369 @@ tokens &lt;- tokenize(asjp$Value
 ## There were unknown characters found in the input data.
 ## Check output$errors for a table with all problematic strings.</code></pre>
 <pre class="r"><code># there are errors in the data. Let's check the errors
-tokens$errors</code></pre>
-<pre><code>##            originals                 errors
-## 31804      dh~g~emon        dh~ g ⁇ e m o n
-## 32120  ek&quot;w~a %adami e k&quot;w~ a   ⁇ a d a m i
-## 43276          XXX//              X X X ⁇ ⁇
-## 50780        XXX\t//            X X X ⁇ ⁇ ⁇
-## 52291           hm~*                  hm~ ⁇
-## 56316          XXX /              X X X   ⁇
-## 61688          XXX /              X X X   ⁇
-## 80746       na %tiri        n a   ⁇ t i r i
-## 107972      ekadu7u%        e k a d u 7 u ⁇
-## 108160         XXX//              X X X ⁇ ⁇
-## 123914       e\trlwe            e ⁇ r l w e
-## 163410         XXX//              X X X ⁇ ⁇
-## 163415         XXX//              X X X ⁇ ⁇
-## 163420         XXX//              X X X ⁇ ⁇
-## 183579   dokh~ot %n3    d o kh~ o t   ⁇ n 3
-## 193318         XXX//              X X X ⁇ ⁇
-## 200763  a\tmpwarenke  a ⁇ m p w a r e n k e
-## 271327         XXX//              X X X ⁇ ⁇
-## 273161         XXX /              X X X   ⁇</code></pre>
+knitr::kable(tokens$errors)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">originals</th>
+<th align="left">errors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">31804</td>
+<td align="left">dh<sub>g</sub>emon</td>
+<td align="left">dh~ g ⁇ e m o n</td>
+</tr>
+<tr class="even">
+<td align="left">32120</td>
+<td align="left">ek“w~a %adami</td>
+<td align="left">e k“w~ a ⁇ a d a m i</td>
+</tr>
+<tr class="odd">
+<td align="left">43276</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="even">
+<td align="left">50780</td>
+<td align="left">XXX //</td>
+<td align="left">X X X ⁇ ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">52291</td>
+<td align="left">hm~*</td>
+<td align="left">hm~ ⁇</td>
+</tr>
+<tr class="even">
+<td align="left">56316</td>
+<td align="left">XXX /</td>
+<td align="left">X X X ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">61688</td>
+<td align="left">XXX /</td>
+<td align="left">X X X ⁇</td>
+</tr>
+<tr class="even">
+<td align="left">80746</td>
+<td align="left">na %tiri</td>
+<td align="left">n a ⁇ t i r i</td>
+</tr>
+<tr class="odd">
+<td align="left">107972</td>
+<td align="left">ekadu7u%</td>
+<td align="left">e k a d u 7 u ⁇</td>
+</tr>
+<tr class="even">
+<td align="left">108160</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">123914</td>
+<td align="left">e rlwe</td>
+<td align="left">e ⁇ r l w e</td>
+</tr>
+<tr class="even">
+<td align="left">163410</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">163415</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="even">
+<td align="left">163420</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">183579</td>
+<td align="left">dokh~ot %n3</td>
+<td align="left">d o kh~ o t ⁇ n 3</td>
+</tr>
+<tr class="even">
+<td align="left">193318</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">200763</td>
+<td align="left">a mpwarenke</td>
+<td align="left">a ⁇ m p w a r e n k e</td>
+</tr>
+<tr class="even">
+<td align="left">271327</td>
+<td align="left">XXX//</td>
+<td align="left">X X X ⁇ ⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">273161</td>
+<td align="left">XXX /</td>
+<td align="left">X X X ⁇</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code># and look at the characters that are not in the profile
-tokens$missing</code></pre>
-<pre><code>##   Grapheme Frequency Codepoint    UnicodeName
-## 1       \t         3    U+0009 &lt;control-0009&gt;
-## 2        *         1    U+002A       ASTERISK
-## 3        /        19    U+002F        SOLIDUS
-## 4        %         4    U+0025   PERCENT SIGN
-## 5        ~         1    U+007E          TILDE</code></pre>
+knitr::kable(tokens$missing)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Grapheme</th>
+<th align="left">Frequency</th>
+<th align="left">Codepoint</th>
+<th align="left">UnicodeName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">3</td>
+<td align="left">U+0009</td>
+<td align="left"><control-0009></td>
+</tr>
+<tr class="even">
+<td align="left">*</td>
+<td align="left">1</td>
+<td align="left">U+002A</td>
+<td align="left">ASTERISK</td>
+</tr>
+<tr class="odd">
+<td align="left">/</td>
+<td align="left">19</td>
+<td align="left">U+002F</td>
+<td align="left">SOLIDUS</td>
+</tr>
+<tr class="even">
+<td align="left">%</td>
+<td align="left">4</td>
+<td align="left">U+0025</td>
+<td align="left">PERCENT SIGN</td>
+</tr>
+<tr class="odd">
+<td align="left">~</td>
+<td align="left">1</td>
+<td align="left">U+007E</td>
+<td align="left">TILDE</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code># look at the errors in their original context
 error_lines &lt;- rownames(tokens$errors)
-asjp[error_lines,]</code></pre>
-<pre><code>##                               ID
-## 31804   PROTO_INDO_EUROPEAN-18-1
-## 32120      SOUTHERN_AKHVAKH-18-1
-## 43276  PROTO_TESO_LOTUKO_MAA-2-1
-## 50780                 NANDI-21-1
-## 52291           CA_HA_GELAO-21-1
-## 56316                  OUNG-22-1
-## 61688       TOTONAC_COYUTLA-22-1
-## 80746               NUKURIA-28-1
-## 107972              ENGGANO-34-1
-## 108160             YUGAMBAL-34-1
-## 123914             KAYTETYE-40-1
-## 163410                 HPON-51-1
-## 163415                LASHI-51-1
-## 163420                 MARU-51-1
-## 183579                 DUMI-57-1
-## 193318             IOWA-OTO-58-1
-## 200763             KAYTETYE-61-1
-## 271327   TIWA_NORTHERN_TAOS-92-1
-## 273161                 OUNG-95-1
-##                                                 Language_ID Parameter_ID
-## 31804    http://asjp.clld.org/languages/PROTO_INDO_EUROPEAN           18
-## 32120       http://asjp.clld.org/languages/SOUTHERN_AKHVAKH           18
-## 43276  http://asjp.clld.org/languages/PROTO_TESO_LOTUKO_MAA            2
-## 50780                  http://asjp.clld.org/languages/NANDI           21
-## 52291            http://asjp.clld.org/languages/CA_HA_GELAO           21
-## 56316                   http://asjp.clld.org/languages/OUNG           22
-## 61688        http://asjp.clld.org/languages/TOTONAC_COYUTLA           22
-## 80746                http://asjp.clld.org/languages/NUKURIA           28
-## 107972               http://asjp.clld.org/languages/ENGGANO           34
-## 108160              http://asjp.clld.org/languages/YUGAMBAL           34
-## 123914              http://asjp.clld.org/languages/KAYTETYE           40
-## 163410                  http://asjp.clld.org/languages/HPON           51
-## 163415                 http://asjp.clld.org/languages/LASHI           51
-## 163420                  http://asjp.clld.org/languages/MARU           51
-## 183579                  http://asjp.clld.org/languages/DUMI           57
-## 193318              http://asjp.clld.org/languages/IOWA-OTO           58
-## 200763              http://asjp.clld.org/languages/KAYTETYE           61
-## 271327    http://asjp.clld.org/languages/TIWA_NORTHERN_TAOS           92
-## 273161                  http://asjp.clld.org/languages/OUNG           95
-##              Contribution_ID         Value Source Comment
-## 31804    PROTO_INDO_EUROPEAN     dh~g~emon     NA      NA
-## 32120       SOUTHERN_AKHVAKH ek&quot;w~a %adami     NA      NA
-## 43276  PROTO_TESO_LOTUKO_MAA         XXX//     NA      NA
-## 50780                  NANDI       XXX\t//     NA      NA
-## 52291            CA_HA_GELAO          hm~*     NA      NA
-## 56316                   OUNG         XXX /     NA      NA
-## 61688        TOTONAC_COYUTLA         XXX /     NA      NA
-## 80746                NUKURIA      na %tiri     NA      NA
-## 107972               ENGGANO      ekadu7u%     NA      NA
-## 108160              YUGAMBAL         XXX//     NA      NA
-## 123914              KAYTETYE       e\trlwe     NA      NA
-## 163410                  HPON         XXX//     NA      NA
-## 163415                 LASHI         XXX//     NA      NA
-## 163420                  MARU         XXX//     NA      NA
-## 183579                  DUMI   dokh~ot %n3     NA      NA
-## 193318              IOWA-OTO         XXX//     NA      NA
-## 200763              KAYTETYE  a\tmpwarenke     NA      NA
-## 271327    TIWA_NORTHERN_TAOS         XXX//     NA      NA
-## 273161                  OUNG         XXX /     NA      NA</code></pre>
-<p>=== STEP 4: error correction and investigate tailored graphemes ===</p>
+knitr::kable(asjp[error_lines,])</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">ID</th>
+<th align="left">Language_ID</th>
+<th align="right">Parameter_ID</th>
+<th align="left">Contribution_ID</th>
+<th align="left">Value</th>
+<th align="left">Source</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">31804</td>
+<td align="left">PROTO_INDO_EUROPEAN-18-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/PROTO_INDO_EUROPEAN" class="uri">http://asjp.clld.org/languages/PROTO_INDO_EUROPEAN</a></td>
+<td align="right">18</td>
+<td align="left">PROTO_INDO_EUROPEAN</td>
+<td align="left">dh<sub>g</sub>emon</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">32120</td>
+<td align="left">SOUTHERN_AKHVAKH-18-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/SOUTHERN_AKHVAKH" class="uri">http://asjp.clld.org/languages/SOUTHERN_AKHVAKH</a></td>
+<td align="right">18</td>
+<td align="left">SOUTHERN_AKHVAKH</td>
+<td align="left">ek“w~a %adami</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">43276</td>
+<td align="left">PROTO_TESO_LOTUKO_MAA-2-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/PROTO_TESO_LOTUKO_MAA" class="uri">http://asjp.clld.org/languages/PROTO_TESO_LOTUKO_MAA</a></td>
+<td align="right">2</td>
+<td align="left">PROTO_TESO_LOTUKO_MAA</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">50780</td>
+<td align="left">NANDI-21-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/NANDI" class="uri">http://asjp.clld.org/languages/NANDI</a></td>
+<td align="right">21</td>
+<td align="left">NANDI</td>
+<td align="left">XXX //</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">52291</td>
+<td align="left">CA_HA_GELAO-21-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/CA_HA_GELAO" class="uri">http://asjp.clld.org/languages/CA_HA_GELAO</a></td>
+<td align="right">21</td>
+<td align="left">CA_HA_GELAO</td>
+<td align="left">hm~*</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">56316</td>
+<td align="left">OUNG-22-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/OUNG" class="uri">http://asjp.clld.org/languages/OUNG</a></td>
+<td align="right">22</td>
+<td align="left">OUNG</td>
+<td align="left">XXX /</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">61688</td>
+<td align="left">TOTONAC_COYUTLA-22-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/TOTONAC_COYUTLA" class="uri">http://asjp.clld.org/languages/TOTONAC_COYUTLA</a></td>
+<td align="right">22</td>
+<td align="left">TOTONAC_COYUTLA</td>
+<td align="left">XXX /</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">80746</td>
+<td align="left">NUKURIA-28-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/NUKURIA" class="uri">http://asjp.clld.org/languages/NUKURIA</a></td>
+<td align="right">28</td>
+<td align="left">NUKURIA</td>
+<td align="left">na %tiri</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">107972</td>
+<td align="left">ENGGANO-34-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/ENGGANO" class="uri">http://asjp.clld.org/languages/ENGGANO</a></td>
+<td align="right">34</td>
+<td align="left">ENGGANO</td>
+<td align="left">ekadu7u%</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">108160</td>
+<td align="left">YUGAMBAL-34-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/YUGAMBAL" class="uri">http://asjp.clld.org/languages/YUGAMBAL</a></td>
+<td align="right">34</td>
+<td align="left">YUGAMBAL</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">123914</td>
+<td align="left">KAYTETYE-40-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/KAYTETYE" class="uri">http://asjp.clld.org/languages/KAYTETYE</a></td>
+<td align="right">40</td>
+<td align="left">KAYTETYE</td>
+<td align="left">e rlwe</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">163410</td>
+<td align="left">HPON-51-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/HPON" class="uri">http://asjp.clld.org/languages/HPON</a></td>
+<td align="right">51</td>
+<td align="left">HPON</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">163415</td>
+<td align="left">LASHI-51-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/LASHI" class="uri">http://asjp.clld.org/languages/LASHI</a></td>
+<td align="right">51</td>
+<td align="left">LASHI</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">163420</td>
+<td align="left">MARU-51-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/MARU" class="uri">http://asjp.clld.org/languages/MARU</a></td>
+<td align="right">51</td>
+<td align="left">MARU</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">183579</td>
+<td align="left">DUMI-57-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/DUMI" class="uri">http://asjp.clld.org/languages/DUMI</a></td>
+<td align="right">57</td>
+<td align="left">DUMI</td>
+<td align="left">dokh~ot %n3</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">193318</td>
+<td align="left">IOWA-OTO-58-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/IOWA-OTO" class="uri">http://asjp.clld.org/languages/IOWA-OTO</a></td>
+<td align="right">58</td>
+<td align="left">IOWA-OTO</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">200763</td>
+<td align="left">KAYTETYE-61-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/KAYTETYE" class="uri">http://asjp.clld.org/languages/KAYTETYE</a></td>
+<td align="right">61</td>
+<td align="left">KAYTETYE</td>
+<td align="left">a mpwarenke</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">271327</td>
+<td align="left">TIWA_NORTHERN_TAOS-92-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/TIWA_NORTHERN_TAOS" class="uri">http://asjp.clld.org/languages/TIWA_NORTHERN_TAOS</a></td>
+<td align="right">92</td>
+<td align="left">TIWA_NORTHERN_TAOS</td>
+<td align="left">XXX//</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">273161</td>
+<td align="left">OUNG-95-1</td>
+<td align="left"><a href="http://asjp.clld.org/languages/OUNG" class="uri">http://asjp.clld.org/languages/OUNG</a></td>
+<td align="right">95</td>
+<td align="left">OUNG</td>
+<td align="left">XXX /</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="step-4-error-correction-and-investigate-tailored-graphemes" class="section level3">
+<h3>STEP 4: error correction and investigate tailored graphemes</h3>
 <pre class="r"><code># remove errors for now (this has to be done in the original data of course!)
 no_errors &lt;- tokens$strings[-as.numeric(error_lines),]
 # make &quot;empirical&quot; profile of tokenized data, showing all tailored graphemes in ASJP
@@ -214,49 +493,140 @@ str(tailored)</code></pre>
 ##  $ Codepoint  : chr  &quot;U+0021&quot; &quot;U+0021, U+0022&quot; &quot;U+0021, U+0022, U+0077, U+007E&quot; &quot;U+0021, U+0037, U+007E&quot; ...
 ##  $ UnicodeName: chr  &quot;EXCLAMATION MARK&quot; &quot;EXCLAMATION MARK, QUOTATION MARK&quot; &quot;EXCLAMATION MARK, QUOTATION MARK, LATIN SMALL LETTER W, TILDE&quot; &quot;EXCLAMATION MARK, DIGIT SEVEN, TILDE&quot; ...</code></pre>
 <pre class="r"><code># just show the first 20 tailored graphemes as an example
-head(tailored, 20)</code></pre>
-<pre><code>##    Grapheme Frequency                      Codepoint
-## 1         !       652                         U+0021
-## 2        !&quot;        41                 U+0021, U+0022
-## 3      !&quot;w~         2 U+0021, U+0022, U+0077, U+007E
-## 4       !7~        23         U+0021, U+0037, U+007E
-## 5       !d~         1         U+0021, U+0064, U+007E
-## 6       !g~        19         U+0021, U+0067, U+007E
-## 7      !gx$         2 U+0021, U+0067, U+0078, U+0024
-## 8       !h~        21         U+0021, U+0068, U+007E
-## 9      !hw$         2 U+0021, U+0068, U+0077, U+0024
-## 10      !k~         9         U+0021, U+006B, U+007E
-## 11     !kh$         5 U+0021, U+006B, U+0068, U+0024
-## 12     !kp$         1 U+0021, U+006B, U+0070, U+0024
-## 13      !n~         8         U+0021, U+006E, U+007E
-## 14      !N~         9         U+0021, U+004E, U+007E
-## 15     !nS$         1 U+0021, U+006E, U+0053, U+0024
-## 16     !nw$         1 U+0021, U+006E, U+0077, U+0024
-## 17      !r~         2         U+0021, U+0072, U+007E
-## 18      !S~         1         U+0021, U+0053, U+007E
-## 19      !t~         1         U+0021, U+0074, U+007E
-## 20      !w~         8         U+0021, U+0077, U+007E
-##                                                                    UnicodeName
-## 1                                                             EXCLAMATION MARK
-## 2                                             EXCLAMATION MARK, QUOTATION MARK
-## 3                EXCLAMATION MARK, QUOTATION MARK, LATIN SMALL LETTER W, TILDE
-## 4                                         EXCLAMATION MARK, DIGIT SEVEN, TILDE
-## 5                                EXCLAMATION MARK, LATIN SMALL LETTER D, TILDE
-## 6                                EXCLAMATION MARK, LATIN SMALL LETTER G, TILDE
-## 7    EXCLAMATION MARK, LATIN SMALL LETTER G, LATIN SMALL LETTER X, DOLLAR SIGN
-## 8                                EXCLAMATION MARK, LATIN SMALL LETTER H, TILDE
-## 9    EXCLAMATION MARK, LATIN SMALL LETTER H, LATIN SMALL LETTER W, DOLLAR SIGN
-## 10                               EXCLAMATION MARK, LATIN SMALL LETTER K, TILDE
-## 11   EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER H, DOLLAR SIGN
-## 12   EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER P, DOLLAR SIGN
-## 13                               EXCLAMATION MARK, LATIN SMALL LETTER N, TILDE
-## 14                             EXCLAMATION MARK, LATIN CAPITAL LETTER N, TILDE
-## 15 EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN CAPITAL LETTER S, DOLLAR SIGN
-## 16   EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN SMALL LETTER W, DOLLAR SIGN
-## 17                               EXCLAMATION MARK, LATIN SMALL LETTER R, TILDE
-## 18                             EXCLAMATION MARK, LATIN CAPITAL LETTER S, TILDE
-## 19                               EXCLAMATION MARK, LATIN SMALL LETTER T, TILDE
-## 20                               EXCLAMATION MARK, LATIN SMALL LETTER W, TILDE</code></pre>
+knitr::kable(head(tailored, 20))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Grapheme</th>
+<th align="left">Frequency</th>
+<th align="left">Codepoint</th>
+<th align="left">UnicodeName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">!</td>
+<td align="left">652</td>
+<td align="left">U+0021</td>
+<td align="left">EXCLAMATION MARK</td>
+</tr>
+<tr class="even">
+<td align="left">!“</td>
+<td align="left">41</td>
+<td align="left">U+0021, U+0022</td>
+<td align="left">EXCLAMATION MARK, QUOTATION MARK</td>
+</tr>
+<tr class="odd">
+<td align="left">!“w~</td>
+<td align="left">2</td>
+<td align="left">U+0021, U+0022, U+0077, U+007E</td>
+<td align="left">EXCLAMATION MARK, QUOTATION MARK, LATIN SMALL LETTER W, TILDE</td>
+</tr>
+<tr class="even">
+<td align="left">!7~</td>
+<td align="left">23</td>
+<td align="left">U+0021, U+0037, U+007E</td>
+<td align="left">EXCLAMATION MARK, DIGIT SEVEN, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!d~</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+0064, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER D, TILDE</td>
+</tr>
+<tr class="even">
+<td align="left">!g~</td>
+<td align="left">19</td>
+<td align="left">U+0021, U+0067, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER G, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!gx$</td>
+<td align="left">2</td>
+<td align="left">U+0021, U+0067, U+0078, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER G, LATIN SMALL LETTER X, DOLLAR SIGN</td>
+</tr>
+<tr class="even">
+<td align="left">!h~</td>
+<td align="left">21</td>
+<td align="left">U+0021, U+0068, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER H, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!hw$</td>
+<td align="left">2</td>
+<td align="left">U+0021, U+0068, U+0077, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER H, LATIN SMALL LETTER W, DOLLAR SIGN</td>
+</tr>
+<tr class="even">
+<td align="left">!k~</td>
+<td align="left">9</td>
+<td align="left">U+0021, U+006B, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER K, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!kh$</td>
+<td align="left">5</td>
+<td align="left">U+0021, U+006B, U+0068, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER H, DOLLAR SIGN</td>
+</tr>
+<tr class="even">
+<td align="left">!kp$</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+006B, U+0070, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER K, LATIN SMALL LETTER P, DOLLAR SIGN</td>
+</tr>
+<tr class="odd">
+<td align="left">!n~</td>
+<td align="left">8</td>
+<td align="left">U+0021, U+006E, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER N, TILDE</td>
+</tr>
+<tr class="even">
+<td align="left">!N~</td>
+<td align="left">9</td>
+<td align="left">U+0021, U+004E, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN CAPITAL LETTER N, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!nS$</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+006E, U+0053, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN CAPITAL LETTER S, DOLLAR SIGN</td>
+</tr>
+<tr class="even">
+<td align="left">!nw$</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+006E, U+0077, U+0024</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER N, LATIN SMALL LETTER W, DOLLAR SIGN</td>
+</tr>
+<tr class="odd">
+<td align="left">!r~</td>
+<td align="left">2</td>
+<td align="left">U+0021, U+0072, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER R, TILDE</td>
+</tr>
+<tr class="even">
+<td align="left">!S~</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+0053, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN CAPITAL LETTER S, TILDE</td>
+</tr>
+<tr class="odd">
+<td align="left">!t~</td>
+<td align="left">1</td>
+<td align="left">U+0021, U+0074, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER T, TILDE</td>
+</tr>
+<tr class="even">
+<td align="left">!w~</td>
+<td align="left">8</td>
+<td align="left">U+0021, U+0077, U+007E</td>
+<td align="left">EXCLAMATION MARK, LATIN SMALL LETTER W, TILDE</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 </div>
