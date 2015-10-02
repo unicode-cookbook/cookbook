@@ -1,10 +1,14 @@
 #' ---
 #' title: "IPA-transliteration of dutch words"
 #' author: "Michael Cysouw"
-#' date: "1 October 2015"
+#' date: "`r Sys.Date()`"
 #' ---
 
+# load libraries
+# knitr is needed for a nice display of the tables
 library(qlcTokenize)
+require(knitr)
+
 # read the wordlist with dutch words
 words <- scan(file = "data/2_dutch_words.txt", what = "character")
 
@@ -17,12 +21,12 @@ dutch <- tokenize(words
 				, sep = ""
 				)
 
-# there are only a errors coming from the tokenization
-dutch$errors
+# there are only a few errors coming from the tokenization
+knitr::kable(dutch$errors)
 
 # the IPA transliterations seems to be fine
 # there are some errors, but only a few
 # let's just check a random selection 
 # (note that this selection will change every time this code is executed)
 selection <- sample(1:nrow(dutch$strings), 50)
-dutch$strings[selection, c("originals", "transliterated")]
+knitr::kable(dutch$strings[selection, c("originals", "transliterated")])

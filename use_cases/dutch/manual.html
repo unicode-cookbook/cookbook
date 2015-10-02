@@ -10,6 +10,7 @@
 
 <meta name="author" content="Michael Cysouw" />
 
+<meta name="date" content="2015-10-02" />
 
 <title>IPA-transliteration of dutch words</title>
 
@@ -63,12 +64,17 @@ img {
 <div id="header">
 <h1 class="title">IPA-transliteration of dutch words</h1>
 <h4 class="author"><em>Michael Cysouw</em></h4>
-<h4 class="date"><em>1 October 2015</em></h4>
+<h4 class="date"><em>2015-10-02</em></h4>
 </div>
 
 
-<pre class="r"><code>library(qlcTokenize)
-# read the wordlist with dutch words
+<pre class="r"><code># load libraries
+# knitr is needed for a nice display of the tables
+library(qlcTokenize)</code></pre>
+<pre><code>## Loading required package: stringi</code></pre>
+<pre class="r"><code>require(knitr)</code></pre>
+<pre><code>## Loading required package: knitr</code></pre>
+<pre class="r"><code># read the wordlist with dutch words
 words &lt;- scan(file = &quot;data/2_dutch_words.txt&quot;, what = &quot;character&quot;)
 
 # use the hand-made orthography profile in `data/dutch_IPA_profile.tsv`
@@ -82,92 +88,416 @@ dutch &lt;- tokenize(words
 <pre><code>## Warning in tokenize(words, profile = &quot;data/1_dutch_IPA_profile.tsv&quot;, transliterate = &quot;IPA&quot;, : 
 ## There were unknown characters found in the input data.
 ## Check output$errors for a table with all problematic strings.</code></pre>
-<pre class="r"><code># there are only a errors coming from the tokenization
-dutch$errors</code></pre>
-<pre><code>##               originals            errors
-## 3264               Böck              B⁇ck
-## 5376           Depourcq          Depourc⁇
-## 7123   Eyjafjallajökull  Eyjafjallaj⁇kull
-## 9189           Göteborg          G⁇teborg
-## 9195               Götz              G⁇tz
-## 10451       Houellebecq       Houellebec⁇
-## 10624     í-geschriften     ⁇-geschriften
-## 11587              Jörg              J⁇rg
-## 12732            Krödde            Kr⁇dde
-## 13655              Löbl              L⁇bl
-## 13691              Löhr              L⁇hr
-## 15400            Nasdaq            Nasda⁇
-## 15402          Nastaliq          Nastali⁇
-## 15634 Nieder-österreich Nieder-⁇sterreich
-## 15723           Niqvist           Ni⁇vist
-## 17108            Osaìne            Osa⁇ne
-## 18725          Q-waarde          ⁇-waarde
-## 18729             Qatar             ⁇atar
-## 18730           Qdetect           ⁇detect
-## 18731           Qmanage           ⁇manage
-## 19562            Röling            R⁇ling
-## 20217          Schröder          Schr⁇der
-## 22141             Tareq             Tare⁇
-## 25061         vlöggelen         vl⁇ggelen
-## 26496            Wölfis            W⁇lfis
-## 27049            zölfde            z⁇lfde</code></pre>
+<pre class="r"><code># there are only a few errors coming from the tokenization
+knitr::kable(dutch$errors)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">originals</th>
+<th align="left">errors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3264</td>
+<td align="left">Böck</td>
+<td align="left">B⁇ck</td>
+</tr>
+<tr class="even">
+<td align="left">5376</td>
+<td align="left">Depourcq</td>
+<td align="left">Depourc⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">7123</td>
+<td align="left">Eyjafjallajökull</td>
+<td align="left">Eyjafjallaj⁇kull</td>
+</tr>
+<tr class="even">
+<td align="left">9189</td>
+<td align="left">Göteborg</td>
+<td align="left">G⁇teborg</td>
+</tr>
+<tr class="odd">
+<td align="left">9195</td>
+<td align="left">Götz</td>
+<td align="left">G⁇tz</td>
+</tr>
+<tr class="even">
+<td align="left">10451</td>
+<td align="left">Houellebecq</td>
+<td align="left">Houellebec⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">10624</td>
+<td align="left">í-geschriften</td>
+<td align="left">⁇-geschriften</td>
+</tr>
+<tr class="even">
+<td align="left">11587</td>
+<td align="left">Jörg</td>
+<td align="left">J⁇rg</td>
+</tr>
+<tr class="odd">
+<td align="left">12732</td>
+<td align="left">Krödde</td>
+<td align="left">Kr⁇dde</td>
+</tr>
+<tr class="even">
+<td align="left">13655</td>
+<td align="left">Löbl</td>
+<td align="left">L⁇bl</td>
+</tr>
+<tr class="odd">
+<td align="left">13691</td>
+<td align="left">Löhr</td>
+<td align="left">L⁇hr</td>
+</tr>
+<tr class="even">
+<td align="left">15400</td>
+<td align="left">Nasdaq</td>
+<td align="left">Nasda⁇</td>
+</tr>
+<tr class="odd">
+<td align="left">15402</td>
+<td align="left">Nastaliq</td>
+<td align="left">Nastali⁇</td>
+</tr>
+<tr class="even">
+<td align="left">15634</td>
+<td align="left">Nieder-österreich</td>
+<td align="left">Nieder-⁇sterreich</td>
+</tr>
+<tr class="odd">
+<td align="left">15723</td>
+<td align="left">Niqvist</td>
+<td align="left">Ni⁇vist</td>
+</tr>
+<tr class="even">
+<td align="left">17108</td>
+<td align="left">Osaìne</td>
+<td align="left">Osa⁇ne</td>
+</tr>
+<tr class="odd">
+<td align="left">18725</td>
+<td align="left">Q-waarde</td>
+<td align="left">⁇-waarde</td>
+</tr>
+<tr class="even">
+<td align="left">18729</td>
+<td align="left">Qatar</td>
+<td align="left">⁇atar</td>
+</tr>
+<tr class="odd">
+<td align="left">18730</td>
+<td align="left">Qdetect</td>
+<td align="left">⁇detect</td>
+</tr>
+<tr class="even">
+<td align="left">18731</td>
+<td align="left">Qmanage</td>
+<td align="left">⁇manage</td>
+</tr>
+<tr class="odd">
+<td align="left">19562</td>
+<td align="left">Röling</td>
+<td align="left">R⁇ling</td>
+</tr>
+<tr class="even">
+<td align="left">20217</td>
+<td align="left">Schröder</td>
+<td align="left">Schr⁇der</td>
+</tr>
+<tr class="odd">
+<td align="left">22141</td>
+<td align="left">Tareq</td>
+<td align="left">Tare⁇</td>
+</tr>
+<tr class="even">
+<td align="left">25061</td>
+<td align="left">vlöggelen</td>
+<td align="left">vl⁇ggelen</td>
+</tr>
+<tr class="odd">
+<td align="left">26496</td>
+<td align="left">Wölfis</td>
+<td align="left">W⁇lfis</td>
+</tr>
+<tr class="even">
+<td align="left">27049</td>
+<td align="left">zölfde</td>
+<td align="left">z⁇lfde</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code># the IPA transliterations seems to be fine
 # there are some errors, but only a few
 # let's just check a random selection 
 # (note that this selection will change every time this code is executed)
 selection &lt;- sample(1:nrow(dutch$strings), 50)
-dutch$strings[selection, c(&quot;originals&quot;, &quot;transliterated&quot;)]</code></pre>
-<pre><code>##              originals transliterated
-## 17687         pauzeert        pɑuzert
-## 21376      startcoupon    stɑrtkɑupɔn
-## 16166     onaangepaste     onaŋəpɑstə
-## 21710         straffen        strɑfən
-## 5931    doorslaggevend   dorslɑɣəvɛnt
-## 22479            Texel         tɛksəl
-## 19506        roboscans      robɔskɑns
-## 4882       crematorium    krematoriœm
-## 1917     Bedrijfsfonds  bɛdrɛɪfsfɔnts
-## 19653             rosé           rose
-## 23894       veldslagen     fɛltslaɣən
-## 12526      koopprijzen      koprɛɪzən
-## 2816         bewerking       bəʋɛrkɪŋ
-## 15209   multiculturele mœltikœltyrelə
-## 5567              diep            dip
-## 20999         Spectrum       spɛktrœm
-## 20998 spectraalkleuren spɛktralklørən
-## 768       afvalstoffen    ɑfvɑlstɔfən
-## 8977        gezinsmenu     ɣəzɪnsmeny
-## 8260          gekookte        ɣəkoktə
-## 12219      klasgenoten    klɑsɣənotən
-## 21126       sponsoring      spɔnsorɪŋ
-## 20334         seksuele       sɛksyelə
-## 1405           Artists        ɑrtɪsts
-## 3306            Boeken          bukən
-## 25015            vleet           flet
-## 20019         Scheeken         sxekən
-## 22728       toekijkend      tukɛɪkɛnt
-## 15502    Nederlandsche   nedɛrlɑntsxə
-## 2151       beknoptheid    bəknɔpthɛɪt
-## 20035          schelle          sxɛlə
-## 8950           gezegde        ɣəzɛɣdə
-## 19849    saluutschoten    salytsxotən
-## 3381            Bommel          bɔməl
-## 1770             Barth           bɑrt
-## 14120           maoïst         maoɪst
-## 4897     crisiscentrum  krisɪssɛntrœm
-## 13041           langer          lɑŋər
-## 19718  rugbyfotografie rœɣbifotɔɣrafi
-## 26623            wurdt           ʋœrt
-## 10353  Hoogstratenlaan  hoɣstratɛnlan
-## 23320        uitdaging       œytdaɣɪŋ
-## 15347          Nadesan        nadesɑn
-## 19914    Saoedi-Arabië    saudiarabiə
-## 67        aangebrachte     anɣəbrɑxtə
-## 15928            Obdam          ɔbdɑm
-## 752    afstandstoename ɑfstɑntstunamə
-## 18818     railgebonden   rɑɪlɣəbɔndən
-## 13369       levensecht      levɛnsɛxt
-## 17483        Panasonic      panasonɪk</code></pre>
+knitr::kable(dutch$strings[selection, c(&quot;originals&quot;, &quot;transliterated&quot;)])</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">originals</th>
+<th align="left">transliterated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">8109</td>
+<td align="left">Geenhuizen</td>
+<td align="left">ɣenhœyzən</td>
+</tr>
+<tr class="even">
+<td align="left">15366</td>
+<td align="left">najaarskost</td>
+<td align="left">najarskɔst</td>
+</tr>
+<tr class="odd">
+<td align="left">20492</td>
+<td align="left">Siena</td>
+<td align="left">sina</td>
+</tr>
+<tr class="even">
+<td align="left">20751</td>
+<td align="left">smalle</td>
+<td align="left">smɑlə</td>
+</tr>
+<tr class="odd">
+<td align="left">4022</td>
+<td align="left">cameraman</td>
+<td align="left">kameramɑn</td>
+</tr>
+<tr class="even">
+<td align="left">16265</td>
+<td align="left">Ondernemersplein</td>
+<td align="left">ɔndɛrnemɛrsplɛɪn</td>
+</tr>
+<tr class="odd">
+<td align="left">7646</td>
+<td align="left">fraude</td>
+<td align="left">frɑudə</td>
+</tr>
+<tr class="even">
+<td align="left">17404</td>
+<td align="left">paardentoerisme</td>
+<td align="left">pardɛnturɪsmə</td>
+</tr>
+<tr class="odd">
+<td align="left">25724</td>
+<td align="left">Wagemakers</td>
+<td align="left">ʋaɣəmakɛrs</td>
+</tr>
+<tr class="even">
+<td align="left">17164</td>
+<td align="left">Oudjaarsavond</td>
+<td align="left">ɑudjarsavɔnt</td>
+</tr>
+<tr class="odd">
+<td align="left">2196</td>
+<td align="left">belastingen</td>
+<td align="left">bəlɑstɪŋən</td>
+</tr>
+<tr class="even">
+<td align="left">3990</td>
+<td align="left">cachet</td>
+<td align="left">kɑxɛt</td>
+</tr>
+<tr class="odd">
+<td align="left">7622</td>
+<td align="left">Française</td>
+<td align="left">fransɑɪsə</td>
+</tr>
+<tr class="even">
+<td align="left">25925</td>
+<td align="left">Week</td>
+<td align="left">ʋek</td>
+</tr>
+<tr class="odd">
+<td align="left">11556</td>
+<td align="left">jongeman</td>
+<td align="left">jɔŋəmɑn</td>
+</tr>
+<tr class="even">
+<td align="left">2233</td>
+<td align="left">belemmeringen</td>
+<td align="left">bəlɛmerɪŋən</td>
+</tr>
+<tr class="odd">
+<td align="left">18839</td>
+<td align="left">randvoorwaardelijk</td>
+<td align="left">rɑntvorʋardelək</td>
+</tr>
+<tr class="even">
+<td align="left">9964</td>
+<td align="left">herkenningsteken</td>
+<td align="left">hɛrkɛnɪŋstekən</td>
+</tr>
+<tr class="odd">
+<td align="left">24159</td>
+<td align="left">verguld</td>
+<td align="left">fɛrɣœlt</td>
+</tr>
+<tr class="even">
+<td align="left">18214</td>
+<td align="left">populaire</td>
+<td align="left">popylɑɪrə</td>
+</tr>
+<tr class="odd">
+<td align="left">3678</td>
+<td align="left">breingedeelte</td>
+<td align="left">brɛɪŋədeltə</td>
+</tr>
+<tr class="even">
+<td align="left">24044</td>
+<td align="left">verdeeldheid</td>
+<td align="left">fɛrdeldhɛɪt</td>
+</tr>
+<tr class="odd">
+<td align="left">2048</td>
+<td align="left">behalve</td>
+<td align="left">bəhɑlvə</td>
+</tr>
+<tr class="even">
+<td align="left">22565</td>
+<td align="left">Thys</td>
+<td align="left">this</td>
+</tr>
+<tr class="odd">
+<td align="left">404</td>
+<td align="left">achterban</td>
+<td align="left">ɑxtɛrbɑn</td>
+</tr>
+<tr class="even">
+<td align="left">21465</td>
+<td align="left">stekels</td>
+<td align="left">stekɛls</td>
+</tr>
+<tr class="odd">
+<td align="left">3114</td>
+<td align="left">Blaak</td>
+<td align="left">blak</td>
+</tr>
+<tr class="even">
+<td align="left">19008</td>
+<td align="left">recreatieondernemers</td>
+<td align="left">rɛkreatsiɔndɛrnemɛrs</td>
+</tr>
+<tr class="odd">
+<td align="left">11387</td>
+<td align="left">jacquet</td>
+<td align="left">jakɛt</td>
+</tr>
+<tr class="even">
+<td align="left">17454</td>
+<td align="left">pakt</td>
+<td align="left">pɑkt</td>
+</tr>
+<tr class="odd">
+<td align="left">5537</td>
+<td align="left">diegenen</td>
+<td align="left">diɣənən</td>
+</tr>
+<tr class="even">
+<td align="left">3956</td>
+<td align="left">buurt</td>
+<td align="left">byrt</td>
+</tr>
+<tr class="odd">
+<td align="left">11596</td>
+<td align="left">jou</td>
+<td align="left">jɑu</td>
+</tr>
+<tr class="even">
+<td align="left">22677</td>
+<td align="left">Toby</td>
+<td align="left">tobi</td>
+</tr>
+<tr class="odd">
+<td align="left">2664</td>
+<td align="left">betekenisvolle</td>
+<td align="left">bətekenɪsvɔlə</td>
+</tr>
+<tr class="even">
+<td align="left">10847</td>
+<td align="left">ineens</td>
+<td align="left">inens</td>
+</tr>
+<tr class="odd">
+<td align="left">18613</td>
+<td align="left">promotieobject</td>
+<td align="left">promotsiobjɛkt</td>
+</tr>
+<tr class="even">
+<td align="left">22454</td>
+<td align="left">testgroep</td>
+<td align="left">tɛstɣrup</td>
+</tr>
+<tr class="odd">
+<td align="left">2834</td>
+<td align="left">bewonderen</td>
+<td align="left">bəʋɔnderən</td>
+</tr>
+<tr class="even">
+<td align="left">36</td>
+<td align="left">aanbrengen</td>
+<td align="left">anbrɛŋən</td>
+</tr>
+<tr class="odd">
+<td align="left">24633</td>
+<td align="left">vervallen</td>
+<td align="left">fɛrvɑlən</td>
+</tr>
+<tr class="even">
+<td align="left">25354</td>
+<td align="left">voorraad</td>
+<td align="left">forat</td>
+</tr>
+<tr class="odd">
+<td align="left">23527</td>
+<td align="left">uitvoerkentekenbewijs</td>
+<td align="left">œytvurkɛntekɛnbəʋɛɪs</td>
+</tr>
+<tr class="even">
+<td align="left">4693</td>
+<td align="left">Consultants</td>
+<td align="left">kɔnsœltɑnts</td>
+</tr>
+<tr class="odd">
+<td align="left">4432</td>
+<td align="left">coachingsopleiding</td>
+<td align="left">koɑxɪŋsɔplɛɪdɪŋ</td>
+</tr>
+<tr class="even">
+<td align="left">14273</td>
+<td align="left">Matt</td>
+<td align="left">mɑt</td>
+</tr>
+<tr class="odd">
+<td align="left">23811</td>
+<td align="left">vaststaand</td>
+<td align="left">fɑststant</td>
+</tr>
+<tr class="even">
+<td align="left">21003</td>
+<td align="left">Speeches</td>
+<td align="left">spexɛs</td>
+</tr>
+<tr class="odd">
+<td align="left">19938</td>
+<td align="left">sauna’s</td>
+<td align="left">sɑunas</td>
+</tr>
+<tr class="even">
+<td align="left">23666</td>
+<td align="left">vaccins</td>
+<td align="left">fɑksɪns</td>
+</tr>
+</tbody>
+</table>
 
 
 </div>
