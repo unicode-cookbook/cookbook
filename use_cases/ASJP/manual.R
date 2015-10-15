@@ -7,8 +7,8 @@
 #' ### STEP 0: Preparation
 # install library from github
 # install.packages("devtools")
-# devtools::install_github("cysouw/qlcTokenize")
-library(qlcTokenize)
+# devtools::install_github("cysouw/qlcData")
+library(qlcData)
 # for the nice display of tables
 require(knitr)
 

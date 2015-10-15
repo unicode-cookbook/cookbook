@@ -6,7 +6,7 @@
 
 # load libraries
 # knitr is needed for a nice display of the tables
-library(qlcTokenize)
+library(qlcData)
 require(knitr)
 
 # read the wordlist with dutch words

@@ -10,7 +10,7 @@
 
 <meta name="author" content="Michael Cysouw" />
 
-<meta name="date" content="2015-10-02" />
+<meta name="date" content="2015-10-15" />
 
 <title>IPA-transliteration of dutch words</title>
 
@@ -64,17 +64,16 @@ img {
 <div id="header">
 <h1 class="title">IPA-transliteration of dutch words</h1>
 <h4 class="author"><em>Michael Cysouw</em></h4>
-<h4 class="date"><em>2015-10-02</em></h4>
+<h4 class="date"><em>2015-10-15</em></h4>
 </div>
 
 
 <pre class="r"><code># load libraries
 # knitr is needed for a nice display of the tables
-library(qlcTokenize)</code></pre>
-<pre><code>## Loading required package: stringi</code></pre>
-<pre class="r"><code>require(knitr)</code></pre>
-<pre><code>## Loading required package: knitr</code></pre>
-<pre class="r"><code># read the wordlist with dutch words
+library(qlcData)
+require(knitr)
+
+# read the wordlist with dutch words
 words &lt;- scan(file = &quot;data/2_dutch_words.txt&quot;, what = &quot;character&quot;)
 
 # use the hand-made orthography profile in `data/dutch_IPA_profile.tsv`
@@ -247,254 +246,254 @@ knitr::kable(dutch$strings[selection, c(&quot;originals&quot;, &quot;translitera
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">8109</td>
-<td align="left">Geenhuizen</td>
-<td align="left">ɣenhœyzən</td>
+<td align="left">15680</td>
+<td align="left">nieuwjaarswensen</td>
+<td align="left">niyʋjarsʋɛnsən</td>
 </tr>
 <tr class="even">
-<td align="left">15366</td>
-<td align="left">najaarskost</td>
-<td align="left">najarskɔst</td>
+<td align="left">21518</td>
+<td align="left">sterft</td>
+<td align="left">stɛrft</td>
 </tr>
 <tr class="odd">
-<td align="left">20492</td>
-<td align="left">Siena</td>
-<td align="left">sina</td>
+<td align="left">20944</td>
+<td align="left">spandoek</td>
+<td align="left">spɑnduk</td>
 </tr>
 <tr class="even">
-<td align="left">20751</td>
-<td align="left">smalle</td>
-<td align="left">smɑlə</td>
+<td align="left">25615</td>
+<td align="left">vulkaan</td>
+<td align="left">fœlkan</td>
 </tr>
 <tr class="odd">
-<td align="left">4022</td>
-<td align="left">cameraman</td>
-<td align="left">kameramɑn</td>
+<td align="left">23161</td>
+<td align="left">tuin</td>
+<td align="left">tœyn</td>
 </tr>
 <tr class="even">
-<td align="left">16265</td>
-<td align="left">Ondernemersplein</td>
-<td align="left">ɔndɛrnemɛrsplɛɪn</td>
+<td align="left">1288</td>
+<td align="left">arbeid</td>
+<td align="left">ɑrbɛɪt</td>
 </tr>
 <tr class="odd">
-<td align="left">7646</td>
-<td align="left">fraude</td>
-<td align="left">frɑudə</td>
+<td align="left">1231</td>
+<td align="left">Apidae</td>
+<td align="left">apidaə</td>
 </tr>
 <tr class="even">
-<td align="left">17404</td>
-<td align="left">paardentoerisme</td>
-<td align="left">pardɛnturɪsmə</td>
+<td align="left">20724</td>
+<td align="left">Slowaakse</td>
+<td align="left">sloʋaksə</td>
 </tr>
 <tr class="odd">
-<td align="left">25724</td>
-<td align="left">Wagemakers</td>
-<td align="left">ʋaɣəmakɛrs</td>
+<td align="left">23247</td>
+<td align="left">tweemaal</td>
+<td align="left">tʋemal</td>
 </tr>
 <tr class="even">
-<td align="left">17164</td>
-<td align="left">Oudjaarsavond</td>
-<td align="left">ɑudjarsavɔnt</td>
+<td align="left">23985</td>
+<td align="left">verbeten</td>
+<td align="left">fɛrbətən</td>
 </tr>
 <tr class="odd">
-<td align="left">2196</td>
-<td align="left">belastingen</td>
-<td align="left">bəlɑstɪŋən</td>
+<td align="left">17603</td>
+<td align="left">partij</td>
+<td align="left">pɑrtɛɪ</td>
 </tr>
 <tr class="even">
-<td align="left">3990</td>
-<td align="left">cachet</td>
-<td align="left">kɑxɛt</td>
+<td align="left">23723</td>
+<td align="left">vallen</td>
+<td align="left">fɑlən</td>
 </tr>
 <tr class="odd">
-<td align="left">7622</td>
-<td align="left">Française</td>
-<td align="left">fransɑɪsə</td>
+<td align="left">9010</td>
+<td align="left">giervalk</td>
+<td align="left">ɣirvɑlk</td>
 </tr>
 <tr class="even">
-<td align="left">25925</td>
-<td align="left">Week</td>
-<td align="left">ʋek</td>
+<td align="left">19365</td>
+<td align="left">Rhichaerd</td>
+<td align="left">rhɪxaɛrt</td>
 </tr>
 <tr class="odd">
-<td align="left">11556</td>
-<td align="left">jongeman</td>
-<td align="left">jɔŋəmɑn</td>
+<td align="left">20051</td>
+<td align="left">scherm</td>
+<td align="left">sxɛrm</td>
 </tr>
 <tr class="even">
-<td align="left">2233</td>
-<td align="left">belemmeringen</td>
-<td align="left">bəlɛmerɪŋən</td>
+<td align="left">13134</td>
+<td align="left">Leden</td>
+<td align="left">ledən</td>
 </tr>
 <tr class="odd">
-<td align="left">18839</td>
-<td align="left">randvoorwaardelijk</td>
-<td align="left">rɑntvorʋardelək</td>
+<td align="left">293</td>
+<td align="left">aard-gevoelens</td>
+<td align="left">ardɣəvulɛns</td>
 </tr>
 <tr class="even">
-<td align="left">9964</td>
-<td align="left">herkenningsteken</td>
-<td align="left">hɛrkɛnɪŋstekən</td>
+<td align="left">24933</td>
+<td align="left">vioolsonates</td>
+<td align="left">fiolsonatɛs</td>
 </tr>
 <tr class="odd">
-<td align="left">24159</td>
-<td align="left">verguld</td>
-<td align="left">fɛrɣœlt</td>
+<td align="left">13491</td>
+<td align="left">liefdevol</td>
+<td align="left">lifdevɔl</td>
 </tr>
 <tr class="even">
-<td align="left">18214</td>
-<td align="left">populaire</td>
-<td align="left">popylɑɪrə</td>
+<td align="left">26959</td>
+<td align="left">zijrivieren</td>
+<td align="left">zɛɪrivirən</td>
 </tr>
 <tr class="odd">
-<td align="left">3678</td>
-<td align="left">breingedeelte</td>
-<td align="left">brɛɪŋədeltə</td>
+<td align="left">3262</td>
+<td align="left">Boca</td>
+<td align="left">boka</td>
 </tr>
 <tr class="even">
-<td align="left">24044</td>
-<td align="left">verdeeldheid</td>
-<td align="left">fɛrdeldhɛɪt</td>
+<td align="left">25229</td>
+<td align="left">von</td>
+<td align="left">fɔn</td>
 </tr>
 <tr class="odd">
-<td align="left">2048</td>
-<td align="left">behalve</td>
-<td align="left">bəhɑlvə</td>
+<td align="left">10877</td>
+<td align="left">informatiebrochure</td>
+<td align="left">ɪnfɔrmatsibrɔxyrə</td>
 </tr>
 <tr class="even">
-<td align="left">22565</td>
-<td align="left">Thys</td>
-<td align="left">this</td>
+<td align="left">8810</td>
+<td align="left">getrouwd</td>
+<td align="left">ɣətrɑuʋt</td>
 </tr>
 <tr class="odd">
-<td align="left">404</td>
-<td align="left">achterban</td>
-<td align="left">ɑxtɛrbɑn</td>
+<td align="left">3277</td>
+<td align="left">bodemvrijheid</td>
+<td align="left">bodɛmvrɛɪhɛɪt</td>
 </tr>
 <tr class="even">
-<td align="left">21465</td>
-<td align="left">stekels</td>
-<td align="left">stekɛls</td>
+<td align="left">6581</td>
+<td align="left">Electronica</td>
+<td align="left">elɛktronika</td>
 </tr>
 <tr class="odd">
-<td align="left">3114</td>
-<td align="left">Blaak</td>
-<td align="left">blak</td>
+<td align="left">20995</td>
+<td align="left">specs</td>
+<td align="left">spɛks</td>
 </tr>
 <tr class="even">
-<td align="left">19008</td>
-<td align="left">recreatieondernemers</td>
-<td align="left">rɛkreatsiɔndɛrnemɛrs</td>
+<td align="left">18451</td>
+<td align="left">privaatrechtelijke</td>
+<td align="left">privatrɛxteləkə</td>
 </tr>
 <tr class="odd">
-<td align="left">11387</td>
-<td align="left">jacquet</td>
-<td align="left">jakɛt</td>
+<td align="left">18185</td>
+<td align="left">pompkrachten</td>
+<td align="left">pɔmpkrɑxtən</td>
 </tr>
 <tr class="even">
-<td align="left">17454</td>
-<td align="left">pakt</td>
-<td align="left">pɑkt</td>
+<td align="left">6647</td>
+<td align="left">Elliptisch</td>
+<td align="left">ɛlɪptis</td>
 </tr>
 <tr class="odd">
-<td align="left">5537</td>
-<td align="left">diegenen</td>
-<td align="left">diɣənən</td>
+<td align="left">16086</td>
+<td align="left">omgebouwde</td>
+<td align="left">ɔmɣəbɑuʋdə</td>
 </tr>
 <tr class="even">
-<td align="left">3956</td>
-<td align="left">buurt</td>
-<td align="left">byrt</td>
+<td align="left">1785</td>
+<td align="left">basen</td>
+<td align="left">basən</td>
 </tr>
 <tr class="odd">
-<td align="left">11596</td>
-<td align="left">jou</td>
-<td align="left">jɑu</td>
+<td align="left">23099</td>
+<td align="left">trommels</td>
+<td align="left">trɔmɛls</td>
 </tr>
 <tr class="even">
-<td align="left">22677</td>
-<td align="left">Toby</td>
-<td align="left">tobi</td>
+<td align="left">26828</td>
+<td align="left">zekerheidsrecht</td>
+<td align="left">zekerhɛɪtsrɛxt</td>
 </tr>
 <tr class="odd">
-<td align="left">2664</td>
-<td align="left">betekenisvolle</td>
-<td align="left">bətekenɪsvɔlə</td>
+<td align="left">482</td>
+<td align="left">actualiteit</td>
+<td align="left">ɑktyalitɛɪt</td>
 </tr>
 <tr class="even">
-<td align="left">10847</td>
-<td align="left">ineens</td>
-<td align="left">inens</td>
+<td align="left">21991</td>
+<td align="left">swing</td>
+<td align="left">sʋɪŋ</td>
 </tr>
 <tr class="odd">
-<td align="left">18613</td>
-<td align="left">promotieobject</td>
-<td align="left">promotsiobjɛkt</td>
+<td align="left">21720</td>
+<td align="left">strakke</td>
+<td align="left">strɑkə</td>
 </tr>
 <tr class="even">
-<td align="left">22454</td>
-<td align="left">testgroep</td>
-<td align="left">tɛstɣrup</td>
+<td align="left">10958</td>
+<td align="left">ingrediënt</td>
+<td align="left">ɪnɣrediɛnt</td>
 </tr>
 <tr class="odd">
-<td align="left">2834</td>
-<td align="left">bewonderen</td>
-<td align="left">bəʋɔnderən</td>
+<td align="left">15152</td>
+<td align="left">moto</td>
+<td align="left">moto</td>
 </tr>
 <tr class="even">
-<td align="left">36</td>
-<td align="left">aanbrengen</td>
-<td align="left">anbrɛŋən</td>
+<td align="left">20204</td>
+<td align="left">Schrijf</td>
+<td align="left">sxrɛɪf</td>
 </tr>
 <tr class="odd">
-<td align="left">24633</td>
-<td align="left">vervallen</td>
-<td align="left">fɛrvɑlən</td>
+<td align="left">17813</td>
+<td align="left">persoonlijk</td>
+<td align="left">pɛrsonlək</td>
 </tr>
 <tr class="even">
-<td align="left">25354</td>
-<td align="left">voorraad</td>
-<td align="left">forat</td>
+<td align="left">15378</td>
+<td align="left">namen</td>
+<td align="left">namən</td>
 </tr>
 <tr class="odd">
-<td align="left">23527</td>
-<td align="left">uitvoerkentekenbewijs</td>
-<td align="left">œytvurkɛntekɛnbəʋɛɪs</td>
+<td align="left">20605</td>
+<td align="left">skulpturen</td>
+<td align="left">skœlptyrən</td>
 </tr>
 <tr class="even">
-<td align="left">4693</td>
-<td align="left">Consultants</td>
-<td align="left">kɔnsœltɑnts</td>
+<td align="left">26223</td>
+<td align="left">Westfriese</td>
+<td align="left">ʋɛstfrisə</td>
 </tr>
 <tr class="odd">
-<td align="left">4432</td>
-<td align="left">coachingsopleiding</td>
-<td align="left">koɑxɪŋsɔplɛɪdɪŋ</td>
+<td align="left">11309</td>
+<td align="left">Iskenderun</td>
+<td align="left">ɪskɛnderœn</td>
 </tr>
 <tr class="even">
-<td align="left">14273</td>
-<td align="left">Matt</td>
-<td align="left">mɑt</td>
+<td align="left">27184</td>
+<td align="left">zuiderzeedijk</td>
+<td align="left">zœydɛrzedɛɪk</td>
 </tr>
 <tr class="odd">
-<td align="left">23811</td>
-<td align="left">vaststaand</td>
-<td align="left">fɑststant</td>
+<td align="left">15565</td>
+<td align="left">nerveus</td>
+<td align="left">nɛrvøs</td>
 </tr>
 <tr class="even">
-<td align="left">21003</td>
-<td align="left">Speeches</td>
-<td align="left">spexɛs</td>
+<td align="left">26708</td>
+<td align="left">Zakelijk</td>
+<td align="left">zakelək</td>
 </tr>
 <tr class="odd">
-<td align="left">19938</td>
-<td align="left">sauna’s</td>
-<td align="left">sɑunas</td>
+<td align="left">9128</td>
+<td align="left">goedgekeurde</td>
+<td align="left">ɣutɣəkørdə</td>
 </tr>
 <tr class="even">
-<td align="left">23666</td>
-<td align="left">vaccins</td>
-<td align="left">fɑksɪns</td>
+<td align="left">6274</td>
+<td align="left">dwarsliggers</td>
+<td align="left">dʋɑrslɪɣərs</td>
 </tr>
 </tbody>
 </table>

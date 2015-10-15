@@ -4,7 +4,7 @@
 #' date: "`r Sys.Date()`"
 #' ---
 
-library(qlcTokenize)
+library(qlcData)
 
 #' ### Check automatic tokenization
 # check it against hand-made tokenization
