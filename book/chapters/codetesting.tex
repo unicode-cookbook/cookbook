@@ -1,0 +1,35 @@
+\chapter{Testing code inclusing}
+
+Trying to include code through knitr. Different languages can be easily 
+included!
+
+<<bash-test, engine='bash'>>=
+echo 'this is a simple bash example'
+ls | wc
+@
+
+<<>>=
+'R works out of the box'
+(x <- 3+4)
+Sys.getlocale("LC_CTYPE")
+'aɽɮz'
+@
+
+You can refer to variables by using \textbackslash Sexpr{}. 
+I think \Sexpr{x} is an interesting number!
+
+<<python-test, engine='python'>>=
+'python also works!'
+print('bla' + 'bla')
+print(3+4)
+@
+
+You have to add the option `engine.paht='python3'' to get Python r
+
+<<python3-test, engine='python', engine.path='python3'>>=
+print('python3 needs an extra tag')
+uni = 'aɽɮz'
+print(uni)
+@
+
+Testing: does referencing to variables also work in Python? It does give an error, so no... !
