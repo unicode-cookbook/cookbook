@@ -50,6 +50,27 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
+%%%             knitr settings                   %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='figures/', size="scriptsize")
+options(formatR.arrow = TRUE, width = 78)
+@
+
+% for themes, see:
+% https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
+
+<<theme, cache=FALSE, echo=FALSE>>=
+name = "moe"
+thm = knit_theme$get(name)
+knit_theme$set(thm)
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
 %%%             Chapters                         %%%
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
