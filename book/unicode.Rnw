@@ -54,20 +54,14 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<<setup, include=FALSE, cache=FALSE>>=
-library(knitr)
-opts_chunk$set(fig.path='figures/', size="scriptsize")
+<<setup, include = FALSE, cache = FALSE>>=
+opts_chunk$set(fig.path = 'figures/', size = "scriptsize", tidy = TRUE)
 options(formatR.arrow = TRUE, width = 78)
+knit_theme$set("acid")
 @
 
 % for themes, see:
 % https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
-
-<<theme, cache=FALSE, echo=FALSE>>=
-name = "moe"
-thm = knit_theme$get(name)
-knit_theme$set(thm)
-@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%

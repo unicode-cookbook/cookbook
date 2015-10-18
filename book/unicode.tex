@@ -28,14 +28,14 @@
 \makeatother
 
 \definecolor{fgcolor}{rgb}{0, 0, 0}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.533,0,0.133}{#1}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.667,0.267,0}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{1,0.533,0}{#1}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.502,0,0.502}{\textbf{#1}}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.651,0.522,0}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{1,0.502,0}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0,0.502}{\textbf{#1}}}%
 \newcommand{\hlstd}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.4,0.067,0.067}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0,0,0.4}{\textbf{#1}}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0,0,0.4}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.733,0.475,0.467}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.502,0.502,0.753}{\textbf{#1}}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0,0.502,0.753}{#1}}%
 \newcommand{\hlkwd}[1]{\textcolor[rgb]{0,0.267,0.4}{#1}}%
 
 \usepackage{framed}
@@ -108,8 +108,6 @@
 % for themes, see:
 % https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
 %%%             Chapters                         %%%
@@ -123,19 +121,32 @@
 \include{chapters/use_cases}
 
 
-\chapter{Testing code inclusing}
+\chapter{Testing code inclusion}
 
-Trying to include code through knitr. Different languages can be easily 
+
+Trying to include code through knitr. 
+Different languages can be easily 
 included!
 
+There is a bug for non-R engines: the fontsize settings are not correct. I have 
+filed an issue, hopefully this will be fixed soon.
+
+For syntax colouring, install the package `highlight' and for nice tables 
+install the package `xtable'.
+
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.965, 0.965, 0.965}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-echo 'this is a simple bash example'
-ls | wc
-\end{alltt}
+\definecolor{shadecolor}{rgb}{0.933, 0.933, 0.933}\color{fgcolor}\begin{kframe}
+\noindent
+\ttfamily
+\hlstd{}\hlkwb{echo\ }\hlstd{}\hlstr{'this\ is\ a\ simple\ bash\ example'}\hlstd{}\hspace*{\fill}\\
+\hlkwb{echo\ }\hlstd{}\hlstr{'this\ is\ a\ simple\ bash\ example'}\hlstd{}\hspace*{\fill}\\
+\hlkwc{ls\ }\hlstd{\textbar \ }\hlkwc{wc}\hlstd{}\hspace*{\fill}
+\mbox{}
+\normalfont
+\normalsize
 
 \begin{verbatim}
+## this is a simple bash example
 ## this is a simple bash example
 ##       10      10     165
 \end{verbatim}
@@ -143,44 +154,68 @@ ls | wc
 \end{knitrout}
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.965, 0.965, 0.965}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.933, 0.933, 0.933}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstr{'R works out of the box'}
+\hlstr{"this is a simple R example"}
 \end{alltt}
 \begin{verbatim}
-## [1] "R works out of the box"
+## [1] "this is a simple R example"
 \end{verbatim}
 \begin{alltt}
-\hlstd{(x} \hlkwb{<-} \hlnum{3}\hlopt{+}\hlnum{4}\hlstd{)}
+\hlstd{test} \hlkwb{<-} \hlnum{3} \hlopt{+} \hlnum{4}
+\hlstd{test}
 \end{alltt}
 \begin{verbatim}
 ## [1] 7
 \end{verbatim}
-\begin{alltt}
-\hlkwd{Sys.getlocale}\hlstd{(}\hlstr{"LC_CTYPE"}\hlstd{)}
-\end{alltt}
-\begin{verbatim}
-## [1] "en_US.UTF-8"
-\end{verbatim}
-\begin{alltt}
-\hlstr{'aɽɮz'}
-\end{alltt}
-\begin{verbatim}
-## [1] "aɽɮz"
-\end{verbatim}
 \end{kframe}
 \end{knitrout}
 
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.933, 0.933, 0.933}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(qlcData)}
+\hlstd{example} \hlkwb{<-} \hlstr{"AΑА"}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.2.2 by xtable 1.7-4 package
+% Mon Oct 19 00:52:15 2015
+\begin{table}[H]
+\centering
+{\small
+\begin{tabular}{llll}
+  \toprule
+Grapheme & Frequency & Codepoint & UnicodeName \\ 
+  \midrule
+A & 1 & U+0041 & LATIN CAPITAL LETTER A \\ 
+  Α & 1 & U+0391 & GREEK CAPITAL LETTER ALPHA \\ 
+  А & 1 & U+0410 & CYRILLIC CAPITAL LETTER A \\ 
+   \bottomrule
+\end{tabular}
+}
+\caption{test} 
+\label{bla}
+\end{table}
+
+
+
+
 You can refer to variables by using \textbackslash Sexpr{}. 
-I think 7 is an interesting number!
+For example, the length of the example string is 3.
+Crossreferencing also works, see Table~\ref{bla}.
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.965, 0.965, 0.965}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-'python also works!'
-print('bla' + 'bla')
-print(3+4)
-\end{alltt}
+\definecolor{shadecolor}{rgb}{0.933, 0.933, 0.933}\color{fgcolor}\begin{kframe}
+\noindent
+\ttfamily
+\hlstd{}\hlkwa{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{'bla'}\hlstd{\ }\hlopt{+\ }\hlstd{}\hlstr{'bla'}\hlstd{}\hlopt{)}\hspace*{\fill}\\
+\hlstd{}\hlkwa{print}\hlstd{}\hlopt{(}\hlstd{}\hlnum{3}\hlstd{}\hlopt{+}\hlstd{}\hlnum{4}\hlstd{}\hlopt{)}\hlstd{}\hspace*{\fill}
+\mbox{}
+\normalfont
+\normalsize
 
 \begin{verbatim}
 ## blabla
@@ -189,15 +224,18 @@ print(3+4)
 \end{kframe}
 \end{knitrout}
 
-You have to add the option `engine.paht='python3'' to get Python r
+You have to add the option ``engine.path='python3'' to get Python 3.
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.965, 0.965, 0.965}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-print('python3 needs an extra tag')
-uni = 'aɽɮz'
-print(uni)
-\end{alltt}
+\definecolor{shadecolor}{rgb}{0.933, 0.933, 0.933}\color{fgcolor}\begin{kframe}
+\noindent
+\ttfamily
+\hlstd{}\hlkwa{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{'python3\ needs\ an\ extra\ tag'}\hlstd{}\hlopt{)}\hspace*{\fill}\\
+\hlstd{uni\ }\hlopt{=\ }\hlstd{}\hlstr{'aɽɮz'}\hlstd{}\hspace*{\fill}\\
+\hlkwa{print}\hlstd{}\hlopt{(}\hlstd{uni}\hlopt{)}\hlstd{}\hspace*{\fill}
+\mbox{}
+\normalfont
+\normalsize
 
 \begin{verbatim}
 ## python3 needs an extra tag

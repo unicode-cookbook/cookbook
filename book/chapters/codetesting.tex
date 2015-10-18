@@ -1,30 +1,56 @@
-\chapter{Testing code inclusing}
+\chapter{Testing code inclusion}
 
-Trying to include code through knitr. Different languages can be easily 
+
+Trying to include code through knitr. 
+Different languages can be easily 
 included!
 
+There is a bug for non-R engines: the fontsize settings and line spaceing are not correct. I have 
+filed an issue, hopefully this will be fixed soon. 
+
+For syntax colouring, install the package `highlight' and for nice tables 
+install the package `xtable'.
+
 <<bash-test, engine='bash'>>=
+echo 'this is a simple bash example'
 echo 'this is a simple bash example'
 ls | wc
 @
 
 <<>>=
-'R works out of the box'
-(x <- 3+4)
-Sys.getlocale("LC_CTYPE")
-'aɽɮz'
+'this is a simple R example'
+test = 3+4
+test
 @
 
+<<>>=
+library(qlcData)
+example  = 'AΑА'
+profile = write.profile(example)
+@
+
+<<Rtest2, tidy = TRUE, results = 'asis', echo = FALSE>>=
+library(xtable)
+print(xtable(profile, caption = 'test', label = 'bla')
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'small'
+  , table.placement = 'H'
+  )
+@
+
+
+
 You can refer to variables by using \textbackslash Sexpr{}. 
-I think \Sexpr{x} is an interesting number!
+For example, the length of the example string is \Sexpr{nchar(example)}.
+Crossreferencing also works, see Table~\ref{bla}.
 
 <<python-test, engine='python'>>=
-'python also works!'
 print('bla' + 'bla')
 print(3+4)
 @
 
-You have to add the option `engine.paht='python3'' to get Python r
+You have to add the option ``engine.path='python3'' to get Python 3.
 
 <<python3-test, engine='python', engine.path='python3'>>=
 print('python3 needs an extra tag')
