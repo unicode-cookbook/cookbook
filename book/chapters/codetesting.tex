@@ -19,18 +19,17 @@ ls | wc
 
 <<>>=
 'this is a simple R example'
+
 test = 3+4
 test
 @
 
 <<>>=
-library(qlcData)
-example  = 'AΑА'
-profile = write.profile(example)
+library(qlcData) 
+profile = write.profile('AΑА')
 @
 
 <<Rtest2, tidy = TRUE, results = 'asis', echo = FALSE>>=
-library(xtable)
 print(xtable(profile, caption = 'test', label = 'bla')
   , include.rownames = FALSE
   , booktabs = TRUE

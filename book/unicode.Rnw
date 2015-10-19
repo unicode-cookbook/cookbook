@@ -55,13 +55,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <<setup, include = FALSE, cache = FALSE>>=
-opts_chunk$set(fig.path = 'figures/', size = "scriptsize", tidy = TRUE)
-options(formatR.arrow = TRUE, width = 78)
-knit_theme$set("acid")
+opts_chunk$set(fig.path = 'figures/'
+              , size = "scriptsize"
+              , tidy = TRUE
+              , highlight = FALSE
+              , strip.white = FALSE
+              )
+options(formatR.arrow = TRUE)
+library(xtable)
 @
 
+% knit_theme$set("acid")
 % for themes, see:
 % https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
+% does not work nice for non-R code (due to Highlight package)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
