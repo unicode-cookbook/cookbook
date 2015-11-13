@@ -29,3 +29,4 @@ unicode.texnicle
 *.synctex.gz
 *.pdf
 *.fdb_latexmk
+book/cache/*

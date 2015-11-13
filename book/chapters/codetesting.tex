@@ -13,12 +13,20 @@ install the package `xtable'.
 
 <<bash-test, engine='bash'>>=
 echo 'this is a simple bash example'
-echo 'this is a simple bash example'
 ls | wc
 @
 
+<<engine='bash', echo = FALSE>>=
+echo -e 'note that bash chunks are executed as one, with all output at the end.
+You will have to make different chunks to get output separated.
+And add manual linebreaks!'
+@
+
+Spacing of lines is fine. I think without background looks better
+
 <<>>=
-'this is a simple R example'
+# adding comments inside code? Probably not a good idea
+(example <- 'this is a simple R example')
 
 test = 3+4
 test

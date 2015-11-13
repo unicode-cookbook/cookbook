@@ -22,3 +22,8 @@
 
 \newcommand{\diaf}[1]
 {{\footnotesize \fontspec{CharisSIL}{\small ◌}\symbol{"#1}}} % small for footnote
+
+% manually specifying space before and after knitr chunks
+\renewenvironment{knitrout}
+  {\vspace{-0.5em} } % what happens before the code chunk
+  {\vspace{-1em} } % what happens after the code chunk

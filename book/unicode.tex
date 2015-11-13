@@ -27,16 +27,16 @@
 }
 \makeatother
 
-\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
-\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\definecolor{fgcolor}{rgb}{0, 0, 0}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.502,0,0.502}{\textbf{#1}}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.651,0.522,0}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{1,0.502,0}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0,0.502}{\textbf{#1}}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.733,0.475,0.467}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.502,0.502,0.753}{\textbf{#1}}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0,0.502,0.753}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0,0.267,0.4}{#1}}%
 
 \usepackage{framed}
 \makeatletter
@@ -103,10 +103,10 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Here are settings for knitr, which will be removed in the .tex file
+% spacing of code-chunks is set with the "knitrout" environment in localcommands.tex
 
 
-% for themes, see:
-% https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
@@ -115,7 +115,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{chapters/introduction}
+\include{chapters/unicode_background}
 \include{chapters/pitfalls}
+\include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
 \include{chapters/orthography_profiles}
 \include{chapters/use_cases}
@@ -135,12 +137,10 @@ For syntax colouring, install the package `highlight' and for nice tables
 install the package `xtable'.
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 echo 'this is a simple bash example'
-echo 'this is a simple bash example'
 ls | wc
-## this is a simple bash example
 ## this is a simple bash example
 ##       10      10     165
 \end{verbatim}
@@ -148,9 +148,22 @@ ls | wc
 \end{knitrout}
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
-"this is a simple R example"
+## note that bash chunks are executed as one, with all output at the end.
+## You will have to make different chunks to get output separated.
+## And add manual linebreaks!
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Spacing of lines is fine. I think without background looks better
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+# adding comments inside code? Probably not a good idea
+(example <- "this is a simple R example")
 ## [1] "this is a simple R example"
 
 test <- 3 + 4
@@ -161,17 +174,16 @@ test
 \end{knitrout}
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 library(qlcData)
-example <- "AΑА"
-profile <- write.profile(example)
+profile <- write.profile("AΑА")
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
 
 % latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Mon Oct 19 18:08:51 2015
+% Fri Nov 13 10:29:19 2015
 \begin{table}[H]
 \centering
 {\small
@@ -193,11 +205,11 @@ A & 1 & U+0041 & LATIN CAPITAL LETTER A \\
 
 
 You can refer to variables by using \textbackslash Sexpr{}. 
-For example, the length of the example string is 3.
+For example, the length of the example string is 26.
 Crossreferencing also works, see Table~\ref{bla}.
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 print('bla' + 'bla')
 print(3+4)
@@ -210,7 +222,7 @@ print(3+4)
 You have to add the option ``engine.path='python3'' to get Python 3.
 
 \begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 print('python3 needs an extra tag')
 uni = 'aɽɮz'

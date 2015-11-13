@@ -54,21 +54,34 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<<setup, include = FALSE, cache = FALSE>>=
+% Here are settings for knitr, which will be removed in the .tex file
+% spacing of code-chunks is set with the "knitrout" environment in localcommands.tex
+
+<<setup, include = FALSE>>=
+
+# dependencies
+require(xtable)
+require(highlight)
+require(qlcData)
+
+# for themes, see:
+# https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
+# does not work nice for non-R code (due to Highlight package),
+# so currently set to FALSE in opts_chunk below
+knit_theme$set("acid")
+
 opts_chunk$set(fig.path = 'figures/'
               , size = "scriptsize"
               , tidy = TRUE
               , highlight = FALSE
               , strip.white = FALSE
+              , cache = TRUE
+              , background = '#FFFFFF'
               )
+              
 options(formatR.arrow = TRUE)
-library(xtable)
+options(reindent.spaces = 2)
 @
-
-% knit_theme$set("acid")
-% for themes, see:
-% https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
-% does not work nice for non-R code (due to Highlight package)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
@@ -77,7 +90,9 @@ library(xtable)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{chapters/introduction}
+\include{chapters/unicode_background}
 \include{chapters/pitfalls}
+\include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
 \include{chapters/orthography_profiles}
 \include{chapters/use_cases}
