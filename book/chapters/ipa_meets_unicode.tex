@@ -579,10 +579,10 @@ Letters in the Unicode Standard:
 \begin{itemize}
   
 	\item[] Length marks, namely: 
-	\begin{itemize}
-	  \item[] <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}
-	  \item[] <\dia{02D1}> \textsc{modifier letter half triangular colon} at \uni{02D1}
-	\end{itemize}
+    	\begin{itemize}
+    	  \item[] <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}
+    	  \item[] <\dia{02D1}> \textsc{modifier letter half triangular colon} at \uni{02D1}
+    	\end{itemize}
 	 
 	\item[] Tone letters, like: 
 	\begin{itemize} 
@@ -614,16 +614,40 @@ Letters in the Unicode Standard:
 \end{itemize}
 
 Although linguists might expect these characters to belong together with the
-character in front of them, at least for <ʰ> \textsc{modifier letter small h} at
-\uni{02B0} the Unicode Consortium's decision to treat it as a separate character
-is also linguistically correct, because according to the IPA it can be used both
-for post-aspiration (following the base character) and pre-aspiration (preceding
-the base character). The default combination of Spacing Modifiers with the
-preceding character can be specified in orthography profiles (see
-Chapter~\ref{orthography-profiles}). Note that there is an alternative 
-homoglyph, namely the \textsc{combining latin small letter h} at \uni{036A}. We 
-propose not to use this combining diacritical mark, but to standardize on 
-Unicode modifier letters for all superscript letters in IPA.
+character in front of them, at least for tone letters, stress symbols and <ʰ>
+\textsc{modifier letter small h} at \uni{02B0} the Unicode Consortium's decision
+to treat it as a separate character is also linguistically correct.
+
+\begin{itemize}
+  
+   \item According to the IPA, <ʰ> can be used both as <\dia{02B0}> for
+         post-aspiration (following the base character) and as
+         <\diareverse{02B0}> for pre-aspiration (preceding the base character).
+         Note that there is yet another homoglyph, namely the
+         \textsc{combining latin small letter h} at \uni{036A}. We propose not
+         to use this combining diacritical mark, but to standardize on Unicode
+         modifier letters for all superscript letters in IPA.
+  
+   \item Tone letters are normally written at the end of the syllable,
+         possibly occurring immediately adjacent to a consonant in the coda of
+         the syllable. Such tone markers should of course not be treated as
+         belonging to this consonant, so we propose to treat tone letters as 
+         separate segments.
+ 
+   \item Stress markers <\diareverse{02C8}> at \uni{02C8} and
+         <\diareverse{02CC}> at \uni{02CC} have a very similar
+         distribution in that they normally are written at the start of
+         the stressed syllable. In a sense, they thus belong to the
+         characters following the stress marker, but it would be wrong to
+         cluster them together with whatever segment is at the start of
+         the syllable. So, like tone letters, we propose to treat stress
+         markers as separate segments.
+ 
+\end{itemize}
+
+If intended, then any default combination of Spacing Modifiers
+with the preceding character can be specified in orthography profiles (see
+Chapter~\ref{orthography-profiles}). 
 
 % ==========================
 \section{Pitfall: No unique diacritic ordering}
