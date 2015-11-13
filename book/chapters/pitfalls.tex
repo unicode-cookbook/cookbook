@@ -63,8 +63,6 @@ contextually-determined glyphs, ligatures are (intended) artefacts of text
 processing instructions. Finally, a single glyph may be a part of a
 character, as exemplified by diacritics like the diaeresis <\dia{0308}> in <ë>.
 
-test {\fontspec[Alternative=02]{AlBayan}ب}
-
 Further, the rendering of a glyph is dependent on the font being used. For
 example, the Unicode character \textsc{latin small letter g} appears as <g> and
 <{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts, respectively,
@@ -342,7 +340,7 @@ Section~\ref{pitfall-homoglyphs}, the following symbols <g {\large \textit{g}}
 glyphs of the same character, i.e.~they may be rendered differently depending on
 the typography being used, but they all share the same code point (viz.
 \textsc{latin small letter g} at \uni{0067}). In contrast, the symbols
-<{\fontspec{EversonMono}AАΑᎪᗅᴀꓮʠ햠홰}> are all different code points,
+<{\fontspec{EversonMono}AАΑᎪᗅᴀꓮ𝖠𝙰}> are all different code points,
 although they look highly similar---in some cases even sharing exactly the same
 glyph in some fonts. All these different A-like characters include the following
 code points in the Unicode Standard:
@@ -358,8 +356,8 @@ code points in the Unicode Standard:
 %	\item[] <{\fontspec{EversonMono}Ａ}> \textsc{fullwidth latin capital letter a}, at \uni{FF21} 
 	\item[] <{\fontspec{EversonMono}ʠ}> \textsc{carian letter a}, at \uni{102A0} 
 %	\item[] <{\fontspec{EversonMono}̀}> \textsc{old italic letter a}, at \uni{10300} 
-	\item[] <{\fontspec{EversonMono}햠}> \textsc{mathematical sans-serif capital a}, \uni{1D5A0} 
-	\item[] <{\fontspec{EversonMono}홰}> \textsc{mathematical monospace capital a}, at \uni{1D670} 
+	\item[] <{\fontspec{EversonMono}𝖠}> \textsc{mathematical sans-serif capital a}, \uni{1D5A0} 
+	\item[] <{\fontspec{EversonMono}𝙰}> \textsc{mathematical monospace capital a}, at \uni{1D670} 
 \end{itemize}
 
 The existence of such homoglyphs is partly due to legacy compatibility, but for
@@ -640,10 +638,10 @@ UTF-8 as their default encoding.
 
 A related problem is a general issue about how to store information in computer
 memory, which is known as \textsc{endianness}. The details of this issue go
-beyond the scope of this book. It suffices to realize that there is a
-difference between \textsc{big-endian} (BE) storage and \textsc{little-endian}
-(LE) storage. The Unicode Standard offers a possibility to explicitly indicate
-what kind of storage is used by starting a file with a so-called \textsc{byte order
+beyond the scope of this book. It suffices to realize that there is a difference
+between \textsc{big-endian} (BE) storage and \textsc{little-endian} (LE)
+storage. The Unicode Standard offers a possibility to explicitly indicate what
+kind of storage is used by starting a file with a so-called \textsc{byte order
 mark} (BOM). However, the Unicode Standard does not require the usage of BOM,
 preferring other non-Unicode methods to signal to computers which kind of
 endianness is used. This issue only arises with UTF-32 and UTF-16 encodings.
@@ -652,8 +650,8 @@ strongly dispreferred according to the Unicode Standard. We suggest that
 everyone tries to prevent the inclusion of BOM in your data.
 
 % ==========================
-\section{Pitfall: Software}
-\label{software}
+%\section{Pitfall: Software}
+%\label{software}
 % ==========================
 
 % issues we've encountered in our computing environments
