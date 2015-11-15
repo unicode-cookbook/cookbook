@@ -90,7 +90,6 @@ options(reindent.spaces = 2)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{chapters/introduction}
-\include{chapters/unicode_background}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
