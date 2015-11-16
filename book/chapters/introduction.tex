@@ -21,23 +21,29 @@ the right way to write, although many users of Yoruba orthography seem to be
 perfectly fine with leaving them out. As pointed out by the proponents of the
 official rules, there are some homographs when leaving out the tone diacritics
 \citep[44]{Olumuyiw2013}. However, writing systems (and the languages they
-represent) are normally full of homophones, which is normally not a problem at
-all for speakers of the language. More importantly, writing is not just a purely
-functional tool, but just as importantly it is a mechanism to signal social
-affiliation. By showing that you \textit{know the rules} of expressing yourself
-in writing, others will more easily accept you as a worthy participant in their
-group. And that just as well holds for obeying to the official rules when
-writing a job application, as for obeying to the informal rules when writing an
-SMS to classmates in school. The case of Yoruba writing is an exemplary case, as
-even after more than a century of efforts to standardize the writing systems,
-there is still a wide range of variation in daily use \citep{Olumuyiw2013}.
+represent) are normally full of homographs (and homophones), which is normally
+not a problem at all for speakers of the language. More importantly, writing is
+not just a purely functional tool, but just as importantly it is a mechanism to
+signal social affiliation. By showing that you \textit{know the rules} of
+expressing yourself in writing, others will more easily accept you as a worthy
+participant in their group. And that just as well holds for obeying to the
+official rules when writing a job application, as for obeying to the informal
+rules when writing an SMS to classmates in school. The case of Yoruba writing is
+an exemplary case, as even after more than a century of efforts to standardize
+the writing systems, there is still a wide range of variation of writing in
+daily use \citep{Olumuyiw2013}.
 
-The sometimes cumbersome and sometimes illogical structure, and the enormous
-variability of existing writing systems is a fact of life scholars have to
-accept and should try to adapt to as good as possible. Our plea here is a
-proposal for a formalization to do exactly that.
+\subsubsection*{Formalizing orthographic structure}
 
-When considering the worldwide linguistic diversity, including all
+The resulting cumbersome and often illogical structure of writing systems, and
+the enormous variability of existing writing systems for the world's languages
+is a fact of life scholars have to accept and should try to adapt to as good as
+possible. Our plea in this book is a proposal how to do exactly that: formalize 
+knowledge about individual writing systems in a form that is both easy to use 
+for linguists in daily practice, and at the same time computer-readable for 
+automatic processing.
+
+When considering the worldwide linguistic diversity, including the many
 lesser-studied and endangered languages, there exist numerous different
 orthographies using symbols from the same scripts. For example, there are
 hundreds of orthographies using Latin-based alphabetic scripts. All of these
@@ -50,22 +56,23 @@ idiosyncrasies in a computer-readable format (a process called
 integrated into so-called Unicode locale descriptions, though we will argue that
 in practice this is often not the most useful solution for the kind of problems
 arising in the daily practice of linguistics. Consequently, a central goal of
-this paper is to flesh out the linguistic challenges for locale descriptions,
+this book is to flesh out the linguistic challenges for locale descriptions,
 and work out suggestions to improve their structure for usage in a linguistic
 context. Conversely, we also aim to improve linguists' understanding and
 appreciation for the accomplishments of the Unicode Consortium in the
 development of the Unicode Standard.
 
 The necessity to computationally use and compare different orthographies most
-forcefully arises in the context of language comparison. Concretely, in our
-current research our goal is to develop quantitative methods for language
-comparison and historical analysis in order to investigate worldwide linguistic
-variation and to model the historical and areal processes that underlie
-linguistic diversity,
-cf.~\citet{Steiner_etal2011,List2012,List2012a,ListMoran2013,MoranProkic2013}.
+forcefully arises in the context of language comparison. Concretely, the proper
+processing of orthographies and transcriptions becomes crucial for the
+development of quantitative methods for language comparison and historical
+reconstruction in order to investigate worldwide linguistic variation and to
+model the historical and areal processes that underlie linguistic
+diversity.\footnote{
+cf.~\citet{Steiner_etal2011,List2012,List2012a,ListMoran2013,MoranProkic2013}}
 In this work, it is crucial to be able to flexibly process across numerous
 resources with different orthographies. In many cases even different resources
-on the \textit{same} language use different orthographic conventions. Another
+on the same language use different orthographic conventions. Another
 orthographic challenge that we encounter regularly in our linguistic practice is
 electronic resources on a particular language that claim to follow a specific
 orthographic convention (often a resource-specific convention), but on closer
@@ -80,14 +87,14 @@ tokenization}. Basically, given some strings of symbols (e.g.~morphemes, words,
 sentences) in a specific source, our first processing step is to specify how
 these strings have to be separated into graphemes, considering the specific
 orthographic conventions used in a particular source document. Our experience is
-that such a graphemic tokenization can be performed without extensive in-depth
-knowledge about the phonetic and phonological details of the language in
-question. For example, the specification that $<$ou$>$ is a grapheme of English
-is a much easier task than to specify what exactly the phonetic values of this
-grapheme are in any specific occurrence in English words. Grapheme separation is
-a task that can be performed relatively reliably and with limited availability
-of time and resources (compare, for example, the task of creating a complete
-phonetic or phonological normalization).
+that such a graphemic tokenization can often be performed reasonably accurately
+without extensive in-depth knowledge about the phonetic and phonological details
+of the language in question. For example, the specification that <ou> is a
+grapheme of English is a much easier task than to specify what exactly the
+phonetic values of this grapheme are in any specific occurrence in English
+words. Grapheme separation is a task that can be performed relatively reliably
+and with limited availability of time and resources (compare, for example, the
+daunting task of creating a complete phonetic or phonological normalization).
 
 Although grapheme tokenization is only one part of the solution, it is an
 important and highly fruitful processing step. Given a grapheme tokenization,
@@ -101,28 +108,32 @@ probability of grapheme matches, e.g.~with the goal to find regular sound
 changes between related languages or transliterations between different sources
 in the same language.
 
-Before we deal with these proposals, in the first part of this paper (Sections
-~\ref{encoding} through~\ref{ipa-meets-unicode}) we give an extended introduction
-to the notion of encoding (Section~\ref{encoding}) and writing systems, both
-from a linguistic perspective and from the perspective of the Unicode Consortium
-(Section~\ref{terminology}). We consider the Unicode Standard to be a
-breakthrough (and ongoing) development that fundamentally changed the way we
-look at writing systems, and we aim to provide here a slightly more in-depth
-survey of the many techniques that are available in the standard. A good
-appreciation for the solutions that the Unicode Standard also allows for a
-thorough understanding of possible pitfalls that one might encounter when using
-it (Section~\ref{unicode-pitfalls}). As an example of the current
-state-of-the-art, we discuss the rather problematic marriage of the
-International Phonetic Alphabet (IPA) with the Unicode Standard (Section
+\subsubsection*{Structure of this bok}
+
+Before we deal with these proposals we will extensively discuss the theoretical
+background on text encoding, on the Unicode standard, and on the International
+Phonetic Alphabet. In the remainder of this chapter, we give an extended
+introduction to the notion of encoding (Section~\ref{encoding}) and writing
+systems, both from a linguistic perspective
+(Section~\ref{linguistic-terminology}) and from the perspective of the Unicode
+Consortium (Section~\ref{the-unicode-approach}). We consider the Unicode
+Standard to be a breakthrough (and ongoing) development that fundamentally
+changed the way we look at writing systems, and we aim to provide here a
+slightly more in-depth survey of the many techniques that are available in the
+standard. A good appreciation for the solutions that the Unicode Standard also
+allows for a thorough understanding of possible pitfalls that one might
+encounter when using it (Chapter~\ref{unicode-pitfalls}). As an example of the
+current state-of-the-art, we discuss the rather problematic marriage of the
+International Phonetic Alphabet (IPA) with the Unicode Standard (Chapter
 \ref{ipa-meets-unicode}).
 
-The second part of the paper (Sections~\ref{orthography-profiles} and
+The second part of the book (Sections~\ref{orthography-profiles} and
 \ref{use-cases}) describes our proposals for how to deal with the Unicode
-Standard in the daily practice of (comparative) linguists. First, we discuss the
+Standard in the daily practice of (comparative) linguistics. First, we discuss the
 challenges of characterizing a writing system. To solve these problems, we
 propose the notions of orthography profiles, closely related to Unicode locale
-descriptions (Section~\ref{orthography-profiles}). Finally, we discuss practical
-issues with actual examples (Section~\ref{use-cases}). We provide reference
+descriptions (Chapter~\ref{orthography-profiles}). Finally, we discuss practical
+issues with actual examples (Chapter~\ref{use-cases}). We provide reference
 implementation of our proposals in R and in Python, available as open-source
 libraries.
 
