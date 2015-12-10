@@ -26,4 +26,7 @@
 % manually specifying space before and after knitr chunks
 \renewenvironment{knitrout}
   {\vspace{-0.5em} } % what happens before the code chunk
-  {\vspace{-1em} } % what happens after the code chunk
+  {\vspace{-0.5em} } % what happens after the code chunk
+
+% scale texttt fontsize
+\renewcommand{texttt}[1]{{\footnotesize\texttt{#1}}}
