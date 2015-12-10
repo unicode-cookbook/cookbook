@@ -11,7 +11,7 @@
 
 Established in 1886, the \textsc{international phonetic association} (henceforth
 \textit{Association}) has long maintained a standard alphabet, the
-\texsc{international phonetic alphabet} (henceforth \textit{IPA}), which is a
+\textsc{international phonetic alphabet} (henceforth \textit{IPA}), which is a
 common standard in linguistics to transcribe sounds of spoken languages. It was
 first published in 1888 as an international system of phonetic transcription for
 oral languages and for pedagogical purposes. It contained phonetic values for
@@ -19,9 +19,9 @@ English, French and German. Diacritics for length and nasalization were already
 present in this first version, and the same symbols are still used today. 
 %\footnote{Also referred to as API, for \textit{Association Phonétique Internationale}.} 
 
-Originally, the IPA alphabet was a list of symbols with pronunciation examples
-from words in different languages. In 1900 the symbols were first organized into
-a chart and were given phonetic feature labels (e.g.\ for manner of consonant
+Originally, the IPA was a list of symbols with pronunciation examples
+using words in different languages. In 1900 the symbols were first organized into
+a chart and were given phonetic feature labels (e.g.\ for manner of
 articulation among others `plosives', `nasales', `fricatives', for place of
 articulation among others `bronchiales', `laryngales', `labiales' and for vowels
 e.g.\ `fermées', `mi-fermées', `mi-ouvertes', `ouvertes'). Throughout the last
@@ -129,7 +129,7 @@ representation of sounds in two languages, it does not necessarily mean that the
 sounds in the two languages are identical.
 \end{quote}
 
-From its earliest days the Association aimed to provide ``a separate sign for
+\noindent From its earliest days the Association aimed to provide ``a separate sign for
 each distinctive sound; that is, for each sound which, being used instead of
 another, in the same language, can change the meaning of a word''
 \citep[27]{IPA1999}. Distinctive sounds became later known as \textsc{phonemes}
@@ -166,9 +166,9 @@ a diacritic. In sum:
           be used to distinguish different articulations when necessary.
 \end{itemize}          
           
-\noindent Yet, in some situations diacritics can be used to mark contrasts. The
-\textit{Handbook} recommends to limit the use of phonemic diacritics to the
-following situations: 
+\noindent Yet, in some situations diacritics can be used to mark phonemic
+contrasts. The \textit{Handbook} recommends to limit the use of phonemic
+diacritics to the following situations: 
 
 \begin{itemize}
 
@@ -186,8 +186,8 @@ represent the phonetic value of the sounds that they represent. So an IPA symbol
 <t> in one transcription is not always the same as an IPA <t> in another
 transcription (or even within a single transcription). The interpretation of any
 particular <t> is mostly a language-specific convention (or even
-resource-specific and possibly even context-specific), which -- unfortunately --
-is in most cases not made explicit by users of the IPA.
+resource-specific and possibly even context-specific), a fact which --
+unfortunately -- is in most cases not made explicit by users of the IPA.
 
 There are different reasons for this difficulty to interpret IPA symbols, all
 officially sanctioned by the IPA. An important principle of the IPA is that
@@ -195,9 +195,7 @@ different representations resulting from different underlying analyses are
 allowed. Because the IPA does not provide phonological analyses for specific
 languages, the IPA does not define a single ``correct'' transcription system.
 Rather, the IPA aims to provide a resource that allows users to express any
-analysis so that it is widely understood. 
-
-Basically, the IPA allows for both a `narrow' phonetic transcription and a
+analysis so that it is widely understood. Basically, the IPA allows for both a `narrow' phonetic transcription and a
 `broad' phonological transcription. A `narrow' phonetic transcription may freely
 use the all symbols in the IPA chart with direct reference to their phonetic
 value, i.e. the transcriber can indicate with the symbols <ŋ͡m> that the
@@ -207,7 +205,7 @@ of this sound in the language in question.
 
 % examples from Wells \url{https://www.phon.ucl.ac.uk/home/wells/transcription-ELL.pdf}
 
-In contrast, the basic goal of a phonemic transcription is to distinguish all
+In contrast, the basic goal of a phonemic ``broad'' transcription is to distinguish all
 words in a language with a minimal number of transcription symbols
 \citep[19]{Abercrombie1964}. A phonemic transcription includes the conventions
 of a particular language's phonological rules. These rules determine the
@@ -237,10 +235,10 @@ transcription is difficult to interpret:
 
 \begin{itemize}
   
-   \item A symbol used represents the phonemic status, and not necessarily the
+   \item A symbol represents the phonemic status, and not necessarily the
          precise phonetic realization. So, different transcriptions might use 
          the same symbol for different underlying sounds.
-   \item The symbol that is used for a specific phoneme is not necessarily
+   \item Any symbol that is used for a specific phoneme is not necessarily
          unique, so different transcriptions might use different symbols for the
          same underlying sound.
    \item Allophonic variation can be disregarded in phonemic transcription, so
@@ -264,17 +262,16 @@ revisions, there was expansion and revisions to phonetic symbols in the IPA
 chart. Notably the marking of tone was extended with the addition of a second
 system for marking linguistic tones (the so-called `Chao' tone letters).
 Importantly, however, this was also the first revision to address issues of
-computational representations for the IPA -- the principles above of which have
-had several ramifications that make the interoperability of electronic
-linguistic data extremely difficult.
+computational representations for the IPA.
 
-Prior to the Kiel Convention for the modern revision of the IPA in 1989, 
-\cite{Wells1987} collected and published practical approaches to coded 
-representations of the IPA, which dealt mainly with the assignment of 
-characters on the keyboard. The process of assigning standardized ``computer 
-codes'' to phonetic symbols was assigned to the Workgroup on Computer 
-Coding (henceforth working group) at the Kiel Convention. This working 
-group was tasked with \citep{Esling1990,EslingGaylord1993}: 
+Prior to the Kiel Convention for the modern revision of the IPA in 1989,
+\citet{Wells1987} collected and published practical approaches to coded
+representations of the IPA, which dealt mainly with the assignment of characters
+on the keyboard to IPA symbols. The process of assigning standardized ``computer
+codes'' to phonetic symbols was assigned to the \textsc{workgroup on computer
+coding} (henceforth \textit{working group}) at the Kiel Convention. This working
+group was assigned to consider the following tasks
+\citep{Esling1990,EslingGaylord1993}: 
 
 \begin{itemize}
 	\item determining how to represent the IPA numerically
@@ -284,22 +281,22 @@ group was tasked with \citep{Esling1990,EslingGaylord1993}:
 
 \noindent The identification of IPA symbols with unique identifiers was 
 a first step in formalizing the IPA computationally because it would give 
-each symbol an unambiguous numerical identifier called an \textsc{IPA Number}. 
+each symbol an unambiguous numerical identifier called an \textsc{IPA number}. 
 The numbering system was to be comprehensive enough to support future revisions 
 of the IPA, including symbol specifications and diacritic placement. The 
 application of diacritics was also to be made explicit. 
 
 Although the Association had never officially approved a set of names 
-for the IPA symbols, each IPA symbol received a unique \textsc{IPA Name}. 
+for the IPA symbols, each IPA symbol received a unique \textsc{IPA name}. 
 Many symbols already had an informal name (or two) used by linguists, but 
 consensus on symbol names was growing due to the recent publication of the 
 \textit{Phonetic Symbol Guide} \citep{PullumLadusaw1986}. Thus most of the 
-IPA symbol names were taken from \cite{PullumLadusaw1986} \citep[31]{IPA1999}.
+IPA symbol names were taken from that source \citep[31]{IPA1999}.
 
 The working group insightfully decided that the computing-coding convention 
 for the IPA should be independent of computer environments or formats (e.g.\ ASCII), 
 i.e.\ the IPA Number was not meant to be implemented directly in a computer 
-encoding. The working group report's declaration includes the explanatory 
+encoding. The working group report's declaration includes the following explanatory 
 remarks \citep[82]{International1989report}:
 
 \begin{quote}
@@ -318,43 +315,44 @@ software, etc., to common IPA Numbers, and thus symbols.\footnote{Remember, at
 this time in the late 1980s there was no stable multilingual computing environment. 
 But some solution was needed because scholars were increasingly using personal 
 computers for their research and many were quickly adopting electronic mail or 
-discussion boards like Usenet as a medium for international exchanges. This was 
-before the Internet as we know it today. Most of these systems ran on 8-bit 
+discussion boards like Usenet as a medium for international exchanges. Most of these systems ran on 8-bit 
 hardware systems using a 7-bit ASCII character encoding.}
 
-Furthermore, the assignment of computer codes to IPA symbols was meant to 
-represent an unbiased formulation. The Association plays the role of an international 
-advisory body and it stated that it should not recommend a particular existing 
-system of encoding. In fact, during this time there were a number of coding 
-systems used, but none of them had a dominant international position. The 
-differences between systems were also either too great or too subtle to warrant 
-an attempt at combining them \citep{International1989report}.
+Furthermore, the assignment of computer codes to IPA symbols was meant to
+represent an unbiased formulation. The Association here played the role of an
+international advisory body and it stated that it should not recommend a
+particular existing system of encoding. In fact, during this time there were a
+number of coding systems used (see Section~\ref{encoding}), but none of them had
+a dominant international position. The differences between systems were also
+either too great or too subtle to warrant an attempt at combining them
+\citep{International1989report}.
 
-The working group assigned each IPA symbol to a unique three-digit number, 
-i.e.\ an IPA Number. Encoded in this number scheme is information about the 
-status of each symbol (see below). The IPA numbers are listed with the IPA 
-symbols and they are also illustrated in IPA chart form (see \cite[84]{EslingGaylord1993} 
-or \cite[App. 2]{IPA2007}). The numbers were assigned in linear order (e.g.\ 
-[p] 101, [b] 102, [t] 103...) following the IPA revision of 1989 and its update in 1996.
+The working group assigned each IPA symbol to a unique three-digit number, i.e.\
+an IPA Number. Encoded in this number scheme implicitly includes information
+about the status of each symbol (see below). The IPA numbers were listed with the
+IPA symbols and they were also illustrated in IPA chart form (see
+\cite[84]{EslingGaylord1993} or \cite[App. 2]{IPA2007}). The numbers were
+assigned in linear order (e.g.\ [p] 101, [b] 102, [t] 103...) following the IPA
+revision of 1989 and its update in 1996. Although the numbering scheme still 
+exists, in practice is it superseded by the Unicode codification of symbols.
 
 The working group made the decision that no IPA symbol, past or present, 
 could be ignored. The comprehensive inclusion of all IPA symbols was to 
 anticipate the possibility that some symbols might be added, withdrawn, 
 or reintroduced into current or future usage. For example, in the 1989 
-revision voiceless implosives < ƥ, ƭ, ƈ, ƙ, ʠ > were added; in the 1993 
-revision they were removed. Ligatures like < ʧ, ʤ > are included as formerly 
+revision voiceless implosives <~ƥ,~ƭ,~ƈ,~ƙ,~ʠ~> were added; in the 1993 
+revision they were removed. Ligatures like <~ʧ,~ʤ~> are included as formerly 
 recognized IPA symbols; they are assigned to the ``200 series'' of IPA numbers 
 as members of the group of symbols formerly recognized by the IPA. To ensure 
 backwards compatibility, legacy IPA symbols would retain an IPA Number and 
 an IPA Name for reference purposes. As we discuss below, this decision is 
-later reflected in the Unicode Standard; many legacy IPA symbols reside in 
-the \textsc{IPA Extensions} block.
+later reflected in the Unicode Standard as many legacy IPA symbols still reside in 
+the \textsc{IPA extensions} block.
 
-The IPA Number is simply expressed as a ``three-digit number numerical 
-directory of digit triples'' \cite{}.\footnote{For practical purposes, 
-the IPA Number also served as a typesetter's guide to the IPA chart.} 
-The numbering scheme specifies three-digit codes, the first digit of which 
-indicates the symbol's category \cite{Esling1990,EslingGaylord1993}:
+The IPA Number is simply expressed as a ``three-digit number numerical directory
+of digit triples'' \cite{}. The numbering scheme specifies three-digit codes,
+the first digit of which indicates the symbol's category
+\citep{Esling1990,EslingGaylord1993}:
 
 \begin{itemize}
 	\item 100s for accepted IPA consonants
@@ -366,25 +364,27 @@ indicates the symbol's category \cite{Esling1990,EslingGaylord1993}:
 	\item 900s for escape sequences
 \end{itemize}
 
-After a symbol is categorized, it is assigned a number sequentially, 
-e.g.\ [i] 301, [e] 302, [ɛ] 303. The system allows for the addition 
-of new symbols within the various series by appending them, e.g. [ⱱ] 
-184. Former or often used but non-IPA symbols for consonants, vowels 
-and diacritics are numbered from x99 backwards. For example, the voiceless 
-and voiced postalveolar affricates and fricatives < č, ǰ, š, ž > are 
-assigned the IPA numbers 299, 298, 297 and 296, respectively, because 
-they are not sanctioned IPA symbols.
+After a symbol is categorized, it is assigned a number sequentially, e.g.\ [i]
+301, [e] 302, [ɛ] 303. The system allows for the addition of new symbols within
+the various series by appending them, e.g. [\charis{ⱱ}] 184. Former non-IPA
+symbols (or often-used but non-offical IPA symbols) for consonants, vowels and
+diacritics are numbered from x99 backwards. For example, the voiceless and
+voiced postalveolar affricates and fricatives <~č,~ǰ,~š,~ž~> are assigned the
+IPA numbers 299, 298, 297 and 296, respectively, because they are not sanctioned
+IPA symbols.
 
-The assignment of the IPA numbers to IPA symbols provided the basis for 
-uniquely identifying the set of past and present IPA symbols as a type of 
-computational representational standard of the IPA. Within each revision 
-of the IPA, the coding defines a closed and clearly defined set of characters. 
-The benefits of this standardization are clear in at least two ways: it is 
-used in translation tables that reference ASCII representations of the IPA, 
-and this early computational representation of the IPA became the basis for 
-its inclusion into the Unicode Standard version 1.0.
+The assignment of the IPA numbers to IPA symbols provided the basis for uniquely
+identifying the set of past and present IPA symbols as a type of computational
+representational standard of the IPA. Within each revision of the IPA, the
+coding defines a closed and clearly defined set of characters. The benefits of
+this standardization are clear in at least two ways: it is used in translation
+tables that reference ASCII representations of the IPA, and this early
+computational representation of the IPA became the basis X-SAMPA and for the
+inclusion of the IPA into the Unicode Standard version 1.0.
 
+% ==========================
 \section{SAMPA and X-SAMPA}
+% ==========================
 
 True to the working group's aim, the IPA numbers provided a mechanism for 
 a communication interchange standard for creating mapping tables to various 
@@ -398,7 +398,7 @@ numbers and some punctuation and symbols. Restricted to these standard character
 sets that lacked IPA support or other language-specific graphemes that they
 needed, linguists devised their own solutions.\footnote{Early work addressing
 the need for a universal computing environment for writing systems and their
-computational complexity is discussed in \citet{Simons1989}. A survey of
+computational complexity is discussed in \citet{Simons1989}. A more recent survey of
 practical recommendations for language resources, including notes on encoding,
 can be found in \citet{BirdSimons2003}} For example, some chose to represent
 unavailable graphemes with substitutes, e.g.~the combination of <ng> to
@@ -412,121 +412,229 @@ correctly displayed. This is a commonly encountered example of the non-interoper
 data and data formats.
 
 One solution was the ASCII-ification of the IPA, which simply involved 
-defining keyboard-able sequences as IPA symbol codings.\footnote{\cite{Wells1987} 
-provides an in-depth description of IPA codings from country-to-country. 
-Later ASCII-IPAs include Kirshenbaum (created in 1992 in a Usenet group and 
-named after its lead developer who was at Hewlett-Packard Laboratories) and 
-Worldbet (published in 1993 by \cite{Hieronymus1993}, who was at AT\&T Laboratories).} 
-A successful effort was SAMPA (Speech Assessment
+defining keyboard-able sequences consisting of ASCII combinations as an IPA symbol
+codings. For example, \cite{Wells1987} provides an in-depth description of IPA
+codings from country-to-country. Later ASCII-IPAs include Kirshenbaum (created
+in 1992 in a Usenet group and named after its lead developer who was at
+Hewlett-Packard Laboratories) and Worldbet (published in 1993 by
+\cite{Hieronymus1993}, who was at AT\&T Laboratories). 
+The most successful effort was SAMPA (Speech Assessment
 Methods Phonetic Alphabet), which was created between 1988--1991 in Europe to 
 represent IPA symbols with ASCII
-character sequences \citep{Wells1987,Wells_etal1992}, e.g. <p\textbackslash> 
+character sequences \citep{Wells1987,Wells_etal1992}, using e.g. <p\textbackslash> 
 for [ɸ]. SAMPA was developed by a group of speech scientists from nine countries 
 in Europe and it constituted the ASCII-IPA symbols needed for phonemic transcription 
-of the principal European Union languages \citep{Wells1995}. It is still widely 
+of the principal European languages \citep{Wells1995}. It is still widely 
 used in language technology.
 
-Two problems with SAMPA are that (i) it is only a partial encoding of the IPA and (ii) it encodes different
-languages in separate data tables, instead of using a universal alphabet, like
-IPA.\@ SAMPA tables were developed as part of a European Commission-funded project to
-address technical problems like electronic mail exchange (what is now simply
-called email). SAMPA is essentially a hack to work around displaying IPA
-characters, but it provided speech technology and other fields a basis that has
-been widely adopted and often still used in code. So, SAMPA is a collection of tables to be
-compared, instead of a large universal table representing all languages. 
+Two problems with SAMPA are that (i) it is only a partial encoding of the IPA
+and (ii) it encodes different languages in separate data tables, instead of
+using a universal alphabet, like IPA.\@ SAMPA tables were developed as part of a
+European Commission-funded project to address technical problems like electronic
+mail exchange (what is now simply called email). SAMPA is essentially a hack to
+work around displaying IPA characters, but it provided speech technology and
+other fields a basis that has been widely adopted and often still used in code.
+So, SAMPA is a collection of tables to be compared, instead of a large universal
+table representing all languages. 
 
-An extended version of SAMPA, called X-SAMPA, set out to include every symbol, 
-including all diacritics, in the IPA chart \citep{Wells1995}. X-SAMPA is considered
-more universally applicable because it consists of one table that encodes all
-characters in IPA. In line with the principles of the IPA, SAMPA and X-SAMPA include a 
-repertoire of symbols. These symbols are intended to represent phonemes rather than 
-all allophonic distinctions. Additionally, both ASCII-ifications of IPA are useful because 
-strings of SAMPA or X-SAMPA are (reportedly) uniquely parsable \citep{Wells1995}. However, 
-like the IPA, X-SAMPA has different notations for encoding the same phonetic phenomena 
-(see Pitfall \ref{}).
+An extended version of SAMPA, called X-SAMPA, set out to include every symbol,
+including all diacritics, in the IPA chart \citep{Wells1995}. X-SAMPA is
+considered more universally applicable because it consists of one table that
+encodes all characters in IPA. In line with the principles of the IPA, SAMPA and
+X-SAMPA include a repertoire of symbols. These symbols are intended to represent
+phonemes rather than all allophonic distinctions. Additionally, both
+ASCII-ifications of IPA -- SAMPA and X-SAMPA -- are
+(reportedly) uniquely parsable \citep{Wells1995}. However, like the IPA, X-SAMPA
+has different notations for encoding the same phonetic phenomena (cf. Section~
+\ref{pitfall-multiple-options-ipa}).
 
-SAMPA and X-SAMPA have been widely used for speech technology and as an encoding system in
-computational linguistics. In fact, they are stilled used in popular software packages 
-that require ASCII input and some of which have been co-opted for linguistic analyses, 
-e.g.~RuG/L04 and SplitsTree4.\footnote{See \url{http://www.let.rug.nl/kleiweg/L04/} and 
-\url{http://www.splitstree.org/}, respectively}
+SAMPA and X-SAMPA have been widely used for speech technology and as an encoding
+system in computational linguistics. In fact, they are still used in popular
+software packages that require ASCII input, e.g.~RuG/L04 and SplitsTree4.\footnote{See
+\url{http://www.let.rug.nl/kleiweg/L04/} and \url{http://www.splitstree.org/},
+respectively}
 
-
+% ==========================
 \section{The need for a single multilingual environment}
+% ==========================
+
+In hindsight it is easy to lose sight of how impactful 30 years of technological
+development have been on linguistics, from theory development using quantitative
+means to pure data collection and dissemination. But at the end of the 1970s,
+virtually no ordinary working linguist was using a personal computer
+\citep{Simons1996}. Personal computer usage, however, dramatically increased
+throughout the 1980s. By 1990, dozens of character sets were in common use. They
+varied in their architecture and in their character repertoires, which made
+things a mess. 
 
 During the 1980's, it became increasingly clear that an adequate solution 
 to the problem of multilingual computing environments was needed. Linguists 
 were on the forefront of addressing this issue because they faced these 
 challenges head-on by wishing to publish and communicate electronic text 
-with phonetic symbols which were not included in basic ASCII.\footnote{One 
+with phonetic symbols which were not included in basic ASCII. One 
 only needs to look at facsimiles of older electronic documents to see exotic 
-symbols written in by hand.}
+symbols written in by hand after the preparation of typed version.
 
-Long familiar were linguists already with the distinction between function 
-and form. Even in the context of the computer implementation of writing systems, 
-the necessity to distinguish form and function had been made \citep{Becker1984}. 
-The computer industry, on the other hand, did not consider, ignored, or simply 
-did not encode this principle when creating operating systems like MS-DOS, which 
-were limited to 256 code points (due to computer hardware architecture) and 
-encoded with one-to-one mappings from character codes to graphemes.
+%There were two major players in the universal character set race:
+%Unicode and the International Organization for Standardization (ISO).
 
-Industry was starting to tackle the issues involved in developing a single 
-multilingual computing environment on a variety of fronts, including the then 
-new technology of bitmap fonts and the creation of Font Manager and Script 
-Manager by Apple \citep{Apple1985,Apple1986,Apple1988}. As noted above, around 
-this time linguists were developing work-arounds such as SAMPA, so that they 
-could communicate IPA transcription and use ASCII-based software. Some linguists 
-formalized the issues of multilingual text processing from a computational 
-perspective \citep{Anderson1984,Becker1984,Simons1989}. The study of writing 
-systems was also being invigorated by the computational challenges in making 
-computers work in a multilingual environment.\footnote{\cite[11--15]{Sampson1985} 
-urges linguists to view the study of writing systems as legitimate scientific enquiry.}
+%Long familiar were linguists already with the distinction between function 
+%and form. Even in the context of the computer implementation of writing systems, 
+%the necessity to distinguish form and function had been made \citep{Becker1984}. 
+%The computer industry, on the other hand, did not consider, ignored, or simply 
+%did not encode this principle when creating operating systems like MS-DOS, which 
+%were limited to 256 code points (due to computer hardware architecture) and 
+%encoded with one-to-one mappings from character codes to graphemes.
 
 % This standard became the basis for a proposal to include the IPA in the first version of the Unicode Standard. Decisions by the Computer Coding working group and work they continued after the 1989 Kiel Convention were adopted by the International Phonetic Association. These decisions are directly reflected in the Unicode Standard's encoding of IPA, seeing as it was the Association who submitted the script proposal to the Unicode Consortium.
 
-The second major benefit of the standardization of the IPA in a computational 
-representation by the Kiel working group is that it provided the basis for a 
-formal proposal to be submitted to various international standards organizations, 
-several of which were trying to tackle (and in a sense `win') the multilingual 
-computing environment problem. Basically, everyone from corporations to governments 
-to language scientists (for lack of a better term) wanted a single unified multilingual 
-character encoding set for all the world's writing systems, even if they did not 
-understand or appreciate the challenges involved in creating and adopting a solution. 
-Additionally, advancements in computer hardware were making the solutions easier 
-to implement in software.
+A major benefit of the standardization of the IPA in a computational
+representation by the Kiel working group is that it provided the basis for a
+formal proposal to be submitted to various international standards
+organizations, several of which were trying to tackle (and in a sense `win') the
+multilingual computing environment problem (cf. Section~\ref{encoding}).
+Basically, everyone -- from corporations to governments to language scientists
+-- wanted a single unified multilingual character encoding set for all the
+world's writing systems, even if they did not understand or appreciate the
+challenges involved in creating and adopting a solution.
 
-The engineering problems and solutions had been spelled out years before, e.g.\ 
-a two-byte encoding for multilingual text \citep{Anderson1984}. 
-Although languages vary to an astounding extent (cf.\ \cite{EvansLevinson2009}), 
-writing systems are quite similar formally and the issue of formal representation 
-of the world's orthographic systems had also been addressed \citep{Simons1989}. 
+Industry was starting to tackle the issues involved in developing a single
+multilingual computing environment on a variety of fronts, including the then
+new technology of bitmap fonts and the creation of Font Manager and Script
+Manager by Apple \citep{Apple1985,Apple1986,Apple1988}. As noted above, around
+this time linguists were developing work-arounds such as SAMPA, so that they
+could communicate IPA transcription and use ASCII-based software. Some linguists
+formalized the issues of multilingual text processing from a computational
+perspective \citep{Anderson1984,Becker1984,Simons1989}. The study of writing
+systems was also being invigorated \citep[11--15]{Sampson1985} by the
+computational challenges in making computers work in a multilingual environment.
+The engineering problems and solutions had been spelled out years before, e.g.\
+a two-byte encoding for multilingual text \citep{Anderson1984}. Although
+languages vary to an astounding extent (cf.\ \cite{EvansLevinson2009}), writing
+systems are quite similar formally and the issue of formal representation of the
+world's orthographic systems had already been addressed \citep{Simons1989}. 
 
-A major obstacle in creating a single encoding multilingual environment from 
-the perspective of writing systems involves the distinction between function 
-and form \citep{Becker1984} This distinction is so central to basic linguistic 
-theory and that trained linguists and semiologists take it as second nature. 
-A central challenge in developing a universal character set was to combine a 
-technological solution with a formalization of writing systems proper.\footnote{Of 
-course there were additional practical issues to overcome, e.g.\ funding, creating 
-the formal and technological proposal, deciding which characters and writing systems 
-to include initially, while setting precedence of how to add new ones in the future.}
+%A major obstacle in creating a single encoding multilingual environment from 
+%the perspective of writing systems involves the distinction between function 
+%and form \citep{Becker1984} This distinction is so central to basic linguistic 
+%theory and that trained linguists and semiologists take it as second nature. 
+%A central challenge in developing a universal character set was to combine a 
+%technological solution with a formalization of writing systems proper.\footnote{Of 
+%course there were additional practical issues to overcome, e.g.\ funding, creating 
+%the formal and technological proposal, deciding which characters and writing systems 
+%to include initially, while setting precedence of how to add new ones in the future.}
 
-In hindsight it is easy to lose sight of how impactful 30 years of technological 
-development have been on linguistics, from theory development using quantitative 
-means to pure data collection and dissemination (which as fed back into the former). 
-But at the end of the 1970s, virtually no ordinary working linguist was using a 
-person computer \cite{Simons1996}. Personal computer usage, however, dramatically 
-increased throughout the 1980s. By 1990, dozens of character sets were in common use. 
-They varied in their architecture and in their character repertoires, which 
-made things a mess. There were two major players in the universal character 
-set race: Unicode and the International Organization for Standardization (ISO).
 
-	
+% "The set of IPA symbols and their numbers were used to draw up an entity set within SGML by the Text Encoding Initiative (TEl). The name of each entity is formed by 'IPA' preceding the number, e.g. IPA304 is the rEIentity name of lower-case A. These symbols can be processed as IPA symbols and represented on paper and screen with the appropriate local font by modifying the :entity replacement text. The advantage of the SGML entity set is that it is independent or the character set being used."
+% "A TEl writing system declaration (wsd) has been drawn up for the IPA symbols."
+% A TEl writing system declaration (wsd) has been drawn up for the IPA symbols. This document gives information about the symbol and its IPA function, as well as its encoding in the accompanying SGML document and in UnicodelUCS and in AFII. The writing system declaration can be read as a text d9cument or processed by machines in an SMGL process.
+
+After the Kiel Convention in 1989, the working group assisted
+the International Phonetic Association in representing the IPA to the
+\textsc{international standards organisation} (ISO) and to the \textsc{text
+encoding initiative} (TEI) \citep{EslingGaylord1993}. The working group's
+formalization of the IPA, i.e.\ a full listing of agreed upon computer codings
+for phonetic symbols, was used in developing writing system descriptions, which
+were at the time being solicited for scripts to be included in the new
+multilingual international character encoding standards. The working group for
+ISO/IEC 10646 and Unicode were two such initiatives.
+
+In the historical context of the IPA being considered for inclusion in 
+ISO/IEC 10646, it is important to realize that there were a variety of 
+sources (i.e.\ not just from the Association) which submitted character 
+proposals for phonetic alphabets. These proposals, including the one from the 
+Association via the Kiel working group, were considered as a whole by 
+the ISO working groups that were responsible for incorporating a phonetic 
+script into the universal character set (UCS). The ISO working groups that 
+were responsible for assigning a phonetic character set then made their 
+own submissions as part of a review process by ISO for approval based on 
+both ``informatic'' and phonetic criteria \citep[86]{EslingGaylord1993}. 
+
+Character set ISO/IEC 10646 was approved by ISO, including the phonetic
+characters submitted to them in May 1993. The set of IPA characters were
+assigned UCS codes in 16 bit representation (in hexadecimal) and were published
+Tables 2 and 3 in \cite{EslingGaylord1993}, which include a graphical
+representation of the IPA Symbol, its IPA Name, phonetic description, IPA
+Number, UCS Code and AFII Code.\footnote{The \textsc{association for font
+information interchange} (AFII) was an international database of glyphs created
+to promote the standardization of font data required to produce ISO/IEC 10646.} When the
+character sets of ISO/IEC 10646 and the Unicode Standard later converged (see
+Section~\ref{the-unicode-approach}), the IPA proposal was
+included in the Unicode Standard Version 1.0 -- largely as we know it
+today.
+
+With subsequent revisions to the IPA, one might have expected that the Unicode
+Consortium would update the Unicode Standard in a way that is inline with the
+development linguistic insights. However, updates that go against the principle
+of maintaining backwards compatibility lose out, i.e.\ it is more important to
+deal with the pitfalls created along the way then it is to change the standard.
+Therefore, many of the pitfalls we encounter today when using Unicode IPA are
+historic relics that we have to come to grips with.
+
+% https://en.wikipedia.org/wiki/Uralic_Phonetic_Alphabet
+% http://www.unicode.org/conference/bulldog.html
+% http://www-01.sil.org/computing/computing_environment.html
+
+It was a long journey, but the goal of achieving a single multilingual computing
+environment has largely been accomplished. Current users, however, must cope
+with the pitfalls that were dug along the way, as will be discussed in the next
+chapter. As the Association foresightfully remarked about Unicode:
+
+\begin{center} 
+
+\textit{``When this character set is in wide use, \\
+it will be the normal way to encode IPA symbols.''}
+
+\ \\
+
+\citep[164]{IPA1999}.}
+
+\end{center}
+
+
+% ===============================================================
+
+
+\begin(comment)
+
+\subsection{IPA (practical) extensions}
+
+The IPA extensions cover speech sounds beyond the sound systems of the world's
+languages, including symbols for pathological speech and paralinguistic
+functions (e.g.\ Braille?).
+
+- pathological speech
+- paralinguistic functions (Braille?)
+
+As noted in Section \ref{}, extensions to the IPA -- in particular
+``large-scale'' extensions -- 
+
+% Englebretson2009.pdf
+http://www.ruf.rice.edu/~reng/englebretson2009.pdf
+
+X-SAMPA was an ASCII transliteration and is still purposeful for several
+programs 
+
+There is also the extensions of the IPA designed for disordered speech, although
+the symbols are occasionally used for transcribing phonetic detail in ``normal''
+speech or also cross-linguistic
+rarities.\footnote{\url{http://phoible.github.io/conventions/}}
+
+% Unicode has its own history; for a summary:
+\url{http://www.unicode.org/history/summary.html}
+
+https://www.phon.ucl.ac.uk/home/wells/ipa-unicode.htm
+
+Computer codes for phonetic symbols
+EslingGaylord1993
+
+% ==========================
 \section{Unicode and ISO 10646}
+% ==========================
 
 In the late 1980s, a universal character set was being developed by what 
-is now referred to as the Unicode Consortium.\footnote{The Unicode 
-Consortium was officially incorporated in January 1991.} This consortium 
+is now referred to as the Unicode Consortium (officially incorporated in January 1991).
+This consortium 
 consisted largely, although not entirely, of major US corporations, with 
 the aim of overcoming the inoperability of different coded character sets 
 and their costly hinderance for developing multilingual software development 
@@ -557,9 +665,12 @@ content. At this time, the proposal contained no code charts nor block descripti
 The other major player in developing a universal character set was the ISO 
 working group from the International Standards Organization (ISO), based 
 in Europe, which was responsible for ISO/IEC 10646. This character set 
-standard was composed in 1989 and a draft was published in 1990.\footnote{\url{http://www.iso.org/iso/catalogue_detail.htm?csnumber=56921}} 
+standard was composed in 1989 and a draft was published in 
+1990.\footnote{\url{http://www.iso.org/iso/catalogue_detail.htm?csnumber=56921}} 
 The `Universal Multiple-Octet Coded Character Set' or simply UCS was the first 
-officially standardized character encoding with the aim of including all characters from all writing systems.\footnote{\url{http://www.nada.kth.se/i18n/ucs/unicode-iso10646-oview.html}}
+officially standardized character encoding with the aim of including all 
+characters from all writing 
+systems.\footnote{\url{http://www.nada.kth.se/i18n/ucs/unicode-iso10646-oview.html}}
 
 ISO/IEC 10646 is partly based on ISO/IEC 8859, a series of of ASCII-based 
 standard character encodings published in 1987 that use a single bit 8-byte 
@@ -585,7 +696,8 @@ of the ISO working group responsible for ISO/IEC 10646 was to bring all
 characters in all writings systems into a single unified encoding.
 
 In 1991, the Unicode Consortium and the ISO Working Group for ISO/IEC 10646 
-decided to create a single universal standard for encoding multilingual text.\footnote{http://unicode.org/book/appC.pdf} 
+decided to create a single universal standard for encoding multilingual 
+text.\footnote{http://unicode.org/book/appC.pdf} 
 The two character sets converged, resulting in mutually acceptable changes 
 to both, and each group keeps versions of their respective character codes 
 and encoding forms synchronized.\footnote{http://www.unicode.org/versions/} 
@@ -605,66 +717,5 @@ character set and it is a single multilingual environment for the majority
 of the world's written languages. Its formal implementation has also been 
 vital to the rise of a multi-lingual Internet.
 
+\end{comment}
 
-\section{IPA and Unicode}
-
-It was a long journey, but the goal of achieving a single multilingual 
-computing environment has largely been accomplished. We users, however, 
-must cope with the pitfalls that were dug along the way (see Pitfall sections below). 
-Some linguists, including your humble authors, are particularly sensitive 
-to these issues. So we provide practical advice and approaches in the rest 
-of this chapter. But first, we explain how the IPA became incorporated 
-into the Unicode Standard via ISO/IEC 10646.
-
-% "The set of IPA symbols and their numbers were used to draw up an entity set within SGML by the Text Encoding Initiative (TEl). The name of each entity is formed by 'IPA' preceding the number, e.g. IPA304 is the rEIentity name of lower-case A. These symbols can be processed as IPA symbols and represented on paper and screen with the appropriate local font by modifying the :entity replacement text. The advantage of the SGML entity set is that it is independent or the character set being used."
-% "A TEl writing system declaration (wsd) has been drawn up for the IPA symbols."
-% A TEl writing system declaration (wsd) has been drawn up for the IPA symbols. This document gives information about the symbol and its IPA function, as well as its encoding in the accompanying SGML document and in UnicodelUCS and in AFII. The writing system declaration can be read as a text d9cument or processed by machines in an SMGL process.
-
-After the Kiel Convention in 1989, the Computer Coding of the IPA working 
-group assisted the International Phonetic Association in representing the 
-IPA to ISO and to the Text Encoding Initiative (TEI) \citep{EslingGaylord1993}. 
-The working group's formalization of the IPA, i.e.\ a full listing of agreed 
-upon computer codings for phonetic symbols, was used in developing writing 
-systems descriptions which were at the time being solicited for scripts to 
-be included in initiatives for new multilingual international character 
-encoding standards. The working group for ISO/IEC 10646 and Unicode were 
-two such initiatives.
-
-In the historical context of the IPA being considered for inclusion in 
-ISO/IEC 10646, it is important to realize that there were a variety of 
-sources (i.e.\ not just from the Association) which submitted character 
-proposals for phonetic alphabets. These proposals, including from the 
-Association via the Kiel working group, were considered as a whole by 
-the ISO working groups which were responsible for incorporating a phonetic 
-script into the universal character set (UCS). The ISO working groups that 
-were responsible for assigning a phonetic character set then made their 
-own submissions as part of a review process by ISO for approval based on 
-both ``informatic'' and phonetic criteria \citep[86]{EslingGaylord1993}. 
-
-Character set ISO/IEC 10646 was approved by ISO, including the phonetic 
-characters submitted to them in May 1993. The set of IPA characters were 
-assigned UCS codes in 16 bit representation (in hexadecimal) and were 
-published Tables 2 and 3 in \cite{EslingGaylord1993}, which include a 
-graphical representation of the IPA symbol, its IPA Name, phonetic description, 
-IPA Number, UCS Code and AFII Code.\footnote{The Association for Font 
-Information Interchange (AFII) was an international database of glyphs 
-created to promote the standardization of font data required to produce 
-ISO/IEC 10646.} Because the character sets of ISO/IEC 10646 and the 
-Unicode Standard converged, the IPA as submitted by the Association 
-and reviewed and further submitted by the ISO working group, was included 
-in the Unicode Standard Version 1.0 -- largely as we know it today.\footnote{The 
-Association later made the foresightful remark, ``When this character set 
-is in wide use, it will be the normal way to encode IPA symbols.'' \citep[164]{IPA1999}.}
-
-With subsequent revisions to the IPA, one might expect the Unicode 
-Consortium would update the Unicode Standard in a way that is inline 
-with linguists' or other language scientists' intuitions. However, 
-updates that go against the ISO's and the Unicode Standard's principles 
-of maintaining backwards compatibility lose out, i.e.\ it is more important 
-to deal with the pitfalls created along the way then it is to change the 
-standard. Therefore, many of the pitfalls we encounter when using Unicode 
-IPA are historic relics that we have to come to grips with.
-
-% https://en.wikipedia.org/wiki/Uralic_Phonetic_Alphabet
-% http://www.unicode.org/conference/bulldog.html
-% http://www-01.sil.org/computing/computing_environment.html
