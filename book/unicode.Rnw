@@ -71,9 +71,9 @@ require(qlcData)
 # knit_theme$set("acid")
 
 opts_chunk$set(fig.path = 'figures/'
-              , size = "scriptsize"
+              , size = "footnotesize"
               , tidy = TRUE
-              , highlight = FALSE
+              , highlight = TRUE
               , strip.white = FALSE
               , cache = TRUE
               , background = '#FFFFFF'
@@ -94,9 +94,11 @@ options(reindent.spaces = 2)
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
-\include{chapters/orthography_profiles}
-\include{chapters/use_cases}
 
+%\include{chapters/orthography_profiles}
+\Sexpr{knit_child("chapters/orthography_profiles.tex")}
+
+\include{chapters/use_cases}
 \Sexpr{knit_child("chapters/codetesting.tex")}
 
 
