@@ -68,7 +68,7 @@ require(qlcData)
 # https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
 # does not work nice for non-R code (due to Highlight package),
 # so currently set to FALSE in opts_chunk below
-knit_theme$set("acid")
+# knit_theme$set("acid")
 
 opts_chunk$set(fig.path = 'figures/'
               , size = "scriptsize"
@@ -89,6 +89,7 @@ options(reindent.spaces = 2)
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\include{chapters/preface}
 \include{chapters/introduction}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}

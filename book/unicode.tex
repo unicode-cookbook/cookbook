@@ -27,16 +27,16 @@
 }
 \makeatother
 
-\definecolor{fgcolor}{rgb}{0, 0, 0}
-\newcommand{\hlnum}[1]{\textcolor[rgb]{0.502,0,0.502}{\textbf{#1}}}%
-\newcommand{\hlstr}[1]{\textcolor[rgb]{0.651,0.522,0}{#1}}%
-\newcommand{\hlcom}[1]{\textcolor[rgb]{1,0.502,0}{#1}}%
-\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0,0.502}{\textbf{#1}}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.733,0.475,0.467}{\textbf{#1}}}%
-\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.502,0.502,0.753}{\textbf{#1}}}%
-\newcommand{\hlkwc}[1]{\textcolor[rgb]{0,0.502,0.753}{#1}}%
-\newcommand{\hlkwd}[1]{\textcolor[rgb]{0,0.267,0.4}{#1}}%
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
 
 \usepackage{framed}
 \makeatletter
@@ -114,6 +114,7 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\include{chapters/preface}
 \include{chapters/introduction}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
@@ -141,7 +142,7 @@ install the package `xtable'.
 echo 'this is a simple bash example'
 ls | wc
 ## this is a simple bash example
-##       10      10     165
+##       18      18     306
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -176,30 +177,21 @@ test
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
 library(qlcData)
+\end{verbatim}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in library(qlcData): there is no package called 'qlcData'}}\begin{verbatim}
 profile <- write.profile("AΑА")
 \end{verbatim}
-\end{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): could not find function "{}write.profile"{}}}\end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.2.2 by xtable 1.7-4 package
-% Fri Nov 13 10:29:19 2015
-\begin{table}[H]
-\centering
-{\small
-\begin{tabular}{llll}
-  \toprule
-Grapheme & Frequency & Codepoint & UnicodeName \\ 
-  \midrule
-A & 1 & U+0041 & LATIN CAPITAL LETTER A \\ 
-  Α & 1 & U+0391 & GREEK CAPITAL LETTER ALPHA \\ 
-  А & 1 & U+0410 & CYRILLIC CAPITAL LETTER A \\ 
-   \bottomrule
-\end{tabular}
-}
-\caption{test} 
-\label{bla}
-\end{table}
+\begin{kframe}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in print(xtable(profile, caption = "{}test"{}, label = "{}bla"{}), include.rownames = FALSE, : could not find function "{}xtable"{}}}\end{kframe}
 
 
 
