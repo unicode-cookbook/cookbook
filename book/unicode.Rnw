@@ -66,12 +66,11 @@ require(qlcData)
 
 # for themes, see:
 # https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
-# does not work nice for non-R code (due to Highlight package),
-# so currently set to FALSE in opts_chunk below
+# does not work nice for non-R code (due to Highlight package)
 # knit_theme$set("acid")
 
 opts_chunk$set(fig.path = 'figures/'
-              , size = "footnotesize"
+              , size = 'footnotesize'
               , tidy = TRUE
               , highlight = TRUE
               , strip.white = FALSE
