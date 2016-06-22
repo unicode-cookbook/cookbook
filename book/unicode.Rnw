@@ -94,8 +94,8 @@ options(reindent.spaces = 2)
 \include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
 
-%\include{chapters/orthography_profiles}
-\Sexpr{knit_child("chapters/orthography_profiles.tex")}
+\include{chapters/orthography_profiles}
+\Sexpr{knit_child("chapters/profiles_examples.tex")}
 
 \include{chapters/use_cases}
 \Sexpr{knit_child("chapters/codetesting.tex")}

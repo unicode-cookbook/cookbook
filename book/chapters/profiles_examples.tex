@@ -1,0 +1,281 @@
+\section{Available implementations}
+\label{implementations}
+
+To illustrate the practical application of orthography profiles, we have
+implemented two different versions of the above specifications, one in Python
+and one in R. These two implementations have rather different implementation
+histories, and we are not 100\% sure that they will in all situations give the
+same results. Also the perfomance with larger datasets differs, and the code is
+not always as clean as we would like it to be. In sum, the two implementations
+should be considered as `proof of concept' and not as the final word on the
+practical application of the specifications above. In our own experience, the
+current implementations are sufficiently fast and stable to be useful for
+academic practice (e.g. checking data consistency, or analyzing and
+transliterating small to medium sized data sets), but they should probably
+better not be used for full-scale industry applications.
+
+\subsection*{Installing the R implementation}
+
+The R implementation is available in the package \texttt{qlcData}, which is 
+directly available from the central R repository CRAN (Comprehensive R Archive 
+Network). The R software environment itself has to be downloaded from its 
+website.\footnote{\url{https://www.r-project.org}} After starting the included 
+R program, the \texttt{qlcData} package for dealing with orthography profiles can be 
+simply installed as follows:
+
+<<eval=FALSE>>==
+# download and install the qlcData software
+install.packages('qlcData') 
+# load the software, so it can be used
+library(qlcData) 
+@
+
+\noindent The version available through CRAN is the most recent stable version.
+To obtain the most recent bug-fixes and experimental additions, please use the
+development versions, which is available on
+GitHub.\footnote{\url{http://github.com/cysouw/qlcData}} This development
+version can be easily installed using the github-install helper software from the
+\texttt{devtools} package.
+
+<<eval=FALSE>>==
+# download and install helper software
+install.packages('devtools') 
+# install the qlcData package from GitHub
+devtools::install_github('cysouw/qlcData')
+# load the software, so it can be used 
+library(qlcData) 
+@
+
+\noindent Inside the \texttt{qlcData} package, there are two functions for
+orthography processing, \texttt{write.profile} and \texttt{tokenize}. R includes
+help files with illustrative examples, and also a so-called `vignette' with
+explanations and examples.
+
+<<eval=FALSE>>==
+# view help files
+help(write.profile)
+help(tokenize)
+# view vignette with explanation and examples
+vignette('orthography_processing')
+@
+
+\noindent Basically, the idea is to use \texttt{write.profile} to produce a
+basic orthography profile from some data and then \texttt{tokenize} to apply the
+(possibly edited) profile on some data, as exemplified in the next section. This
+can of course be performed inside R, but additionally there are two more
+interfaces to the R code supplied in the \texttt{qlcData} package: (i) bash
+executables and (ii) `shiny' webapps.
+
+The bash executables are little files providing an interface to the R code that
+can be used in a shell on a UNIX-alike machine. The location of these
+executables is a bit hidden away by the install procedure of R packages. The
+location can be found by the following command in R. These executables can be 
+used from here, or they can be linked and/or copied to any location as wanted.
+
+<<eval=FALSE>>==
+# show the path to the bash executables
+file.path(find.package('qlcData'), 'exec')
+@
+
+\noindent For example, a good way to use the executables in a terminal is to
+make softlinks (using \texttt{ln}) from the executables to a directory in your
+PATH, e.g. to \texttt{/usr/local/bin/}. The two executables are named
+\texttt{tokenize} and \texttt{writeprofile}
+
+<<link, engine='bash', size='scriptsize', tidy=FALSE, eval=FALSE>>==
+# make two softlinks to the R executables in bash
+ln -is `Rscript -e 'cat(file.path(find.package("qlcData"),
+ "exec", "tokenize"))'` /usr/local/bin
+ln -is `Rscript -e 'cat(file.path(find.package("qlcData"),
+ "exec", "writeprofile"))'` /usr/local/bin
+@
+
+\noindent After this addition it should be possible to access the \texttt{tokenize}
+function from the shell. Try \texttt{tokenize --help} to test the functionality.
+
+<<help, size='tiny', engine='bash'>>=
+tokenize --help
+@
+
+To make the functionality even more accessible, we have prepared webapps with 
+the \texttt{shiny} framework for the R functions. These webapps are available 
+online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
+package and can be started with the following helper function:
+
+<<eval=FALSE>>==
+launch_shiny('tokenize')
+@
+
+\subsection*{Installung the Python implementation}
+
+TO DO
+
+\section{Abstract examples}
+
+\subsection*{Error reporting}
+
+In the following example, it looks as if we have two identical strings,
+\texttt{AABB}. However, this is just an surface-impression delivered by the
+current font, which renders Latin and Cyrillic capitals identically. We can
+identify this problem when we produce an orthography profile from the strings.
+Using here the R implementation of orthography profiles, we first assign the two
+strings to a variable \texttt{test}, and then produce an orthography profile
+with the function \texttt{write.profile}. As it turns out, some of the letters 
+are Cyrillic.
+
+<<>>=
+test <- c('AABB', '\u0041\u0410\u0042\u0412')
+write.profile(test)
+@
+
+\noindent The working of error-message reporting can also nicely be illustrated with this
+example. Suppose we made an orthography profile with just the Latin <A> and <B> 
+as possible graphemes, then this profile would not be sufficient to tokenize the 
+strings. There are graphemes in the data that are not in the profile, so the 
+tokenization produces an error, which can be used to fix the encoding. In the 
+example below, we can see that the Cyrillic encoding is found in the second 
+string of the \texttt{test} input.
+
+<<>>=
+test <- c('AABB', '\u0041\u0410\u0042\u0412')
+tokenize( test, profile = c('A', 'B') )
+@
+
+\subsection*{Different ways to write a profile}
+
+The function \texttt{write.profile} can be used to prepare a skeleton for an
+orthography profile from some data. The preparation of an orthography profile
+from some data might sound like a trivial problem, but actually there are
+various different ways in which strings can be separated into graphemes by
+\texttt{write.profile}. Consider the following example string. The default
+settings of \texttt{write.profile} separates the string into Unicode graphemes
+according to grapheme clusters (`user-perceived characters', see
+Section~\ref{the-unicode-approach}).
+
+<<>>=
+example <- '\u00d9\u00da\u00db\u0055\u0300\u0055\u0301\u0055\u0302'
+profile_1 <- write.profile(example)
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_1) <- c('Gr.', 'Freq.', 'Codepoint', 'Unicode Name')
+print(xtable(profile_1
+        , caption = 'Profile 1 (default settings, splitting grapheme clusters)'
+        , label = 'tab:profile1'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+\noindent Some of these graphemes are single codepoints, others are combinations
+of two codepoints. By specifying the separator as empty, it is possible to split
+the string into codepoints.
+
+<<>>=
+profile_2 <- write.profile(example, sep = "")
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_2) <- c('Grapheme', 'Frequency', 'Codepoint', 'Unicode Name')
+print(xtable(profile_2
+        , caption = 'Profile 2 (splitting by codepoints)'
+        , label = 'tab:profile2'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+\noindent Some characters look identical, although they are encoded differently. 
+Unicode offers different ways of normalization, which can be invoked here as 
+well (see Section~\ref{pitfall-canonical-equivalence}).
+
+<<>>=
+# after NFC normalization unicode codepoints have changed
+profile_3 <- write.profile(example, normalize = "NFC", sep = "")
+# NFD normalization gives yet another structure of the codepoints
+profile_4 <- write.profile(example, normalize = "NFD", sep = "")
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_3) <- c('Grapheme', 'Frequency', 'Codepoint', 'Unicode Name')
+print(xtable(profile_3
+        , caption = 'Profile 3 (splitting by NFC codepoints)'
+        , label = 'tab:profile3'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_4) <- c('Grapheme', 'Frequency', 'Codepoint', 'Unicode Name')
+print(xtable(profile_4
+        , caption = 'Profile 4 (splitting by NFD codepoints)'
+        , label = 'tab:profile4'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+\noindent It is important to realize that for Unicode grapheme definitions, NFC 
+and NFD normalization are equivalent. This can be shown by normalizing the 
+example in either NFC or NFD, but using default separation in 
+\texttt{write.profile}. To be precise, default separation means setting \texttt{sep = NULL} 
+but that has not be added explicitly.
+
+<<>>=
+# note that NFC and NFD normalization are identical
+# for unicode grapheme definitions
+profile_5 <- write.profile(example, normalize = "NFD")
+profile_6 <- write.profile(example, normalize = "NFC")
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_5) <- c('Gr.', 'Freq.', 'Codepoint', 'Unicode Name')
+print(xtable(profile_5
+        , caption = 'Profile 5 (splitting by graphemes after NFD)'
+        , label = 'tab:profile5'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+<<results = 'asis', echo = FALSE>>=
+colnames(profile_6) <- c('Gr.', 'Freq.', 'Codepoint', 'Unicode Name')
+print(xtable(profile_6
+        , caption = 'Profile 6 (splitting by graphemes after NFC)'
+        , label = 'tab:profile6'
+        )
+  , include.rownames = FALSE
+  , booktabs = TRUE
+  , size = 'scriptsize'
+  , table.placement = 'H'
+  )
+@
+
+\noindent Note that these different profiles can also be produced using the bash 
+executable \texttt{writeprofile} (see \ref{implementations} for notes on how to 
+install the bash executable). Exactly this example is also included in the help 
+file of the executable.
+
+<<writehelp, size='tiny', engine='bash'>>=
+writeprofile --help
+@
+
+\subsection*{Using an orthography profile skeleton}
+
+
