@@ -1,28 +1,36 @@
 % add all extra packages you need to load to this file  
 
+% Math
 \usepackage{amsmath} 
 \usepackage{unicode-math}
 \setmathfont{Asana-Math.otf} % this looks much better for formulas
-
 \usepackage[no-math]{fontspec}
 \usepackage[libertine]{newtxmath}
 
-%\usepackage{moresize}
+% override defaults from langsci.cls
+% to get straight quotes in code-snippets
+\setmonofont[
+	Ligatures={Common},Scale=MatchLowercase,Path=\fontpath,
+	BoldFont = FreeMonoBold_B.otf ,
+	SlantedFont = FreeMonoOblique_B.otf ,		
+	BoldSlantedFont = FreeMonoBoldOblique_B.otf 	
+	]{FreeMono_B.otf}
 
-% doesn't work :-(
-\usepackage{upquote} % use straight quotes in verbatim environment
-
-\usepackage{enumitem} % some additional possibilities for enumerations
+% some additional possibilities for enumerations
+\usepackage{enumitem}
 \setitemize{noitemsep}
 \setenumerate{noitemsep}
 
+% sizes
+\usepackage{moresize}
+
+% large tables
 \usepackage{tabularx}
 \usepackage{booktabs} % nice lines in tables
 \usepackage{xtab} % xtabular for better multipage tables
 \xentrystretch{-0.16} % squeeze more lines on a page
 \usepackage{array} % for better handling of columns
 \newcolumntype{L}[1]{>{\footnotesize\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
-
 
 \widowpenalty=10000
 \clubpenalty=10000
