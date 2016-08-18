@@ -19,7 +19,7 @@ to transparently document knowledge about the writing system (including
 transliteration), and (iii) to do all of that in a way that is easy and quick to
 manage for many different sources with many different writing systems. The
 central concept in our proposal is the \textsc{orthography profile}, a simple
-tab-separated CSV text file, that characterizes and documents a writing system.
+tab-separated text file, that characterizes and documents a writing system.
 We also offer basic implementations in Python and R to assist with the
 production of such files, and to apply orthography profiles for consistency
 testing, grapheme tokenization and transliteration. Not only can orthography
@@ -31,19 +31,20 @@ importance (e.g.~phonotactic or comparative-historical studies), orthography
 profiles can transparently document the decisions that have been taken in the
 interpretation of the orthography in the sources used.
 
-Given these goals, Unicode locale descriptions (see Section~\ref{terminology})
-might seem like the ideal orthography profiles. However, there are various
-practical obstacles preventing the use of such locale descriptions in the daily
-linguistic practice, namely: (i) the XML-structure is too verbose to easily and
-quickly produce or correct manually, (ii) locale descriptions are designed for a
-wide scope on information (like date formats or names of weekdays) most of which
-is not applicable for documenting writing systems, and (iii) most crucially,
-even if someone made the effort to produce a technically correct locale
-description for a specific source at hand, then it is nigh impossible to deploy
-the description. This is because a locale description has to be submitted to and
-accepted by the Unicode Common Locale Data Repository. The repository is
-(rightly so) not interested in descriptions that only apply to a limited set of
-sources (e.g.~descriptions for only a single dictionary).
+Given these goals, Unicode locale descriptions (see
+Section~\ref{the-unicode-approach}) might seem like the ideal orthography
+profiles. However, there are various practical obstacles preventing the use of
+such locale descriptions in the daily linguistic practice, namely: (i) the
+XML-structure is too verbose to easily and quickly produce or correct manually,
+(ii) locale descriptions are designed for a wide scope on information (like date
+formats or names of weekdays) most of which is not applicable for documenting
+writing systems, and (iii) most crucially, even if someone made the effort to
+produce a technically correct locale description for a specific source at hand,
+then it is nigh impossible to deploy the description. This is because a locale
+description has to be submitted to and accepted by the Unicode Common Locale
+Data Repository. The repository is (rightly so) not interested in descriptions
+that only apply to a limited set of sources (e.g.~descriptions for only a single
+dictionary).
 
 The major challenge then is developing an infrastructure to identify the
 elements that are individual graphemes in a source, specifically for the
@@ -116,13 +117,13 @@ character. For example, can indicate either pre- or post-aspiration (whereas the
 nasalization or creaky diacritic is defined in the Unicode Standard to apply to
 a specified base character). 
 
-Finally, to arrive at the graphemic tokenization in
-(3), tailored grapheme clusters are needed (as for example specified in an
-orthography profile). For example, this orthography profile would specify that
-the sequence of characters, and form a single grapheme, and that and form a
-grapheme. The orthography profile could also specify orthographic rules,
-e.g.~when tokenization graphemes, in say English, the in the forms and should be
-treated as distinct sequences depending on their contexts.
+Finally, to arrive at the graphemic tokenization in (3), tailored grapheme
+clusters are needed (possibly specified in an orthography profile). For example,
+an orthography profile might specify that the sequence of characters <tsʰ> form
+a single grapheme. The orthography profile could also specify orthographic
+rules, e.g.~when tokenizing graphemes, in say English, the sequences <sh> in the
+forms <mishap> and <mishmash> should be treated as distinct sequences depending
+on their contexts.
 
 \section{Informal description}
 \label{informal-description-of-orthography-profiles}
@@ -131,7 +132,7 @@ An orthography profile describes the Unicode code points, characters, graphemes
 and orthographic rules in a writing system. An orthography profile is a
 language-specific (and often even resource-specific) description of the units
 and rules that are needed to adequately model a writing system. An important
-assumption of our work is that we assume a resource is encoded in Unicode (or
+assumption is that we assume a resource is encoded in Unicode (or
 has been converted to Unicode). Any data source that the Unicode Standard is
 unable to capture, will also not be captured by an orthography profile.
 
@@ -147,13 +148,27 @@ When a grapheme has different possible transliterations, then these differences
 should be separated by contextual specification, possibly down to listing
 individual exceptional cases.
 
-The logic of orthographic parsing ...
+The crucial difference between our current proposal and traditional
+computational approaches to transliteration is the strict separation between
+tokenization and transliteration. Most computational approaches to
+transliteration are based on finite-state transducers (including the
+transliteration as described in the Unicode Locale Data Markup
+Language.\footnote{See \url{http://www.unicode.org/reports/tr35/}} Finite-state 
+transducers attempt to describe the mapping from input to output string directly 
+as a set of rewrite rules. Although such systems are computationally well 
+understood, we feel that they are not well-suited for day-to-day linguistic 
+practice. First, by forcing a first step of grapheme tokenization, our system 
+tries to keep close to the logic of the writing system. Second, by separating 
+tokenization from transliteration there is no problem with `feeding' and 
+`bleeding' of rules, common with transducers (cf.~Section~\ref{rule-ordering}
+).
 
-Note that to deal with ambiguous parsing cases, we can use the Unicode approach
-using the zero width joiner. This is actually a non-joiner (the name is
-confusing): the idea is to add this character into the text to identify cases in
-which a sequence of characters is not supposed to be a complex grapheme (even
-though the sequence is in the orthography profile)
+Note that to deal with ambiguous parsing cases, it is still possible to use the
+Unicode approach including the \textsc{zero-width non-joiner} character at
+\uni{200C} into the text. The idea is to add this character into the text to
+identify cases in which a sequence of characters is \textit{not} supposed to be
+a complex grapheme cluster (even though the sequence is in the orthography
+profile).
 
 In practice, we foresee a workflow in which orthography profiles are iteratively
 refined, while at the same time inconsistencies and errors in the data to be
