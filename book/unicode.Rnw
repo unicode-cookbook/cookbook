@@ -5,9 +5,6 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Everything following a % is ignored
-% Some lines start with %. Remove the % to include them
-
 \documentclass[output=inprep,
 %  long|short|inprep
 %  ,blackandwhite
@@ -25,6 +22,7 @@
 % put all additional commands you need in the 
 % following files. If you do not know what this might 
 % mean, you can safely ignore this section
+
 \usepackage{verbatim}
 \input{localmetadata.tex}
 \input{localpackages.tex}
@@ -41,7 +39,6 @@
 \begin{document}
 \maketitle
 \frontmatter
-% %% uncomment if you have preface and/or acknowledgements
 % \include{chapters/preface}
 % \include{chapters/acknowledgments}
 % \include{chapters/abbreviations}
@@ -94,9 +91,8 @@ options(reindent.spaces = 2)
 \include{chapters/ipa_meets_unicode}
 \include{chapters/orthography_profiles}
 \Sexpr{knit_child("chapters/implementation.tex")}
-
 \include{chapters/use_cases}
-\Sexpr{knit_child("chapters/codetesting.tex")}
+% \Sexpr{knit_child("chapters/codetesting.tex")}
 
 
 % TODOS:

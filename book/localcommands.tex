@@ -2,16 +2,22 @@
 
 \newcommand{\smiley}{:\)}
 
+% ===========
+
 % to get the U+Hexdecimal abbreviations looking good
 \newcommand{\uni}[1]
 {\@{\small \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
 
 \newcommand{\unif}[1]
-{\@{\footnotesize \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@}
+{\@{\footnotesize \fontspec[Letters=Uppercase]{LinLibertineO}U+#1}\@} % small for footnote
+
+% ===========
 
 % use charisSIL in suitable size to fit other text
 \newcommand{\charis}[1]
 {{\small \fontspec{CharisSIL}#1}}
+
+% ===========
 
 % mark lonely diacritics with a dotted circle
 \newcommand{\dia}[1]
@@ -23,14 +29,19 @@
 \newcommand{\diaf}[1]
 {{\footnotesize \fontspec{CharisSIL}{\small ◌}\symbol{"#1}}} % small for footnote
 
-% manually specifying space before and after knitr chunks
-\renewenvironment{knitrout}
-  {\vspace{-0.5em} } % what happens before the code chunk
-  {\vspace{-0.5em} } % what happens after the code chunk
+% ===========
 
 % scale texttt fontsize, for regular text and for footnotes
 \renewcommand{\texttt}[1]
 {{\small\ttfamily #1}}
 
 \newcommand{\textttf}[1]
-{{\scriptsize\ttfamily #1}}
+{{\scriptsize\ttfamily #1}} % small for footnote
+
+% ===========
+
+% manually specifying space before and after knitr chunks
+\renewenvironment{knitrout}
+  {\vspace{-0.5em} } % what happens before the code chunk
+  {\vspace{-0.5em} } % what happens after the code chunk
+
