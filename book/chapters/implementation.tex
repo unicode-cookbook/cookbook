@@ -41,7 +41,7 @@ install.packages('qlcData')
 library(qlcData) 
 @
 
-\noindent The version available through CRAN is the latest stable version.
+The version available through CRAN is the latest stable version.
 To obtain the most recent bug-fixes and experimental additions, please use the
 development version, which is available on
 GitHub.\footnote{\url{http://github.com/cysouw/qlcData}} This development
@@ -57,7 +57,7 @@ devtools::install_github('cysouw/qlcData', build_vignettes = TRUE)
 library(qlcData) 
 @
 
-\noindent Inside the \texttt{qlcData} package, there are two functions for
+Inside the \texttt{qlcData} package, there are two functions for
 orthography processing, \texttt{write.profile} and \texttt{tokenize}. R includes
 help files with illustrative examples, and also a so-called `vignette' with
 explanations and examples.
@@ -70,7 +70,7 @@ help(tokenize)
 vignette('orthography_processing')
 @
 
-\noindent Basically, the idea is to use \texttt{write.profile} to produce a
+Basically, the idea is to use \texttt{write.profile} to produce a
 basic orthography profile from some data and then \texttt{tokenize} to apply the
 (possibly edited) profile on some data, as exemplified in the next section. This
 can of course be performed though R, but additionally there are two more
@@ -88,7 +88,7 @@ used from here, or they can be linked and/or copied to any location as wanted.
 file.path(find.package('qlcData'), 'exec')
 @
 
-\noindent For example, a good way to use the executables in a terminal is to
+For example, a good way to use the executables in a terminal is to
 make softlinks (using \texttt{ln}) from the executables to a directory in your
 PATH, e.g. to \texttt{/usr/local/bin/}. The two executables are named
 \texttt{tokenize} and \texttt{writeprofile}, and the links can be made directly 
@@ -103,10 +103,11 @@ pathW=`Rscript -e 'cat(file.path(find.package("qlcData"), "exec", "writeprofile"
 ln -is $pathT $pathW /usr/local/bin
 @
 
-\noindent After this softlink it should be possible to access the \texttt{tokenize}
-function from the shell. Try \texttt{tokenize --help} to test the functionality.
+After inserting this softlink it should be possible to access the
+\texttt{tokenize} function from the shell. Try \texttt{tokenize --help} to test
+the functionality.
 
-<<size='scriptsize', engine='bash'>>=
+<<size='scriptsize', engine='bash', tidy=FALSE>>=
 tokenize --help
 @
 
@@ -128,7 +129,7 @@ TO DO
 \section{Profiles and error reporting}
 \label{error-reporting}
 
-The first example of how to use these functions considers finding errors in the
+The first example of how to use these functions concerns finding errors in the
 encoding of texts. In the following example, it looks as if we have two
 identical strings, \texttt{AABB}. However, this is just an surface-impression
 delivered by the current font, which renders Latin and Cyrillic capitals
@@ -143,7 +144,7 @@ test <- c('AABB', '\u0041\u0410\u0042\u0412')
 write.profile(test)
 @
 
-\noindent The function of error-message reporting can also nicely be illustrated
+The function of error-message reporting can also nicely be illustrated
 with this example. Suppose we made an orthography profile with just the two
 Latin letters <A> and <B> as possible graphemes, then this profile would not be
 sufficient to tokenize the strings. There are graphemes in the data that are not
@@ -167,7 +168,7 @@ various different ways in which strings can be separated into graphemes by
 \texttt{example} below. The default settings of \texttt{write.profile} separates
 the string into Unicode graphemes according to grapheme clusters
 (`user-perceived characters', see Section~\ref{the-unicode-approach}). As it 
-turns out, ome of these graphemes are single codepoints, others are combinations
+turns out, some of these graphemes are single codepoints, others are combinations
 of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 
 <<>>=
@@ -188,7 +189,7 @@ print(xtable(profile_1
   )
 @
 
-\noindent By specifying the splitting separator as the empty string
+By specifying the splitting separator as the empty string
 \texttt{sep~=~""}, it is possible to split the string into Unicode codepoints,
 thus separating the combining diacritics. The idea behind this option
 \texttt{sep} is that separating by a character allows for user-determined
@@ -214,7 +215,7 @@ print(xtable(profile_2
   )
 @
 
-\noindent Some characters look identical, although they are encoded differently.
+Some characters look identical, although they are encoded differently.
 Unicode offers different ways of normalization (see
 Section~\ref{pitfall-canonical-equivalence}), which can be invoked here as well
 using the option \texttt{normalize}. NFC-normalization turns everything into the
@@ -254,7 +255,7 @@ print(xtable(profile_4
   )
 @
 
-\noindent It is important to realize that for Unicode grapheme definitions, NFC
+It is important to realize that for Unicode grapheme definitions, NFC
 and NFD normalization are equivalent. This can be shown by normalizing the
 example in either NFC or NFD, but using default separation in
 \texttt{write.profile}. To be precise, default separation means setting
@@ -293,13 +294,12 @@ print(xtable(profile_6
   )
 @
 
-\noindent Note that these different profiles can also be produced using the bash
+Note that these different profiles can also be produced using the bash
 executable \texttt{writeprofile} (see \ref{available-implementations} for notes
 on how to install the bash executable). Exactly this example is also included in
 the help file of the executable.
 
 <<size='scriptsize', engine='bash'>>=
-## show help
 writeprofile --help
 @
 
@@ -348,10 +348,10 @@ print(xtable(profile_skeleton
   )
 @
 
-\noindent It is also possible to leave out the Unicode information in
+It is also possible to leave out the Unicode information in
 the profile skeleton by using the option \texttt{info = FALSE}. It is also
 possible not to use a separate file at all, but process everything within R. In
-simply situations this is often useful (see below), but in general we prefer to
+simple situations this is often useful (see below), but in general we prefer to
 handle everything through a separately saved orthography profile. This profile
 often contains highly useful information that is nicely coded and saved inside
 this one file, and can thus be easily distributed and shared. Doing the same as
@@ -475,7 +475,7 @@ tokenize( example
         )
 @
 
-\noindent This will lead to the following four files being written. Crucially, a
+This will lead to the following four files being written. Crucially, a
 new profile is produced with the re-ordered orthography profile. To reproduce
 the tokenization, this re-ordered profile can be used with the option
 \texttt{ordering~=~NULL}.
@@ -616,7 +616,7 @@ discussed in the previous sections, there are also columns \texttt{Class} and
 \texttt{Replacement}. The column \texttt{Class} can be used to specify classes
 of graphemes that can then be used in the contextual specification. The column
 \texttt{Replacement} is just a copy of the column \textt{Grapheme}, providing a
-skeleton to specify transliteration. The name of the columne
+skeleton to specify transliteration. The name of the column
 \texttt{Replacement} is not fixed -- there can actually be multiple columns with 
 different kinds of transliterations in a single profile.
 
@@ -707,7 +707,7 @@ tokenize(example
 
 In all examples above we have used the default formatting for grapheme
 separation using space as a separator, which is obtained by the default setting
-\texttt{sep = " "}. It is possible to specify any other separator here,
+\texttt{sep~=~"~"}. It is possible to specify any other separator here,
 including the empty string, i.e. \texttt{sep = ""}. This will not show the
 graphemic tokenization anymore (although it has of course been used in the
 background).
@@ -751,21 +751,23 @@ tokenize( "test test test"
 \section{Remaining issues}
 
 Given a set of graphemes, there are at least two different methods to tokenize
-strings. The first is called \texttt{method = "global"} here: this approach
+strings. The first is called \texttt{method = "global"}. This approach
 takes the first grapheme in the profile, then matches this grapheme globally at
 all places in the string, and then turns to the next string in the profile. To
 us, this seems to be the most intuitive way for linguists to deal with graphemic
-parsing. The other approach is called \texttt{method = "linear"} here: this
+parsing. The other approach is called \texttt{method = "linear"}. This
 approach walks through the string from left to right. At the first character it
 looks through all graphemes whether there is any match, and then walks further
 to the end of the match and starts again. This approach is more alike to
 finite-state rewrite rules (though note that it still works differently from
-such rewrite rules, see Section~\ref{rule-ordering}).
+such rewrite rules, see Section~\ref{rule-ordering}). The global method is used 
+by default.
 
-In some special cases these two methods can lead to different results, but these
-special situations are very unlikely to happen in natural language. The example
-below shows that a string \texttt{'abc'} can be parsed differently in case of a
-very special profile with a very special ordering of the graphemes.
+In some special cases these two tokenization methods can lead to different
+results, but these special situations are very unlikely to happen in natural
+language. The example below shows that a string \texttt{'abc'} can be parsed
+differently in case of a very special profile with a very special ordering of
+the graphemes.
 
 <<tidy=FALSE>>=
 # different parsing methods can lead to different results
@@ -775,6 +777,7 @@ tokenize( "abc"
          , order = NULL
          , method = "global"
          )$strings
+         
 # the linear method catches the first grapheme, which is 'ab'
 tokenize( "abc"
          , profile = c("bc","ab","a","c")
@@ -783,11 +786,14 @@ tokenize( "abc"
          )$strings
 @
 
-The current R-implementation has a limitation when regular expressions are used. 
-The problem is that overlapping matches are not captured. Everything works as 
-expected without regular expressions, but there might be warnings/errors in case of 
-\texttt{regex = TRUE}. However, just as in the previous issue, this should very 
-rarely happen in natural language.
+Further, the current R-implementation has a limitation when regular expressions
+are used. The problem is that overlapping matches are not captured when using
+regular expressions.\footnote{This restriction is an effect of the underlyingly
+used ICU implementation of the Unicode standard as implemented in R through the
+package \texttt{stringi}.} Everything works as expected without regular
+expressions, but there might be warnings/errors in case of \texttt{regex =
+TRUE}. However, just as in the previous issue, this problem should only very
+rarely (when at all) happen in natural language data.
 
 The problem can be exemplified by a sequence <bbbb> in which a 
 grapheme <bb> should be matched. With the default \texttt{regex = FALSE} 
@@ -804,6 +810,7 @@ tokenize( "abbb"
         , order = NULL
         , regex = FALSE
         )$strings
+        
 # Matching with regular expressions does not catch overlap
 tokenize( "abbb"
         , profile = c("ab","bb")
