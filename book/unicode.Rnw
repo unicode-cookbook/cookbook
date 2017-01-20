@@ -39,7 +39,7 @@
 \begin{document}
 \maketitle
 \frontmatter
-% \include{chapters/preface}
+\include{chapters/preface}
 % \include{chapters/acknowledgments}
 % \include{chapters/abbreviations}
 \tableofcontents
@@ -84,7 +84,7 @@ options(reindent.spaces = 2)
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{chapters/preface}
+% \include{chapters/preface}
 \include{chapters/introduction}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}

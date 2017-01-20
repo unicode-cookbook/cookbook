@@ -34,6 +34,7 @@
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
 \newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
 
 \usepackage{framed}
 \makeatletter
@@ -88,7 +89,7 @@
 \begin{document}
 \maketitle
 \frontmatter
-% \include{chapters/preface}
+\include{chapters/preface}
 % \include{chapters/acknowledgments}
 % \include{chapters/abbreviations}
 \tableofcontents
@@ -111,7 +112,7 @@
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\include{chapters/preface}
+% \include{chapters/preface}
 \include{chapters/introduction}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
@@ -158,7 +159,7 @@ simply installed as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install the qlcData software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"qlcData"}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'qlcData'}\hlstd{)}
 \hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
@@ -176,10 +177,10 @@ version can be easily installed using the github-install helper software from th
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install helper software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"devtools"}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'devtools'}\hlstd{)}
 \hlcom{# install the qlcData package from GitHub}
-\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{"cysouw/qlcData"}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlcom{# load the software, so it can be used}
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'cysouw/qlcData'}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# load the software, so it can be used }
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
 \end{kframe}
@@ -197,7 +198,7 @@ explanations and examples.
 \hlkwd{help}\hlstd{(write.profile)}
 \hlkwd{help}\hlstd{(tokenize)}
 \hlcom{# view vignette with explanation and examples}
-\hlkwd{vignette}\hlstd{(}\hlstr{"orthography_processing"}\hlstd{)}
+\hlkwd{vignette}\hlstd{(}\hlstr{'orthography_processing'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -219,7 +220,7 @@ used from here, or they can be linked and/or copied to any location as wanted.
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# show the path to the bash executables}
-\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{"qlcData"}\hlstd{),} \hlstr{"exec"}\hlstd{)}
+\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{'qlcData'}\hlstd{),} \hlstr{'exec'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -238,7 +239,8 @@ pathT=`Rscript -e 'cat(file.path(find.package("qlcData"), "exec", "tokenize"))'`
 pathW=`Rscript -e 'cat(file.path(find.package("qlcData"), "exec", "writeprofile"))'`
 
 # make softlinks to the R executables in /usr/local/bin
-ln -is $pathT $pathW /usr/local/bin
+# you will have to enter your user's password!
+sudo ln -is $pathT $pathW /usr/local/bin
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -301,7 +303,7 @@ package and can be started with the following helper function:
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{launch_shiny}\hlstd{(}\hlstr{"tokenize"}\hlstd{)}
+\hlkwd{launch_shiny}\hlstd{(}\hlstr{'tokenize'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -328,7 +330,12 @@ some of the letters are Cyrillic.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
+\hlstd{( test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{) )}
+\end{alltt}
+\begin{verbatim}
+## [1] "AABB" "AАBВ"
+\end{verbatim}
+\begin{alltt}
 \hlkwd{write.profile}\hlstd{(test)}
 \end{alltt}
 \begin{verbatim}
@@ -352,8 +359,8 @@ Cyrillic encoding is found in the second string of the \texttt{test} input.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
-\hlkwd{tokenize}\hlstd{(test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlstr{"B"}\hlstd{))}
+\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{)}
+\hlkwd{tokenize}\hlstd{( test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'A'}\hlstd{,} \hlstr{'B'}\hlstd{) )}
 \end{alltt}
 
 
@@ -397,14 +404,14 @@ of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{example} \hlkwb{<-} \hlstr{"ÙÚÛÙÚÛ"}
+\hlstd{example} \hlkwb{<-} \hlstr{'\textbackslash{}u00d9\textbackslash{}u00da\textbackslash{}u00db\textbackslash{}u0055\textbackslash{}u0300\textbackslash{}u0055\textbackslash{}u0301\textbackslash{}u0055\textbackslash{}u0302'}
 \hlstd{profile_1} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -443,8 +450,8 @@ user-defined, but relegated to the Unicode grapheme definitions.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -485,8 +492,8 @@ characters with combining diacritics. Splitting by codepoints (i.e. \texttt{sep~
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -505,8 +512,8 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 \end{table}
 
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -543,8 +550,8 @@ example in either NFC or NFD, but using default separation in
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -563,8 +570,8 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 \end{table}
 
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:00 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -666,8 +673,8 @@ these new graphemes are then included in the graphemic parsing.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:18 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:01 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -711,7 +718,7 @@ above completely within R might look as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# make a profile, just select the column 'Grapheme'}
-\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,} \hlstr{"Grapheme"}\hlstd{]}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,}\hlstr{"Grapheme"}\hlstd{]}
 \hlcom{# extend the profile with multigraphs}
 \hlstd{profile} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"sh"}\hlstd{,} \hlstr{"ch"}\hlstd{,} \hlstr{"sch"}\hlstd{,} \hlstr{"ie"}\hlstd{,} \hlstr{"oo"}\hlstd{, profile)}
 \hlcom{# use the profile to tokenize}
@@ -927,8 +934,8 @@ this toy example.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:19 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:01 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1008,8 +1015,8 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:19 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:01 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1044,8 +1051,8 @@ expression in the contextual column. For example, consider the edited toy
 profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:19 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:01 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1103,8 +1110,8 @@ free to use any class-name you like, as long as it doesn't clash with the rest
 of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
 give the same result as obtained previously by using a regular expression.
 
-% latex table generated in R 3.3.0 by xtable 1.8-2 package
-% Thu Aug 18 15:38:19 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package
+% Fri Jan 20 14:31:01 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1265,18 +1272,19 @@ Further, the current R-implementation has a limitation when regular expressions
 are used. The problem is that overlapping matches are not captured when using
 regular expressions.\footnote{This restriction is an effect of the underlyingly
 used ICU implementation of the Unicode standard as implemented in R through the
-package \texttt{stringi}.} Everything works as expected without regular
+package \textttf{stringi}.} Everything works as expected without regular
 expressions, but there might be warnings/errors in case of \texttt{regex =
 TRUE}. However, just as in the previous issue, this problem should only very
 rarely (when at all) happen in natural language data.
 
-The problem can be exemplified by a sequence <bbbb> in which a 
-grapheme <bb> should be matched. With the default \texttt{regex = FALSE} 
-there are three possible matches, but with \texttt{regex = TRUE} only the first 
-two or the last two are matched. The middle two are not matched because they 
-overlap with the other matches. In the example below this leads to an error, 
-because the second <bb> is not matched. We have not been able to produce a real 
-example in any natural language in which this limitation might lead to an error.
+The problem can be exemplified by a sequence <bbbb> in which a grapheme <bb>
+should be matched. With the default \texttt{regex = FALSE} there are three
+possible matches, but with \texttt{regex = TRUE} only the first two <b>s or the
+last two <b>s are matched. The middle two <b>s are not matched because they
+overlap with the other matches. In the example below this leads to an error,
+because the second <bb> is not matched. However, we have not been able to
+produce a real example in any natural language in which this limitation might
+lead to an error.
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
