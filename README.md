@@ -1,6 +1,6 @@
 # Unicode Cookbook for Linguists
 
-Steve Moran <bambooforest@gmail.com> & Michael Cysouw <cysouw@mac.com>
+Steven Moran <bambooforest@gmail.com> & Michael Cysouw <cysouw@mac.com>
 
 The book is typeset with XeLaTeX, but there is knitr-based R-code included. This has to be first processed to return latex code, which can then be typeset.
 
@@ -20,4 +20,6 @@ To process the R-code then use:
 
      knitr::knit("unicode.Rnw")
 
-This results in a file `unicode.tex` that can then regularly be typeset by XeLaTeX.
+This results in a file `unicode.tex` that can then regularly be typeset by XeLaTeX. 
+
+Note, you may need to install various LaTeX packages, fonts, or other dependencies to compile this book.
