@@ -1,15 +1,19 @@
 \chapter{Implementation}
 \label{implementation}
 
-\section{Available implementations}
-\label{available-implementations}
-
 To illustrate the practical application of orthography profiles as defined in
-the previous Chapter \ref{orthography-profiles}, we have implemented two
-different versions of the specifications presented there: one in Python and one
-in R. These two implementations have rather different implementation histories,
+the previous Chapter \ref{orthography-profiles}, we have implemented two 
+versions of the specifications presented there: one in Python and one
+in R.
+
+These two libraries have rather different implementation histories,
 and we are not 100\% sure that they will in all situations give the same
-results. Also the perfomance with larger datasets differs, and the code is not
+results. We do however provide a test suite for each implementation. 
+Users should refer to the tests cases and to the documentation in each release 
+for specifics about each implementation. Note also that function names differ 
+in the two implementations.
+
+Note also that the performance with larger datasets differs, and the code is not
 always as clean as we would like it to be. In sum, the two implementations
 should be considered as `proof of concept' and not as the final word on the
 practical application of the specifications above. In our own experience, the
@@ -21,11 +25,142 @@ better not be used for full-scale industry applications.
 This chapter will introduce the implementations, and give practical step-by-step 
 guidelines for installing them and using them. Various simple and sometimes 
 somewhat abstract examples will be discussed to show the different options 
-available, and to illustrate the intended usage of orthography profiles. In the 
-next chapter we will then discuss a few full-scale examples to illustrate the 
-application and the usefulness of orthography profiles.
+available, and to illustrate the intended usage of orthography profiles. 
 
-\subsection*{Installing the R implementation}
+This chapter is split into two sections, one for the Python implementation, the 
+other for R. Each section has a number of subsections that ...
+
+In addition to the material presented here to get users started, we maintain 
+several case studies that use each OP implementation in action. These use cases 
+are an the accompanying Github repository available with this book at: 
+\url{https://github.com/unicode-cookbook/recipes/}.
+
+% TODO: point to the case studies
+% In the next chapter we will then discuss a few full-scale examples to illustrate the application and the usefulness of orthography profiles.
+
+
+\section{Python}
+\label{python-implementations}
+
+The Python package is available both as a command line interface (CLI) 
+and as an appplication programming interface (API).
+
+\subsection*{Installation}
+
+To install the Python package from the Python Package Index (PyPI) run:
+
+\begin{lstlisting}[language=bash]
+  $ pip install segments
+\end{lstlisting}
+
+\noindent on the command line. This will give you access to both 
+the CLI and programmatic functionality in Python scripts, when 
+you import the \texttt{segments} library.
+
+You can also install the \texttt{segments} 
+package with from the Github repository:
+
+\begin{lstlisting}[language=bash]
+  $ git clone https://github.com/bambooforest/segments.git
+  $ cd segments
+  $ python setup.py develop
+\end{lstlisting}
+
+
+\subsection*{Command line interface}
+
+From the command line, access \texttt{segments} and its 
+various arguments. For help, run:
+
+\begin{lstlisting}[language=bash]
+  $ segments -h
+\end{lstlisting}
+
+\noindent Here is an example of how to create and use an orthography 
+profile for segmentation. Create a text file:
+
+\begin{lstlisting}[language=bash]
+  $ more text.txt
+  aäaaöaaüaa
+\end{lstlisting}
+
+\noindent Now look at the profile:
+
+\begin{lstlisting}[language=bash,texcl=true]
+  $ cat text.txt | segments profile
+  Grapheme        frequency       mapping
+  a       7       a
+  ä       1       ä
+  ü       1       ü
+  ö       1       ö
+\end{lstlisting}
+
+\noindent Write the profile to a file:
+
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments profile > profile.prf
+\end{lstlisting}
+
+\noindent Edit the profile:
+
+\begin{lstlisting}[language=bash]
+  $ more profile.prf
+  Grapheme        frequency       mapping
+  aa      0       x
+  a       7       a
+  ä       1       ä
+  ü       1       ü
+  ö       1       ö
+\end{lstlisting}
+
+\noindent Now tokenize the text without profile:
+
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments tokenize
+  a ä a a ö a a ü a a	
+\end{lstlisting}
+
+\noindent And with profile:
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments --profile=profile.prf tokenize
+  a ä aa ö aa ü aa
+
+  $ cat text.txt | segments --mapping=mapping --profile=profile.prf tokenize
+  a ä x ö x ü x
+\end{lstlisting}
+
+
+\subsection*{Application programming interface}
+The \texttt{segments} API can be accesses by importing 
+the package into Python a script. Here is an example of 
+how to import the libraries, create a tokenizer object, 
+tokenize a string and create a profile.
+
+\begin{lstlisting}[language=python]
+>>> from __future__ import unicode_literals, print_function
+>>> from segments import Profile, Tokenizer
+>>> t = Tokenizer()
+>>> t('abcd')
+'a b c d'
+>>> prf = Profile({'Grapheme': 'ab', 'mapping': 'x'}, \
+{'Grapheme': 'cd', 'mapping': 'y'})
+>>> print(prf)
+mapping Grapheme
+ab  x
+cd  y
+>>> t = Tokenizer(profile=prf)
+>>> t('abcd')
+'ab cd'
+>>> t('abcd', column='mapping')
+'x y'
+\end{lstlisting}
+
+
+\section{R}
+\label{r-implementation}
+
+% \subsection*{Installing the R implementation}
+\subsection*{Installation}
 
 The R implementation is available in the package \texttt{qlcData}, which is 
 directly available from the central R repository CRAN (Comprehensive R Archive 
@@ -120,13 +255,9 @@ package and can be started with the following helper function:
 launch_shiny('tokenize')
 @
 
-TO DO
+% TO DO
 
-\subsection*{Installung the Python implementation}
-
-TO DO
-
-\section{Profiles and error reporting}
+\subsection*{Profiles and error reporting}
 \label{error-reporting}
 
 The first example of how to use these functions concerns finding errors in the
@@ -157,7 +288,7 @@ test <- c('AABB', '\u0041\u0410\u0042\u0412')
 tokenize( test, profile = c('A', 'B') )
 @
 
-\section{Different ways to write a profile}
+\subsection*{Different ways to write a profile}
 \label{write-profile}
 
 The function \texttt{write.profile} can be used to prepare a skeleton for an
@@ -295,7 +426,7 @@ print(xtable(profile_6
 @
 
 Note that these different profiles can also be produced using the bash
-executable \texttt{writeprofile} (see \ref{available-implementations} for notes
+executable \texttt{writeprofile} (see \ref{r-implemenation} for notes
 on how to install the bash executable). Exactly this example is also included in
 the help file of the executable.
 
@@ -303,7 +434,7 @@ the help file of the executable.
 writeprofile --help
 @
 
-\section{Using an orthography profile skeleton}
+\subsection*{Using an orthography profile skeleton}
 \label{profile-skeleton}
 
 A common workflow to use these functions is to first make a skeleton for an
@@ -366,7 +497,7 @@ profile <- c("sh", "ch", "sch", "ie", "oo", profile)
 tokenize(example, profile)$strings
 @
 
-\section{Rule ordering}
+\subsection*{Rule ordering}
 \label{rule-ordering}
 
 Not yet everything is correct in this graphemic parsing of the example discussed
@@ -503,7 +634,7 @@ the tokenization, this re-ordered profile can be used with the option
           
 \end{itemize}
 
-\section{Contextually specified graphemes}
+\subsection*{Contextually specified graphemes}
 \label{contextual-specification}
 
 To refine a profile, it is also possible to add graphemes with contextual
@@ -580,7 +711,7 @@ character). Specifically, this concerns the following characters:
   
 \end{itemize}
 
-\section{Profile skeleton with columns for editing}
+\subsection*{Profile skeleton with columns for editing}
 \label{profile-editing}
 
 When it is expected that context might be important for a profile, then the
@@ -702,7 +833,7 @@ tokenize(example
   )$strings
 @
 
-\section{Formatting grapheme separation}
+\subsection*{Formatting grapheme separation}
 \label{formattingseparation}
 
 In all examples above we have used the default formatting for grapheme
@@ -748,7 +879,7 @@ tokenize( "test test test"
         )$strings$tokenized
 @
 
-\section{Remaining issues}
+\subsection*{Remaining issues}
 
 Given a set of graphemes, there are at least two different methods to tokenize
 strings. The first is called \texttt{method = "global"}. This approach
