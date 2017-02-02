@@ -1,1 +1,0 @@
-This is a sandbox directory for writing scratch output when following the use case.

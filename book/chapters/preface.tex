@@ -1,82 +1,16 @@
 \chapter{Preface}
 \label{preface}
 
-% ==========================
-% \section{Preface}
-% \label{preface}
-% ==========================
+This text is meant as a practical guide for linguists, and programmers, who work with data in multilingual computational environments. We introduce the basic concepts needed to understand how writing systems and character encodings function, and how they work together.
 
-% Very early attmept at notion for linguistic prosody: Joshua Steele (Prosodia Rationalis, 1779)
+The intersection of the Unicode Standard and the International Phonetic Alphabet is often not met without frustration by users. Nevertheless, the two standards have provided language researchers with a consistent computational architecture needed to process, publish and analyze data from many different languages. We bring to light common, but not always transparent, pitfalls that researchers face when working with Unicode and IPA. 
 
-% Early phoneticians: Richard Lepsius (standard alphabet 1854, 1855), Isaac Pitman (Stenographic Soundhand 1837, Phonotypy 1844, English Phonotypic Alphabet 1845 with Ellis), Alexander J. Ellis (English Phonotypic Alphabet 1845), and Alexander Melville Bell (visibile speech 1864, 1867)
+Our research uses quantitative methods to compare languages and uncover and clarify their phylogenetic relations. However, the majority of lexical data available from the world's languages is in author- or document-specific orthographies. Having identified and overcome the pitfalls involved in making writing systems and character encodings syntactically and semantically interoperable (to the extent that they can be), we created a suite of open-source Python and R tools to work with languages using profiles that adequately describe their orthographic conventions. Using orthography profiles and these tools allows users to segment text, analyze it, identify errors, and to transform it into different written forms.
 
-% Later phoneticians: Henry Sweet (Romic alphabet, aka Romic reform, in A Handbook of Phonetics 1877 - later becomes basis for IPA), L'abbé Jean-Pierre Rousselot ("founder of experimental phonetics"), Eduard Sievers, Paul Passy (founded the Phonetic Teachers' Association in 1886, later became IPAssociation), and Jens Otto Harry Jesperson
+We welcome comments and corrections of this text, our source code, and the use case studies that are supplement to this book. Please use the issue tracker or email us directly.
 
-% Instrumental measurements: Ludimar Hermann (used the phonograph to test theories of vowel production; coined formant)
+\bigbreak
+\noindent Steven Moran {\textless}bambooforest@gmail.com{\textgreater}
 
-In the 1840s, several researchers and teachers began developing notation to
-accurately transcribe articulatory gestures and their acoustic correlates. Their
-goal was not only transcription, they wanted to use their notation for spelling
-reform (especially English), for teaching literacy and foreign languages, and in
-particular for developing writing systems for unwritten languages.
+\noindent Michael Cysouw {\textless}cysouw@mac.com{\textgreater}
 
-At first, the challenge of devising a universal phonetic notation seemed
-straightforward: normalize the relationship between graphemes and sounds (<c> in
-`cake' -> /k/; <c> in `cell' -> /s/) to remove inconsistencies introduced by the
-historical divergence of written and spoken forms (e.g.\ in English and French
-orthographies), and keep adding new symbol-sound mappings until all sounds are
-accounted for.
-
-% These early transcription system pioneers found success with the first few languages that they encountered. Grapheme replacement and normalization of symbols across different orthographies seemed to work. But as they were confronted with more articulations and different notational devices, early phoneticians encountered a wealth of potentially important data that they had not expected.
-
-This approach was successful for the first few languages investigated. But as
-the early phoneticians were confronted with more and more articulations, they
-encountered a wealth of data that they had not expected. The in-depth
-exploration of articulatory phonetics led to the discovery that the number of
-possible spoken sounds is infinite. \cite{Hockett1995} notes:
-
-\begin{quote} 
- 
-But as they observed articulation more and more closely, and as
-they took more and more languages into consideration, the number of sounds they
-could discriminate and the number of symbols needed to denote them both
-increased seemingly without limit. In fact, as early as 1848, Ellis asserted
-that in principle the number of different sounds is endless. With the
-development of instrumental phonetics, largely by L'Abbé Rousselot, it soon
-turned out that, given sufficiently accurate measuring devices, that is in fact
-the case.
-
-\end{quote}
-
-% Hockett 1995: "And so the phoneticians began to develop notations that would show only the constant and distinctive features and let the transient and predictable ones be provided for by cover statements"
-
-% The phonemic principle emerged and the model for it was alphabetic writing.
-
-The first instrumental measurements in the 1870-80s showed unequivocally that
-spoken language is comprised of sounds waves; it is dynamic and not discrete.
-Given the fluid nature of the speech stream, sounds differ from one utterance to
-the next and the same sound may differ in different phonetic environments.
-However, many of these alterations are predictable in the context of their
-environments and they need not necessarily form distinctive lexical contrasts.
-
-These findings left the early phoneticians in a conundrum given the aims of
-developing precise phonetic notion, but also practically-minded alphabetic-based
-writing. It is in this vein that the phonetic and phonemic distinction was
-introduced very early into transcription. The etic vs emic principle took hold,
-in essence, even before the dichotomy was widely accepted and before terminology
-for linguistic distinctiveness was introduced and adopted.
-
-A transcription system that showed both contrastive and non-contrastive elements
-emerged, taking form notably in the International Phonetic Alphabet (which
-itself has been updated from time-to-time over the last nearly 120 years). The
-association between phonetic and phonemic would be maintained in the
-International Phonetic Alphabet and through the various instantiations of
-phonological theory, which developed on the work by early phoneticians.
-
-The model for phonemic contrast was alphabetic writing, in particular shallow
-orthography, i.e.\ one-to-one mappings between sound and symbol. Traditional
-alphabetic orthography, however, did not scale to precise phonetic notation, so
-the former was sprinkled with diacritics to denote non-contrastive phenomena.
-This dichotomy between phonemic and phonetic and its implementation in writing
-and consistent encoding causes many issues -- linguistic, theoretic, and most
-recently technological -- which we bring to light in this book.

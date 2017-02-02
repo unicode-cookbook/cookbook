@@ -37,8 +37,8 @@ daily use \citep{Olumuyiw2013}.
 
 The resulting cumbersome and often illogical structure of writing systems, and
 the enormous variability of existing writing systems for the world's languages
-is a fact of life scholars have to accept and should try to adapt to as good as
-possible. Our plea in this book is a proposal how to do exactly that: formalize 
+is a fact of life scholars have to accept and should try to adapt to as well as
+we can. Our plea in this book is a proposal how to do exactly that: formalize 
 knowledge about individual writing systems in a form that is both easy to use 
 for linguists in daily practice, and at the same time computer-readable for 
 automatic processing.
@@ -120,25 +120,25 @@ Consortium (Section~\ref{the-unicode-approach}). We consider the Unicode
 Standard to be a breakthrough (and ongoing) development that fundamentally
 changed the way we look at writing systems, and we aim to provide here a
 slightly more in-depth survey of the many techniques that are available in the
-standard. A good appreciation for the solutions that the Unicode Standard
-provides, also allows for a thorough understanding of possible pitfalls that one
-might encounter when using it (Chapter~\ref{unicode-pitfalls}). As an example of
-the current state-of-the-art, we discuss the International Phonetic Alphabet
-(IPA, Chapter~\ref{the-international-phonetic-alphabet}) and its rather
-problematic marriage with the Unicode Standard (Chapter
-\ref{ipa-meets-unicode}).
+standard. A good appreciation for the solutions that the Unicode Standard also
+allows for a thorough understanding of possible pitfalls that one might
+encounter when using it in general (Chapter~\ref{unicode-pitfalls}). Linguists are more often interested in using the Unicode Standard with the International Phonetic Alphabet (IPA). We first provide a history of the development of the IPA and early attempts to encode it electronically (Chapter~\ref{the-international-phonetic-alphabet}) before we discuss the rather problematic marriage of the International Phonetic Alphabet (IPA) with the Unicode Standard (Chapter\ref{ipa-meets-unicode}).
 
-The second part of the book describes our proposals for how to deal with the
-Unicode Standard in the daily practice of linguistics. First, we discuss the
+In the second part of the book (Chapters~\ref{orthography-profiles} and
+\ref{implementation}) we describe our proposals of how to deal with the Unicode
+Standard in the daily practice of (comparative) linguistics. First, we discuss the
 challenges of characterizing a writing system. To solve these problems, we
 propose the notions of orthography profiles, closely related to Unicode locale
-descriptions (Chapter~\ref{orthography-profiles}). We provide reference
+descriptions (Chapter~\ref{orthography-profiles}). Finally, we discuss practical
+issues with actual examples (Chapter~\ref{implementation}). We provide reference
 implementation of our proposals in R and in Python, available as open-source
 libraries. An introduction to these implementations of our proposals is
 described in Chapter~\ref{implementation}. Finally, we discuss practical issues
 with actual examples in Chapter~\ref{use-cases}. 
 
-The following conventions are followed in this paper. All phonemic and phonetic
+\subsubsection*{Conventions}
+
+The following conventions are followed in this book. All phonemic and phonetic
 representations are given in the International Phonetic Alphabet (IPA), unless
 noted otherwise \citep{IPA2005}. Standard conventions are used for
 distinguishing between graphemic < >, phonemic / / and phonetic [ ]
