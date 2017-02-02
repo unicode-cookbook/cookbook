@@ -235,7 +235,8 @@ pathT=`Rscript -e 'cat(file.path(find.package("qlcData"), "exec", "tokenize"))'`
 pathW=`Rscript -e 'cat(file.path(find.package("qlcData"), "exec", "writeprofile"))'`
 
 # make softlinks to the R executables in /usr/local/bin
-ln -is $pathT $pathW /usr/local/bin
+# you will have to enter your user's password!
+sudo ln -is $pathT $pathW /usr/local/bin
 @
 
 After inserting this softlink it should be possible to access the
@@ -271,7 +272,7 @@ orthography profile with the function \texttt{write.profile}. As it turns out,
 some of the letters are Cyrillic.
 
 <<>>=
-test <- c('AABB', '\u0041\u0410\u0042\u0412')
+( test <- c('AABB', '\u0041\u0410\u0042\u0412') )
 write.profile(test)
 @
 
@@ -921,18 +922,19 @@ Further, the current R-implementation has a limitation when regular expressions
 are used. The problem is that overlapping matches are not captured when using
 regular expressions.\footnote{This restriction is an effect of the underlyingly
 used ICU implementation of the Unicode standard as implemented in R through the
-package \texttt{stringi}.} Everything works as expected without regular
+package \textttf{stringi}.} Everything works as expected without regular
 expressions, but there might be warnings/errors in case of \texttt{regex =
 TRUE}. However, just as in the previous issue, this problem should only very
 rarely (when at all) happen in natural language data.
 
-The problem can be exemplified by a sequence <bbbb> in which a 
-grapheme <bb> should be matched. With the default \texttt{regex = FALSE} 
-there are three possible matches, but with \texttt{regex = TRUE} only the first 
-two or the last two are matched. The middle two are not matched because they 
-overlap with the other matches. In the example below this leads to an error, 
-because the second <bb> is not matched. We have not been able to produce a real 
-example in any natural language in which this limitation might lead to an error.
+The problem can be exemplified by a sequence <bbbb> in which a grapheme <bb>
+should be matched. With the default \texttt{regex = FALSE} there are three
+possible matches, but with \texttt{regex = TRUE} only the first two <b>s or the
+last two <b>s are matched. The middle two <b>s are not matched because they
+overlap with the other matches. In the example below this leads to an error,
+because the second <bb> is not matched. However, we have not been able to
+produce a real example in any natural language in which this limitation might
+lead to an error.
 
 <<tidy=FALSE>>=
 # Everything perfekt without regular expressions

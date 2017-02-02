@@ -68,9 +68,7 @@ processing of orthographies and transcriptions becomes crucial for the
 development of quantitative methods for language comparison and historical
 reconstruction in order to investigate worldwide linguistic variation and to
 model the historical and areal processes that underlie linguistic
-diversity.\footnote{
-Cf.~\citet{Steiner_etal2011,List2012,List2012a,ListMoran2013,MoranProkic2013}}
-In this work, it is crucial to be able to flexibly process across numerous
+diversity. In this work, it is crucial to be able to flexibly process across numerous
 resources with different orthographies. In many cases even different resources
 on the same language use different orthographic conventions. Another
 orthographic challenge that we encounter regularly in our linguistic practice is
@@ -80,6 +78,8 @@ inspection such resources are almost always not consistently encoded. Thus a
 second goal of our orthography profiles is to allow for an easy specification of
 orthographic conventions, and use such profiles to check consistency and to
 report errors to be corrected.
+
+% \footnote{cf.~\citet{Steiner_etal2011,List2012,List2012a,ListMoran2013,MoranProkic2013}}
 
 A central step in our proposed solution to this problem is the tailored grapheme
 separation of strings of symbols, a process we call \textsc{grapheme
@@ -110,11 +110,11 @@ in the same language.
 
 \subsubsection*{Structure of this book}
 
-Before we deal with these proposals we will extensively discuss the theoretical
+Before we deal with these proposals we will first discuss the theoretical
 background on text encoding, on the Unicode standard, and on the International
 Phonetic Alphabet. In the remainder of this chapter, we give an extended
-introduction to the notion of encoding (Section~\ref{encoding}) and writing
-systems, both from a linguistic perspective
+introduction to the notion of encoding (Section~\ref{encoding}) and the
+principles of writing systems, both from a linguistic perspective
 (Section~\ref{linguistic-terminology}) and from the perspective of the Unicode
 Consortium (Section~\ref{the-unicode-approach}). We consider the Unicode
 Standard to be a breakthrough (and ongoing) development that fundamentally
@@ -132,7 +132,9 @@ propose the notions of orthography profiles, closely related to Unicode locale
 descriptions (Chapter~\ref{orthography-profiles}). Finally, we discuss practical
 issues with actual examples (Chapter~\ref{implementation}). We provide reference
 implementation of our proposals in R and in Python, available as open-source
-libraries.
+libraries. An introduction to these implementations of our proposals is
+described in Chapter~\ref{implementation}. Finally, we discuss practical issues
+with actual examples in Chapter~\ref{use-cases}. 
 
 \subsubsection*{Conventions}
 
@@ -157,7 +159,7 @@ not repeat here. However, the history of turning writing into computer readable
 code is not so often told, so we decided to offer a short survey of the major
 developments of such encoding here.\footnote{Because of the recent
 history as summarized in this section, we have used mostly rather ephemeral
-internet sources. When not references by traditional literature in the
+internet sources. When not referenced by traditional literature in the
 bibliography, we have used \url{http://www.unicode.org/history/} and various
 Wikipedia pages for the information presented here. A useful survey of the
 historical development of the physical hardware of telegraphy and
