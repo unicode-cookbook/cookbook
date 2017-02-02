@@ -293,7 +293,7 @@ simply installed as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install the qlcData software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{'qlcData'}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"qlcData"}\hlstd{)}
 \hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
@@ -311,10 +311,10 @@ version can be easily installed using the github-install helper software from th
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install helper software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{'devtools'}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"devtools"}\hlstd{)}
 \hlcom{# install the qlcData package from GitHub}
-\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'cysouw/qlcData'}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlcom{# load the software, so it can be used }
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{"cysouw/qlcData"}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
 \end{kframe}
@@ -332,7 +332,7 @@ explanations and examples.
 \hlkwd{help}\hlstd{(write.profile)}
 \hlkwd{help}\hlstd{(tokenize)}
 \hlcom{# view vignette with explanation and examples}
-\hlkwd{vignette}\hlstd{(}\hlstr{'orthography_processing'}\hlstd{)}
+\hlkwd{vignette}\hlstd{(}\hlstr{"orthography_processing"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -354,7 +354,7 @@ used from here, or they can be linked and/or copied to any location as wanted.
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# show the path to the bash executables}
-\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{'qlcData'}\hlstd{),} \hlstr{'exec'}\hlstd{)}
+\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{"qlcData"}\hlstd{),} \hlstr{"exec"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -374,7 +374,8 @@ by using Rscript to get the paths to the executables within the terminal.
 \hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(file.path(find.package("qlcData"),\ "exec",\ "writeprofile"))'`}\hlstd{}\hspace*{\fill}\\
 \hlstd{}\hspace*{\fill}\\
 \hlstd{}\hlslc{\#\ make\ softlinks\ to\ the\ R\ executables\ in\ /usr/local/bin}\hspace*{\fill}\\
-\hlstd{}\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
+\hlstd{}\hlslc{\#\ you\ will\ have\ to\ enter\ your\ user's\ password!}\hspace*{\fill}\\
+\hlstd{sudo\ }\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
 \mbox{}
 \normalfont
 \end{kframe}
@@ -406,7 +407,7 @@ package and can be started with the following helper function:
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{launch_shiny}\hlstd{(}\hlstr{'tokenize'}\hlstd{)}
+\hlkwd{launch_shiny}\hlstd{(}\hlstr{"tokenize"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -429,7 +430,7 @@ some of the letters are Cyrillic.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{( test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{) )}
+\hlstd{(test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
 ## [1] "AABB" "AАBВ"
@@ -458,8 +459,8 @@ Cyrillic encoding is found in the second string of the \texttt{test} input.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{)}
-\hlkwd{tokenize}\hlstd{( test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'A'}\hlstd{,} \hlstr{'B'}\hlstd{) )}
+\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
+\hlkwd{tokenize}\hlstd{(test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlstr{"B"}\hlstd{))}
 \end{alltt}
 
 
@@ -503,14 +504,14 @@ of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{example} \hlkwb{<-} \hlstr{'\textbackslash{}u00d9\textbackslash{}u00da\textbackslash{}u00db\textbackslash{}u0055\textbackslash{}u0300\textbackslash{}u0055\textbackslash{}u0301\textbackslash{}u0055\textbackslash{}u0302'}
+\hlstd{example} \hlkwb{<-} \hlstr{"ÙÚÛÙÚÛ"}
 \hlstd{profile_1} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -550,7 +551,7 @@ user-defined, but relegated to the Unicode grapheme definitions.
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -592,7 +593,7 @@ characters with combining diacritics. Splitting by codepoints (i.e. \texttt{sep~
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -612,7 +613,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -650,7 +651,7 @@ example in either NFC or NFD, but using default separation in
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -670,7 +671,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -745,7 +746,7 @@ these new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:04 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -789,7 +790,7 @@ above completely within R might look as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# make a profile, just select the column 'Grapheme'}
-\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,}\hlstr{"Grapheme"}\hlstd{]}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,} \hlstr{"Grapheme"}\hlstd{]}
 \hlcom{# extend the profile with multigraphs}
 \hlstd{profile} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"sh"}\hlstd{,} \hlstr{"ch"}\hlstd{,} \hlstr{"sch"}\hlstd{,} \hlstr{"ie"}\hlstd{,} \hlstr{"oo"}\hlstd{, profile)}
 \hlcom{# use the profile to tokenize}
@@ -1006,7 +1007,7 @@ this toy example.
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:05 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1087,7 +1088,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:05 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1123,7 +1124,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:05 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1182,7 +1183,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  2 11:38:05 2017
+% Thu Feb  2 15:27:40 2017
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
