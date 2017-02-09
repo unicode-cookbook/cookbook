@@ -25,4 +25,6 @@ To process the R-code then use:
 
 This results in a file `unicode.tex` that can then regularly be typeset by XeLaTeX. 
 
-Note, you will probably need to install lots of LaTeX packages and fonts to compile.
+Note, you will probably need to install lots of LaTeX packages and numerous fonts to compile the book.
+
+We have success compiling the `unicde.tex` document using the MacTeX 2016 distribution of TeX Live and TeXShop, available at: [https://tug.org/mactex/](https://tug.org/mactex/).
