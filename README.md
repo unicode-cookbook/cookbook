@@ -4,6 +4,8 @@ Steven Moran &lt;bambooforest@gmail.com&gt; & Michael Cysouw &lt;cysouw@mac.com&
 
 [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.290662.svg)](https://doi.org/10.5281/zenodo.290662)
+
 ## About the cookbook
 
 The cookbook is available in its current form in this directory as `unicode-cookbook.pdf`.
