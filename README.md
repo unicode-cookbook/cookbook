@@ -4,7 +4,7 @@ Steven Moran &lt;bambooforest@gmail.com&gt; & Michael Cysouw &lt;cysouw@mac.com&
 
 ## Update
 
-The Unicode Cookbook for Linguists has been accepted for publication in the [!Translation and Multilingual Natural Language Processing](http://langsci-press.org/catalog/series/tmnlp) series by [!Language Science Press](http://langsci-press.org/).
+The Unicode Cookbook for Linguists has been accepted for publication in the [Translation and Multilingual Natural Language Processing](http://langsci-press.org/catalog/series/tmnlp) series by [Language Science Press](http://langsci-press.org/).
 
 ## About the cookbook
 
