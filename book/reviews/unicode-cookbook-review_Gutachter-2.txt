@@ -1,0 +1,73 @@
+Review "The Unicode Cookbook for Linguistics"
+
+This books gives an overview of the intersection of the IPA alphabet and
+Unicode, preceded by a discussion of foundational concepts in writing
+systems, and followed by the suggestion to establish "Orthography
+profiles" as a theoretical concept, which are are in turn implemented in
+Python and R.
+
+Global evaluation:
+The book is concise and can serve as a useful manual for Linguists Who
+Have Always Wondered About Unicode But Never Dared To Ask. The
+exposition of the background is in general well organised and easy to
+follow (for a technical paper). The writing is good in general, but
+sometimes repetitive. Minor suggestions for reorganisation of passages
+are given below. A higher amount of illustrations and charts would make
+that part more accessible.
+
+The orthography profiles section is less well written and at times a bit
+confused. It does not seem completely finished either, since there are
+dangling references and literal TODO in the text. For this section, it
+will be necessary to have a very clear picture about the intended
+audience. For instance, do the authors assume the readers know bash,
+python and R? Most passages do, but some passages explain things that a
+tech-savvy audience will well be aware of and find tedious. The language
+of the implementation part is of less high quality than the introductory
+parts.
+
+The authors should check the use of single and double quotes across the
+paper, which is incoherent. As far as I can tell, all instances of
+material currently enquoted should be in double quotes. Also, the
+authors should check Special Capitalization, which is used in some
+places. Finally, the bibliography has recurrent issues relating to
+naming of organizations, capitalization, and missing places of
+publication and needs to be thoroughly revised.
+
+A section which is missing in something called a "Cookbook" would be
+practical recommendations on how to input Unicode characters. There are
+various character selection tools, shortcuts on the keyboard, the
+shapecatcher website references at several places, or the Wikipedia
+lists of glyphs and fileformat.info. Having all this in one section
+would be handy for the user. It is of course unrelated to the
+orthography profiles, but I imagine that many people will use this book
+as a primer on IPA+Unicode and actually disregard the last two chapters.
+For this group, such a summary would be useful.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

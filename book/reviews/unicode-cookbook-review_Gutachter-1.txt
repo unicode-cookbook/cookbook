@@ -1,0 +1,234 @@
+
+As stated in the preface, the book not only targets linguists, but also
+programmers. This review is written by a programmer from the perspective
+of a programmer.
+
+I want to start out saying that this is a much needed book. I personally 
+often felt a need to educate linguists about unicode and the representation 
+of text in computers and was hoping for a reference with enough detail *and* 
+the proper language fit for linguists. The "Unicode Cookbook for Linguists"
+feels like it is this reference, so I highly recommend publication of it by
+Language Science Press.
+
+I also welcome and second the call to linguists to take IPA and Unicode for
+what they are: Bona fide, best effort standards with well-defined use cases.
+The invitation to treat these standards as useful tools in a pragmatic way
+rather than complaining about their perceived shortcomings is repeated several
+times throughout the book - but bears repeating, because reluctance to
+accept and adhere to common standards in language documentation, not a rare 
+trait among linguists, has prevented the field from more meaningfully employ
+quantitative methods of language comparison.
+
+The first chapter of the "Unicode Cookbook for Linguists" provides a good
+introduction to the problem space of written language and how to compare it.
+Thus, it describes the motivation and problems for standardization efforts.
+The last section of chapter 1, "1.4 The Unicode approach" may fit better as
+first section in the second chapter, at least in my mental model of the 
+outline of the book as
+
+1. The problem space
+2. Proposed solution from an IT perspective
+3. Proposed solution from a linguistic perspective
+4. Identification and description of the "impedance mismatch" between the two
+5. Recommendation how to bridge the gap between the two standards
+
+Anyway, chapters 2 and 3 introduce the two most important attempts at
+standardizing written language for linguists working on computers: The
+Unicode standard and the International Phonetic Alphabet. These two standards
+are described with enough history and detail to appreciate the results, but
+also highlighting - with the benefit of hindsight - the shortcomings.
+
+Chapter 2, "Unicode Pitfalls", is arranged as a list of common problems when
+working with Unicode. Even just looking at the some section names, 
+"Characters are not glyphs", "Characters are not graphs", "Blocks", "Names",
+hints at the main problem of using Unicode being one of terminology.
+In particular for programmers or researchers using a computing environment like
+python or R, this is certainly the case, because many of these environments -
+being mainly used and developed in the English-speaking world - get away with
+not distinguishing two things, namely "sequences of code points" and "text
+encoded as bit patterns". Now looking up "Character encoding" on Wikipedia [1]
+we learn that the term "encoding" is used for all levels - code points or
+bit patterns. But in programming, the standard terminology seems to have
+settled on reserving "encoding" for the bit-pattern level, while using terms
+like "string" or "unicode text" for sequences of Unicode code points [2].
+
+So while it may be technically correct to say
+
+    The Unicode Standard is a CHARACTER ENCODING SYSTEM (page 13)
+
+this sounds a bit odd to the Unicode-aware programmer, who would rather say
+"UTF-8 is a Unicode Encoding system". So the solution of the Unicode Standard
+for the problem of many mutually conflicting encoding systems was to introduce
+a new layer of indirection between character and bit pattern - the code point.
+Unfortunately, the Unicode Consortium itself seems to shy away from clearer
+*new* terminology, when it compares Unicode to encoding systems (not saying
+Unicode is one, though), but does not coin a new term for what Unicode actually
+is, but rather defining it purely functional as "Unicode provides a unique number 
+for every character" [3].
+It's hard to tell whether attempting to coin such a term could have succeeded
+with this book, but it is a bit sad, that the blurry terminology used everywhere
+is perpetuated here. Still, the authors should try not to distract or confuse
+the reader as with footnote 10 on page 13, where the short excursion into
+numeral systems seems to suggest, that Unicode code point U+0070 is always
+"encoded" as bit pattern 1110 0000.
+
+Section "Pitfall: File formats" may profit most from a more transparent
+terminology, distinguishing levels of encoding, rather than talking about how
+texts "appear inside some kind of computer file". This section should also
+mention that line breaks are actually part of the text, and as such also
+covered by the Unicode standard. Again regarding line breaks, the 
+recommendation "that everybody use this encoding [only LF] whenever possible"
+(page 31) seems less well motivated (and specific) than most other 
+recommendations in the book. Some common formats, e.g. CSV (as specified by 
+RFC 4180 [4]), specify "CRLF" as line break. Thus, the perceived "strong 
+tendency" towards "LF" may be just that.
+
+One Unicode pitfall which may be worth adding is the problem with incomplete
+implementations of the Unicode Standard. This is a problem most big-enough
+standards suffer from, e.g. SQL, XML, XSLT. So although the Unicode Standard
+mandates that comparison of Unicode text should always be done using normalized
+text, this is not how the equality operator "==" is implemented for Unicode
+text in the Python programming language.
+
+Chapter 3 introduces "The International Phonetic Alphabet". As with Unicode,
+the authors stress the characterization of IPA as a standard, which makes some
+premises and is guided by some principles, but overall tries to solve an
+interoperability problem in a pragmatic way. I.e. when you want to use text
+on a computer, you should use Unicode; if you want to compare written language
+across languages, you should use IPA.
+
+It may be worth highlighting the parallel between "IPA Numbers" and "Unicode 
+Code Points", i.e. the fact, that IPA and Unicode came up with the solution of
+an additional layer of indirection between symbols/characters and encoding
+(on bit-pattern level); or the parallel between SAMPA/X-SAMPA and the multitude
+of pre-Unicode encodings for text. The fact that the authors added enough
+historical background about both IPA and Unicode makes it possible to relate
+these parallels in time, and prevent dismissal of attempts like SAMPA as
+misguided - because now we have Unicode.
+
+Again, the authors should take care to keep terminology as consistent as 
+possible, e.g. in a passage like
+
+    […] the computer-coding convention for the IPA should be independent of 
+    computer environments and formats (e.g. ASCII), i.e. the IPA Number was
+    not meant to be implemented directly in a computer encoding (page 41)
+
+"computer-coding convention", "format" and "computer encoding" seem to refer
+to the same thing, i.e. encoding on bit-pattern level. In particular listing
+ASCII as an example of a format makes a programmer wonder whether this new
+term is significant, because up to this point, ASCII was referred to as a
+character encoding.
+
+Chapter 4, "IPA meets Unicode", describes what it means for IPA that Unicode
+has become *the* standard for handling text in a computing environment. We
+have learned so far that 
+- we have to use Unicode to use text with a computer, and
+- we have to use IPA to compare written language.
+Thus, chapter 4 gives recommendations how to compare written language with a 
+computer. As with chapter 2, this chapter is organized as list of pitfalls,
+augmented with a section on recommendations. While it may seem overly verbose
+or boring that most of the pitfalls contain somewhat extensive lists of
+symbols/characters/Unicode code blocks, I think this is overall the right
+approach: As the autors show, making IPA work with Unicode is largely a
+matter of spelling out special cases, and how to deal with them. It seems
+important, though, to have the tables starting at page 70 available in a
+computer readable format, and have the book point to the location of these
+files.
+
+Chapter 5 introduces "Orthography profiles" as a tool to specify writing
+systems in such a way that transliteration (e.g. to a suitable subset of IPA)
+becomes simple and transparent; thus, a tool to get from the Unicode domain
+of handling text with a computer to the IPA domain of comparing written
+language with a computer. Having used orthography profiles myself in projects,
+I can already testify to their usefulness.
+
+Like a "real" programmer would do, whenever a chapter contains a section called
+"Formal specification", I'll skip right ahead to it.
+
+File Format:
+
+A1: "ideally using […]" is not exactly language you would like to see in a
+specification; instead the specification should follow RFC 2119 [5], 
+"Key words for use in RFCs to Indicate Requirement Levels". So in this case,
+I guess an orthography profile must be normalized following NFC (or NFD, if 
+specified in the metadata). Specifying a convention for line endings and BOM
+seems overly strict, since most computing environments will transparently
+handle both alternatives: E.g. using the Python programming language, decoding
+a file using the encoding "utf-8-sig" will strip away a BOM, if present, and
+reading a file in text mode will interpret both "LF" and "CRLF" as line
+endings.
+
+A2: "tabs and newline […] will lead to problems", thus they should be
+explicitely disallowed!
+
+A3: The metadata file seems to be highly under-specified. At the very least,
+there should be a list of recognized tags providing semantics for the data.
+But since machine-readability is a requirement for the file anyway, a format
+like JSON-LD [6], or even more appropriate, the JSON-LD dialect specified in
+"Metadata Vocabulary for Tabular Data" [7]  may be a better option, because it
+allows easy inclusion of Dublin Core [8] metadata - as well as a specification
+of the exact CSV dialect used for the actual orthography profile.
+It should be noted that JSON-LD metadata is the choice for datasets conforming
+to the Cross-Linguistic Data Formats [9] standard.
+
+A7: "If regular expressions are used, then […]": The specification does not
+state how a processing application can determine if that is the case - other
+than through additional user input. So specifiying whether regular expressions
+are used should be required in the metadata file. In general, allowing regular
+expressions as input is somewhat problematic, because regular expression
+syntax as well as functionality is somewhat under-specified across regex
+implementations in different computing environments. The closest to a standard
+in this area might be "POSIX Basic Regular Expressions" [10], but these do not
+include lookahead and lookbehind functionality as requred by B3. So allowing
+regular expressions as part of orthography profiles may lead to different
+results of applying the same profile to the same data on different platforms -
+which clearly goes against the idea of this specification.
+
+Overall, it seems somewhat strange to sacrifice
+CSV standards conformance (no quoting of cell values, "LF" line endings, 
+tab as separator) in order to achieve better read-/writeability by humans. This
+puts a bigger burden on the authors in terms of specification (they can no 
+longer just point to FC 4180) and it makes it harder to use tools like 
+LibreOffice Calc or MS Excel to edit Orthography profiles.
+
+Implementation:
+
+B1: As noted for A7, to make the basic handling possible in an automated way,
+there must be a way to figure out that the profile is "basic".
+
+B2: If - as stated - "ordering […] might be crucial", it must be specified, i.e.
+members a class specified as context must be tried in order of occurrence in the
+profile.
+
+B4: I would rather spin the functionality to suggest an optimal ordering of rules
+off to a separate tool, and limit the specification to apply rules in order of
+occurrence. This will lead to simpler implementation and more transparent 
+relation of input and output.
+
+Language like
+
+    The actual implementation of the profile on some text-string will function 
+    as follows: (page 83)
+
+sounds a bit weird in a technical specification. In general, the presentation
+may benefit by adopting the conventions as used for describing algorithms, i.e.
+specifying
+- input
+- output
+- a series of steps to get from input to output
+
+I did not review the Python and R implementations, and suggest to spin these off
+to a more suitable format, e.g. Jupyter Notebooks [11].
+
+
+[1] https://en.wikipedia.org/wiki/Character_encoding
+[2] https://docs.python.org/3/howto/unicode.html#encodings
+[3] http://www.unicode.org/standard/WhatIsUnicode.html
+[4] https://www.ietf.org/rfc/rfc4180.txt
+[5] https://www.ietf.org/rfc/rfc2119.txt
+[6] https://json-ld.org/
+[7] https://www.w3.org/TR/tabular-metadata/
+[8] http://dublincore.org/
+[9] http://cldf.clld.org/
+[10] http://www.regular-expressions.info/posix.html
+[11] http://jupyter.org/
