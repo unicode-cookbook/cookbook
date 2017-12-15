@@ -1,0 +1,19 @@
+Symbol,Code,UnicodeName,IPA_Name
+ˈ,02C8,modifier letter vertical line,primary stress
+ˌ,02CC,modifier letter low vertical line,secondary stress
+˥,02E5,modifier letter extra-high tone bar,extra high tone
+˦,02E6,modifier letter high tone bar,high tone
+˧,02E7,modifier letter mid tone bar,mid tone
+˨,02E8,modifier letter low tone bar,low tone
+˩,02E9,modifier letter extra-low tone bar,extra low tone
+ꜛ,A71B,modifier letter raised up arrow,upstep
+ꜜ,A71C,modifier letter raised down arrow,downstep
+↑,2191,upwards arrow,global rise
+↓,2193,downwards arrow,global fall
+↗,2197,north east arrow,global rise
+↘,2198,south east arrow,global fall
+,0020,space,word break
+,002E,full stop,syllable break
+|,007C,vertical line,minor group break (foot)
+‖,2016,double vertical line,major group break (intonation)
+‿,203F,undertie,linking (absence of a break)

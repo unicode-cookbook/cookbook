@@ -1,0 +1,37 @@
+Symbol	Code	UnicodeName	IPA_Name
+◌̴	0334	combining tilde overlay	velarized or pharyngealized
+◌̼	033C	combining seagull below	linguolabial
+◌̪	032A	combining bridge below	dental
+◌̻	033B	combining square below	laminal
+◌̺	033A	combining inverted bridge below	apical
+◌̟	031F	combining plus sign below	advanced
+◌̠	0320	combining minus sign below	retracted
+◌̝	031D	combining up tack below	raised
+◌̞	031E	combining down tack below	lowered
+◌̘	0318	combining left tack below	advanced tongue root
+◌̙	0319	combining right tack below	retracted tongue root
+◌̜	031C	combining left half ring below	less rounded
+◌̹	0339	combining right half ring below	more rounded
+◌̬	032C	combining caron below	voiced
+◌̥	0325	combining ring below	voiceless
+◌̰	0330	combining tilde below	creaky voiced
+◌̤	0324	combining diaeresis below	breathy voiced
+◌̩	0329	combining vertical line below	syllabic
+◌̯	032F	combining inverted breve below	non-syllabic
+◌̃	0303	combining tilde	nasalized
+◌̈	0308	combining diaeresis	centralized
+◌̽	033D	combining x above	mid-centralized
+◌̆	0306	combining breve	extra-short
+◌̚	031A	combining left angle above	no audible release
+◌˞	02DE	modifier letter rhotic hook	rhotacized
+ˡ	02E1	modifier letter small l	lateral release
+ⁿ	207F	superscript latin small letter n	nasal release
+ʷ	02B7	modifier letter small w	labialized
+ʲ	02B2	modifier letter small j	palatalized
+ˠ	02E0	modifier letter small gamma	velarized
+ˤ	02E4	modifier letter small reversed glottal stop	pharyngealized
+ʰ	02B0	modifier letter small h	aspirated
+ʼ	02BC	modifier letter apostrophe	ejective
+ː	02D0	modifier letter triangular colon	long
+ˑ	02D1	modifier letter half triangular colon	half-long
+͡	0361	combining double inverted breve	tie bar
