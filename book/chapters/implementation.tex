@@ -15,7 +15,7 @@ in the two implementations.
 
 Note also that the performance with larger datasets differs, and the code is not
 always as clean as we would like it to be. In sum, the two implementations
-should be considered as `proof of concept' and not as the final word on the
+should be considered as proof of concept and not as the final word on the
 practical application of the specifications above. In our own experience, the
 current implementations are sufficiently fast and stable to be useful for
 academic practice (e.g. checking data consistency, or analyzing and
@@ -194,7 +194,7 @@ library(qlcData)
 
 Inside the \texttt{qlcData} package, there are two functions for
 orthography processing, \texttt{write.profile} and \texttt{tokenize}. R includes
-help files with illustrative examples, and also a so-called `vignette' with
+help files with illustrative examples, and also a so-called vignette with
 explanations and examples.
 
 <<eval=FALSE>>=
@@ -210,7 +210,7 @@ basic orthography profile from some data and then \texttt{tokenize} to apply the
 (possibly edited) profile on some data, as exemplified in the next section. This
 can of course be performed though R, but additionally there are two more
 interfaces to the R code supplied in the \texttt{qlcData} package: (i) bash
-executables and (ii) `shiny' webapps.
+executables and (ii) shiny webapps.
 
 The bash executables are little files providing an interface to the R code that
 can be used in a shell on a UNIX-alike machine. The location of these
@@ -299,7 +299,7 @@ various different ways in which strings can be separated into graphemes by
 \texttt{write.profile}. Consider the following string of characters called
 \texttt{example} below. The default settings of \texttt{write.profile} separates
 the string into Unicode graphemes according to grapheme clusters
-(`user-perceived characters', see Section~\ref{the-unicode-approach}). As it 
+(called user-perceived characters, see Section~\ref{the-unicode-approach}). As it 
 turns out, some of these graphemes are single codepoints, others are combinations
 of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 
@@ -579,21 +579,21 @@ followed by more specific regularities. To get the right tokenization, these
 rules should in most cases be applied in reverse order.
 
 It is important to realize that different ordering of the rules does not have
-so-called `feeding' and `bleeding' effects as known from finite-state rewrite
-rules.\footnote{`Bleeding' is the effect that the application of a rule changes
-the string, so as to prevent a next rule to apply. `Feeding' is the opposite: a
+so-called feeding and bleeding effects as known from finite-state rewrite
+rules.\footnote{Bleeding is the effect that the application of a rule changes
+the string, so as to prevent a next rule to apply. Feeding is the opposite: a
 specific rule will only be applied becuase a previous rule changed the string
-already. The interaction of rules with such `feeding' and `bleeding' effects is
+already. The interaction of rules with such feeding and bleeding effects is
 extremely difficult to predict.} The graphemic parsing advocated here works
 crucially different from rewrite rules in that there is nothing being rewritten:
-each line in an orthography profile specifies a grapheme to be `captured' in the 
+each line in an orthography profile specifies a grapheme to be captured in the 
 string. All lines in the profile are processed in a specifed order (as determined
 by the option \texttt{ordering}). At the processing of a specific line, all 
-matching graphemes in the data are marked as `captured', but not changed. 
+matching graphemes in the data are marked as captured, but not changed. 
 Captured parts cannot be captured again, but they can still be used to match 
 contexts of other lines in the profile. Only when all lines are processed the 
 captured graphemes are separated (and possibly transliterated). In this way the 
-result of the application of the `rules' is rather easy to predict.
+result of the application of the rules' is rather easy to predict.
 
 To document a specific case of graphemic parsing, it is highly useful to save
 all results of the tokenization to file by using the option \texttt{file.out},

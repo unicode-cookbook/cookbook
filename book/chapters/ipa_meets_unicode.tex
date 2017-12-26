@@ -18,7 +18,7 @@ chapter might seem like hair-splitting trivialities. However, if IPA
 transcriptions are intended to be used across resources (e.g.~searching similar
 phenomena across different languages) then it becomes crucial that there are
 strict encoding guidelines. Our main goal in this chapter is to present the
-encoding issues and propose recommendations for a ``strict'' IPA encoding for
+encoding issues and propose recommendations for a strict IPA encoding for
 situations in which cross-resource consistency is crucial.
 
 There are several pitfalls to be aware of when using the Unicode Standard to
@@ -77,7 +77,7 @@ diacritics, the IPA is spread across 12 blocks in the Unicode
 Standard:\footnote{This number of blocks depends on whether only IPA-sanctioned
 symbols are counted or if the phonetic symbols commonly found in the literature
 are also included, see~\cite[Appendix~C]{Moran2012}. The 159 characters from 12 
-code blocks shown here are the characters proposed for ``strict'' IPA encoding, 
+code blocks shown here are the characters proposed for strict IPA encoding, 
 as discussed in Section~\ref{ipa-recommendations}.}
 
 \begin{itemize}[itemsep=4pt]
@@ -157,7 +157,7 @@ Unicode Standard are the following.
         Unicode Standard the <ǃ> at \unif{01C3} is labeled \textsc{latin letter
         retroflex click}, but in IPA that glyph is used for an alveolar or
         postalveolar click (not retroflex). This naming is probably best seen as
-        an error in the Unicode Standard. For the ``real'' retroflex click, see 
+        an error in the Unicode Standard. For the real retroflex click, see 
         Section~\ref{ipa-additions}.}
   \item The dental click <ǀ>, in Unicode known as \textsc{latin letter dental
         click} at \uni{01C0}, is often simply typed as <|> \textsc{vertical
@@ -256,7 +256,7 @@ different encodings.
            proper encoding, these two symbols should be typed as 
            \textsc{modifier letter vertical line} at \uni{02C8} and
            \textsc{modifier letter apostrophe} at \uni{02BC}, respectively. 
-   \item There are two different ``dashed''-l characters in IPA, namely the <ɫ> 	      \textsc{latin small letter l with middle tilde} at \uni{026B} and the <ɬ>	      \textsc{latin small letter l with belt} at \uni{026C}. These of course
+   \item There are two different dashed-l characters in IPA, namely the <ɫ> 	      \textsc{latin small letter l with middle tilde} at \uni{026B} and the <ɬ>	      \textsc{latin small letter l with belt} at \uni{026C}. These of course
           look highly similar, although they are different sounds. As a solution, 
           we will actually propose to not use the middle tilde at all 
           (see Section~\ref{pitfall-multiple-options-ipa}).     
@@ -274,9 +274,9 @@ transcriptions have to be encoded. There are a few cases in which the IPA
 explicitly allows for different options of transcribing the same phonetic
 content. This is understandable from a transcriber's point of view, but it is
 not acceptable when the goal is interoperability between resources written in
-IPA.\@ We consider it crucial to distinguish between ``valid'' IPA, for which it
+IPA.\@ We consider it crucial to distinguish between valid IPA, for which it
 is sufficient that any phonetically-trained reader is able to understand the
-transcription, and ``strict'' IPA, which should be standardized on a single
+transcription, and strict IPA, which should be standardized on a single
 unique encoding for each sound, so search will work across resources. We are
 aware of the following non-unique encoding options in the IPA, which will be
 discussed in turn below:
@@ -434,7 +434,7 @@ good.
 Most importantly though, in comparison to normal Unicode processing, the tie-bar
 actually takes a reversed approach to complex graphemes. Basically, the Unicode
 principle (see Section~\ref{pitfall-characters-are-not-graphemes}) is that fixed
-sequences in a writing system have to be specified as ``tailored'' grapheme
+sequences in a writing system have to be specified as tailored grapheme
 clusters. Only in case the sequence is not a cluster, then this has to be
 explicitly indicated. IPA takes a different approach. In IPA by default
 different base letters are not connected into larger clusters; only when it is
@@ -536,7 +536,7 @@ mentioned above, but always use the separate rhotic hook at \uni{02DE} in IPA.\@
 
 A similar situation arises with <\dia{0334}> \textsc{combining tilde overlay} at
 \uni{0334}. The main reason some phoneticians like to use this in IPA is to mark
-the ``dark'' <l> in English codas, using the character <ɫ> \textsc{latin small
+the dark <l> in English codas, using the character <ɫ> \textsc{latin small
 letter l with middle tilde} at \uni{026B}. This character is not canonically
 equivalent to the combination <l>~+~<\dia{0334}>, so one of the two possible
 encodings has to be chosen. Because the tilde overlay is described as a general
@@ -918,8 +918,8 @@ used with caution.
       The diacritic <\dia{0353}>
       \textsc{combining x below} at \uni{0353} can be used to represent three
       types of frictionalized sounds: First, click consonants where the release
-      of the anterior closure involves an ingressive ``sucking'' sound similar
-      to a fricative, for example <kǃ͓ʰ>; second, ``frictionalized'' vowels
+      of the anterior closure involves an ingressive sucking sound similar
+      to a fricative, for example <kǃ͓ʰ>; second, frictionalized vowels
       (sounds that are phonologically vocalic, but with sufficiently close
       closures to create buzzing); and third, fricative sounds at places of
       articulation that do not have dedicated fricative glyphs, for example
@@ -935,7 +935,7 @@ used with caution.
 \item \textsc{Glottalization} \newline 
       Glottalized sounds can be indicated using
       <\dia{02C0}> \textsc{modifier letter glottal stop} at \uni{02C0}, unless
-      it is clear that either ``ejective'' or ``creaky voicing'' are the
+      it is clear that either ejective or creaky voicing are the
       intended sounds (in which cases the standard IPA diacritics should be
       used). Pre-glottalized sounds can be marked with
       <\diareverse{02C0}> to the left of the base

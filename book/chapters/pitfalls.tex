@@ -24,7 +24,7 @@ In this context, it is important to realize that the Unicode Standard was not
 developed to solve linguistic problems per se, but to offer a consistent
 computational environment for written language. In those cases in which the
 Unicode Standard behaves differently as expected, we think it is important not
-to dismiss Unicode as ``wrong'' or ``deficient'', because our
+to dismiss Unicode as wrong or deficient, because our
 experience is that in almost all cases the behavior of the Unicode Standard has
 been particularly well thought through. The Unicode Consortium has a more
 wide-ranging view of matters and often examines important practical use-cases
@@ -93,18 +93,18 @@ There is no possibility to encode such complex graphemes using the Unicode Stand
 The Unicode Standard deals with complex graphemes only inasmuch they consist of
 base characters with diacritics (see
 Section~\ref{pitfall-different-notions-of-diacritics} for a discussion of the
-notion of diacritic). The Unicode Standard calls such combination ``grapheme
-clusters''. Complex graphemes consisting of multiple base characters,
-like <sch>, are called ``tailored grapheme clusters'' in Unicode parlance (see
+notion of diacritic). The Unicode Standard calls such combination \textit{grapheme
+clusters||. Complex graphemes consisting of multiple base characters,
+like <sch>, are called \textit{tailored grapheme clusters} in Unicode parlance (see
 Section~\ref{the-unicode-approach}).
 
 Inspecting the Unicode Standard, there appear to be special Unicode characters
-to ``glue'' together characters into larger tailored grapheme clusters,
+to glue together characters into larger tailored grapheme clusters,
 specifically the \textsc{zero width joiner} at \uni{200D} and the
 \textsc{combining grapheme joiner} at \uni{034F}. However, these characters are
 confusingly named (cf.~Section~\ref{pitfall-names}). Both codepoints actually do
 not join characters, but explicitly separate them. The zero-width joiner (ZWJ)
-can be used to solve special problems related to ordering (called ``collation''
+can be used to solve special problems related to ordering (called \textit{collation}
 in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
 separate characters that are not supposed to form ligatures. 
 
@@ -304,12 +304,12 @@ grapheme joiner} at \uni{034F} does not join characters into larger graphemes
 letter retroflex click} \uni{01C3} is actually not the IPA symbol for a
 retroflex click, but for an alveolar click (see
 Section~\ref{pitfall-ipa-homoglyphs}). In a sense, these names can be seen as
-``errors.'' However, it is probably better to realize that such names are just
+errors. However, it is probably better to realize that such names are just
 convenience labels that are not going to be changed. Just like the block names
 (Section~\ref{pitfall-blocks}), the character names are often helpful, but they
 are not supposed to be definitions.
 
-The actual intended ``meaning'' of a Unicode codepoint is a combination of the
+The actual intended meaning of a Unicode codepoint is a combination of the
 name, the block and the character properties (see
 Section~\ref{the-unicode-approach}). Further details about the underlying intentions 
 with which a character should be used
@@ -532,14 +532,14 @@ There are further combinations that deserve specific care because it is actually
 possible to produce identical characters in different ways without them being
 canonically equivalent. In these situations, the general rule holds, namely that
 characters with attached extras are not decomposed. However, in the following
-cases the ``extras'' actually exist as combining diacritics, so there is also 
+cases the extras actually exist as combining diacritics, so there is also 
 the possibility to construct a character by using a base character with those 
 combining diacritics.
 
 \begin{itemize}
   
-  \item First, there are the combining characters designated as ``combining
-        overlay'' in the Unicode Standard, like <\dia{0334}>
+  \item First, there are the combining characters designated as \textit{combining
+        overlay} in the Unicode Standard, like <\dia{0334}>
         \textsc{combining tilde overlay} at \uni{0334} or <\dia{0335}>
         \textsc{combining short stroke overlay} at \uni{0335}. There are many
         characters that look like they are precomposed with such an overlay,
@@ -547,7 +547,7 @@ combining diacritics.
         example of <ø> given at the start of this section. However, they are 
         not decomposed in NFD normalization.
   \item Second, the same situation also occurs with combining characters
-        designated as ``combining hook'', like 
+        designated as \textit{combining hook}, like 
         <{\fontspec{CharisSIL}{\large ◌}}\symbol{"0321}> \textsc{combining
         palatalized hook below} at \uni{0321}. This element seems to occur in
         precomposed characters like <\charis{ᶀ~ᶁ~ᶂ~ᶄ}>. However, they are 
@@ -685,7 +685,7 @@ recommendations:
          or from missing canonical equivalence in the Unicode Standard
          (see Section~\ref{pitfall-absence-of-equivalence})
          use orthography profiles (see Chapter~\ref{orthography-profiles}).
-   \item To deal with ``tailored'' grapheme clusters
+   \item To deal with tailored grapheme clusters
          (Section~\ref{pitfall-characters-are-not-graphemes}), use Unicode Locale 
          Descriptions, or orthography profiles 
          (see Chapter~\ref{orthography-profiles}).
