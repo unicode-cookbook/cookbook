@@ -23,7 +23,7 @@ expected---often unknowingly---a \textsc{pitfall}.
 In this context, it is important to realize that the Unicode Standard was not
 developed to solve linguistic problems per se, but to offer a consistent
 computational environment for written language. In those cases in which the
-Unicode Standard behaves differently as expected, we think it is important not
+Unicode Standard behaves differently than expected, we think it is important not
 to dismiss Unicode as wrong or deficient, because our
 experience is that in almost all cases the behavior of the Unicode Standard has
 been particularly well thought through. The Unicode Consortium has a more
@@ -52,11 +52,21 @@ example, characters in writing systems like Hebrew and Arabic have different
 glyphs depending on where they appear in a word. Some letters in Hebrew change
 their form at the end of the word, and in Arabic, primary letters have four
 contextually-sensitive variants (isolated, word initial, medial and final).
+
 Second, a single character may be rendered as a sequence of multiple glyphs. For
 example, in Tamil one Unicode character may result in a combination of a
 consonant and vowel, which are rendered as two adjacent glyphs by fonts that
-supports Tamil. Third, a single glyph may be a combination of multiple
-characters. For example, the ligature <ﬁ>, a single glyph, is the result of two
+supports Tamil, e.g. \textsc{tamil letter au} at \uni{0B94} represents a single 
+character <ஔ>, composed of two glyphs <ஓ> and <ன>. Perhaps confusingly, 
+in the Unicode Standard there are also two individual characters, 
+i.e.\ \textsc{tamil letter oo} at \uni{0B93} and 
+\uni{0BA9} \textsc{tamil letter nnna}, each of which is a glyph. Another example is 
+Sinhala \textsc{sinhala vowel sign kombu deka} at \uni{0DDB} <ෛ>, which is 
+visually two glyphs, each represented by \textsc{sinhala vowel sign kombuva} 
+at \uni{0DD9} < ෙ>.
+
+Third, a single glyph may be a combination of multiple characters. For example, 
+the ligature <ﬁ>, a single glyph, is the result of two
 characters, <f> and <i>, that have undergone glyph substitution by font
 rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
 contextually-determined glyphs, ligatures are (intended) artefacts of text
@@ -247,9 +257,9 @@ There is mostly no real solution to problems arising from faulty font rendering.
 Switching to another software application that offers better handling is the
 only real alternative, but this is normally not an option for daily work. The 
 experience with rendering on the side of the software industry is developing 
-quickly, so we can expect the situation only to get better. In the meantime one 
-can try to correct faulty layout by tweaking baseline and/or kerning (when such 
-option are available).
+quickly, so we can expect the situation to only get better. % In the meantime one 
+% can try to correct faulty layout by tweaking baseline and/or kerning (when such 
+% option are available).
 
 % ==========================
 \section{Pitfall: Blocks}
