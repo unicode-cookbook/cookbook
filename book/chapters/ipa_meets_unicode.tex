@@ -178,8 +178,8 @@ Unicode Standard are the following.
 
 Conversely, non-linguists are unlikely to distinguish any semantic difference
 between an open back unrounded vowel, which is encoded in IPA with a
-`single-story' <ɑ> \textsc{latin small letter alpha} at \uni{0251}, and the open
-front unrounded vowel, which is encoded in IPA with a `double-story' <a>
+``single-story'' <ɑ> \textsc{latin small letter alpha} at \uni{0251}, and the open
+front unrounded vowel, which is encoded in IPA with a ``double-story'' <a>
 \textsc{latin small letter a} at \uni{0061}, basically treating them as
 homoglyphs, although they are different phonetic symbols. But even among
 linguists this distinction leads to problems. For example, as pointed out by
@@ -227,7 +227,12 @@ explicitly specifies that it should still be rendered as a double-story
 character when italicized. After informal discussion with various Unicode
 players, our impression is that this highly restricted problem is not
 sufficiently urgent to introduce even more <a> homographs in Unicode (which
-already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).}
+already lead to much confusion, see Section~\ref{pitfall-homoglyphs}).} This 
+approach was taken by the Language Science Press to distinguish 
+between the two different orthographic <a>'s in Chakali in 
+\cite{Brindle2017}.\footnote{\url{http://langsci-press.org/catalog/book/74}}
+
+
 
 % ==========================
 \section{Pitfall: Homoglyphs in IPA}
@@ -340,7 +345,7 @@ allows to put the ring above the base, like in <ŋ̊>, using the \textsc{combini
 ring above} at \uni{030A}. Yet, proper font design does not have any problem
 with rendering the ring below the base character, like in <ŋ̥>, so for strict
 IPA encoding we propose to standardize on the ring below. As a principle, for
-strict IPA encoding only one options should be allowed for all diacritics.
+strict IPA encoding only one option should be allowed for all diacritics.
 
 The variable encoding as allowed by the IPA becomes even more troublesome for
 the tilde and diaeresis diacritics. In these cases, the IPA itself attaches
@@ -629,7 +634,8 @@ to treat it as a separate character is also linguistically correct.
          standardize on Unicode modifier letters for all superscript
          letters in IPA.
   
-   \item Tone letters are normally written at the end of the syllable,
+   \item Tone letters <˥, ˦, ˧, ˨, ˩> from \uni{02E5}--\uni{02E9} 
+   		 are normally written at the end of the syllable,
          possibly occurring immediately adjacent to a consonant in the coda of
          the syllable. Such tone markers should of course not be treated as
          belonging to this consonant, so we propose to treat tone letters as 
@@ -702,8 +708,7 @@ letter a with acute} at \uni{00E1}) will be split into its parts. This might
 sound preferable for a linguistic analysis, as the different diacritics are
 separated from the base characters. However, note that most attached elements
 like strokes (e.g.~in the <ɨ>), retroflex hooks (e.g.~in <ʐ>) or rhotic hooks
-(e.g.~in <ɝ>) will not be decomposed, but strangely enough a cedilla (like in
-<ç>) will be decomposed (see Section~\ref{pitfall-missing-decomposition}). In
+(e.g.~in <ɝ>) will not be decomposed. In
 general, Unicode decomposition does not behave like a feature decomposition as
 expected from a linguistic perspective. It is thus important to consider Unicode
 decomposition only as a technical procedure, and not assume that it is
@@ -719,7 +724,7 @@ some ad-hoc decisions had to be taken given the vast variability of phonological
 segments described by linguists. The most recent version of the conventions 
 is published online by~\citet{MoranMcCloy2014}.\footnote{\url{http://phoible.github.io/conventions/}}
 
-By Unicode Canonical Combining Classes, the diacritics on top of a character,
+By Unicode Canonical Combining Classes, overlay diacritics 
 like <\dia{0334}> (Combining Class number 1), always come before diacritics
 below (Combining Class number 220), which in turn always come before diacritics
 above (Combining Class number 230), which in turn come before diacritics over
@@ -804,16 +809,16 @@ With each revision of the IPA, many decisions need to be made by
 the Association as to which symbols should be added, removed or 
 changed. For example, in the 1989 revision of the IPA at the Kiel Convention, 
 changes to specific symbols (in previous charts) were debated and 
-the Association's members certain decisions. The prevailing mood at 
+the Association's members made certain decisions. The prevailing mood at 
 the convention was not to change specific symbols unless a strong 
 case was made \citep{Ladefoged1990a}. For example, two such decisions 
 included:
 
 \begin{itemize}
-	\item symbols for clicks were changed from <ʇ~ʖ~ʗ> to <ǀ~ǁ~ǃ>
+	\item Symbols for clicks were changed from <ʇ~ʖ~ʗ> to <ǀ~ǁ~ǃ>
        because the latter were the symbols used by nearly all Khoisanists and
        Bantuists.
-	\item the Americanist tradition of using using <\dia{030C}>, a
+	\item The Americanist tradition of using using <\dia{030C}>, a
        \textsc{combining caron} at \uni{030C} for all post-alveolar sounds, like
        in <š~ž~č~ǰ>, was not adopted because the Association members at the
        convention ``were not sufficiently impressed by arguments ... to the
@@ -823,13 +828,13 @@ included:
 \end{itemize}
 
 \noindent These decisions have practical consequences for transcribers 
-of IPA, particularly those who wish to follow recommended practices of 
+of IPA, particularly those who wish to follow current recommended practices of 
 encoding electronic text in the Unicode Standard. For example, the Unicode 
-Standard contains removed symbols as labels them as clicks, e.g. <ʇ> 
-\textsc{latin small letter turned t} at U+0287 in the \textsc{IPA Extensions} 
-block has the comment `dental click (sound of ``tsk tsk'')'. In this case, 
-the IPA transcriber must know the status of click symbols in the current 
-version of the IPA and then identify those characters within the Unicode Standard. 
+Standard contains \textsc{latin small letter turned t} <ʇ> at U+0287, 
+which is no longer part of the IPA. It still exists, however, in the Unicode 
+\textsc{IPA Extensions} block, with the comment ``dental click (sound of `tsk tsk')''. 
+In such cases, the IPA transcriber must know the status of legacy symbols in the current 
+version of the IPA and the correct characters in the Unicode Standard.
 
 The most controversial issue regarding symbols debated at the convention was the
 representation for voiceless implosives \citep[62]{Ladefoged1990a}. In
@@ -882,7 +887,7 @@ although we think this is unlikely.
 % ==========================
 
 In the course of collecting a large sample of phoneme systems across the world's
-languages \citep{Moran2012}, \citet{Moran_etal2014} found that in order 
+languages, \citet{Moran_etal2014} found that in order 
 to preserve distinctions both within and across language descriptions, 
 additions to the approved IPA glyph set were needed. Wherever possible 
 these additions were drawn from the extIPA symbols for disordered
