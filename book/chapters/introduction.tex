@@ -21,7 +21,7 @@ the right way to write, although many users of Yoruba orthography seem to be
 perfectly fine with leaving them out. As pointed out by the proponents of the
 official rules, there are some homographs when leaving out the tone diacritics
 \citep[44]{Olumuyiw2013}. However, writing systems (and the languages they
-represent) are normally full of homographs (and homophones), which is normally
+represent) are normally full of homographs (and homophones), which is 
 not a problem at all for speakers of the language. More importantly, writing is
 not just a purely functional tool, but just as importantly it is a mechanism to
 signal social affiliation. By showing that you \textit{know the rules} of
@@ -41,7 +41,7 @@ is a fact of life scholars have to accept and should try to adapt to as well as
 we can. Our plea in this book is a proposal how to do exactly that: formalize 
 knowledge about individual writing systems in a form that is both easy to use 
 for linguists in daily practice, and at the same time computer-readable for 
-automatic processing.
+automated processing.
 
 When considering the worldwide linguistic diversity, including the many
 lesser-studied and endangered languages, there exist numerous different
@@ -111,7 +111,7 @@ in the same language.
 \subsubsection*{Structure of this book}
 
 Before we deal with these proposals we will first discuss the theoretical
-background on text encoding, on the Unicode standard, and on the International
+background on text encoding, on the Unicode Standard, and on the International
 Phonetic Alphabet. In the remainder of this chapter, we give an extended
 introduction to the notion of encoding (Section~\ref{encoding}) and the
 principles of writing systems, both from a linguistic perspective
@@ -122,7 +122,7 @@ changed the way we look at writing systems, and we aim to provide here a
 slightly more in-depth survey of the many techniques that are available in the
 standard. A good appreciation for the solutions that the Unicode Standard also
 allows for a thorough understanding of possible pitfalls that one might
-encounter when using it in general (Chapter~\ref{unicode-pitfalls}). Linguists are more often interested in using the Unicode Standard with the International Phonetic Alphabet (IPA). We first provide a history of the development of the IPA and early attempts to encode it electronically (Chapter~\ref{the-international-phonetic-alphabet}) before we discuss the rather problematic marriage of the International Phonetic Alphabet (IPA) with the Unicode Standard (Chapter\ref{ipa-meets-unicode}).
+encounter when using it in general (Chapter~\ref{unicode-pitfalls}). Linguists are more often interested in using the Unicode Standard with the International Phonetic Alphabet (IPA). We first provide a history of the development of the IPA and early attempts to encode it electronically (Chapter~\ref{the-international-phonetic-alphabet}) before we discuss the rather problematic marriage of the International Phonetic Alphabet (IPA) with the Unicode Standard (Chapter~\ref{ipa-meets-unicode}).
 
 In the second part of the book (Chapters~\ref{orthography-profiles} and
 \ref{implementation}) we describe our proposals of how to deal with the Unicode
@@ -145,7 +145,7 @@ distinguishing between graphemic < >, phonemic / / and phonetic [ ]
 representations. For character descriptions, we follow the notational
 conventions of the Unicode Standard \citep{Unicode2014}. Character names are
 represented in small capital letters (e.g.~\textsc{latin small letter schwa})
-and code points are expressed as U\emph{+n} where \emph{n} is a four to six
+and code points are expressed as U\emph{+n}, where \emph{n} is a four to six
 digit hexadecimal number, e.g.~\uni{0256}, which can be rendered as the glyph <ə>.
 
 % ==========================
@@ -303,8 +303,7 @@ term writing system has two mutually exclusive meanings. First, it may
 refer to the way a particular language is written. In this sense the term refers
 to the writing system of a particular language, as, for example, in \emph{the
 Serbian writing system uses two scripts: Latin and Cyrillic}. Second, the term
-writing system may also refer to a type of symbolic system as used among the
-world's languages to represent the language, as, for example, in
+writing system may also refer to a type of symbolic system as, for example, in
 \emph{alphabetic writing system}. In this latter sense the term refers to how
 scripts have been classified according to the way that they encode language, as
 in, for example, \emph{the Latin and Cyrillic scripts are both alphabetic
@@ -351,7 +350,7 @@ include idiosyncrasies because of historical developments (like sound changes or
 loans) and because of the widely-followed principle of lexical integrity
 (i.e.~the attempt to write the same lexical root in a consistent way, also when
 synchronic phonemic rules change the pronunciation, as for example with final
-devoicing in many Germanic languages). All orthographies are language-specific
+devoicing in many Germanic languages). Orthographies are language-specific
 (and often even resource-specific), although individual symbols or rules might
 be shared between languages. A \textsc{practical orthography} is a strongly
 phoneme-based writing system designed for practical use by speakers. The mapping
@@ -484,7 +483,7 @@ by so-called \textsc{locale descriptions}, so we are moving to a new distinction
 of universal (Unicode Standard) versus language-particular (locale description).
 The major gain is a much larger compatibility on the universal level (because
 Unicode standardizes a much larger portion of writing system diversity), and
-much better possibilities for automatic processing on the language-particular
+much better possibilities for automated processing on the language-particular
 level (because locale descriptions are computer readable specifications).
 
 Each version of the Unicode Standard (\citealp{Unicode2014}, as of writing at
@@ -560,7 +559,7 @@ on printed paper. For example, <g {\large \textit{g}} \textbf{g}
 same character, i.e.~they may be rendered differently depending on the
 typography being used, but they all share the same code point. From the
 perspective of Unicode they are \textit{the same thing}. In this approach, a
-\textsc{font} is then simply a collection of glyphs linked to code points.
+\textsc{font} is then simply a collection of glyphs connected to code points.
 Allography is not specified in Unicode (expect for a few exceptional cases, due
 to legacy encoding issues), but can be specified in a font as a
 \textsc{contextual variant} (a.k.a.~presentation form).
@@ -591,9 +590,9 @@ interoperability in and across different software implementations (as defined in
 the Unicode Standard Annexes). The character properties assigned to each code
 point is based on each character's behavior in the real-world writing
 traditions. For example, the corresponding lowercase character to \uni{0047} is
-\uni{0067} (though note that the relation between uppercase and lowercase is in
+\uni{0067}.\footnote{Note that the relation between uppercase and lowercase is in
 many situations much more complex than this, and Unicode has further
-specifications for those cases). Another use of properties is to define the
+specifications for those cases.} Another use of properties is to define the
 script of a character.\footnote{The Unicode Glossary defines the term \textsc{script} as
 a ``collection of letters and other written signs used to represent textual
 information in one or more writing systems. For example, Russian is written with
@@ -617,7 +616,7 @@ also a block \textsc{Arabic Supplement}, \textsc{Arabic Presentation Forms-A}
 and \textsc{Arabic Presentation Form-B}. The situation with Latin symbols is
 even more extreme. In general, the names for block should not be taken as a
 definitional statement. For example, many IPA symbols are not located in the
-aptly-names block \textsc{IPA extensions}, but in other blocks
+aptly-named block \textsc{IPA extensions}, but in other blocks
 (see Section~\ref{pitfall-no-complete-ipa-block}).
 
 \subsubsection*{Grapheme clusters}
@@ -645,7 +644,7 @@ by \textsc{combining tilde} at \uni{0303}) combines visually into <ñ>, a
 user-perceived character in writing systems like that of Spanish. So, what the
 user perceives as a single character actually involves a multi-code-point
 sequence. Note that this specific sequence can also be represented with a single
-so-called \textsc{precomposed} code point, \textsc{latin small letter n with
+so-called \textsc{precomposed code point}, \textsc{latin small letter n with
 tilde} at \uni{00F1}, but this is not the case for all multi-code point
 character sequences. The problem that there multiple encodings possible for the
 same text element has been acknowledged early on in the Unicode Standard
@@ -662,8 +661,8 @@ and is widely proposed as the preferred canonical form.
 More difficult for text processing, because less standardized, is what the
 Unicode Standard terms \textsc{tailored grapheme clusters}. Tailored grapheme
 clusters are locale-dependent graphemes, i.e.~such combination of characters do
-not function as text elements in all situations. For example, the sequence
-<c>~+~<h> for the Slovak digraph <ch> or the sequence <ky> in the Sisaala
+not function as text elements in all situations. Examples include the sequence
+<c>~+~<h> for the Slovak digraph <ch> and the sequence <ky> in the Sisaala
 practical orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme
 clusters are \textsc{tailored} in the sense that they must be specified on a
 language-by-language or writing-system-by-writing-system basis. The Unicode

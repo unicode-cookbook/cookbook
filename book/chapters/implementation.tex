@@ -2,7 +2,7 @@
 \label{implementation}
 
 To illustrate the practical application of orthography profiles as defined in
-the previous Chapter \ref{orthography-profiles}, we have implemented two 
+the previous Chapter~\ref{orthography-profiles}, we have implemented two 
 versions of the specifications presented there: one in Python and one
 in R.
 
@@ -921,7 +921,7 @@ tokenize( "abc"
 Further, the current R-implementation has a limitation when regular expressions
 are used. The problem is that overlapping matches are not captured when using
 regular expressions.\footnote{This restriction is an effect of the underlyingly
-used ICU implementation of the Unicode standard as implemented in R through the
+used ICU implementation of the Unicode Standard as implemented in R through the
 package \textttf{stringi}.} Everything works as expected without regular
 expressions, but there might be warnings/errors in case of \texttt{regex =
 TRUE}. However, just as in the previous issue, this problem should only very
