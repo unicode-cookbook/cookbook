@@ -1,0 +1,17 @@
+Symbol,Code,UnicodeName,PhoneticDescription
+◌̊,030A,combining ring above,voiceless (above)
+g,0067,latin small letter g,voiced velar plosive
+◌̋,030B,combining double acute accent,extra high tone
+◌́,0301,combining acute accent,high tone
+◌̄,0304,combining macron,mid tone
+◌̀,0300,combining grave accent,low tone
+◌̏,030F,combining double grave accent,extra low tone
+◌̂,0302,combining circumflex accent,falling
+◌̌,030C,combining caron,rising
+◌᷄,1DC4,combining macron-acute,high rising
+◌᷅,1DC5,combining grave-macron,low rising
+◌᷆,1DC6,combining macron-grave,low falling
+◌᷇,1DC7,combining acute-macron,high falling
+◌᷈,1DC8,combining grave-acute-grave,rising-falling
+◌᷉,1DC9,combining acute-grave-acute,falling-rising
+◌͜,035C,combining double breve below,tie bar (below)
