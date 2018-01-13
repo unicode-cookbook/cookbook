@@ -1,0 +1,108 @@
+Symbol,Code,UnicodeName,IPA_Name
+a,0061,latin small letter a,open front unrounded
+æ,00E6,latin small letter ae,raised open front unrounded
+ɐ,0250,latin small letter turned a,lowered schwa
+ɑ,0251,latin small letter alpha,open back unrounded
+ɒ,0252,latin small letter turned alpha,open back rounded
+b,0062,latin small letter b,voiced bilabial plosive
+ʙ,0299,latin letter small capital b,voiced bilabial trill
+ɓ,0253,latin small letter b with hook,voiced bilabial implosive
+c,0063,latin small letter c,voiceless palatal plosive
+ç,00E7,latin small letter c with cedilla,voiceless palatal fricative
+ɕ,0255,latin small letter c with curl,voiceless alveolo-palatal fricative
+d,0064,latin small letter d,voiced alveolar plosive
+ð,00F0,latin small letter eth,voiced dental fricative
+ɖ,0256,latin small letter d with tail,voiced retroflex plosive
+ɗ,0257,latin small letter d with hook,voiced dental/alveolar implosive
+e,0065,latin small letter e,close-mid front unrounded
+ə,0259,latin small letter schwa,mid-central schwa
+ɛ,025B,latin small letter open e,open-mid front unrounded
+ɘ,0258,latin small letter reversed e,close-mid central unrounded
+ɜ,025C,latin small letter reversed open e,open-mid central unrounded
+ɞ,025E,latin small letter closed reversed open e,open-mid central rounded
+f,0066,latin small letter f,voiceless labiodental fricative
+ɡ,0261,latin small letter script g,voiced velar plosive
+ɢ,0262,latin letter small capital g,voiced uvular plosive
+ɠ,0260,latin small letter g with hook,voiced velar implosive
+ʛ,029B,latin letter small capital g with hook,voiced uvular implosive
+ɤ,0264,latin small letter rams horn,close-mid back unrounded
+ɣ,0263,latin small letter gamma,voiced velar fricative
+h,0068,latin small letter h,voiceless glottal fricative
+ħ,0127,latin small letter h with stroke,voiceless pharyngeal fricative
+ʜ,029C,latin letter small capital h,voiceless epiglottal fricative
+ɦ,0266,latin small letter h with hook,voiced glottal fricative
+ɧ,0267,latin small letter heng with hook,simultaneous voiceless postalveolar+velar fricative
+ɥ,0265,latin small letter turned h,voiced labial-palatal approximant
+i,0069,latin small letter i,close front unrounded
+ɪ,026A,latin letter small capital i,lax close front unrounded
+ɨ,0268,latin small letter i with stroke,close central unrounded
+j,006A,latin small letter j,voiced palatal approximant
+ʝ,029D,latin small letter j with crossed tail,voiced palatal fricative
+ɟ,025F,latin small letter dotless j with stroke,voiced palatal plosive
+ʄ,0284,latin small letter dotless j with stroke and hook,voiced palatal implosive
+k,006B,latin small letter k,voiceless velar plosive
+l,006C,latin small letter l,voiced alveolar lateral approximant
+ʟ,029F,latin letter small capital l,voiced velar lateral approximant
+ɬ,026C,latin small letter l with belt,voiceless alveolar lateral fricative
+ɭ,026D,latin small letter l with retroflex hook,voiced retroflex lateral approximant
+ɮ,026E,latin small letter lezh,voiced alveolar lateral fricative
+ʎ,028E,latin small letter turned y,voiced palatal lateral approximant
+m,006D,latin small letter m,voiced bilabial nasal
+ɱ,0271,latin small letter m with hook,voiced labiodental nasal
+n,006E,latin small letter n,voiced alveolar nasal
+ɴ,0274,latin letter small capital n,voiced uvular nasal
+ɲ,0272,latin small letter n with left hook,voiced palatal nasal
+ɳ,0273,latin small letter n with retroflex hook,voiced retroflex nasal
+ŋ,014B,latin small letter eng,voiced velar nasal
+o,006F,latin small letter o,close-mid back rounded
+ø,00F8,latin small letter o with stroke,close-mid front rounded
+œ,0153,latin small ligature oe,open-mid front rounded
+ɶ,0276,latin letter small capital oe,open front rounded
+ɔ,0254,latin small letter open o,open-mid back rounded
+ɵ,0275,latin small letter barred o,close-mid central rounded
+p,0070,latin small letter p,voiceless bilabial plosive
+ɸ,0278,latin small letter phi,voiceless bilabial fricative
+q,0071,latin small letter q,voiceless uvular plosive
+r,0072,latin small letter r,voiced alveolar trill
+ʀ,0280,latin letter small capital r,voiced uvular trill
+ɹ,0279,latin small letter turned r,voiced alveolar approximant
+ɺ,027A,latin small letter turned r with long leg,voiced alveolar lateral flap
+ɻ,027B,latin small letter turned r with hook,voiced retroflex approximant
+ɽ,027D,latin small letter r with tail,voiced retroflex tap
+ɾ,027E,latin small letter r with fishhook,voiced alveolar tap
+ʁ,0281,latin letter small capital inverted r,voiced uvular fricative
+s,0073,latin small letter s,voiceless alveolar fricative
+ʂ,0282,latin small letter s with hook,voiceless retroflex fricative
+ʃ,0283,latin small letter esh,voiceless postalveolar fricative
+t,0074,latin small letter t,voiceless alveolar plosive
+ʈ,0288,latin small letter t with retroflex hook,voiceless retroflex plosive
+u,0075,latin small letter u,close back rounded
+ʉ,0289,latin small letter u bar,close central rounded
+ɯ,026F,latin small letter turned m,close back unrounded
+ɰ,0270,latin small letter turned m with long leg,voiced velar approximant
+ʊ,028A,latin small letter upsilon,lax close back rounded
+v,0076,latin small letter v,voiced labiodental fricative
+ʋ,028B,latin small letter v with hook,voiced labiodental approximant
+ⱱ,2C71,latin small letter v with right hook,voiced labiodental tap
+ʌ,028C,latin small letter turned v,open-mid back unrounded
+w,0077,latin small letter w,voiced labial-velar approximant
+ʍ,028D,latin small letter turned w,voiceless labial-velar fricative
+x,0078,latin small letter x,voiceless velar fricative
+y,0079,latin small letter y,close front rounded
+ʏ,028F,latin letter small capital y,lax close front rounded
+z,007A,latin small letter z,voiced alveolar fricative
+ʐ,0290,latin small letter z with retroflex hook,voiced retroflex fricative
+ʑ,0291,latin small letter z with curl,voiced alveolo-palatal fricative
+ʒ,0292,latin small letter ezh,voiced postalveolar fricative
+ʔ,0294,latin letter glottal stop,voiceless glottal plosive
+ʕ,0295,latin letter pharyngeal voiced fricative,voiced pharyngeal fricative
+ʡ,02A1,latin letter glottal stop with stroke,epiglottal plosive
+ʢ,02A2,latin letter reversed glottal stop with stroke,voiced epiglottal fricative
+ǀ,01C0,latin letter dental click,voiceless dental click
+ǁ,01C1,latin letter lateral click,voiceless alveolar lateral click
+ǂ,01C2,latin letter alveolar click,voiceless palatoalveolar click
+ǃ,01C3,latin letter retroflex click,voiceless (post)alveolar click
+ʘ,0298,latin letter bilabial click,voiceless bilabial click
+β,03B2,greek small letter beta,voiced bilabial fricative
+θ,03B8,greek small letter theta,voiceless dental fricative
+χ,03C7,greek small letter chi,voiceless uvular fricative
