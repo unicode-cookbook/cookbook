@@ -52,7 +52,7 @@ The content of a profile consists of lines, each describing a grapheme of the or
 	\item \textsc{Any other columns can be added freely, but will mostly be ignored by any software application using the profiles}. As orthography profiles are also intended to be read and interpreted by humans, it is often highly useful to add extra information on the graphemes in further columns, like for example Unicode codepoints, Unicode names, frequency of occurrence, examples of occurrence, explanation of the contextual restrictions, or comments. 
 \end{enumerate}
 
-For the automatic processing of the profiles, the following technical standards will be expected:
+For the automated processing of the profiles, the following technical standards will be expected:
 \begin{enumerate}
 	\def\labelenumi{\arabic{enumi}.} 
 	\item \textsc{Each line of a profile will be interpreted as a regular expression. }Software applications using profiles can also offer to interpret a profile in the literal sense to avoid the necessity for the user to escape regular expressions metacharacters in the profile. However, this only is possible when no contexts or classes are described, so this seems only useful in the most basic orthographies. 

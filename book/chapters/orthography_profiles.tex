@@ -101,7 +101,8 @@ In (1), the string <tsʰṍ̰shi> has been tokenized into ten Unicode code point
 required because sequences of code points can differ in their visual and logical
 orders. For example, <õ̰> is ambiguous to whether it is the sequence of <o> +
 <\dia{0303}> + <\dia{0330}> or <o> + <\dia{0330}> + <\dia{0303}>. Although these two variants are visually homoglyphs,
-computationally they are different. Unicode normalization should be applied to
+computationally they are different (see Sections \ref{pitfall-ipa-homoglyphs} and \ref{pitfall-homoglyphs-in-IPA} ). 
+Unicode normalization should be applied to
 this string to reorder the code points into a canonical order, allowing the data
 to be treated canonically equivalently for search and comparison. 
 
@@ -113,7 +114,7 @@ sequence <õ̰> is normalized and visually grouped together. Note that, the
 other character. This is because it
 belongs to Spacing Modifier Letters category in the Unicode Standard. These
 characters are underspecified for the direction in which they modify a host
-character. For example, can indicate either pre- or post-aspiration (whereas the
+character. For example, it can indicate either pre- or post-aspiration (whereas the
 nasalization or creaky diacritic is defined in the Unicode Standard to apply to
 a specified base character). 
 
@@ -140,7 +141,7 @@ Informally, an orthography profile specifies the graphemes (or, in Unicode
 parlance, \textsc{tailored grapheme clusters}) that are expected to occur in any
 data to be analyzed or checked for consistency. These graphemes are first
 identified throughout the whole data (a step which we call
-\textsc{tokenization}), and possibly simply returned as such, possibly including
+\textsc{tokenization}), and simply returned as such, possibly including
 error messages about any parts of the data that are not specified by the
 orthography profile. Once the graphemes are identified, they might also be
 changed into other graphemes (a step which we call \textsc{transliteration}).
@@ -388,7 +389,7 @@ Any software application offering to use orthography profile:
         users should prepare orthography profiles with all lowercase and
         uppercase variants explicitly mentioned, so by default no case matching
         should be performed. 
-		\item \textsc{to treat the profile literal}, i.e.~to not interpret regular
+		\item \textsc{to treat the profile literally}, i.e.~to not interpret regular
         expression metacharacters. Matching graphemes literally often leads to
         strong speed increase, and would allow users to not needing to worry
         about escaping metacharacters. However, in our experience all actually
