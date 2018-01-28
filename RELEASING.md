@@ -1,6 +1,6 @@
 # Unicode Cookbook for Linguists
 
-Steven Moran \<bambooforest@gmail.com> & Michael Cysouw <cysouw@mac.com>
+Steven Moran \<bambooforest@gmail.com\> & Michael Cysouw \<cysouw@mac.com\>
 
 
 ## How to compile the book
