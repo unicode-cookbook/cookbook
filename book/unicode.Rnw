@@ -57,6 +57,7 @@
 <<setup, include = FALSE>>=
 
 # dependencies
+require(knitr)
 require(xtable)
 require(highlight)
 require(qlcData)
