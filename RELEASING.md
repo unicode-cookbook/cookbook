@@ -7,7 +7,7 @@ Steven Moran \<bambooforest@gmail.com\> & Michael Cysouw \<cysouw@mac.com\>
 
 For those interested, the book is typeset with XeLaTeX, but there is knitr-based R-code included. This has to be first processed to return latex code, which can then be typeset.
 
-The knitr setup is included in the file `unicode.Rnw`. To process this file, the following R-packages need to be installed (`install.packages.("knitr")`):
+The knitr setup is included in the file `unicode.Rnw`. To process this file, the following R-packages need to be installed (e.g. `install.packages("knitr")`):
 
 - knitr
 - highlight
