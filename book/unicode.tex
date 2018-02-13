@@ -116,13 +116,14 @@
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
+\include{chapters/practical_recommendations}
 \include{chapters/orthography_profiles}
 
 \chapter{Implementation}
 \label{implementation}
 
 To illustrate the practical application of orthography profiles as defined in
-the previous Chapter \ref{orthography-profiles}, we have implemented two 
+the previous Chapter~\ref{orthography-profiles}, we have implemented two 
 versions of the specifications presented there: one in Python and one
 in R.
 
@@ -135,7 +136,7 @@ in the two implementations.
 
 Note also that the performance with larger datasets differs, and the code is not
 always as clean as we would like it to be. In sum, the two implementations
-should be considered as `proof of concept' and not as the final word on the
+should be considered as proof of concept and not as the final word on the
 practical application of the specifications above. In our own experience, the
 current implementations are sufficiently fast and stable to be useful for
 academic practice (e.g. checking data consistency, or analyzing and
@@ -181,7 +182,7 @@ You can also install the \texttt{segments}
 package with from the Github repository:
 
 \begin{lstlisting}[language=bash]
-  $ git clone https://github.com/bambooforest/segments.git
+  $ git clone https://github.com/cldf/segments
   $ cd segments
   $ python setup.py develop
 \end{lstlisting}
@@ -293,7 +294,7 @@ simply installed as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install the qlcData software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"qlcData"}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'qlcData'}\hlstd{)}
 \hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
@@ -311,10 +312,10 @@ version can be easily installed using the github-install helper software from th
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install helper software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{"devtools"}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'devtools'}\hlstd{)}
 \hlcom{# install the qlcData package from GitHub}
-\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{"cysouw/qlcData"}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlcom{# load the software, so it can be used}
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'cysouw/qlcData'}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# load the software, so it can be used }
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
 \end{kframe}
@@ -322,7 +323,7 @@ version can be easily installed using the github-install helper software from th
 
 Inside the \texttt{qlcData} package, there are two functions for
 orthography processing, \texttt{write.profile} and \texttt{tokenize}. R includes
-help files with illustrative examples, and also a so-called `vignette' with
+help files with illustrative examples, and also a so-called vignette with
 explanations and examples.
 
 \begin{knitrout}\footnotesize
@@ -332,7 +333,7 @@ explanations and examples.
 \hlkwd{help}\hlstd{(write.profile)}
 \hlkwd{help}\hlstd{(tokenize)}
 \hlcom{# view vignette with explanation and examples}
-\hlkwd{vignette}\hlstd{(}\hlstr{"orthography_processing"}\hlstd{)}
+\hlkwd{vignette}\hlstd{(}\hlstr{'orthography_processing'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -342,7 +343,7 @@ basic orthography profile from some data and then \texttt{tokenize} to apply the
 (possibly edited) profile on some data, as exemplified in the next section. This
 can of course be performed though R, but additionally there are two more
 interfaces to the R code supplied in the \texttt{qlcData} package: (i) bash
-executables and (ii) `shiny' webapps.
+executables and (ii) shiny webapps.
 
 The bash executables are little files providing an interface to the R code that
 can be used in a shell on a UNIX-alike machine. The location of these
@@ -354,7 +355,7 @@ used from here, or they can be linked and/or copied to any location as wanted.
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# show the path to the bash executables}
-\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{"qlcData"}\hlstd{),} \hlstr{"exec"}\hlstd{)}
+\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{'qlcData'}\hlstd{),} \hlstr{'exec'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -407,7 +408,7 @@ package and can be started with the following helper function:
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{launch_shiny}\hlstd{(}\hlstr{"tokenize"}\hlstd{)}
+\hlkwd{launch_shiny}\hlstd{(}\hlstr{'tokenize'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -430,7 +431,7 @@ some of the letters are Cyrillic.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{(test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{))}
+\hlstd{( test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{) )}
 \end{alltt}
 \begin{verbatim}
 ## [1] "AABB" "AАBВ"
@@ -459,8 +460,8 @@ Cyrillic encoding is found in the second string of the \texttt{test} input.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
-\hlkwd{tokenize}\hlstd{(test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlstr{"B"}\hlstd{))}
+\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{)}
+\hlkwd{tokenize}\hlstd{( test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'A'}\hlstd{,} \hlstr{'B'}\hlstd{) )}
 \end{alltt}
 
 
@@ -471,9 +472,9 @@ Cyrillic encoding is found in the second string of the \texttt{test} input.
 ## 2      AАBВ   A ⁇ B ⁇
 ## 
 ## $profile
-##   matched_rules Grapheme
-## 1             3        B
-## 2             3        A
+##   Grapheme Frequency
+## 1        B         3
+## 2        A         3
 ## 
 ## $errors
 ##   originals  errors
@@ -497,21 +498,21 @@ various different ways in which strings can be separated into graphemes by
 \texttt{write.profile}. Consider the following string of characters called
 \texttt{example} below. The default settings of \texttt{write.profile} separates
 the string into Unicode graphemes according to grapheme clusters
-(`user-perceived characters', see Section~\ref{the-unicode-approach}). As it 
+(called user-perceived characters, see Section~\ref{the-unicode-approach}). As it 
 turns out, some of these graphemes are single codepoints, others are combinations
 of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{example} \hlkwb{<-} \hlstr{"ÙÚÛÙÚÛ"}
+\hlstd{example} \hlkwb{<-} \hlstr{'\textbackslash{}u00d9\textbackslash{}u00da\textbackslash{}u00db\textbackslash{}u0055\textbackslash{}u0300\textbackslash{}u0055\textbackslash{}u0301\textbackslash{}u0055\textbackslash{}u0302'}
 \hlstd{profile_1} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:50 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -550,8 +551,8 @@ user-defined, but relegated to the Unicode grapheme definitions.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:50 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -592,8 +593,8 @@ characters with combining diacritics. Splitting by codepoints (i.e. \texttt{sep~
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -612,8 +613,8 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 \end{table}
 
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -650,8 +651,8 @@ example in either NFC or NFD, but using default separation in
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -670,8 +671,8 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 \end{table}
 
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -745,8 +746,8 @@ these new graphemes are then included in the graphemic parsing.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -790,7 +791,7 @@ above completely within R might look as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# make a profile, just select the column 'Grapheme'}
-\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,} \hlstr{"Grapheme"}\hlstd{]}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,}\hlstr{"Grapheme"}\hlstd{]}
 \hlcom{# extend the profile with multigraphs}
 \hlstd{profile} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"sh"}\hlstd{,} \hlstr{"ch"}\hlstd{,} \hlstr{"sch"}\hlstd{,} \hlstr{"ie"}\hlstd{,} \hlstr{"oo"}\hlstd{, profile)}
 \hlcom{# use the profile to tokenize}
@@ -899,21 +900,21 @@ followed by more specific regularities. To get the right tokenization, these
 rules should in most cases be applied in reverse order.
 
 It is important to realize that different ordering of the rules does not have
-so-called `feeding' and `bleeding' effects as known from finite-state rewrite
-rules.\footnote{`Bleeding' is the effect that the application of a rule changes
-the string, so as to prevent a next rule to apply. `Feeding' is the opposite: a
+so-called feeding and bleeding effects as known from finite-state rewrite
+rules.\footnote{Bleeding is the effect that the application of a rule changes
+the string, so as to prevent a next rule to apply. Feeding is the opposite: a
 specific rule will only be applied becuase a previous rule changed the string
-already. The interaction of rules with such `feeding' and `bleeding' effects is
+already. The interaction of rules with such feeding and bleeding effects is
 extremely difficult to predict.} The graphemic parsing advocated here works
 crucially different from rewrite rules in that there is nothing being rewritten:
-each line in an orthography profile specifies a grapheme to be `captured' in the 
+each line in an orthography profile specifies a grapheme to be captured in the 
 string. All lines in the profile are processed in a specifed order (as determined
 by the option \texttt{ordering}). At the processing of a specific line, all 
-matching graphemes in the data are marked as `captured', but not changed. 
+matching graphemes in the data are marked as captured, but not changed. 
 Captured parts cannot be captured again, but they can still be used to match 
 contexts of other lines in the profile. Only when all lines are processed the 
 captured graphemes are separated (and possibly transliterated). In this way the 
-result of the application of the `rules' is rather easy to predict.
+result of the application of the rules' is rather easy to predict.
 
 To document a specific case of graphemic parsing, it is highly useful to save
 all results of the tokenization to file by using the option \texttt{file.out},
@@ -1006,8 +1007,8 @@ this toy example.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1087,8 +1088,8 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1123,8 +1124,8 @@ expression in the contextual column. For example, consider the edited toy
 profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1182,8 +1183,8 @@ free to use any class-name you like, as long as it doesn't clash with the rest
 of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
 give the same result as obtained previously by using a regular expression.
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package
-% Thu Feb  9 14:42:33 2017
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Sat Feb  3 16:28:51 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1343,7 +1344,7 @@ the graphemes.
 Further, the current R-implementation has a limitation when regular expressions
 are used. The problem is that overlapping matches are not captured when using
 regular expressions.\footnote{This restriction is an effect of the underlyingly
-used ICU implementation of the Unicode standard as implemented in R through the
+used ICU implementation of the Unicode Standard as implemented in R through the
 package \textttf{stringi}.} Everything works as expected without regular
 expressions, but there might be warnings/errors in case of \texttt{regex =
 TRUE}. However, just as in the previous issue, this problem should only very
