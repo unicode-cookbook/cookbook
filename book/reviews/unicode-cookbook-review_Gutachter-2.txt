@@ -43,24 +43,369 @@ orthography profiles, but I imagine that many people will use this book
 as a primer on IPA+Unicode and actually disregard the last two chapters.
 For this group, such a summary would be useful.
 
+Overall recommendation: publish with minor revisions.
+=============================================================================
+Detailed comments
+Preface
+
+- our research": who is "we"? I first I took this to mean the Unicode
+research, but apparently the day-to-day research of the authors in other
+fields is intended here.
+
+- "We welcome comments ...": this might be a good place to add
+information about the book being available on the Paperhive platform,
+where readers can leave questions and comments.
+
+Chapter 1
+- 1.1.: two instances of "normally" in close succession
+- automatic processing --> automated processing
+- Chapter4 --> Chapter 4
+- are expressed as U + n where --> are expressed as U + n, where
+- Chapter?? --> resolve reference
+
+Section "Telegraphy"
+- it is slightly odd that whistling and drumming are treated as
+instances of teleGRAPHY here. Neither whistling nor drumming use
+writing, so telePHONY or teleSONY might be more appropriate (but have
+obvious other issues).
+- Footnote 6 "In effect ..." must be rephrased (or deleted, not sure if
+this information is actually relevant)
+
+1.3 Linguistic terminology
+- the definition of writing system is odd. It says "system that uses
+visible or tactile signs". That would be true for sign languages as well
+(and also for communication systems used by blind signers), but we would
+not want to call these signers' systems a "writing system". A better
+definition could be "shapes on a support", where the shapes could be
+perceived with the eyes or, as with Braille, with the fingers. The
+support could be paper, clay, or a screen. You might find yet another
+definition which suits your purposes, but the current definition should
+be revised in any case.
+- in the same section: do not italicize quoted strings.
+- "as used among the world's languages to represent the language": delete
+
+- "All orthographies are language-specific": suggest dropping "All"
+unless this is an empirical claim and not a general truth.
+
+Section script systems
+- "Graphemes consist of characters": rewrite this whole passage. Some
+problems are given below.
+- It is unclear to me what a character is. Maybe "a" and "b" are
+characters used for the graphemes <a> and <b>, and "c" and "h" are
+characters used in the grapheme <ch>?
+- "In practice, characters often consist of multiple building blocks,
+each of which could be considered a character in its own right". So
+characters consist of characters? Are there some "terminal characters",
+which do not consist of other characters? Or do "bdpq" all consist of a
+stroke and an eye, which are then characters???
+This has to become clearer. In this overview section, it would be
+helpful to set off the definitions, e.g.
+(1) A GRAPHEME is ....
+....
+(2) A CHARACTER is ...
+...
+(3) A GLYPH is ...
+
+- Footnote 7 refers to characters in Chinese (maybe radicals are meant
+here???), and then states that this will not be further explored. But
+about 10 lines down the page, the authors say "although a Chinese
+character ...", which does look like a further exploration indeed.
+Suggest dropping footnote 7, or alternatively make the argument with an
+example other than Chinese.
+
+- "A diacritic mark ... may be above, below, or through": add left and
+right diacritics, e.g. Hindi long and short <i> attach to either side.
+
+- "A GRAPHEME is the basic, minimally distinctive symbol ..., alike to
+the phoneme, which is an abstract representation ...": Does this entail,
+then, that the grapheme is an abstract representation as well? Possibly
+instantiated by an (allo)graph? The abstract vs. concrete nature of the
+grapheme might merit some discussion here.
+
+- "For example, <x> in English orthography represents a combination of
+the phonemes /k/ and /s/.": give an example, e.g. /IndEks/. Note that
+"Xerox" or "example" use <x> for other phonemes or phoneme combinations,
+and that /sOks/ uses the phonemes /ks/ which are not represented by <x>.
+
+- It might be interesting to briefly mention the non-trivial mapping of
+phonemes on graphemes, e.g. give/gin/jingle, where the graphemes <g>/<j>
+and the phonemes /g/dZ/ have a complex mapping.
+
+1.4.
+The Unicode [Ss]tandard
+- "distinction between universal (ASCII) versus language-particular
+(font).": The meaning of this escapes me.
+
+- "However, ... ": the discussion of locales should not be found this
+early on in the introduction of Unicode. Suggest moving it down.
+
+Character encoding system
+- "the character encoding is represented ... , which is used to encode a
+set of characters": rephrase or delete
+- "non-negative": delete. You are talking to a human audience. No human
+will try negative integers as a code point.
+- Footnote 10: the equivalent of hex 0070 would be binary
+0000000011100000. Since you use leading zeros in hex, you should do the
+same for binary. But this footnote can probably be deleted. People who
+know about different base encodings will find this trivial, and people
+who don't will find this frightening and will not profit from the
+description.
+
+- "A font is a set of glyphs linked to code points": --> "A font is a
+set of connections between glyphs and code points"
+
+- "(though note ...)" : put in footnote
+
+- aptly-names --> aptly-named
+
+- "PRECOMPOSED code point" --> "PRECOMPOSED CODE POINT" (or "PRECOMPOSED
+WHATEVER", but not bare "PRECOMPOSED")
+
+- "the Unicode Standard offers different kinds of normalization ...":
+normalization is a tough concept to grasp. Find exactly one place where
+to discuss it and keep discussions of it elsewhere to a minimum. Either
+don't discuss it there at all, or mention it and cross-refer to the
+in-depth discussion.
+
+- "For example, the sequence <c> ...": this sentence no verb.
+
+- instead of Slovak and Sisaala, readers might find English <ch> or
+French <oe> more useful. In the context of <oe>, one could also discuss
+whether <oe> and <œ> are the same grapheme, and what the status of its
+composing characters is, if any. A little chart or illustration
+exemplifying graphemes, characters, glyphs, tailored graphemes and the
+relation between then (meronymic and mapping) might be useful here.
+
+Chapter 2
+- Next to the notion of "pitfall", it may or may not be useful to
+introduce the notion of "gotcha". This is synonymous, as far as I can
+tell, but it emphasizes that there is a deliberate design decision which
+users are often not aware of and which leads to unsuspected (but
+completely legit) behaviour.
+
+- "differently as expected" --> than
+- "practical use cases-that" --> than
 
 
+Section 2.2
+- It appears that before "First", there would be "Zeroth: a 1:1 mapping,
+e.g. <t>:'t'"
+- Subheadings should be useful here.
+- I do not get the Tamil part. Are you talking about U+0B94ஔ, which
+visually looks like a combination of U+0B93ஓ and U+0BA9ன? If so, give
+these glyphs. But for the case in point, Sinhala might actually be a
+more pertinant example. Sinhala U+0DD9 ෙ is one code point and is made
+up of one glyph, which looks like a spiral. U+0DDB ෛ is one code point
+and is made of twice that spirally glyph. From what I understand from
+the passage, this would be a suitable example. If not, I have probably
+misunderstood the passage, and the meaning should be clarified.
 
+- in the discussion of the storeys of <a> and <g>, the elements
+currently put between <> are not graphemes but glyphs. Do not use angle
+brackets here, but find a way to design glyphs, e.g \fbox{}ing them
 
+- "tweaking baseline and/or kerning". These concepts cannot be assumed
+familiar. Either delete this passage, or add explanations in a footnote,
+or put the complete baseline/kerning passage in a footnote and expand.
 
+Chapter 3
+- general comment: replace single quotes by double quotes everywhere.
+Occasionally, italics might be an option, too.
 
+- the IPA Association --> the International Phonetic Association
 
+- when the twain shall meet --> when the twain met OR when the twain
+should meet
 
+- Footnote 2 "IPA(" --> "IPA ("
 
+Section Principles
+- "the difference in English between an aspirated /p/ in [] or an
+unreleased /p/ in []": I believe that if aspiration of /p/ is marked,
+then aspiration for the t's should be marked as well (and unreleased
+final /t/, if applicable). Maybe find another pair of examples.
 
+- German, Dutch, English and French /t/: The mapping of dental/aspirated
+to the languages seems odd. Standard German /t/ is not dental, but Dutch
+/t/ is. European French /t/ is not dental (but Canadian French /t/ is).
+If this is taken from some other resource, a reference should be given.
+In any case, that list cannot be taken to be self-evident.
+- "Similarly... Similarly" in close succession
 
+Section IPA numbers
+"assigning ... assigned ... assigned". More lexical variation, please.
 
+"three-digit number numerical directory of digit triples". This seems
+like a pleonastic tautology to me.
 
+- Footnotemark ".⁷.": delete one period
 
+- "as an IPA symbol codings": not sure what is meant here, but agreement
+is odd
 
+- "(Computer 1985,1986,1988)": please fix this in the bib file
 
+- "16 bit" --> "16-bit"
+- "were published tables" --> "were published as tables"
+- "inline" --> "in line"
+- "development linguistic insights" --> "development of linguistic
+insights."
+- "along the line then" --> "along the line than"
 
+Chapter 4
+Footnote 1: Moran 2012 --> Moran (2012)
 
+4.3.
+the first bullet point discusses the use of the apostrophe for the
+glottal stop. This is indeed related to phonetics and Unicode, but the
+glottal stop is not represented by an apostrophe-like thing in IPA, so
+this problem is unrelated to the chapter entitled "IPA meets Unicode".
+Restrict this to ejective marker.
+
+- discussion of slanted glyphs: it might be worthwhile to note that we
+had to use the slanted approach for "A dictionary and grammatical
+outline of Chakali" (http://langsci-press.org/catalog/book/74), where
+the two different a's are used in the orthography.
+
+4.5. multiple encoding options
+- another issue which might be relevant here is the "i dot-suppression".
+When putting an acute on an <i>, the dot will vanish (already in the
+precomposed form, so this does not seem to be a font choice.). This will
+make the combination of <i>+<´> look like the combination of <ı>+<´>.
+Related to that is the unavailability of dotless barred i, so <ɨ>+<´>
+will give you <́ɨ>, with both dot and acute. This is a case where the
+combining overlay bar is useful, I will return to this below. I am not
+sure whether the dot-suppression should be discussed here, or whether it
+might be some other kind of pitfall, but it should be mentioned somewhere.
+
+- Footnote 7: when discussing superscript numbers for tone, it could be
+worthwhile to say a word about Unicode superscript numbers
+(https://en.wikipedia.org/wiki/Superscripts_and_Subscripts) vs. using
+the text processor superscript formatting.
+
+- "only one options" --> "only one option"
+
+- missing decomposition: the case of accented barred i could be
+discussed here.
+
+4.9.
+- "Tone letters are normally written ...": give the Unicode code points
+here as well, in analogy to bullet points 1 and 3.
+
+4.10.
+- "but strangely enough ...": delete. The cedilla issue has been
+discussed before.
+
+- "the diacritics on top of a character": to me, "on top" is a synonym
+of "above", so an acute would be on top of an <e> for instance. My
+interpretation might be unwarranted, but maybe another preposition like
+"across" can be found, or something like "overlay".
+
+- "removed symbols as labels them as clicks": rephrase
+
+- "Mc Laughlin": delete space?
+
+4.12.
+- Drop Moran (2012) in first sentence.
+
+4.13.
+- is widened-IPA a superset of valid-IPA or only a superset of
+strict-IPA? A diagram showing the relation of the different sets might
+be handy.
+
+- I feel that superscript nasals for presnalized consonants should be
+discussed somewhere. I am not sure as to their status in IPA, but they
+are certainly used a lot. The current list only gives the superscript n,
+but at least m and engma should be discussed.
+
+5.1
+- "Although these variants are visually homoglyphs": this has been
+discussed under normalization. Shorten or delete this and add a cross-ref
+
+- "For example can": rephrase
+
+5.2.
+- "possibly ... possibly": rephrase
+
+5.3. Formal specification
+- give a figure with an open file where you indicate the relevant
+portions at the very beginning of this section. The prose description is
+very dense, and an illustration will make it easier to relate.
+
+Section Implementation
+- can orthography formats handle negative lookahead/lookbehind? Note
+that this is different from a positive look for the set complement if
+the string looked for is longer than 1.
+
+B6.
+I feel that a language which has both <ch> and <sch> will get you
+different results depending on global or linear algorithm.
+"Ascha" should give you "A sch a" with the linear approach, but "a s ch
+a" with the global approach iff "ch" is matched before "sch".
+
+C8.
+- "To treat the profile literal" --> literally
+
+Chapter 6
+- "Each section has a number of subsections that ... "
+
+- the example "aäaaöaüaa" will confuse a lot of ordinary working
+linguists. There are too many vowels, and the representation of "aa" by
+<x> is weird. I suggest using the German word "Schächtelchen", where you
+have both <sch> and <ch> to show the importance of ordering, and a
+dieresis to show decomposition (which seem to be the main didactic
+aspects of this passage to me).
+
+- the code examples should be numbered
+
+- the tabs in the code should have the same length, so that the headers
+and the columns align
+
+- "edit the profile: more": --> "edit the profile: vim" (or any other
+editor, but not more)
+
+- "The location can be found in the following command in R.": provide
+the command (or take care of the page break)
+
+- "Try tokenize to test the functionality": why is there an error
+message????
+
+- "These webapps are available online at TODO": provide URL
+
+- "we first assign the two strings to a variable test": use a more
+descriptive name than "test"
+
+Section Using an orthography profile skeleton
+- " It is also possible ...It is also possible": rephrase
+
+- maybe this passage should be written with Italian or Spanish
+orthography as an example since English orthography is such a mess. Why
+are "ie" and "oo" digraphs? If so, would "ti" in "nation" count as a
+digraph as well? And why is the second "e" in "scheme" listed at all? It
+does not correspond to any phoneme (but arguably it influences the first
+"e"). Also, for me, "sch" in "scheme" consist of two phonemes (/sk/),
+just like "sch" in "mischief (/stS/)". But the passage "Now mischief is
+parsed correctly, but scheme is wrong" suggests that the author sees
+this differently???
+
+- Footnote 3: delete. Feeding and bleeding are needlessly complicating
+the exposition
+
+- RESULT_ERRORS.TSV: I stronly suggest to either create an empty file
+when no errors are reported, or to include "no errors" in the file. The
+meaningful absence of computer files can cause all kinds of problems.
+
+- "Such contextually-specified graphemes are based on regular
+expressions so you can also use regular expressions in the descriptions
+of the context": who would've thought that!
+
+- "It is important to realize ... ": delete. The need for escape
+sequences has been discussed earlier.
+
+- Table 6.11: I was wondering whether graphemes can be in several
+classes. "Y" could be in the consonant class and in the vowel class for
+instance. Can orthography profiles handle this, and if they can, how
+would this be entered?
 
 
 
