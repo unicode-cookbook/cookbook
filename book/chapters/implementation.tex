@@ -101,11 +101,11 @@ profile for segmentation. Create a text file:
 
 \begin{lstlisting}[language=bash,texcl=true]
   $ cat text.txt | segments profile
-  Grapheme        frequency       mapping
-  a       7       a
-  ä       1       ä
-  ü       1       ü
-  ö       1       ö
+  Grapheme frequency mapping
+  a        7         a
+  ä        1         ä
+  ü        1         ü
+  ö        1         ö
 \end{lstlisting}
 
 \noindent Write the profile to a file:
@@ -118,12 +118,12 @@ profile for segmentation. Create a text file:
 
 \begin{lstlisting}[language=bash]
   $ more profile.prf
-  Grapheme        frequency       mapping
-  aa      0       x
-  a       7       a
-  ä       1       ä
-  ü       1       ü
-  ö       1       ö
+  Grapheme frequency mapping
+  aa       0         x
+  a        7         a
+  ä        1         ä
+  ü        1         ü
+  ö        1         ö
 \end{lstlisting}
 
 \noindent Now tokenize the text without profile:
