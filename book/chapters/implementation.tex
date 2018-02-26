@@ -1,42 +1,55 @@
 \chapter{Implementation}
 \label{implementation}
 
-To illustrate the practical application of orthography profiles as defined in
-the previous Chapter~\ref{orthography-profiles}, we have implemented two 
-versions of the specifications presented there: one in Python and one
-in R.
+\section{Overview}
+To illustrate the practical application of orthography profiles, as defined in
+Chapter~\ref{orthography-profiles}, we have implemented two 
+versions of the specifications presented there: one in Python\footnote{\url{https://www.python.org/}} and one
+in R.\footnote{\url{https://www.r-project.org/}}
 
 These two libraries have rather different implementation histories,
 and we are not 100\% sure that they will in all situations give the same
 results. We do however provide a test suite for each implementation. 
 Users should refer to the tests cases and to the documentation in each release 
-for specifics about each implementation. Note also that function names differ 
-in the two implementations.
+for specifics about each implementation. Due to different naming standards, 
+function names unfortunately differ in the two implementations.
 
-Note also that the performance with larger datasets differs, and the code is not
+Note that the performance with larger datasets differs, and the code is not
 always as clean as we would like it to be. In sum, the two implementations
 should be considered as proof of concept and not as the final word on the
 practical application of the specifications above. In our own experience, the
 current implementations are sufficiently fast and stable to be useful for
-academic practice (e.g. checking data consistency, or analyzing and
-transliterating small to medium sized data sets), but they should probably
-better not be used for full-scale industry applications.
+academic practice (e.g.\ checking data consistency, or analyzing and
+transliterating small to medium sized data sets), but they should probably 
+not be used for full-scale industry applications without some adaptations.
 
-This chapter will introduce the implementations, and give practical step-by-step 
-guidelines for installing them and using them. Various simple and sometimes 
+This chapter introduces the implementations, and gives practical step-by-step 
+guidelines for installing and using them. Various simple and sometimes 
 somewhat abstract examples will be discussed to show the different options 
 available, and to illustrate the intended usage of orthography profiles. 
 
-This chapter is split into two sections, one for the Python implementation, the 
-other for R. Each section has a number of subsections that ...
+First we explain how to install Python and  R. There are many ways of installing these programming languages and differences in approach may depend on your operating system. Search engines are your friend if you run into installation problems. Our solutions below are tailored to our personal experiences.
 
-In addition to the material presented here to get users started, we maintain 
-several case studies that use each OP implementation in action. These use cases 
-are an the accompanying Github repository available with this book at: 
-\url{https://github.com/unicode-cookbook/recipes/}.
+Sections \ref{python-implementations} and \ref{r-implementation} discuss the Python and R implementations, 
+respectively. In addition to the material presented here to get users started, we maintain 
+several case studies that use orthography profiles in action. For convenience, 
+we make these use cases available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} 
+in the Github repository of code recipes which accompanies this book online.\footnote{\url{https://github.com/unicode-cookbook/recipes/}}
 
-% TODO: point to the case studies
-% In the next chapter we will then discuss a few full-scale examples to illustrate the application and the usefulness of orthography profiles.
+
+\section{How to install Python and R}
+When one encounters problems installing software, or bugs in programming code, search engines are your friend. Installation problems and incomprehensible error messages have often already been encountered and solved by other users. Such issues are typically overcome by searching the Web, e.g.\ try simply copying and pasting the output of an error message into a search engine. In our experience, answers are often already answered somewhere online. We are fans of Stack Exchange\footnote{\url{https://stackexchange.com/}} -- a network of question-and-answer websites -- which are extremely helpful in solving issues regarding software installation or bugs in code.
+
+Searching the Web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Unix operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew\footnote{\url{https://brew.sh/}}, a simple to install (via the Terminal App) free and open source package management system. Follow the instructions on the their website and then use Homebrew to install R and Python. 
+
+Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows or Unix) and it includes its own R installation and R package manager. For developing in Python, we recommend the free community version of PyCharm\footnote{\url{https://www.jetbrains.com/pycharm/}}, an IDE which is also available for Mac, Windows, and Unix. 
+
+Once you have R or Python (or both) installed on your computer, you are ready to use the orthography profiles software libraries presented in the next two sections. We make the setup instructions, and the examples of how to work with and create orthography profiles, available online in Jupyter Notebooks. These so-called notebooks are an interface where you can run and rerun code in the browser. These notebooks are easily viewed via our Github respository of recipes.\footnote{\url{https://github.com/unicode-cookbook/recipes}} 
+
+Depending on your computer's operating system, it should be simple enough to install the Jupyter (or other) notebook service and use the notebooks that we (and many others) provide via Github. Our orthography profile receipes and how to install the R or Python libraries for working with orthography profiles.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
+
+We use Github,\footnote{\url{https://github.com/}} a web-based version control system source code management. This cookbook\footnote{\url{}} and the recipes\footnote{\url{https://github.com/unicode-cookbook/recipes.git}} for working with orthography profiles are available for cloning\footnote{\url{https://help.github.com/articles/cloning-a-repository/}} for working with on your local machine. Use your favorite search engine to figure out how to install Git in your computer or learn more at Git.\footnote{\url{https://git-scm.com/}}
+
 
 
 \section{Python}
@@ -247,16 +260,17 @@ the functionality.
 tokenize --help
 @
 
-To make the functionality even more accessible, we have prepared webapps with 
-the \texttt{shiny} framework for the R functions. These webapps are available 
-online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
-package and can be started with the following helper function:
+% TODO
+% To make the functionality even more accessible, we have prepared webapps with 
+% the \texttt{shiny} framework for the R functions. These webapps are available 
+% online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
+% package and can be started with the following helper function:
 
-<<eval=FALSE>>=
-launch_shiny('tokenize')
-@
+% <<eval=FALSE>>=
+% launch_shiny('tokenize')
+% @
 
-% TO DO
+
 
 \subsection*{Profiles and error reporting}
 \label{error-reporting}

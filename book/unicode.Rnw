@@ -86,9 +86,11 @@ options(reindent.spaces = 2)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \include{chapters/introduction}
+\include{chapters/unicode_approach}
 \include{chapters/pitfalls}
 \include{chapters/ipa_background}
 \include{chapters/ipa_meets_unicode}
+\include{chapters/practical_recommendations}
 \include{chapters/orthography_profiles}
 \Sexpr{knit_child("chapters/implementation.tex")}
 % \include{chapters/use_cases}
