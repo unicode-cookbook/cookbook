@@ -114,27 +114,27 @@ Before we deal with these proposals we will first discuss the theoretical
 background on text encoding, on the Unicode Standard, and on the International
 Phonetic Alphabet. In the remainder of this chapter, we give an extended
 introduction to the notion of encoding (Section~\ref{encoding}) and the
-principles of writing systems, both from a linguistic perspective
-(Section~\ref{linguistic-terminology}) and from the perspective of the Unicode
-Consortium (Section~\ref{the-unicode-approach}). We consider the Unicode
+principles of writing systems from a linguistic perspective
+(Section~\ref{linguistic-terminology}). In Chapter~\ref{the-unicode-approach}, we 
+discuss the notions of encoding and writing systems from the perspective of the Unicode
+Consortium. We consider the Unicode
 Standard to be a breakthrough (and ongoing) development that fundamentally
 changed the way we look at writing systems, and we aim to provide here a
 slightly more in-depth survey of the many techniques that are available in the
 standard. A good appreciation for the solutions that the Unicode Standard also
 allows for a thorough understanding of possible pitfalls that one might
-encounter when using it in general (Chapter~\ref{unicode-pitfalls}). Linguists are more often interested in using the Unicode Standard with the International Phonetic Alphabet (IPA). We first provide a history of the development of the IPA and early attempts to encode it electronically (Chapter~\ref{the-international-phonetic-alphabet}) before we discuss the rather problematic marriage of the International Phonetic Alphabet (IPA) with the Unicode Standard (Chapter~\ref{ipa-meets-unicode}).
+encounter when using it in general (Chapter~\ref{unicode-pitfalls}). Linguists are more often interested in using the Unicode Standard with the International Phonetic Alphabet (IPA). We first provide a history of the development of the IPA and early attempts to encode it electronically (Chapter~\ref{the-international-phonetic-alphabet}) before we discuss the rather problematic marriage of the IPA with the Unicode Standard (Chapter~\ref{ipa-meets-unicode}).
 
-In the second part of the book (Chapters~\ref{orthography-profiles} and
+In the second part of the book (Chapters~\ref{practical-recommendations}, \ref{orthography-profiles} \&
 \ref{implementation}) we describe our proposals of how to deal with the Unicode
-Standard in the daily practice of (comparative) linguistics. First, we discuss the
-challenges of characterizing a writing system. To solve these problems, we
+Standard in the daily practice of (comparative) linguistics. First, we provide some 
+practical recommendations for using the Unicode Standard and IPA for ordinary 
+working linguists and for computer programmers (Chapter~\ref{practical-recommendations}). 
+Second, we discuss the
+challenges of characterizing a writing system; to solve these problems, we
 propose the notions of orthography profiles, closely related to Unicode locale
-descriptions (Chapter~\ref{orthography-profiles}). Finally, we discuss practical
-issues with actual examples (Chapter~\ref{implementation}). We provide reference
-implementation of our proposals in R and in Python, available as open-source
-libraries. An introduction to these implementations of our proposals is
-described in Chapter~\ref{implementation}. Finally, we discuss practical issues
-with actual examples in Chapter~\ref{use-cases}. 
+descriptions (Chapter~\ref{orthography-profiles}). Lastly, we provide an introduction to two open source libraries that we have developed, in Python and R, for working with linguistic data and orthography profiles (Chapter~\ref{implementation}).
+
 
 \subsubsection*{Conventions}
 
