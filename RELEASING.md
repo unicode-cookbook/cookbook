@@ -11,8 +11,10 @@ The knitr setup is included in the file `unicode.Rnw`. To process this file, the
 
 - knitr
 - highlight
-- qlcData
 - xtable
+- formatR
+- qlcData
+
 
 Note that the package `qlcData` will probably need the newest version from Github, to be installed within R using:
 
@@ -27,4 +29,4 @@ This results in a file `unicode.tex` that can then regularly be typeset by XeLaT
 
 Beware you will probably need to install lots of LaTeX packages and numerous fonts to compile the book.
 
-We have success compiling the `unicode.tex` document using the MacTeX 2016 distribution of TeX Live and TeXShop, available at: [https://tug.org/mactex/](https://tug.org/mactex/).
+We have success compiling the `unicode.tex` document using the MacTeX 2017 distribution of TeX Live and TeXShop, available at: [https://tug.org/mactex/](https://tug.org/mactex/).
