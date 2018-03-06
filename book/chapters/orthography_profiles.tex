@@ -32,7 +32,7 @@ profiles can transparently document the decisions that have been taken in the
 interpretation of the orthography in the sources used.
 
 Given these goals, Unicode locale descriptions (see
-Section~\ref{the-unicode-approach}) might seem like the ideal orthography
+Chapter~\ref{the-unicode-approach}) might seem like the ideal orthography
 profiles. However, there are various practical obstacles preventing the use of
 such locale descriptions in the daily linguistic practice, namely: (i) the
 XML-structure is too verbose to easily and quickly produce or correct manually,
@@ -154,14 +154,14 @@ computational approaches to transliteration is the strict separation between
 tokenization and transliteration. Most computational approaches to
 transliteration are based on finite-state transducers (including the
 transliteration as described in the Unicode Locale Data Markup
-Language.\footnote{See \url{http://www.unicode.org/reports/tr35/}} Finite-state 
+Language).\footnote{See \url{http://www.unicode.org/reports/tr35/}} Finite-state 
 transducers attempt to describe the mapping from input to output string directly 
 as a set of rewrite rules. Although such systems are computationally well 
 understood, we feel that they are not well-suited for day-to-day linguistic 
 practice. First, by forcing a first step of grapheme tokenization, our system 
 tries to keep close to the logic of the writing system. Second, by separating 
 tokenization from transliteration there is no problem with `feeding' and 
-`bleeding' of rules, common with transducers (cf.~Section~\ref{rule-ordering}
+`bleeding' of rules, common with transducers (cf.~Section~\ref{r-implementation}
 ).
 
 Note that to deal with ambiguous parsing cases, it is still possible to use the
@@ -175,7 +175,7 @@ In practice, we foresee a workflow in which orthography profiles are iteratively
 refined, while at the same time inconsistencies and errors in the data to be
 tokenized are corrected. In some more complex use-cases there might even be a
 need for multiple different orthography profiles to be applied in sequence (see
-Section~\ref{use-cases} on various exemplary use-cases). The result of any such
+Section~\ref{r-implementation} on various exemplary use-cases). The result of any such
 workflow will normally be a cleaned dataset and an explicit description of the
 orthographic structure in the form of an orthography profile. Subsequently, the
 orthography profiles can be easily distributed in scholarly channels alongside
@@ -191,30 +191,60 @@ for short) are the following:
 
 \begin{enumerate}
 	\def\labelenumi{A\arabic{enumi}.} 
-	\item \textsc{A profile is a unicode UTF-8 encoded text file}, ideally
-       using NFC, no-BOM, and LF (see Section~\ref{pitfall-file-formats}), that
-       includes the information pertinent to the orthography. 
-	\item \textsc{A profile is a tab-separated CSV file with an obligatory header
-       line}. A minimal profile can have just a single column, in which case
-       there will of course be no tabs, but the first line will still be the
-       header. For all columns we assume the name in the header of the CSV file
-       to be crucial. The actual ordering of the columns is unimportant. Because 
-       tabs and newlines are field separators of the profile, these characters 
-       will lead to problems when they occur in the original data.\footnote{The main
-       reason to choose for tab-delimited, and not for quoted comma-separated files
-       is that we want the profiles to be easily manipulated by hand. Tab-separation 
-       is strongly preferred for this reason.}
-	\item \textsc{Metadata are added in a separate UTF-8 text file} using a basic
+	\item \textsc{A profile is a unicode UTF-8 encoded text file} 
+	   normalized following NFC (or NFD if specified in the metadata)
+       that includes the information pertinent to the orthography.\footnote{See 
+	   Section~\ref{pitfall-file-formats} in which we suggest to use NFC, 
+	   no-BOM and LF line breaks because of the pitfalls they avoid. 
+	   A keen reviewer notes, however, that specifying 
+	   a convention for line endings and BOM is overly strict because most 
+	   computing environments (now) transparently handle both alternatives. 
+	   For example, using Python a file can be decoded using the encoding 
+	   ``utf-8-sig'', which strips away the BOM (if present) and reads 
+	   an input full in text mode, so that both line feed variants ``LF'' and 
+	   ``CRLF'' will be stripped.}
+
+%	\item \textsc{A profile is a unicode UTF-8 encoded text file}, ideally
+%       using NFC, no-BOM, and LF (see Section~\ref{pitfall-file-formats}), that
+%       includes the information pertinent to the orthography. 
+	\item \textsc{A profile is a CSV file with an obligatory header
+       line}. A minimal profile must have a single column with the header ``Grapheme''. 
+	   For any additional columns, the name in the header of the CSV file
+       must be specified. The actual ordering of the columns is unimportant. Cells should 
+	   not contain tabs or newlines. The header list must be delimited 
+	   in the same way as the rest of the file's contents. Each record must be kept 
+	   on a separate line. Separate lines with comments are not allowed. Comments that
+       belong to specific lines must be put in a separate column of
+       the CSV file, e.g.~add a column called \textsc{comments}.
+
+\begin{comment}	   
+	\item \textsc{Metadata should be added in a separate UTF-8 text file} using a basic
        \textsc{tag: value} format. Metadata about the orthographic description
        given in the orthography profile includes, minimally, (i) author, (ii)
        date, (iii) title of the profile, (iv) a stable language identifier
        encoded in BCP 47/ISO 639-3 of the target language of the profile, and (v)
        bibliographic data for resource(s) that illustrate the orthography
        described in the profile. Further, (vi) the tokenization method and (vii)
-       the unicode normalisation used should be documented here (see below).
-    	\item \textsc{Separate lines with comments are not allowed}. Comments that
-       belong to specific lines will have to be put in a separate column of
-       the CSV file, e.g.~add a column called \textsc{comments}.            
+       the unicode normalization used should be documented here (see below).
+\end{comment}
+
+	\item \textsc{Metadata should be added in a separate UTF-8 text file} using 
+	   the JSON-DL dialect specified in \textit{Metadata Vocabulary for Tabular 
+	   Data}.\footnote{\url{https://www.w3.org/TR/tabular-metadata/}} This metadata 
+	   format allows easy inclusion of Dublin Core metadata,\footnote{\url{http://dublincore.org/}} 
+	   which should be used to specify information about the orthographic description 
+	   in the orthography profile. The orthography profile metadata should minimally include: 
+	   (i) author, (ii) date, (iii) title of the profile, (iv) a stable language identifier
+       encoded in BCP 47/ISO 639-3 of the target language of the profile, and (v)
+       bibliographic data for resource(s) that illustrate the orthography
+       described in the profile. Further, (vi) the tokenization method and (vii)
+       the Unicode normalization form used should be documented here (see below).
+	   In accordance with the \textit{Metadata Vocabulary for Tabular 
+	   Data}, the metadata's filename must consist of the orthography 
+	   profile's filename appended with ``-metadata.json''.\footnote{JSON-DL metadata 
+	   is also the choice for datasets conforming to the Cross-Linguistic Data Formats standard, 
+	   see: \url{http://cldf.clld.org/}.}
+
 \end{enumerate}
 
 \noindent The content of a profile consists of lines, each describing a grapheme

@@ -168,7 +168,7 @@ are distinguishable by phonemic contrast, those contrasts should be transcribed
 with different letter symbols (and not just diacritics). Allophonic distinction 
 falls under the rubric of diacritically-distinguished symbols, e.g.\ the 
 difference in English between an aspirated /p/ and /t/ in [spʰot̚] and 
-an unrealeased /p/ in [stʰop̚]. 
+an unreleased /p/ in [stʰop̚]. 
 
 \begin{itemize}
 
@@ -193,7 +193,7 @@ diacritics to the following situations:
 
 The interpretation of the IPA symbols in specific usage is not trivial. Although
 the articulatory properties of the IPA symbols themselves are rather succinctly
-summarised by the normative description in the \textit{Handbook}, it is common
+summarized by the normative description in the \textit{Handbook}, it is common
 in practical applications that the transcribed symbols do not precisely
 represent the phonetic value of the sounds that they represent. So an IPA symbol
 <t> in one transcription is not always the same as an IPA <t> in another
@@ -225,7 +225,7 @@ words in a language with a minimal number of transcription symbols
 of a particular language's phonological rules. These rules determine the
 realization of that language's phonemes. For example, in the transcription of
 German, Dutch, English and French a symbol <t> might be used for the voiceless
-plosive in the alveolar area. This symbol is sufficient for a succinct
+plosive in the alveolar and dental areas. This symbol is sufficient for a succinct
 transcription of these languages because there is no further phonemic
 subdivisions in this domain in either of these languages. However, the
 language-specific realization of this consonant is closer to [t̪ʰ], [t], [tʰ]
@@ -297,6 +297,7 @@ materials to this book: \url{https://github.com/unicode-cookbook/recipes}.}
 But before UPSID, SAMPA and ASJP, IPA was encoded with numbers.
  
 % \footnote{The marking of tone was extended (from characteristically Africanist practice) to include a second system for marking linguistic tones (the `Chao tone letters'), a much used convention based on musical staff to describe pitch in by Yuen Ren Chao (1892--1982).} 
+
 \subsection*{IPA Numbers}
 Prior to the Kiel Convention for the modern revision of the IPA in 1989,
 \citet{Wells1987} collected and published practical approaches to coded
@@ -328,9 +329,9 @@ consensus on symbol names was growing due to the recent publication of the
 IPA symbol names were taken from that source \citep[31]{IPA1999}.
 
 The working group decided insightfully that the computing-coding convention 
-for the IPA should be independent of computer environments or formats (e.g.\ ASCII), 
-i.e.\ the IPA Number was not meant to be implemented directly in a computer 
-encoding. The working group report's declaration includes the following explanatory 
+for the IPA should be independent of computer environments or formats, 
+i.e.\ the IPA Number was not meant to be encoded at the bit pattern level.
+The working group report's declaration includes the following explanatory 
 remarks \citep[82]{International1989report}:
 
 \begin{quote}
@@ -594,7 +595,7 @@ Number, UCS Code and AFII Code.\footnote{The \textsc{association for font
 information interchange} (AFII) was an international database of glyphs created
 to promote the standardization of font data required to produce ISO/IEC 10646.} When the
 character sets of ISO/IEC 10646 and the Unicode Standard later converged (see
-Section~\ref{the-unicode-approach}), the IPA proposal was
+Chapter~\ref{the-unicode-approach}), the IPA proposal was
 included in the Unicode Standard Version 1.0 -- largely as we know it
 today.
 
@@ -611,7 +612,14 @@ historic relics that we have to come to grips with.
 % http://www-01.sil.org/computing/computing_environment.html
 
 It was a long journey, but the goal of achieving a single multilingual computing
-environment has largely been accomplished. Current users, however, must cope
+environment has largely been accomplished. As such, we should not dismiss the IPA Numbers 
+or pre-Unicode encoding attempts, such as SAMPA/X-SAMPA, as misguided. The parallels 
+between the IPA Numbers and Unicode Code points, for example, is striking because both the IPA and 
+the Unicode Consortium came up with the solution of an additional layer of indirection (an abstraction layer) 
+between symbols/characters and encoding on the bit pattern level. SAMPA/X-SAMPA is also still useful 
+as an input method for IPA in ASCII and required by some software.
+
+Current users of the Unicode Standard must cope
 with the pitfalls that were dug along the way, as will be discussed in the next
 chapter. As the Association foresightfully remarked about Unicode:
 

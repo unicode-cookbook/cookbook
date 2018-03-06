@@ -169,7 +169,7 @@ Unicode Standard are the following.
         \textsc{modifier letter small h} at \uni{02B0}. Making the situation 
         even more problematic is that they have different behavior (see 
         Section~\ref{pitfall-different-notions-of-diacritics}). To harmonize the 
-        bevavior of <ʰ> with other superscript letters, we propose to 
+        behavior of <ʰ> with other superscript letters, we propose to 
         standardize on the modifier letter at \uni{02B0} (see 
         Section~\ref{pitfall-no-unique-diacritic-ordering}).
   
@@ -194,7 +194,7 @@ linguist uses <ɑ> for a low back unrounded vowel.\footnote{One example is
 \citet[75]{Vidal2001}, in which the author states: ``The definition of Pilagá
 /a/ as [+back] results from its behavior in certain phonological contexts. For
 instance, uvular and pharyngeal consonants only occur around /a/ and /o/. Hence,
-the characterization of /a/ and /o/ as a natural class of (i.e., [+back]
+the characterization of /a/ and /o/ as a natural class of (i.e.\ [+back]
 vowels), as opposed to /i/ and /e/.''} They simply use <a> as long as there is
 no opposition to <ɑ>.
 
@@ -231,6 +231,24 @@ approach was taken by the Language Science Press to distinguish
 between the two different orthographic <a>'s in Chakali in 
 \cite{Brindle2017}.\footnote{\url{http://langsci-press.org/catalog/book/74}}
 
+Lastly, before we move on from the pitfall of IPA homoglyphs in Unicode to the pitfall of 
+homoglyphs in IPA, we are aware of one example that illustrates both pitfalls. 
+Consider for example what one reviewer coined \textsc{i dot-suppression}. 
+When combining, say the \textsc{latin small letter i} <i> at \uni{0069} with 
+the \textsc{combining acute accent} <\dia{0301}> at \uni{0301}, the result is 
+ the combination of these two characters into <í> or the associated 
+precomposed form \textsc{latin small letter i with acute} <í> at \uni{00ED}. 
+Typographically, the accent mark replaces the dot. In IPA, the <í> denotes 
+a high front unrounded vowel with high tone. However, the result of losing 
+the dot makes this IPA symbol look very similar to the near-high near-front 
+unrounded vowel <ɪ>, when it also has the high tone marker: <ɪ́>. To boot, 
+when an accent mark is added to \textsc{latin small letter i with stroke} <ɨ> at 
+\uni{0268}, the dot is not suppressed but retained, i.e. <ɨ́>.\footnote{According 
+to the Unicode Standard, \textsc{latin small letter i with stroke} <ɨ> at 
+U+0268 cannot be decomposed into, say, \textsc{latin small letter i} <i> at 
+U+0069 and \textsc{combining short stroke overlay} <\dia{0335}> at U+0335. 
+We discuss the pitfall of missing decomposition forms 
+in Section \ref{pitfall-missing-decomposition}.}
 
 
 % ==========================
@@ -293,17 +311,34 @@ discussed in turn below:
 \end{itemize}
 
 The first case in which the IPA allows for different encodings is the question
-of how to transcribe tone. There is an old tradition to use diacritics on vowels
-to mark different tone levels, e.g. <ȅèée̋>.\footnote{To make things even more
-complex, there are at least two different Unicode homoglyphs for the low and
+of how to transcribe tone (cf.\ \cite{Maddieson1990}). There is an old tradition 
+to use diacritics on vowels to mark different tone levels \citep{IPA1949}. Prior to the 1989 Kiel 
+convention, IPA-approved tone symbols included diacritics above or below the vowel or syllable, 
+e.g.\ high and low tones marked with macrons (<\diaf{0304}>, <\diaf{0331}>), and acute and grave 
+accents for high rising tone <\diaf{0301}>, low rising tone <\diaf{0317}>, high falling tone 
+<\diaf{0300}> and low falling tone <\diaf{0316}>. These tone symbols, however,  
+had failed to catch on (probably) due to aesthetic objections and matters of adequacy for 
+transcription \citep[29]{Maddieson1990}.
+
+After the 1989 Kiel convention, the accent tone symbols were updated to the tradition 
+that we are familiar with today and which was already in wide use by Africanists and others, 
+namely level tones <\diaf{030B}, \diaf{0301}, \diaf{0304}, \diaf{0300}, \diaf{030F}> 
+and contour tones <\diaf{030C}, \diaf{0302}, \diaf{1DC4}, \diaf{1DC5}, \diaf{1DC8}>.\footnote{To make things even more
+complicated, there are at least two different Unicode homoglyphs for the low and
 high level tones, namely <\diaf{0340}> \textsc{combining grave tone mark} at
 \unif{0340} vs.~<\diaf{0300}> \textsc{combining grave accent} at \unif{0300} for
 low tone, and <\diaf{0341}> \textsc{combining acute tone mark} at \unif{0341}
-vs.<\diaf{0301}> \textsc{combining acute accent} at \unif{0301} for high tone.}
-The IPA also proposes the option of tone letters, e.g. <˥˦˧˨˩>, which are much
-less often used, but are more consistent for contours.\footnote{Not sanctioned
-by the IPA, but nevertheless widely attested, is the usage of superscript
-numbers for marking tones.} Tone letters in the IPA have five different levels,
+vs.<\diaf{0301}> \textsc{combining acute accent} at \unif{0301} for high tone.} 
+In addition, the IPA also adopted tone letters developed by \citet{Chao1930}, e.g. <˥˦˧˨˩>, 
+which were in wide use by Asianists.\footnote{Not sanctioned
+by the IPA, but nevertheless widely attested, is the use of superscript
+numbers for marking tones, also proposed by \citet{Chao1930}. One issue to note here is 
+that superscript numbers can be either regular numbers that are formatted as 
+superscript with a text processor, or they can be separate superscript characters, 
+as defined in the Unicode Standard (see: \url{https://en.wikipedia.org/wiki/Superscripts_and_Subscripts}). 
+This divide means that searching text is dependent 
+on how the author formatted or encoded the superscript numbers.} 
+Tone letters in the IPA have five different levels,
 and sequences of these letters can be used to indicate contours. Well-designed
 fonts will even merge a sequence of tone letters into a contour. For example,
 compare the font Linux Libertine, which does not merge tone letters
@@ -322,7 +357,7 @@ they simply use the \uni{0067} because it is easily keyboarded and thus saves
 time, whereas the latter must be cumbersomely inserted as a special symbol in
 most software. The International Phonetic Association has taken the stance that
 both the keyboard \textsc{latin small letter g} and the \textsc{latin small
-letter script g} are valid input characters for the voiced velar plosive.
+letter script g} are valid input characters for the voiced velar plosive \citep[19]{IPA1999}.
 Unfortunately, this decision further introduces ambiguity for linguists trying
 to adhere to a strict Unicode Standard IPA encoding. For strict IPA encoding we
 propose to standardize on the more idiosyncratic \textsc{latin small letter
@@ -573,7 +608,7 @@ in the Unicode Standard. Specifically, diacritics in the IPA-sense are either
 so-called \textsc{combining diacritical marks} or \textsc{spacing modifier
 letters} in the Unicode Standard. Crucially, Combining Diacritical Marks are by
 definition combined with the character before them (to form so-called default
-grapheme clusters, see Section~\ref{the-unicode-approach}). In contrast, Spacing
+grapheme clusters, see Chapter~\ref{the-unicode-approach}). In contrast, Spacing
 Modifier Letters are by definition \emph{not} combined into grapheme clusters
 with the preceding character, but simply treated as separate letters. In the
 context of the IPA, the following IPA-diacritics are actually Spacing Modifier
@@ -587,19 +622,23 @@ Letters in the Unicode Standard:
     	  \item[] <\dia{02D1}> \textsc{modifier letter half triangular colon} at \uni{02D1}
     	\end{itemize}
 	 
-	\item[] Tone letters, like: 
+	\item[] Tone letters, including but nut limited to: 
 	\begin{itemize} 
 	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
 	  \item[] <˨> \textsc{modifier letter low tone bar} at \uni{02E8}
-	  \item[] and others like this
 	\end{itemize}
 	
-	\item[] Superscript letters, like:
+	\item[] Superscript letters, including but not limited to:\footnote{The Unicode Standard defines the 
+	  \textit{Phonetic Extensions} block that defines symbols used in phonetic notation 
+	  systems, including the Uralic Phonetic Alphabet, Americanist and Russianist phonetic notations, 
+	  Oxford English and American dictionaries, etc. Among other symbols, the 
+	  \textit{Phonetic Extensions} block includes 
+	  the superscript letters <\textsuperscript{m, ŋ, b}>, which are not valid 
+	  IPA characters, although we have seen them used in linguistic practice.}
 	\begin{itemize}
 	  \item[] <\dia{02B0}> \textsc{modifier letter small h} at \uni{02B0}
 	  \item[] <\dia{02E4}> \textsc{modifier letter small reversed glottal stop} at \uni{02E4}
 	  \item[] <\dia{207F}> \textsc{superscript latin small letter n} at \uni{207F}
-	  \item[] and many more like this
 	\end{itemize}
 	
 	\item[] The rhotic hook:\footnote{It is really unfortunate that the rhotic hook
@@ -627,7 +666,7 @@ to treat it as a separate character is also linguistically correct.
          post-aspiration (following the base character) and as
          <\diareverse{02B0}> for pre-aspiration (preceding the base
          character), so there is no consistent direction in which this
-         diactritic should bind. Note that there is yet another homoglyph,
+         diacritic should bind. Note that there is yet another homoglyph,
          namely the \textsc{combining latin small letter h} at \uni{036A}.
          We propose not to use this combining diacritical mark, but to
          standardize on Unicode modifier letters for all superscript
@@ -838,7 +877,7 @@ version of the IPA and the correct characters in the Unicode Standard.
 The most controversial issue regarding symbols debated at the convention was the
 representation for voiceless implosives \citep[62]{Ladefoged1990a}. In
 accordance with the principles of the IPA, as outlined in Section
-\ref{the-international-phonetic-alphabet}, distinct symbols are favoured for
+\ref{the-international-phonetic-alphabet}, distinct symbols are favored for
 cases of phonological contrast. Further, also convenience of display in the chart
 must be taken into account when arguing for or against the inclusion or deletion
 of IPA symbols in the IPA chart. Finally, the inclusion or deletion of symbols
@@ -951,7 +990,7 @@ used with caution.
       example <\charis{ʱd}>.
 \item \textsc{Epilaryngeal phonation} \newline 
       There are some rare articulations that make
-      use of an epilaryngeal phonation mechanism (e.g.,~the “sphincteric vowels”
+      use of an epilaryngeal phonation mechanism (e.g.\ the “sphincteric vowels”
       of~!Xóõ). To represent these vowels, we propose to use the modifier <\dia{1D31}>
       \textsc{modifier letter capital e} at \uni{1D31} to denote such sphincteric
       phonation.

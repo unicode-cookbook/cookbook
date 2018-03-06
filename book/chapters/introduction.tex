@@ -257,13 +257,14 @@ Because 256 characters were clearly not enough for the many different characters
 needed in the world's writing systems, the ISO/IEC~8859 standard in 1987
 extended the MCS to include 16 different 8-bit code pages. For example, part 5
 was used for Cyrillic characters, part 6 for Arabic, and part 7 for
-Greek.\footnote{In effect, because $16 = 2^4$, this means that ISO/IEC~8859 was
-actually an $8+4=12$-bit encoding, though with very many duplicates by design,
-namely all ASCII codes were repeated in each 8-bit code page. To be precise,
-ISO/IEC~8859 used the 7-bit ASCII as the basis for each code page, and defined
-16 different 7-bit extensions, leading to $(1+16) \cdot {2^7} = 2,176$ possible
-characters. However, because of overlap and not-assigned codes points the actual
-number of symbols was much smaller.} This system almost immediately was
+Greek. % \footnote{In effect, because $16 = 2^4$, this means that ISO/IEC~8859 was
+%actually an $8+4=12$-bit encoding, though with very many duplicates by design,
+%namely all ASCII codes were repeated in each 8-bit code page. To be precise,
+%ISO/IEC~8859 used the 7-bit ASCII as the basis for each code page, and defined
+%16 different 7-bit extensions, leading to $(1+16) \cdot {2^7} = 2,176$ possible
+%characters. However, because of overlap and not-assigned codes points the actual
+%number of symbols was much smaller.} 
+This system almost immediately was
 understood to be insufficient and impractical, so various initiatives to extend
 and reorganize the encoding started in the 1980s. This led, for example, to
 various proprietary encodings from Microsoft (e.g.~Windows Latin 1) and Apple
@@ -385,13 +386,19 @@ remaining the most popular, even though there are at least half a dozen
 different types of script systems that can be distinguished
 \citep{Daniels1990,Daniels1996}.
 
-Breaking it down further, a script consists of \textsc{graphemes}, and graphemes
-consist of \textsc{characters}. In the linguistic terminology of writing
+Breaking it down further, a script consists of \textsc{graphemes}, which are writing 
+system-specific minimally distinctive symbols (see below). Graphemes may consist of one or more 
+\textsc{characters}. The term \textsc{character} is overladen. In the linguistic terminology of writing
 systems, a \textsc{character} is a general term for any self-contained element
-in a writing system.\footnote{There is a second interpretation of the term
-\textsc{character}, i.e.~a conventional term for a unit in the Chinese writing
-system \citep{Daniels1996}. This interpretation will not be further explored in
-this paper.} Although in literate societies most people have a strong intuition
+in a writing system. A second interpretation is used as a conventional term for a unit in the Chinese writing
+system \citep{Daniels1996}. In technological terminology, a \textsc{character} 
+refers to the electronic encoding of a component in a writing system that has semantic 
+value (see Section \ref{character-encoding-system}). Thus in this work we must navigate 
+between the general linguistic and technological terms for \textsc{character} 
+and \textsc{grapheme} because of how these notions are defined and how they relate at the intersection 
+between the International Phonetic Alphabet and the Unicode Standard (Chapter \ref{ipa-meets-unicode}).
+
+Although in literate societies most people have a strong intuition
 about what the characters are in their particular orthography or orthographies,
 it turns out that the separation of an orthography into separate characters is
 far from trivial. The widespread intuitive notion of a character is strongly
@@ -406,13 +413,13 @@ structure of Chinese characters is often comprised of smaller semantic and
 phonetic units that should be considered characters \citep{Sproat2000}. In
 alphabetic scripts, this problem is most forcefully exemplified by diacritics. 
 
-A \textsc{diacritic} is a mark, or series of marks, that may be above, below, or
-through other characters \citep{Gaultney2002}. Diacritics are sometimes used to
+A \textsc{diacritic} is a mark, or series of marks, that may be above, below, 
+before, after, through, around, or between other characters \citep{Gaultney2002}. Diacritics are sometimes used to
 distinguish homophonous words, but they are more often used to indicate a
 modified pronunciation \citep[xli]{DanielsBright1996}. The central question is
 whether, for example, <e>, <è>, <a> and <à> should be considered four
-characters, or different combinations of three characters. In general, multiple
-characters together can form another character, and it is not always possible to
+characters, or different combinations of three characters, i.e.\ <a>, <e>, and <\dia{0300}>. 
+In general, multiple characters together can form another character, and it is not always possible to
 decide on principled grounds what should be the basic building blocks of an
 orthography.
 
@@ -428,8 +435,12 @@ these graphemes is also a separate grapheme in English). Such complex graphemes
 are often used to represent single phonemes. So, a combination of characters is
 used to represent a single phoneme. Note that the opposite is also found in
 writing systems, in cases in which a single character represents a combination
-of two or more phonemes. For example, <x> in English orthography represents a
-combination of the phonemes /k/ and /s/. 
+of two or more phonemes. For example, <x> in English orthography sometimes represents a
+combination of the phonemes /k/ and /s/, as in the word `index' [ˈɪnˌdɛks]; other times 
+it is pronounced as /z/, such as in the words `Xerox' [ˈzɪrˌɑks] and `example' [ɪɡˈzæmpəl]. 
+As one can see, there can be non-trivial mappings between graphemes and phonemes in 
+orthographies like English, e.g.\ `give', `gin', `jingle', where the graphemes 
+<g> and <j> and the phonemes /g/ and /dʒ/ have a complex mapping.
 
 Further, conditioned or free variants of a grapheme are called
 \textsc{allographs}. For example, the distinctive forms of Greek sigma are

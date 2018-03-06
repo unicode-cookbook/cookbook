@@ -30,6 +30,12 @@
 \input{localcommands.tex}
 \bibliography{localbibliography}
 
+\lstset{
+  literate={ĉ}{{\^c}}1
+           {á}{{\'a}}1
+           {ã̌}{{\'a}}1
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
 %%%             Frontmatter                      %%%

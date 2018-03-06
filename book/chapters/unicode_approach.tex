@@ -73,10 +73,11 @@ Standard.\footnote{More information about the ICU is available here:
 \url{http://icu-project.org}.}
 
 \section{Character encoding system}
+\label{character-encoding-system}
 
 The Unicode Standard is a \textsc{character encoding system} which
 goal it is to support the interchange and processing of written characters and
-text in a computational setting. Underlyingly, the character encoding is
+text in a computational setting.\footnote{An insightful reviewer notes that the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems. The issue is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e. the code point, which can be encoded differently by different encoding systems.} Underlyingly, the character encoding is
 represented by a range of numerical values called a \textsc{code space}, which
 is used to encode a set of characters. A \textsc{code point} is a unique
 non-negative integer within a code space (i.e.~within a certain numerical
@@ -84,13 +85,15 @@ range). In the Unicode Standard character encoding system, an \textsc{abstract
 character}, for example the \textsc{latin small letter p}, is mapped to a
 particular code point, in this case the decimal value 112, normally represented in
 hexadecimal, which then looks in Unicode parlance as
-\uni{0070}.\footnote{Hexadecimal (base-16) 0070 is equivalent to decimal
-(base-10) 112, which can be calculated by considering that $(0\cdot16^3) +
-(0\cdot16^2) + (7\cdot16^1) + (0\cdot16^0) = 7\cdot16 = 112$. Underlyingly,
-computers will of course treat this code point binary (base-2) as 11100000, as
-can be seen by calculating that $(1\cdot2^7) + (1\cdot2^6) + (1\cdot2^5) +
-(0\cdot2^4) + (0\cdot2^3) + (0\cdot2^2) + (0\cdot2^1) + (0\cdot2^0) = 64 + 32 +
-16 = 112$.} That encoded abstract character is rendered on a computer screen (or
+\uni{0070}.
+%\footnote{Hexadecimal (base-16) 0070 is equivalent to decimal
+%(base-10) 112, which can be calculated by considering that $(0\cdot16^3) +
+%(0\cdot16^2) + (7\cdot16^1) + (0\cdot16^0) = 7\cdot16 = 112$. Underlyingly,
+%computers may treat this code point as an 8-bit binary (base-2) sequence (11100000), as
+%can be seen by calculating that $(1\cdot2^7) + (1\cdot2^6) + (1\cdot2^5) +
+%(0\cdot2^4) + (0\cdot2^3) + (0\cdot2^2) + (0\cdot2^1) + (0\cdot2^0) = 64 + 32 +
+%16 = 112$.} 
+That encoded abstract character is rendered on a computer screen (or
 printed page) as a \textsc{glyph}, e.g. <p>, depending on the \textsc{font} and
 the context in which that character appears.
 
@@ -208,19 +211,24 @@ treated identically to the precomposed \uni{00F1}), and a system of
 Unicode Standard offers different kind of normalizations to either decompose all
 precomposed characters (called \textsc{NFD}, \textsc{normalization form
 canonical decomposition}), or compose as much as possible combinations (called
-\textsc{NFC}, \textsc{normalization form canonical composition}). In current
-practice of software development, NFC seems to be preferred in most situations
-and is widely proposed as the preferred canonical form.
+\textsc{NFC}, \textsc{normalization form canonical composition}).\footnote{See the 
+Unicode Standard Annex \#15, Unicode Normalization Forms (\url{http://unicode.org/reports/tr15/}), 
+which provides a detailed description of normalization algorithms and illustrated examples.} 
+In current practice of software development, NFC seems to be preferred in most situations
+and is widely proposed as the preferred canonical form. We discuss Unicode Normalization 
+in detail in Section \ref{pitfall-canonical-equivalence}.
 
 More difficult for text processing, because less standardized, is what the
-Unicode Standard terms \textsc{tailored grapheme clusters}. Tailored grapheme
-clusters are locale-dependent graphemes, i.e.~such combination of characters do
+Unicode Standard terms \textsc{tailored grapheme clusters}.\footnote{\url{http://unicode.org/reports/tr29/}} 
+Tailored grapheme clusters are locale-dependent graphemes, i.e.~such combination of characters do
 not function as text elements in all situations. Examples include the sequence
 <c>~+~<h> for the Slovak digraph <ch> and the sequence <ky> in the Sisaala
 practical orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme
 clusters are \textsc{tailored} in the sense that they must be specified on a
-language-by-language or writing-system-by-writing-system basis. The Unicode
-Standard provides technological specifications for creating locale specific data
+language-by-language or writing-system-by-writing-system basis. They are also 
+grapheme clusters in these orthographies for processes such as collation.\footnote{\url{https://www.unicode.org/glossary/#collation}}
+
+The Unicode Standard provides technological specifications for creating locale specific data
 in so-called \textsc{Unicode Locale Descriptions}, i.e.~a set of specification
 that defines a set of language-specific elements (e.g.~tailored grapheme
 clusters, collation order, capitalization-equivalence), as well as other special

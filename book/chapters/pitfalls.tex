@@ -106,7 +106,7 @@ Section~\ref{pitfall-different-notions-of-diacritics} for a discussion of the
 notion of diacritic). The Unicode Standard calls such combination \textit{grapheme
 clusters}. Complex graphemes consisting of multiple base characters,
 like <sch>, are called \textit{tailored grapheme clusters} in Unicode parlance (see
-Section~\ref{the-unicode-approach}).
+Chapter~\ref{the-unicode-approach}).
 
 Inspecting the Unicode Standard, there appear to be special Unicode characters
 to glue together characters into larger tailored grapheme clusters,
@@ -321,7 +321,7 @@ are not supposed to be definitions.
 
 The actual intended meaning of a Unicode codepoint is a combination of the
 name, the block and the character properties (see
-Section~\ref{the-unicode-approach}). Further details about the underlying intentions 
+Chapter~\ref{the-unicode-approach}). Further details about the underlying intentions 
 with which a character should be used
 are only accessible by perusing the actual decisions of the Unicode Consortium.
 All proposals, discussions and decisions of the Unicode Consortium are publicly
@@ -329,7 +329,7 @@ available. Unfortunately there is not (yet) any way to easily find everything
 that is ever proposed, discussed and decided in relation to a specific
 codepoint of interest, so many of the details are often somewhat
 hidden.\footnote{All proposals and other documents that are the basis of Unicode
-decisions are avaialbe at \url{http://www.unicode.org/L2/all-docs.html}. The
+decisions are available at \url{http://www.unicode.org/L2/all-docs.html}. The
 actual decisions that make up the Unicode Standard are documented in the minutes
 of the Unicode Technical Committee, available at
 \url{http://www.unicode.org/consortium/utc-minutes.html}.}
@@ -493,6 +493,7 @@ same document in rich text mode (i.e.~RTF-format), it will be transformed into
 NFC on paste. Saving a document does not do any conversion to the glyphs on
 screen, but it will save the characters in NFC.}
 
+
 % ==========================
 \section{Pitfall: Absence of canonical equivalence}
 \label{pitfall-absence-of-equivalence}
@@ -568,6 +569,26 @@ combining diacritics.
 To harmonize the encoding in these cases it is not sufficient to use Unicode 
 normalization. Additional checks are necessary, for example by using orthography 
 profiles (see Chapter~\ref{orthography-profiles}).
+
+
+% ==========================
+\section{Pitfall: Encodings}
+\label{encoding}
+% ==========================
+
+% Section "Pitfall: File formats" may profit most from a more transparent terminology, distinguishing levels of encoding, rather than talking about how texts "appear inside some kind of computer file".
+
+Before we discuss the pitfall of different file formats in Section \ref{pitfall-file-formats}, it is pertinent to point out that the common usage of the term \textsc{encoding}, unfortunately, does not distinguish between \textit{encoded} sequences of code points and text \textit{encoded} as bit patterns. Recall, a code point is simply a numerical representation of some defined entity; or in other words, a code point is a character encoding-specific unique identifier or ID. In the Unicode Standard encoding, code points are numbers that serve as unique identifiers, each of which is associated with a set of character properties defined by the Unicode Consortium in the Unicode Character Database.\footnote{\url{https://www.unicode.org/ucd/}} The number of each code point can be \textit{encoded} in various formats, including as a decimal integer (e.g.\ 112), as an 8-bit binary sequence (01110000) or hexadecimal (0070). This example Unicode code point, \uni{0070}, represents \textsc{latin small letter p} and its associated Unicode properties, such as it belongs to the category Letter, Lowercase [Ll], in the Basic Latin block, and that its title case and upper case is associated with code point \uni{0050}.\footnote{See also Chapter \ref{the-unicode-approach}.}
+
+% 0070;LATIN SMALL LETTER P;Ll;0;L;;;;;N;;;0050;;0050
+
+The other meaning of encoding has to do with the fact that computers represent data and instructions in patterns of bits. A bit pattern is a combination of binary digits arranged in a sequence. And how these sequences are carved up into bit patterns is determined by how they are \textit{encoded}. Thus the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems because they determine how sequences of bit patterns are determined, which are then mapped to characters. The terminological issue here is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e. the code point, which can be encoded differently by different encoding systems.
+
+% Characters encoded, but not seen.
+Note also that all computer character encodings include so-called \textsc{control characters}, which are non-printable sometimes action-inducing characters, such as the null character, bell code, backspace, escape, delete, and line feed. Control-characters can interact with encoding schemes. For example, some programming languages make use of the null character to mark the end of a string. Line breaks are part of the text, and as such as covered by the Unicode Standard. But they can be problematic because line breaks differs from operating system-to-operating system in how they are encoded. These variants are discussed in Section \ref{pitfall-file-formats}.
+
+% This section should also mention that line breaks are actually part of the text, and as such also covered by the Unicode standard. Again regarding line breaks, the recommendation "that everybody use this encoding [only LF] whenever possible" (page 31) seems less well motivated (and specific) than most other recommendations in the book. Some common formats, e.g. CSV (as specified by  RFC 4180 [4]), specify "CRLF" as line break. Thus, the perceived "strong tendency" towards "LF" may be just that.
+
 
 % ==========================
 \section{Pitfall: File formats}
@@ -668,6 +689,16 @@ everyone tries to prevent the inclusion of BOM in your data.
 %  save as UTF-8
 %  conversion between software programs (or when is something really UTF-8?)
 %  NFC / NFD in copy & paste(!)
+
+
+% ==========================
+\section{Pitfall: Incomplete implementations}
+\label{incomplete-implementations}
+% ==========================
+Another pitfall that we encounter when using the Unicode Standard is its incomplete implementation in different standards and programming languages, e.g.\ SQL, XML, XLST, Python. For example, although the Unicode Standard mandates that the comparison of Unicode text be done using normalized text, this is not the case with the equality operator ``=='' in Python. Furthermore, it is not always transparent what the operating system or specific software applications do when text is being copied and pasted. For example, copy and pasting the character sequence \uni{0061} \textsc{latin small letter a} <a> and \uni{0301} \textsc{combining acute accent} <\dia{0301}>, visually <á>, into the text editor TextWrangler leaves the sequence decomposed as two characters. But when pasting the decomposed sequence into RStudio, and other software programs, the sequence becomes precomposed as \uni{00E1} \textsc{latin small letter a with acute}, i.e.\ <á>.
+
+% One Unicode pitfall which may be worth adding is the problem with incomplete implementations of the Unicode Standard. This is a problem most big-enough standards suffer from, e.g. SQL, XML, XSLT. So although the Unicode Standard mandates that comparison of Unicode text should always be done using normalized text, this is not how the equality operator "==" is implemented for Unicode text in the Python programming language.
+
 
 % ==========================
 \section{Recommendations}

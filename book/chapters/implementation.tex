@@ -2,61 +2,29 @@
 \label{implementation}
 
 \section{Overview}
-To illustrate the practical application of orthography profiles, as defined in
-Chapter~\ref{orthography-profiles}, we have implemented two 
-versions of the specifications presented there: one in Python\footnote{\url{https://www.python.org/}} and one
-in R.\footnote{\url{https://www.r-project.org/}}
+To illustrate the practical applications of orthography profiles, as defined in Chapter~\ref{orthography-profiles}, we have implemented two versions of the specifications presented there: one in Python\footnote{\url{https://pypi.python.org/pypi/segments}} and one in R.\footnote{\url{https://github.com/cysouw/qlcData}} This chapter introduces these two implementations, and gives practical step-by-step guidelines for installing and using them. Various simple and sometimes somewhat abstract examples will be discussed to show the different options available, and to illustrate the intended usage of orthography profiles. 
 
-These two libraries have rather different implementation histories,
-and we are not 100\% sure that they will in all situations give the same
-results. We do however provide a test suite for each implementation. 
-Users should refer to the tests cases and to the documentation in each release 
-for specifics about each implementation. Due to different naming standards, 
-function names unfortunately differ in the two implementations.
+Note that our two software libraries have rather different implementation histories, thus they may not give the same results in all situations. We do, however, provide a test suite for each implementation aimed at making sure that the results covered by those test cases are identical. Users should refer to the tests and to the documentation in each release for specifics regarding each implementation. Due to the different naming conventions in Python and R, function names differ across the two implementations. The performance with larger datasets also differs per implementation. In sum, the two software libraries should be considered as proof of concept and not as the final word on the practical application of the specifications above. In our own experience, the current versions are sufficiently fast and stable to be useful for academic practice (e.g.\ checking data consistency, or analyzing and transliterating small to medium sized data sets), but they should probably not be used for full-scale industry applications without some adaptations.
 
-Note that the performance with larger datasets differs, and the code is not
-always as clean as we would like it to be. In sum, the two implementations
-should be considered as proof of concept and not as the final word on the
-practical application of the specifications above. In our own experience, the
-current implementations are sufficiently fast and stable to be useful for
-academic practice (e.g.\ checking data consistency, or analyzing and
-transliterating small to medium sized data sets), but they should probably 
-not be used for full-scale industry applications without some adaptations.
-
-This chapter introduces the implementations, and gives practical step-by-step 
-guidelines for installing and using them. Various simple and sometimes 
-somewhat abstract examples will be discussed to show the different options 
-available, and to illustrate the intended usage of orthography profiles. 
-
-First we explain how to install Python and  R. There are many ways of installing these programming languages and differences in approach may depend on your operating system. Search engines are your friend if you run into installation problems. Our solutions below are tailored to our personal experiences.
-
-Sections \ref{python-implementations} and \ref{r-implementation} discuss the Python and R implementations, 
-respectively. In addition to the material presented here to get users started, we maintain 
-several case studies that use orthography profiles in action. For convenience, 
-we make these use cases available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} 
-in the Github repository of code recipes which accompanies this book online.\footnote{\url{https://github.com/unicode-cookbook/recipes/}}
+In Section \ref{installing-python-and-r}, we first explain how to install Python\footnote{\url{https://www.python.org/}} and R.\footnote{\url{https://www.r-project.org/}} In Sections \ref{python-implementations} and \ref{r-implementation}, we discuss our Python and R software packages, respectively. In addition to the material presented here to get users started, we maintain several case studies that use orthography profiles in action. For convenience, we make these use cases available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} in our Github repository of code recipes, which accompanies this book online.\footnote{\url{https://github.com/unicode-cookbook/}} In the final section in this chapter, we briefly describe these additional use-cases and point the user to the accompanying code online.
 
 
 \section{How to install Python and R}
-When one encounters problems installing software, or bugs in programming code, search engines are your friend. Installation problems and incomprehensible error messages have often already been encountered and solved by other users. Such issues are typically overcome by searching the Web, e.g.\ try simply copying and pasting the output of an error message into a search engine. In our experience, answers are often already answered somewhere online. We are fans of Stack Exchange\footnote{\url{https://stackexchange.com/}} -- a network of question-and-answer websites -- which are extremely helpful in solving issues regarding software installation or bugs in code.
+\label{installing-python-and-r}
+When one encounters problems installing software, or bugs in programming code, search engines are your friend! Installation problems and incomprehensible error messages have typically been encountered and solved by other users. Try simply copying and pasting the output of an error message into a search engine; the solution is often already somewhere online. We are fans of Stack Exchange\footnote{\url{https://stackexchange.com/}} -- a network of question-and-answer websites -- which are extremely helpful in solving issues regarding software installation, bugs in code, etc.
 
-Searching the Web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Unix operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew\footnote{\url{https://brew.sh/}}, a simple to install (via the Terminal App) free and open source package management system. Follow the instructions on the their website and then use Homebrew to install R and Python. 
+Searching the Web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Unix operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew,\footnote{\url{https://brew.sh/}} a simple to install (via the Terminal App) free and open source package management system. Follow the instructions on the the Homebrew website and then use Homebrew to install R and Python (as well as other software packages such as Git and Jupyter Notebooks). 
 
-Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows or Unix) and it includes its own R installation and R package manager. For developing in Python, we recommend the free community version of PyCharm\footnote{\url{https://www.jetbrains.com/pycharm/}}, an IDE which is also available for Mac, Windows, and Unix. 
+Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows and Unix) and it includes its own R installation and R libraries package manager. For developing in Python, we recommend the free community version of PyCharm,\footnote{\url{https://www.jetbrains.com/pycharm/}} an IDE which is available for Mac, Windows, and Unix. 
 
-Once you have R or Python (or both) installed on your computer, you are ready to use the orthography profiles software libraries presented in the next two sections. We make the setup instructions, and the examples of how to work with and create orthography profiles, available online in Jupyter Notebooks. These so-called notebooks are an interface where you can run and rerun code in the browser. These notebooks are easily viewed via our Github respository of recipes.\footnote{\url{https://github.com/unicode-cookbook/recipes}} 
-
-Depending on your computer's operating system, it should be simple enough to install the Jupyter (or other) notebook service and use the notebooks that we (and many others) provide via Github. Our orthography profile receipes and how to install the R or Python libraries for working with orthography profiles.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
-
-We use Github,\footnote{\url{https://github.com/}} a web-based version control system source code management. This cookbook\footnote{\url{}} and the recipes\footnote{\url{https://github.com/unicode-cookbook/recipes.git}} for working with orthography profiles are available for cloning\footnote{\url{https://help.github.com/articles/cloning-a-repository/}} for working with on your local machine. Use your favorite search engine to figure out how to install Git in your computer or learn more at Git.\footnote{\url{https://git-scm.com/}}
+Once you have R or Python (or both) installed on your computer, you are ready to use the orthography profiles software libraries presented in the next two sections. As noted above, we make this material available online on Github,\footnote{\url{https://github.com/}} a web-based version control system for source code management. Github repositories can be cloned or downloaded,\footnote{\url{https://help.github.com/articles/cloning-a-repository/}} so that you can work through the examples on your local machine. Use your favorite search engine to figure out how to install Git on your computer and learn more about using Git.\footnote{\url{https://git-scm.com/}} In our Github repository, we make the material presented below (and more use cases described briefly in Section \ref{use-cases}) available as Jupyter Notebooks. Jupyter Notebooks provide an interface where you can run and develop source code using the browser as an interface. These notebooks are easily viewed in our Github repository of use cases.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
 
 
 
-\section{Python}
+\section{Python package: segments}
 \label{python-implementations}
 
-The Python package is available both as a command line interface (CLI) 
-and as an appplication programming interface (API).
+The Python package \texttt{segments} is available both as a command line interface (CLI) and as an application programming interface (API).
 
 \subsection*{Installation}
 
@@ -66,18 +34,186 @@ To install the Python package from the Python Package Index (PyPI) run:
   $ pip install segments
 \end{lstlisting}
 
-\noindent on the command line. This will give you access to both 
-the CLI and programmatic functionality in Python scripts, when 
-you import the \texttt{segments} library.
+\noindent on the command line. This will give you access to both the CLI and programmatic functionality in Python scripts, when you import the \texttt{segments} library.
 
-You can also install the \texttt{segments} 
-package with from the Github repository:
+You can also install the \texttt{segments} package with from the Github repository:
 
 \begin{lstlisting}[language=bash]
   $ git clone https://github.com/cldf/segments
   $ cd segments
   $ python setup.py develop
 \end{lstlisting}
+
+
+\subsection*{Application programming interface}
+The \texttt{segments} API can be accessed by importing the package into Python or by writing a Python script. Here w\is an example of how to import the libraries, create a tokenizer object, tokenize a string, and create an orthography profile.
+
+\begin{lstlisting}[language=python]
+>>> from segments.tokenizer import Tokenizer
+\end{lstlisting}
+
+\noindent The \texttt{characters} function will segment a string at Unicode code points.
+
+% \begin{lstlisting}[language=python]
+\begin{lstlisting}[inputencoding=utf8,extendedchars=true,escapeinside={\%*}{*)},texcl=true]
+>>> t = Tokenizer()
+>>> result = t.characters("%*ĉháɾã̌ctʼɛ↗ʐː| k͡p*")
+>>> print(result)
+>>> %*c ̂ h a ́ ɾ a ̃ ̌ c t ʼ ɛ ↗ ʐ ː | # k ͡ p
+\end{lstlisting}
+
+
+\begin{lstlisting}[inputencoding=utf8,extendedchars=true
+  basicstyle=\footnotesize\ttfamily,
+  tabsize=2,
+  breaklines=true,
+  language=python,
+  keywordstyle=\color{blue!60!black},
+  stringstyle=\color{green!60!black}]
+>>> t = Tokenizer()
+>>> result = t.characters("ĉháɾã̌ctʼɛ↗ʐː| k͡p")
+>>> print(result)
+>>> c ̂ h a ́ ɾ a ̃ ̌ c t ʼ ɛ ↗ ʐ ː | # k ͡ p
+\end{lstlisting}
+
+
+
+\noindent The \texttt{grapheme\_clusters} function will segment text at the Unicode Extended Grapheme Cluster boundaries.\footnote{\url{http://www.unicode.org/reports/tr18/tr18-19.html#Default_Grapheme_Clusters}}
+
+\begin{lstlisting}[language=python,texcl=true]
+>>> result = t.grapheme_clusters("ĉháɾã̌ctʼɛ↗ʐː| k͡p")
+>>> print(result)
+>>> ĉ h á ɾ ã̌ c t ʼ ɛ ↗ ʐ ː | # k͡ p
+\end{lstlisting}
+
+\noindent The \texttt{grapheme\_clusters} function is also the default segmentation algorithm for the \texttt{segments.Tokenizer}. It is useful when you encounter a text that you want to tokenize to identify orthographic or transcription elements.
+
+\begin{lstlisting}[language=python]
+>>> result = t("ĉháɾã̌ctʼɛ↗ʐː| k͡p")
+>>> print(result)
+>>> ĉ h á ɾ ã̌ c t ʼ ɛ ↗ ʐ ː | # k͡ p
+\end{lstlisting}
+
+\noindent The \texttt{ipa} parameter forces grapheme segmentation for IPA strings (a formal definition is given in Chapter \ref{orthography-profiles}.
+
+\begin{lstlisting}[language=python]
+>>> result = t("ĉháɾã̌ctʼɛ↗ʐː| k͡p", ipa=True)
+>>> print(result)
+>>> ĉ h á ɾ ã̌ c tʼ ɛ ↗ ʐː | # k͡p
+\end{lstlisting}
+
+\noindent We can also load an orthography profile and tokenize input string with it. In the data directory we've placed an example orthography profile. Let's have a look at it using \texttt{more} on the command line.
+
+\begin{lstlisting}[language=bash,texcl=true]
+  $ more data/orthography-profile.tsv
+  Grapheme  IPA   XSAMPA  COMMENT
+  a         a     a
+  aa        aː    a:
+  b         b     b
+  c         c     c
+  ch        tʃ    tS
+  -         NULL  NULL    "comment with   tab"
+  on        õ     o~
+  n         n     n
+  ih        í     i_H
+  inh       ĩ́     i~_H
+\end{lstlisting}
+
+\noindent An orthography profile is tab-delimited UTF-8 text file. The first column must be labelled \texttt{Grapheme}. Each row in the \texttt{Grapheme} column specifies graphemes that may be found in the orthography of the input text. In this example, we provide additional columns IPA and XSAMPA, which are mappings from our graphemes to their IPA and XSAMPA transliterations. The final column \texttt{COMMENT} is for comments; if you want to use a tab ''quote that     string''!
+
+Let's load the orthography profile with our tokenizer.
+
+\begin{lstlisting}[language=python]
+>>> from segments.tokenizer import Profile
+>>> t = Tokenizer('data/orthography-profile.tsv')
+\end{lstlisting}
+
+\noindent Now let's segment the graphemes in some input strings with our orthography profile. The output is segmented given the definition of graphemes in our orthography profile, e.g.\ we specified the sequence of two $<$a a$>$ should be a single unit $<$aa$>$, and so should the sequences $<$c h$>$, $<$o n$>$ and $<$i h$>$.
+
+\begin{lstlisting}[language=python]
+>>> t('aabchonn-ih')
+>>> 'aa b ch on n - ih'
+\end{lstlisting}
+
+\noindent This example shows how can we tokenize input text into our orthographic specification. We can also segment graphemes and transliterate them into other formats, which is useful when you have sources with different orthographies, but you want to be able to compare them using a single representation like IPA.
+
+\begin{lstlisting}[language=python]
+>>> t.transform("aabchonn-ih", "IPA")
+>>> 'aː b tʃ õ n í'
+\end{lstlisting}
+
+\begin{lstlisting}[language=python]
+>>> t.transform("aabchonn-ih", "XSAMPA")
+>>> 'a: b tS o~ n i_H'
+\end{lstlisting}
+
+\noindent It is also useful to know which characters in your input string are not in your orthography profile. Use the function \texttt{find\_missing\_characters}.
+
+\begin{lstlisting}[language=python]
+>>> t.find_missing_characters("aa b ch on n - ih x y z")
+>>> 'aa b ch on n - ih � � �'
+\end{lstlisting}
+
+\noindent We set the default as the Unicode replacement character \uni{fffd}, \textsc{replacement character}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
+
+\begin{lstlisting}[language=python]
+>>> t = Tokenizer('data/orthography-profile.tsv', 
+	errors_replace=lambda c: '?')
+>>> t.find_missing_characters("aa b ch on n - ih x y z")
+>>> 'aa b ch on n - ih ? ? ?'
+\end{lstlisting}
+
+\begin{lstlisting}[language=python]
+>>> t = Tokenizer('data/orthography-profile.tsv', 
+	errors_replace=lambda c: '<{0}>'.format(c))
+>>> t.find_missing_characters("aa b ch on n - ih x y z")
+>>> 'aa b ch on n - ih <x> <y> <z>'
+\end{lstlisting}
+
+\noindent Perhaps you want to create an initial orthography profile that also contains those graphemes x, y, z?
+
+\begin{lstlisting}[language=python]
+>>> profile = Profile.from_text("aa b ch on n - ih x y z")
+>>> print(profile)
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash,texcl=true]
+  Grapheme  frequency  mapping
+            9
+  a         2          a
+  h         2          h
+  n         2          n
+  b         1          b
+  c         1          c
+  o         1          o
+  -         1          -
+  i         1          i
+  x         1          x
+  y         1          y
+  z         1          z
+\end{lstlisting}
+
+
+\begin{comment}
+\begin{lstlisting}[language=python]
+>>> from __future__ import unicode_literals, print_function
+>>> from segments import Profile, Tokenizer
+>>> t = Tokenizer()
+>>> t('abcd')
+'a b c d'
+>>> prf = Profile({'Grapheme': 'ab', 'mapping': 'x'}, \
+{'Grapheme': 'cd', 'mapping': 'y'})
+>>> print(prf)
+mapping Grapheme
+ab  x
+cd  y
+>>> t = Tokenizer(profile=prf)
+>>> t('abcd')
+'ab cd'
+>>> t('abcd', column='mapping')
+'x y'
+\end{comment}
+
 
 
 \subsection*{Command line interface}
@@ -138,38 +274,16 @@ profile for segmentation. Create a text file:
   $ cat text.txt | segments --profile=profile.prf tokenize
   a ä aa ö aa ü aa
 
-  $ cat text.txt | segments --mapping=mapping --profile=profile.prf tokenize
+  $ cat text.txt | segments --mapping=mapping 
+    --profile=profile.prf tokenize
   a ä x ö x ü x
 \end{lstlisting}
 
 
-\subsection*{Application programming interface}
-The \texttt{segments} API can be accesses by importing 
-the package into Python a script. Here is an example of 
-how to import the libraries, create a tokenizer object, 
-tokenize a string and create a profile.
-
-\begin{lstlisting}[language=python]
->>> from __future__ import unicode_literals, print_function
->>> from segments import Profile, Tokenizer
->>> t = Tokenizer()
->>> t('abcd')
-'a b c d'
->>> prf = Profile({'Grapheme': 'ab', 'mapping': 'x'}, \
-{'Grapheme': 'cd', 'mapping': 'y'})
->>> print(prf)
-mapping Grapheme
-ab  x
-cd  y
->>> t = Tokenizer(profile=prf)
->>> t('abcd')
-'ab cd'
->>> t('abcd', column='mapping')
-'x y'
-\end{lstlisting}
 
 
-\section{R}
+
+\section{R library: qlcData}
 \label{r-implementation}
 
 % \subsection*{Installing the R implementation}
@@ -313,7 +427,7 @@ various different ways in which strings can be separated into graphemes by
 \texttt{write.profile}. Consider the following string of characters called
 \texttt{example} below. The default settings of \texttt{write.profile} separates
 the string into Unicode graphemes according to grapheme clusters
-(called user-perceived characters, see Section~\ref{the-unicode-approach}). As it 
+(called user-perceived characters, see Chapter~\ref{the-unicode-approach}). As it 
 turns out, some of these graphemes are single codepoints, others are combinations
 of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 
@@ -494,8 +608,8 @@ print(xtable(profile_skeleton
   )
 @
 
-It is also possible to leave out the Unicode information in
-the profile skeleton by using the option \texttt{info = FALSE}. It is also
+To leave out the Unicode information in
+the profile skeleton, use the option \texttt{info = FALSE}. It is also
 possible not to use a separate file at all, but process everything within R. In
 simple situations this is often useful (see below), but in general we prefer to
 handle everything through a separately saved orthography profile. This profile
@@ -545,7 +659,7 @@ tokenize( example, profile = profile_skeleton, ordering = NULL)$strings
 
 There are various additional options for rule ordering implemented. Please check
 the help description in R \texttt{help(tokenize)} for more details on the
-possible rule ordering specificiations. In summary, there are four different 
+possible rule ordering specifications. In summary, there are four different 
 ordering options, that can also be combined:
 
 \begin{itemize}
@@ -596,12 +710,12 @@ It is important to realize that different ordering of the rules does not have
 so-called feeding and bleeding effects as known from finite-state rewrite
 rules.\footnote{Bleeding is the effect that the application of a rule changes
 the string, so as to prevent a next rule to apply. Feeding is the opposite: a
-specific rule will only be applied becuase a previous rule changed the string
+specific rule will only be applied because a previous rule changed the string
 already. The interaction of rules with such feeding and bleeding effects is
 extremely difficult to predict.} The graphemic parsing advocated here works
 crucially different from rewrite rules in that there is nothing being rewritten:
 each line in an orthography profile specifies a grapheme to be captured in the 
-string. All lines in the profile are processed in a specifed order (as determined
+string. All lines in the profile are processed in a specified order (as determined
 by the option \texttt{ordering}). At the processing of a specific line, all 
 matching graphemes in the data are marked as captured, but not changed. 
 Captured parts cannot be captured again, but they can still be used to match 
@@ -667,7 +781,7 @@ expressions in the description of the context. For such contextually specified
 graphemes to be included in the graphemic parsing we have to specify the option
 \texttt{regex = TRUE}. This contextually specified grapheme should actually be
 handled first, so we could try \texttt{ordering = NULL}. However, we can also
-explicitly specifiy that rules with contextual information should be applied
+explicitly specify that rules with contextual information should be applied
 first by using \texttt{ordering = "context"}. That gives the right results for
 this toy example.
 
@@ -878,7 +992,7 @@ tokenize(example
 @
 
 Normally, the separator specified should not occur in the data. If it does,
-unexpected things might happen, so consider removing the chosen seperator from
+unexpected things might happen, so consider removing the chosen separator from
 your strings first. However, there is also an option \texttt{sep.replace} to
 replace the separator with something else. When \code{sep.replace} is specified,
 this mark is inserted in the string at those places where the separator occurs.
@@ -965,6 +1079,42 @@ tokenize( "abbb"
         , regex = TRUE
         )$strings
 @
+
+
+\section{More recipes}
+\label{use-cases}
+
+Online we provide several recipes, or use cases, that illustrate the applications of orthography profiles using our implementations in Python and R. \footnote{\url{https://github.com/unicode-cookbook/recipes}} Here we briefly describe these use cases and we encourage users to try them out using Git and Jupyter Notebooks.
+
+First, as we discussed above, we provide a basic tutorial on how to use the Python \texttt{segments}\footnote{\url{https://pypi.python.org/pypi/segments}} and R \texttt{qlcData}\footnote{\url{https://github.com/cysouw/qlcData}} libraries.\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics}} This use case simply shows the basic functions of each library.
+
+The two use cases using the Python \textt{segments} package include a tutorial on how to segment graphemes in IPA text:
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/JIPA
+\end{itemize}
+	
+\noindent and an example of how to create an orthography profile to tokenize fieldwork data from a large comparative wordlist.
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/Dogon
+\end{itemize}
+
+\noindent The JIPA use case uses excerpts from the Northwind and the Sun passages from the Illustrations of the IPA published in the Journal of the International Phonetic Alphabet. Thus the use case shows how a user might tokenize IPA proper. The Dogon use case uses fieldwork data from the Dogon languages of Mali language documentation project.\footnote{\url{http://dogonlanguages.org/}} This use case illustrates how a user might tokenize fieldwork data from numerous linguists using different transcription practices by defining these practices with an orthography profile to make the output unified and comparable.
+
+The two use cases using the R \texttt{qlcData} library include a use case for tokenizing wordlist data from the Automated Similarity Judgment Program (ASJP):\footnote{\url{http://asjp.clld.org/}}
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/ASJP
+\end{itemize}
+
+\noindent and for tokenizing a corpus of text in Dutch orthography:
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/Dutch
+\end{itemize}
+
+\noindent The ASJP use case shows how to download the full set of ASJP wordlists, to combine them into a single large CSV file, and to tokenize the ASJP orthography. The Dutch use case uses the 10K corpus for Dutch (``nld'') from the Leipzig Corpora Collection,\footnote{\url{http://corpora2.informatik.uni-leipzig.de/download.html}} which is then cleaned and tokenized with an orthography profile that captures the intricacies of Dutch orthography.
 
 
 

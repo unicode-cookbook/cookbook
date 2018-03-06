@@ -1,0 +1,769 @@
+Review "The Unicode Cookbook for Linguistics"
+
+This books gives an overview of the intersection of the IPA alphabet and
+Unicode, preceded by a discussion of foundational concepts in writing
+systems, and followed by the suggestion to establish "Orthography
+profiles" as a theoretical concept, which are are in turn implemented in
+Python and R.
+
+*** Our responses prefixed with "***" (which is sometimes also used to delimit the comments from the reviewer for easier answering).
+
+*** We thank the reviewer for a very thorough reading of our manuscript and for many helpful (and time consuming to fix/update) suggestions, which we know have made this cookbook ever the more useful for its intended audiences.
+
+
+Global evaluation:
+The book is concise and can serve as a useful manual for Linguists Who
+Have Always Wondered About Unicode But Never Dared To Ask. The
+exposition of the background is in general well organised and easy to
+follow (for a technical paper). The writing is good in general, but
+sometimes repetitive. Minor suggestions for reorganisation of passages
+are given below. A higher amount of illustrations and charts would make
+that part more accessible.
+
+The orthography profiles section is less well written and at times a bit
+confused. It does not seem completely finished either, since there are
+dangling references and literal TODO in the text. For this section, it
+will be necessary to have a very clear picture about the intended
+audience. For instance, do the authors assume the readers know bash,
+python and R? Most passages do, but some passages explain things that a
+tech-savvy audience will well be aware of and find tedious. The language
+of the implementation part is of less high quality than the introductory
+parts.
+
+*** We have thoroughly updated the orthography profiles and implementation chapters (in line with comments from reviewer 1, in which we make the orthography profile specification more precise, and we additionally spin off the implementation parts with code into Jupyter notebooks online).
+
+The authors should check the use of single and double quotes across the
+paper, which is incoherent. As far as I can tell, all instances of
+material currently enquoted should be in double quotes. Also, the
+authors should check Special Capitalization, which is used in some
+places. Finally, the bibliography has recurrent issues relating to
+naming of organizations, capitalization, and missing places of
+publication and needs to be thoroughly revised.
+
+*** We have gone through the manuscript and updated the quotes following these principles:
+
+- Double quotation marks are generally used for distancing, in particular in the following situations:
+
+	- when a passage from another work is cited in the text (e.g. According to Takahashi (2009: 33), “quotatives were never used in subordinate clauses in Old Japanese”); but block quotations do not have quotation marks;
+
+	- when a technical term is mentioned that the author does not want to adopt, but wants to mention, e.g. This is sometimes called “pseudo-conservatism”, but I will not use this term here, as it could lead to confusion.
+
+- Single quotation marks are used exclusively for linguistic meanings, as in the following: Latin habere ‘have’ is not cognate with Old English hafian ‘have’.
+
+***
+
+A section which is missing in something called a "Cookbook" would be
+practical recommendations on how to input Unicode characters. There are
+various character selection tools, shortcuts on the keyboard, the
+shapecatcher website references at several places, or the Wikipedia
+lists of glyphs and fileformat.info. Having all this in one section
+would be handy for the user. It is of course unrelated to the
+orthography profiles, but I imagine that many people will use this book
+as a primer on IPA+Unicode and actually disregard the last two chapters.
+For this group, such a summary would be useful.
+
+*** We have included a new chapter titled "Practical recommendations" aimed at ordinary working linguists, which appears before the last two chapters (aimed at programmers).
+
+
+Overall recommendation: publish with minor revisions.
+=============================================================================
+
+Detailed comments
+
+Preface
+
+- our research": who is "we"? I first I took this to mean the Unicode
+research, but apparently the day-to-day research of the authors in other
+fields is intended here.
+
+*** Fixed: https://github.com/unicode-cookbook/cookbook/commit/e29788678c2647300339fdb1bab3e19eed58df6b
+
+- "We welcome comments ...": this might be a good place to add
+information about the book being available on the Paperhive platform,
+where readers can leave questions and comments.
+
+*** Fixed: https://github.com/unicode-cookbook/cookbook/commit/e29788678c2647300339fdb1bab3e19eed58df6b
+
+
+Chapter 1
+- 1.1.: two instances of "normally" in close succession
+
+*** Fixed.
+
+- automatic processing --> automated processing
+
+*** Fixed throughout the book.
+
+- Chapter4 --> Chapter 4
+
+*** Fixed.
+
+- are expressed as U + n where --> are expressed as U + n, where
+
+*** Fixed.
+
+- Chapter?? --> resolve reference
+
+*** Fixed.
+
+
+Section "Telegraphy"
+- it is slightly odd that whistling and drumming are treated as
+instances of teleGRAPHY here. Neither whistling nor drumming use
+writing, so telePHONY or teleSONY might be more appropriate (but have
+obvious other issues).
+
+*** Agreed.
+
+- Footnote 6 "In effect ..." must be rephrased (or deleted, not sure if
+this information is actually relevant)
+
+*** Deleted.
+
+
+1.3 Linguistic terminology
+- the definition of writing system is odd. It says "system that uses
+visible or tactile signs". That would be true for sign languages as well
+(and also for communication systems used by blind signers), but we would
+not want to call these signers' systems a "writing system". A better
+definition could be "shapes on a support", where the shapes could be
+perceived with the eyes or, as with Braille, with the fingers. The
+support could be paper, clay, or a screen. You might find yet another
+definition which suits your purposes, but the current definition should
+be revised in any case.
+
+*** This definiton is one of many for the term writing system, e.g. Coulmas (1993, pg 1):
+
+"At least six meanings of 'writing' can be distinguished: (1) a system of recording language by means of visible or tactile marks..."
+
+who also notes:
+
+"Every attempt at a universal definition of writing runs the risk of being either ad hoc or anachronistic, or informed by cultural bias."
+
+Braille is the classic example of a tactile writing system. We will keep the definition as is.
+
+
+- in the same section: do not italicize quoted strings.
+
+*** Fixed.
+
+- "as used among the world's languages to represent the language": delete
+
+*** Deleted.
+
+- "All orthographies are language-specific": suggest dropping "All"
+unless this is an empirical claim and not a general truth.
+
+*** Dropped.
+
+
+
+Section script systems
+- "Graphemes consist of characters": rewrite this whole passage. Some
+problems are given below.
+
+We've updated this passage to make things clearer by introducing what a grapheme is earlier.
+
+- It is unclear to me what a character is. Maybe "a" and "b" are
+characters used for the graphemes <a> and <b>, and "c" and "h" are
+characters used in the grapheme <ch>?
+
+We more clearly define character.
+
+- "In practice, characters often consist of multiple building blocks,
+each of which could be considered a character in its own right". So
+characters consist of characters? Are there some "terminal characters",
+which do not consist of other characters? Or do "bdpq" all consist of a
+stroke and an eye, which are then characters???
+This has to become clearer. In this overview section, it would be
+helpful to set off the definitions, e.g.
+(1) A GRAPHEME is ....
+....
+(2) A CHARACTER is ...
+...
+(3) A GLYPH is ...
+
+
+- Footnote 7 refers to characters in Chinese (maybe radicals are meant
+here???), and then states that this will not be further explored. But
+about 10 lines down the page, the authors say "although a Chinese
+character ...", which does look like a further exploration indeed.
+Suggest dropping footnote 7, or alternatively make the argument with an
+example other than Chinese.
+
+*** We kept the footnote, but drop the not further explored part, since as you mention, we do highlight the fact (mainly for Chinese linguists) that "character" does have a different meaning in regard to Chinese writing systems:
+
+In the linguistic terminology of writ- ing systems, a character is a general term for any self-contained element in a writing system.6 In technological terminology, a character refers to the elec- tronic encoding of a component in a writing system that has semantic value (see Section 2.3).
+
+[6] Note that there is a second interpretation of the term character, i.e. a conventional term for a unit in the Chinese writing system (Daniels 1996).
+
+- "A diacritic mark ... may be above, below, or through": add left and
+right diacritics, e.g. Hindi long and short <i> attach to either side.
+
+*** Good point, we updated this sentence:
+
+A \textsc{diacritic} is a mark, or series of marks, that may be above, below, 
+before, after, through, around, or between other characters \citep{Gaultney2002}.
+
+- "A GRAPHEME is the basic, minimally distinctive symbol ..., alike to
+the phoneme, which is an abstract representation ...": Does this entail,
+then, that the grapheme is an abstract representation as well? Possibly
+instantiated by an (allo)graph? The abstract vs. concrete nature of the
+grapheme might merit some discussion here.
+
+*** Indeed. We make this clear by stating:
+
+A grapheme is the basic, minimally distinctive symbol of a particular writ- ing system, alike to the phoneme is an abstract representation of a distinct sound in a speci c language.  The term grapheme was modeled a er the term phoneme and represents a contrastive graphical unit in a writing system (see Kohrt 1986 for a historical overview of the term grapheme).
+
+- "For example, <x> in English orthography represents a combination of
+the phonemes /k/ and /s/.": give an example, e.g. /IndEks/. Note that
+"Xerox" or "example" use <x> for other phonemes or phoneme combinations,
+and that /sOks/ uses the phonemes /ks/ which are not represented by <x>.
+
+- It might be interesting to briefly mention the non-trivial mapping of
+phonemes on graphemes, e.g. give/gin/jingle, where the graphemes <g>/<j>
+and the phonemes /g/dZ/ have a complex mapping.
+
+*** Thanks for these thorough comments. We've updated this sentence to:
+
+For example, <x> in English orthography sometimes represents a
+combination of the phonemes /k/ and /s/, as in the word `index' [ˈɪnˌdɛks]; other times 
+it is pronounced as /z/, such as in the words `Xerox' [ˈzɪrˌɑks] and `example' [ɪɡˈzæmpəl]. As one can see, there can be non-trivial mappings between graphemes and phonemes in orthographies like English, e.g.\ `give', `gin', `jingle', where the graphemes 
+<g> and <j> and the phonemes /g/ and /dʒ/ have a complex mapping.
+
+
+***
+
+
+1.4.
+The Unicode [Ss]tandard
+- "distinction between universal (ASCII) versus language-particular
+(font).": The meaning of this escapes me.
+
+*** Fixed throughout.
+
+- "However, ... ": the discussion of locales should not be found this
+early on in the introduction of Unicode. Suggest moving it down.
+
+*** As suggested by reviewer 1, we have spun the Unicode Approach section (previously in Chapter 1) into its own chapter, now Chapter 2.
+
+
+
+Character encoding system
+- "the character encoding is represented ... , which is used to encode a
+set of characters": rephrase or delete
+
+*** What's wrong with this?
+
+- "non-negative": delete. You are talking to a human audience. No human
+will try negative integers as a code point.
+
+*** That's the core definition -- we keep it.
+
+
+- Footnote 10: the equivalent of hex 0070 would be binary
+0000000011100000. Since you use leading zeros in hex, you should do the
+same for binary. But this footnote can probably be deleted. People who
+know about different base encodings will find this trivial, and people
+who don't will find this frightening and will not profit from the
+description.
+
+*** We have removed this footnote.
+
+- "A font is a set of glyphs linked to code points": --> "A font is a
+set of connections between glyphs and code points"
+
+*** Updated: "In this approach, a \textsc{font} is then simply a collection of glyphs connected to code points."
+
+
+- "(though note ...)" : put in footnote
+
+*** Fixed.
+
+- aptly-names --> aptly-named
+
+*** Fixed.
+
+- "PRECOMPOSED code point" --> "PRECOMPOSED CODE POINT" (or "PRECOMPOSED
+WHATEVER", but not bare "PRECOMPOSED")
+
+*** Fixed.
+
+- "the Unicode Standard offers different kinds of normalization ...":
+normalization is a tough concept to grasp. Find exactly one place where
+to discuss it and keep discussions of it elsewhere to a minimum. Either
+don't discuss it there at all, or mention it and cross-refer to the
+in-depth discussion.
+
+*** Ok, we've added a pointer to where we talk about Unicode Normalization in detail:
+
+We discuss Unicode Normalization in detail in Section \ref{pitfall-canonical-equivalence}.
+
+- "For example, the sequence <c> ...": this sentence no verb.
+
+*** Now: "Examples include the sequence..."
+
+- instead of Slovak and Sisaala, readers might find English <ch> or
+French <oe> more useful. In the context of <oe>, one could also discuss
+whether <oe> and <œ> are the same grapheme, and what the status of its
+composing characters is, if any. A little chart or illustration
+exemplifying graphemes, characters, glyphs, tailored graphemes and the
+relation between then (meronymic and mapping) might be useful here.
+
+*** Sure readers might, but we like these examples. The Slovak example also illustrates a use case that the Unicode Standard describes in detail (http://unicode.org/reports/tr29/), namely that: " “ch” may be considered a grapheme cluster in Slovak, for processes such as collation."
+
+We've updated the text and we point to the Unicode Standard's annexes for text segmentation and normalization, which we feel, provide excellent illustrations of their 
+decisions.
+
+
+*** We've removed this footnote.
+
+Footnote 10: the equivalent of hex 0070 would be binary
+0000000011100000. Since you use leading zeros in hex, you should do the
+same for binary. But this footnote can probably be deleted. People who
+know about different base encodings will find this trivial, and people
+who don't will find this frightening and will not profit from the
+description.
+
+
+
+
+Chapter 2
+- Next to the notion of "pitfall", it may or may not be useful to
+introduce the notion of "gotcha". This is synonymous, as far as I can
+tell, but it emphasizes that there is a deliberate design decision which
+users are often not aware of and which leads to unsuspected (but
+completely legit) behaviour.
+
+*** This is a nice suggestion, but I don't want to divide the notion of pitfall further because it might confused the reader.
+
+- "differently as expected" --> than
+- "practical use cases-that" --> than
+
+*** Fixed.
+
+Section 2.2
+- It appears that before "First", there would be "Zeroth: a 1:1 mapping,
+e.g. <t>:'t'"
+
+*** We say this in the preceding paragraph, which should suffice: "A single Unicode character may of course be rendered as a single glyph."
+
+- Subheadings should be useful here.
+
+*** This seems like overkill for such a small paragraph. Instead I've split the large paragraph into smaller paragraphs, e.g. "first", "second".
+
+- I do not get the Tamil part. Are you talking about U+0B94ஔ, which
+visually looks like a combination of U+0B93ஓ and U+0BA9ன? If so, give
+these glyphs. But for the case in point, Sinhala might actually be a
+more pertinant example. Sinhala U+0DD9 ෙ is one code point and is made
+up of one glyph, which looks like a spiral. U+0DDB ෛ is one code point
+and is made of twice that spirally glyph. From what I understand from
+the passage, this would be a suitable example. If not, I have probably
+misunderstood the passage, and the meaning should be clarified.
+
+*** I added the glyphs and the additional example: Second, a single character may be rendered as a sequence of multiple glyphs. For example, in Tamil one Unicode character may result in a combination of a consonant and vowel, which are rendered as two adjacent glyphs by fonts that supports Tamil, e.g. \textsc{tamil letter au} at \uni{0B94} represents a single character <ஔ>, composed of two glyphs <ஓ> and <ன>. Perhaps confusingly, in the Unicode Standard there are also two individual characters, 
+i.e.\ \textsc{tamil letter oo} at \uni{0B93} and \uni{0BA9} \textsc{tamil letter nnna}, each of which is a glyph. Another example is Sinhala \textsc{sinhala vowel sign kombu deka} at \uni{0DDB} <ෛ>, which is visually two glyphs, each represented by \textsc{sinhala vowel sign kombuva} at \uni{0DD9} < ෙ>.
+
+
+- in the discussion of the storeys of <a> and <g>, the elements
+currently put between <> are not graphemes but glyphs. Do not use angle
+brackets here, but find a way to design glyphs, e.g \fbox{}ing them
+
+*** I think this is overkill -- graphical elements, whether Unicode characters of glyphs, are provided in <>'s, as is standard throughout the writing systems literature.
+
+
+- "tweaking baseline and/or kerning". These concepts cannot be assumed
+familiar. Either delete this passage, or add explanations in a footnote,
+or put the complete baseline/kerning passage in a footnote and expand.
+
+*** Removed.
+
+
+
+Chapter 3
+- general comment: replace single quotes by double quotes everywhere.
+Occasionally, italics might be an option, too.
+
+
+*** We understood that quotes and double quotes should follow these principles:
+
+- Double quotation marks are generally used for distancing, in particular in the following situations:
+
+	- when a passage from another work is cited in the text (e.g. According to Takahashi (2009: 33), “quotatives were never used in subordinate clauses in Old Japanese”); but block quotations do not have quotation marks;
+
+	- when a technical term is mentioned that the author does not want to adopt, but wants to mention, e.g. This is sometimes called “pseudo-conservatism”, but I will not use this term here, as it could lead to confusion.
+
+- Single quotation marks are used exclusively for linguistic meanings, as in the following: Latin habere ‘have’ is not cognate with Old English hafian ‘have’.
+
+*** So I updated the quotation style accordingly (I hope). The old terms in this chapter are in double quotes, standard terms are now italicized.
+
+
+
+- the IPA Association --> the International Phonetic Association
+
+*** Fixed.
+
+
+- when the twain shall meet --> when the twain met OR when the twain
+should meet
+
+*** This is a fix phrase ("never the twain shall meet" meaning "used to suggest that two things are too different to coexist") and I would like to keep it as is.
+
+
+- Footnote 2 "IPA(" --> "IPA ("
+
+*** Fixed.
+
+
+Section Principles
+- "the difference in English between an aspirated /p/ in [] or an
+unreleased /p/ in []": I believe that if aspiration of /p/ is marked,
+then aspiration for the t's should be marked as well (and unreleased
+final /t/, if applicable). Maybe find another pair of examples.
+
+*** For the case of completeness, we added /t/: "difference in English between an aspirated /p/ and /t/ in [spʰot̚] and an unrealeased /p/ in [stʰop̚]."
+
+
+- German, Dutch, English and French /t/: The mapping of dental/aspirated
+to the languages seems odd. Standard German /t/ is not dental, but Dutch
+/t/ is. European French /t/ is not dental (but Canadian French /t/ is).
+If this is taken from some other resource, a reference should be given.
+In any case, that list cannot be taken to be self-evident.
+
+*** We've updated this passage to reflect the dental/alveolar areas:
+
+A phonemic transcription includes the conventions of a particular language's phonological rules. These rules determine the realization of that language's phonemes. For example, in the transcription of German, Dutch, English and French a symbol <t> might be used for the voiceless plosive in the alveolar and dental areas.
+
+
+- "Similarly... Similarly" in close succession
+
+*** Fixed.
+
+Section IPA numbers
+"assigning ... assigned ... assigned". More lexical variation, please.
+
+*** Fixed: "The process of assigning standardized computer
+codes to phonetic symbols was given to the \textsc{workgroup on computer..."
+
+
+"three-digit number numerical directory of digit triples". This seems
+like a pleonastic tautology to me.
+
+*** Simplified: "The IPA Number is expressed as a three-digit number. The first digit 
+indicates the symbol's category \citep{Esling1990,EslingGaylord1993}:"
+
+
+- Footnotemark ".⁷.": delete one period
+
+*** Fixed.
+
+- "as an IPA symbol codings": not sure what is meant here, but agreement
+is odd
+
+*** Fixed: "One solution was the ASCII-ification of the IPA, which simply involved 
+defining keyboard-able sequences consisting of ASCII combinations as IPA symbols."
+
+
+- "(Computer 1985,1986,1988)": please fix this in the bib file
+
+*** Fixed.
+
+- "16 bit" --> "16-bit"
+
+*** Fixed.
+
+- "were published tables" --> "were published as tables"
+
+*** Fixed.
+
+- "inline" --> "in line"
+
+*** Fixed.
+
+- "development linguistic insights" --> "development of linguistic
+insights."
+
+*** Fixed.
+
+- "along the line then" --> "along the line than"
+
+*** Fixed.
+
+Chapter 4
+Footnote 1: Moran 2012 --> Moran (2012)
+
+** We use parentheses in reference to the author vs in reference to the work, e.g. as noted by Moran (2012) vs as stated in Moran 2012. We can change this for LSP if this is not consistent with your practices.
+
+
+4.3.
+the first bullet point discusses the use of the apostrophe for the
+glottal stop. This is indeed related to phonetics and Unicode, but the
+glottal stop is not represented by an apostrophe-like thing in IPA, so
+this problem is unrelated to the chapter entitled "IPA meets Unicode".
+Restrict this to ejective marker.
+
+*** I think this depends on one's typography know-how. I am reluctant to change the description because although in the strict sense it is not an apostrophe, in Umgangssprache I often hear it referred to as one. Better to keep it in -- also because the apostrophe is used to represent ejectives due to easy keyboarding. @cysouw ?
+
+
+- discussion of slanted glyphs: it might be worthwhile to note that we
+had to use the slanted approach for "A dictionary and grammatical
+outline of Chakali" (http://langsci-press.org/catalog/book/74), where
+the two different a's are used in the orthography.
+
+*** I added a sentence noting this: "This approach was taken by the Language Science Press to distinguish between the two different orthographic <a>'s in Chakali in 
+\cite{Brindle2017}.\footnote{\url{http://langsci-press.org/catalog/book/74}}"
+
+
+
+4.5. multiple encoding options
+- another issue which might be relevant here is the "i dot-suppression".
+When putting an acute on an <i>, the dot will vanish (already in the
+precomposed form, so this does not seem to be a font choice.). This will
+make the combination of <i>+<´> look like the combination of <ı>+<´>.
+Related to that is the unavailability of dotless barred i, so <ɨ>+<´>
+will give you <́ɨ>, with both dot and acute. This is a case where the
+combining overlay bar is useful, I will return to this below. I am not
+sure whether the dot-suppression should be discussed here, or whether it
+might be some other kind of pitfall, but it should be mentioned somewhere.
+
+*** It seems most appropriate to mention this problem at the end of Section 5.3 Pitfall: IPA homoglyphs in Unicode and before and Section 5.4 Pitfall: Homoglyphs in IPA since it highlights both issues. Thus we write:
+
+Lastly, before we move on from the pitfall of IPA homoglyphs in Unicode to the pitfall of 
+homoglyphs in IPA, we are aware of one example that illustrates both pitfalls. 
+Consider for example what one reviewer coined \textsc{i dot-suppression}. 
+When combining, say the \textsc{latin small letter i} <i> at \uni{0069} with 
+the \textsc{comining acute accent} <\dia{0301}> at \uni{0301}, the result is 
+ the combination of these two characters into <í> or the associated 
+precomposed form \textsc{latin small letter i with acute} <í> at \uni{00ED}. 
+Typographically, the accent mark replaces the dot. In IPA, the <í> denotes 
+a high front unrounded vowel with high tone. However, the result of losing 
+the dot makes this IPA symbol look very similar to the near-high near-front 
+unrounded vowel <ɪ>, when it also has the high tone marker: <ɪ́>.
+
+
+- Footnote 7: when discussing superscript numbers for tone, it could be
+worthwhile to say a word about Unicode superscript numbers
+(https://en.wikipedia.org/wiki/Superscripts_and_Subscripts) vs. using
+the text processor superscript formatting.
+
+*** We've updated this footnote:
+
+[8] Not sanctioned by the IPA, but nevertheless widely attested, is the use of superscript numbers for marking tones, also proposed by Chao (1930). One issue to note here is that superscript numbers can be either regular numbers that are forma ed as superscript with a text processor, or they can be separate superscript characters, as defined in the Unicode Standard (see: https://en.wikipedia.org/wiki/Superscripts_and_Subscripts). This divide means that searching text is dependent on how the author formatted or encoded the superscript numbers.
+
+
+- "only one options" --> "only one option"
+
+*** Fixed.
+
+- missing decomposition: the case of accented barred i could be
+discussed here.
+
+*** Fixed.
+
+
+4.9.
+- "Tone letters are normally written ...": give the Unicode code points
+here as well, in analogy to bullet points 1 and 3.
+
+*** Added.
+
+
+4.10.
+- "but strangely enough ...": delete. The cedilla issue has been
+discussed before.
+
+*** Removed.
+
+- "the diacritics on top of a character": to me, "on top" is a synonym
+of "above", so an acute would be on top of an <e> for instance. My
+interpretation might be unwarranted, but maybe another preposition like
+"across" can be found, or something like "overlay".
+
+*** Good call! Updated with the term overlay: "overlay diacritics like <\dia{0334}>"
+
+- "removed symbols as labels them as clicks": rephrase
+
+*** This paragraph has been updated:
+
+These decisions have practical consequences for transcribers 
+of IPA, particularly those who wish to follow current recommended practices of 
+encoding electronic text in the Unicode Standard. For example, the Unicode 
+Standard contains \textsc{latin small letter turned t} <ʇ> at U+0287, 
+which is no longer part of the IPA. It still exists, however, in the Unicode 
+\textsc{IPA Extensions} block, with the comment ``dental click (sound of `tsk tsk')''. 
+In such cases, the IPA transcriber must know the status of legacy symbols in the current 
+version of the IPA and the correct characters in the Unicode Standard.
+
+
+- "Mc Laughlin": delete space?
+
+*** Fixed.
+
+4.12.
+- Drop Moran (2012) in first sentence.
+
+*** Fixed.
+
+4.13.
+- is widened-IPA a superset of valid-IPA or only a superset of
+strict-IPA? A diagram showing the relation of the different sets might
+be handy.
+
+*** We'll pass on a pie chart and instead give the number of characters and charts for the user.
+
+- I feel that superscript nasals for presnalized consonants should be
+discussed somewhere. I am not sure as to their status in IPA, but they
+are certainly used a lot. The current list only gives the superscript n,
+but at least m and engma should be discussed.
+
+*** We added a footnote regarding these phonetic symbols that come from non-IPA traditions:
+
+The Unicode Standard defines the Phonetic Extensions block that defines symbols used in phonetic notation systems, including the Uralic Phonetic Alphabet, Americanist and Russianist phonetic notations, Oxford English and American dictionaries, etc. Among other symbols, the Phonetic Extensions block includes the superscript letters <m, ŋ, b>, which are not valid IPA characters, although we have seem them used in linguistic practice.
+
+
+
+5.1
+- "Although these variants are visually homoglyphs": this has been
+discussed under normalization. Shorten or delete this and add a cross-ref
+
+*** We make reference to where the reader can get more inforamtion
+
+
+- "For example can": rephrase
+
+*** Fixed.
+
+
+5.2.
+- "possibly ... possibly": rephrase
+
+*** Fixed.
+
+5.3. Formal specification
+- give a figure with an open file where you indicate the relevant
+portions at the very beginning of this section. The prose description is
+very dense, and an illustration will make it easier to relate.
+
+*** We don't understand this comment. The formal description is meant to be formal.
+
+Section Implementation
+- can orthography formats handle negative lookahead/lookbehind? Note
+that this is different from a positive look for the set complement if
+the string looked for is longer than 1.
+
+*** They can handle anything that can be encoded with regular expressions (and if the regular expression has that functionality).
+
+B6.
+I feel that a language which has both <ch> and <sch> will get you
+different results depending on global or linear algorithm.
+"Ascha" should give you "A sch a" with the linear approach, but "a s ch
+a" with the global approach iff "ch" is matched before "sch".
+
+[ ] todo
+
+C8.
+- "To treat the profile literal" --> literally
+
+*** Fixed.
+
+
+Chapter 6
+- "Each section has a number of subsections that ... "
+
+*** Fixed.
+
+- the example "aäaaöaüaa" will confuse a lot of ordinary working
+linguists. There are too many vowels, and the representation of "aa" by
+<x> is weird. I suggest using the German word "Schächtelchen", where you
+have both <sch> and <ch> to show the importance of ordering, and a
+dieresis to show decomposition (which seem to be the main didactic
+aspects of this passage to me).
+
+*** Schächtelchen is a great word and we appreciate the suggestion that "aäaaöaüaa" is confusing. So we have added Schächtelchen as an example to both the book and the online recipes.
+
+We therefore built a different example:
+
+"ĉháɾã̌ctʼɛ↗ʐː| k͡p"
+
+which captures a hypothetical form from which the child can generalize.
+
+
+- the code examples should be numbered
+
+*** We don't agree. These examples stand alone and are not necessarily sequential.
+
+
+- the tabs in the code should have the same length, so that the headers
+and the columns align
+
+*** Fixed.
+
+- "edit the profile: more": --> "edit the profile: vim" (or any other
+editor, but not more)
+
+***
+
+- "The location can be found in the following command in R.": provide
+the command (or take care of the page break)
+
+***
+
+- "Try tokenize to test the functionality": why is there an error
+message????
+
+***
+
+- "These webapps are available online at TODO": provide URL
+
+***
+
+- "we first assign the two strings to a variable test": use a more
+descriptive name than "test"
+
+***
+
+Section Using an orthography profile skeleton
+- " It is also possible ...It is also possible": rephrase
+
+*** Fixed.
+
+- maybe this passage should be written with Italian or Spanish
+orthography as an example since English orthography is such a mess. Why
+are "ie" and "oo" digraphs? If so, would "ti" in "nation" count as a
+digraph as well? And why is the second "e" in "scheme" listed at all? It
+does not correspond to any phoneme (but arguably it influences the first
+"e"). Also, for me, "sch" in "scheme" consist of two phonemes (/sk/),
+just like "sch" in "mischief (/stS/)". But the passage "Now mischief is
+parsed correctly, but scheme is wrong" suggests that the author sees
+this differently???
+
+- Footnote 3: delete. Feeding and bleeding are needlessly complicating
+the exposition
+
+- RESULT_ERRORS.TSV: I stronly suggest to either create an empty file
+when no errors are reported, or to include "no errors" in the file. The
+meaningful absence of computer files can cause all kinds of problems.
+
+- "Such contextually-specified graphemes are based on regular
+expressions so you can also use regular expressions in the descriptions
+of the context": who would've thought that!
+
+- "It is important to realize ... ": delete. The need for escape
+sequences has been discussed earlier.
+
+- Table 6.11: I was wondering whether graphemes can be in several
+classes. "Y" could be in the consonant class and in the vowel class for
+instance. Can orthography profiles handle this, and if they can, how
+would this be entered?
+
+
+
+*** Note, we have also added a section that highlights the four additional use cases that we present as Jupyter Notebooks in our Github repository of orthography profile recipes:
+
+https://github.com/unicode-cookbook/recipes/
+
+
+
+
+
+
