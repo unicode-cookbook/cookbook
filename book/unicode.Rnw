@@ -46,7 +46,7 @@
 \maketitle
 \frontmatter
 \include{chapters/preface}
-% \include{chapters/acknowledgments}
+\include{chapters/acknowledgments}
 % \include{chapters/abbreviations}
 \tableofcontents
 \mainmatter%

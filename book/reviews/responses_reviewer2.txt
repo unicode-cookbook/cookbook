@@ -679,7 +679,7 @@ have both <sch> and <ch> to show the importance of ordering, and a
 dieresis to show decomposition (which seem to be the main didactic
 aspects of this passage to me).
 
-*** Schächtelchen is a great word and we appreciate the suggestion that "aäaaöaüaa" is confusing. So we have added Schächtelchen as an example to both the book and the online recipes.
+*** Schächtelchen is a great word and we appreciate the suggestion that "aäaaöaüaa" is confusing. So we have updated the example with "Schächtelchen" (also online).
 
 We therefore built a different example:
 
