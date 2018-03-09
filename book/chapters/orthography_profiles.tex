@@ -19,7 +19,7 @@ to transparently document knowledge about the writing system (including
 transliteration), and (iii) to do all of that in a way that is easy and quick to
 manage for many different sources with many different writing systems. The
 central concept in our proposal is the \textsc{orthography profile}, a simple
-tab-separated text file, that characterizes and documents a writing system.
+delimited text file, that characterizes and documents a writing system.
 We also offer basic implementations in Python and R to assist with the
 production of such files, and to apply orthography profiles for consistency
 testing, grapheme tokenization and transliteration. Not only can orthography
@@ -101,7 +101,7 @@ In (1), the string <tsʰṍ̰shi> has been tokenized into ten Unicode code point
 required because sequences of code points can differ in their visual and logical
 orders. For example, <õ̰> is ambiguous to whether it is the sequence of <o> +
 <\dia{0303}> + <\dia{0330}> or <o> + <\dia{0330}> + <\dia{0303}>. Although these two variants are visually homoglyphs,
-computationally they are different (see Sections \ref{pitfall-ipa-homoglyphs} and \ref{pitfall-homoglyphs-in-IPA} ). 
+computationally they are different (see Sections \ref{pitfall-ipa-homoglyphs} and \ref{pitfall-homoglyphs-in-IPA}). 
 Unicode normalization should be applied to
 this string to reorder the code points into a canonical order, allowing the data
 to be treated canonically equivalently for search and comparison. 
@@ -161,8 +161,7 @@ understood, we feel that they are not well-suited for day-to-day linguistic
 practice. First, by forcing a first step of grapheme tokenization, our system 
 tries to keep close to the logic of the writing system. Second, by separating 
 tokenization from transliteration there is no problem with `feeding' and 
-`bleeding' of rules, common with transducers (cf.~Section~\ref{r-implementation}
-).
+`bleeding' of rules, common with transducers (cf.~Section~\ref{r-implementation}).
 
 Note that to deal with ambiguous parsing cases, it is still possible to use the
 Unicode approach including the \textsc{zero-width non-joiner} character at
@@ -175,7 +174,7 @@ In practice, we foresee a workflow in which orthography profiles are iteratively
 refined, while at the same time inconsistencies and errors in the data to be
 tokenized are corrected. In some more complex use-cases there might even be a
 need for multiple different orthography profiles to be applied in sequence (see
-Section~\ref{r-implementation} on various exemplary use-cases). The result of any such
+Sections~\ref{python-implementations} \& \ref{r-implementation} on various exemplary use-cases). The result of any such
 workflow will normally be a cleaned dataset and an explicit description of the
 orthographic structure in the form of an orthography profile. Subsequently, the
 orthography profiles can be easily distributed in scholarly channels alongside
@@ -204,18 +203,15 @@ for short) are the following:
 	   an input full in text mode, so that both line feed variants ``LF'' and 
 	   ``CRLF'' will be stripped.}
 
-%	\item \textsc{A profile is a unicode UTF-8 encoded text file}, ideally
-%       using NFC, no-BOM, and LF (see Section~\ref{pitfall-file-formats}), that
-%       includes the information pertinent to the orthography. 
-	\item \textsc{A profile is a CSV file with an obligatory header
+	\item \textsc{A profile is a delimited text file with an obligatory header
        line}. A minimal profile must have a single column with the header ``Grapheme''. 
-	   For any additional columns, the name in the header of the CSV file
-       must be specified. The actual ordering of the columns is unimportant. Cells should 
-	   not contain tabs or newlines. The header list must be delimited 
+	   For any additional columns, the name in the header 
+       must be specified. The actual ordering of the columns is unimportant. 
+	   The header list must be delimited 
 	   in the same way as the rest of the file's contents. Each record must be kept 
 	   on a separate line. Separate lines with comments are not allowed. Comments that
        belong to specific lines must be put in a separate column of
-       the CSV file, e.g.~add a column called \textsc{comments}.
+       the file, e.g.~add a column called \textsc{comments}.
 
 \begin{comment}	   
 	\item \textsc{Metadata should be added in a separate UTF-8 text file} using a basic
@@ -229,19 +225,26 @@ for short) are the following:
 \end{comment}
 
 	\item \textsc{Metadata should be added in a separate UTF-8 text file} using 
-	   the JSON-DL dialect specified in \textit{Metadata Vocabulary for Tabular 
+	   the JSON-LD dialect specified in \textit{Metadata Vocabulary for Tabular 
 	   Data}.\footnote{\url{https://www.w3.org/TR/tabular-metadata/}} This metadata 
 	   format allows easy inclusion of Dublin Core metadata,\footnote{\url{http://dublincore.org/}} 
 	   which should be used to specify information about the orthographic description 
-	   in the orthography profile. The orthography profile metadata should minimally include: 
-	   (i) author, (ii) date, (iii) title of the profile, (iv) a stable language identifier
-       encoded in BCP 47/ISO 639-3 of the target language of the profile, and (v)
+	   in the orthography profile.\footnote{\url{http://w3c.github.io/csvw/metadata/#dfn-common-property}} 
+	   The orthography profile metadata should minimally include provenance information including: 
+	   (i) author, (ii) date, (iii) title of the profile, and (iv)
        bibliographic data for resource(s) that illustrate the orthography
-       described in the profile. Further, (vi) the tokenization method and (vii)
-       the Unicode normalization form used should be documented here (see below).
-	   In accordance with the \textit{Metadata Vocabulary for Tabular 
-	   Data}, the metadata's filename must consist of the orthography 
-	   profile's filename appended with ``-metadata.json''.\footnote{JSON-DL metadata 
+       described in the profile. Crucially, the metadata should also specify 
+	   (iv) a stable language identifier of the target language of the profile
+       using BCP 47/ISO 639-3 or Glottocode as per the CLDF ontology.\footnote{\url{http://cldf.clld.org/v1.0/terms.rdf}}	   	   
+	   Further, the metadata file should provide information about the orthography profile's structure and contents, 
+	   including: (vi) its dialect description,\footnote{\url{http://w3c.github.io/csvw/metadata/#dfn-dialect-descriptions}} 
+	   (vii) the tokenization method (see below), and (ix) proper column           
+	   descriptions,\footnote{\url{http://w3c.github.io/csvw/metadata/#dfn-datatype-description}} 
+	   which describe how a column should be interpreted and processed (e.g.\ whether they 
+	   should be processed as regular expressions; see below).
+	   Finally, in accordance with the \textit{Metadata Vocabulary for Tabular 
+	   Data}, the metadata's filename should consist of the orthography 
+	   profile's filename appended with ``-metadata.json''.\footnote{JSON-LD metadata 
 	   is also the choice for datasets conforming to the Cross-Linguistic Data Formats standard, 
 	   see: \url{http://cldf.clld.org/}.}
 
@@ -263,7 +266,8 @@ of the orthography, using the following columns:
        distinguish different pronunciations depending on the context. 
 	\item \textsc{The columns \texttt{Grapheme}, \texttt{Left} and \texttt{Right}
        can use regular expression metacharacters.} If regular expressions are
-       used, then all literal usage of the special symbols, like full stops <.>
+       used, then the must be specified in the metadata file as such, 
+	   and all literal usage of the special symbols, like full stops <.>
        or dollar signs <\$> (so-called \textsc{metacharacters}) have to be
        explicitly escaped by adding a backslash before them (i.e.~use
        <\textbackslash.> or <\textbackslash\$>). Note that any specification of
@@ -315,7 +319,8 @@ will be expected:
        \texttt{(a\textbar{}e\textbar{}i\textbar{}o\textbar{}u\textbar{}ei\textbar{}au)}.
        Only the graphemes themselves are included here, not any contexts
        specified for the elements of the class. Note that in some cases the 
-       ordering inside this regular expression might be crucial.
+       ordering inside this regular expression might be crucial, therefore it must be 
+	   specified as so in the metadata file.
 	\item \textsc{The \textsc{left} and \textsc{right} contexts will be included
        into the regular expressions by using lookbehind and lookahead}.
        Basically, the actual regular expression syntax of lookbehind and
@@ -327,7 +332,8 @@ will be expected:
 	\item \textsc{The regular expressions will be applied in the order as specified
        in the profile, from top to bottom.} A software implementation can offer
        help in figuring out the optimal ordering of the regular expressions, but
-       should then explicitly report on the order used.      
+       then it should be made explicit in the orthograpy profile because regular 
+	   expressions are executed in order from top to bottom.
 \end{enumerate}
 
 \noindent The actual implementation of the profile on some text-string will function as
@@ -337,11 +343,11 @@ follows:
 	\def\labelenumi{B\arabic{enumi}.} \setcounter{enumi}{4} 
 	\item \textsc{All graphemes are matched in the text before they are tokenized
        or transliterated}. In this way, there is no necessity for the user to
-       consider `feeding' and `bleeding' situations, in which the application of
+       consider \textit{feeding} and \textit{bleeding} situations, in which the application of
        a rule either changes the text so another rule suddenly applies (feeding)
-       or prevents another rule to apply (`bleeding'). 
+       or prevents another rule to apply (bleeding). 
 	\item \textsc{The matching of the graphemes can occur either globally or
-       linearly. }From a computer science perspective, the most natural way to
+       linearly.} From a computer science perspective, the most natural way to
        match graphemes from a profile in some text is by walking linearly
        through the text-string from left to right, and at each position go
        through all graphemes in the profile to see which one matches, then go to

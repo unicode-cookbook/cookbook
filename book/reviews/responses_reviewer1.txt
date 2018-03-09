@@ -231,7 +231,7 @@ explicitely disallowed!
 
 *** Agreed! We have updated this to:
 
-A2. A profile is a CSV file with an obligatory header line. A minimal pro le must have a single column with the header “Grapheme”. For any ad- ditional columns, the name in the header of the CSV  le must be speci ed.  e actual ordering of the columns is unimportant. Cells should not con- tain tabs or newlines.  e header list must be delimited in the same way as the rest of the  le’s contents. Each record must be kept on a separate line. Separate lines with comments are not allowed. Comments that belong to specific lines must be put in a separate column of the CSV file, e.g.~add a column called \textsc{comments}.
+A2. A profile is a delimited text file with an obligatory header line. A minimal pro le must have a single column with the header “Grapheme”. For any additional columns, the name in the header must be speci ed.  e actual ordering of the columns is unimportant.  e header list must be delimited in the same way as the rest of the  le’s contents. Each record must be kept on a separate line. Separate lines with comments are not allowed. Comments that belong to speci c lines must be put in a separate column of the  le, e.g. add a column called comments.
 
 Note we also merged in A4 into A2, previously:
 
@@ -252,12 +252,16 @@ to the Cross-Linguistic Data Formats [9] standard.
 
 *** Agreed. In practice, we haven't actually used these metadata files. We've updated this paragraph to "SHOULD" via RFC 2119 and we RECOMMEND they follow the practices suggested by the reviewer and implemented in CLDF:
 
-A3. Metadata should be added in a separate UTF-8 text file using the JSON-DL dialect speci ed in Metadata Vocabulary for Tabular Data.^ 3  This
-metadata format allows easy inclusion of Dublin Core metadata,^4 which should be used to specify information about the orthographic description in the orthography pro le.  e orthography pro le metadata should min- imally include: (i) author, (ii) date, (iii) title of the pro le, (iv) a stable lan- guage identi er encoded in BCP 47/ISO 639-3 of the target language of the pro le, and (v) bibliographic data for resource(s) that illustrate the or- thography described in the pro le. Further, (vi) the tokenization method and (vii) the Unicode normalization form used should be documented here (see below). In accordance with the Metadata Vocabulary for Tabular Data, the metadata’s  lename must consist of the orthography pro le’s  lename appended with “-metadata.json”.^5
+A3. Metadata should be added in a separate UTF-8 text file using the JSON-LD dialect speci ed in Metadata Vocabulary for Tabular Data.3  is metadata format allows easy inclusion of Dublin Core metadata,4 which should be used to specify information about the orthographic description in the orthography pro le.5  e orthography pro le metadata should min- imally include provenance information including: (i) author, (ii) date, (iii) title of the pro le, and (iv) bibliographic data for resource(s) that illustrate the orthography described in the pro le. Crucially, the metadata should also specify (iv) a stable language identi er of the target language of the pro le using BCP 47/ISO 639-3 or Glo ocode as per the CLDF ontology.6 Further, the metadata  le should provide information about the orthogra- phy pro le’s structure and contents, including: (vi) its dialect description,7 (vii) the tokenization method (see below), and (ix) proper column descrip- tions,8 which describe how a column should be interpreted and processed (e.g. whether they should be processed as regular expressions; see below). Finally, in accordance with the Metadata Vocabulary for Tabular Data, the metadata’s  lename should consist of the orthography pro le’s  lename appended with “-metadata.json”.9
 
-[3] https://www.w3.org/TR/tabular-metadata/
-[4] http://dublincore.org/
-[5] JSON-DL metadata is also the choice for datasets conforming to the Cross-Linguistic Data Formats standard, see: http://cldf.clld.org/.
+3 https://www.w3.org/TR/tabular-metadata/
+4 http://dublincore.org/
+5 http://w3c.github.io/csvw/metadata/#dfn-common-property
+6 http://cldf.clld.org/v1.0/terms.rdf
+7 http://w3c.github.io/csvw/metadata/#dfn-dialect-descriptions
+8 http://w3c.github.io/csvw/metadata/#dfn-datatype-description
+9 JSON-LD metadata is also the choice for datasets conforming to the Cross-Linguistic Data
+Formats standard, see: http://cldf.clld.org/.
 
 
 A7: "If regular expressions are used, then […]": The specification does not
@@ -273,7 +277,7 @@ regular expressions as part of orthography profiles may lead to different
 results of applying the same profile to the same data on different platforms -
 which clearly goes against the idea of this specification.
 
-*** TODO
+*** W
 
 Overall, it seems somewhat strange to sacrifice
 CSV standards conformance (no quoting of cell values, "LF" line endings, 
@@ -282,13 +286,10 @@ puts a bigger burden on the authors in terms of specification (they can no
 longer just point to FC 4180) and it makes it harder to use tools like 
 LibreOffice Calc or MS Excel to edit Orthography profiles.
 
-*** Agreed (SM). We have made the formal specification lacker (which of course put the onus the software developers):
+*** Agreed (SM). The formal specification now requires a delimited text file, in which proper column descriptions are defined in the metadata JSON-LD file following:
 
-A1. A profile is a unicode UTF-8 encoded text file normalized following NFC (or NFD if speci ed in the metadata) that includes the information pertinent to the orthography.2
-
-A2. A profile is a CSV file with an obligatory header line. A minimal pro le must have a single column with the header “Grapheme”. For any ad- ditional columns, the name in the header of the CSV  le must be speci ed.  e actual ordering of the columns is unimportant. Cells should not con- tain tabs or newlines.  e header list must be delimited in the same way as the rest of the  le’s contents. Each record must be kept on a separate line.
-
-[2] See Section 3.12 in which we suggest to use NFC, no-BOM and LF line breaks because of the pitfalls they avoid. A keen reviewer notes, however, that specifying a convention for line endings and BOM is overly strict because most computing environments (now) transparently handle both alternatives. For example, using Python a  le can be decoded using the encoding 	“utf-8-sig”, which strips away the BOM (if present) and reads an input full in text mode, so that both line feed variants “LF” and “CRLF” will be stripped.
+http://w3c.github.io/csvw/metadata/#dfn-dialect-descriptions
+http://w3c.github.io/csvw/metadata/#dfn-datatype-description
 
 
 Implementation:
@@ -296,20 +297,30 @@ Implementation:
 B1: As noted for A7, to make the basic handling possible in an automated way,
 there must be a way to figure out that the profile is "basic".
 
-*** TODO
+*** See directly above.
+
 
 B2: If - as stated - "ordering […] might be crucial", it must be specified, i.e.
 members a class specified as context must be tried in order of occurrence in the
 profile.
 
-*** TODO
+*** Updated to:
+
+Note that in some cases the ordering inside this regular expression might be crucial, therefore it must be specified as so in the metadata file.
 
 B4: I would rather spin the functionality to suggest an optimal ordering of rules
 off to a separate tool, and limit the specification to apply rules in order of
 occurrence. This will lead to simpler implementation and more transparent 
 relation of input and output.
 
-*** TODO
+*** We make this clearer:
+
+The regular expressions will be applied in the order as specified
+in the profile, from top to bottom.} A software implementation can offer
+help in figuring out the optimal ordering of the regular expressions, but
+then it should be made explicit in the orthograpy profile because regular 
+expressions are executed in order from top to bottom.
+
 
 Language like
 
@@ -323,7 +334,8 @@ specifying
 - output
 - a series of steps to get from input to output
 
-*** TODO
+*** We've updated the text to be more specification-like, as suggested above.
+
 
 I did not review the Python and R implementations, and suggest to spin these off
 to a more suitable format, e.g. Jupyter Notebooks [11].

@@ -659,7 +659,9 @@ different results depending on global or linear algorithm.
 "Ascha" should give you "A sch a" with the linear approach, but "a s ch
 a" with the global approach iff "ch" is matched before "sch".
 
-[ ] todo
+*** This is true, thus we write:
+
+Theoretically, these approaches will lead to different results, though in practice of actual natural language orthographies they almost always lead to the same result.
 
 C8.
 - "To treat the profile literal" --> literally
@@ -681,11 +683,11 @@ aspects of this passage to me).
 
 *** Schächtelchen is a great word and we appreciate the suggestion that "aäaaöaüaa" is confusing. So we have updated the example with "Schächtelchen" (also online).
 
-We therefore built a different example:
+We also built a different example:
 
 "ĉháɾã̌ctʼɛ↗ʐː| k͡p"
 
-which captures a hypothetical form from which the child can generalize.
+which captures a hypothetical form with all the intricacies of how IPA is encoded in Unicode.
 
 
 - the code examples should be numbered
@@ -701,26 +703,26 @@ and the columns align
 - "edit the profile: more": --> "edit the profile: vim" (or any other
 editor, but not more)
 
-***
+*** Fixed.
 
 - "The location can be found in the following command in R.": provide
 the command (or take care of the page break)
 
-***
+*** Fixed.
 
 - "Try tokenize to test the functionality": why is there an error
 message????
 
-***
+*** Fixed.
 
 - "These webapps are available online at TODO": provide URL
 
-***
+*** Fixed.
 
 - "we first assign the two strings to a variable test": use a more
 descriptive name than "test"
 
-***
+*** No.
 
 Section Using an orthography profile skeleton
 - " It is also possible ...It is also possible": rephrase
@@ -737,25 +739,36 @@ just like "sch" in "mischief (/stS/)". But the passage "Now mischief is
 parsed correctly, but scheme is wrong" suggests that the author sees
 this differently???
 
+*** Recall we are tokenizing orthographic conventions, not their phonetic or phonemic realizations.
+
 - Footnote 3: delete. Feeding and bleeding are needlessly complicating
 the exposition
+
+*** We don't agree. Feeding and bleeding is an essential concept and this is the minimum we should do to make the reader aware of it.
 
 - RESULT_ERRORS.TSV: I stronly suggest to either create an empty file
 when no errors are reported, or to include "no errors" in the file. The
 meaningful absence of computer files can cause all kinds of problems.
 
+*** An empty file suggests that some error was triggered. 
+
 - "Such contextually-specified graphemes are based on regular
 expressions so you can also use regular expressions in the descriptions
 of the context": who would've thought that!
 
+*** Thanks!
+
 - "It is important to realize ... ": delete. The need for escape
 sequences has been discussed earlier.
+
+*** Fixed.
 
 - Table 6.11: I was wondering whether graphemes can be in several
 classes. "Y" could be in the consonant class and in the vowel class for
 instance. Can orthography profiles handle this, and if they can, how
 would this be entered?
 
+*** This would be a orthography-specific case, for which we should create an example online.
 
 
 *** Note, we have also added a section that highlights the four additional use cases that we present as Jupyter Notebooks in our Github repository of orthography profile recipes:

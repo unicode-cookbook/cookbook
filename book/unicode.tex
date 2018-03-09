@@ -231,7 +231,7 @@ The \texttt{segments} API can be accessed by importing the package into Python o
 \end{lstlisting}
 
 
-\noindent An orthography profile is tab-delimited UTF-8 text file. The first column must be labelled \texttt{Grapheme}. Each row in the \texttt{Grapheme} column specifies graphemes that may be found in the orthography of the input text. In this example, we provide additional columns IPA and XSAMPA, which are mappings from our graphemes to their IPA and XSAMPA transliterations. The final column \texttt{COMMENT} is for comments; if you want to use a tab ''quote that     string''!
+\noindent An orthography profile is delimited UTF-8 text file (here we use tab as a delimiter for reading ease). The first column must be labelled \texttt{Grapheme}. Each row in the \texttt{Grapheme} column specifies graphemes that may be found in the orthography of the input text. In this example, we provide additional columns IPA and XSAMPA, which are mappings from our graphemes to their IPA and XSAMPA transliterations. The final column \texttt{COMMENT} is for comments; if you want to use a tab ''quote that     string''!
 
 Let's load the orthography profile with our tokenizer.
 
@@ -275,7 +275,7 @@ Let's load the orthography profile with our tokenizer.
 \end{lstlisting}
 
 
-\noindent We set the default as the Unicode replacement character \uni{fffd}, \textsc{replacement character}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
+\noindent We set the default as the Unicode replacement character \uni{fffd}, \texttt{replacement character}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
 
 
 \begin{lstlisting}
@@ -355,7 +355,7 @@ Use 'segments help <cmd>' to get help about individual commands.
   Schächtelchen
 \end{lstlisting}
 
-\noindent We can create an initial orthography profile of the German text by passing it to the \textsc{segments profile} command. The initial profile tokenizes the text on Unicode grapheme clusters, lists the frequency of each grapheme, and provides an initial mapping column by default.
+\noindent We can create an initial orthography profile of the German text by passing it to the \texttt{segments profile} command. The initial profile tokenizes the text on Unicode grapheme clusters, lists the frequency of each grapheme, and provides an initial mapping column by default.
 
 \begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
   $ cat sources/german.txt | segments profile
@@ -371,7 +371,7 @@ Use 'segments help <cmd>' to get help about individual commands.
   n         1          n
 \end{lstlisting}
 
-\noindent Next, we know a bit about German orthography and which characters combine to form German graphemes. We can use the information from our initial orthography profile to hand-curate a more precise German orthography profile that takes into account capitalization (German orthography obligatorily capitalizes nouns) and grapheme clusters, such as <sch> and <ch>. We can use the initial orthography profile above as a starting point (note the in large text the frequency column may signal errors in the input, such as typos, if they occur with a very low frequency). The initial orthography profile can be edited with a text editor or spreadsheet program. As per the orthography profile specifications (see Chapter \ref{orthography-profiles}), we can adjust rows in the \textsc{Grapheme} column and then add additional columns for translitations or comments.
+\noindent Next, we know a bit about German orthography and which characters combine to form German graphemes. We can use the information from our initial orthography profile to hand-curate a more precise German orthography profile that takes into account capitalization (German orthography obligatorily capitalizes nouns) and grapheme clusters, such as <sch> and <ch>. We can use the initial orthography profile above as a starting point (note the in large text the frequency column may signal errors in the input, such as typos, if they occur with a very low frequency). The initial orthography profile can be edited with a text editor or spreadsheet program. As per the orthography profile specifications (see Chapter \ref{orthography-profiles}), we can adjust rows in the \texttt{Grapheme} column and then add additional columns for translitations or comments.
 
 
 \begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
@@ -387,7 +387,7 @@ Use 'segments help <cmd>' to get help about individual commands.
   n         n    n                                    
 \end{lstlisting}
 
-\noindent Using the command line \textsc{segments} function and passing it our orthography profile, we can now segment our German text example into graphemes.
+\noindent Using the command line \texttt{segments} function and passing it our orthography profile, we can now segment our German text example into graphemes.
 
 \begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
   $ cat sources/german.txt | segments 
@@ -396,7 +396,7 @@ Use 'segments help <cmd>' to get help about individual commands.
   '(*@Sch ä ch t e l ch e n@*)'
 \end{lstlisting}
 
-\noindent By providing \textsc{segments} a column for transliteration, we can convert the text into IPA.
+\noindent By providing \texttt{segments} a column for transliteration, we can convert the text into IPA.
 
 \begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
   $ cat sources/german.txt | segments --mapping=IPA 
@@ -552,8 +552,7 @@ executables and (ii) shiny webapps.
 The bash executables are little files providing an interface to the R code that
 can be used in a shell on a UNIX-alike machine. The location of these
 executables is a bit hidden away by the install procedure of R packages. The
-location can be found by the following command in R. These executables can be 
-used from here, or they can be linked and/or copied to any location as wanted.
+location can be found by the following command in R. 
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
@@ -564,6 +563,8 @@ used from here, or they can be linked and/or copied to any location as wanted.
 \end{kframe}
 \end{knitrout}
 
+These executables can be 
+used from here, or they can be linked and/or copied to any location as wanted. 
 For example, a good way to use the executables in a terminal is to
 make softlinks (using \texttt{ln}) from the executables to a directory in your
 PATH, e.g. to \texttt{/usr/local/bin/}. The two executables are named
@@ -600,6 +601,11 @@ the functionality.
 % the \texttt{shiny} framework for the R functions. These webapps are available 
 % online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
 % package and can be started with the following helper function:
+
+To make the functionality even more accessible, we have prepared webapps with 
+the \texttt{shiny} framework for the R functions. The webapps are 
+included inside the \texttt{qlcData} package and can be started with the 
+helper function (in R): \texttt{launch\_shiny('tokenize')}.
 
 % <<eval=FALSE>>=
 % launch_shiny('tokenize')
@@ -704,7 +710,7 @@ of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -744,7 +750,7 @@ user-defined, but relegated to the Unicode grapheme definitions.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -786,7 +792,7 @@ characters with combining diacritics. Splitting by codepoints (i.e. \texttt{sep~
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -806,7 +812,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -844,7 +850,7 @@ example in either NFC or NFD, but using default separation in
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -864,7 +870,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -902,7 +908,7 @@ orthography profile and then edit this profile by hand. For example, Table
 been added to the file. Note that in this example, the profile is written to the
 desktop, and this file has to be edited manually. We simply add a few
 multigraphs to the column \texttt{Grapheme} and leave the other columns empty.
-these new graphemes are then included in the graphemic parsing.
+These new graphemes are then included in the graphemic parsing.
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
@@ -930,7 +936,7 @@ these new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1034,7 +1040,7 @@ case.
 \end{knitrout}
 
 There are various additional options for rule ordering implemented. Please check
-the help description in R \texttt{help(tokenize)} for more details on the
+the help description in R, i.e.\ \texttt{help(tokenize)}, for more details on the
 possible rule ordering specifications. In summary, there are four different 
 ordering options, that can also be combined:
 
@@ -1082,7 +1088,7 @@ hand-written specifications of graphemes will first write the general rule,
 followed by more specific regularities. To get the right tokenization, these 
 rules should in most cases be applied in reverse order.
 
-It is important to realize that different ordering of the rules does not have
+Note that different ordering of the rules does not have
 so-called feeding and bleeding effects as known from finite-state rewrite
 rules.\footnote{Bleeding is the effect that the application of a rule changes
 the string, so as to prevent a next rule to apply. Feeding is the opposite: a
@@ -1097,7 +1103,7 @@ matching graphemes in the data are marked as captured, but not changed.
 Captured parts cannot be captured again, but they can still be used to match 
 contexts of other lines in the profile. Only when all lines are processed the 
 captured graphemes are separated (and possibly transliterated). In this way the 
-result of the application of the rules' is rather easy to predict.
+result of the application of the rules is rather easy to predict.
 
 To document a specific case of graphemic parsing, it is highly useful to save
 all results of the tokenization to file by using the option \texttt{file.out},
@@ -1123,7 +1129,7 @@ the tokenization, this re-ordered profile can be used with the option
 \begin{itemize}
   
    \item \textsc{result\_strings.tsv}:\\ A tab-separated file with the original
-         and the tokenized/transliterated strings
+         and the tokenized/transliterated strings.
 
    \item \textsc{result\_profile.tsv}:\\ A tab-separated file with the
          graphemes with added frequencies of occurence in the data. The lines
@@ -1134,7 +1140,7 @@ the tokenization, this re-ordered profile can be used with the option
          strings that contain unmatched parts. Unmatched parts are indicated
          with the character as specified with the option \texttt{missing}. By
          default the character \textsc{double question mark} <⁇> at
-         \uni{2047} is used. When there are no errors, then this file is 
+         \uni{2047} is used. When there are no errors, this file is 
          absent.
 
     \item \textsc{result\_missing.tsv}:\\ A tab-separated file with the graphemes
@@ -1192,7 +1198,7 @@ this toy example.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1224,7 +1230,7 @@ mi & s &  &  &  \\
 \end{table}
 
 
-It is important to realize that with the option \texttt{regex = TRUE} all
+Note that with the option \texttt{regex = TRUE} all
 content in the profile is treated as regular expressions, so the characters with
 special meaning in regular expressions should be either omitted or escaped (by
 putting a <\ \backslash\ > \textsc{reverse solidus} at \uni{005C} before the
@@ -1256,7 +1262,7 @@ character). Specifically, this concerns the following characters:
 
 When it is expected that context might be important for a profile, then the
 profile skeleton can be created with columns prepared for the contextual
-specifications. This is done by using the option \texttt{editing = TRUE} (cf.
+specifications. This is done by using the option \texttt{editing = TRUE}~(cf.\
 Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 
 \begin{knitrout}\footnotesize
@@ -1273,7 +1279,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1309,7 +1315,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1369,7 +1375,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Wed Mar  7 15:10:34 2018
+% Thu Mar  8 14:37:54 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1479,15 +1485,14 @@ the output string.
 Given a set of graphemes, there are at least two different methods to tokenize
 strings. The first is called \texttt{method = "global"}. This approach
 takes the first grapheme in the profile, then matches this grapheme globally at
-all places in the string, and then turns to the next string in the profile. To
-us, this seems to be the most intuitive way for linguists to deal with graphemic
-parsing. The other approach is called \texttt{method = "linear"}. This
+all places in the string, and then turns to the next string in the profile. The 
+other approach is called \texttt{method = "linear"}. This
 approach walks through the string from left to right. At the first character it
 looks through all graphemes whether there is any match, and then walks further
-to the end of the match and starts again. This approach is more alike to
+to the end of the match and starts again. This approach is more akin to
 finite-state rewrite rules (though note that it still works differently from
-such rewrite rules, see Section~\ref{rule-ordering}). The global method is used 
-by default.
+such rewrite rules, see above). The global method is used 
+by default in the R implementation.
 
 In some special cases these two tokenization methods can lead to different
 results, but these special situations are very unlikely to happen in natural
@@ -1537,8 +1542,8 @@ rarely (when at all) happen in natural language data.
 
 The problem can be exemplified by a sequence <bbbb> in which a grapheme <bb>
 should be matched. With the default \texttt{regex = FALSE} there are three
-possible matches, but with \texttt{regex = TRUE} only the first two <b>s or the
-last two <b>s are matched. The middle two <b>s are not matched because they
+possible matches, but with \texttt{regex = TRUE} only the first two <b>'s or the
+last two <b>'s are matched. The middle two <b>'s are not matched because they
 overlap with the other matches. In the example below this leads to an error,
 because the second <bb> is not matched. However, we have not been able to
 produce a real example in any natural language in which this limitation might
