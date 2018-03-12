@@ -277,7 +277,7 @@ regular expressions as part of orthography profiles may lead to different
 results of applying the same profile to the same data on different platforms -
 which clearly goes against the idea of this specification.
 
-*** W
+*** 
 
 Overall, it seems somewhat strange to sacrifice
 CSV standards conformance (no quoting of cell values, "LF" line endings, 
