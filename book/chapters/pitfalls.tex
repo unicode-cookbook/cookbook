@@ -69,7 +69,7 @@ Third, a single glyph may be a combination of multiple characters. For example,
 the ligature <ﬁ>, a single glyph, is the result of two
 characters, <f> and <i>, that have undergone glyph substitution by font
 rendering (see also Section~\ref{pitfall-faulty-rendering}). Like
-contextually-determined glyphs, ligatures are (intended) artefacts of text
+contextually-determined glyphs, ligatures are (intended) artifacts of text
 processing instructions. Finally, a single glyph may be a part of a
 character, as exemplified by diacritics like the diaeresis <\dia{0308}> in <ë>.
 
@@ -112,7 +112,7 @@ Inspecting the Unicode Standard, there appear to be special Unicode characters
 to glue together characters into larger tailored grapheme clusters,
 specifically the \textsc{zero width joiner} at \uni{200D} and the
 \textsc{combining grapheme joiner} at \uni{034F}. However, these characters are
-confusingly named (cf.~Section~\ref{pitfall-names}). Both codepoints actually do
+confusingly named (cf.~Section~\ref{pitfall-names}). Both code points actually do
 not join characters, but explicitly separate them. The zero-width joiner (ZWJ)
 can be used to solve special problems related to ordering (called \textit{collation}
 in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
@@ -184,7 +184,7 @@ GNU Unifont is available at \url{http://unifoundry.com/unifont.html}.} Finally,
 the Summer Institute of Linguistics provides a \textsc{SIL Unicode BMP Fallback
 Font}, currently available up to Unicode version 6.1. This font does not even
 attempt to show a real glyph, but only shows the hexadecimal code inside a box
-for each character, so a user can at least see the Unicode codepoint of the
+for each character, so a user can at least see the Unicode code point of the
 character to be displayed.\footnote{The SIL Unicode BMP Fallback Font is
 available at \newline \url{http://scripts.sil.org/UnicodeBMPFallbackFont}.}
 
@@ -201,7 +201,7 @@ the Unicode Standard. The Unicode Standard only includes very general
 information about characters and leaves the specific visual display to others to
 decide on. Any faulty display is thus not to be blamed on the Unicode
 Consortium, but on a complex interplay of different mechanisms happening in a
-computer to turn Unicode codepoints into visual symbols. We will only sketch a
+computer to turn Unicode code points into visual symbols. We will only sketch a
 few aspects of this complex interplay here.
 
 Most modern software applications (like Microsoft Word) offer some approach to
@@ -319,7 +319,7 @@ convenience labels that are not going to be changed. Just like the block names
 (Section~\ref{pitfall-blocks}), the character names are often helpful, but they
 are not supposed to be definitions.
 
-The actual intended meaning of a Unicode codepoint is a combination of the
+The actual intended meaning of a Unicode code point is a combination of the
 name, the block and the character properties (see
 Chapter~\ref{the-unicode-approach}). Further details about the underlying intentions 
 with which a character should be used
@@ -327,7 +327,7 @@ are only accessible by perusing the actual decisions of the Unicode Consortium.
 All proposals, discussions and decisions of the Unicode Consortium are publicly
 available. Unfortunately there is not (yet) any way to easily find everything
 that is ever proposed, discussed and decided in relation to a specific
-codepoint of interest, so many of the details are often somewhat
+code point of interest, so many of the details are often somewhat
 hidden.\footnote{All proposals and other documents that are the basis of Unicode
 decisions are available at \url{http://www.unicode.org/L2/all-docs.html}. The
 actual decisions that make up the Unicode Standard are documented in the minutes
@@ -715,7 +715,7 @@ recommendations:
    \item Unexpected visual impressions of symbols does not necessarily mean that
          the actual encoding is wrong. It is mostly a problem of faulty
          rendering (see Section~\ref{pitfall-faulty-rendering}).
-   \item Do not trust the names of codepoints as a definition of the character
+   \item Do not trust the names of code points as a definition of the character
          (see Section~\ref{pitfall-names}). Also do not trust Unicode blocks as
          a strategy to find specific characters (see
          Section~\ref{pitfall-blocks})

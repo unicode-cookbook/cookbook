@@ -347,7 +347,7 @@ optional arguments:
 Use 'segments help <cmd>' to get help about individual commands.  
 \end{lstlisting}
 
-\noindent We have created some test data\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics/sources}} with the German word \textit{Schächtelchen}, which is the diminuitive form of \textit{Schachtel}, meaning `box', `packet', or `carton' in English.
+\noindent We have created some test data\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics/sources}} with the German word \textit{Schächtelchen}, which is the diminutive form of \textit{Schachtel}, meaning `box', `packet', or `carton' in English.
 
 \begin{lstlisting}[language=bash]
   $ more sources/german.txt
@@ -371,7 +371,7 @@ Use 'segments help <cmd>' to get help about individual commands.
   n         1          n
 \end{lstlisting}
 
-\noindent Next, we know a bit about German orthography and which characters combine to form German graphemes. We can use the information from our initial orthography profile to hand-curate a more precise German orthography profile that takes into account capitalization (German orthography obligatorily capitalizes nouns) and grapheme clusters, such as <sch> and <ch>. We can use the initial orthography profile above as a starting point (note the in large text the frequency column may signal errors in the input, such as typos, if they occur with a very low frequency). The initial orthography profile can be edited with a text editor or spreadsheet program. As per the orthography profile specifications (see Chapter \ref{orthography-profiles}), we can adjust rows in the \texttt{Grapheme} column and then add additional columns for translitations or comments.
+\noindent Next, we know a bit about German orthography and which characters combine to form German graphemes. We can use the information from our initial orthography profile to hand-curate a more precise German orthography profile that takes into account capitalization (German orthography obligatorily capitalizes nouns) and grapheme clusters, such as <sch> and <ch>. We can use the initial orthography profile above as a starting point (note the in large text the frequency column may signal errors in the input, such as typos, if they occur with a very low frequency). The initial orthography profile can be edited with a text editor or spreadsheet program. As per the orthography profile specifications (see Chapter \ref{orthography-profiles}), we can adjust rows in the \texttt{Grapheme} column and then add additional columns for transliterations or comments.
 
 
 \begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
@@ -697,8 +697,8 @@ various different ways in which strings can be separated into graphemes by
 \texttt{example} below. The default settings of \texttt{write.profile} separates
 the string into Unicode graphemes according to grapheme clusters
 (called user-perceived characters, see Chapter~\ref{the-unicode-approach}). As it 
-turns out, some of these graphemes are single codepoints, others are combinations
-of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
+turns out, some of these graphemes are single code points, others are combinations
+of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
@@ -710,7 +710,7 @@ of two codepoints (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -733,7 +733,7 @@ Gr. & Freq. & Codepoint & Unicode Name \\
 
 
 By specifying the splitting separator as the empty string
-\texttt{sep~=~""}, it is possible to split the string into Unicode codepoints,
+\texttt{sep~=~""}, it is possible to split the string into Unicode code points,
 thus separating the combining diacritics. The idea behind this option
 \texttt{sep} is that separating by a character allows for user-determined
 separation. The most extreme choice here is the empty string \texttt{sep~=~""},
@@ -750,7 +750,7 @@ user-defined, but relegated to the Unicode grapheme definitions.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -768,7 +768,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
    \bottomrule
 \end{tabular}
 \endgroup
-\caption{Profile 2 (splitting by codepoints)} 
+\caption{Profile 2 (splitting by code points)} 
 \label{tab:profile2}
 \end{table}
 
@@ -778,21 +778,21 @@ Unicode offers different ways of normalization (see
 Section~\ref{pitfall-canonical-equivalence}), which can be invoked here as well
 using the option \texttt{normalize}. NFC-normalization turns everything into the
 precomposed characters, while NFD-normalization separates everything into base
-characters with combining diacritics. Splitting by codepoints (i.e. \texttt{sep~=~""}) shows the results of these two normalizations.
+characters with combining diacritics. Splitting by code points (i.e. \texttt{sep~=~""}) shows the results of these two normalizations.
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcom{# after NFC normalization unicode codepoints have changed}
+\hlcom{# after NFC normalization unicode code points have changed}
 \hlstd{profile_3} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFC"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
-\hlcom{# NFD normalization gives yet another structure of the codepoints}
+\hlcom{# NFD normalization gives yet another structure of the code points}
 \hlstd{profile_4} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFD"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -806,13 +806,13 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
    \bottomrule
 \end{tabular}
 \endgroup
-\caption{Profile 3 (splitting by NFC codepoints)} 
+\caption{Profile 3 (splitting by NFC code points)} 
 \label{tab:profile3}
 \end{table}
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -827,7 +827,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
    \bottomrule
 \end{tabular}
 \endgroup
-\caption{Profile 4 (splitting by NFD codepoints)} 
+\caption{Profile 4 (splitting by NFD code points)} 
 \label{tab:profile4}
 \end{table}
 
@@ -850,7 +850,7 @@ example in either NFC or NFD, but using default separation in
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -870,7 +870,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -936,7 +936,7 @@ These new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1007,7 +1007,7 @@ the order in which graphemes are parsed. For example, currently the grapheme
 <sch> is parsed before the grapheme <ch>, leading to <m\ i\ sch\ ie\ f> instead
 of the intended <m\ i\ s\ ch\ ie\ f>. The reason that <sch> is parsed before
 <ch> is that by default longer graphemes are parsed before shorter ones. Our
-experience is that in most cases this is expected behaviour. You can change the
+experience is that in most cases this is expected behavior. You can change the
 ordering by specifying the option \texttt{ordering}. Setting this option to
 \texttt{NULL} results in no preferential ordering, i.e. the graphemes are parsed
 in the order of the profile, from top to bottom. Now `mischief' is parsed
@@ -1132,7 +1132,7 @@ the tokenization, this re-ordered profile can be used with the option
          and the tokenized/transliterated strings.
 
    \item \textsc{result\_profile.tsv}:\\ A tab-separated file with the
-         graphemes with added frequencies of occurence in the data. The lines
+         graphemes with added frequencies of occurrence in the data. The lines
          in the file is re-ordered according to the order that resulted from the
          ordering specifications (see Section~\ref{rule-ordering}).
 
@@ -1198,7 +1198,7 @@ this toy example.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1279,7 +1279,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1315,7 +1315,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1375,7 +1375,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Sun Mar 11 12:19:56 2018
+% Mon Mar 12 17:57:11 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1552,7 +1552,7 @@ lead to an error.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcom{# Everything perfekt without regular expressions}
+\hlcom{# Everything perfect without regular expressions}
 \hlkwd{tokenize}\hlstd{(} \hlstr{"abbb"}
         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"ab"}\hlstd{,}\hlstr{"bb"}\hlstd{)}
         \hlstd{,} \hlkwc{order} \hlstd{=} \hlkwa{NULL}
@@ -1601,7 +1601,7 @@ The two recipes using the Python \textt{segments} package include a tutorial on 
 	\item https://github.com/unicode-cookbook/recipes/tree/master/Dogon
 \end{itemize}
 
-\noindent The JIPA recipes uses excerpts from the Northwind and the Sun passages from the Illustrations of the IPA published in the Journal of the International Phonetic Alphabet. Thus the recipe shows how a user might tokenize IPA proper. The Dogon recipe uses fieldwork data from the Dogon languages of Mali language documentation project.\footnote{\url{http://dogonlanguages.org/}} This recipe illustrates how a user might tokenize fieldwork data from numerous linguists using different transcription practices by defining these practices with an orthography profile to make the output unified and comparable.
+\noindent The JIPA recipes uses excerpts from \textit{The North Wind and the Sun} passages from the Illustrations of the IPA published in the Journal of the International Phonetic Alphabet. Thus the recipe shows how a user might tokenize IPA proper. The Dogon recipe uses fieldwork data from the Dogon languages of Mali language documentation project.\footnote{\url{http://dogonlanguages.org/}} This recipe illustrates how a user might tokenize fieldwork data from numerous linguists using different transcription practices by defining these practices with an orthography profile to make the output unified and comparable.
 
 The two recipes using the R \texttt{qlcData} library include a use case for tokenizing wordlist data from the Automated Similarity Judgment Program (ASJP):\footnote{\url{http://asjp.clld.org/}}
 
