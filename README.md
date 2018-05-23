@@ -8,7 +8,7 @@ The Unicode Cookbook for Linguists has been accepted for publication in the [Tra
 
 ## About the cookbook
 
-The cookbook is available in its current form in this directory as `unicode-cookbook.pdf`.
+The cookbook is available in its most up-to-date form in this directory as [unicode-cookbook.pdf](https://github.com/unicode-cookbook/cookbook/blob/master/unicode-cookbook.pdf).
 
 The text is meant as a practical guide for linguists, and programmers, who work with data in multilingual computational environments. We introduce the basic concepts needed to understand how writing systems and character encodings function, and how they work together.
 
