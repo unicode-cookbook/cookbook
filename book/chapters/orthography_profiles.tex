@@ -60,9 +60,9 @@ different sources is to be achieved. In most cases, this amounts to more than
 simply mapping a grapheme to an IPA segment because graphemes must first be
 identified in context (e.g.~is the sequence one sound or two sounds or both?)
 and strings must be tokenized, which may include taking orthographic rules into
-account (e.g.~a nasal sound may be transcribed as /n/ when it appears between 
+account (e.g.~a nasal sound may be transcribed as <n> when it appears between 
 two vowels, but when it appears between a vowel and a consonant it becomes 
-a nasalized vowel /Ṽ/).
+a nasalized vowel <Ṽ>).
 
 In our experience, data from each source must be
 individually tokenized into graphemes so that its orthographic structure can be 
@@ -281,8 +281,8 @@ of the orthography, using the following columns:
        can be used to define a class of vowels. Users can simply add ad-hoc
        identifiers in this column to indicate a group of graphemes, which can
        then be used in the description of the graphemes or the context. The
-       identifiers should of course be chosen such that they do not conflate
-       with any symbols used in the orthography themselves. Note that such
+       identifiers should of course be chosen so that they do not conflate
+       with any symbols used in the orthography. Note that such
        classes only refer to the graphemes, not to the context. 
 	\item \textsc{Columns describing transliterations for each graphemes can be
        added and named at will}. Often more than a single possible
@@ -305,10 +305,10 @@ will be expected:
 \begin{enumerate}
 	\def\labelenumi{B\arabic{enumi}.} 
 	\item \textsc{Each line of a profile will be interpreted as a regular
-       expression. }Software applications using profiles can also offer to
+       expression.} Software applications using profiles can also offer to
        interpret a profile in the literal sense to avoid the necessity for the
-       user to escape regular expressions metacharacters in the profile.
-       However, this only is possible when no contexts or classes are described,
+       user to escape regular expression metacharacters in the profile.
+       However, this is only possible when no contexts or classes are described,
        so this seems only useful in the most basic orthographies. 
 	\item \textsc{The \textsc{class} column will be used to produce explicit
        \textsc{or} chains of regular expressions}, which will then be inserted
@@ -320,7 +320,7 @@ will be expected:
        Only the graphemes themselves are included here, not any contexts
        specified for the elements of the class. Note that in some cases the 
        ordering inside this regular expression might be crucial, therefore it must be 
-	   specified as so in the metadata file.
+	   specified as such in the metadata file.
 	\item \textsc{The \textsc{left} and \textsc{right} contexts will be included
        into the regular expressions by using lookbehind and lookahead}.
        Basically, the actual regular expression syntax of lookbehind and
@@ -400,16 +400,17 @@ Any software application offering to use orthography profile:
 		\item \textsc{the symbol-string to be inserted for unmatched strings} in the
         tokenized and transliterated output. 
 		\item \textsc{the tokenization method}, i.e.~whether the tokenization should
-        proceed \textsc{global} or \textsc{linear} (see B6 above). 
+        proceed as \textsc{global} or \textsc{linear} (see B6 above). 
 		\item \textsc{unicode normalization}, i.e.~whether the text-string and profile
         should use \textsc{NFC} or \textsc{NFD}. 
     \end{enumerate}
 	\item \textsc{might offer user-options}:
 	\begin{enumerate}
 		\def\labelenumii{C\arabic{enumii}.} \setcounter{enumii}{5} 
-		\item \textsc{to assist in the ordering of the graphemes.} In our experience, it
-        makes sense to apply larger graphemes before shorter graphemes, and to
-        apply graphemes with context before graphemes without context. Further,
+		\item \textsc{to assist in the ordering of the graphemes.} In our experience 
+		working with idiosyncratic transcriptions and orthographies from low-resource languages, it
+        is helpful to identify multi-sequence graphemes before single graphemes, and to
+        identify graphemes with context before graphemes without context. Further,
         frequently relevant rules might be applied after rarely relevant rules
         (though frequency is difficult to establish in practice, as it depends
         on the available data). Also, if this all fails to give any decisive
@@ -420,14 +421,18 @@ Any software application offering to use orthography profile:
 		\item \textsc{to assist in dealing with upper and lower case characters.} It
         seems practical to offer some basic case matching, so characters like
         <a> and <A> are treated equally. This will be useful in many concrete
-        cases, although the user should be warned that case matching does not
-        function universally in the same way across orthographies. Ideally,
+        cases (such as search or collation), although the user should be warned that case matching does not
+        function universally in the same way across orthographies.\footnote{For example 
+		compare the different first-letter capitalization practices of the digraphs 
+		<ǋ> and <Ĳ> (single-character ligatures in the Unicode Standard) 
+		in the Latin-based scripts of Southern-Slavic languages and 
+		Dutch, respectively.} Ideally,
         users should prepare orthography profiles with all lowercase and
         uppercase variants explicitly mentioned, so by default no case matching
         should be performed. 
 		\item \textsc{to treat the profile literally}, i.e.~to not interpret regular
         expression metacharacters. Matching graphemes literally often leads to
-        significant speed increase, and would allow users to not have to worry
+        significant speed increase, and ensures that users do not have to worry
         about escaping metacharacters. However, in our experience all actually
         interesting use-cases of orthography profiles include some contexts,
         which automatically prevents any literal interpretation.
@@ -440,8 +445,8 @@ Any software application offering to use orthography profile:
         user. 
 		\item \textsc{the tokenized strings}, with additionally any transliterated
         strings, if transliteration is requested. 
-		\item \textsc{a survey of all errors encountered}, ideally both in which
-        text-strings any errors occurred and which characters in the
+		\item \textsc{a survey of all errors encountered}, ideally both (i) in which
+        text-strings any errors occurred and (ii) which characters in the
         text-strings lead to errors. 
 		\item \textsc{a reordered profile}, when any automatic reordering is offered. 
 	\end{enumerate}
