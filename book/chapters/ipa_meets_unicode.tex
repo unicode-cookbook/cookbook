@@ -8,7 +8,7 @@ transcribe sounds of spoken language into discrete segments using a Latin-based
 alphabet. Although IPA is reasonably easily adhered to with pen and paper, it is
 not trivial to encode IPA characters electronically. In this chapter we discuss
 various pitfalls with the encoding of IPA in the Unicode Standard. We will
-specifically refer to the 2015 version of the IPA \citep{IPA2015} and the 10.0.0 version of Unicode \citep{Unicode2017}.
+specifically refer to the 2015 version of the IPA \citep{IPA2015} and the 11.0.0 version of Unicode \citep{Unicode2018}.
 
 As long as a transcription is only directed towards phonetically trained eyes,
 then all the details of the Unicode-encoding are unimportant. For a linguist
@@ -243,7 +243,7 @@ a high front unrounded vowel with high tone. However, the result of losing
 the dot makes this IPA symbol look very similar to the near-high near-front 
 unrounded vowel <ɪ>, when it also has the high tone marker: <ɪ́>. To boot, 
 when an accent mark is added to \textsc{latin small letter i with stroke} <ɨ> at 
-\uni{0268}, the dot is not suppressed but retained, i.e. <ɨ́>.\footnote{According 
+\uni{0268}, the dot is not suppressed but retained, i.e.\ <ɨ́>.\footnote{According 
 to the Unicode Standard, \textsc{latin small letter i with stroke} <ɨ> at 
 U+0268 cannot be decomposed into, say, \textsc{latin small letter i} <i> at 
 U+0069 and \textsc{combining short stroke overlay} <\dia{0335}> at U+0335. 
@@ -329,7 +329,7 @@ high level tones, namely <\diaf{0340}> \textsc{combining grave tone mark} at
 \unif{0340} vs.~<\diaf{0300}> \textsc{combining grave accent} at \unif{0300} for
 low tone, and <\diaf{0341}> \textsc{combining acute tone mark} at \unif{0341}
 vs.<\diaf{0301}> \textsc{combining acute accent} at \unif{0301} for high tone.} 
-In addition, the IPA also adopted tone letters developed by \citet{Chao1930}, e.g. <˥˦˧˨˩>, 
+In addition, the IPA also adopted tone letters developed by \citet{Chao1930}, e.g.\ <˥˦˧˨˩>, 
 which were in wide use by Asianists.\footnote{Not sanctioned
 by the IPA, but nevertheless widely attested, is the use of superscript
 numbers for marking tones, also proposed by \citet{Chao1930}. One issue to note here is 
@@ -489,7 +489,7 @@ specified in the string itself (using the tie bar).
 
 One important distinction to acknowledge is the difference between multigraphs
 and ligatures. Multigraphs are groups of characters (in the context of IPA e.g.
-<tʃ> or <ou>) while ligatures are single characters (e.g. <ʧ> \textsc{latin
+<tʃ> or <ou>) while ligatures are single characters (e.g.\ <ʧ> \textsc{latin
 small letter tesh digraph} at \uni{02A7}). Ligatures arose in the context of
 printing easier-to-read texts, and are included in the Unicode Standard for
 reasons of legacy encoding. However, their usage is discouraged by the Unicode
@@ -709,7 +709,7 @@ back from using <tʰʷ> instead (with exactly the same intended meaning). Howeve
 from a technical standpoint, these two sequences are different, e.g.~if both
 sequences are used in a document, searching for <tʷʰ> will not find any
 instances of <tʰʷ>, and vice versa. Likewise, a creaky voiced syllabic dental
-nasal can be encoded in various orders, e.g. <n̪̰̩>, <n̩̰̪> or <n̩̪̰>.
+nasal can be encoded in various orders, e.g.\ <n̪̰̩>, <n̩̰̪> or <n̩̪̰>.
 
 \subsubsection*{Canonical combining classes}
 

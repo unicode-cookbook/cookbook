@@ -56,7 +56,7 @@ contextually-sensitive variants (isolated, word initial, medial and final).
 Second, a single character may be rendered as a sequence of multiple glyphs. For
 example, in Tamil one Unicode character may result in a combination of a
 consonant and vowel, which are rendered as two adjacent glyphs by fonts that
-supports Tamil, e.g. \textsc{tamil letter au} at \uni{0B94} represents a single 
+supports Tamil, e.g.\ \textsc{tamil letter au} at \uni{0B94} represents a single 
 character <\tamil{ஔ}>, composed of two glyphs <\tamil{ஓ}> and <\tamil{ன}>. Perhaps confusingly, 
 in the Unicode Standard there are also two individual characters, 
 i.e.\ \textsc{tamil letter oo} at \uni{0B93} and 
@@ -119,7 +119,8 @@ in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
 separate characters that are not supposed to form ligatures. 
 
 To solve the issue of tailored grapheme clusters, Unicode offers some assistance
-in the form of the Unicode Locale Descriptions. However, in the practice of
+in the form of the Unicode Locales.\footnote{\url{http://cldr.unicode.org/locale_faq-html}} 
+However, in the practice of
 linguistic research, this is not a real solution. For that reason we propose to
 use orthography profiles (see Chapter~\ref{orthography-profiles}). Basically,
 both orthography profiles and locale descriptions offer a way to specify
@@ -582,12 +583,12 @@ Before we discuss the pitfall of different file formats in Section \ref{pitfall-
 
 % 0070;LATIN SMALL LETTER P;Ll;0;L;;;;;N;;;0050;;0050
 
-The other meaning of encoding has to do with the fact that computers represent data and instructions in patterns of bits. A bit pattern is a combination of binary digits arranged in a sequence. And how these sequences are carved up into bit patterns is determined by how they are \textit{encoded}. Thus the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems because they determine how sequences of bit patterns are determined, which are then mapped to characters. The terminological issue here is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e. the code point, which can be encoded differently by different encoding systems.
+The other meaning of encoding has to do with the fact that computers represent data and instructions in patterns of bits. A bit pattern is a combination of binary digits arranged in a sequence. And how these sequences are carved up into bit patterns is determined by how they are \textit{encoded}. Thus the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems because they determine how sequences of bit patterns are determined, which are then mapped to characters. The terminological issue here is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e.\ the code point, which can be encoded differently by different encoding systems.
 
 % Characters encoded, but not seen.
 Note also that all computer character encodings include so-called \textsc{control characters}, which are non-printable sometimes action-inducing characters, such as the null character, bell code, backspace, escape, delete, and line feed. Control-characters can interact with encoding schemes. For example, some programming languages make use of the null character to mark the end of a string. Line breaks are part of the text, and as such as covered by the Unicode Standard. But they can be problematic because line breaks differs from operating system-to-operating system in how they are encoded. These variants are discussed in Section \ref{pitfall-file-formats}.
 
-% This section should also mention that line breaks are actually part of the text, and as such also covered by the Unicode standard. Again regarding line breaks, the recommendation "that everybody use this encoding [only LF] whenever possible" (page 31) seems less well motivated (and specific) than most other recommendations in the book. Some common formats, e.g. CSV (as specified by  RFC 4180 [4]), specify "CRLF" as line break. Thus, the perceived "strong tendency" towards "LF" may be just that.
+% This section should also mention that line breaks are actually part of the text, and as such also covered by the Unicode standard. Again regarding line breaks, the recommendation "that everybody use this encoding [only LF] whenever possible" (page 31) seems less well motivated (and specific) than most other recommendations in the book. Some common formats, e.g.\ CSV (as specified by  RFC 4180 [4]), specify "CRLF" as line break. Thus, the perceived "strong tendency" towards "LF" may be just that.
 
 
 % ==========================
@@ -640,7 +641,7 @@ letters UTF stand for \textsc{Unicode Transformation Format}, but the notion of
 Nevertheless, the designation UTF (in capitals) has become an official
 standard designation, but should probably best be read as simply ``Unicode
 Format.''} The details of this issue is extensively explained in section 2.5 of
-the Unicode Core Specification~\citet{Unicode2017}. 
+the Unicode Core Specification~\citet{Unicode2018}. 
 
 Basically, \textsc{UTF-32} encodes each character in 32 bits (32 \textit{bi}nary
 uni\textit{ts}, i.e.~32 zeros or ones) and is the most disk-space-consuming
@@ -697,7 +698,7 @@ everyone tries to prevent the inclusion of BOM in your data.
 % ==========================
 Another pitfall that we encounter when using the Unicode Standard is its incomplete implementation in different standards and programming languages, e.g.\ SQL, XML, XLST, Python. For example, although the Unicode Standard mandates that the comparison of Unicode text be done using normalized text, this is not the case with the equality operator ``=='' in Python. Furthermore, it is not always transparent what the operating system or specific software applications do when text is being copied and pasted. For example, copy and pasting the character sequence \uni{0061} \textsc{latin small letter a} <a> and \uni{0301} \textsc{combining acute accent} <\dia{0301}>, visually <á>, into the text editor TextWrangler leaves the sequence decomposed as two characters. But when pasting the decomposed sequence into RStudio, and other software programs, the sequence becomes precomposed as \uni{00E1} \textsc{latin small letter a with acute}, i.e.\ <á>.
 
-% One Unicode pitfall which may be worth adding is the problem with incomplete implementations of the Unicode Standard. This is a problem most big-enough standards suffer from, e.g. SQL, XML, XSLT. So although the Unicode Standard mandates that comparison of Unicode text should always be done using normalized text, this is not how the equality operator "==" is implemented for Unicode text in the Python programming language.
+% One Unicode pitfall which may be worth adding is the problem with incomplete implementations of the Unicode Standard. This is a problem most big-enough standards suffer from, e.g.\ SQL, XML, XSLT. So although the Unicode Standard mandates that comparison of Unicode text should always be done using normalized text, this is not how the equality operator "==" is implemented for Unicode text in the Python programming language.
 
 
 % ==========================

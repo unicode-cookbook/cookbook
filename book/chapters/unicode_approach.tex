@@ -40,8 +40,8 @@ Unicode standardizes a much larger portion of writing system diversity), and
 much better possibilities for automated processing on the language-particular
 level (because locale descriptions are computer readable specifications).
 
-Each version of the Unicode Standard (\citealp{Unicode2017}, as of writing at
-version 10) consists of a set of specifications and guidelines that include (i) a
+Each version of the Unicode Standard (\citealp{Unicode2018}, as of writing at
+version 11) consists of a set of specifications and guidelines that include (i) a
 core specification, (ii) code charts, (iii) standard annexes and (iv) a
 character database.\footnote{All documents of the Unicode Standard are available
 at \url{http://www.unicode.org/versions/latest/}. For a quick survey of the use
@@ -77,7 +77,7 @@ Standard.\footnote{More information about the ICU is available here:
 
 The Unicode Standard is a \textsc{character encoding system} which
 goal it is to support the interchange and processing of written characters and
-text in a computational setting.\footnote{An insightful reviewer notes that the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems. The issue is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e. the code point, which can be encoded differently by different encoding systems.} Underlyingly, the character encoding is
+text in a computational setting.\footnote{An insightful reviewer notes that the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems. The issue is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e.\ the code point, which can be encoded differently by different encoding systems.} Underlyingly, the character encoding is
 represented by a range of numerical values called a \textsc{code space}, which
 is used to encode a set of characters. A \textsc{code point} is a unique
 non-negative integer within a code space (i.e.~within a certain numerical
@@ -94,7 +94,7 @@ hexadecimal, which then looks in Unicode parlance as
 %(0\cdot2^4) + (0\cdot2^3) + (0\cdot2^2) + (0\cdot2^1) + (0\cdot2^0) = 64 + 32 +
 %16 = 112$.} 
 That encoded abstract character is rendered on a computer screen (or
-printed page) as a \textsc{glyph}, e.g. <p>, depending on the \textsc{font} and
+printed page) as a \textsc{glyph}, e.g.\ <p>, depending on the \textsc{font} and
 the context in which that character appears.
 
 In Unicode Standard terminology, an (abstract) \textsc{character} is the basic
@@ -229,7 +229,7 @@ language-by-language or writing-system-by-writing-system basis. They are also
 grapheme clusters in these orthographies for processes such as collation.\footnote{\url{https://www.unicode.org/glossary/#collation}}
 
 The Unicode Standard provides technological specifications for creating locale specific data
-in so-called \textsc{Unicode Locale Descriptions}, i.e.~a set of specification
+in so-called \textsc{Unicode Locales}, i.e.~a set of specification
 that defines a set of language-specific elements (e.g.~tailored grapheme
 clusters, collation order, capitalization-equivalence), as well as other special
 information, like how to format numbers, dates, or currencies. Locale
