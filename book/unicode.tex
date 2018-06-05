@@ -712,7 +712,7 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -753,7 +753,7 @@ shown in Table \ref{tab:profile2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -796,7 +796,7 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -816,7 +816,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -855,7 +855,7 @@ by using the default separation in
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -875,7 +875,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -941,7 +941,7 @@ These new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1203,7 +1203,7 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1284,7 +1284,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1320,7 +1320,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1375,12 +1375,12 @@ adding the option \texttt{transliterate = "IPA"}.
 Another equivalent possibility is to use a column \texttt{Class} to specify a
 class of graphemes, and then use this class in the specification of context.
 This is useful to keep track of recurrent classes in larger profiles. You are
-free to use any class-name you like, as long as it doesn't clash with the rest
+free to use any class-name you like, as long as it does not clash with the rest
 of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 16:38:40 2018
+% Tue Jun  5 19:23:09 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1490,13 +1490,13 @@ the output string.
 Given a set of graphemes, there are at least two different methods to tokenize
 strings. The first is called \texttt{method = "global"}. This approach
 takes the first grapheme in the profile, then matches this grapheme globally at
-all places in the string, and then turns to the next string in the profile. The 
+all places in the string, and then turns to process the next string in the profile. The 
 other approach is called \texttt{method = "linear"}. This
 approach walks through the string from left to right. At the first character it
 looks through all graphemes whether there is any match, and then walks further
 to the end of the match and starts again. This approach is more akin to
 finite-state rewrite rules (though note that it still works differently from
-such rewrite rules, see above). The global method is used 
+such rewrite rules, as previously stated). The global method is used 
 by default in the R implementation.
 
 In some special cases these two tokenization methods can lead to different
@@ -1536,7 +1536,7 @@ the graphemes.
 \end{kframe}
 \end{knitrout}
 
-Further, the current R-implementation has a limitation when regular expressions
+Further, the current R implementation has a limitation when regular expressions
 are used. The problem is that overlapping matches are not captured when using
 regular expressions.\footnote{This restriction is an effect of the underlyingly
 used ICU implementation of the Unicode Standard as implemented in R through the
@@ -1590,7 +1590,7 @@ lead to an error.
 \section{Recipes online}
 \label{use-cases}
 
-Online we provide several use cases -- what we refer to as recipes -- that illustrate the applications of orthography profiles using our implementations in Python and R.\footnote{\url{https://github.com/unicode-cookbook/recipes}} Here we briefly describe these use cases and we encourage users to try them out using Git and Jupyter Notebooks.
+We provide several use cases online -- what we refer to as \textit{recipes} -- that illustrate the applications of orthography profiles using our implementations in Python and R.\footnote{\url{https://github.com/unicode-cookbook/recipes}} Here we briefly describe these use cases and we encourage users to try them out using Git and Jupyter Notebooks.
 
 First, as we discussed above, we provide a basic tutorial on how to use the Python \texttt{segments}\footnote{\url{https://pypi.python.org/pypi/segments}} and R \texttt{qlcData}\footnote{\url{https://github.com/cysouw/qlcData}} libraries. This recipe simply shows the basic functions of each library to get you started.\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics}}
 
@@ -1620,7 +1620,7 @@ The two recipes using the R \texttt{qlcData} library include a use case for toke
 	\item https://github.com/unicode-cookbook/recipes/tree/master/Dutch
 \end{itemize}
 
-\noindent The ASJP use case shows how to download the full set of ASJP wordlists, to combine them into a single large CSV file, and to tokenize the ASJP orthography. The Dutch use case takes as input the 10K corpus for Dutch (``nld'') from the Leipzig Corpora Collection,\footnote{\url{http://corpora2.informatik.uni-leipzig.de/download.html}} which is then cleaned and tokenized with an orthography profile that captures the intricacies of Dutch orthography.
+\noindent The ASJP use case shows how to download the full set of ASJP wordlists, to combine them into a single large CSV file, and to tokenize the ASJP orthography. The Dutch use case takes as input the 10K corpus for Dutch (``nld'') from the Leipzig Corpora Collection,\footnote{\url{http://wortschatz.uni-leipzig.de/en/download/}} which is then cleaned and tokenized with an orthography profile that captures the intricacies of Dutch orthography.
 
 % In closing, using GitHub to share code and data provides a platform for sharing scientific results and it also promotes a means for scientific replicability of results. Moreover, we find that in cases where the scientists are building the to tools for analysis, open repositories and data help to ensure that what you see is what you get.
 
