@@ -9,13 +9,13 @@
 In this chapter we describe some of the most common pitfalls that we have
 encountered when using the Unicode Standard in our own work, or in discussion
 with other linguists. This section is not meant as a criticism of the decisions
-made by the Unicode Consortium; on the contrary, we aim to highlight where the
+made by the Unicode Consortium; rather we aim to highlight where the
 technological aspects of the Unicode Standard diverge from many users'
 intuitions. What have sometimes been referred to as problems or inconsistencies
 in the Unicode Standard are mostly due to legacy compatibility issues, which can
 lead to unexpected behavior by linguists using the standard. However, there are
 also some cases in which the Unicode Standard has made decisions that
-theoretically could have been taken differently, but for some reason or another
+theoretically could have been made differently, but for some reason or another
 (mostly very good reasons) were accepted as they are now. We call such behavior that
 executes without error but does something different than the user
 expected -- often unknowingly -- a \textsc{pitfall}.
@@ -26,11 +26,11 @@ computational environment for written language. In those cases in which the
 Unicode Standard behaves differently than expected, we think it is important not
 to dismiss Unicode as wrong or deficient, because our
 experience is that in almost all cases the behavior of the Unicode Standard has
-been particularly well thought through. The Unicode Consortium has a more
+been particularly well thought through. The Unicode Consortium has a 
 wide-ranging view of matters and often examines important practical use-cases
-that from a linguistic point of view are normally not considered. Our general
+that are not normally considered from a linguistic point of view. Our general
 guideline for dealing with the Unicode Standard is to accept it as it is, and
-not to battle windmills. Alternatively, of course, it is possible to actively
+not to tilt at windmills. Alternatively, of course, it is possible to actively
 engage in the development of the standard itself, an effort that is highly
 appreciated by the Unicode Consortium.
 
@@ -41,7 +41,7 @@ appreciated by the Unicode Consortium.
 
 A central principle of Unicode is the distinction between character and glyph. A
 character is the abstract notion of a symbol in a writing system, while a glyph
-is the concrete drawing of such a symbol. In practice, there is a complex
+is the visual representation of such a symbol. In practice, there is a complex
 interaction between characters and glyphs. A single Unicode character may of
 course be rendered as a single glyph. However, a character may also be a piece
 of a glyph, or vice-versa. Actually, all possible relations between glyphs and
@@ -56,7 +56,7 @@ contextually-sensitive variants (isolated, word initial, medial and final).
 Second, a single character may be rendered as a sequence of multiple glyphs. For
 example, in Tamil one Unicode character may result in a combination of a
 consonant and vowel, which are rendered as two adjacent glyphs by fonts that
-supports Tamil, e.g.\ \textsc{tamil letter au} at \uni{0B94} represents a single 
+support Tamil, e.g.\ \textsc{tamil letter au} at \uni{0B94} represents a single 
 character <\tamil{ஔ}>, composed of two glyphs <\tamil{ஓ}> and <\tamil{ன}>. Perhaps confusingly, 
 in the Unicode Standard there are also two individual characters, 
 i.e.\ \textsc{tamil letter oo} at \uni{0B93} and 
@@ -76,15 +76,15 @@ character, as exemplified by diacritics like the diaeresis <\dia{0308}> in <ë>.
 Further, the rendering of a glyph is dependent on the font being used. For
 example, the Unicode character \textsc{latin small letter g} appears as <g> and
 <{\fontspec{Courier}g}> in the Linux Libertine and Courier fonts, respectively,
-because their typefaces are designed differently. Furthermore, font face may
+because their typefaces are designed differently. Furthermore, the font face may
 change the visual appearance of a character, for example Times New Roman
 two-story <{\fontspec{Times New Roman}a}> changes to a single-story glyph in italics
 <\emph{\fontspec{Times New Roman}a}>. This becomes a real problem for some
 phonetic typesetting (see Section~\ref{pitfall-ipa-homoglyphs}).
 
-In sum, character-to-glyph mappings are complex technological issues that the
+In sum, character-to-glyph mappings are complex technical issues that the
 Unicode Consortium has had to address in the development of the Unicode
-Standard, but for the lay user they can be utterly confusing because visual
+Standard. However, they can can be utterly confusing for the lay user because visual
 rendering does not (necessarily) indicate logical encoding.
 
 % ==========================
@@ -92,24 +92,23 @@ rendering does not (necessarily) indicate logical encoding.
 \label{pitfall-characters-are-not-graphemes}
 % ==========================
 
-The Unicode Standard is a character encoding system, and not a writing system
-encoding system. This most forcefully becomes clear with the notion of grapheme.
+The Unicode Standard encodes characters. This becomes most clear with the notion of grapheme.
 From a linguistic point of view, graphemes are the basic building blocks of a
 writing system (see Section~\ref{linguistic-terminology}). It is extremely
-common, up to the point of being universally attested, that writing systems use
-combinations of multiple symbols as a single grapheme, like <sch>, <th> or <ei>.
-There is no possibility to encode such complex graphemes using the Unicode Standard.
+common for writing systems to use 
+combinations of multiple symbols (or letters) as a single grapheme, such as <sch>, <th> or <ei>.
+There is no way to encode such complex graphemes using the Unicode Standard.
 
-The Unicode Standard deals with complex graphemes only inasmuch they consist of
+The Unicode Standard deals with complex graphemes only inasmuch as they consist of
 base characters with diacritics (see
 Section~\ref{pitfall-different-notions-of-diacritics} for a discussion of the
-notion of diacritic). The Unicode Standard calls such combination \textit{grapheme
+notion of diacritic). The Unicode Standard calls such combinations \textit{grapheme
 clusters}. Complex graphemes consisting of multiple base characters,
-like <sch>, are called \textit{tailored grapheme clusters} in Unicode parlance (see
+like <sch>, are called \textit{tailored grapheme clusters} (see
 Chapter~\ref{the-unicode-approach}).
 
-Inspecting the Unicode Standard, there appear to be special Unicode characters
-to glue together characters into larger tailored grapheme clusters,
+There are special Unicode characters that 
+glue together characters into larger tailored grapheme clusters,
 specifically the \textsc{zero width joiner} at \uni{200D} and the
 \textsc{combining grapheme joiner} at \uni{034F}. However, these characters are
 confusingly named (cf.~Section~\ref{pitfall-names}). Both code points actually do
@@ -119,9 +118,9 @@ in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
 separate characters that are not supposed to form ligatures. 
 
 To solve the issue of tailored grapheme clusters, Unicode offers some assistance
-in the form of the Unicode Locales.\footnote{\url{http://cldr.unicode.org/locale_faq-html}} 
+in the form of Unicode Locales.\footnote{\url{http://cldr.unicode.org/locale_faq-html}} 
 However, in the practice of
-linguistic research, this is not a real solution. For that reason we propose to
+linguistic research, this is not a real solution. To address this issue, we propose to
 use orthography profiles (see Chapter~\ref{orthography-profiles}). Basically,
 both orthography profiles and Unicode Locales offer a way to specify
 tailored grapheme clusters. For example, for English one could specify that <sh>
@@ -148,19 +147,19 @@ boxes being displayed, this user should be assured that everything is still in
 order.
 
 The central problem behind the missing glyphs is that designing actual glyphs
-includes a lot of different considerations and it is a time-consuming process.
-Many traditional expectations of how specific characters should look like have
+includes many different considerations and it is a time-consuming process. 
+Many traditional expectations of what specific characters should look like have
 to be taken into account when designing glyphs. Those expectations are often not
 well documented, and it is mostly up to the knowledge and experience of the font
-designer to try and conform to them as good as possible. Therefore, most
-designers produce fonts only including glyphs for certain parts of the Unicode
-Standard, namely for those characters they feel comfortable with. At the same
+designer to try and conform to them as well as possible. Therefore, most
+designers produce fonts that only include glyphs for certain parts of the Unicode
+Standard. At the same
 time, the number of characters defined by the Unicode Standard is growing with
-each new version, so it is neigh impossible for any designer to produce glyphs
-for all characters. The result of this is that, almost necessarily, each font
+each new version, so it is nigh impossible for any designer to produce glyphs
+for every character. The result of this is that, out of necessity, each font
 only includes glyphs for a subset of the characters in the Unicode Standard.
 
-The simple solution to missing glyphs is thus to install additional fonts
+A simple solution to missing glyphs is to install additional fonts
 providing additional glyphs. For the more exotic characters there is often not
 much choice. There are a few particularly large fonts that might be considered.
 First, there is the \textsc{Everson Mono} font made by Michael Everson, which
