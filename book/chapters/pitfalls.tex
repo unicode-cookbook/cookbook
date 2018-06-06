@@ -136,28 +136,28 @@ joiner} at \uni{200D} has to be entered between <s> and <h>.
 
 The Unicode Standard is often praised (and deservedly so) for solving many of
 the perennial problems with the interchange and display of the world's writing
-systems. However, a common complaint from users is that, while the praise may be
-true, they mostly just see some boxes on their screen instead of those promised
-symbols. The problem of course is that users' computers do not have any glyphs
-installed matching the Unicode code points in the file they are trying to
-inspect. It is important to realize that internally in the computer everything
+systems. However, a common complaint from users is that they encounter symbols from a 
+fall back font (e.g.\ a rectangle <▯>, question mark <?>, the Unicode replacement character <�>) 
+or nothing is displayed at all. The problem is that the user's computer does not have any fonts 
+installed that map Unicode code points to glyphs in the document they are trying to inspect. 
+It is important to realize that internally in the computer everything
 still works as expected: any handling of Unicode code points works independently
-of how they are displayed on the screen. So, although a user might only see
-boxes being displayed, this user should be assured that everything is still in
-order.
+of how they are displayed on the screen. So although users might only see
+alien faces being displayed, they should be assured that everything is still 
+technically in order.
 
-The central problem behind the missing glyphs is that designing actual glyphs
-includes many different considerations and it is a time-consuming process. 
-Many traditional expectations of what specific characters should look like have
+There are two main issues regarding missing glyphs. One issue is practical. 
+Designing glyphs includes many different considerations and 
+it is a time-consuming process when done well. 
+Many traditional expectations of what specific characters should look like need
 to be taken into account when designing glyphs. Those expectations are often not
 well documented, and it is mostly up to the knowledge and experience of the font
 designer to try and conform to them as well as possible. Therefore, most
 designers produce fonts that only include glyphs for certain parts of the Unicode
-Standard. At the same
-time, the number of characters defined by the Unicode Standard is growing with
-each new version, so it is nigh impossible for any designer to produce glyphs
-for every character. The result of this is that, out of necessity, each font
-only includes glyphs for a subset of the characters in the Unicode Standard.
+Standard. The second issue is technical. The current version of the Unicode Standard 
+contains 137,374 characters, but the OpenType specification (ISO/IEC 14496-22:2015), 
+which is used on all major computing platforms, is 16 bits. This means the maximal number of 
+glyphs in any font is limited to 65,536.
 
 A simple solution to missing glyphs is to install additional fonts
 providing additional glyphs. For the more exotic characters there is often not
@@ -165,13 +165,15 @@ much choice. There are a few particularly large fonts that might be considered.
 First, there is the \textsc{Everson Mono} font made by Michael Everson, which
 currently includes 9,756 different glyphs (not including Chinese) updated up to
 Unicode 7.0.\footnote{Everson Mono is available as shareware at
-\url{http://www.evertype.com/emono/}.} Already a bit older is the \textsc{Titus
+\url{http://www.evertype.com/emono/}.} Somewhat older is the \textsc{Titus
 Cyberbit Basic} font made by Jost Gippert and Carl-Martin Bunz, which includes
 10,044 different glyphs (not including Chinese), but not including newer
 characters added after Unicode 4.0.\footnote{Titus Cyberbit Basic is available
-at \url{http://titus.fkidg1.uni-frankfurt.de/unicode/tituut.asp}.}
+at \url{http://titus.fkidg1.uni-frankfurt.de/unicode/tituut.asp}.} For maximum 
+coverage, there is the Noto font family, a project developed by Google, 
+which covers 93 scripts and around 64,000 characters.\footnote{\url{https://www.google.com/get/noto/}}
 
-Further, we suggest to always install at least one so-called \textsc{fall-back
+Further, we suggest installing at least one so-called \textsc{fall-back
 font}, which provides glyphs that at least show the user some information about
 the underlying encoded character. Apple Macintoshes have such a font (which is
 invisible to the user), which is designed by Michael Everson and made available
@@ -181,9 +183,9 @@ fallback font is available for non-Macintosh users at \newline
 \textsc{GNU Unifont} is a clever way to produce bitmaps approximating the
 intended glyph of each available character, updated to Unicode 7.0.\footnote{The
 GNU Unifont is available at \url{http://unifoundry.com/unifont.html}.} Finally,
-the Summer Institute of Linguistics provides a \textsc{SIL Unicode BMP Fallback
-Font}, currently available up to Unicode version 6.1. This font does not even
-attempt to show a real glyph, but only shows the hexadecimal code inside a box
+SIL International provides a \textsc{SIL Unicode BMP Fallback
+Font}, currently available up to Unicode version 6.1. This font does not show a real 
+glyph, but instead shows the hexadecimal code inside a box
 for each character, so a user can at least see the Unicode code point of the
 character to be displayed.\footnote{The SIL Unicode BMP Fallback Font is
 available at \newline \url{http://scripts.sil.org/UnicodeBMPFallbackFont}.}
@@ -193,8 +195,8 @@ available at \newline \url{http://scripts.sil.org/UnicodeBMPFallbackFont}.}
 \label{pitfall-faulty-rendering}
 % ==========================
 
-A similar complaint to missing glyphs, discussed previously, is that while there
-might be a glyph being displayed, it does not look right. There are two
+A similar complaint to missing glyphs, discussed previously, is that while 
+a glyph might be displayed, it does not look right. There are two
 reasons for unexpected visual display, namely automatic font substitution and
 faulty rendering. Like missing glyphs, any such problems are independent from
 the Unicode Standard. The Unicode Standard only includes very general
@@ -210,8 +212,8 @@ a specific font (e.g.~Times New Roman) and an inserted Unicode character does no
 have a glyph within this font, then the software application will automatically
 search for another font to display the glyph. The result will be that this
 specific glyph will look slightly different from the others. This mechanism
-works differently depending on the software application, and mostly only limited
-user influence is expected and little feedback is given, which might be rather
+works differently depending on the software application, only limited
+user influence is usually expected and little feedback is given, which might be rather
 frustrating to font-aware users.\footnote{For example, Apple Pages does not give
 any feedback that a font is being replaced, and the user does not seem to have
 any influence on the choice of replacement (except by manually marking all
@@ -224,7 +226,7 @@ The other problem with visual display is related to the so-called \textsc{font
 rendering}. Font rendering refers to the process of the actual positioning of
 Unicode characters on a page of written text. This positioning is actually a
 highly complex problem, and many things can go wrong in the process. Well-known
-rendering problems, like proportional glyph size or ligatures are reasonably
+rendering difficulties, like proportional glyph size or ligatures, are reasonably
 well understood. In contrast, the positioning of multiple diacritics relative to
 a base character is still a widespread problem, even within the Latin script.
 Especially when more than one diacritic is supposed to be placed above (or
@@ -237,7 +239,7 @@ basically three different approaches to font rendering. The most widespread is
 Adobe's and Microsoft's \textsc{OpenType} system. This approach makes it
 relatively easy for font developers, as the font itself does not include all
 details about the precise placement of individual characters. For those details,
-additional script-descriptions are necessary. All of those systems can lead to
+additional script-descriptions are necessary. All such systems can lead to
 unexpected behavior.\footnote{For more details about OpenType, see
 \url{http://www.adobe.com/products/type/opentype.html} and
 \url{http://www.microsoft.com/typography/otspec/}. Additional systems for
@@ -245,19 +247,19 @@ complex text layout are, among others, Microsoft's DirectWrite
 \url{https://msdn.microsoft.com/library/dd368038.aspx} and the open-source
 project HarfBuzz \url{http://www.freedesktop.org/wiki/Software/HarfBuzz/}.}
 Alternative systems are \textsc{Apple Advanced Typography} (AAT) and the
-open-source \textsc{Graphite} system from the Summer Institute of Linguistics
+open-source \textsc{Graphite} system produced and maintained by the Non-Roman Script Initiative of SIL International 
 (SIL).\footnote{More information about AAT can be found at
-\url{https://developer.apple.com/fonts/}. \newline SIL's Graphite is described
-in detail at
-\url{http://scripts.sil.org/cms/scripts/page.php?site\_id=projects\&item\_id=graphite\_home}.}
+\url{https://developer.apple.com/fonts/}. \newline Graphite is described
+in detail at:
+\url{http://scripts.sil.org/default}.}
 In both of these systems, a larger burden is placed on the description inside
 the font.
 
-There is mostly no real solution to problems arising from faulty font rendering.
+There is no real solution to problems arising from faulty font rendering.
 Switching to another software application that offers better handling is the
-only real alternative, but this is normally not an option for daily work. The 
-experience with rendering on the side of the software industry is developing 
-quickly, so we can expect the situation to only get better. % In the meantime one 
+only real alternative, but this is normally not an option for daily work. 
+Font rendering is developing quickly in the software industry, so we can expect 
+the situation to only get better. % In the meantime one 
 % can try to correct faulty layout by tweaking baseline and/or kerning (when such 
 % option are available).
 
@@ -268,13 +270,13 @@ quickly, so we can expect the situation to only get better. % In the meantime on
 
 The Unicode code space is subdivided into blocks of contiguous code points. For
 example, the block called \textsc{Cyrillic} runs from \uni{0400} till
-\uni{04FF}. These blocks arose as an attempt at ordering the enormous amount of
-characters in Unicode, but the ideas of blocks very quickly ran into problems.
+\uni{04FF}. These blocks arose as an attempt at ordering the enormous number of
+characters in Unicode, but the idea of blocks very quickly ran into problems.
 First, the size of a block is fixed, so when a block is full, a new block will
-have to be instantiated somewhere further in the code space. For example, this
+have to be instantiated somewhere else in the code space. For example, this
 led to the blocks \textsc{Cyrillic Supplement}, \textsc{Cyrillic Extended-A}
-(both of which are also already full) and \textsc{Cyrillic Extended-B}. Second,
-when a specific character already exists, then it is not duplicated in another
+(both of which are already full) and \textsc{Cyrillic Extended-B}. Second,
+when a specific character already exists, it is not duplicated in another
 block, although the name of the block might indicate that a specific symbol
 should be available there. In general, names of blocks are just an approximate
 indication of the kind of characters that will be in the block.
@@ -288,15 +290,15 @@ be found there. For example, the velar nasal <ŋ> is not part of the block
 \textsc{IPA Extensions} because it was already included as \textsc{latin small letter
 eng} at \uni{014B} in the block \textsc{Latin Extensions-A}.
 
-In general, finding a specific character in the Unicode Standard is often not
-trivial. The names of the blocks can help, but they are not (and never were supposed
-to be) a foolproof structure. It is not the goal nor aim of the Unicode
+In general, finding a specific character in the Unicode Standard is often non-trivial. 
+The names of the blocks can help, but they are not (and were never supposed
+to be) a foolproof structure. It is neither the goal nor the aim of the Unicode
 Consortium to provide a user interface to the Unicode Standard. If one often
 encounters the problem of needing to find a suitable character, there are
 various other useful services for end-users available.\footnote{The Unicode
 website offers a basic interface to the code charts at
 \url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
-particularly like PopChar from Macility, available for both Macintosh and
+particularly like PopChar from Ergonis Software, available for both Macintosh and
 Windows. There are also various free websites that offer search interfaces
 to the Unicode code tables, like \url{http://unicode-search.net} or
 \url{http://unicode-search.net}. A further useful approach for searching characters
