@@ -29,16 +29,16 @@ programming languages.
 
 The Unicode Standard represents a massive step forward because it aims to
 eradicate the distinction between universal (ASCII) versus language-particular
-(font) by adding as much as possible language-specific information into the
+(font) by adding as much language-specific information as possible into the
 universal standard. However, there are still language/resource-specific
 specifications necessary for the proper usage of Unicode, as will be discussed
 below. Within the Unicode structure many of these specifications can be captured
 by so-called \textsc{locale descriptions}, so we are moving to a new distinction
 of universal (Unicode Standard) versus language-particular (locale description).
-The major gain is a much larger compatibility on the universal level (because
-Unicode standardizes a much larger portion of writing system diversity), and
+The major gain is much larger compatibility on the universal level (because
+Unicode standardizes a much greater portion of writing system diversity), and
 much better possibilities for automated processing on the language-particular
-level (because locale descriptions are computer readable specifications).
+level (because locale descriptions are machine-readable specifications).
 
 Each version of the Unicode Standard (\citealp{Unicode2018}, as of writing at
 version 11) consists of a set of specifications and guidelines that include (i) a
@@ -48,13 +48,13 @@ at \url{http://www.unicode.org/versions/latest/}. For a quick survey of the use
 of terminology inside the Unicode Standard, their glossary is particularly
 useful, available at \url{http://www.unicode.org/glossary/}. For a general
 introduction to the principles of Unicode, Chapter 2 of the core specification,
-called \textsc{general structure}, is particularly insightful. Different from
-many other documents of the Unicode Standard, this general introduction is
+called \textsc{general structure}, is particularly insightful. Unlike 
+many other documents in the Unicode Standard, this general introduction is
 relatively easy to read and illustrated with many interesting examples from
-various orthography traditions all over the world.} The \textsc{core
-specification} is a book directed toward human readers that describes the formal
+various orthographic traditions from all over the world.} The \textsc{core
+specification} is a book aimed at human readers that describes the formal
 standard for encoding multilingual text. The \textsc{code charts} provide a
-humanly readable online reference to the character contents of the Unicode
+human-readable online reference to the character contents of the Unicode
 Standard in the form of PDF files. The \textsc{Unicode Standard Annexes (UAX)}
 are a set of technical standards that describe the implementation of the Unicode
 Standard for software development, Web standards, and programming languages.
@@ -62,7 +62,7 @@ The \textsc{Unicode Character Database (UCD)} is a set of computer-readable text
 files that describe the character properties, including a set of rich character
 and writing system semantics, for each character in the Unicode Standard. In
 this section, we introduce the basic Unicode concepts, but we will leave out
-many details. Please consult the above mentioned full documentation for a more
+many details. Please consult the above-mentioned full documentation for a more
 detailed discussion. Further note that the Unicode Standard is exactly that,
 namely a standard. It normatively describes notions and rules to be followed. In
 the actual practice of applying this standard in a computational setting, a
@@ -75,8 +75,8 @@ Standard.\footnote{More information about the ICU is available here:
 \section{Character encoding system}
 \label{character-encoding-system}
 
-The Unicode Standard is a \textsc{character encoding system} which
-goal it is to support the interchange and processing of written characters and
+The Unicode Standard is a \textsc{character encoding system} whose
+goal is to support the interchange and processing of written characters and
 text in a computational setting.\footnote{An insightful reviewer notes that the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems. The issue is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e.\ the code point, which can be encoded differently by different encoding systems.} Underlyingly, the character encoding is
 represented by a range of numerical values called a \textsc{code space}, which
 is used to encode a set of characters. A \textsc{code point} is a unique
@@ -108,7 +108,7 @@ character refers to the abstract meaning and/or general shape, rather than a
 specific shape, though in code tables some form of visual representation is
 essential for the reader's understanding. Unicode defines characters as
 abstractions of orthographic symbols, and it does not define visualizations for
-these characters (although it does presents examples). In contrast, a
+these characters (although it does present examples). In contrast, a
 \textsc{glyph} is a concrete graphical representation of a character as it
 appears when rendered (or rasterized) and displayed on an electronic device or
 on printed paper. For example, <g {\large \textit{g}} \textbf{g}
@@ -117,9 +117,9 @@ same character, i.e.~they may be rendered differently depending on the
 typography being used, but they all share the same code point. From the
 perspective of Unicode they are \textit{the same thing}. In this approach, a
 \textsc{font} is then simply a collection of glyphs connected to code points.
-Allography is not specified in Unicode (expect for a few exceptional cases, due
+Allography is not specified in Unicode (barring a few exceptional cases, due
 to legacy encoding issues), but can be specified in a font as a
-\textsc{contextual variant} (a.k.a.~presentation form).
+\textsc{contextual variant} (aka presentation form).
 
 Each code point in the Unicode Standard is associated with a set of
 \textsc{character properties} as defined by the Unicode character property
@@ -145,7 +145,7 @@ These properties contain the basic information of the Unicode Standard and they
 are necessary to define the correct behavior and conformance required for
 interoperability in and across different software implementations (as defined in
 the Unicode Standard Annexes). The character properties assigned to each code
-point is based on each character's behavior in the real-world writing
+point are based on each character's behavior in real-world writing
 traditions. For example, the corresponding lowercase character to \uni{0047} is
 \uni{0067}.\footnote{Note that the relation between uppercase and lowercase is in
 many situations much more complex than this, and Unicode has further
@@ -159,7 +159,7 @@ simply defined for each character as the explicit \textsc{script} property in
 the Unicode Character Database.
 
 One frequently referenced property is the \textsc{block} property, which is
-often used in software applications to impose some structure to the large number
+often used in software applications to impose some structure on the large number
 of Unicode characters. Each character in Unicode belongs to a specific block.
 These blocks are basically an organizational structure to alleviate the
 administrative burden of keeping Unicode up-to-date. Blocks consist of
@@ -170,8 +170,8 @@ often there will come a point after which the range is completely filled. Any
 extra characters will have to be assigned somewhere else. There is, for example,
 a block \textsc{Arabic}, which contains most Arabic symbols. However, there is
 also a block \textsc{Arabic Supplement}, \textsc{Arabic Presentation Forms-A}
-and \textsc{Arabic Presentation Form-B}. The situation with Latin symbols is
-even more extreme. In general, the names for block should not be taken as a
+and \textsc{Arabic Presentation Forms-B}. The situation with Latin symbols is
+even more extreme. In general, the names of blocks should not be taken as a
 definitional statement. For example, many IPA symbols are not located in the
 aptly-named block \textsc{IPA extensions}, but in other blocks
 (see Section~\ref{pitfall-no-complete-ipa-block}).
@@ -183,7 +183,7 @@ than one code point) represents what a user perceives as an individual unit in a
 particular orthographic writing system. For this reason the Unicode Standard
 differentiates between \textsc{abstract character} and \textsc{user-perceived
 character}. Sequences of multiple code points that correspond to a single
-user-perceived characters are called grapheme clusters in Unicode parlance.
+user-perceived characters are called \textsc{grapheme clusters} in Unicode parlance.
 Grapheme clusters come in two flavors: (default) grapheme clusters and tailored
 grapheme clusters.
 
@@ -198,24 +198,24 @@ and code points is many-to-many.''} The simplest example of a grapheme cluster
 is a base character followed by a letter modifier character. For example, the
 sequence <n> + <\dia{0303}> (i.e.~\textsc{latin small letter n} at \uni{006E}, followed
 by \textsc{combining tilde} at \uni{0303}) combines visually into <ñ>, a
-user-perceived character in writing systems like that of Spanish. So, what the
+user-perceived character in writing systems like that of Spanish. In effect, what the
 user perceives as a single character actually involves a multi-code-point
 sequence. Note that this specific sequence can also be represented with a single
-so-called \textsc{precomposed code point}, \textsc{latin small letter n with
-tilde} at \uni{00F1}, but this is not the case for all multi-code point
-character sequences. The problem that there multiple encodings possible for the
-same text element has been acknowledged early on in the Unicode Standard
-(e.g.~for <ñ>, the sequence \uni{006E} \uni{0303} should in all situations be
-treated identically to the precomposed \uni{00F1}), and a system of
-\textsc{canonical equivalence} is available for such situations. Basically, the
-Unicode Standard offers different kind of normalizations to either decompose all
-precomposed characters (called \textsc{NFD}, \textsc{normalization form
-canonical decomposition}), or compose as much as possible combinations (called
-\textsc{NFC}, \textsc{normalization form canonical composition}).\footnote{See the 
+so-called \textsc{precomposed code point}, the \textsc{latin small letter n with
+tilde} at \uni{00F1}, but this is not the case for all multi-code-point
+character sequences. A solution to the problem of multiple encodings for the
+same text element was developed early on in the Unicode Standard. It is called 
+\textsc{canonical equivalence}, e.g.~for <ñ>, the sequence \uni{006E} \uni{0303} 
+should in all situations be treated identically to the precomposed \uni{00F1}. By doing so, 
+Unicode can also support special or precomposed characters in legacy character sets. 
+To determine canonical equivalence, the Unicode Standard offers different kinds of normalization to either 
+decompose precomposed characters (called \textsc{NFD} for \textsc{normalization form
+canonical decomposition}) or to combine sequences of code points into precomposed 
+characters (called \textsc{NFC} for \textsc{normalization form canonical composition}).\footnote{See the 
 Unicode Standard Annex \#15, Unicode Normalization Forms (\url{http://unicode.org/reports/tr15/}), 
 which provides a detailed description of normalization algorithms and illustrated examples.} 
-In current practice of software development, NFC seems to be preferred in most situations
-and is widely proposed as the preferred canonical form. We discuss Unicode Normalization 
+In current software development practice, NFC seems to be preferred in most situations
+and is widely proposed as the preferred canonical form. We discuss Unicode normalization 
 in detail in Section \ref{pitfall-canonical-equivalence}.
 
 More difficult for text processing, because less standardized, is what the
@@ -226,11 +226,11 @@ not function as text elements in all situations. Examples include the sequence
 practical orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme
 clusters are \textsc{tailored} in the sense that they must be specified on a
 language-by-language or writing-system-by-writing-system basis. They are also 
-grapheme clusters in these orthographies for processes such as collation.\footnote{\url{https://www.unicode.org/glossary/#collation}}
+grapheme clusters in these orthographies for processes such as collation (i.e.\ sorting).\footnote{\url{https://www.unicode.org/glossary/#collation}}
 
-The Unicode Standard provides technological specifications for creating locale specific data
-in so-called \textsc{Unicode Locales}, i.e.~a set of specification
-that defines a set of language-specific elements (e.g.~tailored grapheme
+The Unicode Standard provides technical specifications for creating locale specific data
+in so-called \textsc{Unicode Locales}, i.e.~specifications 
+that define a set of language-specific elements (e.g.~tailored grapheme
 clusters, collation order, capitalization-equivalence), as well as other special
 information, like how to format numbers, dates, or currencies. Locale
 descriptions are saved in the \textsc{Common Locale Data Repository

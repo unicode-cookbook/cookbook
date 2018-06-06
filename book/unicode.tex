@@ -569,7 +569,7 @@ These executables can be
 used in the resulting file path, or they can be linked and/or copied to any location as wanted. 
 For example, a good way to use the executables in a terminal is to
 make softlinks (using \texttt{ln}) from the executables to a directory in your
-PATH, e.g. to \texttt{/usr/local/bin/}. The two executables are named
+PATH, e.g.\ to \texttt{/usr/local/bin/}. The two executables are named
 \texttt{tokenize} and \texttt{writeprofile}, and the links can be made directly 
 by using Rscript to get the paths to the executables within the terminal.
 
@@ -712,7 +712,7 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -753,7 +753,7 @@ shown in Table \ref{tab:profile2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -781,7 +781,7 @@ Unicode offers different ways of normalization (see
 Section~\ref{pitfall-canonical-equivalence}), which can be invoked here as well
 using the option \texttt{normalize}. NFC normalization turns everything into the
 precomposed characters, while NFD normalization separates everything into base
-characters with combining diacritics. Splitting by code points (i.e. \texttt{sep~=~""}) 
+characters with combining diacritics. Splitting by code points (i.e.\ \texttt{sep~=~""}) 
 shows the results of these two normalizations in Tables \ref{tab:profile3} \& \ref{tab:profile4}.
 
 \begin{knitrout}\footnotesize
@@ -796,7 +796,7 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -816,7 +816,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -855,7 +855,7 @@ by using the default separation in
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -875,7 +875,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -941,7 +941,7 @@ These new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1014,7 +1014,7 @@ of the intended <m\ i\ s\ ch\ ie\ f>. The reason that <sch> is parsed before
 <ch> is that by default longer graphemes are parsed before shorter ones. Our
 experience is that in most cases this is expected behavior. You can change the
 ordering by specifying the option \texttt{ordering}. Setting this option to
-\texttt{NULL} results in no preferential ordering, i.e. the graphemes are parsed
+\texttt{NULL} results in no preferential ordering, i.e.\ the graphemes are parsed
 in the order of the profile, from top to bottom. Now `mischief' is parsed
 correctly, but `scheme' is wrong. So this ordering is not the solution in this
 case.
@@ -1084,10 +1084,10 @@ ordering options, that can also be combined:
 \end{itemize}
 
 By specifying more than one ordering, these orderings are used to break ties,
-e.g. the default setting \texttt{ordering = c("size", "context", "reverse")}
+e.g.\ the default setting \texttt{ordering = c("size", "context", "reverse")}
 will first order by size, and for those with the same size, it will order by
 whether there is any context specified or not. For lines that are still tied
-(i.e. have the same size and both/neither have context) the order will be
+(i.e.\ have the same size and both/neither have context) the order will be
 reversed compared to the order as attested in the profile, because most
 hand-written specifications of graphemes will first write the general rule,
 followed by more specific regularities. To get the right tokenization, these 
@@ -1203,7 +1203,7 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1284,7 +1284,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1320,7 +1320,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1380,7 +1380,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun  5 19:23:09 2018
+% Wed Jun  6 10:21:31 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1432,7 +1432,7 @@ Left & Grapheme & Right & Class & IPA \\
 In all examples above we have used the default formatting for grapheme
 separation using space as a separator, which is obtained by the default setting
 \texttt{sep~=~"~"}. It is possible to specify any other separator here,
-including the empty string, i.e. \texttt{sep = ""}. This will not show the
+including the empty string, i.e.\ \texttt{sep = ""}. This will not show the
 graphemic tokenization anymore (although it has of course been used in the
 background).
 
