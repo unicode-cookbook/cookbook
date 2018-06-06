@@ -33,12 +33,12 @@ eradicate the distinction between universal (ASCII) versus language-particular
 universal standard. However, there are still language/resource-specific
 specifications necessary for the proper usage of Unicode, as will be discussed
 below. Within the Unicode structure many of these specifications can be captured
-by so-called \textsc{locale descriptions}, so we are moving to a new distinction
-of universal (Unicode Standard) versus language-particular (locale description).
+by so-called \textsc{Unicode Locales}, so we are moving to a new distinction
+of universal (Unicode Standard) versus language-particular (Unicode Locale).
 The major gain is much larger compatibility on the universal level (because
 Unicode standardizes a much greater portion of writing system diversity), and
 much better possibilities for automated processing on the language-particular
-level (because locale descriptions are machine-readable specifications).
+level (because Unicode Locales are machine-readable specifications).
 
 Each version of the Unicode Standard (\citealp{Unicode2018}, as of writing at
 version 11) consists of a set of specifications and guidelines that include (i) a
@@ -150,7 +150,7 @@ traditions. For example, the corresponding lowercase character to \uni{0047} is
 \uni{0067}.\footnote{Note that the relation between uppercase and lowercase is in
 many situations much more complex than this, and Unicode has further
 specifications for those cases.} Another use of properties is to define the
-script of a character.\footnote{The Unicode Glossary defines the term \textsc{script} as
+script of a character.\footnote{The Glossary of Unicode Terms defines the term \textsc{script} as
 a ``collection of letters and other written signs used to represent textual
 information in one or more writing systems. For example, Russian is written with
 a subset of the Cyrillic script; Ukrainian is written with a different subset.
@@ -191,7 +191,7 @@ The (default) \textsc{grapheme clusters} are locale-independent graphemes,
 i.e.~they always apply when a particular combination of characters occurs
 independent of the writing system in which they are used. These character
 combinations are defined in the Unicode Standard as functioning as one
-\textsc{text element}.\footnote{The Unicode Glossary defines text element as:
+\textsc{text element}.\footnote{The Glossary of Unicode Terms defines \textsc{text element} as:
 ``A minimum unit of text in relation to a particular text process, in the
 context of a given writing system. In general, the mapping between text elements
 and code points is many-to-many.''} The simplest example of a grapheme cluster
@@ -226,7 +226,7 @@ not function as text elements in all situations. Examples include the sequence
 practical orthography (pronounced as IPA /tʃ/,~\cite{Moran2006}). These grapheme
 clusters are \textsc{tailored} in the sense that they must be specified on a
 language-by-language or writing-system-by-writing-system basis. They are also 
-grapheme clusters in these orthographies for processes such as collation (i.e.\ sorting).\footnote{\url{https://www.unicode.org/glossary/#collation}}
+grapheme clusters in these orthographies for processes such as collation (i.e.\ sorting).\footnote{\url{https://www.unicode.org/glossary/\#collation}}
 
 The Unicode Standard provides technical specifications for creating locale specific data
 in so-called \textsc{Unicode Locales}, i.e.~specifications 
@@ -241,10 +241,10 @@ describes specific usages of characters. Each locale can be encoded in a
 document using the \textsc{Locale Data Markup Language (LDML)}. LDML is an XML
 format and vocabulary for the exchange of structured locale data. Unicode Locale
 Descriptions allow users to define language- or even resource-specific writing
-systems or orthographies.\footnote{The Unicode Glossary defines \textsc{writing
+systems or orthographies.\footnote{The Glossary of Unicode Terms defines \textsc{writing
 system} only very loosely, as it is not a central concept in the Unicode
 Standard. A writing system is, ``A set of rules for using one or more scripts to
 write a particular language. Examples include the American English writing
 system, the British English writing system, the French writing system, and the
-Japanese writing system.''} However, there are various drawbacks of locale
-descriptions for the daily practice of linguistic work in a multilingual setting.
+Japanese writing system.''} However, Unicode Locales have various drawbacks 
+for the daily practice of scientific linguistic research in a multilingual setting.
