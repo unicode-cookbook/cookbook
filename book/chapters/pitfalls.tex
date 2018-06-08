@@ -10,7 +10,7 @@ In this chapter we describe some of the most common pitfalls that we have
 encountered when using the Unicode Standard in our own work, or in discussion
 with other linguists. This section is not meant as a criticism of the decisions
 made by the Unicode Consortium; rather we aim to highlight where the
-technological aspects of the Unicode Standard diverge from many users'
+technical aspects of the Unicode Standard diverge from many users'
 intuitions. What have sometimes been referred to as problems or inconsistencies
 in the Unicode Standard are mostly due to legacy compatibility issues, which can
 lead to unexpected behavior by linguists using the standard. However, there are
@@ -154,12 +154,13 @@ it is a time-consuming process, especially when done well.
 Traditional expectations of what specific characters should look like need
 to be taken into account when designing glyphs. Those expectations are often not
 well documented, and it is mostly up to the knowledge and expertise of the font
-designer to try and conform to them. Most designers 
+designer to try and conform to them. Furthermore, the number of characters 
+supported by Unicode is vast. Therefore, most designers 
 produce fonts that only include glyphs for certain parts of the Unicode
 Standard. 
 
 The second obstacle is technical: the maximum number of glyphs that can be 
-defined by the TrueType font standard or the OpenType specification 
+defined by the TrueType font standard and the OpenType specification 
 (ISO/IEC 14496-22:2015) is 65,535. The current version of the Unicode Standard 
 contains 137,374 characters. Thus, no single font can provide individual 
 glyphs for all Unicode characters.
@@ -177,7 +178,7 @@ Chinese).\footnote{\url{http://titus.fkidg1.uni-frankfurt.de/unicode/tituut.asp}
 
 We also suggest installing at least one \textsc{fall-back
 font}, which provides glyphs that show the user some information about
-the underlying encoded character. Apple Macintoshes have such a font (which is
+the underlying encoded character. Apple computers have such a font (which is
 invisible to the user), which is designed by Michael Everson and made available
 for other systems through the Unicode Consortium.\footnote{
 \url{http://www.unicode.org/policies/lastresortfont\_eula.html}} Further, the
@@ -294,7 +295,7 @@ encounters the problem of needing to find a suitable character, there are
 various other useful services for end-users available.\footnote{The Unicode
 website offers a basic interface to the code charts at
 \url{http://www.unicode.org/charts/index.html}. As a more flexible interface, we
-particularly like PopChar from Ergonis Software, available for both Macintosh and
+particularly like PopChar from Ergonis Software, available for both Mac and
 Windows. There are also various free websites that offer search interfaces
 to the Unicode code tables, like \url{http://unicode-search.net} or
 \url{http://unicode-search.net}. A further useful approach for searching characters
@@ -415,7 +416,10 @@ As a solution, the Unicode Standard includes a notion of \textsc{canonical
 equivalence}. Different encodings are explicitly declared as equivalent in the
 Unicode Standard code tables. Further, to harmonize all encodings in a specific
 piece of text, the Unicode Standard proposes a mechanism of
-\textsc{normalization}.
+\textsc{normalization}. The process of normalization and the 
+Unicode Normalization Forms are described 
+in detail in the Unicode Standard Annex \#15 online.\footnote{\url{http://unicode.org/reports/tr15/}} 
+Here we provide a brief summary of that material as it pertains to canonical equivalence.
 
 Consider for example the characters and following Unicode code points:
 \begin{enumerate}
@@ -426,7 +430,7 @@ Consider for example the characters and following Unicode code points:
 	+ \textsc{combining ring above} \uni{030A}
 \end{enumerate}
 
-The character, represented here by glyph <Å>, is encoded in the Unicode Standard
+\noindent The character, represented here by glyph <Å>, is encoded in the Unicode Standard
 in the first two examples by a single-character sequence; each is assigned a
 different code point. In the third example, the glyph is encoded in a
 multiple-character sequence that is composed of two character code points. All
@@ -583,7 +587,7 @@ Before we discuss the pitfall of different file formats in Section \ref{pitfall-
 
 % 0070;LATIN SMALL LETTER P;Ll;0;L;;;;;N;;;0050;;0050
 
-The other meaning of encoding has to do with the fact that computers represent data and instructions in patterns of bits. A bit pattern is a combination of binary digits arranged in a sequence. And how these sequences are carved up into bit patterns is determined by how they are \textit{encoded}. Thus the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems because they determine how sequences of bit patterns are determined, which are then mapped to characters. The terminological issue here is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e.\ the code point, which can be encoded differently by different encoding systems.
+The other meaning of encoding has to do with the fact that computers represent data and instructions in patterns of bits. A bit pattern is a combination of binary digits arranged in a sequence. And how these sequences are carved up into bit patterns is determined by how they are \textit{encoded}. Thus the term \textsc{encoding} is used for both sequences of code points and text encoded as bit patterns. Hence a Unicode-aware programmer might prefer to say that UTF-8, UTF-16, etc., are Unicode encoding systems because they determine how sequences of bit patterns are determined, which are then mapped to characters.\footnote{UTF stands for Unicode Transformation Format. It a method for translating numbers into binary data and vice versa. There are several different UTF encoding formats, e.g. UTF-8 is a variable-length encoding that uses 8-bit code units, is compatible with ASCII, and is common on the web. UTF-16 is also variable-length, uses 16-bit code units, and is used system-internally by Windows and Java. See further discussion under \textit{Code units} in Section \ref{pitfall-file-formats}. For more in-depth discussion, refer to the Unicode Frequently Asked Questions and additional sources therein: \url{http://unicode.org/faq/utf_bom.html}.} The terminological issue here is that the Unicode Standard introduces a layer of indirection between characters and bit patterns, i.e.\ the code point, which can be encoded differently by different encoding systems.
 
 % Characters encoded, but not seen.
 Note also that all computer character encodings include so-called \textsc{control characters}, which are non-printable sometimes action-inducing characters, such as the null character, bell code, backspace, escape, delete, and line feed. Control characters can interact with encoding schemes. For example, some programming languages make use of the null character to mark the end of a string. Line breaks are part of the text, and as such as covered by the Unicode Standard. But they can be problematic because line breaks differ from operating system to operating system in how they are encoded. These variants are discussed in Section \ref{pitfall-file-formats}.

@@ -54,23 +54,15 @@ idiosyncrasies in a computer-readable format. We call such specifications
 \textsc{orthography profiles}. Ideally, these specifications have to be
 integrated into so-called Unicode Locales,\footnote{\url{http://cldr.unicode.org/locale_faq-html}} 
 though we will argue that in practice this is often not the most useful solution for the kind of problems
-arising in the daily practice of many linguists. Consequently, a central goal of
-this book is to flesh out the linguistic challenges for locale descriptions,
-and work out suggestions to improve their structure for usage in a linguistic
-context. Conversely, we also aim to improve linguists' understanding and
-appreciation for the accomplishments of the Unicode Consortium in the
-development of the Unicode Standard.
-
-% Consequently, a central goal of this book is to flesh out the linguistic-specific challenges regarding Unicode Locales  and to work out suggestions to simply their structure for usage in a linguistic context. We also aim to improve linguists' understanding and appreciation for the accomplishments of the Unicode Consortium in the development of the Unicode Standard.
-
+arising in the daily practice of many linguists. Consequently, a central goal of this book is to flesh out the linguistic-specific challenges regarding Unicode Locales and to work out suggestions to simplify their structure for usage in a linguistic context. Conversely, we also aim to improve linguists' understanding and appreciation for the accomplishments of the Unicode Consortium in the development of the Unicode Standard.
 
 The need to use computational methods to compare different orthographies arises most
 forcefully in the context of language comparison. Concretely, the proper
-processing of orthographies and transcription systems becomes crucial for the
+processing of orthographies and transcription systems becomes critical for the
 development of quantitative methods for language comparison and historical
-reconstruction, in order to investigate worldwide linguistic variation and to
+reconstruction. In order to investigate worldwide linguistic variation and to
 model the historical and areal processes that underlie linguistic
-diversity. In this work, it is crucial to be able to flexibly process numerous
+diversity, it is crucial that we are able to flexibly process numerous
 resources in different orthographies. In many cases even different resources
 on the same language use different orthographic conventions. Another
 orthographic challenge that we encounter regularly in our linguistic practice is
@@ -393,10 +385,10 @@ system-specific minimally distinctive symbols (see below). Graphemes may consist
 \textsc{characters}. The term \textsc{character} is overladen. In the linguistic terminology of writing
 systems, a \textsc{character} is a general term for any self-contained element
 in a writing system. A second interpretation is used as a conventional term for a unit in the Chinese writing
-system \citep{Daniels1996}. In technological terminology, a \textsc{character} 
+system \citep{Daniels1996}. In technical terminology, a \textsc{character} 
 refers to the electronic encoding of a component in a writing system that has semantic 
 value (see Section \ref{character-encoding-system}). Thus in this work we must navigate 
-between the general linguistic and technological terms for \textsc{character} 
+between the general linguistic and technical terms for \textsc{character} 
 and \textsc{grapheme} because of how these notions are defined and how they relate at the intersection 
 between the International Phonetic Alphabet and the Unicode Standard (Chapter \ref{ipa-meets-unicode}).
 
@@ -439,8 +431,8 @@ used to represent a single phoneme. Note that the opposite is also found in
 writing systems, in cases in which a single character represents a combination
 of two or more phonemes. For example, <x> in English orthography sometimes represents a
 combination of the phonemes /k/ and /s/, as in the word `index' [ˈɪnˌdɛks]; other times 
-it is pronounced as /z/, such as in the words `Xerox' [ˈzɪrˌɑks] and `example' [ɪɡˈzæmpəl]. 
-As one can see, there can be non-trivial mappings between graphemes and phonemes in 
+it is pronounced as /z/, such as in the words `Xerox' [ˈzɪrˌɑks]; and in `example' [ɪɡˈzæmpəl] 
+it is a combination of /g/ and /s/. As one can see, there can be non-trivial mappings between graphemes and phonemes in 
 orthographies like English, e.g.\ `give', `gin', `jingle', where the graphemes 
 <g> and <j> and the phonemes /g/ and /dʒ/ have a complex mapping.
 
@@ -455,7 +447,7 @@ orthographies.
 
 \noindent This exposition of the linguistic terminology involved in describing writing
 systems has been purposely brief. We have highlighted some of the linguistic
-notions that are pertinent to, yet sometimes confused with, the technological
+notions that are pertinent to, yet sometimes confused with, the technical
 definitions developed for the computational processing of the world's writing
 systems, which we describe in the next Chapter.
 
