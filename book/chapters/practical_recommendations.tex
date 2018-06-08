@@ -11,7 +11,7 @@
 % as a primer on IPA+Unicode and actually disregard the last two chapters.
 % For this group, such a summary would be useful.
 
-This chapter is meant to be a short guide for novice users who are not interested in the programmatic aspects presented in Chapters \ref{orthography-profiles} and \ref{implementation}. Instead, we provide links to quickly find general information about the Unicode Standard and the International Phonetic Alphabet (IPA). And we target ordinary working linguists who want to know how to easily insert special characters into their digital documents and applications.
+This chapter is meant to be a short guide for novice users who are not interested in the programmatic aspects presented in Chapters \ref{orthography-profiles} and \ref{implementation}. Instead, we provide links to quickly find general information about the Unicode Standard and the International Phonetic Alphabet (IPA). We target ordinary working linguists who want to know how to easily insert special characters into their digital documents and applications.
 
 \section{Unicode}
 We discussed the Unicode Consortium's approach to computationally encoding writing systems in Chapter \ref{the-unicode-approach}. The common pitfalls that we have encountered when using the Unicode Standard are discussed in detail in Chapter \ref{unicode-pitfalls}. Together these chapters provide users with an in-depth background about the hurdles they may encounter when using the Unicode Standard for encoding their data or for developing multilingual applications. For general background information about Unicode and character encodings, see these resources:
@@ -25,7 +25,7 @@ We discussed the Unicode Consortium's approach to computationally encoding writi
 % \section{Unicode character pickers}
 For practical purposes, users need a way to insert special characters (i.e.\ characters that are not easily entered via their keyboards) into documents and software applications. There are a few basic approaches for inserting special characters. One way is to use software-specific functionality, when it is available. For example, Microsoft Word has an insert-special-symbol-or-character function that allows users to scroll through a table of special characters across different scripts. Special characters can be then inserted into the document by clicking on them. Another way is to install a system-wide application for special character insertion. We have long been fans of the PopChar application from Ergonis Software, which is a small program that can insert most Unicode characters (note however that the full version requires a paid subscription).\footnote{\url{http://www.ergonis.com/products/popcharx/}}
 
-There are also Web-based Unicode character pickers available through the browser that allow for the creation and insert of special characters, which can then be copied \& pasted into documents or software applications. For example, try:
+There are also web-based Unicode character pickers available through the browser that allow for the creation and insertion of special characters, which can then be copied \& pasted into documents or software applications. For example, try:
 
 \begin{itemize}
 	\item \url{https://unicode-table.com/en/}
@@ -34,9 +34,9 @@ There are also Web-based Unicode character pickers available through the browser
 
 Yet another option for special character insertion includes operating system-specific shortcuts. For example on the Mac, holding down a key on the keyboard for a second, say <u>, triggers a pop up with the options <û, ü, ù, ú, ū> which can then be inserted by keying the associated number (1--5). This method is convenient for occasionally inserting type accented characters, but the full range of special characters is limited and this method is burdensome for rapidly inserting many different characters. For complete access to special characters, Mac provides a Keyboard Viewer application available in the Keyboard pane of the System Preferences.
 
-On Windows, accented characters can be inserted by using alt-key shortcuts, i.e.\ holding down the alt-key and keying in a sequence of numbers (which typically reflect the Unicode character's decimal representation). For example, \textsc{latin small letter c with cedilla} at \uni{00E7} with the decimal code 231 can be inserted by holding the alt-key and keying the sequence 0231. Again, this method is burdensome for rapidly inserting characters. For access to the full range of Unicode characters, the Character Map program comes preinstalled on all Microsoft Operating systems.
+On Windows, accented characters can be inserted by using alt-key shortcuts, i.e.\ holding down the alt-key and keying in a sequence of numbers (which typically reflect the Unicode character's decimal representation). For example, \textsc{latin small letter c with cedilla} at \uni{00E7} with the decimal code 231 can be inserted by holding the alt-key and keying the sequence 0231. Again, this method is burdensome for rapidly inserting characters. For access to the full range of Unicode characters, the Character Map program comes preinstalled on all Microsoft operating systems.
 
-There are also many third party applications that provide virtual keyboards. These programs typically override keys or keystrokes on the user's keyboard  allowing them to quickly keyboard special characters (once the layout of the new keyboard is mastered). They can be language-specific or devoted specifically to IPA. Two popular programs are:
+There are also many third-party applications that provide custom keyboard layouts. These programs typically override keys or keystrokes on the user's keyboard allowing them to quickly enter special characters (once the layout of the new keyboard is mastered). They can be language-specific or devoted specifically to IPA. Two popular programs are:
 
 \begin{itemize}
 	\item \url{https://keyman.com/}
@@ -49,7 +49,7 @@ In Chapter \ref{the-international-phonetic-alphabet} we described in detail the 
 
 For general information about the IPA, the standard text is the \textit{Handbook of the International Phonetic Association: A Guide to the Use of the International Phonetic Alphabet} \citep{IPA1999}. The handbook describes in detail the principles and premises of the IPA, which we have summarized in Section \ref{IPApremises-principles}. The handbook also provides many examples of how to use the IPA. The Association also makes available information about itself online\footnote{\url{https://www.internationalphoneticassociation.org/}} and it provides the most current IPA charts.\footnote{\url{https://www.internationalphoneticassociation.org/content/ipa-chart}} Wikipedia also has a comprehensive article about the IPA.\footnote{\url{https://en.wikipedia.org/wiki/International_Phonetic_Alphabet}}
 
-There are several good Unicode IPA character pickers available on the Web and through the browser, including:
+There are several good Unicode IPA character pickers available through the browser, including:
 
 \begin{itemize}
 	\item \url{https://r12a.github.io/pickers/ipa/}
@@ -84,7 +84,7 @@ Lastly, here are some online resources that we find particularly useful for find
 \section{For programmers and potential programmers}
 If you have made it this far, and you are eager to know more about the technological aspects of the Unicode Standard and how they relate to software programming, we recommend two light-hearted blog posts on the topic. The classic blog post about what programmers should know about the Unicode Standard is Joel Spolsky's \textit{The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)}.\footnote{\url{https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/}} A more recent blogpost, with a bit more of the technical details, is by David C. Zentgraf and is titled, \textit{What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text}.\footnote{\url{http://kunststube.net/encoding/}} This post is aimed at software developers and uses the PHP language for examples.
 
-For users of Python, see the standard documentation on how to use Unicode in your programming applications.\footnote{\url{https://docs.python.org/3/howto/unicode.html}} For R users we recommend the \textsc{stringi} library.\footnote{\url{https://cran.r-project.org/web/packages/stringi/index.html}} For \LaTeX users, the TIPA package is useful for inserting IPA characters into your typeset documents. See these resources:
+For users of Python, see the standard documentation on how to use Unicode in your programming applications.\footnote{\url{https://docs.python.org/3/howto/unicode.html}} For R users we recommend the \textsc{stringi} library.\footnote{\url{https://cran.r-project.org/web/packages/stringi/index.html}} For \LaTeX~users the \textsc{TIPA} package is useful for inserting IPA characters into your typeset documents. See these resources:
 
 \begin{itemize}
 	\item \url{http://www.tug.org/tugboat/tb17-2/tb51rei.pdf}
@@ -92,7 +92,7 @@ For users of Python, see the standard documentation on how to use Unicode in you
 	\item \url{http://ptmartins.info/tex/tipacheatsheet.pdf}
 \end{itemize}
 
-\noindent But we find it much easier to use the Unicode-aware XeTeX/XeLaTeX typesetting system.\footnote{\url{http://xetex.sourceforge.net/}} Unicode characters can be directly inserted into your Tex documents and compiled into typeset PDF with XeLaTeX.
+\noindent But we find it much easier to use the Unicode-aware \hologo{XeTeX} typesetting system.\footnote{\url{http://xetex.sourceforge.net/}} Unicode characters can be directly inserted into your \hologo{TeX} documents and compiled into typeset PDF with \hologo{XeLaTeX}.
 
 Lastly, we leave you with some Unicode humor for making it this far:
 

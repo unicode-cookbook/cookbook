@@ -430,7 +430,7 @@ The character, represented here by glyph <Å>, is encoded in the Unicode Standar
 in the first two examples by a single-character sequence; each is assigned a
 different code point. In the third example, the glyph is encoded in a
 multiple-character sequence that is composed of two character code points. All
-three sequences are \textsc{canonically equivalent}, i.e.~they are strings that
+three sequences are \textsc{}, i.e.~they are strings that
 represent the same abstract character and because they are not distinguishable
 by the user, the Unicode Standard requires them to be treated the same in
 regards to their behavior and appearance. Nevertheless, they are encoded
@@ -470,7 +470,7 @@ formally defined as a character property called \textsc{canonical combining
 class} which is specified in the Unicode Character Database. The combining class
 assigned to each code point is a numeric value between 0 and 254 and is used by
 the Unicode Canonical Ordering Algorithm to determine which sequences of
-characters are canonically equivalent. Normalization forms, as very briefly
+characters are . Normalization forms, as very briefly
 described above, can be used to ensure character equivalence by ordering
 character sequences so that they can be faithfully compared.
 
@@ -478,7 +478,7 @@ It is very important to note that any software application that is Unicode
 Standard compliant is free to change the character stream from one
 representation to another. This means that a software application may compose,
 decompose or reorder characters as its developers desire; as long as the
-resultant strings are canonically equivalent to the original. This might lead to
+resultant strings are  to the original. This might lead to
 unexpected behavior for users. Various players, like the Unicode Consortium, the
 W{\large 3}C, or the TEI recommend NFC in most user-directed situations, and
 some software applications that we tested indeed seem to automatically convert
@@ -542,7 +542,7 @@ elements are the following:
 
 There are further combinations that deserve special care because it is actually
 possible to produce identical characters in different ways without them being
-canonically equivalent. In these situations, the general rule holds, namely that
+. In these situations, the general rule holds, namely that
 characters with attached extras are not decomposed. However, in the following
 cases the extras actually exist as combining diacritics, so there is also 
 the possibility to construct a character by using a base character with those 
