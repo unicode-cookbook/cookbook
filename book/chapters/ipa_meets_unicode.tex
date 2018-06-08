@@ -127,11 +127,11 @@ should ideally not use the <а> \textsc{cyrillic small letter a} at code point
 letter a} at code point \uni{0061}, although visually they are mostly
 indistinguishable, and the Cyrillic character is more easily typed on a Cyrillic
 keyboard. Some further problematic homoglyphs related to encoding IPA in the
-Unicode Standard are the following.
+Unicode Standard are the following:
 
 \begin{itemize}
 
-   \item The uses of the apostrophe has led to long discussions on the Unicode
+   \item The uses of the apostrophe have led to long discussions on the Unicode
         Standard email list. An English keyboard inputs the symbol
         <\dia{0027}> \textsc{apostrophe} at \uni{0027}, although the preferred Unicode
         apostrophe is the <\dia{2019}> \textsc{right single quotation mark} at
@@ -140,7 +140,7 @@ Unicode Standard are the following.
         depending on the whitespace around it.} However, the glottal
         stop/glottalization/ejective marker is yet another completely different
         character, namely <\dia{02BC}>, i.e.~the \textsc{modifier letter apostrophe} 
-        at \uni{02BC}, which unfortunately looks mostly extremely similar to
+        at \uni{02BC}, which unfortunately looks extremely similar to
         \uni{2019}. 
   \item Another problem is the <\dia{02C1}> \textsc{modifier letter reversed glottal
         stop} at \uni{02C1} vs.\@ the <\dia{02E4}> \textsc{modifier letter small reversed
@@ -161,7 +161,7 @@ Unicode Standard are the following.
   \item The dental click <ǀ>, in Unicode known as \textsc{latin letter dental
         click} at \uni{01C0}, is often simply typed as <|> \textsc{vertical
         line} at \uni{007C}.
-  \item For the marking of length there is a special Unicode characters, namely
+  \item For the marking of length there is a special Unicode character, namely
         <\dia{02D0}> \textsc{modifier letter triangular colon} at \uni{02D0}. However,
         typing <\dia{003A}> \textsc{colon} at \uni{003A} is of course much easier.        
   \item There are two mostly identical-looking Unicode characters for the superscript
@@ -204,7 +204,7 @@ Making things even more problematic, there is an old typographic tradition that
 the double-story <a> uses a single-story <ɑ> in italics. This leads to the
 unfortunate effect that even in many well-designed fonts the italics of <a> and
 <ɑ> use the same glyph. For example, in Linux Libertine (the font of this book)
-the italics of these characters are highly similar <\textit{a}> and
+the italics of these characters are highly similar, <\textit{a}> and
 <\textit{ɑ}>, while in Charis SIL they are identical: <\textit{\charis{a}}> and
 <\textit{\charis{ɑ}}>. If this distinction has to be kept upright in italics,
 the only solution we can currently offer is to use \textsc{slanted} glyphs
@@ -310,7 +310,7 @@ discussed in turn below:
   \item The placement of diacritics
 \end{itemize}
 
-The first case in which the IPA allows for different encodings is the question
+\noindent The first case in which the IPA allows for different encodings is the question
 of how to transcribe tone (cf.\ \cite{Maddieson1990}). There is an old tradition 
 to use diacritics on vowels to mark different tone levels \citep{IPA1949}. Prior to the 1989 Kiel 
 convention, IPA-approved tone symbols included diacritics above or below the vowel or syllable, 
@@ -348,6 +348,7 @@ IPA encoding we propose to standardize on tone letters.
 
 % IPA1999 pg 19
 % "Either of the variant letter shapes [g] and [g] may be used to represent the voiced velar plosive."
+% https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/information/instructions-contributors
 
 Second, we commonly encounter the use of <g> \textsc{latin small letter g} at
 \uni{0067}, instead of the Unicode Standard IPA character for the voiced velar
@@ -357,7 +358,10 @@ they simply use the \uni{0067} because it is easily keyboarded and thus saves
 time, whereas the latter must be cumbersomely inserted as a special symbol in
 most software. The International Phonetic Association has taken the stance that
 both the keyboard \textsc{latin small letter g} and the \textsc{latin small
-letter script g} are valid input characters for the voiced velar plosive \citep[19]{IPA1999}.
+letter script g} are valid input characters for the voiced velar plosive 
+\citep[19]{IPA1999}.\footnote{Note however that the current instructions for contributors to 
+the Journal of the International Phonetic Association requires the use of 
+opentail <ɡ> and not looptail <g>.}
 Unfortunately, this decision further introduces ambiguity for linguists trying
 to adhere to a strict Unicode Standard IPA encoding. For strict IPA encoding we
 propose to standardize on the more idiosyncratic \textsc{latin small letter
@@ -371,7 +375,7 @@ suggest to try and avoid using the tilde overlay, though for reasons of backward
 compatibility we will allow it in valid-IPA.\@
 
 Finally, the IPA states that ``diacritics may be placed above a symbol with a
-descender''. For example, for marking marking of voiceless pronunciation of
+descender''. For example, for marking of voiceless pronunciation of
 voiced segments the IPA uses the ring diacritic. Originally, the ring should be
 placed below the base character, like in <m̥>, using the \textsc{combining ring
 below} at \uni{0325}. However, in letters with long descenders the IPA also
@@ -421,9 +425,9 @@ allow diacritics to switch position for typographic convenience.
 % affricates and double articulations, and then only "if necessary"."
 
 In the major revision of the IPA in 1932, affricates were represented by two
-consonants <tʃ>, ligatures <ʧ>, or with the tie-bar <t͡ʃ>. In the
-1938 revision the tie-bar's semantics were broadened to indicate simultaneous
-articulation, as for example in labial velars such as <k͡p>. Thus, the tie-bar is a
+consonants <tʃ>, ligatures <ʧ>, or with the tie bar <t͡ʃ>. In the
+1938 revision the tie bar's semantics were broadened to indicate simultaneous
+articulation, as for example in labial velars such as <k͡p>. Thus, the tie bar is a
 convenient diacritic for visually tokenizing input strings into chunks of
 phonetically salient groups, including affricates, doubly articulated consonants
 or diphthongs. 
@@ -464,13 +468,13 @@ character following.
 
 Further, according to the spirit of the IPA, it would also be possible to
 combine more than two base characters into one tie bar, but this is not possible
-with Unicode (i.e.~there is no possibility to draw a tie bar over three of four
+with Unicode (i.e.~there is no possibility to draw a tie bar over three or four
 characters). It is possible to indicate such larger groups by repeating the tie
 bar, like for a triphthong <a͡ʊ͡ə> in the English word \textit{hour}. If really
 necessary, we consider this possible, even though the rendering will never look
 good. 
 
-Most importantly though, in comparison to normal Unicode processing, the tie-bar
+Most importantly though, in comparison to normal Unicode processing, the tie bar
 actually takes a reversed approach to complex graphemes. Basically, the Unicode
 principle (see Section~\ref{pitfall-characters-are-not-graphemes}) is that fixed
 sequences in a writing system have to be specified as tailored grapheme
@@ -535,9 +539,9 @@ should be used when writing IPA, namely:
 % ==========================
 
 Although many combinations of base character with diacritic are treated as
-canonical equivalent with precomposed characters, there are a few combinations
+ with precomposed characters, there are a few combinations
 in IPA that allow for multiple, apparently identical, encodings that are not
-canonical equivalent (see Section~\ref{pitfall-canonical-equivalence} on the
+ (see Section~\ref{pitfall-canonical-equivalence} on the
 principle of canonical equivalence). For that reason, the following elements
 should not be treated as diacritics when encoding IPA in Unicode:
 \begin{itemize}
@@ -550,8 +554,8 @@ should not be treated as diacritics when encoding IPA in Unicode:
 There turn out to be a lot of characters in the IPA that could be conceived as
 using any of these elements, like <ɲ>, <ɳ>, <ɨ> or <ø>. However, all such
 characters exist as well as precomposed combination in Unicode, and these
-precomposed characters should preferably be used. When instead combinations of a base character with
-diacritic are used, then these combinations are not canonical equivalent to the
+precomposed characters should preferably be used. When combinations of a base character with
+diacritic are used instead, then these combinations are not  to the
 precomposed combinations. This means that any search will not find both at the
 same time.
 
@@ -561,7 +565,7 @@ same time.
 % Section~\ref{ipa-additions}.} 
 
 A similar problem arises with the rhotic hook. There are two precomposed
-characters in Unicode with a rhotic hook, which are not canonical equivalent 
+characters in Unicode with a rhotic hook, which are not  
 with a combination of the vowel with a separately encoded hook:
 \begin{itemize}
   \item[] <ɚ> \textsc{latin small letter schwa with hook} at \uni{025A}
@@ -587,7 +591,7 @@ Section~\ref{pitfall-homoglyphs-in-IPA}). For these reasons we also suggest to t
 and avoid the tilde overlay completely.
 
 Reversely, note that the <ç> \textsc{latin small letter c with cedilla} at
-\uni{00E7} is canonically equivalent with <c> with <\dia{0327}>
+\uni{00E7} is  with <c> with <\dia{0327}>
 \textsc{combining cedilla} at \uni{0327}, so it will be separated into two
 characters by Unicode canonical decomposition, also if such a decomposition is
 not intended in the IPA.\@ However, because of the nature of canonical
@@ -602,8 +606,8 @@ decomposition does not have any practical consequences.
 
 % TODO: this section is wrong wrt IPA diacritics and needs updating @SM
 
-Another pitfall relates to the question of what are diacritics. The problem is that
-the meaning of the term diacritics as used by the IPA is not the same as is used
+Another pitfall relates to the question, what is a diacritic? The problem is that
+the meaning of the term \textsc{diacritic} as used by the IPA is not the same as it is used
 in the Unicode Standard. Specifically, diacritics in the IPA-sense are either
 so-called \textsc{combining diacritical marks} or \textsc{spacing modifier
 letters} in the Unicode Standard. Crucially, Combining Diacritical Marks are by
@@ -622,7 +626,7 @@ Letters in the Unicode Standard:
     	  \item[] <\dia{02D1}> \textsc{modifier letter half triangular colon} at \uni{02D1}
     	\end{itemize}
 	 
-	\item[] Tone letters, including but nut limited to: 
+	\item[] Tone letters, including but not limited to: 
 	\begin{itemize} 
 	  \item[] <˥> \textsc{modifier letter extra-high tone bar} at \uni{02E5}
 	  \item[] <˨> \textsc{modifier letter low tone bar} at \uni{02E8}
@@ -690,7 +694,7 @@ to treat it as a separate character is also linguistically correct.
  
 \end{itemize}
 
-If intended, then any default combination of Spacing Modifiers
+\noindent If intended, then any default combination of Spacing Modifiers
 with the preceding character can be specified in orthography profiles (see
 Chapter~\ref{orthography-profiles}). 
 
@@ -706,7 +710,7 @@ reasoning of the transcriber. However, such marks have to be explicitly ordered
 if sequences of them are to be interoperable and compatible computationally. An example is a
 labialized aspirated alveolar plosive: <tʷʰ>. There is nothing holding linguists
 back from using <tʰʷ> instead (with exactly the same intended meaning). However,
-from a technical standpoint, these two sequences are different, e.g.~if both
+from a technical standpoint, these two sequences are different; if both
 sequences are used in a document, searching for <tʷʰ> will not find any
 instances of <tʰʷ>, and vice versa. Likewise, a creaky voiced syllabic dental
 nasal can be encoded in various orders, e.g.\ <n̪̰̩>, <n̩̰̪> or <n̩̪̰>.
@@ -762,8 +766,8 @@ some ad-hoc decisions had to be taken given the vast variability of phonological
 segments described by linguists. The most recent version of the conventions 
 is published online by~\citet{MoranMcCloy2014}.\footnote{\url{http://phoible.github.io/conventions/}}
 
-By Unicode Canonical Combining Classes, overlay diacritics 
-like <\dia{0334}> (Combining Class number 1), always come before diacritics
+According to Unicode Canonical Combining Classes, overlay diacritics 
+like <\dia{0334}> (Combining Class number 1) always come before diacritics
 below (Combining Class number 220), which in turn always come before diacritics
 above (Combining Class number 230), which in turn come before diacritics over
 multiple characters like the tie bar <\dia{0361}{\large\fontspec{CharisSIL}◌}>
@@ -811,7 +815,7 @@ character, we propose the following order:
  \end{itemize} \end{itemize}
 
 \noindent Then, when a character sequence contains more than one character of the Spacing
-Modifier Letters, these will be placed after all combining diacritic marks in the
+Modifier Letters, these will be placed after all combining diacritical marks in the
 following order:
 
 \begin{itemize}
@@ -878,8 +882,8 @@ The most controversial issue regarding symbols debated at the convention was the
 representation for voiceless implosives \citep[62]{Ladefoged1990a}. In
 accordance with the principles of the IPA, as outlined in Section
 \ref{the-international-phonetic-alphabet}, distinct symbols are favored for
-cases of phonological contrast. Further, also convenience of display in the chart
-must be taken into account when arguing for or against the inclusion or deletion
+cases of phonological contrast. Further, convenience of display in the chart 
+must also be taken into account when arguing for or against the inclusion or deletion
 of IPA symbols in the IPA chart. Finally, the inclusion or deletion of symbols
 should consider the current state of phonetic knowledge of the world's
 languages.
@@ -888,12 +892,12 @@ languages.
 ʠ > for voiceless implosives, noting (i) that they are not contrastive (e.g.\ in
 Mayan languages); (ii) that there is no instrumental evidence supporting
 voiceless implosives in Africa; and (iii) that the sounds are sufficiently rare
-as to not need a whole new row of symbols in the chart. Ladefoged favored
+so as not to need a whole new row of symbols in the chart. Ladefoged favored
 symbolizing the sounds using a voiceless diacritic ring below voiced implosives,
 e.g.\ <ɓ̥>. Nevertheless, in the 1989 IPA chart there is indeed a row for
 implosives containing voiceless and voiced
-pairs.\footnote{https://en.wikipedia.org/wiki/File:IPA\_as\_of\_1989.png} But
-already in the next revision, in 1993 (with an update in 1996), the voiceless
+pairs.\footnote{https://en.wikipedia.org/wiki/File:IPA\_as\_of\_1989.png} 
+But in the next revision, in 1993 (with an update in 1996), the voiceless
 implosives were dropped. The implosives row from the IPA consonantal chart
 disappeared and voiced implosives were given a column in the non-pulmonic
 consonants table (which is still reflected in the latest revision to date, IPA
@@ -911,12 +915,12 @@ in an \textit{Illustrations of the IPA} article in the IPA journal as
 < ɓ̥, ɗ̥, ʄ̥ >.
 
 The point of this pitfall is to highlight that revisions to the IPA will 
-continue into the future, albeit they are infrequent. Nevertheless, 
+continue into the future, albeit infrequently. Nevertheless, 
 given the Unicode Standard's principle of maintaining backwards compatibility 
 (at all costs), transcribers and consumers of IPA cannot rely solely on 
 remarks in the Unicode Standard to reflect current standard IPA usage. 
 There is the possibility that at a later revision of the IPA, symbols that 
-are not currently encoded in the Unicode Standard are added to the IPA -- 
+are not currently encoded in the Unicode Standard will be added to the IPA -- 
 although we think this is unlikely. 
 
 % ==========================
@@ -940,7 +944,7 @@ used with caution.
       Retroflex clicks can be represented by <‼> \textsc{double exclamation
       mark} at \uni{203C}. Note that the (post-)alveolar click <ǃ> at \uni{01C3}
       is confusingly referred to as \textsc{latin letter retroflex click} in the
-      Unicode Standard, which is probably best seen as an error.
+      Unicode Standard, which is probably best considered an error.
 \item \textsc{Voiced retroflex implosive} \newline 
       Although the IPA includes a
       series of voiced implosives (marked with a hook on top, see
