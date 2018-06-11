@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Series information:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{\seriesinfopath langsci-colors.def} % color definitions
+
+\newcommand{\algad}{algad}
+\newcommand{\calseries}{calseries}
+\newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
+\newcommand{\classics}{classics}
+\newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
+\newcommand{\eotms}{eotms}
+\newcommand{\eotmsig}{eotmsig}
+\newcommand{\eurosla}{eurosla}
+\newcommand{\hpls}{hpls}
+\newcommand{\lv}{lv}		%Language Variation
+\newcommand{\mi}{mi}
+\newcommand{\nc}{nc}		%Niger Congo
+\newcommand{\ogs}{ogs}		%Open Generative Syntax
+\newcommand{\osl}{osl}		%Open Slavic Linguistics
+\newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
+\newcommand{\sidl}{sidl}
+\newcommand{\silp}{silp}	%Studies in Laboratory Phonology
+\newcommand{\tbls}{tbls}	%Textbooks in Language Sciences
+\newcommand{\tgdi}{tgdi}	%Topics at the  Grammar-Discourse Interface
+\newcommand{\tmnlp}{tmnlp}
+
+\newcommand{\dummyseries}{dummyseries}
+\newcommand{\guidelines}{guidelines}
+\newcommand{\lsSeriesFontColor}{white}
+
+\AtBeginDocument{
+\ifx\lsSeries\algad
+	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightOrange}
+\fi
+\ifx\lsSeries\calseries %\cal is already taken as a command
+	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidWine}
+	\renewcommand{\lsISSN}{2511-7726}
+\fi
+\ifx\lsSeries\cfls
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
+	\renewcommand{\lsISSN}{2363-877X}
+\fi
+\ifx\lsSeries\classics
+	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{black}
+	\renewcommand{\lsISSN}{2366-374X}
+\fi
+\ifx\lsSeries\cmle
+	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSN}{2364-7809}
+\fi
+\ifx\lsSeries\eotms
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
+	\renewcommand{\lsISSN}{2366-3529}
+\fi
+\ifx\lsSeries\eotmsig
+	\newcommand{\lsSeriesTitle}{Implemented Grammars~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
+\fi
+\ifx\lsSeries\eurosla
+	\newcommand{\lsSeriesTitle}{Eurosla Studies~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidOrange}
+\fi
+\ifx\lsSeries\hpls
+	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsSoftGreen}
+\fi
+\ifx\lsSeries\lv
+	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkWine}
+	\renewcommand{\lsISSN}{2366-7818}
+\fi
+\ifx\lsSeries\mi
+	\newcommand{\lsSeriesTitle}{Morphological Investigations~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkGreenTwo}
+	\renewcommand{\lsISSN}{2567-742X}
+\fi
+\ifx\lsSeries\nc
+	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRed}
+\fi
+\ifx\lsSeries\ogs
+	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkGreenOne}
+	\renewcommand{\lsISSN}{2568-7336}
+\fi
+\ifx\lsSeries\osl
+	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidGreen}
+\fi
+\ifx\lsSeries\pmwe
+	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightBlue}
+\fi
+\ifx\lsSeries\scl
+	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkOrange}
+\fi
+\ifx\lsSeries\sidl
+	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRichGreen}
+	\renewcommand{\lsISSN}{2363-5568}
+\fi
+\ifx\lsSeries\silp
+	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightWine}
+	\renewcommand{\lsISSN}{2363-5576}
+\fi
+\ifx\lsSeries\tbls
+	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsYellow}
+	\renewcommand{\lsISSN}{2364-6209}
+\fi
+\ifx\lsSeries\tgdi
+	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse Interface~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+	\renewcommand{\lsISSN}{2567-3335}
+\fi
+\ifx\lsSeries\tmnlp
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkBlue}
+	\renewcommand{\lsISSN}{2364-8899}
+\fi
+\ifx\lsSeries\dummyseries
+	\newcommand{\lsSeriesTitle}{~}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
+\fi
+\ifx\lsSeries\guidelines
+	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
+	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
+	\renewcommand{\lsCoverFontColor}{black}
+\fi
+}

@@ -1,0 +1,202 @@
+%%% MDFRAMED STYLES DEFS %%%
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{skipabove=2\baselineskip,skipbelow=2\baselineskip,frametitlefont=\sffamily\bfseries\Large, needspace=4\baselineskip, splittopskip=1.5\baselineskip}
+\mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
+\newcommand{\langscisymbol}{book}
+\newlength{\trennlinie}
+\setlength{\trennlinie}{.8mm}
+\newcommand{\tblsboxcolor}{black}
+\newcommand{\tblslinecolour}{lsYellow}
+
+\mdfdefinestyle{yellowexercise}{%
+	everyline=true,
+        ignorelastdescenders=true,
+        middlelinewidth=1.5pt,linecolor=\tblslinecolour,outerlinewidth=5mm,
+	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=0,
+	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, repeatframetitle=false,
+	firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
+}
+
+\mdfdefinestyle{greyexercise}{%
+        everyline=true,
+        ignorelastdescenders=true,
+        middlelinewidth=0pt,linecolor=white,outerlinewidth=5mm,
+        leftline=false,rightline=false,bottomline=false,
+        backgroundcolor=\tblsboxcolor,
+        innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
+        frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
+        firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+        };},
+        singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+};}
+}
+
+
+\mdfdefinestyle{tblsbox}{%
+	leftline=false, rightline=false, frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0
+	}
+
+\mdfdefinestyle{tblsframedbox}{%
+	frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm
+}
+
+\newcommand{\tblsfillcolour}{black!12}
+\mdfdefinestyle{tblsfilledbox}{%
+	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
+}
+
+\mdfdefinestyle{tblsfilledcolumnbox}{% % Copy of tblsfilledbox with multicols
+	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
+}
+
+\mdfdefinestyle{tblsframedcolumnbox}{%
+	frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm, startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
+}
+
+%%% MDFRAMED COMMANDS %%%
+
+\newcommand{\tblssy}[4][black!12]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
+  \renewcommand{\langscisymbol}{#2}\renewcommand{\tblsboxcolor}{#1}
+  \begin{mdframed}[style=greyexercise,frametitle={#3}]
+    #4
+  \end{mdframed}
+}
+
+\newcommand{\tblsli}[4][black!20]{% Use like this \tblsli[colour]{line width}{title}{text}
+\renewcommand{\tblsboxcolor}{#1}\setlength{\trennlinie}{#2mm}
+\begin{mdframed}[style=tblsbox,frametitle={#3}]
+#4
+\end{mdframed}
+}
+
+\newcommand{\tblsfi}[3][black!12]{% Use like this \tblsfi[colour]{title}{text}, where [colour] is optional
+\renewcommand{\tblsfillcolour}{#1}
+\begin{mdframed}[style=tblsfilledbox,frametitle={#2}]
+#3
+\end{mdframed}
+}
+
+\newcommand{\tblsfr}[4][\lsSeriesColor]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
+\renewcommand{\tblslinecolour}{#1}\renewcommand{\langscisymbol}{#2}
+\begin{mdframed}[style=tblsbox,frametitle={#3}]
+#4
+\end{mdframed}
+}
+
+\newcommand{\tblsfd}[4]{ % Use like this: \tblsfd{colour}{line width}{title}{content}
+\renewcommand{\tblslinecolour}{#1}\setlength{\trennlinie}{#2mm}
+\begin{mdframed}[style=tblsframedbox,frametitle={#3}]
+#4
+\end{mdframed}
+}
+
+%%% MDFRAMED END %%%
+
+
+\newcommand{\tblsbwbox}[4][]{%
+\\
+  \noindent
+  \colorbox{#2}{
+\parbox{.97\textwidth}{
+\centering
+\parbox{.9\textwidth}{
+
+    %add logo if requested
+      \ifthenelse{\equal{#1}{}}{\bigskip}{
+    \begin{flushleft}
+      \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{langsci/graphics/#1.eps}}
+    \end{flushleft}}
+    %add header
+    \boxheader{#3}
+    \begin{multicols*}{2}
+    #4
+    \end{multicols*}
+    \bigskip
+    }
+}
+}
+\\[1em]
+}
+
+
+
+\newcommand{\tblsbwboxdark}[3][]{%
+  \noindent
+  \tblsbwbox[#1]{gray}{#2}{#3}
+}
+
+\newcommand{\tblsbwboxlight}[3][]{%
+  \noindent
+  \tblsbwbox[#1]{lightgray}{#2}{#3}
+}
+
+\newcommand{\tblscolboxdark}[3][]{%
+  \tblsbwboxdark[#1]{#2}{#3}
+}
+
+\newcommand{\tblscolboxlight}[3][]{%
+  \tblsbwboxlight[#1]{#2}{#3}
+}
+
+
+\newcommand{\tblsthinline}{\rule{\textwidth}{.8mm}}
+\newcommand{\tblsthickline}{{\color{gray}\rule{\textwidth}{1.5mm}}}
+\newcommand{\tblsthickcolorline}{{\color{lsYellow}\rule{\textwidth}{1.5mm}}}
+
+\newcommand{\tblssandwich}[3]{
+% \\
+
+\medskip
+\noindent
+#1
+\\[2em]
+\boxheader{#2}
+\\[1em]
+\noindent%
+#3
+\smallskip
+\noindent
+#1
+\\[1em]
+}
+
+\newcommand{\tblsbwthinsandwich}[2]{
+   \tblssandwich{\tblsthinline}{#1}{#2}
+}
+
+\newcommand{\tblsbwthicksandwich}[2]{
+   \tblssandwich{\tblsthickline}{#1}{#2}
+}
+
+\newcommand{\tblscolthicksandwich}[2]{
+   \tblssandwich{\tblsthickcolorline}{#1}{#2}
+}
+
+\newcommand{\tblscolthinsandwich}[2]{
+   \tblssandwich{\tblsthinline}{#1}{#2}
+}
+
+\newcommand{\tblscolframebox}[3][]{
+  \fboxrule.8mm
+  \noindent
+  \begin{figure}
+    \begin{flushleft}
+      \hspace*{3.5mm}
+      \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{langsci/graphics/#1.eps}}} \\
+    \end{flushleft}
+    \color{lsYellow}\framebox[\textwidth]{%
+      \color{black}
+      \parbox{.92\textwidth}{%
+	\vspace*{.5cm}
+	\boxheader{#2}
+	\begin{multicols*}{2}
+	  #3
+	\end{multicols*}
+      }
+    }
+  \end{figure}
+}
+
+\newcommand{\boxheader}[1]{\medskip{\Large\bfseries\sffamily #1}}

@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%% JAMBOX: RIGHT-COLUMN ANNOTATIONS %%%%%%%%%%%%%%%%
+%
+% Alexis Dimitriadis
+%
+% This is version 0.3 (informal release, Nov. 2003).
+%
+% Line up material a fixed distance from the right margin.  For annotating
+% example sentences, usually with a short note in parentheses.
+% May overflow to the left or right, or line up on the next line as necessary.
+%
+% \jambox[width]{text}	Align 'text' starting 'width' distance from the
+%			right margin (default \the\jamwidth).
+% \jam(something)	Align a note delimited by parentheses (which are
+%			retained).  No optional argument.
+% \jambox*{text}        Set \jamwidth to the width of 'text', then align it.
+%			(\jamwidth stays set for the rest of the environment).
+%
+% Notes:
+%
+% Distance from the right margin can be set to an explicit amount, or to the
+% width of some piece of text, as follows:
+%
+% \jamwidth=2in\relax      Or
+% \settowidth\jamwidth {(``annotation'')}
+%
+% \jamwidth is locally scoped, so it can be set globally or inside an example
+% environment.
+%
+% BUG: Not compatible with ragged-right mode.
+%
+% Incompatibilities: Not useful with the vanilla cgloss4e.sty, which ends
+% glossed lines prematurely.
+% I do have a suitably modified file, cgloss.sty. With it you can do the
+% following:
+% \gll To kimeno. \\
+%      the text \\ \jambox{(Greek)}
+% \trans `The text.'
+
+
+\newdimen\jamwidth \jamwidth=2in
+\def\jambox{\@ifnextchar[{\@jambox}
+	       {\@ifnextchar*{\@jamsetbox}{\@jambox[\the\jamwidth]}}}
+
+% Quickie invocation: The argument is delimited by the parentheses (no width
+% argument allowed). I redefine it in my documents to add formatting.
+% Syntax: \jam(Some note)
+%
+\def\jam(#1){\jambox{(#1)}}
+
+% Set width AND display the argument.
+% The star is read and ignored; the argument #1 is boxed, used to set
+% \jamwidth, then passed to \@jambox (which also puts it in \@tempboxa!)
+%
+\def\@jamsetbox*#1{\setbox\@tempboxa\hbox{#1}\jamwidth=\wd\@tempboxa
+  \@jambox[\the\jamwidth]{\box\@tempboxa}}
+
+%% Version 1: old & stupid
+%% \def\@jambox[#1]#2{\hfill\hbox to #1 {#2\hfil}}
+
+% Version 2:
+% Always takes up \jamwidth space, even if it means breaking the line. But it
+% works on ragged-right mode, too.
+% \def\@jambox[#1]#2{\setbox\@tempboxa\hbox {#2\hfil}%
+%	\ifdim \wd\@tempboxa<#1\relax \wd\@tempboxa=#1\relax\fi
+%	\hskip 0.5em plus 1fill
+%	\penalty 100\vadjust{}\nobreak\hfill\box\@tempboxa\par}
+% The penalty enables a break.  \vadjust inserts an empty element
+% at the beginning of the next line, protecting \hfill from being discarded.
+
+% Version 3:
+% This seems to cover everything!  But unfortunately, it won't work in
+% ragged-right mode-- the line is broken BEFORE the last word, to make enough
+% space...
+\def\@jambox[#1]#2{{\setbox\@tempboxa\hbox {#2}%
+  \ifdim \wd\@tempboxa<#1\relax % if label fits in the alloted space:
+    \@tempdima=#1\relax \advance\@tempdima by-\wd\@tempboxa % remaining \hspace
+    \unskip\nobreak\hfill\penalty250 % break line here if necessary
+    \hskip 1.2em minus 1.2em 	  % used when the line extends past the margin
+    \hbox{}\nobreak\hfill\box\@tempboxa\nobreak
+    \hskip\@tempdima minus \@tempdima\hbox{}%
+  \else  % the label is too wide: just right-align it
+    \hfill\penalty50\hbox{}\nobreak\hfill\box\@tempboxa
+  \fi
+  % suppress closing glue:
+  \parfillskip=0pt \finalhyphendemerits=0 \par}}
+% The penalty enables a break, taken only if the line cannot fit.
+% The \hbox{} ensures the next line does not begin with \hfill, which would
+% be discarded if initial.
+% (\vadjust inserts an empty element at the beginning of the next line, so
+% that COULD be used instead of \hbox{}).
+% Algorithm adapted from The TeXBook.
+%
+% The closing \par could be a problem if there is a \parskip...

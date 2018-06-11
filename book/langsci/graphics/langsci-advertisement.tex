@@ -1,0 +1,16 @@
+\thispagestyle{empty}
+\pgfdeclarelayer{lspadvert_bg} % Please make sure to never use lspadvert_... PGF layers in any document
+\pgfsetlayers{lspadvert_bg,main}
+
+\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+	\begin{pgfonlayer}{lspadvert_bg} % background layer
+	\node at (current page.center) [bg, fill=lsGuidelinesGray, minimum height=22cm, minimum width=15cm] (lspadvert_bg1) {}; % Die können wir noch dynamisch bestimmen
+	\end{pgfonlayer}	
+	\node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspadvert_bg1.north west, text width=13.7cm, align=left] (lspadvert_covertitle) {\color{black}\lsCoverTitleFont{Did you like this book?\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+
+	\node [font=\fontsize{25pt}{10mm}\selectfont,below = 8mm of lspadvert_covertitle.south, text width=137mm] (lspadvert_coversubtitle) {\color{black} \lsCoverSubTitleFont \nohyphens{This book was brought to you for free}\par}; 
+	
+	\node (lspadvert_logo) [above left = 10mm and 7.5mm of lspadvert_bg1.south east] {\color{black}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+	\node [above right = 48.8mm and -.1mm of lspadvert_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspadvert_square) {};
+	\path let \p1 = (lspadvert_square.north east), \p2 = (lspadvert_covertitle.west) in node at (\x2,\y1) (lspadvert_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, align=flush left, text width=90mm, anchor=north west] {\color{black}\lsCoverSeriesFont{\nohyphens{Please help us in providing free access to linguistic research worldwide. Visit \url{http://www.langsci-press.org/donate} to provide financial support or register as a community proofreader or typesetter \mbox{at \url{http://www.langsci-press.org/register}.}}\par}};
+\end{tikzpicture} 

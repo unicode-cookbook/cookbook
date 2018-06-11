@@ -44,35 +44,33 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>unicode.aux</file>
-      <file>unicode-blx.bib</file>
+      <file>unicode.bcf</file>
     </provides>
     <requires type="dynamic">
       <file>unicode.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
+      <file>./langsci/bst/langsci.dbx</file>
       <file>blx-compat.def</file>
-      <file>blx-bibtex.def</file>
       <file>biblatex.def</file>
       <file>blx-natbib.def</file>
-      <file>LSP/lsp-bst/biblatex-sp-unified.bbx</file>
+      <file>./langsci/bst/biblatex-sp-unified/bbx/biblatex-sp-unified.bbx</file>
       <file>authoryear.bbx</file>
       <file>standard.bbx</file>
-      <file>LSP/lsp-bst/sp-authoryear-comp.cbx</file>
+      <file>./langsci/bst/biblatex-sp-unified/cbx/sp-authoryear-comp.cbx</file>
       <file>biblatex.cfg</file>
       <file>english.lbx</file>
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
+    <generic>biber</generic>
     <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
+      <binary>biber</binary>
       <infile>unicode</infile>
     </cmdline>
     <input>
-      <file>unicode.aux</file>
+      <file>unicode.bcf</file>
     </input>
     <output>
       <file>unicode.bbl</file>
@@ -81,14 +79,10 @@
       <file>unicode.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>unicode.aux</file>
-      <file>unicode-blx.bib</file>
+      <file>unicode.bcf</file>
     </requires>
     <requires type="editable">
       <file>localbibliography.bib</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>

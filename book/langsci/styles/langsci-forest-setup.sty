@@ -1,0 +1,240 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      File: langsci-forest-setup.sty
+%%    Author: Language Science Press (http://langsci-press.org)
+%%      Date: 2016-01-16 16:47:43 UTC
+%%   Purpose: This file contains optional styles and settings for the
+%%            forest package. This version is for 2.0.
+%%  Language: LaTeX
+%%   Licence:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% texlive 2015 is broken (in comparison to texlive 2013)
+% a workaround is to use a different pgf driver.
+% See email from Akira Kakuto to Stefan Müller 15.01.2016
+
+% Do we need this for 2017?
+% We seem to be better off without it 31.10.2017
+%deceive the driver
+%\def\pdftexversion{140}
+%use the old driver for dvipdfm
+%\def\pgfsysdriver{pgfsys-dvipdfm.def}
+
+% http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
+\usepackage{tikz-dependency}
+
+\usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
+
+
+% http://tex.stackexchange.com/questions/256280/drawing-complex-dependency-diagrams-with-tikz-forest
+\usetikzlibrary{arrows.meta}
+
+\tikzset{deparrow/.style={-Latex}}%,blue}}
+
+
+% does not work with forest v1.05 did not check later versions
+\usepackage[external,linguistics]{forest}
+\tikzset{external/up to date check=simple}
+% for texlive: -shell-escape, for miktex -enable-write18
+% All externalized graphics go go the \externaldirectory
+%\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
+\tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+%\usepackage{morewrites}
+
+
+
+
+% specification for all trees, "default preamble" appends to existing specification.
+% The version with apostrophe replaces it.
+\forestset{default preamble'={
+    for tree={align=center,parent anchor=south, child anchor=north,anchor=north,base=bottom},
+    before drawing tree={
+      sort by=y,
+      for min={tree}{baseline}
+    }
+  }}
+
+
+\forestset{
+  declare dimen={child anchor yshift}{0pt},
+  adjust childrens child anchors/.style={
+    if n children>=2{
+      before packing={
+        tempdima/.max={max_y}{children},
+        for children={
+          child anchor yshift=tempdima()-max_y()
+        },
+      }
+    }{}
+  },
+  default preamble={
+    for tree={
+      edge path'={(!u.parent anchor)--([yshift=\forestoption{child anchor yshift}].child anchor)},
+      adjust childrens child anchors
+    }
+  },
+}
+
+
+
+% http://www.texample.net/tikz/examples/borrowers-and-lenders/
+\usetikzlibrary{arrows} %,positioning}
+\tikzset{
+    %Define standard arrow tip
+    >=stealth'}
+
+
+
+%% \forestset{
+%% sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word}{}}},
+%% background tree/.style={for tree={text opacity=0.2,draw opacity=0.2,edge={draw opacity=0.2}}}
+%% }
+
+
+
+% The following code fixes the size of triangles for examples with translations. The specification
+% ",delay=with translation" at the leaves is important to make this work.
+% http://tex.stackexchange.com/questions/167978/smaller-roofs-for-forest/205311#205311
+\forestset{
+  with translation/.style={
+    l sep=0,inner xsep=0,
+    append translation/.expanded/.wrap pgfmath arg={\gettranslation{##1}}{content},
+    content/.expanded/.wrap pgfmath arg={\gettext{##1}}{content},
+  },
+  append translation/.style={
+    if={strequal("#1","")}{}{
+      append={[#1,no edge,inner xsep=0,inner ysep=0,outer ysep=0,
+               tier=gloss,
+               l=\baselineskip + 0.2ex,
+        ]}
+    }
+  }
+}
+
+\def\gettext#1{\gettextA#1;;\endget}
+\def\gettextA#1;#2;{\removesep#1;}
+\def\gettranslation#1{\gettranslationA#1;;\endget}
+\def\gettranslationA#1;#2;{\removesep#2;}
+\def\removesep#1;#2\endget{#1}
+
+
+% a specific style that specifies the word tier: all nodes that do not have any children
+% to do: make this style default and change all other figures explicitely as is described here:
+% http://tex.stackexchange.com/questions/167983/getting-rid-of-a-default-where-specification
+\forestset{
+sm edges/.style={for tree={parent anchor=south, child anchor=north,base=top}, % changed base=bottom
+                                % to top since we have NP and AVM nodes and the NP has to start
+                                % right away at the same hight as the AVM St. Mü. 18.10.2017
+                 where n children=0{tier=word,delay=with translation}{} %,delay=with translation
+                 },
+sm edges without translation/.style={for tree={parent anchor=south, child anchor=north,base=bottom},
+                 where n children=0{tier=word}{}
+                 },
+word tier/.style={where n children=0{tier=word}{}
+                 },
+%
+% dependency grammar trees, projective trees only, I guess. St. Mü. 29.09.2014
+dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom},
+                 where n children=0{tier=word,edge=dotted,calign with current edge,delay=with translation}{}
+                },
+%
+% Adjunct edges as suggested by Engels, 1977
+% http://tex.stackexchange.com/questions/204770/defining-a-special-edge-style-for-connecting-nodes-in-forest/204819#204819
+dg adjunct/.style={edge path={\noexpand\path[\forestoption{edge}]
+(!u.parent anchor)--(.child anchor)-- +(0,#1)\forestoption{edge label};}},
+%
+dg adjunct/.default=6pt,
+%
+% for Tesniere-style translations
+dg transfer/.style={edge path={\noexpand\path[\forestoption{edge}, rounded corners=3pt]
+    % the line downwards
+    (!u.parent anchor)-- +($(0,-l)-(0,4pt)$)-- +($(12pt,-l)-(0,4pt)$)
+    % the horizontal line
+    ($(!p.north west)+(0,l)-(0,20pt)$)--($(.north east)+(0,l)-(0,20pt)$)\forestoption{edge label};},!p.edge'={}},
+% for Tesniere-style junctions
+dg junction/.style={no edge, tikz+={\draw (!p.east)--(!.west) (.east)--(!n.west);}    },
+%
+%
+%
+% http://tex.stackexchange.com/questions/256280/drawing-complex-dependency-diagrams-with-tikz-forest/256300#256300
+% in the tree draw the highest nodes of the inheritance network. For lower nodes insert empty nodes
+% "[]". These will be filled by the same word and the numbers will be provided with bars according
+% to remoteness from the word level.
+%
+% So cool! Thanks Sašo Živanović
+%
+ wg/.style={
+    for tree={
+      no edge,
+      draw,
+      outer ysep=1pt,
+    },
+    copy label/.style={
+      for children={
+        if content={}{
+            content/.pgfmath={content("!u")},
+            calign with current,
+            edge={draw,{-Triangle[open,reversed]}},
+            copy label,
+            !u.content/.pgfmath={content},
+            !u.content+=',
+        }{
+          copy label,
+        }
+      }
+    },
+    delay={
+      copy label,
+      for tree={name/.pgfmath={content}},
+    },
+    for tree={content format={\strut\forestoption{content}}},
+    where n children={0}{
+      tier=word,
+    }{},
+  },
+%
+%
+% TAG
+% http://tex.stackexchange.com/questions/207459/getting-old-school-trees-with-forest
+% fit -> fit=band causes all nodes to have nothing below them
+tag/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top,fit=rectangle},
+  where n children=0{delay=with translation}{},
+% the following breaks the alignments in sets
+  begin draw/.code={\begin{tikzpicture}[baseline=(current bounding box.center)]}
+},
+%
+% like the tag style, but without fit rectangle
+no word baseline/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
+  where n children=0{delay=with translation}{}},
+%
+% a style that creates an arrow pointing to the substitution node from a tree top node encoded as daughter
+substitution/.style={edge={<-,dashed},l+=\baselineskip},
+%
+%
+%
+typehierarchy/.style={for tree={parent anchor=south, child
+    anchor=north,align=center,base=top,font=\itshape,fit=rectangle}},
+% if there are instances as leaves in the hiarchy
+instance/.style={edge=dotted},
+%
+% auxiliary nodes without node label
+%empty nodes/.style={
+%  delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}}
+}
+
+
+
+% Manual page 52
+%% \forestset{
+%% nice empty nodes/.style={
+%% for tree={calign=fixed edge angles},
+%% delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}
+%% }}
+
+
+% forest 2.0
+\forestset{
+     empty nodes/.style={
+     delay={where content={}{shape=coordinate,for siblings={anchor=north}}{}}
+     }
+}

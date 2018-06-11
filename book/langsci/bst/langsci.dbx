@@ -1,0 +1,3 @@
+\DeclareDatamodelFields[type=list, datatype=name]{
+  authauthor,autheditor}
+\DeclareDatamodelEntryfields{authauthor,autheditor}

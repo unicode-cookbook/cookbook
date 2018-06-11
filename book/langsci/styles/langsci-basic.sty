@@ -1,0 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      File: langsci-basic.sty
+%%    Author: Language Science Press (http://langsci-press.org)
+%%      Date: 2016-01-16 16:47:43 UTC
+%%   Purpose: This file contains essential macros and is included
+%%            into langscibook.cls
+%%  Language: LaTeX
+%%   Licence:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sectref}[1]{§\ref{#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{#1}}
+\newcommand{\partref}[1]{Part~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+
+
+\ifx\lsBookLanguage\lsBookLanguageFrench
+  \newcommand{\chapref}[1]{Chapitre~\ref{#1}}
+  \newcommand{\partref}[1]{Partie~\ref{#1}}
+  \newcommand{\tabref}[1]{Tableau~\ref{#1}}
+  \newcommand{\figref}[1]{Figure~\ref{#1}}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageGerman
+  \newcommand{\chapref}[1]{Kapitel~\ref{#1}}
+  \newcommand{\partref}[1]{Teil~\ref{#1}}
+  \newcommand{\tabref}[1]{Tabelle~\ref{#1}}
+  \newcommand{\figref}[1]{Abbildung~\ref{#1}}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+  \newcommand{\chapref}[1]{Capítulo~\ref{#1}}
+  \newcommand{\partref}[1]{Parte~\ref{#1}}
+  \newcommand{\tabref}[1]{Tabela~\ref{#1}}
+  \newcommand{\figref}[1]{Figura~\ref{#1}}
+\fi
+
+\newcommand{\lsptoprule}{\midrule\toprule}
+\newcommand{\lspbottomrule}{\bottomrule\midrule}
+
+\newcommand{\REF}[1]{(\ref{#1})}
+
+\newcommand{\isi}[1]{\is{#1}#1}
+\newcommand{\iai}[1]{\ia{#1}#1}
+\newcommand{\ili}[1]{\il{#1}#1}
+
+\newcommand{\ob}{{\upshape [}} %opening bracket
+\newcommand{\cb}{{\upshape ]}} %closing bracket
+\newcommand{\op}{{\upshape (}} %opening paren
+\newcommand{\cp}{{\upshape )}} %closing paren
+\newcommand{\db}{\hspaceThis{[}} %dummy space for [ in IMT line
+\newcommand{\rmfnm}{{\upshape\footnotemark}} %romanfootnotemark
+
+\newcommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear*[#1]{#2})}
+\newcommand{\citeapo}[2][]{\citeauthor{#2}' (\citeyear*[#1]{#2})}
+
+\newcommand{\protectedex}[1]{
+\noindent
+\parbox{\textwidth}{
+#1}
+}
+
+\newcommand{\largerpage}[1][1]{
+\enlargethispage{#1\baselineskip}
+}
+
+\newcommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
+
+% old font commands
+\renewcommand{\it}{\itshape}
+\renewcommand{\bf}{\bfseries}
+\renewcommand{\sc}{\scshape}
+\renewcommand{\rm}{\upshape}
+
+% vertical space to structure tables
+\newcommand{\tablevspace}{\\[-.5em]}
+
+\let\oldfootnotemark\footnotemark
+\renewcommand{\footnotemark}{\upshape\oldfootnotemark}

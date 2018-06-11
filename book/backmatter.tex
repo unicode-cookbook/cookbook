@@ -1,21 +1,23 @@
-\backmatter%
+\backmatter
 \phantomsection%this allows hyperlink in ToC to work
-\addcontentsline{toc}{chapter}{List of references}
-\printbibliography%
-   
-\addcontentsline{toc}{chapter}{Index} 
+{\sloppy\printbibliography[heading=\lsReferencesTitle]}
+\cleardoublepage
 
-\phantomsection%
-\addcontentsline{toc}{section}{Name index}
-\ohead{Name index} 
+\phantomsection 
+\addcontentsline{toc}{chapter}{\lsIndexTitle} 
+\addcontentsline{toc}{section}{\lsNameIndexTitle}
+\ohead{\lsNameIndexTitle} 
 \printindex 
+\cleardoublepage
   
 \phantomsection 
-\addcontentsline{toc}{section}{Language index}
-\ohead{Language index} 
+\addcontentsline{toc}{section}{\lsLanguageIndexTitle}
+\ohead{\lsLanguageIndexTitle} 
 \printindex[lan] 
+\cleardoublepage
   
 \phantomsection 
-\addcontentsline{toc}{section}{Subject index}
-\ohead{Subject index} 
+\addcontentsline{toc}{section}{\lsSubjectIndexTitle}
+\ohead{\lsSubjectIndexTitle} 
 \printindex[sbj]
+\ohead{} 

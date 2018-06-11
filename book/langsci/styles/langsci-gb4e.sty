@@ -1,0 +1,497 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      File: langsci-gb4e.sty
+%%    Author: Language Science Press (http://langsci-press.org)
+%%      Date: 2016-01-16 16:47:43 UTC 
+%%   Purpose: This file contains an adapted version of the gb4e package
+%%            for typetting linguistic examples.
+%%  Language: LaTeX
+%%   Licence: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesPackage{langsci-gb4e}[2000/09/05]
+\def\gbVersion{4e} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Format of examples: %
+%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{exe} or \exbegin
+% <examples>                           (arab.)
+% \begin{xlist} or \xlist
+% <subexamples>                        (1st embedding, alph.)
+% \begin{xlisti} or \xlisti
+% <subsubexamples>                     (2st embedding, rom.)
+% \end{xlisti}  or \endxlisti
+% <more examples>
+% \end{xlist} or \endxlist
+% <still more examples>
+% \end{exe} or \exend
+%
+% Other sublist-styles: xlistA (Alph.), xlistI (Rom.), xlistn (arab)
+%
+% \ex                               (produces Number)
+% \ex <sentence>                    (numbered example)
+% \ex[jdgmt]{sentence}              (numbered example with judgement)
+%
+% \exi{ident}                      (produces identifier)
+% \exi{ident} <sentence>           (example numbered with identifier)
+% \exi{ident}[jdgmt]{sentence}     (dito with judgement)
+%                      (\exr, \exp and \sn are defined in terms of \exi)
+%
+% \exr{label}                       (produces cross-referenced Num.)
+% \exr{label} <sentence>            (cross-referenced example)
+% \exr{label}[jdgmt]{sentence}      (cross-referenced example with judgement)
+%
+% \exp{label}                       (same as
+% \exp{label} <sentence>                     \exr but
+% \exp{label}[jdgmt]{sentence}                        with prime)
+%
+% \sn <sentence>                    (unnumbered example)
+% \sn[jdgmt]{sentence}              (unnumbered example with judgement)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For my own lazyness (HANDLE WITH CARE---this works only
+%                                 in boringly normal cases.... ):
+%
+% \ea                works like \begin{exe}\ex or \begin{xlist}\ex,
+%                            depending on context
+% \z                 works like \end{exe} or \end{xlist}, dep on context
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  auxiliary files
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\usepackage{langsci-cgloss}
+% \input{jambox.sty}
+
+
+\@ifundefined{new@fontshape}{\def\reset@font{}\let\mathrm\rm\let\mathit\mit}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%        Font Specifications (Detmar)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define commands for fonts to be used:
+%
+% 1) regular
+% a. example line
+\newcommand{\exfont}{\normalsize\upshape}
+% b. glossing line
+\newcommand{\glossfont}{\normalsize\upshape}
+% c. translation font
+\newcommand{\transfont}{\normalsize\upshape} % 08.01.2014 changed small to normalsize (Martin Haspelmath)
+% d. example number
+\newcommand{\exnrfont}{\exfont\upshape}
+%
+% 2) in footnote
+% a. example line
+\newcommand{\fnexfont}{\footnotesize\upshape}
+% b. glossing line
+\newcommand{\fnglossfont}{\footnotesize\upshape}
+% c. translation font
+\newcommand{\fntransfont}{\footnotesize\upshape}
+% d. example number
+\newcommand{\fnexnrfont}{\fnexfont\upshape}
+
+% new user command for specifying translations:
+%\newcommand{\mytrans}[1]{{\trans`#1'}\vskip.6\baselineskip}
+
+
+
+\renewcommand{\eachwordone}{\exfont}
+\renewcommand{\eachwordtwo}{\glossfont}
+\renewcommand{\eachwordthree}{\glossfont} % same font for both gloss lines
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Macros for examples, roughly following Linguistic Inquiry style.   %%
+%%  From here on best not to tamper, else all the examples and cross-  %%
+%%  references will come out scrambled! (see also note below) - CT     %%
+%%  Completely rewritten for more robustness and flexibility. (hpk)    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\qlist{\begin{list}{\Alph{xnum}.}{\usecounter{xnum}%
+\setlength{\rightmargin}{\leftmargin}}}
+\def\endqlist{\end{list}}
+
+\newif\if@noftnote\@noftnotetrue
+\newif\if@xrec\@xrecfalse
+\@definecounter{fnx}
+
+
+
+% set a flag that we are in footnotes now and change the size of example fonts
+\let\oldFootnotetext\@footnotetext
+
+\renewcommand\@footnotetext[1]{%
+   \@noftnotefalse\setcounter{fnx}{0}%
+\begingroup%
+\let\exfont\fnexfont%
+\let\glossfont\fnglossfont%
+\let\transfont\fntransfont%
+\let\exnrfont\fnexnrfont%
+ 	\oldFootnotetext{#1}%
+\endgroup%
+\@noftnotetrue}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 			counters				  %
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcount\@xnumdepth \@xnumdepth = 0
+
+\@definecounter{xnumi}
+\@definecounter{xnumii}
+\@definecounter{xnumiii}
+\@definecounter{xnumiv}
+%\@definecounter{equation}
+%\setcounter{equation}{0}
+
+% book
+%\renewcommand\theequation
+%  {\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@equation}
+%\def\thexnumi{\@xsi{xnumi}}
+\def\thexnumi
+{\if@noftnote%
+\@arabic\@xsi{xnumi}%
+\else%
+\@roman\@xsi{xnumi}%
+\fi%
+}
+\def\thexnumii{\@xsii{xnumii}}
+\def\thexnumiii{\@xsiii{xnumiii}}
+\def\thexnumiv{\@xsiv{xnumiv}}
+\def\p@xnumii{\thexnumi%
+\if@noftnote%
+\else%
+.%
+\fi}
+\def\p@xnumiii{\thexnumi\thexnumii-}
+\def\p@xnumiv{\thexnumi\thexnumii-\thexnumiii-}
+
+\def\xs@default#1{\csname @@xs#1\endcsname}
+\def\@@xsi{\let\@xsi\arabic}
+\def\@@xsii{\let\@xsii\alph}
+\def\@@xsiii{\let\@xsiii\roman}
+\def\@@xsiv{\let\@xsi\arabic}
+
+\@definecounter{rxnumi}
+\@definecounter{rxnumii}
+\@definecounter{rxnumiii}
+\@definecounter{rxnumiv}
+
+\def\save@counters{%
+\setcounter{rxnumi}{\value{xnumi}}%
+\setcounter{rxnumii}{\value{xnumii}}%
+\setcounter{rxnumiii}{\value{xnumiii}}%
+\setcounter{rxnumiv}{\value{xnumiv}}}%
+
+
+\def\reset@counters{%
+\setcounter{xnumi}{\value{rxnumi}}%
+\setcounter{xnumii}{\value{rxnumii}}%
+\setcounter{xnumiii}{\value{rxnumiii}}%
+\setcounter{xnumiv}{\value{rxnumiv}}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 			widths			  %
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\exewidth#1{\def\@exwidth{#1}}
+%\exewidth{(234)}
+\exewidth{(34)}
+
+%% St. M�. 02.05.2004
+\def\gblabelsep#1{\def\@gblabelsep{#1}}
+\gblabelsep{1em}
+
+
+
+%% St. M�. 02.05.2004
+\def\subexsep#1{\def\@subexsep{#1}}
+\subexsep{1.5ex}
+
+% set initial sizes of example number and judgement sizes
+\exewidth{\exnrfont (35)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 			example lists				  %
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\exe{%
+    %\ifnum\value{equation}>9 \exewidth{(23)}\else\fi%      inserted by LSP, for large example numbers
+    \ifnum\value{equation}>98 \exewidth{(235)}\else\fi%     inserted by LSP, for large example numbers
+    \@ifnextchar [{\@exe}{\@exe[\@exwidth]}}
+\def\@exe[#1]{\ifnum \@xnumdepth >0%
+                 \if@xrec\@exrecwarn\fi%
+                 \if@noftnote\@exrecwarn\fi%
+                 \@xnumdepth0\@listdepth0\@xrectrue%
+                 \save@counters%
+              \fi%
+                 \advance\@xnumdepth \@ne \@@xsi%
+                 \if@noftnote%
+                        \begin{list}{(\thexnumi)}%
+                        {\usecounter{xnumi}\@subex{#1}{\@gblabelsep}{0em}%
+                        \setcounter{xnumi}{\value{equation}}}%
+                 \else%
+                        \begin{list}{(\roman{xnumi})}%
+                        % 1em is the indentation of footnotes in koma-script
+                        % if this does not work for everybody, use parameters ...
+                        {\usecounter{xnumi}\@subex{(iiv)}{\@gblabelsep}{1.5em}%
+                        \setcounter{xnumi}{\value{fnx}}}%
+                 \fi}
+
+%                 \begin{list}{(\thexnumi)}%
+%                             {\usecounter{xnumi}\@subex{#1}{1em}%
+%                              \if@noftnote%
+%                                 \setcounter{xnumi}{\value{equation}}%
+%                              \else%
+%                                 \setcounter{xnumi}{\value{fnx}}%
+%                              \fi}}
+
+\def\endexe{\if@noftnote\setcounter{equation}{\value{xnumi}}%
+                   \else\setcounter{fnx}{\value{xnumi}}%
+                        \reset@counters\@xrecfalse\fi\end{list}}
+
+\def\@exrecwarn{\typeout{*** Recursion on "exe"---your
+                example numbering will probably be screwed up!}}
+
+\def\xlist{\@ifnextchar [{\@xlist{}}{\@xlist{}[iv.]}}
+\def\xlista{\@ifnextchar [{\@xlist{\alph}}{\@xlist{\alph}[m.]}}
+\def\xlistabr{\@ifnextchar [{\@xlist{(\alph)}}{\@xlist{(\alph)}[m.]}}
+\def\xlisti{\@ifnextchar [{\@xlist{\roman}}{\@xlist{\roman}[iv.]}}
+\def\xlistn{\@ifnextchar [{\@xlist{\arabic}}{\@xlist{\arabic}[9.]}}
+\def\xlistA{\@ifnextchar [{\@xlist{\Alph}}{\@xlist{\Alph}[M.]}}
+\def\xlistI{\@ifnextchar [{\@xlist{\Roman}}{\@xlist{\Roman}[IV.]}}
+
+\def\endxlist{\end{list}}
+\def\endxlista{\end{list}}
+\def\endxlistabr{\end{list}}
+\def\endxlistn{\end{list}}
+\def\endxlistA{\end{list}}
+\def\endxlistI{\end{list}}
+\def\endxlisti{\end{list}}
+
+
+
+
+%%% a generic sublist-styler
+\def\@xlist#1[#2]{\ifnum \@xnumdepth >3 \@toodeep\else%
+    \advance\@xnumdepth \@ne%
+    \edef\@xnumctr{xnum\romannumeral\the\@xnumdepth}%
+    \def\@bla{#1}
+    \ifx\@bla\empty\xs@default{\romannumeral\the\@xnumdepth}\else%
+      \expandafter\let\csname @xs\romannumeral\the\@xnumdepth\endcsname#1\fi
+    \begin{list}{\csname the\@xnumctr\endcsname.}%
+                {\usecounter{\@xnumctr}\@subex{#2}{\@subexsep}{0em}}\fi}
+
+%% Added third argument to be able to add some more space to leftmargin
+%% for footnotes that have bigger indentation.
+%% St. M�. 07.01.2007
+\def\@subex#1#2#3{\settowidth{\labelwidth}{#1}\itemindent\z@\labelsep#2%
+         \ifnum\the\@xnumdepth=1%
+           \topsep 7\p@ plus2\p@ minus3\p@\itemsep3\p@ plus2\p@\else%
+           \topsep1.5\p@ plus\p@\itemsep1.5\p@ plus\p@\fi%
+         \parsep\p@ plus.5\p@ minus.5\p@%
+         \leftmargin\labelwidth\advance\leftmargin#2\advance\leftmargin#3\relax}
+
+%%% the example-items
+\def\ex{\@ifnextchar [{\@ex}{\item}}
+\def\@ex[#1]#2{\item\@exj[#1]{#2}}
+\def\@exj[#1]#2{\@exjbg{#1} #2 \end{list}}
+% without understanding anything:
+\def\exs#1{\item\begin{samepage}#1\end{samepage}}
+%-- end
+\def\exi#1{\item[#1]\@ifnextchar [{\@exj}{}}
+\def\judgewidth#1{\def\@jwidth{#1}}
+\judgewidth{??}
+\judgewidth{*} % if wider judgements are needed, enlarge within papers
+\def\@exjbg#1{\begin{list}{#1}{\@subex{\@jwidth}{.5ex}{0em}}\item}
+\def\exr#1{\exi{{(\ref{#1})}}}
+\def\exp#1{\exi{{(\ref{#1}$'$)}}}
+\def\sn{\exi{}}
+\def\bu{\item[$\bullet$]}
+
+%%% Lazy abbrevs (HANDLE WITH CARE!)
+%\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\raggedright\ex}  steht unten noch mal
+%\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\raggedright\ex}
+\def\easragged{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\raggedright\ex\begin{tabular}[t]{@{}b{\linewidth}@{}}}
+\def\eas{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex\begin{tabular}[t]{@{}b{\linewidth}@{}}}
+\def\eaa{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\raggedright\ex}
+
+
+\def\ex{\@ifnextchar [{\exnrfont\@ex}{\exnrfont\item\exfont}}
+\def\@ex[#1]#2{\item\@exj[#1]{\exfont#2}}
+
+\def\@exjbg#1{\begin{list}{{\exnrfont#1}}{\@subex{\@jwidth}{.5ex}{0em}}\item}
+\def\exi#1{\item[{\exnrfont#1}]\@ifnextchar [{\exnrfont\@exj}{}}
+
+\def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\raggedright\ex}
+\def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]\raggedright}
+\def\ealnoraggedright{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]}
+\def\eanoraggedright{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
+\def\glt{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
+
+
+
+% copied from here:
+% http://tex.stackexchange.com/questions/23677/command-for-paragraph-indentation-after-equations
+
+%% As Barbara Beeton has commented, forcing the first paragraph after an equation environment to
+%% indent can be achieved with \aftergroup -- use this command to add a \par after the group
+%% established by the environment.
+
+%% Forcing the first paragraph after an environment not to indent isn't that straightforward. I came
+%% up with the following:
+
+%%     I defined a new macro \@doendeq that will redefine \everypar so that it a) removes the
+%%     indentation from the first paragraph following it b) reverts to its original (empty)
+%%     definition. (\@doendeq is an abridged version of LaTeX's \@doendpe which is used after
+%%     paragraph-making environments.)
+
+%%     To change every instance of the equation environment to remove indents after it, one could
+%%     simply add \aftergroup\@doendeq to the definition of \endequation. As you are looking for a
+%%     command to modify only some instances of equation, I used \csappto from the etoolbox package
+%%     to locally add\aftergroup\@doendeq to \end<\@currenvir> (\@currenvir being the name of the
+%%     current environment).
+
+%% I suspect that there are more elegant ways to do this.
+
+%% \newcommand*{\@doendeq}{%
+%%   \everypar{{\setbox\z@\lastbox}\everypar{}}%
+%% }
+%% \newcommand*{\eqcntd}{%
+%%   \csappto{end\@currenvir}{%
+%%     \aftergroup\@doendeq
+%%   }%
+%% }
+
+
+\def\z{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%          completely undocumented code
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for enforcing samepage we put stuff in a tabular environment
+\def\zs{\end{tabular}\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
+% %\def\zt{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi\end{tabular}}
+% % if an example is final in a footnote
+% \def\zlast{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi\vspace{-\baselineskip}}
+\def\zlast{\z\vspace{-\baselineskip}}
+\def\eafirst{\vspace{-1.5\baselineskip}\ea}
+%
+% % St. Mue. 26.02.00
+% \def\eaf#1{\begin{exe}[(iv)]\exi{(#1)}}
+% \def\eal{\begin{exe}[(\theequation)]\ex\begin{xlist}[iv.]}
+% \def\eal{\begin{exe}\ex\begin{xlist}[iv.]\raggedright}        steht unten noch mal
+% \def\eafl#1{\begin{exe}[(iv)]\exi{(#1)}\begin{xlist}[iv.]}
+% \def\eaal{\begin{exe}[(\theequation)]\ex\begin{xlist}[iv.]}
+\def\zl{\end{xlist}\end{exe}}
+% % if an example is final in a footnote
+% Hey, Sebastian, why did you comment this out? Please tell me, if you do such things. 22.07.2014
+\def\zllast{\end{xlist}\end{exe}\removelastskip}
+%
+%
+% %%%%%%% \lcomment for breaks in (example-)lists (leaves all counters
+% %%%%%%% as they are)    (hpk)
+% \newlength{\lcommentsep}
+% \lcommentsep = 1ex
+%
+% \long\def\lcomment#1%
+%    {\vspace{\lcommentsep}
+%     \item[]\hspace*{-\leftmargin}%
+%     \@tempskipa=\linewidth%
+%     \addtolength{\@tempskipa}{\rightmargin}%
+%     \addtolength{\@tempskipa}{\leftmargin}%
+%     \parbox{\@tempskipa}{#1}%
+%     \vspace{\lcommentsep}%
+%    }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%       Picture examples
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%% control the alignment of exampleno. and (picture-)example
+%%%%%%         (by Lex Holt <lex@cogsci.ed.ac.uk>).
+\def\attop#1{\leavevmode\vtop{\strut\vskip-\baselineskip\vbox{#1}}}
+\def\atcenter#1{$\vcenter{#1}$}
+%%%%%%
+ 
+% \exewidth{\exnrfont (\theequation)}}
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%      several examples in one line
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\xbox}[2]{\noindent\parbox[t]{#1}{#2}\noindent}
+
+%\newcommand{\nobreakbox}[1]{\xbox{\linewidth}{#1}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Bars and other superscripts for projections; specifiers
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\prmbrs=0
+\def\primebars{\let\prmbrs=1}
+\def\obar#1{\ifmmode#1^{0}\else#1$^{0}$\fi}  %% FIX
+\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1\textsuperscript{max}\fi}
+\def\ibar#1{\ifx\prmbrs0%
+                 \ifmmode\overline{\mathrm{#1}}\else$\overline{\mbox{#1}}$\fi%
+            \else\ifmmode#1^{'}\else#1$^{'}$\fi\fi}
+\def\iibar#1{\ifx\prmbrs0%
+                  \ifmmode\overline{\overline{\mathrm{#1}}}%
+                  \else$\overline{\overline{\mbox{#1}}}$\fi%
+             \else #1P\fi}
+
+
+\def\spec#1{[Spec,#1]} %Def. of "Specifier of #1"
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   custom markup
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ct#1{{\em #1\/}} %Citation of linguistic material with alternative style:
+%\def\ct#1{`#1'}
+\def\tx{\bf} %Introduction of technical terms with alternative style:
+%\def\tx{\em}
+
+
+ 
