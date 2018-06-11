@@ -15,6 +15,7 @@ colorlinks, citecolor=brown,
 % mean, you can safely ignore this section
 
 \usepackage{verbatim}
+\usepackage{hologo}
 \input{localmetadata.tex}
 \input{localpackages.tex}
 \input{localhyphenation.tex}
