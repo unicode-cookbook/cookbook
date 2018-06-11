@@ -227,7 +227,7 @@ for short) are the following:
 	\item \textsc{Metadata should be added in a separate UTF-8 text file} using 
 	   the JSON-LD dialect specified in \textit{Metadata Vocabulary for Tabular 
 	   Data}.\footnote{\url{https://www.w3.org/TR/tabular-metadata/}} This metadata 
-	   format allows easy inclusion of Dublin Core metadata,\footnote{\url{http://dublincore.org/}} 
+	   format allows for easy inclusion of Dublin Core metadata,\footnote{\url{http://dublincore.org/}} 
 	   which should be used to specify information about the orthographic description 
 	   in the orthography profile.\footnote{\url{http://w3c.github.io/csvw/metadata/#dfn-common-property}} 
 	   The orthography profile metadata should minimally include provenance information including: 
@@ -304,12 +304,7 @@ will be expected:
 
 \begin{enumerate}
 	\def\labelenumi{B\arabic{enumi}.} 
-	\item \textsc{Each line of a profile will be interpreted as a regular
-       expression.} Software applications using profiles can also offer to
-       interpret a profile in the literal sense to avoid the necessity for the
-       user to escape regular expression metacharacters in the profile.
-       However, this is only possible when no contexts or classes are described,
-       so this seems only useful in the most basic orthographies. 
+	\item \textsc{Each line of a profile will be interpreted according to the content type of the column as specified in the profile metadata}. Content types include literal and regular expression.
 	\item \textsc{The \textsc{class} column will be used to produce explicit
        \textsc{or} chains of regular expressions}, which will then be inserted
        in the \texttt{Grapheme}, \texttt{Left} and \texttt{Right} columns at
