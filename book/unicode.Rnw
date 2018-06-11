@@ -1,17 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                                              %%%
-%%%     Language Science Press Master File       %%%
-%%%         follow the instructions below        %%%
-%%%                                              %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[output=inprep,
-%  long|short|inprep
-%  ,blackandwhite
-%  ,smallfont
-%  ,draftmode  
-		biblatex
-		]{LSP/langsci}
+\documentclass[output=book,nonflat,modfonts,
+colorlinks, citecolor=brown,
+% draft,draftmode   
+		]{langsci/langscibook}
+\usepackage[]{graphicx}\usepackage[]{color}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%

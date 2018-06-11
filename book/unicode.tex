@@ -1,8 +1,7 @@
 \documentclass[output=book,nonflat,modfonts,
 colorlinks, citecolor=brown,
 % draft,draftmode   
-		]{langsci/langscibook}
-\usepackage[]{graphicx}\usepackage[]{color}
+		]{langsci/langscibook}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -53,6 +52,7 @@ colorlinks, citecolor=brown,
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usepackage[]{graphicx}\usepackage[]{color}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
@@ -108,15 +108,1516 @@ colorlinks, citecolor=brown,
 %%%             Chapters                         %%%
 %%%                                              %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% \include{chapters/introduction}
-% \include{chapters/unicode_approach}
-% \include{chapters/pitfalls}
-% \include{chapters/ipa_background}
-% \include{chapters/ipa_meets_unicode}
-% \include{chapters/practical_recommendations}
-% \include{chapters/orthography_profiles}
-% \include{chapters/implementation2}
+
+\include{chapters/introduction}
+\include{chapters/unicode_approach}
+\include{chapters/pitfalls}
+\include{chapters/ipa_background}
+\include{chapters/ipa_meets_unicode}
+\include{chapters/practical_recommendations}
+\include{chapters/orthography_profiles}
+
+\chapter{Implementation}
+\label{implementation}
+
+\section{Overview}
+To illustrate the practical applications of orthography profiles, we have implemented two versions of the specifications presented in Chapter~\ref{orthography-profiles}: one in Python\footnote{\url{https://pypi.python.org/pypi/segments}} and one in R.\footnote{\url{https://github.com/cysouw/qlcData}} In this chapter, we introduce these two software libraries and provide practical step-by-step guidelines for installing and using them. Various simple and sometimes somewhat abstract examples will be discussed to show the different options available, and to illustrate the intended usage of orthography profiles in general. 
+
+Note that our two libraries have rather different implementation histories, thus they may not give the same results in all situations (as discussed in Chapter~\ref{orthography-profiles}). However, we do provide extensive test suites for each implementation that follow standard practices to make sure that results are correct. Users should refer to these tests and to the documentation in each release for specifics about each implementation. Note that due to the different naming convention practices in Python and R, function names differ between the two libraries. Also, the performance with larger datasets may not be comparable between the Python and R implementations. In sum, our two libraries should be considered as proofs of concept and not as the final word on the practical application of the specifications discussed in the previous chapter. In our experience, the current versions are sufficiently fast and stable to be useful for academic practice (e.g.\ checking data consistency, or analyzing and transliterating small to medium sized data sets), but they should probably not be used for full-scale industry applications without adaptation.
+
+First, in Section \ref{installing-python-and-r} we explain how to install Python\footnote{\url{https://www.python.org/}} and R.\footnote{\url{https://www.r-project.org/}} Then in Sections \ref{python-implementations} and \ref{r-implementation}, we discuss our Python and R software packages, respectively. In addition to the material presented here to get users started, we maintain several case studies online that illustrate how to use orthography profiles in action. For convenience, we make these recipes available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} in our GitHub repository.\footnote{\url{https://github.com/unicode-cookbook/}} In the final section in this chapter, we also briefly describe a few recipes that we do not go into detail in this book.
+
+\section{How to install Python and R}
+\label{installing-python-and-r}
+When one encounters problems installing software, or bugs in programming code, search engines are your friend! Installation problems and incomprehensible error messages have typically been encountered and solved by other users. Try simply copying and pasting the output of an error message into a search engine; the solution is often already somewhere online. We are fans of Stack Exchange\footnote{\url{https://stackexchange.com/}} -- a network of question-and-answer websites -- which are extremely helpful in solving issues regarding software installation, bugs in code, etc.
+
+Searching the web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note that there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Unix operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew,\footnote{\url{https://brew.sh/}} a simple-to-install (via the Terminal App) free and open source package management system. Follow the instructions on the Homebrew website and then use Homebrew to install R and Python (as well as other software packages such as Git and Jupyter Notebooks). 
+
+Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows and Unix) and it includes its own R installation and R libraries package manager. For developing in Python, we recommend the free community version of PyCharm,\footnote{\url{https://www.jetbrains.com/pycharm/}} an IDE which is available for Mac, Windows, and Unix. 
+
+Once you have R or Python (or both) installed on your computer, you are ready to use the orthography profiles software libraries presented in the next two sections. As noted above, we make this material available online on GitHub,\footnote{\url{https://github.com/}} a web-based version control system for source code management. GitHub repositories can be cloned or downloaded,\footnote{\url{https://help.github.com/articles/cloning-a-repository/}} so that you can work through the examples on your local machine. Use your favorite search engine to figure out how to install Git on your computer and learn more about using Git.\footnote{\url{https://git-scm.com/}} In our GitHub repository, we make the material presented below (and more use cases described briefly in Section \ref{use-cases}) available as Jupyter Notebooks. Jupyter Notebooks provide an interface where you can run and develop source code using the browser as an interface. These notebooks are easily viewed in our GitHub repository of use cases.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
+
+
+
+\section{Python package: segments}
+\label{python-implementations}
+
+The Python package \texttt{segments} is available both as a command line interface (CLI) and as an application programming interface (API).
+
+\subsection*{Installation}
+
+To install the Python package \texttt{segments} from the Python Package Index (PyPI) run:
+
+\begin{lstlisting}[language=bash]
+  $ pip install segments
+\end{lstlisting}
+
+\noindent on the command line. This will give you access to both the CLI and programmatic functionality in Python scripts, when you import the \texttt{segments} library.
+
+You can also install the \texttt{segments} package from the GitHub repository:\footnote{\url{https://github.com/cldf/segments}}
+
+\begin{lstlisting}[language=bash]
+  $ git clone https://github.com/cldf/segments
+  $ cd segments
+  $ python setup.py develop
+\end{lstlisting}
+
+\subsection*{Application programming interface}
+The \texttt{segments} API can be accessed by importing the package into Python or by writing a Python script. Here is an example of how to import the libraries, create a tokenizer object, tokenize a string, and create an orthography profile.
+
+\begin{lstlisting}
+>>> from segments.tokenizer import Tokenizer
+\end{lstlisting}
+
+\noindent The \texttt{characters} function will segment a string at Unicode code points.
+
+% \lstset{extendedchars=false, escapeinside=**}
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> t = Tokenizer()
+>>> result = t.characters('(*@ĉháɾã̌ctʼɛ↗ʐː| k͡p@*)')
+>>> print(result)
+>>> '(*@c ̂ h a ́ ɾ a ̃ ̌ c t ʼ ɛ ↗ ʐ ː | # k ͡ p@*)'
+\end{lstlisting}
+
+\noindent The \texttt{grapheme\_clusters} function will segment text at the Unicode Extended Grapheme Cluster boundaries.\footnote{\url{http://www.unicode.org/reports/tr18/tr18-19.html#Default_Grapheme_Clusters}}
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> result = t.grapheme_clusters('(*@ĉháɾã̌ctʼɛ↗ʐː| k͡p@*)')
+>>> print(result)
+>>> '(*@ĉ h á ɾ ã̌ c t ʼ ɛ ↗ ʐ ː | # k͡ p@*)'
+\end{lstlisting}
+
+\noindent The \texttt{grapheme\_clusters} function is the default segmentation algorithm for the \texttt{segments.Tokenizer}. It is useful when you encounter a text that you want to tokenize to identify orthographic or transcription elements.
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> result = t('(*@ĉháɾã̌ctʼɛ↗ʐː| k͡p@*)')
+>>> print(result)
+>>> '(*@ĉ h á ɾ ã̌ c t ʼ ɛ ↗ ʐ ː | # k͡ p@*)'
+\end{lstlisting}
+
+\noindent The \texttt{ipa} parameter forces grapheme segmentation for IPA strings.
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> result = t('(*@ĉháɾã̌ctʼɛ↗ʐː| k͡p@*)', ipa=True)
+>>> print(result)
+>>> '(*@ĉ h á ɾ ã̌ c tʼ ɛ ↗ ʐː | # k͡p@*)'
+\end{lstlisting}
+
+\noindent We can also load an orthography profile and tokenize an input string with it. In the data directory, we've placed an example orthography profile. Let's have a look at it using \texttt{more} on the command line.
+
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+  $ more data/orthography-profile.tsv
+  Grapheme  IPA   XSAMPA  COMMENT
+  a         a     a
+  aa        (*@aː@*)    (*@a:@*)
+  b         b     b
+  c         c     c
+  ch        (*@tʃ@*)    tS
+  -         NULL  NULL    "comment with   tab"
+  on        (*@õ@*)     o~
+  n         n     n
+  ih        (*@í@*)     i_H
+  inh       (*@ĩ́@*)     i~_H
+\end{lstlisting}
+
+
+\noindent An orthography profile is a delimited UTF-8 text file (here we use tab as a delimiter for reading ease). The first column must be labelled \texttt{Grapheme}. Each row in the \texttt{Grapheme} column specifies graphemes that may be found in the orthography of the input text. In this example, we provide additional columns IPA and XSAMPA, which are mappings from our graphemes to their IPA and XSAMPA transliterations. The final column \texttt{COMMENT} is for comments; if you want to use a tab ``quote that     string''!
+
+Let's load the orthography profile with our tokenizer.
+
+\begin{lstlisting}
+>>> from segments.tokenizer import Profile
+>>> t = Tokenizer('data/orthography-profile.tsv')
+\end{lstlisting}
+
+\noindent Now let's segment the graphemes in some input strings with our orthography profile. The output is segmented given the definition of graphemes in our orthography profile, e.g.\ we specified the sequence of two <a a> should be a single unit <aa>, and so should the sequences <c h>, <o n> and <i h>.
+
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> t('(*@aabchonn-ih@*)')
+>>> '(*@aa b ch on n - ih@*)'
+\end{lstlisting}
+
+\noindent This example shows how we can tokenize input text into our orthographic specification. We can also segment graphemes and transliterate them into other formats, which is useful when you have sources with different orthographies, but you want to be able to compare them using a single representation like IPA.
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> t.transform('(*@aabchonn-ih@*)', 'IPA')
+>>> '(*@aː b tʃ õ n í@*)'
+\end{lstlisting}
+
+% For some reason that fails me, this does not work:
+% \begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+% >>> t.transform('aabchonn-ih', 'XSAMPA')
+% >>> '(*@a: b tS o~ n i_H@*)'
+% \end{lstlisting}
+
+\begin{lstlisting}
+>>> t.transform('aabchonn-ih', 'XSAMPA')
+>>> 'a: b tS o~ n i_H'
+\end{lstlisting}
+
+
+\noindent It is also useful to know which characters in your input string are not in your orthography profile. Use the function \texttt{find\_missing\_characters}.
+
+\begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
+>>> t.find_missing_characters('(*@aa b ch on n - ih x y z@*)')
+>>> '(*@aa b ch on n - ih � � �@*)'
+\end{lstlisting}
+
+
+\noindent We set the default as the Unicode replacement character \uni{fffd}, \texttt{replacement character}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
+
+
+\begin{lstlisting}
+>>> t = Tokenizer('data/orthography-profile.tsv', 
+	errors_replace=lambda c: '?')
+>>> t.find_missing_characters("aa b ch on n - ih x y z")
+>>> 'aa b ch on n - ih ? ? ?'
+\end{lstlisting}
+
+\begin{lstlisting}
+>>> t = Tokenizer('data/orthography-profile.tsv', 
+	errors_replace=lambda c: '<{0}>'.format(c))
+>>> t.find_missing_characters("aa b ch on n - ih x y z")
+>>> 'aa b ch on n - ih <x> <y> <z>'
+\end{lstlisting}
+
+\noindent Perhaps you want to create an initial orthography profile that also contains those graphemes x, y, z? Note that the space character and its frequency are also captured in this initial profile.
+
+\begin{lstlisting}
+>>> profile = Profile.from_text("aa b ch on n - ih x y z")
+>>> print(profile)
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=bash,texcl=true]
+  Grapheme  frequency  mapping
+            9
+  a         2          a
+  h         2          h
+  n         2          n
+  b         1          b
+  c         1          c
+  o         1          o
+  -         1          -
+  i         1          i
+  x         1          x
+  y         1          y
+  z         1          z
+\end{lstlisting}
+
+
+\subsection*{Command line interface}
+
+From the command line, access \texttt{segments} and its 
+various arguments. For help, run:
+
+\begin{lstlisting}[language=bash]
+  $ segments -h
+
+usage: segments [-h] [--verbosity VERBOSITY] 
+                     [--encoding ENCODING]
+                     [--profile PROFILE]
+                     [--mapping MAPPING]
+                     command ...
+
+Main command line interface of the segments package.
+
+positional arguments:
+  command               tokenize | profile
+  args
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --verbosity VERBOSITY
+                        increase output verbosity
+  --encoding ENCODING   input encoding
+  --profile PROFILE     path to an orthography profile
+  --mapping MAPPING     column name in ortho profile to map 
+                        graphemes
+
+Use 'segments help <cmd>' to get help about individual commands.  
+\end{lstlisting}
+
+\noindent We have created some test data\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics/sources}} with the German word \textit{Schächtelchen}, which is the diminutive form of \textit{Schachtel}, meaning `box', `packet', or `carton' in English.
+
+\begin{lstlisting}[language=bash]
+  $ more sources/german.txt
+
+  Schächtelchen
+\end{lstlisting}
+
+\noindent We can create an initial orthography profile of the German text by passing it to the \texttt{segments profile} command. The initial profile tokenizes the text on Unicode grapheme clusters, lists the frequency of each grapheme, and provides an initial mapping column by default.
+
+\begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
+  $ cat sources/german.txt | segments profile
+
+  Grapheme  frequency  mapping
+  c         3          c
+  h         3          h
+  e         2          e
+  S         1          S
+  (*@ä@*)         1          (*@ä@*)
+  t         1          t
+  l         1          l
+  n         1          n
+\end{lstlisting}
+
+\noindent Next, we know a bit about German orthography and which characters combine to form German graphemes. We can use the information from our initial orthography profile to hand-curate a more precise German orthography profile that takes into account capitalization (German orthography obligatorily capitalizes nouns) and grapheme clusters, such as <sch> and <ch>. We can use the initial orthography profile above as a starting point (note that, in large texts, the frequency column may signal errors in the input, such as typos, if a grapheme occurs with very low frequency). The initial orthography profile can be edited with a text editor or spreadsheet program. As per the orthography profile specifications (see Chapter \ref{orthography-profiles}), we can adjust rows in the \texttt{Grapheme} column and then add additional columns for transliterations or comments.
+
+
+\begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
+  $ more more data/german-orthography-profile.tsv
+
+  Grapheme  IPA  XSAMPA  COMMENT                     
+  Sch       (*@ʃ@*)    S       German nouns are capitalized
+  (*@ä@*)         (*@ɛː@*)   E:                                  
+  ch        (*@ç@*)    C                                   
+  t         t    t                                   
+  e         e    e                                   
+  l         l    l                                   
+  n         n    n                                    
+\end{lstlisting}
+
+\noindent Using the command line \texttt{segments} function and passing it our orthography profile, we can now segment our German text example into graphemes.
+
+\begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
+  $ cat sources/german.txt | segments 
+    --profile=data/german-orthography-profile.tsv tokenize
+
+  '(*@Sch ä ch t e l ch e n@*)'
+\end{lstlisting}
+
+\noindent By providing \texttt{segments} a column for transliteration, we can convert the text into IPA.
+
+\begin{lstlisting}[language=bash, extendedchars=false, escapeinside={(*@}{@*)}]
+  $ cat sources/german.txt | segments --mapping=IPA 
+	--profile=data/german-orthography-profile.tsv tokenize
+
+  '(*@ʃ ɛː ç t e l ç e n@*)'
+\end{lstlisting}
+
+\noindent And we can transliterate to XSAMPA.
+
+\begin{lstlisting}[language=bash]
+  $ cat sources/german.txt | segments --mapping=XSAMPA 
+	--profile=data/german-orthography-profile.tsv tokenize
+
+  'S E: C t e l C e n'
+\end{lstlisting}
+
+\noindent More examples are available online.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
+
+% Old example that reviewer didn't like!
+\begin{comment}
+\begin{lstlisting}[language=bash]
+  $ more text.txt
+  aäaaöaaüaa
+\end{lstlisting}
+
+\noindent Here is an example of how to create and use an orthography 
+profile for segmentation. Create a text file:
+
+\begin{lstlisting}[language=bash]
+  $ more text.txt
+  aäaaöaaüaa
+\end{lstlisting}
+
+\noindent Now look at the profile:
+
+\begin{lstlisting}[language=bash,texcl=true]
+  $ cat text.txt | segments profile
+  Grapheme frequency mapping
+  a        7         a
+  ä        1         ä
+  ü        1         ü
+  ö        1         ö
+\end{lstlisting}
+
+\noindent Write the profile to a file:
+
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments profile > profile.prf
+\end{lstlisting}
+
+\noindent Edit the profile:
+
+\begin{lstlisting}[language=bash]
+  $ more profile.prf
+  Grapheme frequency mapping
+  aa       0         x
+  a        7         a
+  ä        1         ä
+  ü        1         ü
+  ö        1         ö
+\end{lstlisting}
+
+\noindent Now tokenize the text without profile:
+
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments tokenize
+  a ä a a ö a a ü a a	
+\end{lstlisting}
+
+\noindent And with profile:
+\begin{lstlisting}[language=bash]
+  $ cat text.txt | segments --profile=profile.prf tokenize
+  a ä aa ö aa ü aa
+
+  $ cat text.txt | segments --mapping=mapping 
+    --profile=profile.prf tokenize
+  a ä x ö x ü x
+\end{lstlisting}
+\end{comment}
+% \end old example that reviewer didn't like!
+
+
+
+\section{R library: qlcData}
+\label{r-implementation}
+
+% \subsection*{Installing the R implementation}
+\subsection*{Installation}
+
+The R implementation is available in the package \texttt{qlcData}, which is 
+directly available from the central R repository CRAN (Comprehensive R Archive 
+Network). The R software environment itself has to be downloaded from its 
+website.\footnote{\url{https://www.r-project.org}} After starting the included 
+R program, the \texttt{qlcData} package for dealing with orthography profiles can be 
+simply installed as follows:
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# download and install the qlcData software}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"qlcData"}\hlstd{)}
+\hlcom{# load the software, so it can be used}
+\hlkwd{library}\hlstd{(qlcData)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+The version available through CRAN is the latest stable version.
+To obtain the most recent bug-fixes and experimental additions, please use the
+development version, which is available on
+GitHub.\footnote{\url{http://github.com/cysouw/qlcData}} This development
+version can be easily installed using the github-install helper software from the
+\texttt{devtools} package.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# download and install helper software}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"devtools"}\hlstd{)}
+\hlcom{# install the qlcData package from GitHub}
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{"cysouw/qlcData"}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# load the software, so it can be used}
+\hlkwd{library}\hlstd{(qlcData)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+Inside the \texttt{qlcData} package, there are two functions for
+orthography processing, \texttt{write.profile} and \texttt{tokenize}. The package includes
+help files with illustrative examples, and also a so-called vignette with
+explanations and examples.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# view help files}
+\hlkwd{help}\hlstd{(write.profile)}
+\hlkwd{help}\hlstd{(tokenize)}
+\hlcom{# view vignette with explanation and examples}
+\hlkwd{vignette}\hlstd{(}\hlstr{"orthography_processing"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+Basically, the idea is to use \texttt{write.profile} to produce a
+basic orthography profile from some data and then \texttt{tokenize} to apply the
+(possibly edited) profile on some data, as exemplified in the next section. This
+can of course be performed though R, but additionally there are two more
+interfaces to the R code supplied in the \texttt{qlcData} package: (i) bash
+executables and (ii) \texttt{Shiny} webapps.
+
+The bash executables are little files providing an interface to the R code that
+can be used in a shell on a UNIX-like machine. The exact location of these
+executables is best found after installation of R the packages. The
+location can be found by the following command in R. 
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# show the path to the bash executables}
+\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{"qlcData"}\hlstd{),} \hlstr{"exec"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+These executables can be 
+used in the resulting file path, or they can be linked and/or copied to any location as wanted. 
+For example, a good way to use the executables in a terminal is to
+make softlinks (using \texttt{ln}) from the executables to a directory in your
+PATH, e.g.\ to \texttt{/usr/local/bin/}. The two executables are named
+\texttt{tokenize} and \texttt{writeprofile}, and the links can be made directly 
+by using Rscript to get the paths to the executables within the terminal.
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+# get the paths to the R executables in bash
+pathT=`Rscript -e 'cat(file.path(find.package("qlcData"), 
+  "exec", "tokenize"))'`
+pathW=`Rscript -e 'cat(file.path(find.package("qlcData"), 
+  "exec", "writeprofile"))'`
+
+# make softlinks to the R executables in /usr/local/bin
+# you will have to enter your user's password!
+sudo ln -is $pathT $pathW /usr/local/bin
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+After inserting this softlink it should be possible to access the
+\texttt{tokenize} function from the shell. Try \texttt{tokenize --help} to test
+the functionality.
+
+% TODO:
+% <<size='scriptsize', engine='bash', tidy=FALSE>>=
+% tokenize --help
+% @
+
+% TODO
+% To make the functionality even more accessible, we have prepared webapps with 
+% the \texttt{shiny} framework for the R functions. These webapps are available 
+% online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
+% package and can be started with the following helper function:
+
+To make the functionality even more accessible, we have prepared webapps with 
+the \texttt{Shiny} framework for the R functions. The webapps are 
+included inside the \texttt{qlcData} package and can be started with the 
+helper function (in R): \texttt{launch\_shiny('tokenize')}.
+
+% <<eval=FALSE>>=
+% launch_shiny('tokenize')
+% @
+
+
+
+\subsection*{Profiles and error reporting}
+\label{error-reporting}
+
+The first example of how to use these functions concerns finding errors in the
+encoding of texts. In the following example, it looks as if we have two
+identical strings, \texttt{AABB}. However, this is just a surface-impression
+delivered by the current font, which renders Latin and Cyrillic capitals
+identically. We can identify this problem when we produce an orthography profile
+from the strings. Using the R implementation of orthography profiles, we
+first assign the two strings to a variable \texttt{test}, and then produce an
+orthography profile with the function \texttt{write.profile}. As it turns out,
+some of the letters are Cyrillic.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{(test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{))}
+\end{alltt}
+\begin{verbatim}
+## [1] "AABB" "AАBВ"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{write.profile}\hlstd{(test)}
+\end{alltt}
+\begin{verbatim}
+##   Grapheme Frequency Codepoint                UnicodeName
+## 1        A         3    U+0041     LATIN CAPITAL LETTER A
+## 2        B         3    U+0042     LATIN CAPITAL LETTER B
+## 3        А         1    U+0410  CYRILLIC CAPITAL LETTER A
+## 4        В         1    U+0412 CYRILLIC CAPITAL LETTER VE
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+The function of error-message reporting can also nicely be illustrated
+with this example. Suppose we made an orthography profile with just the two
+Latin letters <A> and <B> as possible graphemes, then this profile would not be
+sufficient to tokenize the strings. There are graphemes in the data that are not
+in the profile, so the tokenization produces an error, which can be used to fix
+the encoding (or the profile). In the example below, we can see that the
+Cyrillic encoding is found in the second string of the \texttt{test} input.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
+\hlkwd{tokenize}\hlstd{(test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlstr{"B"}\hlstd{))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in tokenize(test, profile = c("{}A"{}, "{}B"{})): \\\#\# There were unknown characters found in the input data.\\\#\# Check output\$errors for a table with all problematic strings.}}\begin{verbatim}
+## $strings
+##   originals tokenized
+## 1      AABB   A A B B
+## 2      AАBВ   A ⁇ B ⁇
+## 
+## $profile
+##   Grapheme Frequency
+## 1        B         3
+## 2        A         3
+## 
+## $errors
+##   originals  errors
+## 2      AАBВ A ⁇ B ⁇
+## 
+## $missing
+##   Grapheme Frequency Codepoint                UnicodeName
+## 1        А         1    U+0410  CYRILLIC CAPITAL LETTER A
+## 2        В         1    U+0412 CYRILLIC CAPITAL LETTER VE
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Different ways to write a profile}
+\label{write-profile}
+
+The function \texttt{write.profile} can be used to prepare a skeleton for an
+orthography profile from some data. The preparation of an orthography profile
+from some data might sound like a trivial problem, but actually there are
+various different ways in which strings can be separated into graphemes by
+\texttt{write.profile}. Consider the following string of characters called
+\texttt{example} below. The default settings of \texttt{write.profile} separates
+the string into Unicode graphemes according to grapheme clusters (called user-perceived characters; see Chapter~\ref{the-unicode-approach} for an explanation). The results are shown 
+in Table \ref {tab:profile1}. As it 
+turns out, some of these graphemes are single code points, others are combinations
+of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{example} \hlkwb{<-} \hlstr{"ÙÚÛÙÚÛ"}
+\hlstd{profile_1} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Gr. & Freq. & Codepoint & Unicode Name \\ 
+  \midrule
+Ú & 1 & U+00DA & LATIN CAPITAL LETTER U WITH ACUTE \\ 
+  Ú & 1 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\ 
+  Ù & 1 & U+00D9 & LATIN CAPITAL LETTER U WITH GRAVE \\ 
+  Ù & 1 & U+0055, U+0300 & LATIN CAPITAL LETTER U, COMBINING GRAVE ACCENT \\ 
+  Û & 1 & U+00DB & LATIN CAPITAL LETTER U WITH CIRCUMFLEX \\ 
+  Û & 1 & U+0055, U+0302 & LATIN CAPITAL LETTER U, COMBINING CIRCUMFLEX ACCENT \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 1 (default settings, splitting grapheme clusters)} 
+\label{tab:profile1}
+\end{table}
+
+
+By specifying the splitting separator as the empty string
+\texttt{sep~=~""}, it is possible to split the string into Unicode code points,
+thus separating the combining diacritics. The idea behind this option
+\texttt{sep} is that separating by a character allows for user-determined
+separation. The most extreme choice here is the empty string \texttt{sep~=~""},
+which is interpreted as separation everywhere. The other extreme is the default
+setting \texttt{sep~=~NULL}, which means that the separation is not
+user-defined, but relegated to the Unicode grapheme definitions. The result is 
+shown in Table \ref{tab:profile2}.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{profile_2} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Grapheme & Frequency & Codepoint & Unicode Name \\ 
+  \midrule
+́ & 1 & U+0301 & COMBINING ACUTE ACCENT \\ 
+  ̀ & 1 & U+0300 & COMBINING GRAVE ACCENT \\ 
+  ̂ & 1 & U+0302 & COMBINING CIRCUMFLEX ACCENT \\ 
+  U & 3 & U+0055 & LATIN CAPITAL LETTER U \\ 
+  Ú & 1 & U+00DA & LATIN CAPITAL LETTER U WITH ACUTE \\ 
+  Ù & 1 & U+00D9 & LATIN CAPITAL LETTER U WITH GRAVE \\ 
+  Û & 1 & U+00DB & LATIN CAPITAL LETTER U WITH CIRCUMFLEX \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 2 (splitting by code points)} 
+\label{tab:profile2}
+\end{table}
+
+
+Some characters look identical, although they are encoded differently.
+Unicode offers different ways of normalization (see
+Section~\ref{pitfall-canonical-equivalence}), which can be invoked here as well
+using the option \texttt{normalize}. NFC normalization turns everything into the
+precomposed characters, while NFD normalization separates everything into base
+characters with combining diacritics. Splitting by code points (i.e.\ \texttt{sep~=~""}) 
+shows the results of these two normalizations in Tables \ref{tab:profile3} \& \ref{tab:profile4}.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# after NFC normalization Unicode code points have changed}
+\hlstd{profile_3} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFC"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+\hlcom{# NFD normalization gives another structure of the code points}
+\hlstd{profile_4} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFD"}\hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Grapheme & Frequency & Codepoint & Unicode Name \\ 
+  \midrule
+Ú & 2 & U+00DA & LATIN CAPITAL LETTER U WITH ACUTE \\ 
+  Ù & 2 & U+00D9 & LATIN CAPITAL LETTER U WITH GRAVE \\ 
+  Û & 2 & U+00DB & LATIN CAPITAL LETTER U WITH CIRCUMFLEX \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 3 (splitting by NFC code points)} 
+\label{tab:profile3}
+\end{table}
+
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Grapheme & Frequency & Codepoint & Unicode Name \\ 
+  \midrule
+́ & 2 & U+0301 & COMBINING ACUTE ACCENT \\ 
+  ̀ & 2 & U+0300 & COMBINING GRAVE ACCENT \\ 
+  ̂ & 2 & U+0302 & COMBINING CIRCUMFLEX ACCENT \\ 
+  U & 6 & U+0055 & LATIN CAPITAL LETTER U \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 4 (splitting by NFD code points)} 
+\label{tab:profile4}
+\end{table}
+
+
+It is important to realize that for Unicode grapheme definitions, NFC
+and NFD normalization are equivalent. This can be shown by normalizing the
+example in either NFD or NFC, as shown in Tables \ref{tab:profile5} \& \ref{tab:profile6}, 
+by using the default separation in
+\texttt{write.profile}. To be precise, default separation means setting
+\texttt{sep~=~NULL}, but that has not be added explicitly below.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# note that NFC and NFD normalization are identical}
+\hlcom{# for Unicode grapheme definitions}
+\hlstd{profile_5} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFD"}\hlstd{)}
+\hlstd{profile_6} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example,} \hlkwc{normalize} \hlstd{=} \hlstr{"NFC"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Gr. & Freq. & Codepoint & Unicode Name \\ 
+  \midrule
+Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\ 
+  Ù & 2 & U+0055, U+0300 & LATIN CAPITAL LETTER U, COMBINING GRAVE ACCENT \\ 
+  Û & 2 & U+0055, U+0302 & LATIN CAPITAL LETTER U, COMBINING CIRCUMFLEX ACCENT \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 5 (splitting by graphemes after NFD)} 
+\label{tab:profile5}
+\end{table}
+
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[H]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Gr. & Freq. & Codepoint & Unicode Name \\ 
+  \midrule
+Ú & 2 & U+00DA & LATIN CAPITAL LETTER U WITH ACUTE \\ 
+  Ù & 2 & U+00D9 & LATIN CAPITAL LETTER U WITH GRAVE \\ 
+  Û & 2 & U+00DB & LATIN CAPITAL LETTER U WITH CIRCUMFLEX \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Profile 6 (splitting by graphemes after NFC)} 
+\label{tab:profile6}
+\end{table}
+
+
+These different profiles can also be produced using the bash
+executable \texttt{writeprofile} (see above for how to install the bash executable). 
+This example is also included in the help file of the executable.
+
+% TODO: fix
+% <<size='scriptsize', engine='bash'>>=
+% writeprofile --help
+% @
+
+
+\subsection*{Using an orthography profile skeleton}
+\label{profile-skeleton}
+
+A common workflow to use these functions is to first make a skeleton for an
+orthography profile and then edit this profile by hand. For example, Table
+\ref{tab:profile_skeleton1} shows the profile skeleton after a few graphemes have
+been added to the file. Note that in this example, the profile is written to the
+desktop, and this file has to be edited manually. We simply add a few
+multigraphs to the column \texttt{Grapheme} and leave the other columns empty.
+These new graphemes are then included in the graphemic parsing.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# a few words to be graphemically parsed}
+\hlstd{example} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"mishmash"}\hlstd{,} \hlstr{"mishap"}\hlstd{,} \hlstr{"mischief"}\hlstd{,} \hlstr{"scheme"}\hlstd{)}
+\hlcom{# write a profile skeleton to a file}
+\hlkwd{write.profile}\hlstd{(example,} \hlkwc{file} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}\hlstd{)}
+\hlcom{# edit the profile, and then use the edited profile to tokenize}
+\hlkwd{tokenize}\hlstd{(example,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}\hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals    tokenized
+## 1   shampoo  sh a m p oo
+## 2    mishap   m i sh a p
+## 3  mischief m i sch ie f
+## 4    scheme    sch e m e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[htb]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{llll}
+  \toprule
+Grapheme & Frequency & Codepoint & UnicodeName \\ 
+  \midrule
+sh &  &  &  \\ 
+  ch &  &  &  \\ 
+  sch &  &  &  \\ 
+  ie &  &  &  \\ 
+  oo &  &  &  \\ 
+  a & 2 & U+0061 & LATIN SMALL LETTER A \\ 
+  c & 2 & U+0063 & LATIN SMALL LETTER C \\ 
+  e & 3 & U+0065 & LATIN SMALL LETTER E \\ 
+  f & 1 & U+0066 & LATIN SMALL LETTER F \\ 
+  h & 4 & U+0068 & LATIN SMALL LETTER H \\ 
+  i & 3 & U+0069 & LATIN SMALL LETTER I \\ 
+  m & 4 & U+006D & LATIN SMALL LETTER M \\ 
+  o & 2 & U+006F & LATIN SMALL LETTER O \\ 
+  p & 2 & U+0070 & LATIN SMALL LETTER P \\ 
+  s & 4 & U+0073 & LATIN SMALL LETTER S \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Manually edited profile skeleton} 
+\label{tab:profile_skeleton1}
+\end{table}
+
+
+To leave out the Unicode information in
+the profile skeleton, use the option \texttt{info = FALSE}. It is also
+possible not to use a separate file at all, but process everything within R. In
+simple situations this is often useful (see below), but in general we prefer to
+handle everything through a separately saved orthography profile. This profile
+often contains highly useful information that is nicely coded and saved inside
+this one file, and can thus be easily distributed and shared. Doing the same as
+above completely within R might look as follows:
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# make a profile, just select the column 'Grapheme'}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,} \hlstr{"Grapheme"}\hlstd{]}
+\hlcom{# extend the profile with multigraphs}
+\hlstd{profile} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"sh"}\hlstd{,} \hlstr{"ch"}\hlstd{,} \hlstr{"sch"}\hlstd{,} \hlstr{"ie"}\hlstd{,} \hlstr{"oo"}\hlstd{, profile)}
+\hlcom{# use the profile to tokenize}
+\hlkwd{tokenize}\hlstd{(example, profile)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\begin{verbatim}
+##   originals    tokenized
+## 1   shampoo  sh a m p oo
+## 2    mishap   m i sh a p
+## 3  mischief m i sch ie f
+## 4    scheme    sch e m e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Rule ordering}
+\label{rule-ordering}
+
+Everything is not yet correct with the graphemic parsing of the example discussed
+previously. The sequence <sh> in `mishap' should not be a digraph, and
+conversely the sequence <sch> in `mischief' should of course be separated into
+<s> and <ch>. One of the important issues to get the graphemic parsing right is
+the order in which graphemes are parsed. For example, currently the grapheme
+<sch> is parsed before the grapheme <ch>, leading to <m\ i\ sch\ ie\ f> instead
+of the intended <m\ i\ s\ ch\ ie\ f>. The reason that <sch> is parsed before
+<ch> is that by default longer graphemes are parsed before shorter ones. Our
+experience is that in most cases this is expected behavior. You can change the
+ordering by specifying the option \texttt{ordering}. Setting this option to
+\texttt{NULL} results in no preferential ordering, i.e.\ the graphemes are parsed
+in the order of the profile, from top to bottom. Now `mischief' is parsed
+correctly, but `scheme' is wrong. So this ordering is not the solution in this
+case.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# do not reorder the profile}
+\hlcom{# just apply the graphemes from top to bottom}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{ordering} \hlstd{=} \hlkwa{NULL}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals     tokenized
+## 1   shampoo   sh a m p oo
+## 2    mishap    m i sh a p
+## 3  mischief m i s ch ie f
+## 4    scheme    s ch e m e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+There are various additional options for rule ordering implemented. Please check
+the help description in R, i.e.\ \texttt{help(tokenize)}, for more details on the
+possible rule ordering specifications. In summary, there are four different 
+ordering options, that can also be combined:
+
+\begin{itemize}
+  
+   \item \textsc{size}\\
+         This option orders the lines in the profile by the size of the
+         grapheme, largest first. Size is measured by number of Unicode
+         characters after normalization as specified in the option
+         \texttt{normalize}. For example, <é> has a size of 1 with
+         \texttt{normalize = "NFC"}, but a size of 2 with
+         \texttt{normalize = "NFD"}.
+
+   \item \textsc{context}\\ This option orders the lines by whether they have
+           any context specified (see next section). Lines with context will
+           then be used first. Note that this only works when the option
+           \texttt{regex = TRUE} is also chosen (otherwise context
+           specifications are not used).
+
+   \item \textsc{reverse}\\ This option orders the lines from bottom to top.
+         Reversing order can be useful because hand-written profiles tend to put
+         general rules before specific rules, which mostly should be applied in
+         reverse order.
+
+  \item \textsc{frequency}\\
+         This option orders the lines by the frequency with which they
+         match in the specified strings before tokenization, least frequent
+         coming first. This frequency of course depends crucially on the
+         available strings, so it will lead to different orderings when applied
+         to different data. Also note that this frequency is (necessarily)
+         measured before graphemes are identified, so these ordering frequencies
+         are not the same as the final frequencies shown in the output.
+         Frequency of course also strongly differs on whether context is used
+         for the matching through \texttt{regex = TRUE}.
+  
+\end{itemize}
+
+By specifying more than one ordering, these orderings are used to break ties,
+e.g.\ the default setting \texttt{ordering = c("size", "context", "reverse")}
+will first order by size, and for those with the same size, it will order by
+whether there is any context specified or not. For lines that are still tied
+(i.e.\ have the same size and both/neither have context) the order will be
+reversed compared to the order as attested in the profile, because most
+hand-written specifications of graphemes will first write the general rule,
+followed by more specific regularities. To get the right tokenization, these 
+rules should in most cases be applied in reverse order.
+
+Note that different ordering of the rules does not result in 
+feeding and bleeding effects found with finite-state rewrite
+rules.\footnote{Bleeding is the effect that the application of a rule changes
+the string, so as to prevent a following rule from applying. Feeding is the opposite: a
+specific rule will only be applied because a previous rule changed the string
+already. The interaction of rules with such feeding and bleeding effects is
+extremely difficult to predict.} The graphemic parsing advocated here is 
+crucially different from rewrite rules in that there is nothing being rewritten:
+each line in an orthography profile specifies a grapheme to be captured in the 
+string. All lines in the profile are processed in a specified order (as determined
+by the option \texttt{ordering}). At the processing of a specific line, all 
+matching graphemes in the data are marked as captured, but not changed. 
+Captured parts cannot be captured again, but they can still be used to match 
+contexts of other lines in the profile. Only when all lines are processed the 
+captured graphemes are separated (and possibly transliterated). In this way the 
+result of the applied rules is rather easy to predict.
+
+To document a specific case of graphemic parsing, it is highly useful to save
+all results of the tokenization to file by using the option \texttt{file.out},
+for example as follows: 
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# save the results to various files}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{file.out} \hlstd{=} \hlstr{"~/Desktop/result"}
+        \hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+This will lead to the following four files being written. Crucially, a
+new profile is produced with the re-ordered orthography profile. To reproduce
+the tokenization, this re-ordered profile can be used with the option
+\texttt{ordering~=~NULL}.
+
+\begin{itemize}
+  
+   \item \textsc{result\_strings.tsv}:\\ A tab-separated file with the original
+         and the tokenized/transliterated strings.
+
+   \item \textsc{result\_profile.tsv}:\\ A tab-separated file with the
+         graphemes with added frequencies of occurrence in the data. The lines
+         in the file are re-ordered according to the order that resulted from the
+         ordering specifications (see Section~\ref{rule-ordering}).
+
+   \item \textsc{result\_errors.tsv}:\\ A tab-separated file with all original
+         strings that contain unmatched parts. Unmatched parts are indicated
+         with the character as specified with the option \texttt{missing}. By
+         default the character \textsc{double question mark} <⁇> at
+         \uni{2047} is used. When there are no errors, this file is 
+         absent.
+
+    \item \textsc{result\_missing.tsv}:\\ A tab-separated file with the graphemes
+          that are missing from the original orthography profile, as indicated in
+          the errors. When there are no errors, then this file is absent.
+          
+\end{itemize}
+
+\subsection*{Contextually specified graphemes}
+\label{contextual-specification}
+
+To refine a profile, it is also possible to add graphemes with contextual
+specifications. An orthography profile can have columns called \texttt{Left} and
+\texttt{Right} to specify the context in which the grapheme is to be
+separated.\footnote{The column names \textttf{Left}, \textttf{Right} and
+\textttf{Grapheme} are currently hard-coded, so these exact column names
+should be used for these effects to take place. The position of the columns in
+the profile is unimportant. So the column \textttf{Left} can occur anywhere.}
+For example, we are adding an extra line to the profile from above, resulting in
+the profile shown in Table~\ref{tab:profile_skeleton2}. The extra line specifies
+that <s> is a grapheme when it occurs after <mi>. Such contextually-specified
+graphemes are based on regular expressions so you can also use regular
+expressions in the description of the context. For such contextually specified
+graphemes to be included in the graphemic parsing we have to specify the option
+\texttt{regex = TRUE}. This contextually specified grapheme should actually be
+handled first, so we could try \texttt{ordering = NULL}. However, we can also
+explicitly specify that rules with contextual information should be applied
+first by using \texttt{ordering = "context"}. That gives the right results for
+this toy example, as shown in Table \ref{tab:profile_skeleton2}.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# add a contextual grapheme, and then use the edited }
+\hlcom{# profile to tokenize}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{TRUE}
+         \hlstd{,} \hlkwc{ordering} \hlstd{=} \hlstr{"context"}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals     tokenized
+## 1   shampoo   sh a m p oo
+## 2    mishap   m i s h a p
+## 3  mischief m i s ch ie f
+## 4    scheme    s ch e m e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[htb]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{lllll}
+  \toprule
+Left & Grapheme & Frequency & Codepoint & UnicodeName \\ 
+  \midrule
+mi & s &  &  &  \\ 
+   & sh &  &  &  \\ 
+   & ch &  &  &  \\ 
+   & sch &  &  &  \\ 
+   & ie &  &  &  \\ 
+   & oo &  &  &  \\ 
+   & a & 2 & U+0061 & LATIN SMALL LETTER A \\ 
+   & c & 2 & U+0063 & LATIN SMALL LETTER C \\ 
+   & e & 3 & U+0065 & LATIN SMALL LETTER E \\ 
+   & f & 1 & U+0066 & LATIN SMALL LETTER F \\ 
+   & h & 4 & U+0068 & LATIN SMALL LETTER H \\ 
+   & i & 3 & U+0069 & LATIN SMALL LETTER I \\ 
+   & m & 4 & U+006D & LATIN SMALL LETTER M \\ 
+   & o & 2 & U+006F & LATIN SMALL LETTER O \\ 
+   & p & 2 & U+0070 & LATIN SMALL LETTER P \\ 
+   & s & 4 & U+0073 & LATIN SMALL LETTER S \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Orthography profile with contextual specification for <s>} 
+\label{tab:profile_skeleton2}
+\end{table}
+
+
+Note that with the option \texttt{regex = TRUE} all
+content in the profile is treated as regular expressions, so the characters with
+special meaning in regular expressions should be either omitted or escaped (by
+putting a <\ \backslash\ > \textsc{reverse solidus} at \uni{005C} before the
+character). Specifically, this concerns the following characters:
+
+\begin{itemize}
+  
+  \item[] <-> \textsc{hyphen-minus} at \uni{002D}
+  \item[] <!> \textsc{exclamation mark} at \uni{0021}
+  \item[] <?> \textsc{question mark} at \uni{003F}
+  \item[] <.> \textsc{full stop} at \uni{002E}
+  \item[] <(> \textsc{left parenthesis} at \uni{0028}
+  \item[] <)> \textsc{right parenthesis} at \uni{0029}
+  \item[] <[> \textsc{left square bracket} at \uni{005B}
+  \item[] <]> \textsc{right square bracket} at \uni{005D}
+  \item[] <\{> \textsc{left curly bracket} at \uni{007B}
+  \item[] <\}> \textsc{right curly bracket} at \uni{007D}
+  \item[] <|> \textsc{vertical line} at \uni{007C}
+  \item[] <*> \textsc{asterisk} at \uni{002A}
+  \item[] <\backslash> \textsc{reverse solidus} at \uni{005C}
+  \item[] <ˆ> \textsc{circumflex accent} at \uni{005E}
+  \item[] <+> \textsc{plus sign} at \uni{002B}
+  \item[] <\$> \textsc{dollar sign} at \uni{0024}
+  
+\end{itemize}
+
+\subsection*{Profile skeleton with columns for editing}
+\label{profile-editing}
+
+When it is expected that context might be important for a profile, then the
+profile skeleton can be created with columns prepared for the contextual
+specifications. This is done by using the option \texttt{editing = TRUE}~(cf.\
+Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{example} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'cane'}\hlstd{,} \hlstr{'cena'}\hlstd{,} \hlstr{'cine'}\hlstd{)}
+\hlkwd{write.profile}\hlstd{(example}
+              \hlstd{,} \hlkwc{file} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+              \hlstd{,} \hlkwc{editing} \hlstd{=} \hlnum{TRUE}
+              \hlstd{,} \hlkwc{info} \hlstd{=} \hlnum{FALSE}
+              \hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[htb]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{lllll}
+  \toprule
+Left & Grapheme & Right & Class & Replacement \\ 
+  \midrule
+ & a &  &  & a \\ 
+   & c &  &  & c \\ 
+   & e &  &  & e \\ 
+   & i &  &  & i \\ 
+   & n &  &  & n \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Orthography profile with empty columns for editing contexts} 
+\label{tab:profile_editing_1}
+\end{table}
+
+
+Besides the columns \texttt{Left}, \texttt{Grapheme}, and \texttt{Right} as
+discussed in the previous sections, there are also columns \texttt{Class} and
+\texttt{Replacement}. The column \texttt{Class} can be used to specify classes
+of graphemes that can then be used in the contextual specification. The column
+\texttt{Replacement} is just a copy of the column \textt{Grapheme}, providing a
+skeleton to specify transliteration. The name of the column
+\texttt{Replacement} is not fixed -- there can actually be multiple columns with 
+different kinds of transliterations in a single profile.
+
+To achieve contextually determined replacements it is possible to use a regular
+expression in the contextual column. For example, consider the edited toy
+profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
+except before <i,e>, then it becomes /tʃ/). 
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[htb]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{lllll}
+  \toprule
+Left & Grapheme & Right & Class & IPA \\ 
+  \midrule
+ & c & [ie] &  & tʃ \\ 
+   & a &  &  & a \\ 
+   & n &  &  & n \\ 
+   & c &  &  & k \\ 
+   & e &  &  & e \\ 
+   & i &  &  & i \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Orthography profile with regex as context} 
+\label{tab:profile_editing_2}
+\end{table}
+
+
+To use this profile, you have to add the option \texttt{regex = TRUE}. Also note
+that we have changed the name of the transliteration column, so we have to tell
+the tokenization process to use this column to transliterate. This is done by
+adding the option \texttt{transliterate = "IPA"}.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# add a contextual grapheme, and then use the edited }
+\hlcom{# profile to tokenize}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{TRUE}
+         \hlstd{,} \hlkwc{transliterate} \hlstd{=} \hlstr{"IPA"}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals tokenized transliterated
+## 1      cane   c a n e        k a n e
+## 2      cena   c e n a       tʃ e n a
+## 3      cine   c i n e       tʃ i n e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Another equivalent possibility is to use a column \texttt{Class} to specify a
+class of graphemes, and then use this class in the specification of context.
+This is useful to keep track of recurrent classes in larger profiles. You are
+free to use any class-name you like, as long as it does not clash with the rest
+of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
+give the same result as obtained previously by using a regular expression.
+
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Mon Jun 11 20:43:33 2018
+\begin{table}[htb]
+\centering
+\begingroup\scriptsize
+\begin{tabular}{lllll}
+  \toprule
+Left & Grapheme & Right & Class & IPA \\ 
+  \midrule
+ & c & Vfront &  & tʃ \\ 
+   & a &  &  & a \\ 
+   & n &  &  & n \\ 
+   & c &  &  & k \\ 
+   & e &  & Vfront & e \\ 
+   & i &  & Vfront & i \\ 
+   \bottomrule
+\end{tabular}
+\endgroup
+\caption{Orthography profile with Class as context} 
+\label{tab:profile_editing_3}
+\end{table}
+
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# add a class, and then use the edited profile to tokenize}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{TRUE}
+         \hlstd{,} \hlkwc{transliterate} \hlstd{=} \hlstr{"IPA"}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals tokenized transliterated
+## 1      cane   c a n e        k a n e
+## 2      cena   c e n a       tʃ e n a
+## 3      cine   c i n e       tʃ i n e
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Formatting grapheme separation}
+\label{formattingseparation}
+
+In all examples above we have used the default formatting for grapheme
+separation using space as a separator, which is obtained by the default setting
+\texttt{sep~=~"~"}. It is possible to specify any other separator here,
+including the empty string, i.e.\ \texttt{sep = ""}. This will not show the
+graphemic tokenization anymore (although it has of course been used in the
+background).
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Use the empty string as separator}
+\hlkwd{tokenize}\hlstd{( example}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlstr{"~/Desktop/profile_skeleton.txt"}
+         \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{TRUE}
+         \hlstd{,} \hlkwc{transliterate} \hlstd{=} \hlstr{"IPA"}
+         \hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{""}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+##   originals tokenized transliterated
+## 1      cane      cane           kane
+## 2      cena      cena          tʃena
+## 3      cine      cine          tʃine
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Normally, the separator specified should not occur in the data. If it does,
+unexpected things might happen, so consider removing the chosen separator from
+your strings first. However, there is also an option \texttt{sep.replace} to
+replace the separator with something else. When \code{sep.replace} is specified,
+this mark is inserted in the string at those places where the separator occurs.
+Typical usage in linguistics would be \texttt{sep = " ", sep.replace = "\#"} adding
+spaces between graphemes and replacing spaces in the input string by hashes in
+the output string.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Replace separator in string to be tokenized}
+\hlkwd{tokenize}\hlstd{(} \hlstr{"test test test"}
+         \hlstd{,} \hlkwc{sep} \hlstd{=} \hlstr{" "}
+         \hlstd{,} \hlkwc{sep.replace} \hlstd{=} \hlstr{"#"}
+        \hlstd{)}\hlopt{$}\hlstd{strings}\hlopt{$}\hlstd{tokenized}
+\end{alltt}
+\begin{verbatim}
+## [1] "t e s t # t e s t # t e s t"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection*{Remaining issues}
+
+Given a set of graphemes, there are at least two different methods to tokenize
+strings. The first is called \texttt{method = "global"}. This approach
+takes the first grapheme in the profile, then matches this grapheme globally at
+all places in the string, and then turns to process the next string in the profile. The 
+other approach is called \texttt{method = "linear"}. This
+approach walks through the string from left to right. At the first character it
+looks through all graphemes whether there is any match, and then walks further
+to the end of the match and starts again. This approach is more akin to
+finite-state rewrite rules (though note that it still works differently from
+such rewrite rules, as previously stated). The global method is used 
+by default in the R implementation.
+
+In some special cases these two tokenization methods can lead to different
+results, but these special situations are very unlikely to happen in natural
+language. The example below shows that a string \texttt{'abc'} can be parsed
+differently in case of a very special profile with a very special ordering of
+the graphemes.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# different parsing methods can lead to different results}
+\hlcom{# the global method first catches 'bc'}
+\hlkwd{tokenize}\hlstd{(} \hlstr{"abc"}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"bc"}\hlstd{,}\hlstr{"ab"}\hlstd{,}\hlstr{"a"}\hlstd{,}\hlstr{"c"}\hlstd{)}
+         \hlstd{,} \hlkwc{order} \hlstd{=} \hlkwa{NULL}
+         \hlstd{,} \hlkwc{method} \hlstd{=} \hlstr{"global"}
+         \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\begin{verbatim}
+##   originals tokenized
+## 1       abc      a bc
+\end{verbatim}
+\begin{alltt}
+         
+\hlcom{# the linear method catches the first grapheme, which is 'ab'}
+\hlkwd{tokenize}\hlstd{(} \hlstr{"abc"}
+         \hlstd{,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"bc"}\hlstd{,}\hlstr{"ab"}\hlstd{,}\hlstr{"a"}\hlstd{,}\hlstr{"c"}\hlstd{)}
+         \hlstd{,} \hlkwc{order} \hlstd{=} \hlkwa{NULL}
+         \hlstd{,} \hlkwc{method} \hlstd{=} \hlstr{"linear"}
+         \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\begin{verbatim}
+##   originals tokenized
+## 1       abc      ab c
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Further, the current R implementation has a limitation when regular expressions
+are used. The problem is that overlapping matches are not captured when using
+regular expressions.\footnote{This restriction is an effect of the underlyingly
+used ICU implementation of the Unicode Standard as implemented in R through the
+package \textttf{stringi}.} Everything works as expected without regular
+expressions, but there might be warnings/errors in case of \texttt{regex =
+TRUE}. However, just as in the previous issue, this problem should only very
+rarely (when at all) happen in natural language data.
+
+The problem can be exemplified by a sequence <bbbb> in which a grapheme <bb>
+should be matched. With the default \texttt{regex = FALSE} there are three
+possible matches, but with \texttt{regex = TRUE} only the first two <b>'s or the
+last two <b>'s are matched. The middle two <b>'s are not matched because they
+overlap with the other matches. In the example below this leads to an error,
+because the second <bb> is not matched. However, we have not been able to
+produce a real example in any natural language in which this limitation might
+lead to an error.
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Everything perfect without regular expressions}
+\hlkwd{tokenize}\hlstd{(} \hlstr{"abbb"}
+        \hlstd{,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"ab"}\hlstd{,}\hlstr{"bb"}\hlstd{)}
+        \hlstd{,} \hlkwc{order} \hlstd{=} \hlkwa{NULL}
+        \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{FALSE}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+\begin{verbatim}
+##   originals tokenized
+## 1      abbb     ab bb
+\end{verbatim}
+\begin{alltt}
+        
+\hlcom{# Matching with regular expressions does not catch overlap}
+\hlkwd{tokenize}\hlstd{(} \hlstr{"abbb"}
+        \hlstd{,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"ab"}\hlstd{,}\hlstr{"bb"}\hlstd{)}
+        \hlstd{,} \hlkwc{order} \hlstd{=} \hlkwa{NULL}
+        \hlstd{,} \hlkwc{regex} \hlstd{=} \hlnum{TRUE}
+        \hlstd{)}\hlopt{$}\hlstd{strings}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning in tokenize("{}abbb"{}, profile = c("{}ab"{}, "{}bb"{}), order = NULL, regex = TRUE): \\\#\# There were unknown characters found in the input data.\\\#\# Check output\$errors for a table with all problematic strings.}}\begin{verbatim}
+##   originals tokenized
+## 1      abbb    ab ⁇ ⁇
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\section{Recipes online}
+\label{use-cases}
+
+We provide several use cases online -- what we refer to as \textit{recipes} -- that illustrate the applications of orthography profiles using our implementations in Python and R.\footnote{\url{https://github.com/unicode-cookbook/recipes}} Here we briefly describe these use cases and we encourage users to try them out using Git and Jupyter Notebooks.
+
+First, as we discussed above, we provide a basic tutorial on how to use the Python \texttt{segments}\footnote{\url{https://pypi.python.org/pypi/segments}} and R \texttt{qlcData}\footnote{\url{https://github.com/cysouw/qlcData}} libraries. This recipe simply shows the basic functions of each library to get you started.\footnote{\url{https://github.com/unicode-cookbook/recipes/tree/master/Basics}}
+
+The two recipes using the Python \textt{segments} package include a tutorial on how to segment graphemes in IPA text:
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/JIPA
+\end{itemize}
+	
+\noindent and an example of how to create an orthography profile to tokenize fieldwork data from a large comparative wordlist.
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/Dogon
+\end{itemize}
+
+\noindent The JIPA recipes uses excerpts from \textit{The North Wind and the Sun} passages from the Illustrations of the IPA published in the Journal of the International Phonetic Alphabet. Thus the recipe shows how a user might tokenize IPA proper. The Dogon recipe uses fieldwork data from the Dogon languages of Mali language documentation project.\footnote{\url{http://dogonlanguages.org/}} This recipe illustrates how a user might tokenize fieldwork data from numerous linguists using different transcription practices by defining these practices with an orthography profile to make the output unified and comparable.
+
+The two recipes using the R \texttt{qlcData} library include a use case for tokenizing wordlist data from the Automated Similarity Judgment Program (ASJP):\footnote{\url{http://asjp.clld.org/}}
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/ASJP
+\end{itemize}
+
+\noindent and for tokenizing a corpus of text in Dutch orthography:
+
+\begin{itemize}
+	\item https://github.com/unicode-cookbook/recipes/tree/master/Dutch
+\end{itemize}
+
+\noindent The ASJP use case shows how to download the full set of ASJP wordlists, to combine them into a single large CSV file, and to tokenize the ASJP orthography. The Dutch use case takes as input the 10K corpus for Dutch (``nld'') from the Leipzig Corpora Collection,\footnote{\url{http://wortschatz.uni-leipzig.de/en/download/}} which is then cleaned and tokenized with an orthography profile that captures the intricacies of Dutch orthography.
+
+% In closing, using GitHub to share code and data provides a platform for sharing scientific results and it also promotes a means for scientific replicability of results. Moreover, we find that in cases where the scientists are building the to tools for analysis, open repositories and data help to ensure that what you see is what you get.
+
+% \include{chapters/use_cases}
+% knit_child("chapters/codetesting.tex")
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                              %%%
