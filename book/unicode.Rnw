@@ -1,3 +1,5 @@
+% !BIB TS-program = biber
+% !BIB program = biber
 \documentclass[output=book,nonflat,modfonts,
 colorlinks, citecolor=brown,
 % draft,draftmode   
