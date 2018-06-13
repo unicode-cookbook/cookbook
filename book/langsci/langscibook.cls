@@ -1240,7 +1240,7 @@ Unter den Linden 6\\
 
 Storage and cataloguing done by FU Berlin \\[3ex]
 
-\IfFileExists{\logopath storagelogo.pdf}{\includegraphics[width=5cm]{\logopath storagelogo.pdf}}{\logotext} \\[3ex]
+\IfFileExists{\logopath FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath FULogo_sw_CMYK.pdf}}{\logotext} \\[3ex]
 
 
 % \vfill
