@@ -33,7 +33,7 @@ We have success compiling the `main.tex` document using the MacTeX 2017 distribu
 
 To generate the author index, we followed the instructions in the Language Science Press [http://langsci-press.org/public/downloads/LangSci_Guidelines.pdf](style guide):
 
-	`sed -i s/.*\\emph.*// main.adx`
-	`makeindex -o main.and main.adx`
+	sed -i s/.*\\emph.*// main.adx
+	makeindex -o main.and main.adx
 	
 which the `Makefile` then picks up during compilation.
