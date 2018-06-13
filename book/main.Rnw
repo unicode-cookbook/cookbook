@@ -1,0 +1,115 @@
+% !BIB TS-program = biber
+% !BIB program = biber
+\documentclass[output=book,nonflat,modfonts,
+colorlinks, citecolor=brown,
+% draft,draftmode   
+		]{langsci/langscibook}
+\usepackage[]{graphicx}\usepackage[]{color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%          additional packages                 %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% put all additional commands you need in the 
+% following files. If you do not know what this might 
+% mean, you can safely ignore this section
+
+\usepackage{verbatim}
+\usepackage{hologo}
+\input{localmetadata.tex}
+\input{localpackages.tex}
+\input{localhyphenation.tex}
+\input{localcommands.tex}
+\bibliography{localbibliography}
+
+\lstset{
+  literate={ĉ}{{\^c}}1
+           {á}{{\'a}}1
+           {ã̌}{{\'a}}1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Frontmatter                      %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\frontmatter
+\include{chapters/preface}
+\include{chapters/acknowledgments}
+% \include{chapters/abbreviations}
+\tableofcontents
+\mainmatter%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             knitr settings                   %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Here are settings for knitr, which will be removed in the .tex file
+% spacing of code-chunks is set with the "knitrout" environment in localcommands.tex
+
+<<setup, include = FALSE>>=
+
+# dependencies
+require(knitr)
+require(xtable)
+require(highlight)
+require(qlcData)
+
+# for themes, see:
+# https://rclickhandbuch.files.wordpress.com/2014/09/knitrthemesoverview.pdf
+# knit_theme$set("acid")
+
+opts_chunk$set(fig.path = 'figures/'
+              , size = 'footnotesize'
+              , tidy = TRUE
+              , highlight = TRUE
+              , strip.white = FALSE
+              , cache = FALSE
+              , background = '#FFFFFF'
+              )
+              
+options(formatR.arrow = TRUE)
+options(reindent.spaces = 2)
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Chapters                         %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{chapters/introduction}
+\include{chapters/unicode_approach}
+\include{chapters/pitfalls}
+\include{chapters/ipa_background}
+\include{chapters/ipa_meets_unicode}
+\include{chapters/practical_recommendations}
+\include{chapters/orthography_profiles}
+\Sexpr{knit_child("chapters/implementation.tex")}
+% \include{chapters/use_cases}
+% \Sexpr{knit_child("chapters/codetesting.tex")}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                              %%%
+%%%             Backmatter                       %%%
+%%%                                              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% There is normally no need to change the backmatter section
+\input{backmatter.tex}
+\end{document}
+
+% you can create your book by running
+% xelatex lsp-skeleton.tex
+%
+% you can also try a simple 
+% make
+% on the commandline
