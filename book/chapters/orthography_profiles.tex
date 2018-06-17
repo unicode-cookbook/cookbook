@@ -4,17 +4,15 @@
 \section{Characterizing writing systems}
 \label{characterizing-writing-systems}
 
-At this point in the course of rapid ongoing developments, we are left with a
-situation in which the Unicode Standard offers a highly detailed and flexible
-approach to deal computationally with writing systems, but it has unfortunately
-not influenced the linguistic practice very much. In many practical situations,
-the Unicode Standard is far too complex for the day-to-day practice in
-linguistics because it does not offer practical solutions for the down-to-earth
-problems of many linguists. In this section, we propose some simple practical
-guidelines and methods to improve on this situation.
+The Unicode Standard offers a very detailed technical approach 
+for characterizing writing systems computationally. As such, it is 
+sometimes too complex for the day-to-day practice of many linguists, 
+as exemplified by the need to understand the common pitfalls that we discussed in Chapters 
+\ref{unicode-pitfalls} \& \ref{ipa-meets-unicode}. Therefore, in this section we propose some simple 
+guidelines for linguists working in multilingual environments.
 
-Our central aims for linguistics, to be approached with a Unicode-based
-solution, are: (i) to improve the consistency of the encoding of sources, (ii)
+Our aims for adopting a Unicode-based
+solution are: (i) to improve the consistency of the encoding of sources, (ii)
 to transparently document knowledge about the writing system (including
 transliteration), and (iii) to do all of that in a way that is easy and quick to
 manage for many different sources with many different writing systems. The
@@ -35,7 +33,7 @@ Given these goals, Unicode Locales (see
 Chapter~\ref{the-unicode-approach}) might seem like the ideal orthography
 profiles. However, there are various practical obstacles preventing the use of
 Unicode Locales in the daily linguistic practice, namely: (i) the
-XML structure is too verbose to easily and quickly produce or correct manually,
+XML structure\footnote{\url{http://unicode.org/reports/tr35/}} is too verbose to easily and quickly produce or correct manually,
 (ii) Unicode Locales are designed for a wide scope of information (like date
 formats or names of weekdays) most of which is not applicable for documenting
 writing systems, and (iii) most crucially, even if someone made the effort to
@@ -155,7 +153,7 @@ computational approaches to transliteration is the strict separation between
 tokenization and transliteration. Most computational approaches to
 transliteration are based on finite-state transducers (including the
 transliteration as described in the Unicode Locale Data Markup
-Language).\footnote{See \url{http://www.unicode.org/reports/tr35/}} Finite-state 
+Language).\footnote{\url{http://www.unicode.org/reports/tr35/}} Finite-state 
 transducers attempt to describe the mapping from input to output string directly 
 as a set of rewrite rules. Although such systems are computationally well 
 understood, we feel that they are not well-suited for day-to-day linguistic 
@@ -173,9 +171,9 @@ profile.
 
 In practice, we foresee a workflow in which orthography profiles are iteratively
 refined, while at the same time inconsistencies and errors in the data to be
-tokenized are corrected. In some more complex use-cases there might even be a
+tokenized are corrected. In some more complex use cases there might even be a
 need for multiple different orthography profiles to be applied in sequence (see
-Sections~\ref{python-implementations} \& \ref{r-implementation} on various exemplary use-cases). The result of any such
+Sections~\ref{python-implementations} \& \ref{r-implementation} on various exemplary use cases). The result of any such
 workflow will normally be a cleaned dataset and an explicit description of the
 orthographic structure in the form of an orthography profile. Subsequently, the
 orthography profiles can be easily distributed in scholarly channels alongside
@@ -192,8 +190,8 @@ for short) are the following:
 \begin{enumerate}
 	\def\labelenumi{A\arabic{enumi}.} 
 	\item \textsc{A profile is a unicode utf-\scalebox{0.8}{8} encoded text file} 
-	   normalized following NFC (or NFD if specified in the metadata)
-       that includes the information pertinent to the orthography.\footnote{See 
+	   % normalized following NFC (or NFD if specified in the metadata)
+       that includes information pertinent to the orthography.\footnote{See 
 	   Section~\ref{pitfall-file-formats} in which we suggest to use NFC, 
 	   no-BOM and LF line breaks because of the pitfalls they avoid. A keen reviewer notes, however, that specifying 
 	   a convention for line endings and BOM is overly strict because most 
@@ -264,7 +262,7 @@ of the orthography, using the following columns:
        times with different contextual specifications, for example to
        distinguish different pronunciations depending on the context. 
 	\item \textsc{The columns \texttt{Grapheme}, \texttt{Left} and \texttt{Right}
-       can use regular expression metacharacters.} If regular expressions are
+       can use regular expression \\ metacharacters.} If regular expressions are
        used, then they must be specified in the metadata file as such, 
 	   and all literal usage of the special symbols, like full stops <.>
        or dollar signs <\$> (so-called \textsc{metacharacters}) have to be
@@ -288,10 +286,10 @@ of the orthography, using the following columns:
        transliteration will be of interest. Any software application using these
        profiles should prompt the user to name any of these columns to select a
        specific transliteration. 
-	\item \textsc{Any other columns can be added freely, but will mostly be ignored
+	\item \textsc{Any other columns can be added freely, but will be typically ignored
        by any software application using the profiles}. As orthography profiles
        are also intended to be read and interpreted by humans, it is often
-       highly useful to add extra information on the graphemes in further
+       very useful to add extra information about the graphemes in further
        columns, such as Unicode code points, Unicode names, frequency of
        occurrence, examples of occurrence, explanation of contextual
        restrictions, or comments. 
@@ -310,18 +308,18 @@ will be expected:
        the position indicated by the class-identifiers. For example, a class
        called \texttt{V} as a context specification might be replaced by a regular
        expression like:
-       \texttt{(a\textbar{}e\textbar{}i\textbar{}o\textbar{}u\textbar{}ei\textbar{}au)}.
+       \texttt{(au\textbar{}ei\textbar{}a\textbar{}e\textbar{}i\textbar{}o\textbar{}u}).
        Only the graphemes themselves are included here, not any contexts
-       specified for the elements of the class. Note that in some cases the 
-       ordering inside this regular expression might be crucial, therefore it must be 
-	   specified as such in the metadata file.
+       specified for the elements of the class. Note that the 
+       ordering inside this regular expression is crucial (e.g.\ regular expressions are greedy, so
+	   longest matches should be placed before matching substrings).
 	\item \textsc{The \textsc{left} and \textsc{right} contexts will be included
        into the regular expressions by using lookbehind and lookahead}.
        Basically, the actual regular expression syntax of lookbehind and
        lookahead is simply hidden to the users by allowing them to only specify
        the contexts themselves. Internally, the contexts in the columns
        \texttt{Left} and \texttt{Right} are combined with the column
-       \texttt{Grapheme} to form a complex regular expression like:\ 
+       \texttt{Grapheme} to form a complex regular expression like:\\ 
        \texttt{(?\textless{}=Left)Grapheme(?=Right)}. 
 	\item \textsc{The regular expressions will be applied in the order as specified
        in the profile, from top to bottom.} A software implementation can offer
@@ -358,16 +356,20 @@ follows:
        profiles should offer both approaches (i.e.\ \textsc{global} or
        \textsc{linear}) to the user. The approach used should be documented in
        the metadata as \textsc{tokenization method}. 
-	\item \textsc{The matching of the graphemes can occur either in NFC or NFD.} By
-       default, both the profile and the text-string to be tokenized should be
-       treated as NFC (see Section~\ref{pitfall-canonical-equivalence}). However, in some use-cases it turns out to
+	\item \textsc{The matching of the graphemes can occur either in nfc or nfd.} 
+	   The Unicode Standard states that software is free to compose or decompose the character stream from one 
+	   representation to another. However, Unicode conformant software must treat canonically equivalent sequences in 
+	   NFC and NFD as the same. It is up to the orthography profile creator how they choose to encode their profile. 
+	   Several sources suggest to use NFC when possible for text encoding,\footnote{\url{http://www.win.tue.nl/~aeb/linux/uc/nfc_vs_nfd.html}} 
+	   including SIL International with regard to data archiving.\footnote{\url{http://scripts.sil.org/cms/scripts/page.php?item_id=NFC_vs_NFD}} 
+	   In our experience, in some use cases it turns out to
        be practical to treat both text and profile as NFD. This typically
-       happens when very many different combinations of diacritics occur in the
+       happens when many different combinations of diacritics occur in the
        data. An NFD profile can then be used to first check which individual
        diacritics are used, before turning to the more cumbersome inspection of
        all combinations. We suggest that any software application using
        orthography profiles should offer both approaches (i.e.\ \textsc{NFC} or
-       \textsc{NFD}) to the user. The approach used should be documented in the
+       \textsc{NFD}) to the user. The approach used can be documented in the
        metadata as \textsc{unicode normalization}. 
 	\item \textsc{The text-string is always returned in tokenized form} by
        separating the matched graphemes by a user-specified symbols-string. Any
@@ -428,7 +430,7 @@ Any software application offering to use orthography profile:
         expression metacharacters. Matching graphemes literally often leads to
         significant speed increase, and ensures that users do not have to worry
         about escaping metacharacters. However, in our experience all actually
-        interesting use-cases of orthography profiles include some contexts,
+        interesting use cases of orthography profiles include some contexts,
         which automatically prevents any literal interpretation.
     \end{enumerate}
 	\item \textsc{should return the following information} to the user:
