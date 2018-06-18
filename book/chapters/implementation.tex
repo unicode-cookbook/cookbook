@@ -6,7 +6,7 @@ To illustrate the practical applications of orthography profiles, we have implem
 
 Note that our two libraries have rather different implementation histories, thus they may not give the same results in all situations (as discussed in Chapter~\ref{orthography-profiles}). However, we do provide extensive test suites for each implementation that follow standard practices to make sure that results are correct. Users should refer to these tests and to the documentation in each release for specifics about each implementation. Note that due to the different naming convention practices in Python and R, function names differ between the two libraries. Also, the performance with larger datasets may not be comparable between the Python and R implementations. In sum, our two libraries should be considered as proofs of concept and not as the final word on the practical application of the specifications discussed in the previous chapter. In our experience, the current versions are sufficiently fast and stable to be useful for academic practice (e.g.\ checking data consistency, or analyzing and transliterating small to medium sized data sets), but they should probably not be used for full-scale industry applications without adaptation.
 
-First, in Section \ref{installing-python-and-r} we explain how to install Python\footnote{\url{https://www.python.org/}} and R.\footnote{\url{https://www.r-project.org/}} Then in Sections \ref{python-implementations} and \ref{r-implementation}, we discuss our Python and R software packages, respectively. In addition to the material presented here to get users started, we maintain several case studies online that illustrate how to use orthography profiles in action. For convenience, we make these recipes available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} in our GitHub repository.\footnote{\url{https://github.com/unicode-cookbook/}} In the final section in this chapter, we also briefly describe a few recipes that we do not go into detail in this book.
+First, in Section \ref{installing-python-and-r} we explain how to install Python\footnote{\url{https://www.python.org/}} and R.\footnote{\url{https://www.r-project.org/}} Then in Sections \ref{python-implementations} \& \ref{r-implementation}, we discuss our Python and R software packages, respectively. In addition to the material presented here to get users started, we maintain several case studies online that illustrate how to use orthography profiles in action. For convenience, we make these recipes available as Jupyter Notebooks\footnote{\url{http://jupyter.org/}} in our GitHub repository.\footnote{\url{https://github.com/unicode-cookbook/}} In the final section in this chapter, we also briefly describe a few recipes that we do not go into detail in this book.
 
 \section{How to install Python and R}
 \label{installing-python-and-r}
@@ -147,7 +147,7 @@ Let's load the orthography profile with our tokenizer.
 \end{lstlisting}
 
 
-\noindent We set the default as the Unicode replacement character \uni{fffd}, \texttt{replacement character}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
+\noindent We set the default as the Unicode \texttt{replacement character} \uni{fffd}.\footnote{\url{http://www.fileformat.info/info/unicode/char/fffd/index.htm}} But you can simply change this by specifying the replacement character when you load the orthography profile with the tokenizer.
 
 
 \begin{lstlisting}
@@ -408,10 +408,10 @@ Basically, the idea is to use \texttt{write.profile} to produce a
 basic orthography profile from some data and then \texttt{tokenize} to apply the
 (possibly edited) profile on some data, as exemplified in the next section. This
 can of course be performed though R, but additionally there are two more
-interfaces to the R code supplied in the \texttt{qlcData} package: (i) bash
+interfaces to the R code supplied in the \texttt{qlcData} package: (i) \texttt{Bash}
 executables and (ii) \texttt{Shiny} webapps.
 
-The bash executables are little files providing an interface to the R code that
+The Bash executables are little files providing an interface to the R code that
 can be used in a shell on a UNIX-like machine. The exact location of these
 executables is best found after installation of R the packages. The
 location can be found by the following command in R. 
@@ -639,7 +639,7 @@ print(xtable(profile_6
 @
 
 These different profiles can also be produced using the bash
-executable \texttt{writeprofile} (see above for how to install the bash executable). 
+executable \texttt{writeprofile} (see above for how to install the Bash executable). 
 This example is also included in the help file of the executable.
 
 % TODO: fix
