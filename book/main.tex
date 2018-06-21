@@ -182,7 +182,7 @@ The \texttt{segments} API can be accessed by importing the package into Python o
 >>> '(*@c ̂ h a ́ ɾ a ̃ ̌ c t ʼ ɛ ↗ ʐ ː | # k ͡ p@*)'
 \end{lstlisting}
 
-\noindent The \texttt{grapheme\_clusters} function will segment text at the Unicode Extended Grapheme Cluster boundaries.\footnote{\url{http://www.unicode.org/reports/tr18/tr18-19.html#Default_Grapheme_Clusters}}
+\noindent The \texttt{grapheme\_clusters} function will segment text at the Unicode Extended Grapheme Cluster boundaries.\footnote{\url{http://www.unicode.org/reports/tr18/tr18-19.html\#Default_Grapheme_Clusters}}
 
 \begin{lstlisting}[extendedchars=false, escapeinside={(*@}{@*)}]
 >>> result = t.grapheme_clusters('(*@ĉháɾã̌ctʼɛ↗ʐː| k͡p@*)')
@@ -567,19 +567,21 @@ PATH, e.g.\ to \texttt{/usr/local/bin/}. The two executables are named
 \texttt{tokenize} and \texttt{writeprofile}, and the links can be made directly 
 by using Rscript to get the paths to the executables within the terminal.
 
-\begin{knitrout}\scriptsize
+\begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-# get the paths to the R executables in bash
-pathT=`Rscript -e 'cat(file.path(find.package("qlcData"), 
-  "exec", "tokenize"))'`
-pathW=`Rscript -e 'cat(file.path(find.package("qlcData"), 
-  "exec", "writeprofile"))'`
-
-# make softlinks to the R executables in /usr/local/bin
-# you will have to enter your user's password!
-sudo ln -is $pathT $pathW /usr/local/bin
-\end{alltt}
+\noindent
+\ttfamily
+\hlstd{}\hlslc{\#\ get\ the\ paths\ to\ the\ R\ executables\ in\ bash}\hspace*{\fill}\\
+\hlstd{pathT}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(file.path(find.package("qlcData"),\ }\hspace*{\fill}\\
+\hlstr{}\hlstd{\ \ }\hlstr{"exec",\ "tokenize"))'`}\hlstd{}\hspace*{\fill}\\
+\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(file.path(find.package("qlcData"),\ }\hspace*{\fill}\\
+\hlstr{}\hlstd{\ \ }\hlstr{"exec",\ "writeprofile"))'`}\hlstd{}\hspace*{\fill}\\
+\hlstd{}\hspace*{\fill}\\
+\hlstd{}\hlslc{\#\ make\ softlinks\ to\ the\ R\ executables\ in\ /usr/local/bin}\hspace*{\fill}\\
+\hlstd{}\hlslc{\#\ you\ will\ have\ to\ enter\ your\ user's\ password!}\hspace*{\fill}\\
+\hlstd{sudo\ }\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
+\mbox{}
+\normalfont
 \end{kframe}
 \end{knitrout}
 
@@ -706,7 +708,7 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -747,7 +749,7 @@ shown in Table \ref{tab:profile2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -790,7 +792,7 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -810,7 +812,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -849,7 +851,7 @@ by using the default separation in
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -869,7 +871,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -935,7 +937,7 @@ These new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1197,7 +1199,7 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1278,7 +1280,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1314,7 +1316,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1374,7 +1376,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Tue Jun 19 23:46:38 2018
+% Thu Jun 21 15:02:19 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1458,7 +1460,7 @@ background).
 Normally, the separator specified should not occur in the data. If it does,
 unexpected things might happen, so consider removing the chosen separator from
 your strings first. However, there is also an option \texttt{sep.replace} to
-replace the separator with something else. When \code{sep.replace} is specified,
+replace the separator with something else. When \texttt{sep.replace} is specified,
 this mark is inserted in the string at those places where the separator occurs.
 Typical usage in linguistics would be \texttt{sep = " ", sep.replace = "\#"} adding
 spaces between graphemes and replacing spaces in the input string by hashes in
