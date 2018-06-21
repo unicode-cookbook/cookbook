@@ -11,6 +11,7 @@ The knitr setup is included in the file `main.Rnw`. To process this file, the fo
 
 - knitr
 - highlight
+- highr
 - xtable
 - formatR
 - qlcData
