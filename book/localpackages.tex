@@ -17,6 +17,15 @@
 % 	BoldSlantedFont = FreeMonoBoldOblique_B.otf 	
 % 	]{FreeMono_B.otf}
 
+% override defaults from langsci.cls
+% to get straight quotes in code-snippets
+\newfontfamily\myfont[
+	Ligatures={Common},Scale=0.8,Path=\fontpath,
+	BoldFont = FreeMonoBold_B.otf ,
+	SlantedFont = FreeMonoOblique_B.otf ,		
+	BoldSlantedFont = FreeMonoBoldOblique_B.otf 	
+	]{FreeMono_B.otf}
+
 % some additional possibilities for enumerations
 \usepackage{enumitem}
 \setitemize{noitemsep}
@@ -63,8 +72,10 @@
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
   basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code 
-  keywordstyle=\color{blue!60!black},       % keyword style
-  language=XML,                 % the language of the code 
-  stringstyle=\color{green!60!black},     % string literal style 
+  % keywordstyle=\color{blue!60!black},       % keyword style
+  keywordstyle=\myfont,       % keyword style
+  language=Python,                 % the language of the code 
+  % stringstyle=\color{green!60!black},     % string literal style 
+  stringstyle=\myfont,     % string literal style 
   morekeywords={token,xlink:href, Action, Value, Cursor,LogEvent}
 } 

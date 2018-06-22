@@ -752,7 +752,7 @@
 \usepackage{libertine}
 
 \setmonofont[
-	Ligatures={TeX},Scale=MatchLowercase,
+	Ligatures={Common},Scale=MatchLowercase,
 	BoldFont = DejaVuSansMono-Bold.ttf ,
 	SlantedFont = DejaVuSansMono-Oblique.ttf ,
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
