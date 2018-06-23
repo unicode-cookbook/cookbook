@@ -188,7 +188,7 @@ SIL International provides a \textsc{SIL Unicode BMP Fallback
 Font}. This font does not show a real 
 glyph, but instead shows the hexadecimal code inside a box
 for each character, so a user can at least see the Unicode code point of the
-character to be displayed.\footnote{\url{http://scripts.sil.org/UnicodeBMPFallbackFont}}
+character intended for display.\footnote{\url{http://scripts.sil.org/UnicodeBMPFallbackFont}}
 
 % ==========================
 \section{Pitfall: Faulty rendering}
@@ -200,7 +200,7 @@ a glyph might be displayed, it does not look right. There are two
 reasons for unexpected visual display, namely automatic font substitution and
 faulty rendering. Like missing glyphs, any such problems are independent from
 the Unicode Standard. The Unicode Standard only includes very general
-information about characters and leaves the specific visual display to others to
+information about characters and leaves the specific visual display for others to
 decide on. Any faulty display is thus not to be blamed on the Unicode
 Consortium, but on a complex interplay of different mechanisms happening in a
 computer to turn Unicode code points into visual symbols. We will only sketch a
@@ -212,8 +212,8 @@ a specific font (e.g.~Times New Roman) and an inserted Unicode character does no
 have a glyph within this font, then the software application will automatically
 search for another font to display the glyph. The result will be that this
 specific glyph will look slightly different from the others. This mechanism
-works differently depending on the software application, only limited
-user influence is usually expected and little feedback is given, which might be rather
+works differently depending on the software application; only limited
+user influence is usually expected and little feedback is given. This may be rather
 frustrating to font-aware users.
 
 % \footnote{For example, Apple Pages does not give any feedback that a font is being replaced, and the user does not seem to have any influence on the choice of replacement (except by manually marking all occurrences). In contrast, Microsoft Word does indicate the font replacement by showing the name in the font menu of the font replacement. However, Word simply changes the font completely, so any text written after the replacement is written in a different font as before. Both behaviors leave much to be desired.}
@@ -221,9 +221,9 @@ frustrating to font-aware users.
 Another problem with visual display is related to so-called \textsc{font
 rendering}. Font rendering refers to the process of the actual positioning of
 Unicode characters on a page of written text. This positioning is actually a
-highly complex challenge, and many things can go wrong in the process. Well-known
+highly complex challenge and many things can go wrong in the process. Well-known
 rendering difficulties, like proportional glyph size or ligatures, are reasonably
-well understood by developers. Nevertheless	, the positioning of multiple diacritics relative to
+well understood by developers. Nevertheless, the positioning of multiple diacritics relative to
 a base character is still a widespread problem. Especially problematic is when 
 more than one diacritic is supposed to be placed above (or
 below) another. Even within the Latin script vertical placement 
@@ -231,7 +231,7 @@ often leads to unexpected effects in many modern software applications.
 The rendering problems arising in Arabic and in many scripts of Southeast
 Asia (like Devanagari or Burmese) are even more complex. 
 
-To understand why any problems arise it is important to realize that there are
+To understand why these problems arise it is important to realize that there are
 basically three different approaches to font rendering. The most widespread is
 Adobe's and Microsoft's \textsc{OpenType} system. This approach makes it
 relatively easy for font developers, but the font itself does not include all
@@ -446,11 +446,11 @@ capital letter a with ring above} (\uni{00C5}) would not be found.
 In other words, there are equivalent sequences of Unicode characters that should
 be normalized, i.e.~transformed into a unique Unicode-sanctioned representation
 of a character sequence called a \textsc{normalization form}. Unicode provides a
-Unicode Normalization Algorithm, which essentially puts combining marks
+Unicode Normalization Algorithm, which puts combining marks
 into a specific logical order and it defines decomposition and composition
 transformation rules to convert each string into one of four normalization
 forms. We will discuss here the two most relevant normalization forms: NFC and
-NFD.\@
+NFD.
 
 The first of the three characters above is considered the \textsc{Normalization
 Form C (NFC)}, where \textsc{C} stands for composition. When the process of NFC
