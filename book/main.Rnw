@@ -1,7 +1,8 @@
 % !BIB TS-program = biber
 % !BIB program = biber
 \documentclass[output=book,nonflat,modfonts,
-colorlinks, citecolor=brown,
+% colorlinks, citecolor=brown,
+citecolor=brown,
 % draft,draftmode   
 		]{langsci/langscibook}
 \usepackage[]{graphicx}\usepackage[]{color}
