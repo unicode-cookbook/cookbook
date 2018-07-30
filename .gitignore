@@ -7,6 +7,7 @@ unicode.texnicle
 *.aux
 *.glo
 *.idx
+*.ldx
 *.log
 *.toc
 *.ist
@@ -25,6 +26,8 @@ unicode.texnicle
 *.maf
 *.mtc
 *.mtc1
+*.mw
+*.sdx
 *.out
 *.synctex.gz
 *.fdb_latexmk
