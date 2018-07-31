@@ -3,6 +3,7 @@
 unicode.texnicle
 
 *.adx
+*.bcf
 *.toc
 *.aux
 *.glo
