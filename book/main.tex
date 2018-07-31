@@ -133,11 +133,12 @@ First, in Section \ref{installing-python-and-r} we explain how to install Python
 
 \section{How to install Python and R}
 \label{installing-python-and-r}
+
 When one encounters problems installing software, or bugs in programming code, search engines are your friend! Installation problems and incomprehensible error messages have typically been encountered and solved by other users. Try simply copying and pasting the output of an error message into a search engine; the solution is often already somewhere online. We are fans of Stack Exchange\footnote{\url{https://stackexchange.com/}} -- a network of question-and-answer websites -- which are extremely helpful in solving issues regarding software installation, bugs in code, etc.
 
-Searching the web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note that there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Unix operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew,\footnote{\url{https://brew.sh/}} a simple-to-install (via the Terminal App) free and open source package management system. Follow the instructions on the Homebrew website and then use Homebrew to install R and Python (as well as other software packages such as Git and Jupyter Notebooks). 
+Searching the web for ``install r and python'' returns numerous tutorials on how to set up your machine for scientific data analysis. Note that there is no single correct setup for a particular computer or operating system. Both Python and R are available for Windows, Mac, and Linux operating systems from the Python and R project websites. Another option is to use a so-called package manager, i.e.\ a software program that allows the user to manage software packages and their dependencies. On Mac, we use Homebrew,\footnote{\url{https://brew.sh/}} a simple-to-install (via the Terminal App) free and open source package management system. Follow the instructions on the Homebrew website and then use Homebrew to install R and Python (as well as other software packages such as Git and Jupyter Notebooks). 
 
-Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows and Unix) and it includes its own R installation and R libraries package manager. For developing in Python, we recommend the free community version of PyCharm,\footnote{\url{https://www.jetbrains.com/pycharm/}} an IDE which is available for Mac, Windows, and Unix. 
+Alternatively for R, RStudio\footnote{\url{https://www.rstudio.com/}} provides a free and open source integrated development environment (IDE). This application can be downloaded and installed (for Mac, Windows and Linux) and it includes its own R installation and R libraries package manager. For developing in Python, we recommend the free community version of PyCharm,\footnote{\url{https://www.jetbrains.com/pycharm/}} an IDE which is available for Mac, Windows, and Unix. 
 
 Once you have R or Python (or both) installed on your computer, you are ready to use the orthography profiles software libraries presented in the next two sections. As noted above, we make this material available online on GitHub,\footnote{\url{https://github.com/}} a web-based version control system for source code management. GitHub repositories can be cloned or downloaded,\footnote{\url{https://help.github.com/articles/cloning-a-repository/}} so that you can work through the examples on your local machine. Use your favorite search engine to figure out how to install Git on your computer and learn more about using Git.\footnote{\url{https://git-scm.com/}} In our GitHub repository, we make the material presented below (and more use cases described briefly in Section \ref{use-cases}) available as Jupyter Notebooks. Jupyter Notebooks provide an interface where you can run and develop source code using the browser as an interface. These notebooks are easily viewed in our GitHub repository of use cases.\footnote{\url{https://github.com/unicode-cookbook/recipes}}
 
@@ -575,16 +576,26 @@ by using Rscript to get the paths to the executables within the terminal.
 \noindent
 \ttfamily
 \hlstd{}\hlslc{\#\ get\ the\ paths\ to\ the\ R\ executables\ in\ bash}\hspace*{\fill}\\
-\hlstd{pathT}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(file.path(find.package("qlcData"),\ }\hspace*{\fill}\\
-\hlstr{}\hlstd{\ \ }\hlstr{"exec",\ "tokenize"))'`}\hlstd{}\hspace*{\fill}\\
-\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(file.path(find.package("qlcData"),\ }\hspace*{\fill}\\
-\hlstr{}\hlstd{\ \ }\hlstr{"exec",\ "writeprofile"))'`}\hlstd{}\hspace*{\fill}\\
+\hlstd{pathT}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/tokenize",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}\\
+\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/writeprofile",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}\\
 \hlstd{}\hspace*{\fill}\\
 \hlstd{}\hlslc{\#\ make\ softlinks\ to\ the\ R\ executables\ in\ /usr/local/bin}\hspace*{\fill}\\
 \hlstd{}\hlslc{\#\ you\ will\ have\ to\ enter\ your\ user's\ password!}\hspace*{\fill}\\
 \hlstd{sudo\ }\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
 \mbox{}
 \normalfont
+\end{kframe}
+\end{knitrout}
+
+You can also do this within R by using the following commands, again possible replacing \texttt{/user/local/bin} with a suitable location on your system:
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# link executables from within R}
+\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/tokenize"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
+\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/writeprofile"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
+\end{alltt}
 \end{kframe}
 \end{knitrout}
 
@@ -603,10 +614,10 @@ the functionality.
 % online at \url{TODO}. The webapps are also included inside the \texttt{qlcData} 
 % package and can be started with the following helper function:
 
-To make the functionality even more accessible, we have prepared webapps with 
-the \texttt{Shiny} framework for the R functions. The webapps are 
-included inside the \texttt{qlcData} package and can be started with the 
-helper function (in R): \texttt{launch\_shiny('tokenize')}.
+% To make the functionality even more accessible, we have prepared webapps with 
+% the \texttt{Shiny} framework for the R functions. The webapps are 
+% included inside the \texttt{qlcData} package and can be started with the 
+% helper function (in R): \texttt{launch\_shiny('tokenize')}.
 
 % <<eval=FALSE>>=
 % launch_shiny('tokenize')
@@ -710,8 +721,8 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:46 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -751,8 +762,8 @@ shown in Table \ref{tab:profile2}.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:46 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -794,8 +805,8 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:46 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -814,8 +825,8 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 \end{table}
 
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -853,8 +864,8 @@ by using the default separation in
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -873,8 +884,8 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 \end{table}
 
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -939,8 +950,8 @@ These new graphemes are then included in the graphemic parsing.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1201,8 +1212,8 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1282,8 +1293,8 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1318,8 +1329,8 @@ expression in the contextual column. For example, consider the edited toy
 profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1378,8 +1389,8 @@ free to use any class-name you like, as long as it does not clash with the rest
 of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
 give the same result as obtained previously by using a regular expression.
 
-% latex table generated in R 3.5.0 by xtable 1.8-2 package
-% Sat Jun 30 10:20:10 2018
+% latex table generated in R 3.4.3 by xtable 1.8-2 package
+% Tue Jul 31 12:42:47 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1621,7 +1632,13 @@ The two recipes using the R \texttt{qlcData} library include a use case for toke
 
 \noindent The ASJP use case shows how to download the full set of ASJP wordlists, to combine them into a single large CSV file, and to tokenize the ASJP orthography. The Dutch use case takes as input the 10K corpus for Dutch (``nld'') from the Leipzig Corpora Collection,\footnote{\url{http://wortschatz.uni-leipzig.de/en/download/}} which is then cleaned and tokenized with an orthography profile that captures the intricacies of Dutch orthography.
 
-% In closing, using GitHub to share code and data provides a platform for sharing scientific results and it also promotes a means for scientific replicability of results. Moreover, we find that in cases where the scientists are building the to tools for analysis, open repositories and data help to ensure that what you see is what you get.
+\section{Closing words}
+
+In closing, we hope that these rather elaborate musings on writing systems, Unicode and the IPA will help readers appreciate the progress that has been made over the last decades, but also acknowledge the many pitfalls that are still lurking under the surface. But mainly we hope that our proposals point towards a way forward in sharing scientific data, interpretations and analyses in a more transparent manner.
+
+GitHub (or any similar platform) provides a platform for sharing scientific results and it also promotes a means for scientific replicability of results. Not only is all our code on Github, we actually used Github to collaboratively write this book and we will continue to use it to make corrections and update the book when it will become necessary.
+
+Moreover, we find that in cases where the scientists are building tools for analysis, open repositories and data help to ensure that what you see is what you get.
 
 % \include{chapters/use_cases}
 % knit_child("chapters/codetesting.tex")
