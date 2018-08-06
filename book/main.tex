@@ -577,10 +577,17 @@ by using Rscript to get the paths to the executables within the terminal.
 \ttfamily
 \hlstd{}\hlslc{\#\ get\ the\ paths\ to\ the\ R\ executables\ in\ bash}\hspace*{\fill}\\
 \hlstd{pathT}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/tokenize",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}\\
-\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/writeprofile",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}\\
-\hlstd{}\hspace*{\fill}\\
+\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/writeprofile",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}
+\mbox{}
+\normalfont
+\end{kframe}
+\end{knitrout}
+
+\begin{knitrout}\footnotesize
+\definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
+\noindent
+\ttfamily
 \hlstd{}\hlslc{\#\ make\ softlinks\ to\ the\ R\ executables\ in\ /usr/local/bin}\hspace*{\fill}\\
-\hlstd{}\hlslc{\#\ you\ will\ have\ to\ enter\ your\ user's\ password!}\hspace*{\fill}\\
 \hlstd{sudo\ }\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
 \mbox{}
 \normalfont
@@ -722,7 +729,7 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:33 2018
+% Mon Aug  6 15:29:27 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -763,7 +770,7 @@ shown in Table \ref{tab:profile2}.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -806,7 +813,7 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -826,7 +833,7 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -865,7 +872,7 @@ by using the default separation in
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -885,7 +892,7 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -951,7 +958,7 @@ These new graphemes are then included in the graphemic parsing.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1213,7 +1220,7 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:34 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1294,7 +1301,7 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{knitrout}
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:35 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1330,7 +1337,7 @@ profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:35 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1390,7 +1397,7 @@ of the profile. The example shown in Table~\ref{tab:profile_editing_3} should
 give the same result as obtained previously by using a regular expression.
 
 % latex table generated in R 3.4.3 by xtable 1.8-2 package
-% Mon Aug  6 10:44:35 2018
+% Mon Aug  6 15:29:28 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize

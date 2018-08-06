@@ -436,9 +436,10 @@ by using Rscript to get the paths to the executables within the terminal.
 # get the paths to the R executables in bash
 pathT=`Rscript -e 'cat(system.file("exec/tokenize", package="qlcData"))'`
 pathW=`Rscript -e 'cat(system.file("exec/writeprofile", package="qlcData"))'`
+@
 
+<<eval=FALSE, tidy=FALSE, engine='bash'>>=
 # make softlinks to the R executables in /usr/local/bin
-# you will have to enter your user's password!
 sudo ln -is $pathT $pathW /usr/local/bin
 @
 
