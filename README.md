@@ -10,7 +10,8 @@ The cookbook is available in its most up-to-date form in this directory as [unic
 
 [![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](http://creativecommons.org/licenses/by/4.0/)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1296780.svg)](https://doi.org/10.5281/zenodo.1296780)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1300528.svg)](https://doi.org/10.5281/zenodo.1300528)
+
 
 ## Preface
 
