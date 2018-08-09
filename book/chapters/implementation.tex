@@ -433,13 +433,13 @@ PATH, e.g.\ to \texttt{/usr/local/bin/}. The two executables are named
 by using Rscript to get the paths to the executables within the terminal.
 
 <<eval=FALSE, tidy=FALSE, engine='bash'>>=
-# get the paths to the R executables in bash
 pathT=`Rscript -e 'cat(system.file("exec/tokenize", package="qlcData"))'`
 pathW=`Rscript -e 'cat(system.file("exec/writeprofile", package="qlcData"))'`
 @
 
+Then you can make softlinks to the R executables in \texttt{/usr/local/bin} by using the following command in the terminal:
+
 <<eval=FALSE, tidy=FALSE, engine='bash'>>=
-# make softlinks to the R executables in /usr/local/bin
 sudo ln -is $pathT $pathW /usr/local/bin
 @
 
