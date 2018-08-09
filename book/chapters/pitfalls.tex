@@ -108,13 +108,13 @@ like <sch>, are called \textit{tailored grapheme clusters} (see
 Chapter~\ref{the-unicode-approach}).
 
 There are special Unicode characters that 
-glue together characters into larger tailored grapheme clusters,
+can help determining groups of characters as being larger tailored grapheme clusters,
 specifically the \textsc{zero width joiner} at \uni{200D} and the
 \textsc{combining grapheme joiner} at \uni{034F}. However, these characters are
 confusingly named (cf.~Section~\ref{pitfall-names}). Both code points actually do
-not join characters, but explicitly separate them. The zero-width joiner (ZWJ)
+not join characters, but explicitly separate them. The zero-width joiner
 can be used to solve special problems related to ordering (called \textit{collation}
-in Unicode parlance). The combining grapheme joiner (CGJ) can be used to
+in Unicode parlance). The combining grapheme joiner can be used to
 separate characters that are not supposed to form ligatures. 
 
 To solve the issue of tailored grapheme clusters, Unicode offers some assistance
@@ -127,7 +127,7 @@ tailored grapheme clusters. For example, for English one could specify that <sh>
 is such a cluster. Consequently, this sequence of characters is then always
 interpreted as a complex grapheme. For cases in which this is not the right
 decision, like in the English word \textit{mishap}, the \textsc{zero width
-joiner} at \uni{200D} has to be entered between <s> and <h>.
+joiner} at \uni{200D} can be entered between <s> and <h>.
 
 % ==========================
 \section{Pitfall: Missing glyphs}
@@ -137,10 +137,12 @@ joiner} at \uni{200D} has to be entered between <s> and <h>.
 The Unicode Standard is often praised (and deservedly so) for solving many of
 the perennial problems with the interchange and display of the world's writing
 systems. Nevertheless, a common complaint from users is that some symbols do not display 
-correctly, i.e.\ \textit{not at all} or from a \textit{fall back font}, e.g.\ a 
+correctly, i.e. they might be displayed \textit{not at all} or only from a so-called 
+\textit{fall back font}, e.g.\ showing a 
 rectangle <▯>, question mark <?>, or the Unicode replacement character <�>. 
-The user's computer does not have the fonts 
-installed that map the desired glyphs to Unicode characters. Therefore the glyphs cannot be displayed.
+The reason for such behavior is that the user's computer does not have the fonts 
+installed that map the desired glyphs to Unicode characters. 
+Therefore the glyphs cannot be displayed.
 This is not the Unicode Standard's fault because it is a character 
 encoding system and not a font. Computer-internally everything works as expected; 
 any handling of Unicode code points works independently of how they 
@@ -236,7 +238,7 @@ basically three different approaches to font rendering. The most widespread is
 Adobe's and Microsoft's \textsc{OpenType} system. This approach makes it
 relatively easy for font developers, but the font itself does not include all
 details about the precise placement of individual characters. For those details,
-additional script descriptions are necessary. All such systems can lead to
+additional script descriptions are necessary. Each of these pieces of software can lead to
 unexpected behavior.\footnote{For more details about OpenType, see
 \url{http://www.adobe.com/products/type/opentype.html} and
 \url{http://www.microsoft.com/typography/otspec/}. Additional systems for
@@ -378,7 +380,7 @@ perspective of a font designer. For example, when designing a Cyrillic font, the
 <A> will have different aesthetics and different traditional expectations
 compared to a Latin <A>. Thus, the Unicode Standard has character properties 
 associated with each code point which define certain expectations, e.g.\ characters 
-belong to different blocks, they have different lower case variants (see 
+belong to a specific script or they have different lower case variants (see 
 Section \ref{character-encoding-system}).
 
 Homoglyphs are a widespread problem for consistent encoding. Although for
@@ -434,7 +436,7 @@ Consider for example the characters and following Unicode code points:
 in the first two examples by a single-character sequence; each is assigned a
 different code point. In the third example, the glyph is encoded in a
 multiple-character sequence that is composed of two character code points. All
-three sequences are \textsc{}, i.e.~they are strings that
+three sequences are \textsc{canonically equivalent}, i.e.~they are strings that
 represent the same abstract character and because they are not distinguishable
 by the user, the Unicode Standard requires them to be treated the same in
 regards to their behavior and appearance. Nevertheless, they are encoded
@@ -473,8 +475,9 @@ character in the Unicode Standard is associated with a combining class, which is
 formally defined as a character property called \textsc{canonical combining
 class} which is specified in the Unicode Character Database. The combining class
 assigned to each code point is a numeric value between 0 and 254 and is used by
-the Unicode Canonical Ordering Algorithm to determine which sequences of
-characters are . Normalization forms, as very briefly
+the Unicode Canonical Ordering Algorithm to determine in what sequences they should 
+occur (but see Section~\ref{pitfall-no-unique-diacritic-ordering} for the limitations 
+of the Unicode combining class values). Normalization forms, as very briefly
 described above, can be used to ensure character equivalence by ordering
 character sequences so that they can be faithfully compared.
 
@@ -482,7 +485,7 @@ It is very important to note that any software application that is Unicode
 Standard compliant is free to change the character stream from one
 representation to another. This means that a software application may compose,
 decompose or reorder characters as its developers desire; as long as the
-resultant strings are  to the original. This might lead to
+resultant strings are canonically equivalent to the original. This might lead to
 unexpected behavior for users. Various players, like the Unicode Consortium, the
 W{\large 3}C, or the TEI recommend NFC in most user-directed situations, and
 some software applications that we tested indeed seem to automatically convert
@@ -494,7 +497,7 @@ this might be automatically converted into <à>, i.e.~\textsc{latin small letter
 a with grave} at \uni{00E0}.\footnote{The behavior of software applications can
 be quite erratic in this respect. For example, Apple's TextEdit does not do any
 conversion on text entry. However, when you copy and paste some text inside the
-same document in rich text mode (i.e.~RTF-format), it will be transformed into
+same document in rich text mode, it will be transformed into
 NFC on paste. Saving a document does not do any conversion to the glyphs on
 screen, but it will save the characters in NFC.}
 
@@ -511,7 +514,7 @@ are not equivalent, like <ø> \textsc{latin small letter o with stroke} at
 \uni{00F8} and <o̷> a combination of \textsc{latin small letter o} at \uni{006F}
 with \textsc{combining short solidus overlay} at \uni{0037}.
 The general rule followed is that extensions of Latin characters that are
-connected to the base character are not separated as combining diacritics. For
+visually connected to the base character are not separated as combining diacritics. For
 example, characters like <ŋ ɲ ɳ> or <ɖ ɗ> are obviously derived from <n> and <d>
 respectively, but they are treated like new separate characters in the Unicode
 Standard. Likewise, characters like <ø> and <ƈ> are not separated into a base 
@@ -530,16 +533,16 @@ elements are the following:
         This diacritic is
         for example attested in the precomposed character <ç> \textsc{latin
         small letter c with cedilla} at \uni{00E7}. This <ç> will thus be
-        decomposed in NFC normalization.
+        decomposed in NFD normalization.
   \item <\dia{0328}>: the \textsc{combining ogonek} at \uni{0328} \newline 
         This diacritic is
         for example attested in precomposed <ą> \textsc{latin small letter a
-        with ogonek} at \uni{0105}. This <ą> will thus be decomposed in NFC
+        with ogonek} at \uni{0105}. This <ą> will thus be decomposed in NFD
         normalization.
   \item <\dia{031B}>: the \textsc{combining horn} at \uni{031B} \newline 
         This diacritic is for
         example attested in precomposed <ơ> \textsc{latin small letter o with
-        horn} at \uni{01A1}. This <ơ> will thus be decomposed in NFC
+        horn} at \uni{01A1}. This <ơ> will thus be decomposed in NFD
         normalization. 
 
 \end{itemize}
@@ -700,7 +703,7 @@ everyone tries to prevent the inclusion of BOM in their data.
 \section{Pitfall: Incomplete implementations}
 \label{incomplete-implementations}
 % ==========================
-Another pitfall that we encounter when using the Unicode Standard is its incomplete implementation in different standards and programming languages, e.g.\ SQL, XML, XLST, Python. For example, although the Unicode Standard mandates that the comparison of Unicode text be done using normalized text, this is not the case with the equality operator ``=='' in Python. Furthermore, it is not always transparent what the operating system or specific software applications do when text is being copied and pasted. For example, copy and pasting the character sequence \uni{0061} \textsc{latin small letter a} <a> and \uni{0301} \textsc{combining acute accent} <\dia{0301}>, visually <á>, into the text editor TextWrangler leaves the sequence decomposed as two characters. But when pasting the decomposed sequence into RStudio, and other software programs, the sequence becomes precomposed as \uni{00E1} \textsc{latin small letter a with acute}, i.e.\ <á>.
+Another pitfall that we encounter when using the Unicode Standard is its incomplete implementation in different standards and programming languages, e.g.\ SQL, XML, XLST, Python. For example, although the Unicode Standard mandates that the comparison of Unicode text be done using normalized text, this is not the case with the equality operator ``=='' in Python. Furthermore, it is not always transparent what the operating system or specific software applications do when text is being copied and pasted. For example, copy and pasting the character sequence \uni{0061} \textsc{latin small letter a} <a> and \uni{0301} \textsc{combining acute accent} <\dia{0301}>, visually <á>, into the text editor TextWrangler leaves the sequence decomposed as two characters. But when pasting the decomposed sequence into RStudio, and other software programs, the sequence becomes precomposed as \uni{00E1} \textsc{latin small letter a with acute}, i.e.\ <á>. Although inconvenient, we expect all such behavior of software only become more consistent in the future.
 
 % One Unicode pitfall which may be worth adding is the problem with incomplete implementations of the Unicode Standard. This is a problem most big-enough standards suffer from, e.g.\ SQL, XML, XSLT. So although the Unicode Standard mandates that comparison of Unicode text should always be done using normalized text, this is not how the equality operator "==" is implemented for Unicode text in the Python programming language.
 
@@ -719,7 +722,7 @@ recommendations:
          (see Section~\ref{pitfall-missing-glyphs}).
    \item Unexpected visual impressions of symbols do not necessarily mean that
          the actual encoding is wrong. It is mostly a problem of faulty
-         rendering (see Section~\ref{pitfall-faulty-rendering}).
+         rendering or font substitution (see Section~\ref{pitfall-faulty-rendering}).
    \item Do not trust the names of code points as a definition of the character
          (see Section~\ref{pitfall-names}). Also do not trust Unicode blocks as
          a strategy to find specific characters (see

@@ -193,13 +193,14 @@ for short) are the following:
 	   % normalized following NFC (or NFD if specified in the metadata)
        that includes information pertinent to the orthography.\footnote{See 
 	   Section~\ref{pitfall-file-formats} in which we suggest to use NFC, 
-	   no-BOM and LF line breaks because of the pitfalls they avoid. A keen reviewer notes, however, that specifying 
-	   a convention for line endings and BOM is overly strict because most 
+	   no-BOM and LF line breaks because of the pitfalls they avoid. Specifying 
+	   a convention for line endings and BOM is often overly strict because most 
 	   computing environments (now) transparently handle both alternatives. 
 	   For example, using Python a file can be decoded using the encoding 
 	   ``utf-8-sig'', which strips away the BOM (if present) and reads 
 	   an input full in text mode, so that both line feed variants ``LF'' and 
-	   ``CRLF'' will be stripped.}
+	   ``CRLF'' will be stripped. However, note that most shells (e.g. bash) will not 
+	   behave properly with CRLF line endings.}
 
 	\item \textsc{A profile is a delimited text file with an obligatory header
        line}. A minimal profile must have a single column with the header \texttt{Grapheme}. 

@@ -239,14 +239,14 @@ standard for all telegraphy and it is still in limited use today.
 To also allow for different uppercase and lowercase letters and for a large
 variety of control characters to be used in the newly developing technology of
 computers, the American Standards Association decided to propose a new 7-bit
-encoding in 1963 (with $2^7 = 128$ different possible characters), known as the
+encoding in 1963 (with 2\textsuperscript{7} = 128 different possible characters), 
+known as the
 \textsc{American Standard Code for Information Interchange} (ASCII), geared
 towards the encoding of English orthography. With the ascent of other
 orthographies in computer usage, the wish to encode further variations of Latin
 letters (including German <ß> and various letters with diacritics, e.g.\ <è>) led the
 Digital Equipment Corporation to introduce an 8-bit \textsc{Multinational
-Character Set} (MCS, with $2^8 = 256$ different possible characters), first used
-with the introduction of the VT{\large 220} Terminal in 1983. 
+Character Set} (MCS, with 2\textsuperscript{8} = 256 different possible characters), first used with the introduction of the VT{\large 220} Terminal in 1983. 
 
 Because 256 characters were clearly not enough for the unique representation of 
 many different characters
@@ -269,17 +269,17 @@ various proprietary encodings from Microsoft (e.g.~Windows Latin 1) and Apple
 In the 1980s various people started to develop true
 international code sets. In the United States, a group of computer scientists
 formed the \textsc{unicode consortium}, proposing a 16-bit encoding in 1991
-(with $2^{16} = 65,536$ different possible characters). At the same time in
+(with 2\textsuperscript{16} = 65,536 different possible characters). At the same time in
 Europe, the \textsc{international organization for standardization} (ISO) was
 working on ISO~10646 to replace the ISO/IEC~8859 standard. Their first draft of
 the \textsc{universal character set} (UCS) in 1990 was 31-bit (with
-theoretically $2^{31} = 2,147,483,648$ possible characters, but because of some
+theoretically 2\textsuperscript{31} = 2,147,483,648 possible characters, but because of some
 technical restrictions only 679,477,248 were allowed). Since 1991, the Unicode
 Consortium and the ISO jointly develop the \textsc{unicode standard}, or
 ISO/IEC~10646, leading to the current system including the original 16-bit
 Unicode proposal as the \textsc{basic multilingual plane}, and 16 additional
-planes of 16-bit for further extensions (with in total $(1+16) \cdot 2^{16} =
-1,114,112$ possible characters). The most recent version of the Unicode Standard
+planes of 16-bit for further extensions (with in total (1+16)\times 2\textsuperscript{16} =
+1,114,112 possible characters). The most recent version of the Unicode Standard
 (currently at version number 11.0.0) was published in June 2018 and it defines
 137,374 different characters \citep{Unicode2018}.
 
@@ -382,10 +382,10 @@ different types of script systems that can be distinguished
 
 Breaking it down further, a script consists of \textsc{graphemes}, which are writing 
 system-specific minimally distinctive symbols (see below). Graphemes may consist of one or more 
-\textsc{characters}. The term \textsc{character} is overladen. In the linguistic terminology of writing
-systems, a \textsc{character} is a general term for any self-contained element
+\textsc{characters}. The term `character' is overladen. In the linguistic terminology of writing
+systems, a character is a general term for any self-contained element
 in a writing system. A second interpretation is used as a conventional term for a unit in the Chinese writing
-system \citep{Daniels1996}. In technical terminology, a \textsc{character} 
+system \citep{Daniels1996}. In technical terminology, a character
 refers to the electronic encoding of a component in a writing system that has semantic 
 value (see Section \ref{character-encoding-system}). Thus in this work we must navigate 
 between the general linguistic and technical terms for \textsc{character} 
