@@ -498,7 +498,7 @@ simply installed as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install the qlcData software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{'qlcData'}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"qlcData"}\hlstd{)}
 \hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
@@ -516,10 +516,10 @@ version can be easily installed using the github-install helper software from th
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# download and install helper software}
-\hlkwd{install.packages}\hlstd{(}\hlstr{'devtools'}\hlstd{)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{"devtools"}\hlstd{)}
 \hlcom{# install the qlcData package from GitHub}
-\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{'cysouw/qlcData'}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlcom{# load the software, so it can be used }
+\hlstd{devtools}\hlopt{::}\hlkwd{install_github}\hlstd{(}\hlstr{"cysouw/qlcData"}\hlstd{,} \hlkwc{build_vignettes} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+\hlcom{# load the software, so it can be used}
 \hlkwd{library}\hlstd{(qlcData)}
 \end{alltt}
 \end{kframe}
@@ -537,7 +537,7 @@ explanations and examples.
 \hlkwd{help}\hlstd{(write.profile)}
 \hlkwd{help}\hlstd{(tokenize)}
 \hlcom{# view vignette with explanation and examples}
-\hlkwd{vignette}\hlstd{(}\hlstr{'orthography_processing'}\hlstd{)}
+\hlkwd{vignette}\hlstd{(}\hlstr{"orthography_processing"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -558,7 +558,7 @@ location can be found by the following command in R.
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# show the path to the bash executables}
-\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{'qlcData'}\hlstd{),} \hlstr{'exec'}\hlstd{)}
+\hlkwd{file.path}\hlstd{(}\hlkwd{find.package}\hlstd{(}\hlstr{"qlcData"}\hlstd{),} \hlstr{"exec"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -573,10 +573,12 @@ by using Rscript to get the paths to the executables within the terminal.
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-pathT=`Rscript -e 'cat(system.file("exec/tokenize", package="qlcData"))'`
-pathW=`Rscript -e 'cat(system.file("exec/writeprofile", package="qlcData"))'`
-\end{alltt}
+\noindent
+\ttfamily
+\hlstd{pathT}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/tokenize",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}\\
+\hlstd{pathW}\hlopt{=}\hlstd{}\hlstr{`Rscript\ {-}e\ 'cat(system.file("exec/writeprofile",\ package="qlcData"))'`}\hlstd{}\hspace*{\fill}
+\mbox{}
+\normalfont
 \end{kframe}
 \end{knitrout}
 
@@ -584,9 +586,11 @@ Then you can make softlinks to the R executables in \texttt{/usr/local/bin} by u
 
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-sudo ln -is $pathT $pathW /usr/local/bin
-\end{alltt}
+\noindent
+\ttfamily
+\hlstd{sudo\ }\hlkwc{ln\ }\hlstd{}\hlkwb{{-}is\ }\hlstd{}\hlkwd{\$pathT\ \$pathW\ }\hlstd{}\hlopt{/}\hlstd{usr}\hlopt{/}\hlstd{local}\hlopt{/}\hlstd{bin}\hspace*{\fill}
+\mbox{}
+\normalfont
 \end{kframe}
 \end{knitrout}
 
@@ -596,8 +600,8 @@ You can also do this within R by using the following commands, again possible re
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# link executables from within R}
-\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/tokenize"}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
-\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/writeprofile"}\hlstd{,} \hlkwc{package}\hlstd{=}\hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
+\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/tokenize"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
+\hlkwd{file.symlink}\hlstd{(}\hlkwd{system.file}\hlstd{(}\hlstr{"exec/writeprofile"}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{"qlcData"}\hlstd{),} \hlstr{"/usr/local/bin"}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -644,7 +648,7 @@ some of the letters are Cyrillic.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{( test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{) )}
+\hlstd{(test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{))}
 \end{alltt}
 \begin{verbatim}
 ## [1] "AABB" "AАBВ"
@@ -673,8 +677,8 @@ Cyrillic encoding is found in the second string of the \texttt{test} input.
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'AABB'}\hlstd{,} \hlstr{'\textbackslash{}u0041\textbackslash{}u0410\textbackslash{}u0042\textbackslash{}u0412'}\hlstd{)}
-\hlkwd{tokenize}\hlstd{( test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'A'}\hlstd{,} \hlstr{'B'}\hlstd{) )}
+\hlstd{test} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"AABB"}\hlstd{,} \hlstr{"AАBВ"}\hlstd{)}
+\hlkwd{tokenize}\hlstd{(test,} \hlkwc{profile} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{"A"}\hlstd{,} \hlstr{"B"}\hlstd{))}
 \end{alltt}
 
 
@@ -718,14 +722,14 @@ of two code points (see Section~\ref{pitfall-characters-are-not-glyphs}).
 \begin{knitrout}\footnotesize
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{example} \hlkwb{<-} \hlstr{'\textbackslash{}u00d9\textbackslash{}u00da\textbackslash{}u00db\textbackslash{}u0055\textbackslash{}u0300\textbackslash{}u0055\textbackslash{}u0301\textbackslash{}u0055\textbackslash{}u0302'}
+\hlstd{example} \hlkwb{<-} \hlstr{"ÙÚÛÙÚÛ"}
 \hlstd{profile_1} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -765,8 +769,8 @@ shown in Table \ref{tab:profile2}.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -808,8 +812,8 @@ shows the results of these two normalizations in Tables \ref{tab:profile3} \& \r
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -828,8 +832,8 @@ Grapheme & Frequency & Codepoint & Unicode Name \\
 \end{table}
 
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -867,8 +871,8 @@ by using the default separation in
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -887,8 +891,8 @@ Ú & 2 & U+0055, U+0301 & LATIN CAPITAL LETTER U, COMBINING ACUTE ACCENT \\
 \end{table}
 
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[H]
 \centering
 \begingroup\scriptsize
@@ -953,8 +957,8 @@ These new graphemes are then included in the graphemic parsing.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -998,7 +1002,7 @@ above completely within R might look as follows:
 \definecolor{shadecolor}{rgb}{1, 1, 1}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# make a profile, just select the column 'Grapheme'}
-\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,}\hlstr{"Grapheme"}\hlstd{]}
+\hlstd{profile} \hlkwb{<-} \hlkwd{write.profile}\hlstd{(example)[,} \hlstr{"Grapheme"}\hlstd{]}
 \hlcom{# extend the profile with multigraphs}
 \hlstd{profile} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{"sh"}\hlstd{,} \hlstr{"ch"}\hlstd{,} \hlstr{"sch"}\hlstd{,} \hlstr{"ie"}\hlstd{,} \hlstr{"oo"}\hlstd{, profile)}
 \hlcom{# use the profile to tokenize}
@@ -1215,8 +1219,8 @@ this toy example, as shown in Table \ref{tab:profile_skeleton2}.
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1296,8 +1300,8 @@ Table~\ref{tab:profile_editing_1} for a toy profile of some Italian words).
 \end{kframe}
 \end{knitrout}
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1332,8 +1336,8 @@ expression in the contextual column. For example, consider the edited toy
 profile for Italian in Table~\ref{tab:profile_editing_2} (where <c> becomes /k/
 except before <i,e>, then it becomes /tʃ/). 
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1392,8 +1396,8 @@ free to use any class-name you like, as long as it does not clash with the rest
 of the profile. The example shown in Table~\ref{tab:profile_editing_3} should 
 give the same result as obtained previously by using a regular expression.
 
-% latex table generated in R 3.5.1 by xtable 1.8-2 package
-% Thu Aug  9 20:07:08 2018
+% latex table generated in R 3.5.0 by xtable 1.8-2 package
+% Thu Aug  9 22:09:59 2018
 \begin{table}[htb]
 \centering
 \begingroup\scriptsize
@@ -1637,11 +1641,11 @@ The two recipes using the R \texttt{qlcData} library include a use case for toke
 
 \section{Closing words}
 
-In closing, we hope that these rather elaborate musings on writing systems, Unicode and the IPA will help readers appreciate the progress that has been made over the last decades, but also acknowledge the many pitfalls that are still lurking under the surface. But mainly we hope that our proposals point towards a way forward in sharing scientific data, interpretations and analyses in a more transparent manner.
+In closing, we hope that these rather elaborate musings on writing systems, Unicode, and the IPA, will help readers appreciate the progress that has been made over the last decades, while acknowledging the many pitfalls that are still lurking below the surface. But mainly we hope that our proposals point towards a way forward in sharing scientific data, interpretations, and analyses, in a more transparent manner.
 
-GitHub (or any similar platform) provides a platform for sharing scientific results and it also promotes a means for scientific replicability of results. Not only is all our code on Github, we actually used Github to collaboratively write this book and we will continue to use it to make corrections and update the book when it will become necessary.
+GitHub (or any other similar service) provides a platform for sharing scientific research and it also promotes a means for scientific replicability of results. Not only do we use GitHub for the software packages that accompany this book, but we actually used it to write this book. GitHub allowed us to openly and collaboratively work on the book and then to participate interactively in an open review process by using an issue tracker and version control.\footnote{\url{https://userblogs.fu-berlin.de/langsci-press/2018/07/11/what-it-means-to-be-open-and-community-based-the-unicode-cookbook-as-a-showcase/}} We will continue to use our repositories to make corrections and updates to the book and to the associated orthography profile software packages, when necessary.\footnote{\url{https://github.com/unicode-cookbook/}}
 
-Moreover, we find that in cases where the scientists are building tools for analysis, open repositories and data help to ensure that what you see is what you get.
+Moreover, we find that in situations where scientists are building tools for analysis, open repositories and open data help to ensure that what you see is what you get.
 
 % \include{chapters/use_cases}
 % knit_child("chapters/codetesting.tex")
