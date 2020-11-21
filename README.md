@@ -1,6 +1,6 @@
 # Unicode Cookbook for Linguists
 
-[Steven Moran](http://www.comparativelinguistics.uzh.ch/de/moran.html) & [Michael Cysouw](http://cysouw.de/home/index.html)
+[Steven Moran](https://scholar.google.com/citations?user=PpTOh08AAAAJ&hl=en) & [Michael Cysouw](http://cysouw.de/home/index.html)
 
 ## Getting the cookbook
 
